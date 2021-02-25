@@ -1,0 +1,38 @@
+#Section: alias
+
+ alias Dial d0
+ alias GasSensor d1
+ alias HeatersControl d2
+ alias CoolersControl d3
+ alias targetCelsius r0
+ alias currentTemp r1
+ alias heaterStart r10
+ alias heaterStop r11
+ alias coolerStart r12
+ alias coolerStop r13
+ alias heaterTrigger r14
+ alias coolerTrigger r15
+#endSection
+# preparation section
+move heaterTrigger 10                  #Устанавливаем начальные номера регистров
+move coolerTrigger 12                  # для обоих триггеров
+s HeatersControl On 0                  # Выключаем и блокируем управление
+s HeatersControl Lock 1                # обогревателями и охладителями
+s CoolersControl On 0
+s CoolersControl Lock 1
+# main loop
+main:
+ yield
+ l targetCelsius Dial Setting           # Получаем заданную температуру
+ add heaterStart targetCelsius 267.15   # Обогреватель включается, когда температура на 5 градусов ниже заданной
+ add heaterStop targetCelsius 272.15    # и выключается, когда она на 1 градус ниже заданной
+ add coolerStart targetCelsius 278.15   # Охладитель включается, когда температура на 5 градусов выше заданной
+ add coolerStop targetCelsius 274.15    # и выключается, когда она на 1 градус выше заданной
+ l currentTemp GasSensor Temperature    # Получаем текущую температуру
+ slt heaterTrigger currentTemp rr14     # Сравниваем её с текущим порогом обогревателя
+ s HeatersControl On heaterTrigger      # Включаем или выключаем обогреватель
+ add heaterTrigger heaterTrigger 10     # Добавляем номер первого регистра триггера для следующего цикла
+ slt coolerTrigger rr15 currentTemp     # Сравниваем температуру с текущим порогом охладителя
+ s CoolersControl On coolerTrigger      # Включаем или выключаем охладитель
+ add coolerTrigger coolerTrigger 12     # Добавляем номер первого регистра триггера для следующего цикла
+j main

@@ -3,6 +3,7 @@
     "displayName": "Stationeers ic10",
     "description": "",
     "version": "0.0.1",
+    "icon": "https://i.imgur.com/5bPnHyt.png",
     "engines": {
         "vscode": "^1.53.0"
     },
