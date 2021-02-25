@@ -1,0 +1,25 @@
+{
+    "name": "stationeers-ic10",
+    "displayName": "Stationeers ic10",
+    "description": "",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.53.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "ic10",
+            "aliases": ["ic10", "ic10"],
+            "extensions": ["ic10"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "ic10",
+            "scopeName": "source.ic10",
+            "path": "./syntaxes/ic10.tmLanguage.json"
+        }]
+    }
+}
