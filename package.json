@@ -1,26 +1,74 @@
 {
-    "name": "stationeers-ic10",
-    "displayName": "Stationeers ic10",
-    "description": "",
-    "version": "0.0.1",
-    "icon": "https://i.imgur.com/5bPnHyt.png",
-    "engines": {
-        "vscode": "^1.53.0"
-    },
-    "categories": [
-        "Programming Languages"
-    ],
-    "contributes": {
-        "languages": [{
-            "id": "ic10",
-            "aliases": ["ic10", "ic10"],
-            "extensions": ["ic10"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "ic10",
-            "scopeName": "source.ic10",
-            "path": "./syntaxes/ic10.tmLanguage.json"
-        }]
-    }
+	"name": "stationeers-ic10",
+	"displayName": "Stationeers ic10",
+	"description": "",
+	"version": "0.0.1",
+	"icon": "https://i.imgur.com/5bPnHyt.png",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.53.0"
+	},
+	"categories": [
+		"Programming Languages",
+		"Debuggers",
+		"Snippets",
+		"Formatters"
+	],
+	"activationEvents": [
+		"workspaceContains:**/*.ic10",
+		"onLanguage:ic10",
+		"onDebugResolve:ic10"
+	],
+	"main": "./core/main.js",
+	"contributes": {
+		"languages": [
+			{
+				"id": "ic10",
+				"aliases": [
+					"ic10",
+					"ic10"
+				],
+				"extensions": [
+					"ic10"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "ic10",
+				"scopeName": "source.ic10",
+				"path": "./syntaxes/ic10.tmLanguage.json"
+			}
+		],
+		"debuggers": [
+			{
+				"type": "node",
+				"label": "ic10 Debug",
+				"program": "./out/node/nodeDebug.js",
+				"runtime": "node",
+				"languages": [
+					"ic10"
+				]
+			}
+		],
+		"commands": [
+			{
+				"command": "ic10.run",
+				"title": "ic10: Run",
+				"description": "Tun you program"
+			}
+		],
+		"snippets": [
+			{
+				"language": "ic10",
+				"path": "./snippets/ic10.json"
+			}
+		],
+		"breakpoints": [
+			{
+				"language": "ic10"
+			}
+		]
+	}
 }

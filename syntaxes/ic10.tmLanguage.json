@@ -18,6 +18,9 @@
 		},
 		{
 			"include": "#comments"
+		},
+		{
+			"include": "#operator"
 		}
 	],
 	"repository": {
@@ -26,6 +29,10 @@
 				{
 					"name": "keyword.control.ic10",
 					"match": "^\\s{0,}(alias|yield|j|brap|bap|brna|bna|brdns|bdns|brdse|bdse|breq|beq|brge|bge|brgt|bgt|brle|ble|brlt|blt|brne|bne|sap|sna|sdns|sdse|seq|sge|sgt|sle|slt|sne|select|jr|jal)\\b"
+				},
+				{
+					"match": "(:)",
+					"name": "keyword.operator.ic10"
 				}
 			]
 		},

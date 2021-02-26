@@ -1,5 +1,4 @@
 #Section: alias
-
  alias Dial d0
  alias GasSensor d1
  alias HeatersControl d2
