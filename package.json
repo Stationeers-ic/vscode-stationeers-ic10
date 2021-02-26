@@ -5,10 +5,11 @@
 	"version": "0.0.1",
 	"license": "MIT",
 	"publisher": "Traineratwot",
+	"repository":"https://github.com/Traineratwot/vscode-stationeers-ic10/issues",
 	"author": {
 		"name": "Traineratwot"
 	},
-	"icon": "./images/logo.png",
+	"icon": "images/logo.png",
 	"bugs": {
 		"url": "https://github.com/Traineratwot/vscode-stationeers-ic10/issues",
 		"email": "Traineratwot@yandex.com"
@@ -35,14 +36,13 @@
 		"@types/semver": "^7.1.0",
 		"@types/sinon": "^9.0.0",
 		"@types/vscode": "^1.41.0"
-	  },
+	},
 	"main": "./core/main.js",
 	"contributes": {
 		"languages": [
 			{
 				"id": "ic10",
 				"aliases": [
-					"ic10",
 					"ic10"
 				],
 				"extensions": [
@@ -87,7 +87,8 @@
 				"language": "ic10"
 			}
 		]
-		
+	},
+	"dependencies": {
+		"generator-build": "^1.0.0"
 	}
-	
 }
