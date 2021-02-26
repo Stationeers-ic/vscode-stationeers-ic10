@@ -1,9 +1,10 @@
-alias Vending d0
-alias Slot r0
-alias ItemHash r1
-alias ItemNumber r2
-alias ItemCount r3
-alias RequestCode r4
+#section: alias
+ alias Vending d0
+ alias Slot r0
+ alias ItemHash r1
+ alias ItemNumber r2
+ alias ItemCount r3
+ alias RequestCode r4
 main:
 yield
 # Очищаем первые 15 ячеек стека, это будет массив со счётчиками
@@ -14,23 +15,24 @@ blt sp 15 clear
 move Slot 2                          # Начинаем перебор слотов со 2 по 101
 slotloop:
 ls ItemHash Vending Slot PrefabHash  # Получаем хэш предмета в очередном слоте
-search:                            # Опорная метка для счётчика
-beqz ItemHash empty                  # Слот пуст - идём в конец цикла
-beqal ItemHash -1057658015 found     # Пшеница
-beqal ItemHash 1924673028 found      # Соевые бобы
-beqal ItemHash 258339687 found       # Кукуруза
-beqal ItemHash 1929046963 found      # Картофель
-beqal ItemHash -998592080 found      # Помидор
-beqal ItemHash 1277828144 found      # Тыква
-beqal ItemHash 658916791 found       # Рис
-beqal ItemHash 2044798572 found      # Гриб
-beqal ItemHash 892110467 found       # Папоротник
-beqal ItemHash -81376085 found       # Красный цветок
-beqal ItemHash -1411986716 found     # Оранжевый цветок
-beqal ItemHash 1712822019 found      # Жёлтый цветок
-beqal ItemHash -1513337058 found     # Зелёный цветок
-beqal ItemHash -1573623434 found     # Синий цветок
-beqal ItemHash 176446172 found       # Инопланетный гриб
+#section: routing
+	search:                            # Опорная метка для счётчика
+	beqz ItemHash empty                  # Слот пуст - идём в конец цикла
+	beqal ItemHash -1057658015 found     # Пшеница
+	beqal ItemHash 1924673028 found      # Соевые бобы
+	beqal ItemHash 258339687 found       # Кукуруза
+	beqal ItemHash 1929046963 found      # Картофель
+	beqal ItemHash -998592080 found      # Помидор
+	beqal ItemHash 1277828144 found      # Тыква
+	beqal ItemHash 658916791 found       # Рис
+	beqal ItemHash 2044798572 found      # Гриб
+	beqal ItemHash 892110467 found       # Папоротник
+	beqal ItemHash -81376085 found       # Красный цветок
+	beqal ItemHash -1411986716 found     # Оранжевый цветок
+	beqal ItemHash 1712822019 found      # Жёлтый цветок
+	beqal ItemHash -1513337058 found     # Зелёный цветок
+	beqal ItemHash -1573623434 found     # Синий цветок
+	beqal ItemHash 176446172 found       # Инопланетный гриб
 s Vending RequestHash ItemHash       # Попался непонятный предмет, выбрасываем
 j main                               # Сбились со счёта, начинаем заново
 found:                               # Что-то нашли
