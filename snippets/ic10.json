@@ -1,0 +1,60 @@
+{
+  "alias": {
+    "prefix": "alias",
+    "body": [
+      "alias $1 $2"
+    ],
+    "description": "alias"
+  },
+  "aliasD0": {
+    "prefix": "aliasd0",
+    "body": [
+      "alias $1 d0"
+    ],
+    "description": "alias {name} d0"
+  },
+  "aliasD1": {
+    "prefix": "aliasd1",
+    "body": [
+      "alias $1 d1"
+    ],
+    "description": "alias {name} d1"
+  },
+  "aliasD2": {
+    "prefix": "aliasd2",
+    "body": [
+      "alias $1 d2"
+    ],
+    "description": "alias {name} d2"
+  },
+  "aliasD3": {
+    "prefix": "aliasd3",
+    "body": [
+      "alias $1 d3"
+    ],
+    "description": "alias {name} d3"
+  },
+  "aliasD4": {
+    "prefix": "aliasd4",
+    "body": [
+      "alias $1 d4"
+    ],
+    "description": "alias {name} d4"
+  },
+  "aliasD5": {
+    "prefix": "aliasd5",
+    "body": [
+      "alias $1 d5"
+    ],
+    "description": "alias {name} d5"
+  },
+  "loop": {
+    "prefix": "loop",
+    "body": [
+      "loop:",
+      "$1",
+      "j loop"
+    ],
+    "description": "main loop"
+  }
+}

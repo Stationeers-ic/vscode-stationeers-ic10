@@ -3,8 +3,16 @@
 	"displayName": "Stationeers ic10",
 	"description": "",
 	"version": "0.0.1",
-	"icon": "https://i.imgur.com/5bPnHyt.png",
 	"license": "MIT",
+	"publisher": "Traineratwot",
+	"author": {
+		"name": "Traineratwot"
+	},
+	"icon": "./images/logo.png",
+	"bugs": {
+		"url": "https://github.com/Traineratwot/vscode-stationeers-ic10/issues",
+		"email": "Traineratwot@yandex.com"
+	},
 	"engines": {
 		"vscode": "^1.53.0"
 	},
@@ -19,6 +27,15 @@
 		"onLanguage:ic10",
 		"onDebugResolve:ic10"
 	],
+	"devDependencies": {
+		"@types/fs-extra": "^8.1.0",
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.2",
+		"@types/node": "^13.11.1",
+		"@types/semver": "^7.1.0",
+		"@types/sinon": "^9.0.0",
+		"@types/vscode": "^1.41.0"
+	  },
 	"main": "./core/main.js",
 	"contributes": {
 		"languages": [
@@ -70,5 +87,7 @@
 				"language": "ic10"
 			}
 		]
+		
 	}
+	
 }

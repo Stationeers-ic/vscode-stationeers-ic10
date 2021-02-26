@@ -1,37 +1,54 @@
-#Section: alias
- alias Dial d0
- alias GasSensor d1
- alias HeatersControl d2
- alias CoolersControl d3
- alias targetCelsius r0
- alias currentTemp r1
- alias heaterStart r10
- alias heaterStop r11
- alias coolerStart r12
- alias coolerStop r13
- alias heaterTrigger r14
- alias coolerTrigger r15
-#endSection
-# preparation section
-move heaterTrigger 10                  #Устанавливаем начальные номера регистров
-move coolerTrigger 12                  # для обоих триггеров
-s HeatersControl On 0                  # Выключаем и блокируем управление
-s HeatersControl Lock 1                # обогревателями и охладителями
-s CoolersControl On 0
-s CoolersControl Lock 1
-# main loop
+alias Vending d0
+alias Slot r0
+alias ItemHash r1
+alias ItemNumber r2
+alias ItemCount r3
+alias RequestCode r4
 main:
- yield
- l targetCelsius Dial Setting           # Получаем заданную температуру
- add heaterStart targetCelsius 267.15   # Обогреватель включается, когда температура на 5 градусов ниже заданной
- add heaterStop targetCelsius 272.15    # и выключается, когда она на 1 градус ниже заданной
- add coolerStart targetCelsius 278.15   # Охладитель включается, когда температура на 5 градусов выше заданной
- add coolerStop targetCelsius 274.15    # и выключается, когда она на 1 градус выше заданной
- l currentTemp GasSensor Temperature    # Получаем текущую температуру
- slt heaterTrigger currentTemp rr14     # Сравниваем её с текущим порогом обогревателя
- s HeatersControl On heaterTrigger      # Включаем или выключаем обогреватель
- add heaterTrigger heaterTrigger 10     # Добавляем номер первого регистра триггера для следующего цикла
- slt coolerTrigger rr15 currentTemp     # Сравниваем температуру с текущим порогом охладителя
- s CoolersControl On coolerTrigger      # Включаем или выключаем охладитель
- add coolerTrigger coolerTrigger 12     # Добавляем номер первого регистра триггера для следующего цикла
+yield
+# Очищаем первые 15 ячеек стека, это будет массив со счётчиками
+move sp 0
+clear:
+push 0
+blt sp 15 clear
+move Slot 2                          # Начинаем перебор слотов со 2 по 101
+slotloop:
+ls ItemHash Vending Slot PrefabHash  # Получаем хэш предмета в очередном слоте
+search:                            # Опорная метка для счётчика
+beqz ItemHash empty                  # Слот пуст - идём в конец цикла
+beqal ItemHash -1057658015 found     # Пшеница
+beqal ItemHash 1924673028 found      # Соевые бобы
+beqal ItemHash 258339687 found       # Кукуруза
+beqal ItemHash 1929046963 found      # Картофель
+beqal ItemHash -998592080 found      # Помидор
+beqal ItemHash 1277828144 found      # Тыква
+beqal ItemHash 658916791 found       # Рис
+beqal ItemHash 2044798572 found      # Гриб
+beqal ItemHash 892110467 found       # Папоротник
+beqal ItemHash -81376085 found       # Красный цветок
+beqal ItemHash -1411986716 found     # Оранжевый цветок
+beqal ItemHash 1712822019 found      # Жёлтый цветок
+beqal ItemHash -1513337058 found     # Зелёный цветок
+beqal ItemHash -1573623434 found     # Синий цветок
+beqal ItemHash 176446172 found       # Инопланетный гриб
+s Vending RequestHash ItemHash       # Попался непонятный предмет, выбрасываем
+j main                               # Сбились со счёта, начинаем заново
+found:                               # Что-то нашли
+sub ItemNumber ra search             # Вычисляем позицию строки относительно опорной метки
+sub sp ItemNumber 2                  # Вычитаем дополнительное смещение для нужного индекса в стеке
+pop ItemCount                        # Берём значение из стека по индексу
+add ItemCount ItemCount 1            # Увеличиваем на 1
+push ItemCount                       # И записываем обратно в стек
+empty:
+add Slot Slot 1
+blt Slot 102 slotloop                # Переходим к следующему слоту
+move sp 15                           # Перебираем массив в стеке, начиная с конца
+move RequestCode 0                   # И формируем двоичный код
+makecode:
+pop ItemCount
+slt ItemCount ItemCount 7            # Если число растений на складе меньше 7
+add RequestCode RequestCode RequestCode
+add RequestCode RequestCode ItemCount # То соответствующий бит кода будет равен 1
+bnez sp makecode
+s db Setting RequestCode             # Записываем этот код в db для контроллеров гидропоники
 j main
