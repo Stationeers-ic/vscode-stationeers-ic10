@@ -14,6 +14,7 @@ push 0
 blt sp 15 clear
 move Slot 2                          # Начинаем перебор слотов со 2 по 101
 slotloop:
+db
 ls ItemHash Vending Slot PrefabHash  # Получаем хэш предмета в очередном слоте
 #section: routing
 	search:                            # Опорная метка для счётчика

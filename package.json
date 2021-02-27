@@ -2,10 +2,10 @@
 	"name": "stationeers-ic10",
 	"displayName": "Stationeers ic10",
 	"description": "",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"license": "MIT",
 	"publisher": "Traineratwot",
-	"repository":"https://github.com/Traineratwot/vscode-stationeers-ic10/issues",
+	"repository": "https://github.com/Traineratwot/vscode-stationeers-ic10/issues",
 	"author": {
 		"name": "Traineratwot"
 	},
@@ -90,5 +90,10 @@
 	},
 	"dependencies": {
 		"generator-build": "^1.0.0"
+	},
+	"__metadata": {
+		"id": "e9ab14ed-1c65-4a3c-835b-f13c96f90ac7",
+		"publisherDisplayName": "Traineratwot",
+		"publisherId": "380b2875-741d-4735-b93a-1850757c5e71"
 	}
 }
