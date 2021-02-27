@@ -86,7 +86,7 @@
 				},
 				{
 					"name": "variable.parameter.ic10",
-					"match": "\\b(Activate|AirRelease|Charge|ClearMemory|Color|CompletionRatio|ElevatorLevel|ElevatorSpeed|Error|ExportCount|Filtration|Harvest|Horizontal|HorizontalRatio|Idle|ImportCount|Lock|Maximum|Mode|On|Open|Output|Plant|PositionX|PositionY|PositionZ|Power|PowerActual|PowerGeneration|PowerPotential|PowerRequired|Pressure|PressureExternal|PressureInteral|PressureSetting|Quantity|Ratio|RatioCarbonDioxide|RatioNitrogen|RatioOxygen|RatioPollutant|RatioVolatiles|RatioWater|Reagents|RecipeHash|RequestHash|RequiredPower|Setting|SolarAngle|Temperature|TemperatureExternal|TemperatureSettings|TotalMoles|VelocityMagnitude|VelocityRelativeX|VelocityRelativeY|VelocityRelativeZ|Vertical|VerticalRatio|Volume|Occupied|OccupantHash|Damage|Efficiency|Health|Growth|ChargeRatio|Class|PressureWaste|PressureAir|MaxQuantity|Mature)\\b"
+					"match": "\\b(Activate|AirRelease|Charge|ClearMemory|Color|CompletionRatio|ElevatorLevel|ElevatorSpeed|Error|ExportCount|Filtration|Harvest|Horizontal|HorizontalRatio|Idle|ImportCount|Lock|Maximum|Mode|On|Open|Output|Plant|PositionX|PositionY|PositionZ|Power|PowerActual|PowerGeneration|PowerPotential|PowerRequired|Pressure|PressureExternal|PressureInteral|PressureSetting|Quantity|Ratio|RatioCarbonDioxide|RatioNitrogen|RatioOxygen|RatioPollutant|RatioVolatiles|RatioWater|Reagents|RecipeHash|RequestHash|RequiredPower|Setting|SolarAngle|Temperature|TemperatureExternal|TemperatureSettings|TotalMoles|VelocityMagnitude|VelocityRelativeX|VelocityRelativeY|VelocityRelativeZ|Vertical|VerticalRatio|Volume|Occupied|OccupantHash|Damage|Efficiency|Health|Growth|ChargeRatio|Class|PressureWaste|PressureAir|MaxQuantity|Mature|ForceWrite)\\b"
 				}
 			]
 		}
