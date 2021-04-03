@@ -1,22 +1,22 @@
 'use strict';
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 // @ts-ignore
-var vscode = require("vscode");
+const vscode = require("vscode");
 // @ts-ignore
-var vscode_1 = require("vscode");
-var ic10_1 = require("./ic10");
-var LOCALE_KEY = vscode.env.language;
+const vscode_1 = require("vscode");
+const ic10_1 = require("./ic10");
+const LOCALE_KEY = vscode.env.language;
 var ic10 = new ic10_1.IC10();
-var LANG_KEY = 'ic10';
+const LANG_KEY = 'ic10';
 function activate(ctx) {
     console.log('activate 1c10');
     console.log(LOCALE_KEY);
-    ctx.subscriptions.push(vscode.commands.registerCommand('ic10.run', function () {
+    ctx.subscriptions.push(vscode.commands.registerCommand('ic10.run', () => {
         console.log('Test');
     }));
     console.log(ic10);
     ctx.subscriptions.push(vscode.languages.registerHoverProvider(LANG_KEY, {
-        provideHover: function (document, position, token) {
+        provideHover(document, position, token) {
             var word = document.getWordRangeAtPosition(position);
             var text = document.getText(word);
             console.log(ic10.getHover(text, LOCALE_KEY));
