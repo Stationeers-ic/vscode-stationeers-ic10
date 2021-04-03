@@ -1,13 +1,12 @@
 'use strict'
 const gulp = require('gulp')
 const fs = require('fs')
-const request = require('request')
+var request = require('sync-request')
 
-function translate(str, source, target) {
-	var url = 'https://traineratwot.aytour.ru/translate?string'
-	request(url, function(error, response, body) {
-
-	})
+function translate(str, source = 'ru', target = 'en') {
+	var url = encodeURI('http://traineratwot.aytour.ru/translate?string=' + str + '&source=' + source + '&target=' + target)
+	var res = request('GET', url)
+	return res.getBody('utf8')
 }
 
 var IC10Data = {
@@ -26,6 +25,24 @@ var IC10Data = {
 				'preview': preview,
 				'text': text,
 			}
+		}
+		try {
+			if(!(IC10Data['Languages']['en'] instanceof Object)) {
+				IC10Data['Languages']['en'] = {}
+			}
+			IC10Data['Languages']['en'][name] = {
+				type: type,
+				op1: op1,
+				op2: op2,
+				op3: op3,
+				op4: op4,
+				description: {
+					'preview': preview,
+					'text': translate(text),
+				}
+			}
+		} catch(e) {
+
 		}
 		return this
 	}
