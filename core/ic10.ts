@@ -1,4 +1,5 @@
 "use strict";
+
 var IC10Data = {
   __add: function (name, type = null, preview = null, ru = null, en = null, op1 = null, op2 = null, op3 = null, op4 = null) {
     IC10Data[name] = (<any>Object).assign({

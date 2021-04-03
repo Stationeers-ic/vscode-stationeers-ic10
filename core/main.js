@@ -1,11 +1,13 @@
 'use strict';
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
+// @ts-ignore
 var vscode = require("vscode");
+// @ts-ignore
 var vscode_1 = require("vscode");
 var ic10_1 = require("./ic10");
+var LOCALE_KEY = vscode.env.language;
 var ic10 = new ic10_1.IC10();
 var LANG_KEY = 'ic10';
-var LOCALE_KEY = vscode.env.language;
 function activate(ctx) {
     console.log('activate 1c10');
     console.log(LOCALE_KEY);
@@ -22,8 +24,11 @@ function activate(ctx) {
         }
     }));
 }
+// @ts-ignore
 exports.activate = activate;
 function deactivate() {
     console.log('deactivate 1c10');
 }
+// @ts-ignore
 exports.deactivate = deactivate;
+//# sourceMappingURL=main.js.map
