@@ -4,6 +4,7 @@
         "target": "es6",
         "watch": true,
         "sourceMap": true,
-        "allowJs": true
+        "allowJs": true,
+        "removeComments": true
     }
 }

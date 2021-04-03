@@ -1,8 +1,6 @@
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
-// @ts-ignore
 const vscode = require("vscode");
-// @ts-ignore
 const vscode_1 = require("vscode");
 const ic10_1 = require("./ic10");
 const LOCALE_KEY = vscode.env.language;
@@ -24,11 +22,9 @@ function activate(ctx) {
         }
     }));
 }
-// @ts-ignore
 exports.activate = activate;
 function deactivate() {
     console.log('deactivate 1c10');
 }
-// @ts-ignore
 exports.deactivate = deactivate;
 //# sourceMappingURL=main.js.map
