@@ -21,7 +21,6 @@ class Device {
     }
 }
 class Chip extends Device {
-    //-128473777
     constructor() {
         super();
         this.Slots = [];
