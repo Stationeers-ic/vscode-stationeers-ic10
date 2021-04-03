@@ -10,7 +10,9 @@ try {
     IC10Data = langPath
     console.info('Ok')
   } else {
-    console.error('ERROR')
+    var langPath = require(`../languages/en.json`);
+    IC10Data = langPath
+    console.info(`undefined lang ${LOCALE_KEY}`)
   }
 } catch (e) {
   console.warn(e)

@@ -1,6 +1,11 @@
 'use strict'
 const gulp = require('gulp')
 const fs = require('fs')
+
+function translate(str,source,target){
+	var url ='https://traineratwot.aytour.ru/translate?string'
+}
+
 var IC10Data = {
 	Languages: {},
 	__add: function(lang = null, name = null, type = null, preview = null, text = null, op1 = null, op2 = null, op3 = null, op4 = null) {
