@@ -1,6 +1,5 @@
 "use strict";
 import vscode = require("vscode");
-
 const LOCALE_KEY: string = vscode.env.language.trim()
 try {
   var IC10Data: object = {};
