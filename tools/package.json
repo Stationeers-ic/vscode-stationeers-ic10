@@ -11,5 +11,7 @@
   "devDependencies": {
     "gulp": "^4.0.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "request": "^2.88.2"
+  }
 }
