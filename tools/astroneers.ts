@@ -46,6 +46,7 @@ class Chip extends Device {
     this.Slots.push(new Slot());
   }
 }
+
 class Slot {
   public Occupied: Boolean // - 0 - слот свободен, 1 - занят
   public OccupantHash: String // - хэш объекта в слоте
