@@ -1,5 +1,4 @@
 'use strict';
-
 // @ts-ignore
 import vscode = require('vscode');
 // @ts-ignore
