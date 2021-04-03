@@ -148,6 +148,6 @@ gulp.task('generate-langs', function() {
 	console.log('generating')
 	console.log(IC10Data.Languages['ru'][0])
 	for(const languagesKey in IC10Data.Languages) {
-		fs.writeFileSync(`C:\\Users\\Kirill\\.vscode\\extensions\\stationeers-ic10\\languages\\${languagesKey}.json`, JSON.stringify(IC10Data.Languages[languagesKey]))
+		fs.writeFileSync(`..\\languages\\${languagesKey}.json`, JSON.stringify(IC10Data.Languages[languagesKey]))
 	}
 })
