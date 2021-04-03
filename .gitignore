@@ -3,5 +3,3 @@ node_modules
 1.md
 .idea
 package-lock.json
-tools
-tools/*
