@@ -1,9 +1,10 @@
-alias a r0
-alias b r1
-alias c r2
-move a 5
-move b 2
+alias a d0
+s a On 1
 j test
-add c a b
+ alias c r2
+ define b 2
+ add c a b
+ #log "c is" c
 test:
-#log "c is" c
+l r7 a On
+#log "r7 is" r7
