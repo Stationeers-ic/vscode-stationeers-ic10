@@ -3,6 +3,7 @@ alias b r1
 alias c r2
 move a 5
 move b 2
+j test
 add c a b
-#log "c is"
-#log c
+test:
+#log "c is" c

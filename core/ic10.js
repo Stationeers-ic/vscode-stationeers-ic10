@@ -22,15 +22,14 @@ catch (e) {
 }
 class IC10 {
     getHover(name = '', lang = '') {
-        var _a;
         if (IC10Data.hasOwnProperty(name)) {
             var data = IC10Data[name];
-            var type = data === null || data === void 0 ? void 0 : data.type;
-            var op1 = data === null || data === void 0 ? void 0 : data.op1;
-            var op2 = data === null || data === void 0 ? void 0 : data.op2;
-            var op3 = data === null || data === void 0 ? void 0 : data.op3;
-            var op4 = data === null || data === void 0 ? void 0 : data.op4;
-            var preview = (_a = data === null || data === void 0 ? void 0 : data.description) === null || _a === void 0 ? void 0 : _a.preview;
+            var type = data?.type;
+            var op1 = data?.op1;
+            var op2 = data?.op2;
+            var op3 = data?.op3;
+            var op4 = data?.op4;
+            var preview = data?.description?.preview;
             if (preview) {
                 preview = '*' + preview + '*';
             }
