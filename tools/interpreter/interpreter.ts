@@ -18,6 +18,15 @@ class Environ {
         this.d5 = new Device;
         this.db = new Chip;
     }
+
+    randomize() {
+        for (const x in this) {
+            if (this[x] instanceof Device) {
+                // @ts-ignore
+                this[x].randomize()
+            }
+        }
+    }
 }
 
 class MemoryCell {
@@ -53,9 +62,44 @@ class Device {
     public Power: Boolean;
     public Error: Boolean;
     public Activate: Boolean;
+    public ClearMemory: Boolean;
+    public Lock: Boolean;
     public Setting: any;
+    public RecipeHash: number;
     public RequiredPower: Number;
     public Slots: Slot[];
+    public Flour: Number
+    public Fenoxitone: Number
+    public Milk: Number
+    public Egg: Number
+    public Iron: Number
+    public Gold: Number
+    public Carbon: Number
+    public Uranium: Number
+    public Copper: Number
+    public Steel: Number
+    public Hydrocarbon: Number
+    public Silver: Number
+    public Nickel: Number
+    public Lead: Number
+    public Electrum: Number
+    public Invar: Number
+    public Constantan: Number
+    public Solder: Number
+    public Plastic: Number
+    public Silicon: Number
+    public Salicylic: Number
+    public Alcohol: Number
+    public Oil: Number
+    public Potato: Number
+    public Tomato: Number
+    public Rice: Number
+    public Pumpkin: Number
+    public Yellow: Number
+    public Red: Number
+    public Orange: Number
+    public Green: Number
+    public Blue: Number
 
     constructor() {
         this.On = false;
@@ -64,7 +108,84 @@ class Device {
         this.Activate = false;
         this.Setting = null
         this.RequiredPower = 0
+        this.ClearMemory = false
+        this.Lock = false
         this.Slots = [];
+        this.RecipeHash = -128473777
+        //------
+        this.Flour = 0
+        this.Fenoxitone = 0
+        this.Milk = 0
+        this.Egg = 0
+        this.Iron = 0
+        this.Gold = 0
+        this.Carbon = 0
+        this.Uranium = 0
+        this.Copper = 0
+        this.Steel = 0
+        this.Hydrocarbon = 0
+        this.Silver = 0
+        this.Nickel = 0
+        this.Lead = 0
+        this.Electrum = 0
+        this.Invar = 0
+        this.Constantan = 0
+        this.Solder = 0
+        this.Plastic = 0
+        this.Silicon = 0
+        this.Salicylic = 0
+        this.Alcohol = 0
+        this.Oil = 0
+        this.Potato = 0
+        this.Tomato = 0
+        this.Rice = 0
+        this.Pumpkin = 0
+        this.Yellow = 0
+        this.Red = 0
+        this.Orange = 0
+        this.Green = 0
+        this.Blue = 0
+    }
+
+    randomize() {
+        this.On = Boolean(Math.abs(Math.round(Math.random())))
+        this.Power = Boolean(Math.abs(Math.round(Math.random())))
+        this.Error = Boolean(Math.abs(Math.round(Math.random())))
+        this.Activate = Boolean(Math.abs(Math.round(Math.random())))
+        this.ClearMemory = false
+
+        this.Flour = Math.abs(Math.round(Math.random() * 100))
+        this.Fenoxitone = Math.abs(Math.round(Math.random() * 100))
+        this.Milk = Math.abs(Math.round(Math.random() * 100))
+        this.Egg = Math.abs(Math.round(Math.random() * 100))
+        this.Iron = Math.abs(Math.round(Math.random() * 100))
+        this.Gold = Math.abs(Math.round(Math.random() * 100))
+        this.Carbon = Math.abs(Math.round(Math.random() * 100))
+        this.Uranium = Math.abs(Math.round(Math.random() * 100))
+        this.Copper = Math.abs(Math.round(Math.random() * 100))
+        this.Steel = Math.abs(Math.round(Math.random() * 100))
+        this.Hydrocarbon = Math.abs(Math.round(Math.random() * 100))
+        this.Silver = Math.abs(Math.round(Math.random() * 100))
+        this.Nickel = Math.abs(Math.round(Math.random() * 100))
+        this.Lead = Math.abs(Math.round(Math.random() * 100))
+        this.Electrum = Math.abs(Math.round(Math.random() * 100))
+        this.Invar = Math.abs(Math.round(Math.random() * 100))
+        this.Constantan = Math.abs(Math.round(Math.random() * 100))
+        this.Solder = Math.abs(Math.round(Math.random() * 100))
+        this.Plastic = Math.abs(Math.round(Math.random() * 100))
+        this.Silicon = Math.abs(Math.round(Math.random() * 100))
+        this.Salicylic = Math.abs(Math.round(Math.random() * 100))
+        this.Alcohol = Math.abs(Math.round(Math.random() * 100))
+        this.Oil = Math.abs(Math.round(Math.random() * 100))
+        this.Potato = Math.abs(Math.round(Math.random() * 100))
+        this.Tomato = Math.abs(Math.round(Math.random() * 100))
+        this.Rice = Math.abs(Math.round(Math.random() * 100))
+        this.Pumpkin = Math.abs(Math.round(Math.random() * 100))
+        this.Yellow = Math.abs(Math.round(Math.random() * 100))
+        this.Red = Math.abs(Math.round(Math.random() * 100))
+        this.Orange = Math.abs(Math.round(Math.random() * 100))
+        this.Green = Math.abs(Math.round(Math.random() * 100))
+        this.Blue = Math.abs(Math.round(Math.random() * 100))
     }
 
     get(variable) {
@@ -127,9 +248,9 @@ class InterpreterIc10 {
     private ports: {};
 
     constructor(code) {
+        this.code = code
         this.tickTime = 200
         this.environ = new Environ
-        this.code = code
         this.variables = {}
         this.memory = {}
         this.constants = {}
@@ -170,6 +291,7 @@ class InterpreterIc10 {
     }
 
     prepareLine() {
+        this.environ.randomize()
         let {command, args} = this.commands[this.position]
         for (const argsKey in args) {
             let a = parseFloat(args[argsKey])

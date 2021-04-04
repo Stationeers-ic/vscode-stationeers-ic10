@@ -7,4 +7,6 @@ j test
  #log "c is" c
 test:
 l r7 a On
+l r8 a Iron
 #log "r7 is" r7
+#log "r8 is" r8
