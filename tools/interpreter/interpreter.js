@@ -1,19 +1,44 @@
 const fs = require("fs");
 class Environ {
     constructor() {
-        this.d0 = new Device;
-        this.d1 = new Device;
-        this.d2 = new Device;
-        this.d3 = new Device;
-        this.d4 = new Device;
-        this.d5 = new Device;
-        this.db = new Chip;
+        this.d0 = new Device();
+        this.d1 = new Device();
+        this.d2 = new Device();
+        this.d3 = new Device();
+        this.d4 = new Device();
+        this.d5 = new Device();
+        this.db = new Chip();
     }
     randomize() {
         for (const x in this) {
             if (this[x] instanceof Device) {
                 this[x].randomize();
             }
+        }
+    }
+}
+class Memory {
+    constructor() {
+        this.cells = new Array(15);
+        for (let i = 0; i < 15; i++) {
+            this.cells[i] = new MemoryCell();
+        }
+    }
+    cell(cell, val = null) {
+        if (typeof cell === "string") {
+            const regex = /^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17)$/;
+            let m = regex.exec(cell);
+            console.log(m);
+            if (m === null)
+                throw `46 Unknown cell: ${cell}`;
+            if (val === null)
+                return this.cells[m[1]];
+        }
+        if (typeof cell === "number") {
+            if (cell >= 18)
+                throw `Memory:cell Unknown cell: ${cell}`;
+            if (val === null)
+                return this.cells[cell];
         }
     }
 }
@@ -147,34 +172,34 @@ class Chip extends Device {
 class Slot {
     constructor() {
         this.Occupied = true;
-        this.OccupantHash = '';
+        this.OccupantHash = "";
         this.Quantity = 0;
         this.Damage = 0;
-        this.Class = '';
+        this.Class = "";
         this.MaxQuantity = 1;
-        this.PrefabHash = '';
+        this.PrefabHash = "";
     }
 }
 class InterpreterIc10 {
     constructor(code) {
         this.code = code;
         this.tickTime = 200;
-        this.environ = new Environ;
+        this.environ = new Environ();
         this.variables = {};
-        this.memory = {};
+        this.memory = new Memory();
         this.constants = {};
         this.labels = {};
         this.init();
     }
     init() {
         for (let i = 0; i < 15; i++) {
-            this.memory['r' + i] = new MemoryCell();
-            this.variables['r' + i] = this.memory['r' + i];
+            this.variables["r" + i] = this.memory.cell(i);
         }
         this.lines = text.split("\r\n");
-        this.commands = this.lines.map((line) => {
+        this.commands = this.lines
+            .filter((line) => line !== "")
+            .map((line) => {
             const args = line.trim().split(/ +/);
-            args.reduce((accumulator, currentValue) => accumulator + " " + currentValue);
             const command = args.shift();
             return { command, args };
         });
@@ -185,7 +210,7 @@ class InterpreterIc10 {
             let { command, args } = this.commands[this.position];
             this.position++;
             if (command.match(/^\w+:$/)) {
-                this.labels[command.replace(':', '')] = this.position;
+                this.labels[command.replace(":", "")] = this.position;
             }
         }
         this.position = 0;
@@ -199,6 +224,7 @@ class InterpreterIc10 {
     prepareLine() {
         this.environ.randomize();
         let { command, args } = this.commands[this.position];
+        let isComment = command.startsWith("#");
         for (const argsKey in args) {
             let a = parseFloat(args[argsKey]);
             if (!isNaN(a)) {
@@ -206,7 +232,9 @@ class InterpreterIc10 {
             }
         }
         try {
-            command = command.replace('#', '_');
+            if (command === "#die")
+                return false;
+            command = command.replace("#", "_");
             if (command in this) {
                 this[command](...args);
                 this.__debug(command, args);
@@ -215,7 +243,10 @@ class InterpreterIc10 {
         catch (e) {
             this.__debug(e);
         }
-        return ++this.position < this.commands.length;
+        this.position++;
+        return isComment && this.position < this.commands.length
+            ? this.prepareLine()
+            : this.position < this.commands.length;
     }
     __issetConst(x) {
         return x in this.constants;
@@ -240,7 +271,7 @@ class InterpreterIc10 {
             return this.variables[x];
         }
         else {
-            throw `2 Unknown port ${x}`;
+            throw `__getPort Unknown port ${x}`;
         }
     }
     __getVar(x) {
@@ -251,7 +282,7 @@ class InterpreterIc10 {
             return this.constants[x].get();
         }
         else {
-            throw `undefined Variable ${x}`;
+            throw `__getVar Undefined Variable ${x}`;
         }
     }
     __setVar(x, value) {
@@ -259,7 +290,7 @@ class InterpreterIc10 {
             this.variables[x].set(value);
         }
         else {
-            throw `undefined Variable ${x}`;
+            throw `__setVar Undefined Variable ${x}`;
         }
     }
     __jump(x) {
@@ -267,19 +298,22 @@ class InterpreterIc10 {
             this.position = this.labels[x] - 1;
         }
         else {
-            throw `undefined Label ${x}`;
+            throw `__jump Undefined label ${x}`;
         }
     }
     __ajump(x) {
         this.position += x - 1;
+    }
+    __get() {
+        return;
     }
     define(op1, op2, op3, op4) {
         this.constants[op1] = new ConstantCell(op2);
     }
     alias(op1, op2, op3, op4) {
         if (op2.match(/^r\d{1,2}$/) && op2 in this.memory) {
-            this.variables[op1] = this.memory[op2];
-            this.variables[op2] = this.memory[op2];
+            this.variables[op1] = this.variables[op2];
+            this.variables[op2] = this.variables[op2];
         }
         else if (op2.match(/^d\d{1}$/) && op2 in this.environ) {
             this.variables[op1] = this.environ[op2];
@@ -435,22 +469,22 @@ class InterpreterIc10 {
         return 1;
     }
     __ap(x, y, d = 1) {
-        return Math.abs(1 - (x / y)) <= d;
+        return Math.abs(1 - x / y) <= d;
     }
     __na(x, y, d = 1) {
-        return Math.abs(1 - (x / y)) > d;
+        return Math.abs(1 - x / y) > d;
     }
     and(op1, op2, op3, op4) {
-        this.__setVar(op1, Number(op2 & op3));
+        this.__setVar(op1, Number(op2 && op3));
     }
     or(op1, op2, op3, op4) {
-        this.__setVar(op1, Number(op2 | op3));
+        this.__setVar(op1, Number(op2 || op3));
     }
     xor(op1, op2, op3, op4) {
-        this.__setVar(op1, Number(op2 ^ op3));
+        this.__setVar(op1, Number((op2 || op3) && !(op2 && op3)));
     }
     nor(op1, op2, op3, op4) {
-        this.__setVar(op1, Number(!(op2 ^ op3)));
+        this.__setVar(op1, Number(!(op2 || op3)));
     }
     blt(op1, op2, op3, op4) {
         if (op1 < op2) {
@@ -542,10 +576,8 @@ class InterpreterIc10 {
             this.__jump(op2);
         }
     }
-    yield(op1, op2, op3, op4) {
-    }
-    sleep(op1, op2, op3, op4) {
-    }
+    yield(op1, op2, op3, op4) { }
+    sleep(op1, op2, op3, op4) { }
     j(op1, op2, op3, op4) {
         this.__jump(op1);
     }
