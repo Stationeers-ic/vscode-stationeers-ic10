@@ -429,17 +429,14 @@ class InterpreterIc10 {
 	public lines: string[]
 	public memory: Memory
 	public position: number
-	public variables: Object
 	public interval: NodeJS.Timeout
 	public tickTime: number
 	public labels: {}
 	public constants: {}
-	public ports: {}
 	
 	constructor(code) {
 		this.code = code
 		this.tickTime = 200
-		this.variables = {}
 		this.memory = new Memory(this)
 		this.constants = {}
 		this.labels = {}
@@ -447,9 +444,6 @@ class InterpreterIc10 {
 	}
 	
 	init() {
-		for (let i = 0; i < 15; i++) {
-			this.variables["r" + i] = this.memory.cell(i)
-		}
 		this.lines = text.split("\r\n")
 		this.commands = this.lines
 			.filter((line) => line !== "")
