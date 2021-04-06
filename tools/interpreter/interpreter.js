@@ -319,7 +319,7 @@ class InterpreterIc10 {
             return this.variables[x];
         }
         else {
-            throw Execution.error(0, 'Unknown port', x);
+            throw Execution.error(this.position, 'Unknown port', x);
         }
     }
     __getVar(x) {
@@ -330,7 +330,7 @@ class InterpreterIc10 {
             return this.constants[x].get();
         }
         else {
-            throw Execution.error(0, 'Undefined Variable', x);
+            throw Execution.error(this.position, 'Undefined Variable', x);
         }
     }
     __setVar(x, value) {
@@ -338,7 +338,7 @@ class InterpreterIc10 {
             this.variables[x].set(value);
         }
         else {
-            throw Execution.error(0, 'Undefined Variable', x);
+            throw Execution.error(this.position, 'Undefined Variable', x);
         }
     }
     __jump(x) {
@@ -346,7 +346,7 @@ class InterpreterIc10 {
             this.position = this.labels[x] - 1;
         }
         else {
-            throw Execution.error(0, ' Undefined label', x);
+            throw Execution.error(this.position, ' Undefined label', x);
         }
     }
     __ajump(x) {
@@ -368,7 +368,7 @@ class InterpreterIc10 {
             this.variables[op2] = this.environ[op2];
         }
         else {
-            throw Execution.error(0, 'Unknown Register', op2);
+            throw Execution.error(this.position, 'Unknown Register', op2);
         }
     }
     l(op1, op2, op3, op4) {

@@ -437,7 +437,7 @@ class InterpreterIc10 {
 		} else if (this.__issetVar(x) && this.variables[x] instanceof Device) {
 			return this.variables[x]
 		} else {
-			throw Execution.error(0, 'Unknown port', x)
+			throw Execution.error(this.position, 'Unknown port', x)
 		}
 	}
 	
@@ -447,7 +447,7 @@ class InterpreterIc10 {
 		} else if (this.__issetConst(x)) {
 			return this.constants[x].get()
 		} else {
-			throw Execution.error(0, 'Undefined Variable', x)
+			throw Execution.error(this.position, 'Undefined Variable', x)
 		}
 	}
 	
@@ -456,7 +456,7 @@ class InterpreterIc10 {
 		if (this.__issetVar(x)) {
 			this.variables[x].set(value)
 		} else {
-			throw Execution.error(0, 'Undefined Variable', x)
+			throw Execution.error(this.position, 'Undefined Variable', x)
 		}
 	}
 	
@@ -464,7 +464,7 @@ class InterpreterIc10 {
 		if (this.__issetLabel(x)) {
 			this.position = this.labels[x] - 1
 		} else {
-			throw Execution.error(0, ' Undefined label', x)
+			throw Execution.error(this.position, ' Undefined label', x)
 		}
 	}
 	
@@ -488,7 +488,7 @@ class InterpreterIc10 {
 			this.variables[op1] = this.environ[op2]
 			this.variables[op2] = this.environ[op2]
 		} else {
-			throw Execution.error(0, 'Unknown Register', op2)
+			throw Execution.error(this.position, 'Unknown Register', op2)
 		}
 	}
 	
