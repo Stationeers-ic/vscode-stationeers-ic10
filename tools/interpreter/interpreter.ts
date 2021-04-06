@@ -7,17 +7,17 @@ var regexes = {
 }
 
 class ic10Error {
-	public message: String;
-	public code: Number;
-	public functionName: String;
-	public lvl: Number;
-	public line: Number;
-	public className: String;
+	public message: string;
+	public code: number;
+	public functionName: string;
+	public lvl: number;
+	public line: number;
+	public className: string;
 	public obj: any;
 	
-	constructor(caller: any, code: Number, message: String, obj: any, lvl: Number = 0) {
+	constructor(caller: any, code: number, message: string, obj: any, lvl: number = 0) {
 		this.message = message;
-		this.code = code;
+		this.code = code + 1;
 		this.obj = obj;
 		this.lvl = lvl;
 		this.className = caller?.typeName ?? ''
@@ -25,17 +25,17 @@ class ic10Error {
 		this.line = caller?.lineNumber ?? 0;
 	}
 	
-	getCode(): Number {
+	getCode(): number {
 		return this.code
 	}
 	
-	getMessage(): String {
+	getMessage(): string {
 		return this.message
 	}
 }
 
 var Execution = {
-	error(code: Number, message: String, obj: any) {
+	error(code: number, message: string, obj: any) {
 		var caller = callerId.getData();
 		return new ic10Error(caller, code, message, obj, 0)
 	},
@@ -64,7 +64,6 @@ var Execution = {
 		
 	}
 }
-
 
 class Environ {
 	public d0: Device
@@ -148,6 +147,7 @@ class Memory {
 				}
 			}
 			if (regexes.rr1.test(cell)) {
+				
 				throw Execution.error(this._scope.position, 'Unknown cell', cell)
 			}
 			if (cell in this.aliases) {
@@ -200,7 +200,7 @@ class Memory {
 			throw Execution.error(this._scope.position, 'Unknown cell', cell)
 		}
 		if (typeof cell === "number") {
-			if (cell >= 18) throw Execution.error(0, 'Unknown cell', cell)
+			if (cell >= 18) throw Execution.error(this._scope.position, 'Unknown cell', cell)
 			return this.cells[cell]
 		}
 	}
@@ -253,40 +253,40 @@ class Device {
 	public Lock: Boolean
 	public Setting: any
 	public RecipeHash: number
-	public RequiredPower: Number
+	public RequiredPower: number
 	public Slots: Slot[]
-	public Flour: Number
-	public Fenoxitone: Number
-	public Milk: Number
-	public Egg: Number
-	public Iron: Number
-	public Gold: Number
-	public Carbon: Number
-	public Uranium: Number
-	public Copper: Number
-	public Steel: Number
-	public Hydrocarbon: Number
-	public Silver: Number
-	public Nickel: Number
-	public Lead: Number
-	public Electrum: Number
-	public Invar: Number
-	public Constantan: Number
-	public Solder: Number
-	public Plastic: Number
-	public Silicon: Number
-	public Salicylic: Number
-	public Alcohol: Number
-	public Oil: Number
-	public Potato: Number
-	public Tomato: Number
-	public Rice: Number
-	public Pumpkin: Number
-	public Yellow: Number
-	public Red: Number
-	public Orange: Number
-	public Green: Number
-	public Blue: Number
+	public Flour: number
+	public Fenoxitone: number
+	public Milk: number
+	public Egg: number
+	public Iron: number
+	public Gold: number
+	public Carbon: number
+	public Uranium: number
+	public Copper: number
+	public Steel: number
+	public Hydrocarbon: number
+	public Silver: number
+	public Nickel: number
+	public Lead: number
+	public Electrum: number
+	public Invar: number
+	public Constantan: number
+	public Solder: number
+	public Plastic: number
+	public Silicon: number
+	public Salicylic: number
+	public Alcohol: number
+	public Oil: number
+	public Potato: number
+	public Tomato: number
+	public Rice: number
+	public Pumpkin: number
+	public Yellow: number
+	public Red: number
+	public Orange: number
+	public Green: number
+	public Blue: number
 	private _scope: InterpreterIc10;
 	
 	constructor(scope: InterpreterIc10) {
@@ -406,12 +406,12 @@ class Chip extends Device {
 
 class Slot {
 	public Occupied: Boolean // - 0 - слот свободен, 1 - занят
-	public OccupantHash: String // - хэш объекта в слоте
-	public Quantity: Number // // - количество предметов в слоте
-	public Damage: Number // - уровень повреждения объекта
-	public Class: String // - класс объекта в слоте
-	public MaxQuantity: Number // - максимальное количество предметов в слоте
-	public PrefabHash: String // - хэш префаба объекта в слоте
+	public OccupantHash: string // - хэш объекта в слоте
+	public Quantity: number // // - количество предметов в слоте
+	public Damage: number // - уровень повреждения объекта
+	public Class: string // - класс объекта в слоте
+	public MaxQuantity: number // - максимальное количество предметов в слоте
+	public PrefabHash: string // - хэш префаба объекта в слоте
 	constructor() {
 		this.Occupied = true
 		this.OccupantHash = ""
@@ -424,7 +424,7 @@ class Slot {
 }
 
 class InterpreterIc10 {
-	public code: String
+	public code: string
 	public commands: { args: string[]; command: string }[]
 	public lines: string[]
 	public memory: Memory

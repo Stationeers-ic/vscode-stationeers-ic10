@@ -1,6 +1,6 @@
 alias a r1
 define c 55
-move a c
+move a cr1
 #log a
 #log r1
 #die
