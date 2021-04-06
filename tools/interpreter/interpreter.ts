@@ -1,5 +1,10 @@
 const fs = require("fs")
 var callerId = require('caller-id');
+var regexes = {
+	'rr1': new RegExp("[rd]+(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17)$|d(0|1|2|3|4|5|b)$)"),
+	'r1': new RegExp("^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17)$"),
+	'd1': new RegExp("^d(0|1|2|3|4|5|b)$"),
+}
 
 class ic10Error {
 	public message: String;
@@ -69,15 +74,18 @@ class Environ {
 	public d4: Device
 	public d5: Device
 	public db: Chip
+	private _scope: InterpreterIc10;
 	
-	constructor() {
-		this.d0 = new Device()
-		this.d1 = new Device()
-		this.d2 = new Device()
-		this.d3 = new Device()
-		this.d4 = new Device()
-		this.d5 = new Device()
-		this.db = new Chip()
+	
+	constructor(scope: InterpreterIc10) {
+		this._scope = scope;
+		this.d0 = new Device(scope)
+		this.d1 = new Device(scope)
+		this.d2 = new Device(scope)
+		this.d3 = new Device(scope)
+		this.d4 = new Device(scope)
+		this.d5 = new Device(scope)
+		this.db = new Chip(scope)
 	}
 	
 	randomize() {
@@ -92,9 +100,16 @@ class Environ {
 
 class Memory {
 	public cells: Array<MemoryCell>
+	public environ: Environ
+	public aliases: Object
+	private _scope: InterpreterIc10;
 	
-	constructor() {
+	constructor(scope) {
+		this._scope = scope;
 		this.cells = new Array<MemoryCell>(15)
+		this.environ = new Environ(scope)
+		this.aliases = new Object()
+		
 		for (let i = 0; i < 15; i++) {
 			this.cells[i] = new MemoryCell()
 		}
@@ -104,19 +119,99 @@ class Memory {
 		// console.log(this.cell("r23"))
 	}
 	
-	cell(cell: string | number, val: any = null) {
+	cell(cell: string | number, op1: any = null, op2: any = null) {
 		if (typeof cell === "string") {
-			const regex = /^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17)$/
-			let m = regex.exec(cell)
-			console.log(m)
-			if (m === null) throw Execution.error(0, 'Unknown cell', cell)
-			
-			if (val === null) return this.cells[m[1]]
+			if (regexes.r1.test(cell)) {
+				let m = regexes.r1.exec(cell)
+				if (m[1] in this.cells) {
+					if (op1 === null) {
+						return this.cells[m[1]].get()
+					} else {
+						return this.cells[m[1]].set(this.cell(op1))
+					}
+				} else {
+					throw Execution.error(this._scope.position, 'Unknown cell', cell)
+				}
+			}
+			if (regexes.d1.test(cell)) {
+				if (cell in this.environ) {
+					if (op1 === null) {
+						throw Execution.error(this._scope.position, 'Have not `Port`', cell)
+					} else {
+						if (op1 !== null) {
+							return this.environ[cell].set(op1, this.cell(op2))
+						}
+						return this.environ[cell].get(op1)
+					}
+				} else {
+					throw Execution.error(this._scope.position, 'Unknown cell', cell)
+				}
+			}
+			if (regexes.rr1.test(cell)) {
+				throw Execution.error(this._scope.position, 'Unknown cell', cell)
+			}
+			if (cell in this.aliases) {
+				if (this.aliases[cell] instanceof MemoryCell) {
+					if (op1 === null) {
+						return this.aliases[cell].get()
+					} else {
+						return this.aliases[cell].set(this.cell(op1))
+					}
+				} else if (this.aliases[cell] instanceof Device) {
+					if (op1 === null) {
+						throw Execution.error(this._scope.position, 'Have not `Port`', cell)
+					} else {
+						if (op1 !== null) {
+							return this.aliases[cell].set(op1, this.cell(op2))
+						}
+						return this.aliases[cell].get(op1)
+					}
+				} else if (this.aliases[cell] instanceof ConstantCell) {
+					return this.aliases[cell].get()
+				} else {
+					throw Execution.error(this._scope.position, 'Unknown cell', cell)
+				}
+			}
+			throw Execution.error(this._scope.position, 'Unknown cell', cell)
+		}
+		if (typeof cell === "number") {
+			return cell
+		}
+	}
+	
+	getCell(cell) {
+		if (typeof cell === "string") {
+			if (regexes.r1.test(cell)) {
+				let m = regexes.r1.exec(cell)
+				if (m[1] in this.cells) {
+					return this.cells[m[1]]
+				}
+			}
+			if (regexes.d1.test(cell)) {
+				if (cell in this.environ) {
+					return this.environ[cell]
+				} else {
+					throw Execution.error(this._scope.position, 'Unknown cell', cell)
+				}
+			}
+			if (regexes.rr1.test(cell)) {
+				throw Execution.error(this._scope.position, 'Unknown cell', cell)
+			}
+			throw Execution.error(this._scope.position, 'Unknown cell', cell)
 		}
 		if (typeof cell === "number") {
 			if (cell >= 18) throw Execution.error(0, 'Unknown cell', cell)
-			if (val === null) return this.cells[cell]
+			return this.cells[cell]
 		}
+	}
+	
+	alias(name, link: string | number) {
+		this.aliases[name] = this.getCell(link)
+		return this
+	}
+	
+	define(name, value: string | number) {
+		this.aliases[name] = new ConstantCell(value)
 	}
 }
 
@@ -133,6 +228,7 @@ class MemoryCell {
 	
 	set(value: any) {
 		this.value = value
+		return this;
 	}
 }
 
@@ -191,8 +287,10 @@ class Device {
 	public Orange: Number
 	public Green: Number
 	public Blue: Number
+	private _scope: InterpreterIc10;
 	
-	constructor() {
+	constructor(scope: InterpreterIc10) {
+		this._scope = scope;
 		this.On = false
 		this.Power = false
 		this.Error = false
@@ -283,7 +381,7 @@ class Device {
 		if (variable in this) {
 			return this[variable]
 		} else {
-			throw Execution.error(0, 'Unknown variable', variable)
+			throw Execution.error(this._scope.position, 'Unknown variable', variable)
 		}
 	}
 	
@@ -291,15 +389,16 @@ class Device {
 		if (variable in this) {
 			this[variable] = value
 		} else {
-			throw Execution.error(0, 'Unknown variable', variable)
+			throw Execution.error(this._scope.position, 'Unknown variable', variable)
 		}
+		return this
 	}
 }
 
 class Chip extends Device {
 	//-128473777
-	constructor() {
-		super()
+	constructor(scope) {
+		super(scope)
 		this.Slots = []
 		this.Slots.push(new Slot())
 	}
@@ -325,25 +424,23 @@ class Slot {
 }
 
 class InterpreterIc10 {
-	private environ: Environ
-	private code: String
-	private commands: { args: string[]; command: string }[]
-	private lines: string[]
-	private memory: Memory
-	private position: number
-	private variables: Object
-	private interval: NodeJS.Timeout
-	private tickTime: number
-	private labels: {}
-	private constants: {}
-	private ports: {}
+	public code: String
+	public commands: { args: string[]; command: string }[]
+	public lines: string[]
+	public memory: Memory
+	public position: number
+	public variables: Object
+	public interval: NodeJS.Timeout
+	public tickTime: number
+	public labels: {}
+	public constants: {}
+	public ports: {}
 	
 	constructor(code) {
 		this.code = code
 		this.tickTime = 200
-		this.environ = new Environ()
 		this.variables = {}
-		this.memory = new Memory()
+		this.memory = new Memory(this)
 		this.constants = {}
 		this.labels = {}
 		this.init()
@@ -383,7 +480,7 @@ class InterpreterIc10 {
 	}
 	
 	prepareLine() {
-		this.environ.randomize()
+		this.memory.environ.randomize()
 		let {command, args} = this.commands[this.position]
 		let isComment = command.startsWith("#")
 		for (const argsKey in args) {
@@ -411,53 +508,8 @@ class InterpreterIc10 {
 			: this.position < this.commands.length
 	}
 	
-	__issetConst(x: string) {
-		return x in this.constants
-	}
-	
-	__issetVar(x: string) {
-		return x in this.variables
-	}
-	
 	__issetLabel(x: string) {
 		return x in this.labels
-	}
-	
-	__issetEntity(x: string) {
-		return this.__issetVar(x) || this.__issetConst(x)
-	}
-	
-	__issetPort(x: string) {
-		return x in this.environ
-	}
-	
-	__getPort(x: string): Device {
-		if (this.__issetPort(x)) {
-			return this.environ[x]
-		} else if (this.__issetVar(x) && this.variables[x] instanceof Device) {
-			return this.variables[x]
-		} else {
-			throw Execution.error(this.position, 'Unknown port', x)
-		}
-	}
-	
-	__getVar(x: string) {
-		if (this.__issetVar(x)) {
-			return this.variables[x].get()
-		} else if (this.__issetConst(x)) {
-			return this.constants[x].get()
-		} else {
-			throw Execution.error(this.position, 'Undefined Variable', x)
-		}
-	}
-	
-	__setVar(x: string, value: any) {
-		// @ts-ignore
-		if (this.__issetVar(x)) {
-			this.variables[x].set(value)
-		} else {
-			throw Execution.error(this.position, 'Undefined Variable', x)
-		}
 	}
 	
 	__jump(x: string) {
@@ -472,204 +524,192 @@ class InterpreterIc10 {
 		this.position += x - 1
 	}
 	
-	__get() {
-		return
-	}
-	
 	define(op1, op2, op3, op4) {
-		this.constants[op1] = new ConstantCell(op2)
+		this.memory.define(op1, op2)
 	}
 	
 	alias(op1, op2, op3, op4) {
-		if (op2.match(/^r\d{1,2}$/) && op2 in this.memory) {
-			this.variables[op1] = this.variables[op2]
-			this.variables[op2] = this.variables[op2]
-		} else if (op2.match(/^d\d{1}$/) && op2 in this.environ) {
-			this.variables[op1] = this.environ[op2]
-			this.variables[op2] = this.environ[op2]
-		} else {
-			throw Execution.error(this.position, 'Unknown Register', op2)
-		}
+		this.memory.alias(op1, op2)
 	}
 	
 	l(op1, op2, op3, op4) {
-		this.__setVar(op1, this.__getPort(op2).get(op3))
+		this.memory.cell(op1, this.memory.cell(op2, op3))
 	}
 	
 	s(op1, op2, op3, op4) {
-		this.__getPort(op1).set(op2, op3)
+		this.memory.cell(op1, op2, op3)
 	}
 	
 	move(op1, op2, op3, op4) {
-		this.__setVar(op1, isNaN(op2) ? op2 : Number(op2))
+		this.memory.cell(op1, op2)
 	}
 	
 	add(op1, op2, op3, op4) {
-		this.__setVar(op1, this.__getVar(op2) + this.__getVar(op3))
+		this.memory.cell(op1, this.memory.cell(op2) + this.memory.cell(op3))
 	}
 	
 	sub(op1, op2, op3, op4) {
-		this.__setVar(op1, this.__getVar(op2) - this.__getVar(op3))
+		this.memory.cell(op1, this.memory.cell(op2) - this.memory.cell(op3))
 	}
 	
 	mul(op1, op2, op3, op4) {
-		this.__setVar(op1, this.__getVar(op2) * this.__getVar(op3))
+		this.memory.cell(op1, this.memory.cell(op2) * this.memory.cell(op3))
 	}
 	
 	div(op1, op2, op3, op4) {
-		this.__setVar(op1, this.__getVar(op2) / this.__getVar(op3))
+		this.memory.cell(op1, this.memory.cell(op2) / this.memory.cell(op3))
 	}
 	
 	mod(op1, op2, op3, op4) {
-		this.__setVar(op1, Math.abs(this.__getVar(op2) % this.__getVar(op3)))
+		this.memory.cell(op1, Math.abs(this.memory.cell(op2) % this.memory.cell(op3)))
 	}
 	
 	sqrt(op1, op2, op3, op4) {
-		this.__setVar(op1, Math.sqrt(this.__getVar(op2)))
+		this.memory.cell(op1, Math.sqrt(this.memory.cell(op2)))
 	}
 	
 	round(op1, op2, op3, op4) {
-		this.__setVar(op1, Math.round(this.__getVar(op2)))
+		this.memory.cell(op1, Math.round(this.memory.cell(op2)))
 	}
 	
 	trunc(op1, op2, op3, op4) {
-		this.__setVar(op1, Math.trunc(this.__getVar(op2)))
+		this.memory.cell(op1, Math.trunc(this.memory.cell(op2)))
 	}
 	
 	ceil(op1, op2, op3, op4) {
-		this.__setVar(op1, Math.ceil(this.__getVar(op2)))
+		this.memory.cell(op1, Math.ceil(this.memory.cell(op2)))
 	}
 	
 	floor(op1, op2, op3, op4) {
-		this.__setVar(op1, Math.floor(this.__getVar(op2)))
+		this.memory.cell(op1, Math.floor(this.memory.cell(op2)))
 	}
 	
 	max(op1, op2, op3, op4) {
 		if (op3 > op2) {
-			this.__setVar(op1, this.__getVar(op3))
+			this.memory.cell(op1, this.memory.cell(op3))
 		} else {
-			this.__setVar(op1, this.__getVar(op2))
+			this.memory.cell(op1, this.memory.cell(op2))
 		}
 	}
 	
 	min(op1, op2, op3, op4) {
 		if (op2 > op3) {
-			this.__setVar(op1, this.__getVar(op3))
+			this.memory.cell(op1, this.memory.cell(op3))
 		} else {
-			this.__setVar(op1, this.__getVar(op2))
+			this.memory.cell(op1, this.memory.cell(op2))
 		}
 	}
 	
 	abs(op1, op2, op3, op4) {
-		this.__setVar(op1, Math.abs(this.__getVar(op2)))
+		this.memory.cell(op1, Math.abs(this.memory.cell(op2)))
 	}
 	
 	log(op1, op2, op3, op4) {
-		this.__setVar(op1, Math.log(this.__getVar(op2)))
+		this.memory.cell(op1, Math.log(this.memory.cell(op2)))
 	}
 	
 	exp(op1, op2, op3, op4) {
-		this.__setVar(op1, Math.exp(this.__getVar(op2)))
+		this.memory.cell(op1, Math.exp(this.memory.cell(op2)))
 	}
 	
 	rand(op1, op2, op3, op4) {
-		this.__setVar(op1, Math.random())
+		this.memory.cell(op1, Math.random())
 	}
 	
 	sin(op1, op2, op3, op4) {
-		this.__setVar(op1, Math.sin(op2))
+		this.memory.cell(op1, Math.sin(op2))
 	}
 	
 	cos(op1, op2, op3, op4) {
-		this.__setVar(op1, Math.cos(op2))
+		this.memory.cell(op1, Math.cos(op2))
 	}
 	
 	tan(op1, op2, op3, op4) {
-		this.__setVar(op1, Math.tan(op2))
+		this.memory.cell(op1, Math.tan(op2))
 	}
 	
 	asin(op1, op2, op3, op4) {
-		this.__setVar(op1, Math.asin(op2))
+		this.memory.cell(op1, Math.asin(op2))
 	}
 	
 	acos(op1, op2, op3, op4) {
-		this.__setVar(op1, Math.acos(op2))
+		this.memory.cell(op1, Math.acos(op2))
 	}
 	
 	atan(op1, op2, op3, op4) {
-		this.__setVar(op1, Math.atan(op2))
+		this.memory.cell(op1, Math.atan(op2))
 	}
 	
 	slt(op1, op2, op3, op4) {
-		this.__setVar(op1, Number(op2 < op3))
+		this.memory.cell(op1, Number(op2 < op3))
 	}
 	
 	sltz(op1, op2, op3, op4) {
-		this.__setVar(op1, Number(op2 < 0))
+		this.memory.cell(op1, Number(op2 < 0))
 	}
 	
 	sgt(op1, op2, op3, op4) {
-		this.__setVar(op1, Number(op2 > op3))
+		this.memory.cell(op1, Number(op2 > op3))
 	}
 	
 	sgtz(op1, op2, op3, op4) {
-		this.__setVar(op1, Number(op2 > 0))
+		this.memory.cell(op1, Number(op2 > 0))
 	}
 	
 	sle(op1, op2, op3, op4) {
-		this.__setVar(op1, Number(op2 <= op3))
+		this.memory.cell(op1, Number(op2 <= op3))
 	}
 	
 	slez(op1, op2, op3, op4) {
-		this.__setVar(op1, Number(op2 <= 0))
+		this.memory.cell(op1, Number(op2 <= 0))
 	}
 	
 	sge(op1, op2, op3, op4) {
-		this.__setVar(op1, Number(op2 >= op3))
+		this.memory.cell(op1, Number(op2 >= op3))
 	}
 	
 	sgez(op1, op2, op3, op4) {
-		this.__setVar(op1, Number(op2 >= 0))
+		this.memory.cell(op1, Number(op2 >= 0))
 	}
 	
 	seq(op1, op2, op3, op4) {
-		this.__setVar(op1, Number(op2 == op3))
+		this.memory.cell(op1, Number(op2 == op3))
 	}
 	
 	seqz(op1, op2, op3, op4) {
-		this.__setVar(op1, Number(op2 == 0))
+		this.memory.cell(op1, Number(op2 == 0))
 	}
 	
 	sne(op1, op2, op3, op4) {
-		this.__setVar(op1, Number(op2 != op3))
+		this.memory.cell(op1, Number(op2 != op3))
 	}
 	
 	snez(op1, op2, op3, op4) {
-		this.__setVar(op1, Number(op2 != 0))
+		this.memory.cell(op1, Number(op2 != 0))
 	}
 	
 	sap(op1, op2, op3, op4 = 1) {
-		this.__setVar(op1, Number(this.__ap(op2, op3, op4)))
+		this.memory.cell(op1, Number(this.__ap(op2, op3, op4)))
 	}
 	
 	sapz(op1, op2, op3, op4 = 1) {
-		this.__setVar(op1, Number(this.__ap(op2, 0, op4)))
+		this.memory.cell(op1, Number(this.__ap(op2, 0, op4)))
 	}
 	
 	sna(op1, op2, op3, op4 = 1) {
-		this.__setVar(op1, Number(this.__na(op2, op3, op4)))
+		this.memory.cell(op1, Number(this.__na(op2, op3, op4)))
 	}
 	
 	snaz(op1, op2, op3, op4 = 1) {
-		this.__setVar(op1, Number(this.__na(op2, 0, op4)))
+		this.memory.cell(op1, Number(this.__na(op2, 0, op4)))
 	}
 	
 	sdse(op1, op2, op3, op4 = 1) {
-		this.__setVar(op1, this.__dse(op2))
+		this.memory.cell(op1, this.__dse(op2))
 	}
 	
 	sdns(op1, op2, op3, op4 = 1) {
-		this.__setVar(op1, this.__dns(op2))
+		this.memory.cell(op1, this.__dns(op2))
 	}
 	
 	__dse(x) {
@@ -689,19 +729,19 @@ class InterpreterIc10 {
 	}
 	
 	and(op1, op2, op3, op4) {
-		this.__setVar(op1, Number(op2 && op3))
+		this.memory.cell(op1, Number(op2 && op3))
 	}
 	
 	or(op1, op2, op3, op4) {
-		this.__setVar(op1, Number(op2 || op3))
+		this.memory.cell(op1, Number(op2 || op3))
 	}
 	
 	xor(op1, op2, op3, op4) {
-		this.__setVar(op1, Number((op2 || op3) && !(op2 && op3)))
+		this.memory.cell(op1, Number((op2 || op3) && !(op2 && op3)))
 	}
 	
 	nor(op1, op2, op3, op4) {
-		this.__setVar(op1, Number(!(op2 || op3)))
+		this.memory.cell(op1, Number(!(op2 || op3)))
 	}
 	
 	blt(op1, op2, op3, op4) {
@@ -826,9 +866,9 @@ class InterpreterIc10 {
 	_log() {
 		var out = []
 		for (const argumentsKey in arguments) {
-			if (this.__issetEntity(arguments[argumentsKey])) {
-				out.push(this.__getVar(arguments[argumentsKey]))
-			} else {
+			try {
+				out.push(this.memory.cell(arguments[argumentsKey]))
+			} catch (e) {
 				out.push(arguments[argumentsKey])
 			}
 		}
