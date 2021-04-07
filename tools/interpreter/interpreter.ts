@@ -725,36 +725,39 @@ class InterpreterIc10 {
 		this.memory.cell('r17', this.position + 1)
 	}
 	
-	__eq(op1 = 0, op2 = 0, op3 = 0, op4 = 0) {
+	__eq(op1 = 0, op2 = 0) {
 		return Number(op1 == op2)
 	}
 	
-	__ge(op1 = 0, op2 = 0, op3 = 0, op4 = 0) {
+	__ge(op1 = 0, op2 = 0) {
 		return Number(op1 >= op2)
 	}
 	
-	__gt(op1 = 0, op2 = 0, op3 = 0, op4 = 0) {
+	__gt(op1 = 0, op2 = 0) {
 		return Number(op1 > op2)
 	}
 	
-	__le(op1 = 0, op2 = 0, op3 = 0, op4 = 0) {
+	__le(op1 = 0, op2 = 0) {
 		return Number(op1 <= op2)
 	}
 	
-	__lt(op1 = 0, op2 = 0, op3 = 0, op4 = 0) {
+	__lt(op1 = 0, op2 = 0) {
 		return Number(op1 < op2)
 	}
 	
-	__ne(op1 = 0, op2 = 0, op3 = 0, op4 = 0) {
+	__ne(op1 = 0, op2 = 0) {
 		return Number(op1 != op2)
 	}
 	
 	__ap(op1 = 0, op2 = 0, op3 = 0, op4 = 0) {
-		return Number(0)
+		return Number(!this.__na(...arguments))
 	}
 	
-	__na(op1 = 0, op2 = 0, op3 = 0, op4 = 0) {
-		return Number(0)
+	__na(x = 0, y = 0, d = 0, op4 = 0) {
+		if (y == 0) {
+			return Number(d > 0)
+		}
+		return Number(Math.abs(x - y) > d * Math.max(Math.abs(x), Math.abs(y)))
 	}
 	
 	__dse(op1 = 0, op2 = 0, op3 = 0, op4 = 0) {
@@ -823,11 +826,11 @@ class InterpreterIc10 {
 	}
 	
 	sna(op1, op2, op3, op4) {
-		this.memory.cell(op1, this.__na(this.memory.cell(op2), this.memory.cell(op3)))
+		this.memory.cell(op1, this.__na(this.memory.cell(op2), this.memory.cell(op3), this.memory.cell(op4)))
 	}
 	
 	snaz(op1, op2, op3, op4) {
-		this.memory.cell(op1, this.__na(this.memory.cell(op2), 0))
+		this.memory.cell(op1, this.__na(this.memory.cell(op2), 0, this.memory.cell(op3)))
 	}
 	
 	sdse(op1, op2, op3, op4) {
@@ -911,25 +914,25 @@ class InterpreterIc10 {
 	}
 	
 	bap(op1, op2, op3, op4) {
-		if (this.__ap(this.memory.cell(op1), this.memory.cell(op2))) {
-			this.j(op3)
+		if (this.__ap(this.memory.cell(op1), this.memory.cell(op2), this.memory.cell(op3))) {
+			this.j(op4)
 		}
 	}
 	
 	bapz(op1, op2, op3, op4) {
-		if (this.__ap(this.memory.cell(op1), 0)) {
+		if (this.__ap(this.memory.cell(op1), 0, this.memory.cell(op2))) {
 			this.j(op3)
 		}
 	}
 	
 	bna(op1, op2, op3, op4) {
-		if (this.__na(this.memory.cell(op1), this.memory.cell(op2))) {
-			this.j(op3)
+		if (this.__na(this.memory.cell(op1), this.memory.cell(op2), this.memory.cell(op3))) {
+			this.j(op4)
 		}
 	}
 	
 	bnaz(op1, op2, op3, op4) {
-		if (this.__na(this.memory.cell(op1), 0)) {
+		if (this.__na(this.memory.cell(op1), 0, this.memory.cell(op2))) {
 			this.j(op3)
 		}
 	}
@@ -1019,25 +1022,25 @@ class InterpreterIc10 {
 	}
 	
 	brap(op1, op2, op3, op4) {
-		if (this.__ap(this.memory.cell(op1), this.memory.cell(op2))) {
-			this.jr(op3)
+		if (this.__ap(this.memory.cell(op1), this.memory.cell(op2), this.memory.cell(op3))) {
+			this.jr(op4)
 		}
 	}
 	
 	brapz(op1, op2, op3, op4) {
-		if (this.__ap(this.memory.cell(op1), 0)) {
-			this.jr(op3)
+		if (this.__ap(this.memory.cell(op1), 0,this.memory.cell(op2))) {
+			this.jr(op4)
 		}
 	}
 	
 	brna(op1, op2, op3, op4) {
-		if (this.__na(this.memory.cell(op1), this.memory.cell(op2))) {
-			this.jr(op3)
+		if (this.__na(this.memory.cell(op1), this.memory.cell(op2), this.memory.cell(op3))) {
+			this.jr(op4)
 		}
 	}
 	
 	brnaz(op1, op2, op3, op4) {
-		if (this.__na(this.memory.cell(op1), 0)) {
+		if (this.__na(this.memory.cell(op1), 0,this.memory.cell(op2))) {
 			this.jr(op3)
 		}
 	}
@@ -1127,25 +1130,25 @@ class InterpreterIc10 {
 	}
 	
 	bapal(op1, op2, op3, op4) {
-		if (this.__ap(this.memory.cell(op1), this.memory.cell(op2))) {
-			this.jal(op3)
+		if (this.__ap(this.memory.cell(op1), this.memory.cell(op2),this.memory.cell(op3))) {
+			this.jal(op4)
 		}
 	}
 	
 	bapzal(op1, op2, op3, op4) {
-		if (this.__ap(this.memory.cell(op1), 0)) {
+		if (this.__ap(this.memory.cell(op1), 0),this.memory.cell(op2)) {
 			this.jal(op3)
 		}
 	}
 	
 	bnaal(op1, op2, op3, op4) {
-		if (this.__na(this.memory.cell(op1), this.memory.cell(op2))) {
-			this.jal(op3)
+		if (this.__na(this.memory.cell(op1), this.memory.cell(op2),this.memory.cell(op3))) {
+			this.jal(op4)
 		}
 	}
 	
 	bnazal(op1, op2, op3, op4) {
-		if (this.__na(this.memory.cell(op1), 0)) {
+		if (this.__na(this.memory.cell(op1), 0,this.memory.cell(op2))) {
 			this.jal(op3)
 		}
 	}
