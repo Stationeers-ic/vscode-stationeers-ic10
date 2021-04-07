@@ -39,7 +39,7 @@ class ic10Error {
 }
 
 var Execution = {
-	error(code: number, message: string, obj: any) {
+	error(code: number, message: string, obj: any = null) {
 		var caller = callerId.getData();
 		return new ic10Error(caller, code, message, obj, 0)
 	},
@@ -118,7 +118,11 @@ class Memory {
 		this.aliases = new Object()
 		
 		for (let i = 0; i < 18; i++) {
-			this.cells[i] = new MemoryCell()
+			if (i === 16) {
+				this.cells[i] = new MemoryStack(scope)
+			} else {
+				this.cells[i] = new MemoryCell(scope)
+			}
 		}
 		
 		// console.log(this.cell("r1"))
@@ -128,6 +132,8 @@ class Memory {
 	
 	cell(cell: string | number, op1: any = null, op2: any = null) {
 		if (typeof cell === "string") {
+			if (cell == 'sp') cell = 'r16'
+			if (cell == 'ra') cell = 'r17'
 			if (regexes.rr1.test(cell)) {
 				let m = regexes.rr1.exec(cell)
 				let m1 = this.cell(cell.replace(m[1], this.cell(m[1])), op1, op2) ?? false
@@ -138,7 +144,6 @@ class Memory {
 			}
 			if (regexes.r1.test(cell)) {
 				let m = regexes.r1.exec(cell)
-				if (m[1] == 'a') m[1] = '17'
 				if (m[1] in this.cells) {
 					if (op1 === null) {
 						return this.cells[m[1]].get()
@@ -194,6 +199,8 @@ class Memory {
 	
 	getCell(cell) {
 		if (typeof cell === "string") {
+			if (cell == 'sp') cell = 'r16'
+			if (cell == 'ra') cell = 'r17'
 			if (regexes.rr1.test(cell)) {
 				let m = regexes.rr1.exec(cell)
 				let m1 = this.getCell(cell.replace(m[1], this.cell(m[1]))) ?? false
@@ -204,7 +211,6 @@ class Memory {
 			}
 			if (regexes.r1.test(cell)) {
 				let m = regexes.r1.exec(cell)
-				if (m[1] == 'a') m[1] = '17'
 				if (m[1] in this.cells) {
 					return this.cells[m[1]]
 				}
@@ -238,9 +244,11 @@ class Memory {
 }
 
 class MemoryCell {
-	private value: any
+	public value: any
+	#scope: InterpreterIc10;
 	
-	constructor() {
+	constructor(scope) {
+		this.#scope = scope;
 		this.value = null
 	}
 	
@@ -251,6 +259,38 @@ class MemoryCell {
 	set(value: any) {
 		this.value = value
 		return this;
+	}
+}
+
+class MemoryStack extends MemoryCell {
+	public value: any
+	#scope: InterpreterIc10;
+	
+	constructor(scope) {
+		super(scope)
+		this.value = []
+	}
+	
+	push(value: any) {
+		this.value.push(value)
+	}
+	
+	pop() {
+		return this.value.pop()
+	}
+	
+	peek() {
+		return this.value[this.value.length - 1]
+	}
+	
+	get() {
+		throw Execution.error(this.#scope.position, 'Can`t "get" on Stack')
+		
+	}
+	
+	set() {
+		throw Execution.error(this.#scope.position, 'Can`t "set" on Stack')
+		return this
 	}
 }
 
@@ -271,6 +311,7 @@ class Device {
 		return null;
 	}
 	
+	public slots: Slot[]
 	public On: number
 	public Power: number
 	public Error: number
@@ -280,7 +321,6 @@ class Device {
 	public Setting: any
 	public RecipeHash: number
 	public RequiredPower: number
-	public Slots: Slot[]
 	public Flour: number
 	public Fenoxitone: number
 	public Milk: number
@@ -325,7 +365,7 @@ class Device {
 		this.RequiredPower = 0
 		this.ClearMemory = 0
 		this.Lock = 0
-		this.Slots = []
+		this.slots = new Array<Slot>(5)
 		this.RecipeHash = -128473777
 		//------
 		this.Flour = 0
@@ -360,6 +400,14 @@ class Device {
 		this.Orange = 0
 		this.Green = 0
 		this.Blue = 0
+		this.randomize()
+		for (let i = 0; i < 5; i++) {
+			if (i === 16) {
+				this.slots[i] = new Slot(scope)
+			} else {
+				this.slots[i] = new Slot(scope)
+			}
+		}
 	}
 	
 	randomize() {
@@ -419,14 +467,21 @@ class Device {
 		}
 		return this
 	}
+	
+	getSlot(op1, op2) {
+		if (op1 in this.slots) {
+			return this.slots[op1].get(op2)
+		} else {
+			throw Execution.error(this.#scope.position, 'Unknown Slot', op1)
+		}
+	}
 }
 
 class Chip extends Device {
 	//-128473777
 	constructor(scope) {
 		super(scope)
-		this.Slots = []
-		this.Slots.push(new Slot(scope))
+		this.slots[1].OccupantHash = -744098481
 	}
 }
 
@@ -435,24 +490,32 @@ class Slot {
 		return null;
 	}
 	
-	public Occupied: Boolean // - 0 - слот свободен, 1 - занят
-	public OccupantHash: string // - хэш объекта в слоте
+	public Occupied: number // - 0 - слот свободен, 1 - занят
+	public OccupantHash: number // - хэш объекта в слоте
 	public Quantity: number // // - количество предметов в слоте
 	public Damage: number // - уровень повреждения объекта
-	public Class: string // - класс объекта в слоте
+	public Class: number // - класс объекта в слоте
 	public MaxQuantity: number // - максимальное количество предметов в слоте
-	public PrefabHash: string // - хэш префаба объекта в слоте
+	public PrefabHash: number // - хэш префаба объекта в слоте
 	#scope: InterpreterIc10;
 	
 	constructor(scope: InterpreterIc10) {
 		this.#scope = scope;
-		this.Occupied = true
-		this.OccupantHash = ""
+		this.Occupied = 1
+		this.OccupantHash = 0
 		this.Quantity = 0
 		this.Damage = 0
-		this.Class = ""
+		this.Class = 0
 		this.MaxQuantity = 1
-		this.PrefabHash = ""
+		this.PrefabHash = 0
+	}
+	
+	get(op1) {
+		if (op1 in this) {
+			return this[op1]
+		} else {
+			throw Execution.error(this.#scope.position, 'Unknown parameter', op1)
+		}
 	}
 }
 
@@ -594,6 +657,15 @@ class InterpreterIc10 {
 	
 	l(op1, op2, op3, op4) {
 		this.memory.cell(op1, this.memory.cell(op2, op3))
+	}
+	
+	ls(op1, op2, op3, op4) {
+		var d = this.memory.getCell(op2)
+		if (d instanceof Device) {
+			this.memory.cell(op1, d.getSlot(this.memory.cell(op3), op4))
+		} else {
+			throw Execution.error(this.position, 'Unknown Device', op2)
+		}
 	}
 	
 	s(op1, op2, op3, op4) {
@@ -1170,6 +1242,19 @@ class InterpreterIc10 {
 			this.jal(op3)
 		}
 	}
+	
+	push(op1, op2, op3, op4) {
+		this.memory.getCell('r16').push(op1)
+	}
+	
+	pop(op1, op2, op3, op4) {
+		this.memory.cell(op1, this.memory.getCell('r16').pop())
+	}
+	
+	peek(op1, op2, op3, op4) {
+		this.memory.cell(op1, this.memory.getCell('r16').peek())
+	}
+
 
 // @ts-ignore
 	_log() {
