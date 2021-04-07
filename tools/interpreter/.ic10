@@ -3,7 +3,8 @@ s a On 1 # Описание2
 alias jumpRegister ra
 move jumpRegister 5
 move r5 8
+move r8 9
 #log "r17 is" r17
-#log "rra is" rra
+#log "rrra is" rrra
 #log "jumpRegister is" jumpRegister
-#die
+hcf
