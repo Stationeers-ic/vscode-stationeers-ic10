@@ -1,9 +1,9 @@
 const fs = require("fs")
 const callerId = require('caller-id');
 const chalk = require('chalk');
-var regexes = {
-  'rr1': new RegExp("[rd]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17))$"),
-  'r1': new RegExp("^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17)$"),
+const regexes = {
+  'rr1': new RegExp("[rd]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
+  'r1': new RegExp("^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)$"),
   'd1': new RegExp("^d(0|1|2|3|4|5|b)$"),
   'rr': new RegExp("^d(0|1|2|3|4|5|b)$"),
   'strStart': new RegExp("^\".+$"),
@@ -117,7 +117,7 @@ class Memory {
     this.environ = new Environ(scope)
     this.aliases = new Object()
 
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 18; i++) {
       this.cells[i] = new MemoryCell()
     }
 
@@ -138,6 +138,7 @@ class Memory {
       }
       if (regexes.r1.test(cell)) {
         let m = regexes.r1.exec(cell)
+        if (m[1] == 'a') m[1] = '17'
         if (m[1] in this.cells) {
           if (op1 === null) {
             return this.cells[m[1]].get()
@@ -203,6 +204,7 @@ class Memory {
       }
       if (regexes.r1.test(cell)) {
         let m = regexes.r1.exec(cell)
+        if (m[1] == 'a') m[1] = '17'
         if (m[1] in this.cells) {
           return this.cells[m[1]]
         }
@@ -492,6 +494,9 @@ class InterpreterIc10 {
         for (let argsKey in command.args) {
           if (command.args.hasOwnProperty(argsKey)) {
             let arg = command.args[argsKey]
+            if (arg.startsWith("#")) {
+              break;
+            }
             if (mode === 0) {
               argNumber++
             }
@@ -572,17 +577,6 @@ class InterpreterIc10 {
     return x in this.labels
   }
 
-  __jump(x: string) {
-    if (this.__issetLabel(x)) {
-      this.position = this.labels[x] - 1
-    } else {
-      throw Execution.error(this.position, ' Undefined label', x)
-    }
-  }
-
-  __ajump(x: number) {
-    this.position += x - 1
-  }
 
   define(op1, op2, op3, op4) {
     this.memory.define(op1, op2)
@@ -806,109 +800,217 @@ class InterpreterIc10 {
 
   blt(op1, op2, op3, op4) {
     if (op1 < op2) {
-      this.__jump(op3)
+      this.jr(op3)
     }
   }
 
   bltz(op1, op2, op3, op4) {
     if (op1 < 0) {
-      this.__jump(op3)
+      this.jr(op3)
     }
   }
 
   ble(op1, op2, op3, op4) {
     if (op1 <= op2) {
-      this.__jump(op3)
+      this.jr(op3)
     }
   }
 
   blez(op1, op2, op3, op4) {
     if (op1 <= 0) {
-      this.__jump(op3)
+      this.jr(op3)
     }
   }
 
   bge(op1, op2, op3, op4) {
     if (op1 >= op2) {
-      this.__jump(op3)
+      this.jr(op3)
     }
   }
 
   bgez(op1, op2, op3, op4) {
     if (op1 >= 0) {
-      this.__jump(op3)
+      this.jr(op3)
     }
   }
 
   bgt(op1, op2, op3, op4) {
     if (op1 > op2) {
-      this.__jump(op3)
+      this.jr(op3)
     }
   }
 
   bgtz(op1, op2, op3, op4) {
     if (op1 > 0) {
-      this.__jump(op3)
+      this.jr(op3)
     }
   }
 
   beq(op1, op2, op3, op4) {
     if (op1 == op2) {
-      this.__jump(op3)
+      this.jr(op3)
     }
   }
 
   beqz(op1, op2, op3, op4) {
     if (op1 == 0) {
-      this.__jump(op3)
+      this.jr(op3)
     }
   }
 
   bne(op1, op2, op3, op4) {
     if (op1 != op2) {
-      this.__jump(op3)
+      this.jr(op3)
     }
   }
 
   bnez(op1, op2, op3, op4) {
     if (op1 != 0) {
-      this.__jump(op3)
+      this.jr(op3)
     }
   }
 
   bap(op1, op2, op3, op4) {
     if (this.__ap(op1, op2, op3)) {
-      this.__jump(op4)
+      this.jr(op4)
     }
   }
 
   bapz(op1, op2, op3, op4) {
     if (this.__ap(op1, op2, op3)) {
-      this.__jump(op4)
+      this.jr(op4)
     }
   }
 
   bna(op1, op2, op3, op4) {
     if (this.__na(op1, op2, op3)) {
-      this.__jump(op4)
+      this.jr(op4)
     }
   }
 
   bnaz(op1, op2, op3, op4) {
     if (this.__na(op1, op2, op3)) {
-      this.__jump(op4)
+      this.jr(op4)
     }
   }
 
   bdse(op1, op2, op3, op4) {
     if (this.__dse(op1)) {
-      this.__jump(op2)
+      this.jr(op2)
     }
   }
 
   bdns(op1, op2, op3, op4) {
     if (this.__dns(op1)) {
-      this.__jump(op2)
+      this.jr(op2)
+    }
+  }
+
+  brlt(op1, op2, op3, op4) {
+    if (op1 < op2) {
+      this.jr(op3)
+    }
+  }
+
+  brltz(op1, op2, op3, op4) {
+    if (op1 < 0) {
+      this.jr(op3)
+    }
+  }
+
+  brle(op1, op2, op3, op4) {
+    if (op1 <= op2) {
+      this.jr(op3)
+    }
+  }
+
+  brlez(op1, op2, op3, op4) {
+    if (op1 <= 0) {
+      this.jr(op3)
+    }
+  }
+
+  brge(op1, op2, op3, op4) {
+    if (op1 >= op2) {
+      this.jr(op3)
+    }
+  }
+
+  brgez(op1, op2, op3, op4) {
+    if (op1 >= 0) {
+      this.jr(op3)
+    }
+  }
+
+  brgt(op1, op2, op3, op4) {
+    if (op1 > op2) {
+      this.jr(op3)
+    }
+  }
+
+  brgtz(op1, op2, op3, op4) {
+    if (op1 > 0) {
+      this.jr(op3)
+    }
+  }
+
+  breq(op1, op2, op3, op4) {
+    if (op1 == op2) {
+      this.jr(op3)
+    }
+  }
+
+  breqz(op1, op2, op3, op4) {
+    if (op1 == 0) {
+      this.jr(op3)
+    }
+  }
+
+  brne(op1, op2, op3, op4) {
+    if (op1 != op2) {
+      this.jr(op3)
+    }
+  }
+
+  brnez(op1, op2, op3, op4) {
+    if (op1 != 0) {
+      this.jr(op3)
+    }
+  }
+
+  brap(op1, op2, op3, op4) {
+    if (this.__ap(op1, op2, op3)) {
+      this.jr(op4)
+    }
+  }
+
+  brapz(op1, op2, op3, op4) {
+    if (this.__ap(op1, op2, op3)) {
+      this.jr(op4)
+    }
+  }
+
+  brna(op1, op2, op3, op4) {
+    if (this.__na(op1, op2, op3)) {
+      this.jr(op4)
+    }
+  }
+
+  brnaz(op1, op2, op3, op4) {
+    if (this.__na(op1, op2, op3)) {
+      this.jr(op4)
+    }
+  }
+
+  brdse(op1, op2, op3, op4) {
+    if (this.__dse(op1)) {
+      this.jr(op2)
+    }
+  }
+
+  brdns(op1, op2, op3, op4) {
+    if (this.__dns(op1)) {
+      this.jr(op2)
     }
   }
 
@@ -918,8 +1020,21 @@ class InterpreterIc10 {
   sleep(op1, op2, op3, op4) {
   }
 
-  j(op1, op2, op3, op4) {
-    this.__jump(op1)
+  j(op1) {
+    if (this.__issetLabel(op1)) {
+      this.position = this.labels[op1] - 1
+    } else {
+      throw Execution.error(this.position, ' Undefined label', op1)
+    }
+  }
+
+  jr(op1) {
+    this.position += op1 - 1
+  }
+
+  jal(op1: number) {
+    this.j(op1)
+    this.memory.cell('r17', this.position + 1)
   }
 
 // @ts-ignore

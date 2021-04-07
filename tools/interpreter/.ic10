@@ -1,8 +1,9 @@
-alias a d0
-s a On 1
-l r7 a On
-l r8 a Iron
-#log a
-#log "r7 is" r7
-#log "r8 is" r8
+alias a d0 #Описание
+s a On 1 # Описание2
+alias jumpRegister ra
+move jumpRegister 5
+move r5 8
+#log "r17 is" r17
+#log "rra is" rra
+#log "jumpRegister is" jumpRegister
 #die
