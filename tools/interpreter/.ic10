@@ -1,3 +1,9 @@
+snaz r1 10 0.2
+sna r2 10 12 0.2
+#log r1
+#log r2
+
+hcf
 alias a d0 #Описание
 s a On 1 # Описание2
 alias jumpRegister ra

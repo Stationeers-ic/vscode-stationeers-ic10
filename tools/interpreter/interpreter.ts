@@ -466,13 +466,19 @@ class InterpreterIc10 {
 	public tickTime: number
 	public labels: {}
 	public constants: {}
+	private settings: {
+		debug: boolean;
+	};
 	
-	constructor(code: string) {
+	constructor(code: string, settings = {}) {
 		this.code = code
 		this.tickTime = 200
 		this.memory = new Memory(this)
 		this.constants = {}
 		this.labels = {}
+		this.settings = Object.assign({
+			debug: true,
+		}, settings)
 		this.init(code)
 	}
 	
@@ -1028,7 +1034,7 @@ class InterpreterIc10 {
 	}
 	
 	brapz(op1, op2, op3, op4) {
-		if (this.__ap(this.memory.cell(op1), 0,this.memory.cell(op2))) {
+		if (this.__ap(this.memory.cell(op1), 0, this.memory.cell(op2))) {
 			this.jr(op4)
 		}
 	}
@@ -1040,7 +1046,7 @@ class InterpreterIc10 {
 	}
 	
 	brnaz(op1, op2, op3, op4) {
-		if (this.__na(this.memory.cell(op1), 0,this.memory.cell(op2))) {
+		if (this.__na(this.memory.cell(op1), 0, this.memory.cell(op2))) {
 			this.jr(op3)
 		}
 	}
@@ -1130,25 +1136,25 @@ class InterpreterIc10 {
 	}
 	
 	bapal(op1, op2, op3, op4) {
-		if (this.__ap(this.memory.cell(op1), this.memory.cell(op2),this.memory.cell(op3))) {
+		if (this.__ap(this.memory.cell(op1), this.memory.cell(op2), this.memory.cell(op3))) {
 			this.jal(op4)
 		}
 	}
 	
 	bapzal(op1, op2, op3, op4) {
-		if (this.__ap(this.memory.cell(op1), 0),this.memory.cell(op2)) {
+		if (this.__ap(this.memory.cell(op1), 0), this.memory.cell(op2)) {
 			this.jal(op3)
 		}
 	}
 	
 	bnaal(op1, op2, op3, op4) {
-		if (this.__na(this.memory.cell(op1), this.memory.cell(op2),this.memory.cell(op3))) {
+		if (this.__na(this.memory.cell(op1), this.memory.cell(op2), this.memory.cell(op3))) {
 			this.jal(op4)
 		}
 	}
 	
 	bnazal(op1, op2, op3, op4) {
-		if (this.__na(this.memory.cell(op1), 0,this.memory.cell(op2))) {
+		if (this.__na(this.memory.cell(op1), 0, this.memory.cell(op2))) {
 			this.jal(op3)
 		}
 	}
@@ -1179,11 +1185,13 @@ class InterpreterIc10 {
 				}
 			}
 		}
-		console.log(...out)
+		console.log(`Log [${this.position}]: `, ...out)
 	}
 	
 	__debug(p: string, iArguments: string[]) {
-		console.debug(...arguments)
+		if (this.settings.debug) {
+			console.debug(...arguments)
+		}
 	}
 }
 
