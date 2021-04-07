@@ -1,8 +1,11 @@
-alias a r1
+move r1 2
+move r2 3
+move r3 7
 define c 55
-move a cr1
+alias a rrr1
 #log a
-#log r1
+add rrr1 5 5
+#log a
 #die
 xor r0 0 0
 xor r1 1 0
