@@ -1,11 +1,15 @@
 move r1 2
+#log "я один параметр" "я второй" r1
+#die
+
+move r1 2
 move r2 3
 move r3 7
 define c 55
 alias a rrr1
-#log a
+#log "first a" a
 add rrr1 5 5
-#log a
+#log "second a" a
 #die
 xor r0 0 0
 xor r1 1 0

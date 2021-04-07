@@ -5,6 +5,8 @@ var regexes = {
   'r1': new RegExp("^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17)$"),
   'd1': new RegExp("^d(0|1|2|3|4|5|b)$"),
   'rr': new RegExp("^d(0|1|2|3|4|5|b)$"),
+  'strStart': new RegExp("^\".+$"),
+  'strEnd': new RegExp(".+\"$"),
 }
 
 class ic10Error {
@@ -444,25 +446,54 @@ class InterpreterIc10 {
   public labels: {}
   public constants: {}
 
-  constructor(code) {
+  constructor(code: string) {
     this.code = code
     this.tickTime = 200
     this.memory = new Memory(this)
     this.constants = {}
     this.labels = {}
-    this.init()
+    this.init(code)
   }
 
-  init() {
+  init(text) {
     this.lines = text.split("\r\n")
-    this.commands = this.lines
-      .filter((line) => line !== "")
+    var commands = this.lines
+      .filter((line) => line.trim() !== "")
       .map((line: string) => {
         const args = line.trim().split(/ +/)
         // args.reduce((accumulator, currentValue) => accumulator + " " + currentValue)
         const command = args.shift()
         return {command, args}
       })
+    for (const commandsKey in commands) {
+      if (commands.hasOwnProperty(commandsKey)) {
+        let command = commands[commandsKey]
+        var newArgs = {}
+        var mode = 0;
+        var argNumber = 0;
+        for (let argsKey in command.args) {
+          if (command.args.hasOwnProperty(argsKey)) {
+            let arg = command.args[argsKey]
+            if (mode === 0) {
+              argNumber++
+            }
+            if (regexes.strStart.test(arg)) {
+              mode = 1
+            }
+            if (argNumber in newArgs) {
+              newArgs[argNumber] += ' ' + arg
+            } else {
+              newArgs[argNumber] = arg
+            }
+            if (regexes.strEnd.test(arg)) {
+              mode = 0
+            }
+          }
+        }
+        commands[commandsKey].args = Object.values(newArgs)
+      }
+    }
+    this.commands = commands
   }
 
   run() {
@@ -866,7 +897,7 @@ class InterpreterIc10 {
     this.__jump(op1)
   }
 
-  // @ts-ignore
+// @ts-ignore
   _log() {
     var out = []
     for (const argumentsKey in arguments) {
@@ -884,6 +915,9 @@ class InterpreterIc10 {
   }
 }
 
-const text = fs.readFileSync(".ic10", "utf8")
-var interpreterIc10 = new InterpreterIc10(text)
-interpreterIc10.run()
+const
+  text = fs.readFileSync(".ic10", "utf8")
+var
+  interpreterIc10 = new InterpreterIc10(text)
+interpreterIc10
+  .run()
