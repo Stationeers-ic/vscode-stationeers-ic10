@@ -1,5 +1,6 @@
 const fs = require("fs")
-var callerId = require('caller-id');
+const callerId = require('caller-id');
+const chalk = require('chalk');
 var regexes = {
   'rr1': new RegExp("[rd]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17))$"),
   'r1': new RegExp("^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17)$"),
@@ -20,7 +21,7 @@ class ic10Error {
 
   constructor(caller: any, code: number, message: string, obj: any, lvl: number = 0) {
     this.message = message;
-    this.code = code + 1;
+    this.code = code;
     this.obj = obj;
     this.lvl = lvl;
     this.className = caller?.typeName ?? ''
@@ -44,20 +45,20 @@ var Execution = {
   },
   display: function (e) {
     if (e instanceof ic10Error) {
-      var string = `[${e.functionName}:${e.line}] (${e.code}) - ${e.message}`
+      var string = `[${e.functionName}:${e.line}] (${e.code}) - ${e.message}:`
       switch (e.lvl) {
         case 0:
-          console.error(string, e.obj)
+          console.error(chalk.red('ERROR ' + string), e.obj)
           break;
         case 1:
-          console.warn(string, e.obj)
+          console.warn(chalk.yellow('WARN ' + string), e.obj)
           break;
         case 2:
-          console.info(string, e.obj)
+          console.info(chalk.blue('INFO ' + string), e.obj)
           break;
         case 3:
         default:
-          console.log(string, e.obj)
+          console.log('LOG ' + string, e.obj)
           break;
           return null
       }
@@ -76,11 +77,11 @@ class Environ {
   public d4: Device
   public d5: Device
   public db: Chip
-  private _scope: InterpreterIc10;
+  #scope: InterpreterIc10;
 
 
   constructor(scope: InterpreterIc10) {
-    this._scope = scope;
+    this.#scope = scope;
     this.d0 = new Device(scope)
     this.d1 = new Device(scope)
     this.d2 = new Device(scope)
@@ -101,13 +102,17 @@ class Environ {
 }
 
 class Memory {
+  get scope(): InterpreterIc10 {
+    return null;
+  }
+
   public cells: Array<MemoryCell>
   public environ: Environ
   public aliases: Object
-  private _scope: InterpreterIc10;
+  #scope: InterpreterIc10;
 
   constructor(scope) {
-    this._scope = scope;
+    this.#scope = scope;
     this.cells = new Array<MemoryCell>(15)
     this.environ = new Environ(scope)
     this.aliases = new Object()
@@ -129,7 +134,7 @@ class Memory {
         if (m1 !== false) {
           return m1
         }
-        throw Execution.error(this._scope.position, 'Unknown cell', m1)
+        throw Execution.error(this.#scope.position, 'Unknown cell', m1)
       }
       if (regexes.r1.test(cell)) {
         let m = regexes.r1.exec(cell)
@@ -140,13 +145,13 @@ class Memory {
             return this.cells[m[1]].set(this.cell(op1))
           }
         } else {
-          throw Execution.error(this._scope.position, 'Unknown cell', cell)
+          throw Execution.error(this.#scope.position, 'Unknown cell', cell)
         }
       }
       if (regexes.d1.test(cell)) {
         if (cell in this.environ) {
           if (op1 === null) {
-            throw Execution.error(this._scope.position, 'Have not `Port`', cell)
+            throw Execution.error(this.#scope.position, 'Have not `Port`', cell)
           } else {
             if (op1 !== null) {
               return this.environ[cell].set(op1, this.cell(op2))
@@ -154,7 +159,7 @@ class Memory {
             return this.environ[cell].get(op1)
           }
         } else {
-          throw Execution.error(this._scope.position, 'Unknown cell', cell)
+          throw Execution.error(this.#scope.position, 'Unknown cell', cell)
         }
       }
       if (cell in this.aliases) {
@@ -166,9 +171,9 @@ class Memory {
           }
         } else if (this.aliases[cell] instanceof Device) {
           if (op1 === null) {
-            throw Execution.error(this._scope.position, 'Have not `Port`', cell)
+            throw Execution.error(this.#scope.position, 'Have not `Port`', cell)
           } else {
-            if (op1 !== null) {
+            if (op2 !== null) {
               return this.aliases[cell].set(op1, this.cell(op2))
             }
             return this.aliases[cell].get(op1)
@@ -176,10 +181,10 @@ class Memory {
         } else if (this.aliases[cell] instanceof ConstantCell) {
           return this.aliases[cell].get()
         } else {
-          throw Execution.error(this._scope.position, 'Unknown cell', cell)
+          throw Execution.error(this.#scope.position, 'Unknown cell', cell)
         }
       }
-      throw Execution.error(this._scope.position, 'Unknown cell', cell)
+      throw Execution.error(this.#scope.position, 'Unknown cell', cell)
     }
     if (typeof cell === "number") {
       return cell
@@ -194,7 +199,7 @@ class Memory {
         if (m1 !== false) {
           return m1
         }
-        throw Execution.error(this._scope.position, 'Unknown cell', m1)
+        throw Execution.error(this.#scope.position, 'Unknown cell', m1)
       }
       if (regexes.r1.test(cell)) {
         let m = regexes.r1.exec(cell)
@@ -206,13 +211,16 @@ class Memory {
         if (cell in this.environ) {
           return this.environ[cell]
         } else {
-          throw Execution.error(this._scope.position, 'Unknown cell', cell)
+          throw Execution.error(this.#scope.position, 'Unknown cell', cell)
         }
       }
-      throw Execution.error(this._scope.position, 'Unknown cell', cell)
+      if (cell in this.aliases) {
+        return this.aliases[cell]
+      }
+      throw Execution.error(this.#scope.position, 'Unknown cell', cell)
     }
     if (typeof cell === "number") {
-      if (cell >= 18) throw Execution.error(this._scope.position, 'Unknown cell', cell)
+      if (cell >= 18) throw Execution.error(this.#scope.position, 'Unknown cell', cell)
       return this.cells[cell]
     }
   }
@@ -257,12 +265,16 @@ class ConstantCell {
 }
 
 class Device {
-  public On: Boolean
-  public Power: Boolean
-  public Error: Boolean
-  public Activate: Boolean
-  public ClearMemory: Boolean
-  public Lock: Boolean
+  get scope(): InterpreterIc10 {
+    return null;
+  }
+
+  public On: number
+  public Power: number
+  public Error: number
+  public Activate: number
+  public ClearMemory: number
+  public Lock: number
   public Setting: any
   public RecipeHash: number
   public RequiredPower: number
@@ -299,18 +311,18 @@ class Device {
   public Orange: number
   public Green: number
   public Blue: number
-  private _scope: InterpreterIc10;
+  #scope: InterpreterIc10;
 
   constructor(scope: InterpreterIc10) {
-    this._scope = scope;
-    this.On = false
-    this.Power = false
-    this.Error = false
-    this.Activate = false
+    this.#scope = scope;
+    this.On = 0
+    this.Power = 0
+    this.Error = 0
+    this.Activate = 0
     this.Setting = null
     this.RequiredPower = 0
-    this.ClearMemory = false
-    this.Lock = false
+    this.ClearMemory = 0
+    this.Lock = 0
     this.Slots = []
     this.RecipeHash = -128473777
     //------
@@ -349,11 +361,11 @@ class Device {
   }
 
   randomize() {
-    this.On = Boolean(Math.abs(Math.round(Math.random())))
-    this.Power = Boolean(Math.abs(Math.round(Math.random())))
-    this.Error = Boolean(Math.abs(Math.round(Math.random())))
-    this.Activate = Boolean(Math.abs(Math.round(Math.random())))
-    this.ClearMemory = false
+    this.On = Math.round(Math.random())
+    this.Power = Math.round(Math.random())
+    this.Error = Math.round(Math.random())
+    this.Activate = Math.round(Math.random())
+    this.ClearMemory = 0
 
     this.Flour = Math.abs(Math.round(Math.random() * 100))
     this.Fenoxitone = Math.abs(Math.round(Math.random() * 100))
@@ -393,7 +405,7 @@ class Device {
     if (variable in this) {
       return this[variable]
     } else {
-      throw Execution.error(this._scope.position, 'Unknown variable', variable)
+      throw Execution.error(this.#scope.position, 'Unknown variable', variable)
     }
   }
 
@@ -401,7 +413,7 @@ class Device {
     if (variable in this) {
       this[variable] = value
     } else {
-      throw Execution.error(this._scope.position, 'Unknown variable', variable)
+      throw Execution.error(this.#scope.position, 'Unknown variable', variable)
     }
     return this
   }
@@ -412,11 +424,15 @@ class Chip extends Device {
   constructor(scope) {
     super(scope)
     this.Slots = []
-    this.Slots.push(new Slot())
+    this.Slots.push(new Slot(scope))
   }
 }
 
 class Slot {
+  get scope(): InterpreterIc10 {
+    return null;
+  }
+
   public Occupied: Boolean // - 0 - слот свободен, 1 - занят
   public OccupantHash: string // - хэш объекта в слоте
   public Quantity: number // // - количество предметов в слоте
@@ -424,7 +440,10 @@ class Slot {
   public Class: string // - класс объекта в слоте
   public MaxQuantity: number // - максимальное количество предметов в слоте
   public PrefabHash: string // - хэш префаба объекта в слоте
-  constructor() {
+  #scope: InterpreterIc10;
+
+  constructor(scope: InterpreterIc10) {
+    this.#scope = scope;
     this.Occupied = true
     this.OccupantHash = ""
     this.Quantity = 0
@@ -458,14 +477,13 @@ class InterpreterIc10 {
   init(text) {
     this.lines = text.split("\r\n")
     var commands = this.lines
-      .filter((line) => line.trim() !== "")
       .map((line: string) => {
         const args = line.trim().split(/ +/)
         // args.reduce((accumulator, currentValue) => accumulator + " " + currentValue)
         const command = args.shift()
         return {command, args}
       })
-    for (const commandsKey in commands) {
+    for (const commandsKey in this.lines) {
       if (commands.hasOwnProperty(commandsKey)) {
         let command = commands[commandsKey]
         var newArgs = {}
@@ -491,6 +509,8 @@ class InterpreterIc10 {
           }
         }
         commands[commandsKey].args = Object.values(newArgs)
+      } else {
+        commands.push({command: '', args: []})
       }
     }
     this.commands = commands
@@ -517,27 +537,32 @@ class InterpreterIc10 {
   prepareLine() {
     this.memory.environ.randomize()
     let {command, args} = this.commands[this.position]
-    let isComment = command.startsWith("#")
-    for (const argsKey in args) {
-      let a = parseFloat(args[argsKey])
-      if (!isNaN(a)) {
-        // @ts-ignore
-        args[argsKey] = a
-      }
-    }
-    // console.log(isComment)
-    try {
-      if (command === "#die") return false
-      command = command.replace("#", "_")
-      if (command in this) {
-        this[command](...args)
-        this.__debug(command, args)
-      }
-    } catch (e) {
-      // @ts-ignore
-      Execution.display(e)
-    }
     this.position++
+    let isComment = true
+    if (command != '') {
+      isComment = command.startsWith("#")
+      for (const argsKey in args) {
+        let a = parseFloat(args[argsKey])
+        if (!isNaN(a)) {
+          // @ts-ignore
+          args[argsKey] = a
+        }
+      }
+      // console.log(isComment)
+      try {
+        if (command === "#die") return false
+        command = command.replace("#", "_")
+        if (command in this) {
+          this[command](...args)
+          this.__debug(command, args)
+        } else if (!isComment) {
+          throw Execution.error(this.position, 'Undefined function', command)
+        }
+      } catch (e) {
+        // @ts-ignore
+        Execution.display(e)
+      }
+    }
     return isComment && this.position < this.commands.length
       ? this.prepareLine()
       : this.position < this.commands.length
@@ -576,7 +601,7 @@ class InterpreterIc10 {
   }
 
   move(op1, op2, op3, op4) {
-    this.memory.cell(op1, op2)
+    this.memory.cell(op1, this.memory.cell(op2))
   }
 
   add(op1, op2, op3, op4) {
@@ -904,7 +929,11 @@ class InterpreterIc10 {
       try {
         out.push(this.memory.cell(arguments[argumentsKey]))
       } catch (e) {
-        out.push(arguments[argumentsKey])
+        try {
+          out.push(this.memory.getCell(arguments[argumentsKey]))
+        } catch (e) {
+          out.push(arguments[argumentsKey])
+        }
       }
     }
     console.log(...out)
@@ -915,9 +944,6 @@ class InterpreterIc10 {
   }
 }
 
-const
-  text = fs.readFileSync(".ic10", "utf8")
-var
-  interpreterIc10 = new InterpreterIc10(text)
-interpreterIc10
-  .run()
+const text = fs.readFileSync(".ic10", "utf8")
+var interpreterIc10 = new InterpreterIc10(text)
+interpreterIc10.run()
