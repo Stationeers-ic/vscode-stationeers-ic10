@@ -1,25 +1,18 @@
 'use strict';
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deactivate = exports.activate = void 0;
 const vscode = require("vscode");
 const vscode_1 = require("vscode");
 const ic10_vscode_1 = require("./ic10-vscode");
 const ic10_1 = require("ic10");
+const path_1 = __importDefault(require("path"));
 const LOCALE_KEY = vscode.env.language;
 const ic10 = new ic10_vscode_1.Ic10Vscode();
 const LANG_KEY = 'ic10';
-const settings = {
-    debug: true,
-    debugCallback: function () {
-        console.log(...arguments);
-    },
-    logCallback: function () {
-        console.log(...arguments);
-    },
-    executionCallback: function (e) {
-    },
-};
-const interpreterIc10 = new ic10_1.InterpreterIc10(null, settings);
+const interpreterIc10 = new ic10_1.InterpreterIc10(null);
 var interpreterIc10State = 0;
 function activate(ctx) {
     console.log('activate 1c10');
@@ -34,10 +27,23 @@ function activate(ctx) {
         if (!interpreterIc10State) {
             vscode.window.showInformationMessage('Running');
             var code = vscode.window.activeTextEditor.document.getText();
-            const panel = vscode.window.createWebviewPanel('catCoding', 'Cat Coding', vscode.ViewColumn.One, {});
-            interpreterIc10.init(code);
+            var title = path_1.default.basename(vscode.window.activeTextEditor.document.fileName);
             interpreterIc10State = 1;
-            interpreterIc10.run();
+            const panel = vscode.window.createWebviewPanel('ic10.debug', `${title}-Debug`, vscode.ViewColumn.Two);
+            const settings = {
+                debug: true,
+                tickTime: 500,
+                debugCallback: function () {
+                    panel.webview.html += ic10.htmlLog(...arguments) + "<br>";
+                },
+                logCallback: function () {
+                    panel.webview.html += ic10.htmlLog(...arguments) + "<br>";
+                },
+                executionCallback: function (e) {
+                    panel.webview.html += ic10.htmlLog(...arguments) + "<br>";
+                },
+            };
+            interpreterIc10.setSettings(settings).init(code).run();
         }
     }));
     ctx.subscriptions.push(vscode.commands.registerCommand('ic10.stop', () => {
