@@ -2,28 +2,28 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Ic10Vscode = void 0;
 const vscode = require("vscode");
-const LOCALE_KEY = vscode.env.language.trim();
-try {
-    var IC10Data = {};
-    var langPath = require(`../languages/${LOCALE_KEY}.json`);
-    console.log(langPath);
-    if (langPath instanceof Object) {
-        IC10Data = langPath;
-        console.info('Ok');
-    }
-    else {
-        var langPath = require(`../languages/en.json`);
-        IC10Data = langPath;
-        console.info(`undefined lang ${LOCALE_KEY}`);
-    }
-}
-catch (e) {
-    console.warn(e);
-}
 class Ic10Vscode {
+    constructor() {
+        this.langPath = {};
+        const LOCALE_KEY = vscode.env.language.trim();
+        try {
+            var langPath = require(`../languages/${LOCALE_KEY}.json`);
+            if (langPath instanceof Object) {
+                this.langPath = langPath;
+            }
+            else {
+                var langPath = require(`../languages/en.json`);
+                this.langPath = langPath;
+                console.info(`undefined lang ${LOCALE_KEY}`);
+            }
+        }
+        catch (e) {
+            console.warn(e);
+        }
+    }
     getHover(name = '', lang = '') {
-        if (IC10Data.hasOwnProperty(name)) {
-            var data = IC10Data[name];
+        if (this.langPath.hasOwnProperty(name)) {
+            var data = this.langPath[name];
             var type = data?.type;
             var op1 = data?.op1;
             var op2 = data?.op2;

@@ -4,12 +4,12 @@ import vscode = require('vscode');
 // @ts-ignore
 import {Hover} from 'vscode';
 import {Ic10Vscode} from './ic10-vscode';
-import {InterpreterIc10,ic10Error} from "ic10";
+import {ic10Error, InterpreterIc10} from "ic10";
 
 const LOCALE_KEY: string = vscode.env.language
-var ic10 = new Ic10Vscode();
+const ic10 = new Ic10Vscode();
 const LANG_KEY = 'ic10'
-var settings = {
+const settings = {
 	debug: true,
 	debugCallback: function () {
 		console.log(...arguments)
@@ -20,8 +20,11 @@ var settings = {
 	executionCallback: function (e: ic10Error) {
 	},
 }
-const interpreterIc10 = new InterpreterIc10(null,settings)
-function activate(ctx) {
+const interpreterIc10 = new InterpreterIc10(null, settings)
+var interpreterIc10State = 0
+
+
+export function activate(ctx) {
 	
 	console.log('activate 1c10')
 	
@@ -30,30 +33,30 @@ function activate(ctx) {
 			provideHover(document, position, token) {
 				var word = document.getWordRangeAtPosition(position)
 				var text = document.getText(word)
-				console.log(ic10.getHover(text, LOCALE_KEY))
 				return new Hover(ic10.getHover(text, LOCALE_KEY))
 			}
 		}
 	));
-	const command = 'ic10.run';
-	const commandHandler = () => {
-		console.log(vscode.window)
-		vscode.window.showInformationMessage('Running');
-		var code = vscode.window.activeTextEditor.document.getText()
-		// @ts-ignore
-		interpreterIc10.init(code)
-		interpreterIc10.run()
-	};
-	ctx.subscriptions.push(vscode.commands.registerCommand(command, commandHandler));
 	
+	ctx.subscriptions.push(vscode.commands.registerCommand('ic10.run', () => {
+		if (!interpreterIc10State) {
+			vscode.window.showInformationMessage('Running');
+			var code = vscode.window.activeTextEditor.document.getText()
+			// @ts-ignore
+			interpreterIc10.init(code)
+			interpreterIc10State = 1
+			interpreterIc10.run()
+		}
+	}));
+	ctx.subscriptions.push(vscode.commands.registerCommand('ic10.stop', () => {
+		if (interpreterIc10State) {
+			vscode.window.showInformationMessage('Stop');
+			// @ts-ignore
+			interpreterIc10.stop()
+		}
+	}));
 }
 
-// @ts-ignore
-exports.activate = activate;
-
-function deactivate() {
+export function deactivate() {
 	console.log('deactivate 1c10')
 }
-
-// @ts-ignore
-exports.deactivate = deactivate;
