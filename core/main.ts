@@ -4,12 +4,23 @@ import vscode = require('vscode');
 // @ts-ignore
 import {Hover} from 'vscode';
 import {Ic10Vscode} from './ic10-vscode';
-import {InterpreterIc10} from "ic10";
+import {InterpreterIc10,ic10Error} from "ic10";
 
 const LOCALE_KEY: string = vscode.env.language
 var ic10 = new Ic10Vscode();
 const LANG_KEY = 'ic10'
-
+var settings = {
+	debug: true,
+	debugCallback: function () {
+		console.log(...arguments)
+	},
+	logCallback: function () {
+		console.log(...arguments)
+	},
+	executionCallback: function (e: ic10Error) {
+	},
+}
+const interpreterIc10 = new InterpreterIc10(null,settings)
 function activate(ctx) {
 	
 	console.log('activate 1c10')
@@ -28,9 +39,9 @@ function activate(ctx) {
 	const commandHandler = () => {
 		console.log(vscode.window)
 		vscode.window.showInformationMessage('Running');
-		var text = vscode.window.activeTextEditor.document.getText()
+		var code = vscode.window.activeTextEditor.document.getText()
 		// @ts-ignore
-		var interpreterIc10 = new InterpreterIc10(text);
+		interpreterIc10.init(code)
 		interpreterIc10.run()
 	};
 	ctx.subscriptions.push(vscode.commands.registerCommand(command, commandHandler));

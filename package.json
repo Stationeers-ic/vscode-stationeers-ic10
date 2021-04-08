@@ -101,7 +101,7 @@
 		"caller-id": "^0.1.0",
 		"chalk": "^4.1.0",
 		"generator-build": "^1.0.0",
-		"ic10": "^1.0.6"
+		"ic10": "^1.0.7"
 	},
 	"__metadata": {
 		"id": "e9ab14ed-1c65-4a3c-835b-f13c96f90ac7",
