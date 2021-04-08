@@ -3,23 +3,16 @@
 import vscode = require('vscode');
 // @ts-ignore
 import {Hover} from 'vscode';
-import {IC10} from './ic10';
-
-const InterpreterIc10 = require('ic10');
+import {Ic10Vscode} from './ic10-vscode';
+import {InterpreterIc10} from "ic10";
 
 const LOCALE_KEY: string = vscode.env.language
-var ic10 = new IC10();
+var ic10 = new Ic10Vscode();
 const LANG_KEY = 'ic10'
 
 function activate(ctx) {
+	
 	console.log('activate 1c10')
-	console.log(LOCALE_KEY)
-	ctx.subscriptions.push(
-		vscode.commands.registerCommand('ic10.run', () => {
-			console.log('Test');
-		})
-	);
-	console.log(ic10)
 	
 	ctx.subscriptions.push(vscode.languages.registerHoverProvider(LANG_KEY,
 		{
@@ -32,10 +25,12 @@ function activate(ctx) {
 		}
 	));
 	const command = 'ic10.run';
-	
-	const commandHandler = (name: string = 'world') => {
-		console.log(this,...arguments)
-		var interpreterIc10 = new InterpreterIc10('');
+	const commandHandler = () => {
+		console.log(vscode.window)
+		vscode.window.showInformationMessage('Running');
+		var text = vscode.window.activeTextEditor.document.getText()
+		// @ts-ignore
+		var interpreterIc10 = new InterpreterIc10(text);
 		interpreterIc10.run()
 	};
 	ctx.subscriptions.push(vscode.commands.registerCommand(command, commandHandler));

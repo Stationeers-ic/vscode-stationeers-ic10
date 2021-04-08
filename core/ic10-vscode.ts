@@ -17,7 +17,7 @@ try {
   console.warn(e)
 }
 
-export class IC10 {
+export class Ic10Vscode {
   public getHover(name = '', lang = '') {
 
     if (IC10Data.hasOwnProperty(name)) {

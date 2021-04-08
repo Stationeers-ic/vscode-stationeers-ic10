@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.IC10 = void 0;
+exports.Ic10Vscode = void 0;
 const vscode = require("vscode");
 const LOCALE_KEY = vscode.env.language.trim();
 try {
@@ -20,7 +20,7 @@ try {
 catch (e) {
     console.warn(e);
 }
-class IC10 {
+class Ic10Vscode {
     getHover(name = '', lang = '') {
         if (IC10Data.hasOwnProperty(name)) {
             var data = IC10Data[name];
@@ -61,5 +61,5 @@ ${description}
         }
     }
 }
-exports.IC10 = IC10;
-//# sourceMappingURL=ic10.js.map
+exports.Ic10Vscode = Ic10Vscode;
+//# sourceMappingURL=ic10-vscode.js.map

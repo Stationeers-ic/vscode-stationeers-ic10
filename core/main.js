@@ -2,18 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const vscode = require("vscode");
 const vscode_1 = require("vscode");
-const ic10_1 = require("./ic10");
-const InterpreterIc10 = require('ic10');
+const ic10_vscode_1 = require("./ic10-vscode");
+const ic10_1 = require("ic10");
 const LOCALE_KEY = vscode.env.language;
-var ic10 = new ic10_1.IC10();
+var ic10 = new ic10_vscode_1.Ic10Vscode();
 const LANG_KEY = 'ic10';
 function activate(ctx) {
     console.log('activate 1c10');
-    console.log(LOCALE_KEY);
-    ctx.subscriptions.push(vscode.commands.registerCommand('ic10.run', () => {
-        console.log('Test');
-    }));
-    console.log(ic10);
     ctx.subscriptions.push(vscode.languages.registerHoverProvider(LANG_KEY, {
         provideHover(document, position, token) {
             var word = document.getWordRangeAtPosition(position);
@@ -23,9 +18,11 @@ function activate(ctx) {
         }
     }));
     const command = 'ic10.run';
-    const commandHandler = (name = 'world') => {
-        console.log(this, ...arguments);
-        var interpreterIc10 = new InterpreterIc10('');
+    const commandHandler = () => {
+        console.log(vscode.window);
+        vscode.window.showInformationMessage('Running');
+        var text = vscode.window.activeTextEditor.document.getText();
+        var interpreterIc10 = new ic10_1.InterpreterIc10(text);
         interpreterIc10.run();
     };
     ctx.subscriptions.push(vscode.commands.registerCommand(command, commandHandler));
