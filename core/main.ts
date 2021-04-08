@@ -43,6 +43,12 @@ export function activate(ctx) {
 			vscode.window.showInformationMessage('Running');
 			var code = vscode.window.activeTextEditor.document.getText()
 			// @ts-ignore
+			const panel = vscode.window.createWebviewPanel(
+				'catCoding', // Identifies the type of the webview. Used internally
+				'Cat Coding', // Title of the panel displayed to the user
+				vscode.ViewColumn.One, // Editor column to show the new webview panel in.
+				{} // Webview options. More on these later.
+			);
 			interpreterIc10.init(code)
 			interpreterIc10State = 1
 			interpreterIc10.run()

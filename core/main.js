@@ -34,6 +34,7 @@ function activate(ctx) {
         if (!interpreterIc10State) {
             vscode.window.showInformationMessage('Running');
             var code = vscode.window.activeTextEditor.document.getText();
+            const panel = vscode.window.createWebviewPanel('catCoding', 'Cat Coding', vscode.ViewColumn.One, {});
             interpreterIc10.init(code);
             interpreterIc10State = 1;
             interpreterIc10.run();
