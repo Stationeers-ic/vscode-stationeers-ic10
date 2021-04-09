@@ -40,6 +40,7 @@
     "typescript": "^4.2.3"
   },
   "main": "./core/main.js",
+  "browser": "./web/extension.js",
   "contributes": {
     "languages": [
       {
@@ -64,11 +65,60 @@
       {
         "type": "ic10",
         "label": "ic10 Debug",
-        "program": "./out/node/nodeDebug.js",
+        "program": "./debugger/debugAdapter.js",
         "runtime": "node",
         "languages": [
           "ic10"
-        ]
+        ],
+        "configurationAttributes": {
+          "launch": {
+            "required": [
+              "program"
+            ],
+            "properties": {
+              "program": {
+                "type": "string",
+                "description": "Absolute path to a text file.",
+                "default": "${workspaceFolder}/${command:AskForProgramName}"
+              },
+              "stopOnEntry": {
+                "type": "boolean",
+                "description": "Automatically stop after launch.",
+                "default": true
+              },
+              "trace": {
+                "type": "boolean",
+                "description": "Enable logging of the Debug Adapter Protocol.",
+                "default": true
+              }
+            },
+            "initialConfigurations": [
+              {
+                "type": "ic10",
+                "request": "launch",
+                "name": "Ask for file name",
+                "program": "${workspaceFolder}/${command:AskForProgramName}",
+                "stopOnEntry": true
+              }
+            ]
+          }
+        },
+        "configurationSnippets": [
+          {
+            "label": "Mock Debug: Launch",
+            "description": "A new configuration for 'debugging' a user selected markdown file.",
+            "body": {
+              "type": "mock",
+              "request": "launch",
+              "name": "Ask for file name",
+              "program": "^\"\\${workspaceFolder}/\\${command:AskForProgramName}\"",
+              "stopOnEntry": true
+            }
+          }
+        ],
+        "variables": {
+          "AskForProgramName": "extension.mock-debug.getProgramName"
+        }
       }
     ],
     "commands": [
@@ -112,8 +162,8 @@
       ],
       "debug/variables/context": [
         {
-          "command": "extension.mock-debug.toggleFormatting",
-          "when": "debugType == 'mock' && debugProtocolVariableMenuContext == 'simple'"
+          "command": "extension.ic10-debug.toggleFormatting",
+          "when": "debugType == 'ic10' && debugProtocolVariableMenuContext == 'simple'"
         }
       ]
     }
@@ -122,7 +172,6 @@
     "await-notify": "^1.0.1",
     "caller-id": "^0.1.0",
     "chalk": "^4.1.0",
-    "generator-build": "^1.0.0",
     "ic10": "^1.0.11",
     "vscode-debugadapter": "^1.46.0",
     "vscode-debugprotocol": "^1.46.0"
