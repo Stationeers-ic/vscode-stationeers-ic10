@@ -3,6 +3,8 @@
  *--------------------------------------------------------*/
 
 import { EventEmitter } from 'events';
+import {InterpreterIc10} from "ic10";
+import * as fs from "fs";
 
 export interface FileAccessor {
 	readFile(path: string): Promise<string>;
@@ -63,10 +65,12 @@ export class ic10Runtime extends EventEmitter {
 
 	private _namedException: string | undefined;
 	private _otherExceptions = false;
+	private ic10: InterpreterIc10;
+	
 
-
-	constructor(private _fileAccessor: FileAccessor) {
+	constructor(private _fileAccessor: FileAccessor, ic10:InterpreterIc10) {
 		super();
+		this.ic10 = ic10;
 	}
 
 	/**
@@ -80,7 +84,12 @@ export class ic10Runtime extends EventEmitter {
 		this._currentLine = -1;
 
 		await this.verifyBreakpoints(this._sourceFile);
-
+		try {
+			this.ic10.prepareLine()
+		}catch(e) {
+			fs.writeFileSync('C:\\Users\\Kirill\\.vscode\\extensions\\stationeers-ic10\\debug2.log',e)
+		}
+		fs.writeFileSync('C:\\Users\\Kirill\\.vscode\\extensions\\stationeers-ic10\\debug.log',10 + this.ic10.position)
 		if (stopOnEntry) {
 			// we step once
 			this.step(false, 'stopOnEntry');
@@ -280,6 +289,11 @@ export class ic10Runtime extends EventEmitter {
 		if (this._sourceFile !== file) {
 			this._sourceFile = file;
 			const contents = await this._fileAccessor.readFile(file);
+			try {
+				this.ic10.init(contents)
+			}catch(e) {
+				console.error(e)
+			}
 			this._sourceLines = contents.split(/\r?\n/);
 		}
 	}

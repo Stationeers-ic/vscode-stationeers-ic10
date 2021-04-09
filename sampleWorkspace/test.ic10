@@ -1,7 +1,7 @@
 alias a r0
 alias b r1
 alias c r2
-move a 5
+l r4 d0 iron
 move b 2
 add c a b
 #log c

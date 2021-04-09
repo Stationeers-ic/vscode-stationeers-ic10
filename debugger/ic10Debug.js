@@ -25,7 +25,7 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
         this.ic10 = new ic10_1.InterpreterIc10();
         this.setDebuggerLinesStartAt1(false);
         this.setDebuggerColumnsStartAt1(false);
-        this._runtime = new ic10Runtime_1.ic10Runtime(fileAccessor);
+        this._runtime = new ic10Runtime_1.ic10Runtime(fileAccessor, this.ic10);
         this._runtime.on('stopOnEntry', () => {
             this.sendEvent(new vscode_debugadapter_1.StoppedEvent('entry', ic10DebugSession.threadID));
         });
@@ -47,7 +47,10 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
             }
         });
         this._runtime.on('breakpointValidated', (bp) => {
-            this.sendEvent(new vscode_debugadapter_1.BreakpointEvent('changed', { verified: bp.verified, id: bp.id }));
+            this.sendEvent(new vscode_debugadapter_1.BreakpointEvent('changed', {
+                verified: bp.verified,
+                id: bp.id
+            }));
         });
         this._runtime.on('output', (text, filePath, line, column) => {
             const e = new vscode_debugadapter_1.OutputEvent(`${text}\n`);
@@ -219,27 +222,28 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
         this.sendResponse(response);
     }
     async variablesRequest(response, args, request) {
-        const variables = [];
+        var _variables = new Set();
         for (var cellsKey in this.ic10.memory.cells) {
             try {
                 cellsKey = String(cellsKey);
                 var val = this.ic10.memory.cells[cellsKey].get();
+                var name = this.ic10.memory.cells[cellsKey].getName();
                 if (cellsKey != '16') {
-                    variables.push({
-                        name: 'r' + String(cellsKey),
+                    _variables[name] = {
+                        name: name,
                         type: "float",
                         value: val ? String(val) : '0',
                         variablesReference: 0,
                         __vscodeVariableMenuContext: "simple",
-                    });
+                    };
                 }
                 else {
-                    variables.push({
-                        name: 'r' + String(cellsKey),
+                    _variables[name] = {
+                        name: name,
                         type: "string",
                         value: JSON.stringify(val),
                         variablesReference: 0
-                    });
+                    };
                 }
             }
             catch (e) {
@@ -249,19 +253,36 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
             if (this.ic10.memory.environ.hasOwnProperty(environKey)) {
                 try {
                     var val = this.ic10.memory.environ[environKey];
-                    variables.push({
+                    var name = this.ic10.memory.environ[environKey].getName();
+                    _variables[name] = {
                         name: String(environKey),
                         type: "string",
                         value: JSON.stringify(val),
                         variablesReference: 0
-                    });
+                    };
+                }
+                catch (e) {
+                }
+            }
+        }
+        for (var aliasesKey in this.ic10.memory.aliases) {
+            if (this.ic10.memory.aliases.hasOwnProperty(aliasesKey)) {
+                try {
+                    var val = this.ic10.memory.aliases[aliasesKey];
+                    var name = this.ic10.memory.aliases[aliasesKey].getName();
+                    _variables[name] = {
+                        name: String(environKey),
+                        type: "string",
+                        value: JSON.stringify(val),
+                        variablesReference: 0
+                    };
                 }
                 catch (e) {
                 }
             }
         }
         response.body = {
-            variables: variables
+            variables: Object.values(_variables)
         };
         this.sendResponse(response);
     }

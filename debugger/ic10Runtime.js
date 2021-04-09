@@ -1,9 +1,29 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ic10Runtime = void 0;
 const events_1 = require("events");
+const fs = __importStar(require("fs"));
 class ic10Runtime extends events_1.EventEmitter {
-    constructor(_fileAccessor) {
+    constructor(_fileAccessor, ic10) {
         super();
         this._fileAccessor = _fileAccessor;
         this._sourceFile = '';
@@ -14,6 +34,7 @@ class ic10Runtime extends events_1.EventEmitter {
         this._breakAddresses = new Set();
         this._noDebug = false;
         this._otherExceptions = false;
+        this.ic10 = ic10;
     }
     get sourceFile() {
         return this._sourceFile;
@@ -23,6 +44,13 @@ class ic10Runtime extends events_1.EventEmitter {
         await this.loadSource(program);
         this._currentLine = -1;
         await this.verifyBreakpoints(this._sourceFile);
+        try {
+            this.ic10.prepareLine();
+        }
+        catch (e) {
+            fs.writeFileSync('C:\\Users\\Kirill\\.vscode\\extensions\\stationeers-ic10\\debug2.log', e);
+        }
+        fs.writeFileSync('C:\\Users\\Kirill\\.vscode\\extensions\\stationeers-ic10\\debug.log', 10 + this.ic10.position);
         if (stopOnEntry) {
             this.step(false, 'stopOnEntry');
         }
@@ -159,6 +187,12 @@ class ic10Runtime extends events_1.EventEmitter {
         if (this._sourceFile !== file) {
             this._sourceFile = file;
             const contents = await this._fileAccessor.readFile(file);
+            try {
+                this.ic10.init(contents);
+            }
+            catch (e) {
+                console.error(e);
+            }
             this._sourceLines = contents.split(/\r?\n/);
         }
     }
