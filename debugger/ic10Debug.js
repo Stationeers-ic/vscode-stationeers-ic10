@@ -226,11 +226,19 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
         for (var cellsKey in this.ic10.memory.cells) {
             try {
                 cellsKey = String(cellsKey);
-                var val = this.ic10.memory.cells[cellsKey].get();
-                var name = this.ic10.memory.cells[cellsKey].getName();
+                let val = this.ic10.memory.cells[cellsKey].get();
+                let alias = this.ic10.memory.cells[cellsKey].alias;
+                let name = this.ic10.memory.cells[cellsKey].name;
+                let _name = '';
+                if (alias) {
+                    _name = name + `[${alias}]`;
+                }
+                else {
+                    _name = name;
+                }
                 if (cellsKey != '16') {
                     _variables[name] = {
-                        name: name,
+                        name: _name,
                         type: "float",
                         value: val ? String(val) : '0',
                         variablesReference: 0,
@@ -239,7 +247,7 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
                 }
                 else {
                     _variables[name] = {
-                        name: name,
+                        name: _name,
                         type: "string",
                         value: JSON.stringify(val),
                         variablesReference: 0
@@ -252,10 +260,18 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
         for (var environKey in this.ic10.memory.environ) {
             if (this.ic10.memory.environ.hasOwnProperty(environKey)) {
                 try {
-                    var val = this.ic10.memory.environ[environKey];
-                    var name = this.ic10.memory.environ[environKey].getName();
+                    let val = this.ic10.memory.environ[environKey];
+                    let alias = val.alias;
+                    let name = val.name;
+                    let _name = '';
+                    if (alias) {
+                        _name = name + `[${alias}]`;
+                    }
+                    else {
+                        _name = name;
+                    }
                     _variables[name] = {
-                        name: String(environKey),
+                        name: _name,
                         type: "string",
                         value: JSON.stringify(val),
                         variablesReference: 0
@@ -268,10 +284,18 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
         for (var aliasesKey in this.ic10.memory.aliases) {
             if (this.ic10.memory.aliases.hasOwnProperty(aliasesKey)) {
                 try {
-                    var val = this.ic10.memory.aliases[aliasesKey];
-                    var name = this.ic10.memory.aliases[aliasesKey].getName();
+                    let val = this.ic10.memory.environ[environKey];
+                    let alias = val.alias;
+                    let name = val.name;
+                    let _name = '';
+                    if (alias) {
+                        _name = name + `[${alias}]`;
+                    }
+                    else {
+                        _name = name;
+                    }
                     _variables[name] = {
-                        name: String(environKey),
+                        name: _name,
                         type: "string",
                         value: JSON.stringify(val),
                         variablesReference: 0

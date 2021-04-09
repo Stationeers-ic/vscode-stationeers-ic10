@@ -1,27 +1,7 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ic10Runtime = void 0;
 const events_1 = require("events");
-const fs = __importStar(require("fs"));
 class ic10Runtime extends events_1.EventEmitter {
     constructor(_fileAccessor, ic10) {
         super();
@@ -44,13 +24,6 @@ class ic10Runtime extends events_1.EventEmitter {
         await this.loadSource(program);
         this._currentLine = -1;
         await this.verifyBreakpoints(this._sourceFile);
-        try {
-            this.ic10.prepareLine();
-        }
-        catch (e) {
-            fs.writeFileSync('C:\\Users\\Kirill\\.vscode\\extensions\\stationeers-ic10\\debug2.log', e);
-        }
-        fs.writeFileSync('C:\\Users\\Kirill\\.vscode\\extensions\\stationeers-ic10\\debug.log', 10 + this.ic10.position);
         if (stopOnEntry) {
             this.step(false, 'stopOnEntry');
         }
@@ -197,28 +170,15 @@ class ic10Runtime extends events_1.EventEmitter {
         }
     }
     run(reverse = false, stepEvent) {
-        if (reverse) {
-            for (let ln = this._currentLine - 1; ln >= 0; ln--) {
-                if (this.fireEventsForLine(ln, stepEvent)) {
-                    this._currentLine = ln;
-                    this._currentColumn = undefined;
-                    return;
-                }
+        while (this.ic10.prepareLine()) {
+            var ln = this.ic10.position - 1;
+            if (this.fireEventsForLine(ln, stepEvent)) {
+                this._currentLine = ln;
+                this._currentColumn = undefined;
+                return true;
             }
-            this._currentLine = 0;
-            this._currentColumn = undefined;
-            this.sendEvent('stopOnEntry');
         }
-        else {
-            for (let ln = this._currentLine + 1; ln < this._sourceLines.length; ln++) {
-                if (this.fireEventsForLine(ln, stepEvent)) {
-                    this._currentLine = ln;
-                    this._currentColumn = undefined;
-                    return true;
-                }
-            }
-            this.sendEvent('end');
-        }
+        this.sendEvent('end');
     }
     async verifyBreakpoints(path) {
         if (this._noDebug) {

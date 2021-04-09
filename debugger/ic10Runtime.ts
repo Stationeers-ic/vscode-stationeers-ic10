@@ -2,9 +2,8 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  *--------------------------------------------------------*/
 
-import { EventEmitter } from 'events';
+import {EventEmitter} from 'events';
 import {InterpreterIc10} from "ic10";
-import * as fs from "fs";
 
 export interface FileAccessor {
 	readFile(path: string): Promise<string>;
@@ -38,58 +37,53 @@ interface IStack {
  * A ic10 runtime with minimal debugger functionality.
  */
 export class ic10Runtime extends EventEmitter {
-
+	
 	// the initial (and one and only) file we are 'debugging'
 	private _sourceFile: string = '';
 	public get sourceFile() {
 		return this._sourceFile;
 	}
-
+	
 	// the contents (= lines) of the one and only file
 	private _sourceLines: string[] = [];
-
+	
 	// This is the next line that will be 'executed'
 	private _currentLine = 0;
 	private _currentColumn: number | undefined;
-
+	
 	// maps from sourceFile to array of ic10 breakpoints
 	private _breakPoints = new Map<string, Iic10Breakpoint[]>();
-
+	
 	// since we want to send breakpoint events, we will assign an id to every event
 	// so that the frontend can match events with breakpoints.
 	private _breakpointId = 1;
-
+	
 	private _breakAddresses = new Set<string>();
-
+	
 	private _noDebug = false;
-
+	
 	private _namedException: string | undefined;
 	private _otherExceptions = false;
 	private ic10: InterpreterIc10;
 	
-
-	constructor(private _fileAccessor: FileAccessor, ic10:InterpreterIc10) {
+	
+	constructor(private _fileAccessor: FileAccessor, ic10: InterpreterIc10) {
 		super();
 		this.ic10 = ic10;
 	}
-
+	
 	/**
 	 * Start executing the given program.
 	 */
 	public async start(program: string, stopOnEntry: boolean, noDebug: boolean): Promise<void> {
-
+		
 		this._noDebug = noDebug;
-
+		
 		await this.loadSource(program);
 		this._currentLine = -1;
-
+		
 		await this.verifyBreakpoints(this._sourceFile);
-		try {
-			this.ic10.prepareLine()
-		}catch(e) {
-			fs.writeFileSync('C:\\Users\\Kirill\\.vscode\\extensions\\stationeers-ic10\\debug2.log',e)
-		}
-		fs.writeFileSync('C:\\Users\\Kirill\\.vscode\\extensions\\stationeers-ic10\\debug.log',10 + this.ic10.position)
+		
 		if (stopOnEntry) {
 			// we step once
 			this.step(false, 'stopOnEntry');
@@ -98,21 +92,21 @@ export class ic10Runtime extends EventEmitter {
 			this.continue();
 		}
 	}
-
+	
 	/**
 	 * Continue execution to the end/beginning.
 	 */
 	public continue(reverse = false) {
 		this.run(reverse, undefined);
 	}
-
+	
 	/**
 	 * Step to the next/previous non empty line.
 	 */
 	public step(reverse = false, event = 'stopOnStep') {
 		this.run(reverse, event);
 	}
-
+	
 	/**
 	 * "Step into" for ic10 debug means: go to next character
 	 */
@@ -131,7 +125,7 @@ export class ic10Runtime extends EventEmitter {
 			this.sendEvent('stopOnStep');
 		}
 	}
-
+	
 	/**
 	 * "Step out" for ic10 debug means: go to previous character
 	 */
@@ -144,24 +138,24 @@ export class ic10Runtime extends EventEmitter {
 		}
 		this.sendEvent('stopOnStep');
 	}
-
+	
 	public getStepInTargets(frameId: number): IStepInTargets[] {
-
+		
 		const line = this._sourceLines[this._currentLine].trim();
-
+		
 		// every word of the current line becomes a stack frame.
 		const words = line.split(/\s+/);
-
+		
 		// return nothing if frameId is out of range
 		if (frameId < 0 || frameId >= words.length) {
 			return [];
 		}
-
+		
 		// pick the frame for the given frameId
 		const frame = words[frameId];
-
+		
 		const pos = line.indexOf(frame);
-
+		
 		// make every character of the frame a potential "step in" target
 		return frame.split('').map((c, ix) => {
 			return {
@@ -170,14 +164,14 @@ export class ic10Runtime extends EventEmitter {
 			};
 		});
 	}
-
+	
 	/**
 	 * Returns a fake 'stacktrace' where every 'stackframe' is a word from the current line.
 	 */
 	public stack(startFrame: number, endFrame: number): IStack {
-
+		
 		const words = this._sourceLines[this._currentLine].trim().split(/\s+/);
-
+		
 		const frames = new Array<IStackFrame>();
 		// every word of the current line becomes a stack frame.
 		for (let i = startFrame; i < Math.min(endFrame, words.length); i++) {
@@ -198,11 +192,11 @@ export class ic10Runtime extends EventEmitter {
 			count: words.length
 		};
 	}
-
+	
 	public getBreakpoints(path: string, line: number): number[] {
-
+		
 		const l = this._sourceLines[line];
-
+		
 		let sawSpace = true;
 		const bps: number[] = [];
 		for (let i = 0; i < l.length; i++) {
@@ -215,28 +209,28 @@ export class ic10Runtime extends EventEmitter {
 				sawSpace = true;
 			}
 		}
-
+		
 		return bps;
 	}
-
+	
 	/*
 	 * Set breakpoint in file with given line.
 	 */
 	public async setBreakPoint(path: string, line: number): Promise<Iic10Breakpoint> {
-
-		const bp: Iic10Breakpoint = { verified: false, line, id: this._breakpointId++ };
+		
+		const bp: Iic10Breakpoint = {verified: false, line, id: this._breakpointId++};
 		let bps = this._breakPoints.get(path);
 		if (!bps) {
 			bps = new Array<Iic10Breakpoint>();
 			this._breakPoints.set(path, bps);
 		}
 		bps.push(bp);
-
+		
 		await this.verifyBreakpoints(path);
-
+		
 		return bp;
 	}
-
+	
 	/*
 	 * Clear breakpoint in file with given line.
 	 */
@@ -252,14 +246,14 @@ export class ic10Runtime extends EventEmitter {
 		}
 		return undefined;
 	}
-
+	
 	/*
 	 * Clear all breakpoints for file.
 	 */
 	public clearBreakpoints(path: string): void {
 		this._breakPoints.delete(path);
 	}
-
+	
 	/*
 	 * Set data breakpoint.
 	 */
@@ -270,77 +264,63 @@ export class ic10Runtime extends EventEmitter {
 		}
 		return false;
 	}
-
+	
 	public setExceptionsFilters(namedException: string | undefined, otherExceptions: boolean): void {
 		this._namedException = namedException;
 		this._otherExceptions = otherExceptions;
 	}
-
+	
 	/*
 	 * Clear all data breakpoints.
 	 */
 	public clearAllDataBreakpoints(): void {
 		this._breakAddresses.clear();
 	}
-
+	
 	// private methods
-
+	
 	private async loadSource(file: string): Promise<void> {
 		if (this._sourceFile !== file) {
 			this._sourceFile = file;
 			const contents = await this._fileAccessor.readFile(file);
 			try {
 				this.ic10.init(contents)
-			}catch(e) {
+			} catch (e) {
 				console.error(e)
 			}
 			this._sourceLines = contents.split(/\r?\n/);
 		}
 	}
-
+	
 	/**
 	 * Run through the file.
 	 * If stepEvent is specified only run a single step and emit the stepEvent.
 	 */
 	private run(reverse = false, stepEvent?: string) {
-		if (reverse) {
-			for (let ln = this._currentLine-1; ln >= 0; ln--) {
-				if (this.fireEventsForLine(ln, stepEvent)) {
-					this._currentLine = ln;
-					this._currentColumn = undefined;
-					return;
-				}
+		while (this.ic10.prepareLine()) {
+			var ln = this.ic10.position - 1;
+			if (this.fireEventsForLine(ln, stepEvent)) {
+				this._currentLine = ln;
+				this._currentColumn = undefined;
+				return true;
 			}
-			// no more lines: stop at first line
-			this._currentLine = 0;
-			this._currentColumn = undefined;
-			this.sendEvent('stopOnEntry');
-		} else {
-			for (let ln = this._currentLine+1; ln < this._sourceLines.length; ln++) {
-				if (this.fireEventsForLine(ln, stepEvent)) {
-					this._currentLine = ln;
-					this._currentColumn = undefined;
-					return true;
-				}
-			}
-			// no more lines: run to end
-			this.sendEvent('end');
 		}
+		this.sendEvent('end');
 	}
-
+	
 	private async verifyBreakpoints(path: string): Promise<void> {
-
+		
 		if (this._noDebug) {
 			return;
 		}
-
+		
 		const bps = this._breakPoints.get(path);
 		if (bps) {
 			await this.loadSource(path);
 			bps.forEach(bp => {
 				if (!bp.verified && bp.line < this._sourceLines.length) {
 					const srcLine = this._sourceLines[bp.line].trim();
-
+					
 					// if a line is empty or starts with '+' we don't allow to set a breakpoint but move the breakpoint down
 					if (srcLine.length === 0 || srcLine.indexOf('+') === 0) {
 						bp.line++;
@@ -359,25 +339,25 @@ export class ic10Runtime extends EventEmitter {
 			});
 		}
 	}
-
+	
 	/**
 	 * Fire events if line has a breakpoint or the word 'exception' or 'exception(...)' is found.
 	 * Returns true if execution needs to stop.
 	 */
 	private fireEventsForLine(ln: number, stepEvent?: string): boolean {
-
+		
 		if (this._noDebug) {
 			return false;
 		}
-
+		
 		const line = this._sourceLines[ln].trim();
-
+		
 		// if 'log(...)' found in source -> send argument to debug console
 		const matches = /log\((.*)\)/.exec(line);
 		if (matches && matches.length === 2) {
 			this.sendEvent('output', matches[1], this._sourceFile, ln, matches.index);
 		}
-
+		
 		// if a word in a line matches a data breakpoint, fire a 'dataBreakpoint' event
 		const words = line.split(" ");
 		for (const word of words) {
@@ -386,7 +366,7 @@ export class ic10Runtime extends EventEmitter {
 				return true;
 			}
 		}
-
+		
 		// if pattern 'exception(...)' found in source -> throw named exception
 		const matches2 = /exception\((.*)\)/.exec(line);
 		if (matches2 && matches2.length === 2) {
@@ -409,16 +389,16 @@ export class ic10Runtime extends EventEmitter {
 				}
 			}
 		}
-
+		
 		// is there a breakpoint?
 		const breakpoints = this._breakPoints.get(this._sourceFile);
 		if (breakpoints) {
 			const bps = breakpoints.filter(bp => bp.line === ln);
 			if (bps.length > 0) {
-
+				
 				// send 'stopped' event
 				this.sendEvent('stopOnBreakpoint');
-
+				
 				// the following shows the use of 'breakpoint' events to update properties of a breakpoint in the UI
 				// if breakpoint is not yet verified, verify it now and send a 'breakpoint' update event
 				if (!bps[0].verified) {
@@ -428,18 +408,18 @@ export class ic10Runtime extends EventEmitter {
 				return true;
 			}
 		}
-
+		
 		// non-empty line
 		if (stepEvent && line.length > 0) {
 			this.sendEvent(stepEvent);
 			return true;
 		}
-
+		
 		// nothing interesting found -> continue
 		return false;
 	}
-
-	private sendEvent(event: string, ... args: any[]) {
+	
+	private sendEvent(event: string, ...args: any[]) {
 		setImmediate(_ => {
 			this.emit(event, ...args);
 		});

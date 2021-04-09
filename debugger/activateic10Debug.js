@@ -23,38 +23,6 @@ exports.workspaceFileAccessor = exports.activateic10Debug = void 0;
 const vscode = __importStar(require("vscode"));
 const ic10Debug_1 = require("./ic10Debug");
 function activateic10Debug(context, factory) {
-    context.subscriptions.push(vscode.commands.registerCommand('extension.ic10-debug.runEditorContents', (resource) => {
-        let targetResource = resource;
-        if (!targetResource && vscode.window.activeTextEditor) {
-            targetResource = vscode.window.activeTextEditor.document.uri;
-        }
-        if (targetResource) {
-            vscode.debug.startDebugging(undefined, {
-                type: 'ic10',
-                name: 'Run File',
-                request: 'launch',
-                program: targetResource.fsPath
-            }, { noDebug: true });
-        }
-    }), vscode.commands.registerCommand('extension.ic10-debug.debugEditorContents', (resource) => {
-        let targetResource = resource;
-        if (!targetResource && vscode.window.activeTextEditor) {
-            targetResource = vscode.window.activeTextEditor.document.uri;
-        }
-        if (targetResource) {
-            vscode.debug.startDebugging(undefined, {
-                type: 'ic10',
-                name: 'Debug File',
-                request: 'launch',
-                program: targetResource.fsPath
-            });
-        }
-    }), vscode.commands.registerCommand('extension.ic10-debug.toggleFormatting', (variable) => {
-        const ds = vscode.debug.activeDebugSession;
-        if (ds) {
-            ds.customRequest('toggleFormatting');
-        }
-    }));
     context.subscriptions.push(vscode.commands.registerCommand('extension.ic10-debug.getProgramName', config => {
         return vscode.window.showInputBox({
             placeHolder: "Please enter the name of a markdown file in the workspace folder",

@@ -1,1 +1,0 @@
-TypeError: Cannot destructure property 'command' of 'this.commands[this.position]' as it is undefined.
