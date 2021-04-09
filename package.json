@@ -1,7 +1,7 @@
 {
   "name": "stationeers-ic10",
   "displayName": "Stationeers ic10",
-  "description": "",
+  "description": "Ic10 support",
   "version": "0.0.4",
   "license": "MIT",
   "publisher": "Traineratwot",
@@ -133,13 +133,6 @@
         "title": "ic10: Stop",
         "description": "Stop script",
         "icon": "$(stop)"
-      },
-      {
-        "command": "ic10.debug.debugEditorContents",
-        "title": "Debug ic10",
-        "category": "Ic10 Debug",
-        "enablement": "!inDebugMode",
-        "icon": "$(debug-alt)"
       }
     ],
     "snippets": [
@@ -160,10 +153,14 @@
           "when": "editorLangId == ic10"
         }
       ],
-      "debug/variables/context": [
+      "editor/title/run": [
         {
-          "command": "extension.ic10-debug.toggleFormatting",
-          "when": "debugType == 'ic10' && debugProtocolVariableMenuContext == 'simple'"
+          "command": "ic10.run",
+          "when": "resourceLangId == ic10"
+        },
+        {
+          "command": "ic10.stop",
+          "when": "resourceLangId == ic10"
         }
       ]
     }

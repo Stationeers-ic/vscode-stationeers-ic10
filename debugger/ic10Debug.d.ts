@@ -20,6 +20,7 @@ export declare class ic10DebugSession extends LoggingDebugSession {
     private _isProgressCancellable;
     private _showHex;
     private _useInvalidatedEvent;
+    private ic10;
     constructor(fileAccessor: FileAccessor);
     protected initializeRequest(response: DebugProtocol.InitializeResponse, args: DebugProtocol.InitializeRequestArguments): void;
     protected configurationDoneRequest(response: DebugProtocol.ConfigurationDoneResponse, args: DebugProtocol.ConfigurationDoneArguments): void;

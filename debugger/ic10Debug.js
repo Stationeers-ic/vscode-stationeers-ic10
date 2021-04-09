@@ -5,6 +5,7 @@ const vscode_debugadapter_1 = require("vscode-debugadapter");
 const path_1 = require("path");
 const ic10Runtime_1 = require("./ic10Runtime");
 const await_notify_1 = require("await-notify");
+const ic10_1 = require("ic10");
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -21,6 +22,7 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
         this._isProgressCancellable = true;
         this._showHex = false;
         this._useInvalidatedEvent = false;
+        this.ic10 = new ic10_1.InterpreterIc10();
         this.setDebuggerLinesStartAt1(false);
         this.setDebuggerColumnsStartAt1(false);
         this._runtime = new ic10Runtime_1.ic10Runtime(fileAccessor);
@@ -218,76 +220,32 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
     }
     async variablesRequest(response, args, request) {
         const variables = [];
-        if (this._isLongrunning.get(args.variablesReference)) {
-            if (request) {
-                this._cancelationTokens.set(request.seq, false);
-            }
-            for (let i = 0; i < 100; i++) {
-                await timeout(1000);
-                variables.push({
-                    name: `i_${i}`,
-                    type: "integer",
-                    value: `${i}`,
-                    variablesReference: 0
-                });
-                if (request && this._cancelationTokens.get(request.seq)) {
-                    break;
+        for (var cellsKey in this.ic10.memory.cells) {
+            try {
+                cellsKey = String(cellsKey);
+                this.ic10.memory.cells[cellsKey].set(Math.random());
+                var val = this.ic10.memory.cells[cellsKey].get();
+                if (cellsKey != '16') {
+                    variables.push({
+                        name: 'r' + String(cellsKey),
+                        type: "float",
+                        value: val ? String(val) : '0',
+                        variablesReference: 0,
+                        __vscodeVariableMenuContext: "simple",
+                    });
+                }
+                else {
+                    this.ic10.memory.cells[cellsKey].push(Math.random());
+                    this.ic10.memory.cells[cellsKey].push(Math.random());
+                    variables.push({
+                        name: 'r' + String(cellsKey),
+                        type: "string",
+                        value: JSON.stringify(val),
+                        variablesReference: 0
+                    });
                 }
             }
-            if (request) {
-                this._cancelationTokens.delete(request.seq);
-            }
-        }
-        else {
-            const id = this._variableHandles.get(args.variablesReference);
-            if (id) {
-                const i = 12345678;
-                variables.push({
-                    name: id + "_i",
-                    type: "integer",
-                    value: this._showHex ? '0x' + i.toString(16) : i.toString(10),
-                    __vscodeVariableMenuContext: "simple",
-                    variablesReference: 0
-                });
-                variables.push({
-                    name: id + "_f",
-                    type: "float",
-                    value: "3.14",
-                    variablesReference: 0
-                });
-                variables.push({
-                    name: id + "_f",
-                    type: "float",
-                    value: "6.28",
-                    variablesReference: 0
-                });
-                variables.push({
-                    name: id + "_f",
-                    type: "float",
-                    value: "6.28",
-                    variablesReference: 0
-                });
-                variables.push({
-                    name: id + "_s",
-                    type: "string",
-                    value: "hello world",
-                    variablesReference: 0
-                });
-                variables.push({
-                    name: id + "_o",
-                    type: "object",
-                    value: "Object",
-                    variablesReference: this._variableHandles.create(id + "_o")
-                });
-                const nm = id + "_long_running";
-                const ref = this._variableHandles.create(id + "_lr");
-                variables.push({
-                    name: nm,
-                    type: "object",
-                    value: "Object",
-                    variablesReference: ref
-                });
-                this._isLongrunning.set(ref, true);
+            catch (e) {
             }
         }
         response.body = {
