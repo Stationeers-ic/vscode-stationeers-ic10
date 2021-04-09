@@ -351,7 +351,6 @@ export class ic10DebugSession extends LoggingDebugSession {
     for (var cellsKey in this.ic10.memory.cells) {
       try {
         cellsKey = String(cellsKey)
-        this.ic10.memory.cells[cellsKey].set(Math.random())
         var val = this.ic10.memory.cells[cellsKey].get()
         if (cellsKey != '16') {
           variables.push({
@@ -362,10 +361,6 @@ export class ic10DebugSession extends LoggingDebugSession {
             __vscodeVariableMenuContext: "simple",
           } as DebugProtocol.Variable);
         } else {
-          // @ts-ignore
-          this.ic10.memory.cells[cellsKey].push(Math.random())
-          // @ts-ignore
-          this.ic10.memory.cells[cellsKey].push(Math.random())
           variables.push({
             name: 'r' + String(cellsKey),
             type: "string",
@@ -376,7 +371,23 @@ export class ic10DebugSession extends LoggingDebugSession {
       } catch (e) {
 
       }
+    }
 
+    for (var environKey in this.ic10.memory.environ) {
+      if (this.ic10.memory.environ.hasOwnProperty(environKey)) {
+        try {
+          var val = this.ic10.memory.environ[environKey]
+          variables.push({
+            name: String(environKey),
+            type: "string",
+            value: JSON.stringify(val),
+            variablesReference: 0
+          });
+
+        } catch (e) {
+
+        }
+      }
     }
 
     response.body = {
