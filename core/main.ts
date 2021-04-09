@@ -44,15 +44,12 @@ export function activate(ctx) {
 				debug: true,
 				tickTime: 500,
 				debugCallback: function () {
-					// @ts-ignore
 					panel.webview.html += ic10.htmlLog(...arguments) + "<br>"
 				},
 				logCallback: function () {
-					// @ts-ignore
 					panel.webview.html += ic10.htmlLog(...arguments) + "<br>"
 				},
 				executionCallback: function (e: ic10Error) {
-					// @ts-ignore
 					panel.webview.html += ic10.htmlLog(...arguments) + "<br>"
 				},
 			}

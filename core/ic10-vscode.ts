@@ -69,7 +69,7 @@ ${description}
 		return base.unshift();
 	}
 	
-	public htmlLog(e) {
+	public htmlLog(e = null) {
 		var html = [];
 		if (e instanceof ic10Error) {
 			var string = `[${this.var2str(e.functionName, 1)}:${this.var2str(e.line, 1)}] (${this.var2str(e.code, 1)}) - ${this.var2str(e.message, 1)}:`

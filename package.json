@@ -15,7 +15,7 @@
     "email": "Traineratwot@yandex.com"
   },
   "engines": {
-    "vscode": "^1.53.0"
+    "vscode": "^1.55.0"
   },
   "categories": [
     "Programming Languages",
@@ -26,7 +26,8 @@
   "activationEvents": [
     "workspaceContains:**/*.ic10",
     "onLanguage:ic10",
-    "onDebugResolve:ic10"
+    "onDebugResolve:ic10",
+    "onDebugDynamicConfigurations:ic10"
   ],
   "devDependencies": {
     "@types/fs-extra": "^8.1.0",
@@ -61,7 +62,7 @@
     ],
     "debuggers": [
       {
-        "type": "node",
+        "type": "ic10",
         "label": "ic10 Debug",
         "program": "./out/node/nodeDebug.js",
         "runtime": "node",
@@ -74,12 +75,21 @@
       {
         "command": "ic10.run",
         "title": "ic10: Run",
-        "description": "Run script"
+        "description": "Run script",
+        "icon": "$(play)"
       },
       {
         "command": "ic10.stop",
         "title": "ic10: Stop",
-        "description": "Stop script"
+        "description": "Stop script",
+        "icon": "$(stop)"
+      },
+      {
+        "command": "ic10.debug.debugEditorContents",
+        "title": "Debug ic10",
+        "category": "Ic10 Debug",
+        "enablement": "!inDebugMode",
+        "icon": "$(debug-alt)"
       }
     ],
     "snippets": [
@@ -99,14 +109,23 @@
           "command": "ic10.run",
           "when": "editorLangId == ic10"
         }
+      ],
+      "debug/variables/context": [
+        {
+          "command": "extension.mock-debug.toggleFormatting",
+          "when": "debugType == 'mock' && debugProtocolVariableMenuContext == 'simple'"
+        }
       ]
     }
   },
   "dependencies": {
+    "await-notify": "^1.0.1",
     "caller-id": "^0.1.0",
     "chalk": "^4.1.0",
     "generator-build": "^1.0.0",
-    "ic10": "^1.0.11"
+    "ic10": "^1.0.11",
+    "vscode-debugadapter": "^1.46.0",
+    "vscode-debugprotocol": "^1.46.0"
   },
   "__metadata": {
     "id": "e9ab14ed-1c65-4a3c-835b-f13c96f90ac7",
