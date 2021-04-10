@@ -81,17 +81,18 @@ export class ic10DebugSession extends LoggingDebugSession {
 		super("ic10-debug.txt");
 		this.ic10 = new InterpreterIc10()
 		var self = this
+		// @ts-ignore
 		this.ic10.setSettings({
 			debugCallback: function (a,b) {
-				this.output =  a+' '+JSON.stringify(b)
+				this.output.debug =  a+' '+JSON.stringify(b)
 				
 			},
 			logCallback: function (a,b) {
-				this.output =  a+' '+b
+				this.output.log =  a+' '+b
 				
 			},
 			executionCallback: function (e: ic10Error) {
-				this.output =  `[${e.functionName}:${e.line}] (${e.code}) - ${e.message}:`
+				this.output.error =  `[${e.functionName}:${e.line}] (${e.code}) - ${e.message}:`
 			},
 		})
 		// this debugger uses zero-based lines and columns

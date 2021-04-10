@@ -169,8 +169,7 @@
     "await-notify": "^1.0.1",
     "caller-id": "^0.1.0",
     "chalk": "^4.1.0",
-    "ic10": "^1.0.18",
-    "vscode-debug-logger": "^0.0.5",
+    "ic10": "^1.0.20",
     "vscode-debugadapter": "^1.46.0",
     "vscode-debugprotocol": "^1.46.0"
   },

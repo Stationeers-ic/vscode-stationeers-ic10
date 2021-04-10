@@ -299,13 +299,16 @@ export class ic10Runtime extends EventEmitter {
 	private run(reverse = false, stepEvent?: string) {
 		do {
 			var why = this.ic10.prepareLine()
-			var ln = this.ic10.position-1
-			// @ts-ignore
-			if(this.ic10?.output) {
-				// @ts-ignore
-				this.sendEvent('output', this.ic10.output, this._sourceFile, ln);
+			var ln = this.ic10.position - 1
+			if (this.ic10?.output?.debug) {
+				this.sendEvent('output', '[debug]: ' + this.ic10.output.debug, this._sourceFile, ln);
 			}
-			
+			if (this.ic10?.output?.log) {
+				this.sendEvent('output', this.ic10.output.log, this._sourceFile, ln + 1);
+			}
+			if (this.ic10?.output?.error) {
+				this.sendEvent('output', this.ic10.output.error, this._sourceFile, ln);
+			}
 			if (this.fireEventsForLine(ln, stepEvent)) {
 				this._currentLine = ln;
 				this._currentColumn = undefined;
