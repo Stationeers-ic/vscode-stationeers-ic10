@@ -1,103 +1,184 @@
 {
-	"name": "stationeers-ic10",
-	"displayName": "Stationeers ic10",
-	"description": "",
-	"version": "0.0.4",
-	"license": "MIT",
-	"publisher": "Traineratwot",
-	"repository": "https://github.com/Traineratwot/vscode-stationeers-ic10/issues",
-	"author": {
-		"name": "Traineratwot"
-	},
-	"icon": "images/logo.png",
-	"bugs": {
-		"url": "https://github.com/Traineratwot/vscode-stationeers-ic10/issues",
-		"email": "Traineratwot@yandex.com"
-	},
-	"engines": {
-		"vscode": "^1.53.0"
-	},
-	"categories": [
-		"Programming Languages",
-		"Debuggers",
-		"Snippets",
-		"Formatters"
-	],
-	"activationEvents": [
-		"workspaceContains:**/*.ic10",
-		"onLanguage:ic10",
-		"onDebugResolve:ic10"
-	],
-	"devDependencies": {
-		"@types/fs-extra": "^8.1.0",
-		"@types/glob": "^7.1.1",
-		"@types/mocha": "^7.0.2",
-		"@types/node": "^13.11.1",
-		"@types/semver": "^7.1.0",
-		"@types/sinon": "^9.0.0",
-		"@types/vscode": "^1.41.0",
-		"typescript": "^4.2.3"
-	},
-	"main": "./core/main.js",
-	"contributes": {
-		"languages": [
-			{
-				"id": "ic10",
-				"aliases": [
-					"ic10"
-				],
-				"extensions": [
-					"ic10"
-				],
-				"configuration": "./language-configuration.json"
-			}
-		],
-		"grammars": [
-			{
-				"language": "ic10",
-				"scopeName": "source.ic10",
-				"path": "./syntaxes/ic10.tmLanguage.json"
-			}
-		],
-		"debuggers": [
-			{
-				"type": "node",
-				"label": "ic10 Debug",
-				"program": "./out/node/nodeDebug.js",
-				"runtime": "node",
-				"languages": [
-					"ic10"
-				]
-			}
-		],
-		"commands": [
-			{
-				"command": "ic10.run",
-				"title": "ic10: Run",
-				"description": "Tun you program"
-			}
-		],
-		"snippets": [
-			{
-				"language": "ic10",
-				"path": "./snippets/ic10.json"
-			}
-		],
-		"breakpoints": [
-			{
-				"language": "ic10"
-			}
-		]
-	},
-	"dependencies": {
-		"caller-id": "^0.1.0",
-		"chalk": "^4.1.0",
-		"generator-build": "^1.0.0",
-		"ic10": "^1.0.6"
-	},
-	"__metadata": {
-		"id": "e9ab14ed-1c65-4a3c-835b-f13c96f90ac7",
-		"publisherDisplayName": "Traineratwot",
-		"publisherId": "380b2875-741d-4735-b93a-1850757c5e71"
-	}
+  "name": "stationeers-ic10",
+  "displayName": "Stationeers ic10",
+  "description": "Ic10 support",
+  "version": "0.0.4",
+  "license": "MIT",
+  "scripts": {
+    "pack": "vsce package"
+  },
+  "publisher": "Traineratwot",
+  "repository": "https://github.com/Traineratwot/vscode-stationeers-ic10/issues",
+  "author": {
+    "name": "Traineratwot"
+  },
+  "icon": "images/logo.png",
+  "bugs": {
+    "url": "https://github.com/Traineratwot/vscode-stationeers-ic10/issues",
+    "email": "Traineratwot@yandex.com"
+  },
+  "engines": {
+    "vscode": "^1.55.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Debuggers",
+    "Snippets",
+    "Formatters"
+  ],
+  "activationEvents": [
+    "workspaceContains:**/*.ic10",
+    "onLanguage:ic10",
+    "onDebugResolve:ic10",
+    "onDebugDynamicConfigurations:ic10"
+  ],
+  "devDependencies": {
+    "@types/fs-extra": "^8.1.0",
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^13.11.1",
+    "@types/semver": "^7.1.0",
+    "@types/sinon": "^9.0.0",
+    "@types/vscode": "^1.41.0",
+    "typescript": "^4.2.3"
+  },
+  "main": "./core/main.js",
+  "browser": "./web/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "ic10",
+        "aliases": [
+          "ic10"
+        ],
+        "extensions": [
+          "ic10"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "ic10",
+        "scopeName": "source.ic10",
+        "path": "./syntaxes/ic10.tmLanguage.json"
+      }
+    ],
+    "debuggers": [
+      {
+        "type": "ic10",
+        "label": "ic10 Debug",
+        "program": "./debugger/debugAdapter.js",
+        "runtime": "node",
+        "languages": [
+          "ic10"
+        ],
+        "configurationAttributes": {
+          "launch": {
+            "required": [
+              "program"
+            ],
+            "properties": {
+              "program": {
+                "type": "string",
+                "description": "Absolute path to a text file.",
+                "default": "${workspaceFolder}/${command:AskForProgramName}"
+              },
+              "stopOnEntry": {
+                "type": "boolean",
+                "description": "Automatically stop after launch.",
+                "default": true
+              },
+              "trace": {
+                "type": "boolean",
+                "description": "Enable logging of the Debug Adapter Protocol.",
+                "default": true
+              }
+            },
+            "initialConfigurations": [
+              {
+                "type": "ic10",
+                "request": "launch",
+                "name": "Ask for file name",
+                "program": "${workspaceFolder}/${command:AskForProgramName}",
+                "stopOnEntry": true
+              }
+            ]
+          }
+        },
+        "configurationSnippets": [
+          {
+            "label": "Mock Debug: Launch",
+            "description": "A new configuration for 'debugging' a user selected markdown file.",
+            "body": {
+              "type": "mock",
+              "request": "launch",
+              "name": "Ask for file name",
+              "program": "^\"\\${workspaceFolder}/\\${command:AskForProgramName}\"",
+              "stopOnEntry": true
+            }
+          }
+        ],
+        "variables": {
+          "AskForProgramName": "extension.mock-debug.getProgramName"
+        }
+      }
+    ],
+    "commands": [
+      {
+        "command": "ic10.run",
+        "title": "ic10: Run",
+        "description": "Run script",
+        "icon": "$(play)"
+      },
+      {
+        "command": "ic10.stop",
+        "title": "ic10: Stop",
+        "description": "Stop script",
+        "icon": "$(stop)"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "ic10",
+        "path": "./snippets/ic10.json"
+      }
+    ],
+    "breakpoints": [
+      {
+        "language": "ic10"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "ic10.run",
+          "when": "editorLangId == ic10"
+        }
+      ],
+      "editor/title/run": [
+        {
+          "command": "ic10.run",
+          "when": "resourceLangId == ic10"
+        },
+        {
+          "command": "ic10.stop",
+          "when": "resourceLangId == ic10"
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "await-notify": "^1.0.1",
+    "caller-id": "^0.1.0",
+    "chalk": "^4.1.0",
+    "ic10": "^1.0.20",
+    "vscode-debugadapter": "^1.46.0",
+    "vscode-debugprotocol": "^1.46.0"
+  },
+  "__metadata": {
+    "id": "e9ab14ed-1c65-4a3c-835b-f13c96f90ac7",
+    "publisherDisplayName": "Traineratwot",
+    "publisherId": "380b2875-741d-4735-b93a-1850757c5e71"
+  }
 }

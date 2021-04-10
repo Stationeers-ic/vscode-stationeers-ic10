@@ -14,6 +14,8 @@
     "removeComments": true,
     "sourceMap": true,
     "watch": true,
+    "declaration": true,
+    "pretty": true,
     "charset": "utf8",
     // "jsx": "preserve",                           /* Specify JSX code generation: 'preserve', 'react-native', 'react', 'react-jsx' or 'react-jsxdev'. */
     // "declaration": true,                         /* Generates corresponding '.d.ts' file. */
@@ -71,7 +73,7 @@
     // "emitDecoratorMetadata": true,               /* Enables experimental support for emitting type metadata for decorators. */
 
     /* Advanced Options */
-    "skipLibCheck": true,                           /* Skip type checking of declaration files. */
+    "skipLibCheck": true                           /* Skip type checking of declaration files. */
   },
   "exclude": [
     "node_modules"

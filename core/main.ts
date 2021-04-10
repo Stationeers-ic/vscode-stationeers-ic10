@@ -3,51 +3,68 @@
 import vscode = require('vscode');
 // @ts-ignore
 import {Hover} from 'vscode';
-import {IC10} from './ic10';
-
-const InterpreterIc10 = require('ic10');
+import {Ic10Vscode} from './ic10-vscode';
+import {ic10Error, InterpreterIc10} from "ic10";
+import path from "path";
 
 const LOCALE_KEY: string = vscode.env.language
-var ic10 = new IC10();
+const ic10 = new Ic10Vscode();
 const LANG_KEY = 'ic10'
+const interpreterIc10 = new InterpreterIc10(null)
+var interpreterIc10State = 0
 
-function activate(ctx) {
+
+export function activate(ctx) {
+	
 	console.log('activate 1c10')
-	console.log(LOCALE_KEY)
-	ctx.subscriptions.push(
-		vscode.commands.registerCommand('ic10.run', () => {
-			console.log('Test');
-		})
-	);
-	console.log(ic10)
 	
 	ctx.subscriptions.push(vscode.languages.registerHoverProvider(LANG_KEY,
 		{
 			provideHover(document, position, token) {
 				var word = document.getWordRangeAtPosition(position)
 				var text = document.getText(word)
-				console.log(ic10.getHover(text, LOCALE_KEY))
 				return new Hover(ic10.getHover(text, LOCALE_KEY))
 			}
 		}
 	));
-	const command = 'ic10.run';
 	
-	const commandHandler = (name: string = 'world') => {
-		console.log(this,...arguments)
-		var interpreterIc10 = new InterpreterIc10('');
-		interpreterIc10.run()
-	};
-	ctx.subscriptions.push(vscode.commands.registerCommand(command, commandHandler));
-	
+	ctx.subscriptions.push(vscode.commands.registerCommand('ic10.run', () => {
+		if (!interpreterIc10State) {
+			vscode.window.showInformationMessage('Running');
+			var code = vscode.window.activeTextEditor.document.getText()
+			var title = path.basename(vscode.window.activeTextEditor.document.fileName)
+			// @ts-ignore
+			interpreterIc10State = 1
+			const panel = vscode.window.createWebviewPanel(
+				'ic10.debug', // Identifies the type of the webview. Used internally
+				`${title}-Debug`, // Title of the panel displayed to the user
+				vscode.ViewColumn.Two, // Editor column to show the new webview panel in.
+			);
+			const settings = {
+				debug: true,
+				tickTime: 500,
+				debugCallback: function () {
+					panel.webview.html += ic10.htmlLog(...arguments) + "<br>"
+				},
+				logCallback: function () {
+					panel.webview.html += ic10.htmlLog(...arguments) + "<br>"
+				},
+				executionCallback: function (e: ic10Error) {
+					panel.webview.html += ic10.htmlLog(...arguments) + "<br>"
+				},
+			}
+			interpreterIc10.setSettings(settings).init(code).run()
+		}
+	}));
+	ctx.subscriptions.push(vscode.commands.registerCommand('ic10.stop', () => {
+		if (interpreterIc10State) {
+			vscode.window.showInformationMessage('Stop');
+			// @ts-ignore
+			interpreterIc10.stop()
+		}
+	}));
 }
 
-// @ts-ignore
-exports.activate = activate;
-
-function deactivate() {
+export function deactivate() {
 	console.log('deactivate 1c10')
 }
-
-// @ts-ignore
-exports.deactivate = deactivate;

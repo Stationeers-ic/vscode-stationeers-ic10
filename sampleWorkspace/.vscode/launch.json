@@ -1,0 +1,13 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "ic10",
+			"request": "launch",
+			"name": "Debug test.md",
+			"program": "${file}",
+			"stopOnEntry": true,
+			"trace": false
+		}
+	]
+}

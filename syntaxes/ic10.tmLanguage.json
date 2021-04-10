@@ -1,95 +1,106 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "ic10",
-	"foldingStartMarker": "^#\\s{0,1}Section:\\s{0,}\\w+$",
-	"foldingStopMarker": "^#\\s{0,1}endSection$",
-	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#entity"
-		},
-		{
-			"include": "#variable"
-		},
-		{
-			"include": "#constant"
-		},
-		{
-			"include": "#comments"
-		},
-		{
-			"include": "#operator"
-		}
-	],
-	"repository": {
-		"keywords": {
-			"patterns": [
-				{
-					"name": "keyword.control.ic10",
-					"match": "^\\s{0,}(alias|yield|j|brap|bap|brna|bna|brdns|bdns|brdse|bdse|breq|beq|brge|bge|brgt|bgt|brle|ble|brlt|blt|brne|bne|sap|sna|sdns|sdse|seq|sge|sgt|sle|slt|sne|select|jr|jal)\\b"
-				},
-				{
-					"match": ":",
-					"name": "keyword.operator.ic10"
-				}
-			]
-		},
-		"comments": {
-			"patterns": [
-				{
-					"begin": "#",
-					"beginCaptures": {
-						"0": {
-							"name": "punctuation.definition.comment.ic10"
-						}
-					},
-					"end": "$",
-					"name": "comment.line.number-sign.ic10"
-				}
-			]
-		},
-		"constant": {
-			"patterns": [
-				{
-					"name": "constant.numeric.ic10",
-					"match": "\\b\\d+\\b"
-				},
-				{
-					"name": "constant.language.ic10",
-					"match": "\\bd(0|1|2|3|4|5|b)\\b"
-				},
-				{
-					"name": "constant.language.ic10",
-					"match": "\\b(r17|ra|r16|sp)\\b"
-				}
-			]
-		},
-		"entity": {
-			"patterns": [
-				{
-					"name": "entity.name.function.ic10",
-					"match": "^\\s{0,}(l|s|ls|lr|alias|define|move|add|sub|mul|div|mod|sqrt|round|trunc|ceil|floor|max|min|abs|log|exp|rand|sin|cos|tan|asin|acos|atan|slt|sltz|sgt|sgtz|sle|slez|sge|sgez|seq|seqz|sne|snez|sap|sapz|sna|snaz|sdse|sdns|and|or|xor|nor|blt|bltz|ble|blez|bge|bgez|bgt|bgtz|beq|beqz|bne|bnez|bap|bapz|bna|bnaz|bdse|bdns|jal|bltzal|bltal|bgeal|bgezal|bleal|blezal|bgtal|bgtzal|beqal|beqzal|bneal|bnezal|bapal|bapzal|bnaal|bnazal|bdseal|bdnsal|jr|brlt|brltz|brle|brlez|brge|brgez|brgt|brgtz|breq|breqz|brne|brnez|brap|brapz|brna|brnaz|brdse|brdns|yield|sleep|peek|push|pop|hcf|select)\\b"
-				},
-				{
-					"name": "entity.name.tag.ic10",
-					"match": "(^\\s{0,}j \\w+$)|(^\\s{0,}\\w+:$)"
-				}
-			]
-		},
-		"variable": {
-			"patterns": [
-				{
-					"name": "variable.other.ic10",
-					"match": "\\b(d{0,1}r+\\d{1,2})\\b"
-				},
-				{
-					"name": "variable.parameter.ic10",
-					"match": "\\b(Activate|AirRelease|Charge|ClearMemory|Color|CompletionRatio|ElevatorLevel|ElevatorSpeed|Error|ExportCount|Filtration|Harvest|Horizontal|HorizontalRatio|Idle|ImportCount|Lock|Maximum|Mode|On|Open|Output|Plant|PositionX|PositionY|PositionZ|Power|PowerActual|PowerGeneration|PowerPotential|PowerRequired|Pressure|PressureExternal|PressureInteral|PressureSetting|Quantity|Ratio|RatioCarbonDioxide|RatioNitrogen|RatioOxygen|RatioPollutant|RatioVolatiles|RatioWater|Reagents|RecipeHash|RequestHash|RequiredPower|Setting|SolarAngle|Temperature|TemperatureExternal|TemperatureSettings|TotalMoles|VelocityMagnitude|VelocityRelativeX|VelocityRelativeY|VelocityRelativeZ|Vertical|VerticalRatio|Volume|Occupied|OccupantHash|Damage|Efficiency|Health|Growth|ChargeRatio|Class|PressureWaste|PressureAir|MaxQuantity|Mature|ForceWrite)\\b"
-				}
-			]
-		}
-	},
-	"scopeName": "source.ic10"
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "ic10",
+  "foldingStartMarker": "^#\\s{0,1}Section:\\s{0,}\\w+$",
+  "foldingStopMarker": "^#\\s{0,1}endSection$",
+  "patterns": [
+    {
+      "include": "#goto"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#entity"
+    },
+    {
+      "include": "#variable"
+    },
+    {
+      "include": "#constant"
+    },
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#operator"
+    }
+  ],
+  "repository": {
+    "GOTO": {
+      "patterns": [
+        {
+          "name": "support.function",
+          "match": "^.+(?=:)"
+        },
+        {
+          "name": "support.function",
+          "match": "(?!j)(?!\\s).+"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.ic10",
+          "match": "^\\s{0,}(alias|yield|j|brap|bap|brna|bna|brdns|bdns|brdse|bdse|breq|beq|brge|bge|brgt|bgt|brle|ble|brlt|blt|brne|bne|sap|sna|sdns|sdse|seq|sge|sgt|sle|slt|sne|select|jr|jal)\\b"
+        },
+        {
+          "match": "\\b(Activate|AirRelease|Charge|ClearMemory|Color|CompletionRatio|ElevatorLevel|ElevatorSpeed|Error|ExportCount|Filtration|Harvest|Horizontal|HorizontalRatio|Idle|ImportCount|Lock|Maximum|Mode|On|Open|Output|Plant|PositionX|PositionY|PositionZ|Power|PowerActual|PowerGeneration|PowerPotential|PowerRequired|Pressure|PressureExternal|PressureInteral|PressureSetting|Quantity|Ratio|RatioCarbonDioxide|RatioNitrogen|RatioOxygen|RatioPollutant|RatioVolatiles|RatioWater|Reagents|RecipeHash|RequestHash|RequiredPower|Setting|SolarAngle|Temperature|TemperatureExternal|TemperatureSettings|TotalMoles|VelocityMagnitude|VelocityRelativeX|VelocityRelativeY|VelocityRelativeZ|Vertical|VerticalRatio|Volume|Occupied|OccupantHash|Damage|Efficiency|Health|Growth|ChargeRatio|Class|PressureWaste|PressureAir|MaxQuantity|Mature|ForceWrite|Average|Sum|Minimum|Maximum)\\b",
+          "name": "keyword.operator.ic10"
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        {
+          "begin": "#",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.ic10"
+            }
+          },
+          "end": "$",
+          "name": "comment.line.number-sign.ic10"
+        }
+      ]
+    },
+    "constant": {
+      "patterns": [
+        {
+          "name": "constant.numeric.ic10",
+          "match": "\\b\\d+\\b"
+        },
+        {
+          "name": "constant.language.ic10",
+          "match": "\\bd(0|1|2|3|4|5|b)\\b"
+        },
+        {
+          "name": "constant.language.ic10",
+          "match": "\\b(r17|ra|r16|sp)\\b"
+        }
+      ]
+    },
+    "entity": {
+      "patterns": [
+        {
+          "name": "entity.name.function.ic10",
+          "match": "^\\s{0,}(l|s|ls|lr|alias|define|move|add|sub|mul|div|mod|sqrt|round|trunc|ceil|floor|max|min|abs|log|exp|rand|sin|cos|tan|asin|acos|atan|slt|sltz|sgt|sgtz|sle|slez|sge|sgez|seq|seqz|sne|snez|sap|sapz|sna|snaz|sdse|sdns|and|or|xor|nor|blt|bltz|ble|blez|bge|bgez|bgt|bgtz|beq|beqz|bne|bnez|bap|bapz|bna|bnaz|bdse|bdns|jal|bltzal|bltal|bgeal|bgezal|bleal|blezal|bgtal|bgtzal|beqal|beqzal|bneal|bnezal|bapal|bapzal|bnaal|bnazal|bdseal|bdnsal|jr|brlt|brltz|brle|brlez|brge|brgez|brgt|brgtz|breq|breqz|brne|brnez|brap|brapz|brna|brnaz|brdse|brdns|yield|sleep|peek|push|pop|hcf|select)\\b"
+        },
+        {
+          "name": "entity.name.tag.ic10",
+          "match": "(^\\s{0,}j \\w+$)|(^\\s{0,}\\w+:$)"
+        }
+      ]
+    },
+    "variable": {
+      "patterns": [
+        {
+          "name": "variable.other.ic10",
+          "match": "\\b(d{0,1}r+\\d{1,2})\\b"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.ic10"
 }

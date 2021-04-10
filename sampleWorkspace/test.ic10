@@ -1,0 +1,19 @@
+alias a r0
+alias b r1
+alias c r2
+move a 5
+move b 2
+loop:
+s d0 a ClearMemory
+add b a b
+#log b
+
+
+add b a b
+
+#log b
+
+add b a b
+#log b
+j loop
+#die
