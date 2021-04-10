@@ -23,6 +23,18 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
         this._showHex = false;
         this._useInvalidatedEvent = false;
         this.ic10 = new ic10_1.InterpreterIc10();
+        var self = this;
+        this.ic10.setSettings({
+            debugCallback: function (a, b) {
+                this.output = a + ' ' + JSON.stringify(b);
+            },
+            logCallback: function (a, b) {
+                this.output = a + ' ' + b;
+            },
+            executionCallback: function (e) {
+                this.output = `[${e.functionName}:${e.line}] (${e.code}) - ${e.message}:`;
+            },
+        });
         this.setDebuggerLinesStartAt1(false);
         this.setDebuggerColumnsStartAt1(false);
         this._runtime = new ic10Runtime_1.ic10Runtime(fileAccessor, this.ic10);

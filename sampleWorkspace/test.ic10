@@ -9,10 +9,11 @@ add b a b
 #log c
 
 
+add b a b
 
+#log c
+
+add b a b
+#log c
 j loop
-
-
-
-
 #die

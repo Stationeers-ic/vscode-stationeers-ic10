@@ -170,14 +170,18 @@ class ic10Runtime extends events_1.EventEmitter {
         }
     }
     run(reverse = false, stepEvent) {
-        while (this.ic10.prepareLine()) {
+        do {
+            var why = this.ic10.prepareLine();
             var ln = this.ic10.position - 1;
+            if (this.ic10?.output) {
+                this.sendEvent('output', this.ic10.output, this._sourceFile, ln);
+            }
             if (this.fireEventsForLine(ln, stepEvent)) {
                 this._currentLine = ln;
                 this._currentColumn = undefined;
                 return true;
             }
-        }
+        } while (why === true);
         this.sendEvent('end');
     }
     async verifyBreakpoints(path) {
@@ -209,10 +213,6 @@ class ic10Runtime extends events_1.EventEmitter {
             return false;
         }
         const line = this._sourceLines[ln].trim();
-        const matches = /log\((.*)\)/.exec(line);
-        if (matches && matches.length === 2) {
-            this.sendEvent('output', matches[1], this._sourceFile, ln, matches.index);
-        }
         const words = line.split(" ");
         for (const word of words) {
             if (this._breakAddresses.has(word)) {

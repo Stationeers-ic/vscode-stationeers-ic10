@@ -26,7 +26,7 @@ import {DebugProtocol} from 'vscode-debugprotocol';
 import {basename} from 'path';
 import {FileAccessor, ic10Runtime, Iic10Breakpoint} from './ic10Runtime';
 import {Subject} from 'await-notify';
-import {InterpreterIc10} from "ic10";
+import {ic10Error, InterpreterIc10} from "ic10";
 
 function timeout(ms: number) {
 	return new Promise(resolve => setTimeout(resolve, ms));
@@ -80,6 +80,20 @@ export class ic10DebugSession extends LoggingDebugSession {
 	public constructor(fileAccessor: FileAccessor) {
 		super("ic10-debug.txt");
 		this.ic10 = new InterpreterIc10()
+		var self = this
+		this.ic10.setSettings({
+			debugCallback: function (a,b) {
+				this.output =  a+' '+JSON.stringify(b)
+				
+			},
+			logCallback: function (a,b) {
+				this.output =  a+' '+b
+				
+			},
+			executionCallback: function (e: ic10Error) {
+				this.output =  `[${e.functionName}:${e.line}] (${e.code}) - ${e.message}:`
+			},
+		})
 		// this debugger uses zero-based lines and columns
 		this.setDebuggerLinesStartAt1(false);
 		this.setDebuggerColumnsStartAt1(false);

@@ -297,14 +297,21 @@ export class ic10Runtime extends EventEmitter {
 	 * If stepEvent is specified only run a single step and emit the stepEvent.
 	 */
 	private run(reverse = false, stepEvent?: string) {
-		while (this.ic10.prepareLine()) {
-			var ln = this.ic10.position - 1;
+		do {
+			var why = this.ic10.prepareLine()
+			var ln = this.ic10.position-1
+			// @ts-ignore
+			if(this.ic10?.output) {
+				// @ts-ignore
+				this.sendEvent('output', this.ic10.output, this._sourceFile, ln);
+			}
+			
 			if (this.fireEventsForLine(ln, stepEvent)) {
 				this._currentLine = ln;
 				this._currentColumn = undefined;
 				return true;
 			}
-		}
+		} while (why === true)
 		this.sendEvent('end');
 	}
 	
@@ -353,10 +360,10 @@ export class ic10Runtime extends EventEmitter {
 		const line = this._sourceLines[ln].trim();
 		
 		// if 'log(...)' found in source -> send argument to debug console
-		const matches = /log\((.*)\)/.exec(line);
-		if (matches && matches.length === 2) {
-			this.sendEvent('output', matches[1], this._sourceFile, ln, matches.index);
-		}
+		//const matches = /log\((.*)\)/.exec(line);
+		//if (matches && matches.length === 2) {
+		//	this.sendEvent('output', matches[1], this._sourceFile, ln, matches.index);
+		//}
 		
 		// if a word in a line matches a data breakpoint, fire a 'dataBreakpoint' event
 		const words = line.split(" ");
