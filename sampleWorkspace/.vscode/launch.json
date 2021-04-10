@@ -5,7 +5,7 @@
 			"type": "ic10",
 			"request": "launch",
 			"name": "Debug test.md",
-			"program": "${workspaceFolder}/test.ic10",
+			"program": "${file}",
 			"stopOnEntry": true,
 			"trace": false
 		}

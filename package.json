@@ -4,6 +4,9 @@
   "description": "Ic10 support",
   "version": "0.0.4",
   "license": "MIT",
+  "scripts": {
+    "pack": "vsce package"
+  },
   "publisher": "Traineratwot",
   "repository": "https://github.com/Traineratwot/vscode-stationeers-ic10/issues",
   "author": {
