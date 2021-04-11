@@ -3,14 +3,14 @@
 - hightlight syntax for ic10
 - tooltips for function
 - snippets
+- Debugger
 
 ## News
 
 - translate to english
-- **add Interpriterator**
-- **Dbugger**
+- **Debugger**
 
-[youtube](https://youtu.be/KAYrX01RgmA)
+[youtube link](https://youtu.be/KAYrX01RgmA)
 ![img1](https://i.imgur.com/F1sGrVy.gif)
 
 
