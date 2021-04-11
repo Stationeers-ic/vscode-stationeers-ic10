@@ -20,7 +20,7 @@ function activate(ctx) {
         provideHover(document, position, token) {
             var word = document.getWordRangeAtPosition(position);
             var text = document.getText(word);
-            return new vscode_1.Hover(ic10.getHover(text, LOCALE_KEY));
+            return new vscode_1.Hover(ic10.getHover(text));
         }
     }));
     ctx.subscriptions.push(vscode.commands.registerCommand('ic10.run', () => {

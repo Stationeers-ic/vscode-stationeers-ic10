@@ -1,7 +1,6 @@
 /*---------------------------------------------------------
  * Copyright (C) Microsoft Corporation. All rights reserved.
  *--------------------------------------------------------*/
-
 import {
 	Breakpoint,
 	BreakpointEvent,
@@ -26,7 +25,7 @@ import {DebugProtocol} from 'vscode-debugprotocol';
 import {basename} from 'path';
 import {FileAccessor, ic10Runtime, Iic10Breakpoint} from './ic10Runtime';
 import {Subject} from 'await-notify';
-import {ic10Error, InterpreterIc10} from "ic10";
+import {ConstantCell, ic10Error, InterpreterIc10, MemoryCell} from "ic10";
 
 function timeout(ms: number) {
 	return new Promise(resolve => setTimeout(resolve, ms));
@@ -57,7 +56,7 @@ export class ic10DebugSession extends LoggingDebugSession {
 	// a ic10 runtime (or debugger)
 	private _runtime: ic10Runtime;
 	
-	private _variableHandles = new Handles<string>();
+	public _variableHandles = new Handles<string>();
 	
 	private _configurationDone = new Subject();
 	
@@ -72,6 +71,8 @@ export class ic10DebugSession extends LoggingDebugSession {
 	private _showHex = false;
 	private _useInvalidatedEvent = false;
 	private ic10: InterpreterIc10;
+	private _variables: Set<MemoryCell>;
+	variableMap: VariableMap;
 	
 	/**
 	 * Creates a new debug adapter that is used for one debug session.
@@ -80,26 +81,28 @@ export class ic10DebugSession extends LoggingDebugSession {
 	public constructor(fileAccessor: FileAccessor) {
 		super("ic10-debug.txt");
 		this.ic10 = new InterpreterIc10()
+		this.variableMap = new VariableMap(this, this.ic10)
+		
 		var self = this
 		// @ts-ignore
 		this.ic10.setSettings({
-			debugCallback: function (a,b) {
-				this.output.debug =  a+' '+JSON.stringify(b)
+			debugCallback: function (a, b) {
+				this.output.debug = a + ' ' + JSON.stringify(b)
 				
 			},
-			logCallback: function (a,b) {
-				this.output.log =  a+' '+b
+			logCallback: function (a, b) {
+				this.output.log = a + ' ' + b
 				
 			},
 			executionCallback: function (e: ic10Error) {
-				this.output.error =  `[${e.functionName}:${e.line}] (${e.code}) - ${e.message}:`
+				this.output.error = `[${e.functionName}:${e.line}] (${e.code}) - ${e.message}:`
 			},
 		})
 		// this debugger uses zero-based lines and columns
 		this.setDebuggerLinesStartAt1(false);
 		this.setDebuggerColumnsStartAt1(false);
 		
-		this._runtime = new ic10Runtime(fileAccessor,this.ic10);
+		this._runtime = new ic10Runtime(fileAccessor, this.ic10);
 		
 		// setup event handlers
 		this._runtime.on('stopOnEntry', () => {
@@ -376,93 +379,21 @@ export class ic10DebugSession extends LoggingDebugSession {
 	}
 	
 	protected async variablesRequest(response: DebugProtocol.VariablesResponse, args: DebugProtocol.VariablesArguments, request?: DebugProtocol.Request) {
-		
-		var _variables = new Set();
-		for (var cellsKey in this.ic10.memory.cells) {
-			try {
-				cellsKey = String(cellsKey)
-				let val = this.ic10.memory.cells[cellsKey].get()
-				let alias = this.ic10.memory.cells[cellsKey].alias
-				let name = this.ic10.memory.cells[cellsKey].name
-				let _name = ''
-				if(alias){
-					_name = name+`[${alias}]`
-				}else{
-					_name = name
-				}
-				if (cellsKey != '16') {
-					_variables[name] = {
-						name: _name,
-						type: "float",
-						value: val ? String(val) : '0',
-						variablesReference: 0,
-						__vscodeVariableMenuContext: "simple",
-					} as DebugProtocol.Variable;
-				} else {
-					_variables[name] = {
-						name: _name,
-						type: "string",
-						value: JSON.stringify(val),
-						variablesReference: 0
-					};
-				}
-			} catch (e) {
-			
+		const id = this._variableHandles.get(args.variablesReference);
+		if (id) {
+			if (id == "local") {
+				this.variableMap.init(id)
 			}
+			response.body = {
+				variables: Object.values(this.variableMap.get(id))
+			};
+			this.sendResponse(response);
+		} else {
+			response.body = {
+				variables: []
+			};
+			this.sendResponse(response);
 		}
-		for (var environKey in this.ic10.memory.environ) {
-			if (this.ic10.memory.environ.hasOwnProperty(environKey)) {
-				try {
-					let val = this.ic10.memory.environ[environKey]
-					let alias = val.alias
-					let name = val.name
-					let _name = ''
-					if(alias){
-						_name = name+`[${alias}]`
-					}else{
-						_name = name
-					}
-					_variables[name] = {
-						name: _name,
-						type: "string",
-						value: JSON.stringify(val),
-						variablesReference: 0
-					};
-					
-				} catch (e) {
-				
-				}
-			}
-		}
-		for (var aliasesKey in this.ic10.memory.aliases) {
-			if (this.ic10.memory.aliases.hasOwnProperty(aliasesKey)) {
-				try {
-					let val = this.ic10.memory.environ[environKey]
-					let alias = val.alias
-					let name = val.name
-					let _name = ''
-					if(alias){
-						_name = name+`[${alias}]`
-					}else{
-						_name = name
-					}
-					_variables[name] = {
-						name: _name,
-						type: "string",
-						value: JSON.stringify(val),
-						variablesReference: 0
-					};
-					
-				} catch (e) {
-				
-				}
-			}
-		}
-		
-		response.body = {
-			variables: Object.values(_variables)
-		};
-		this.sendResponse(response);
 	}
 	
 	protected continueRequest(response: DebugProtocol.ContinueResponse, args: DebugProtocol.ContinueArguments): void {
@@ -540,6 +471,10 @@ export class ic10DebugSession extends LoggingDebugSession {
 					}
 				}
 			}
+		}
+		
+		if (args.context === 'hover') {
+			reply = this.getHover(args)
 		}
 		
 		response.body = {
@@ -686,4 +621,179 @@ export class ic10DebugSession extends LoggingDebugSession {
 	private createSource(filePath: string): Source {
 		return new Source(basename(filePath), this.convertDebuggerPathToClient(filePath), undefined, undefined, 'ic10-adapter-data');
 	}
+	
+	private getHover(args: DebugProtocol.EvaluateArguments) {
+		var response = ''
+		try {
+			response = this.ic10.memory.cell(args.expression)
+		} catch (e) {
+		}
+		return response;
+	}
+	
+}
+
+class VariableMap {
+	private map: object;
+	private ic10: InterpreterIc10;
+	private counter: number = 1000;
+	scope: ic10DebugSession;
+	
+	
+	constructor(scope: ic10DebugSession, ic10: InterpreterIc10) {
+		this.ic10 = ic10;
+		this.scope = scope;
+		this.map = {}
+	}
+	
+	init(id: string) {
+		this.map = new Object
+		for (var cellsKey in this.ic10.memory.cells) {
+			try {
+				cellsKey = String(cellsKey)
+				let val = this.ic10.memory.cells[cellsKey].get()
+				let alias = this.ic10.memory.cells[cellsKey].alias
+				let name = this.ic10.memory.cells[cellsKey].name
+				let _name = ''
+				if (alias) {
+					_name = name + `[${alias}]`
+				} else {
+					_name = name
+				}
+				if (cellsKey != '16') {
+					this.var2variable(_name, val, id)
+				} else {
+					this.var2variable(_name, val, id)
+				}
+			} catch (e) {
+			
+			}
+		}
+		
+		for (var environKey in this.ic10.memory.environ) {
+			if (this.ic10.memory.environ.hasOwnProperty(environKey)) {
+				try {
+					let val = this.ic10.memory.environ[environKey]
+					let alias = val.alias
+					let name = val.name
+					let _name = ''
+					if (alias) {
+						_name = name + `[${alias}]`
+					} else {
+						_name = name
+					}
+					this.var2variable(_name, val, id)
+				} catch (e) {
+				
+				}
+			}
+		}
+		
+		for (var aliasesKey in this.ic10.memory.aliases) {
+			if (this.ic10.memory.aliases.hasOwnProperty(aliasesKey)) {
+				try {
+					let val = this.ic10.memory.aliases[aliasesKey]
+					let name = String(val.name)
+					if (val instanceof ConstantCell) {
+						this.var2variable(name, val.get(), id)
+					}
+					
+				} catch (e) {
+				
+				}
+			}
+		}
+	}
+	
+	get(id: any) {
+		return this.map[id]
+	}
+	
+	public var2variable(name, value, id) {
+		if (!(id in this.map)) {
+			this.map[id] = new Object
+		}
+		if (value === null) {
+			value = 0
+		}
+		switch (value.constructor.name) {
+			case "String":
+				this.map[id][name] = {
+					name: name,
+					type: "string",
+					value: String(value),
+					variablesReference: 0,
+					__vscodeVariableMenuContext: "3_modifications",
+					
+				} as DebugProtocol.Variable
+				return name
+			case "Number":
+				this.map[id][name] = {
+					name: name,
+					type: "float",
+					value: String(value),
+					variablesReference: 0,
+					__vscodeVariableMenuContext: "3_modifications",
+				} as DebugProtocol.Variable
+				return name
+			case "Array":
+				if (value.length != 0) {
+					this.map[id][name] = {
+						name: name,
+						type: 'array',
+						value: `Array (${value.length})`,
+						__vscodeVariableMenuContext: "3_modifications",
+						variablesReference: this.scope._variableHandles.create(name),
+					} as DebugProtocol.Variable
+					for (const valueKey in value) {
+						if (value.hasOwnProperty(valueKey)) {
+							this.var2variable(valueKey, value[valueKey], name)
+						}
+					}
+					
+				} else {
+					this.map[id][name] = {
+						name: name,
+						type: 'array',
+						value: 'Array (0)',
+						variablesReference: 0,
+					} as DebugProtocol.Variable
+				}
+				
+				return name
+			case "Device":
+				this.map[id][name] = {
+					name: name,
+					type: 'object',
+					value: `Object`,
+					__vscodeVariableMenuContext: "3_modifications",
+					variablesReference: this.scope._variableHandles.create(name),
+				} as DebugProtocol.Variable
+				let arr = Object.keys(value.properties).sort();
+				for (const valueKey of arr) {
+					if (value.properties.hasOwnProperty(valueKey)) {
+						this.var2variable(valueKey, value.properties[valueKey], name)
+					}
+				}
+				return name
+			case "Slot":
+				this.map[id][name] = {
+					name: name,
+					type: 'object',
+					value: `Object`,
+					__vscodeVariableMenuContext: "3_modifications",
+					variablesReference: this.scope._variableHandles.create(name),
+				} as DebugProtocol.Variable
+				let _arr = Object.keys(value.properties).sort();
+				for (const valueKey of _arr) {
+					if (value.properties.hasOwnProperty(valueKey)) {
+						this.var2variable(valueKey, value.properties[valueKey], name)
+					}
+				}
+				return name
+			default:
+				return name
+		}
+	}
+	
 }

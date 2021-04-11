@@ -7,3 +7,4 @@ tools\interpreter\interpreter.js
 package-lock.json
 tools/interpreter/interpreter.js
 tools/fn.js
+logs

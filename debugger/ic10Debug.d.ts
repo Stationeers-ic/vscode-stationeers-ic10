@@ -1,6 +1,7 @@
-import { LoggingDebugSession } from 'vscode-debugadapter';
+import { Handles, LoggingDebugSession } from 'vscode-debugadapter';
 import { DebugProtocol } from 'vscode-debugprotocol';
 import { FileAccessor } from './ic10Runtime';
+import { InterpreterIc10 } from "ic10";
 interface ILaunchRequestArguments extends DebugProtocol.LaunchRequestArguments {
     program: string;
     stopOnEntry?: boolean;
@@ -10,7 +11,7 @@ interface ILaunchRequestArguments extends DebugProtocol.LaunchRequestArguments {
 export declare class ic10DebugSession extends LoggingDebugSession {
     private static threadID;
     private _runtime;
-    private _variableHandles;
+    _variableHandles: Handles<string>;
     private _configurationDone;
     private _cancelationTokens;
     private _isLongrunning;
@@ -21,6 +22,8 @@ export declare class ic10DebugSession extends LoggingDebugSession {
     private _showHex;
     private _useInvalidatedEvent;
     private ic10;
+    private _variables;
+    variableMap: VariableMap;
     constructor(fileAccessor: FileAccessor);
     protected initializeRequest(response: DebugProtocol.InitializeResponse, args: DebugProtocol.InitializeRequestArguments): void;
     protected configurationDoneRequest(response: DebugProtocol.ConfigurationDoneResponse, args: DebugProtocol.ConfigurationDoneArguments): void;
@@ -48,5 +51,16 @@ export declare class ic10DebugSession extends LoggingDebugSession {
     protected cancelRequest(response: DebugProtocol.CancelResponse, args: DebugProtocol.CancelArguments): void;
     protected customRequest(command: string, response: DebugProtocol.Response, args: any): void;
     private createSource;
+    private getHover;
+}
+declare class VariableMap {
+    private map;
+    private ic10;
+    private counter;
+    scope: ic10DebugSession;
+    constructor(scope: ic10DebugSession, ic10: InterpreterIc10);
+    init(id: string): void;
+    get(id: any): any;
+    var2variable(name: any, value: any, id: any): any;
 }
 export {};

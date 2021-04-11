@@ -4,6 +4,7 @@
 
 import {EventEmitter} from 'events';
 import {InterpreterIc10} from "ic10";
+import chalk from "chalk";
 
 export interface FileAccessor {
 	readFile(path: string): Promise<string>;
@@ -40,6 +41,8 @@ export class ic10Runtime extends EventEmitter {
 	
 	// the initial (and one and only) file we are 'debugging'
 	private _sourceFile: string = '';
+	private datetime: any;
+	
 	public get sourceFile() {
 		return this._sourceFile;
 	}
@@ -297,25 +300,38 @@ export class ic10Runtime extends EventEmitter {
 	 * If stepEvent is specified only run a single step and emit the stepEvent.
 	 */
 	private run(reverse = false, stepEvent?: string) {
+		var counter = 0
 		do {
+			
 			var why = this.ic10.prepareLine()
 			var ln = this.ic10.position - 1
 			if (this.ic10?.output?.debug) {
-				this.sendEvent('output', '[debug]: ' + this.ic10.output.debug, this._sourceFile, ln);
+				this.sendEvent('output', chalk.gray('[debug]: ' + this.ic10.output.debug), this._sourceFile, ln);
 			}
 			if (this.ic10?.output?.log) {
-				this.sendEvent('output', this.ic10.output.log, this._sourceFile, ln + 1);
+				this.sendEvent('output', chalk.blue(this.ic10.output.log), this._sourceFile, ln + 1);
 			}
 			if (this.ic10?.output?.error) {
-				this.sendEvent('output', this.ic10.output.error, this._sourceFile, ln);
+				this.sendEvent('output', chalk.red(this.ic10.output.error), this._sourceFile, ln);
 			}
 			if (this.fireEventsForLine(ln, stepEvent)) {
 				this._currentLine = ln;
 				this._currentColumn = undefined;
 				return true;
 			}
+			if (counter++ > 1000) {
+				why = 'timeOut'
+			}
 		} while (why === true)
-		this.sendEvent('end');
+		switch (why) {
+			case "timeOut":
+				this.sendEvent('output', chalk.red.bold("WHILE TRUE!!!!"), this._sourceFile, ln);
+				this.sendEvent('stopOnBreakpoint')
+				break;
+			default:
+				this.sendEvent('end');
+				break;
+		}
 	}
 	
 	private async verifyBreakpoints(path: string): Promise<void> {

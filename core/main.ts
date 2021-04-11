@@ -23,7 +23,7 @@ export function activate(ctx) {
 			provideHover(document, position, token) {
 				var word = document.getWordRangeAtPosition(position)
 				var text = document.getText(word)
-				return new Hover(ic10.getHover(text, LOCALE_KEY))
+				return new Hover(ic10.getHover(text))
 			}
 		}
 	));

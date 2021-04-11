@@ -1,19 +1,24 @@
-alias a r0
-alias b r1
-alias c r2
-move a 5
-move b 2
-loop:
-s d0 a ClearMemory
-add b a b
-#log b
+alias debug d0
+move r0 1
+main:
+	alias furnace dr0
+	sdns r2 furnace
+	s debug Setting r0
+	bnez r2 end
+	ls r1 furnace 0 Occupied
+	bnez r1 process
 
+	end:
+	add r0 r0 1
+	bgt r0 5 f2
+	yield
+j main
 
-add b a b
+process:
+s furnace On 1
+s furnace Activate 1
+j end
 
-#log b
-
-add b a b
-#log b
-j loop
-#die
+f2:
+move r0 0
+j end

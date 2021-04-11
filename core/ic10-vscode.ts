@@ -23,7 +23,7 @@ export class Ic10Vscode {
     }
   }
 
-  public getHover(name = '', lang = '') {
+  public getHover(name = '') {
 
     if (this.langPath.hasOwnProperty(name)) {
       var data = this.langPath[name]

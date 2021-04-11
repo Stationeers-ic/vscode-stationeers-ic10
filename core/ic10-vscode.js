@@ -22,7 +22,7 @@ class Ic10Vscode {
             console.warn(e);
         }
     }
-    getHover(name = '', lang = '') {
+    getHover(name = '') {
         if (this.langPath.hasOwnProperty(name)) {
             var data = this.langPath[name];
             var type = data?.type;

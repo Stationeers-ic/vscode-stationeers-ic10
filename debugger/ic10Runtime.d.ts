@@ -27,6 +27,7 @@ interface IStack {
 export declare class ic10Runtime extends EventEmitter {
     private _fileAccessor;
     private _sourceFile;
+    private datetime;
     get sourceFile(): string;
     private _sourceLines;
     private _currentLine;

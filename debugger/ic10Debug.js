@@ -23,6 +23,7 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
         this._showHex = false;
         this._useInvalidatedEvent = false;
         this.ic10 = new ic10_1.InterpreterIc10();
+        this.variableMap = new VariableMap(this, this.ic10);
         var self = this;
         this.ic10.setSettings({
             debugCallback: function (a, b) {
@@ -234,93 +235,22 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
         this.sendResponse(response);
     }
     async variablesRequest(response, args, request) {
-        var _variables = new Set();
-        for (var cellsKey in this.ic10.memory.cells) {
-            try {
-                cellsKey = String(cellsKey);
-                let val = this.ic10.memory.cells[cellsKey].get();
-                let alias = this.ic10.memory.cells[cellsKey].alias;
-                let name = this.ic10.memory.cells[cellsKey].name;
-                let _name = '';
-                if (alias) {
-                    _name = name + `[${alias}]`;
-                }
-                else {
-                    _name = name;
-                }
-                if (cellsKey != '16') {
-                    _variables[name] = {
-                        name: _name,
-                        type: "float",
-                        value: val ? String(val) : '0',
-                        variablesReference: 0,
-                        __vscodeVariableMenuContext: "simple",
-                    };
-                }
-                else {
-                    _variables[name] = {
-                        name: _name,
-                        type: "string",
-                        value: JSON.stringify(val),
-                        variablesReference: 0
-                    };
-                }
+        const id = this._variableHandles.get(args.variablesReference);
+        if (id) {
+            if (id == "local") {
+                this.variableMap.init(id);
             }
-            catch (e) {
-            }
+            response.body = {
+                variables: Object.values(this.variableMap.get(id))
+            };
+            this.sendResponse(response);
         }
-        for (var environKey in this.ic10.memory.environ) {
-            if (this.ic10.memory.environ.hasOwnProperty(environKey)) {
-                try {
-                    let val = this.ic10.memory.environ[environKey];
-                    let alias = val.alias;
-                    let name = val.name;
-                    let _name = '';
-                    if (alias) {
-                        _name = name + `[${alias}]`;
-                    }
-                    else {
-                        _name = name;
-                    }
-                    _variables[name] = {
-                        name: _name,
-                        type: "string",
-                        value: JSON.stringify(val),
-                        variablesReference: 0
-                    };
-                }
-                catch (e) {
-                }
-            }
+        else {
+            response.body = {
+                variables: []
+            };
+            this.sendResponse(response);
         }
-        for (var aliasesKey in this.ic10.memory.aliases) {
-            if (this.ic10.memory.aliases.hasOwnProperty(aliasesKey)) {
-                try {
-                    let val = this.ic10.memory.environ[environKey];
-                    let alias = val.alias;
-                    let name = val.name;
-                    let _name = '';
-                    if (alias) {
-                        _name = name + `[${alias}]`;
-                    }
-                    else {
-                        _name = name;
-                    }
-                    _variables[name] = {
-                        name: _name,
-                        type: "string",
-                        value: JSON.stringify(val),
-                        variablesReference: 0
-                    };
-                }
-                catch (e) {
-                }
-            }
-        }
-        response.body = {
-            variables: Object.values(_variables)
-        };
-        this.sendResponse(response);
     }
     continueRequest(response, args) {
         this._runtime.continue();
@@ -390,6 +320,9 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
                     }
                 }
             }
+        }
+        if (args.context === 'hover') {
+            reply = this.getHover(args);
         }
         response.body = {
             result: reply ? reply : `evaluate(context: '${args.context}', '${args.expression}')`,
@@ -512,7 +445,169 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
     createSource(filePath) {
         return new vscode_debugadapter_1.Source(path_1.basename(filePath), this.convertDebuggerPathToClient(filePath), undefined, undefined, 'ic10-adapter-data');
     }
+    getHover(args) {
+        var response = '';
+        try {
+            response = this.ic10.memory.cell(args.expression);
+        }
+        catch (e) {
+        }
+        return response;
+    }
 }
 exports.ic10DebugSession = ic10DebugSession;
 ic10DebugSession.threadID = 1;
+class VariableMap {
+    constructor(scope, ic10) {
+        this.counter = 1000;
+        this.ic10 = ic10;
+        this.scope = scope;
+        this.map = {};
+    }
+    init(id) {
+        this.map = new Object;
+        for (var cellsKey in this.ic10.memory.cells) {
+            try {
+                cellsKey = String(cellsKey);
+                let val = this.ic10.memory.cells[cellsKey].get();
+                let alias = this.ic10.memory.cells[cellsKey].alias;
+                let name = this.ic10.memory.cells[cellsKey].name;
+                let _name = '';
+                if (alias) {
+                    _name = name + `[${alias}]`;
+                }
+                else {
+                    _name = name;
+                }
+                if (cellsKey != '16') {
+                    this.var2variable(_name, val, id);
+                }
+                else {
+                    this.var2variable(_name, val, id);
+                }
+            }
+            catch (e) {
+            }
+        }
+        for (var environKey in this.ic10.memory.environ) {
+            if (this.ic10.memory.environ.hasOwnProperty(environKey)) {
+                try {
+                    let val = this.ic10.memory.environ[environKey];
+                    let alias = val.alias;
+                    let name = val.name;
+                    let _name = '';
+                    if (alias) {
+                        _name = name + `[${alias}]`;
+                    }
+                    else {
+                        _name = name;
+                    }
+                    this.var2variable(_name, val, id);
+                }
+                catch (e) {
+                }
+            }
+        }
+        for (var aliasesKey in this.ic10.memory.aliases) {
+            if (this.ic10.memory.aliases.hasOwnProperty(aliasesKey)) {
+                try {
+                    let val = this.ic10.memory.aliases[aliasesKey];
+                    let name = String(val.name);
+                    if (val instanceof ic10_1.ConstantCell) {
+                        this.var2variable(name, val.get(), id);
+                    }
+                }
+                catch (e) {
+                }
+            }
+        }
+    }
+    get(id) {
+        return this.map[id];
+    }
+    var2variable(name, value, id) {
+        if (!(id in this.map)) {
+            this.map[id] = new Object;
+        }
+        if (value === null) {
+            value = 0;
+        }
+        switch (value.constructor.name) {
+            case "String":
+                this.map[id][name] = {
+                    name: name,
+                    type: "string",
+                    value: String(value),
+                    variablesReference: 0,
+                    __vscodeVariableMenuContext: "3_modifications",
+                };
+                return name;
+            case "Number":
+                this.map[id][name] = {
+                    name: name,
+                    type: "float",
+                    value: String(value),
+                    variablesReference: 0,
+                    __vscodeVariableMenuContext: "3_modifications",
+                };
+                return name;
+            case "Array":
+                if (value.length != 0) {
+                    this.map[id][name] = {
+                        name: name,
+                        type: 'array',
+                        value: `Array (${value.length})`,
+                        __vscodeVariableMenuContext: "3_modifications",
+                        variablesReference: this.scope._variableHandles.create(name),
+                    };
+                    for (const valueKey in value) {
+                        if (value.hasOwnProperty(valueKey)) {
+                            this.var2variable(valueKey, value[valueKey], name);
+                        }
+                    }
+                }
+                else {
+                    this.map[id][name] = {
+                        name: name,
+                        type: 'array',
+                        value: 'Array (0)',
+                        variablesReference: 0,
+                    };
+                }
+                return name;
+            case "Device":
+                this.map[id][name] = {
+                    name: name,
+                    type: 'object',
+                    value: `Object`,
+                    __vscodeVariableMenuContext: "3_modifications",
+                    variablesReference: this.scope._variableHandles.create(name),
+                };
+                let arr = Object.keys(value.properties).sort();
+                for (const valueKey of arr) {
+                    if (value.properties.hasOwnProperty(valueKey)) {
+                        this.var2variable(valueKey, value.properties[valueKey], name);
+                    }
+                }
+                return name;
+            case "Slot":
+                this.map[id][name] = {
+                    name: name,
+                    type: 'object',
+                    value: `Object`,
+                    __vscodeVariableMenuContext: "3_modifications",
+                    variablesReference: this.scope._variableHandles.create(name),
+                };
+                let _arr = Object.keys(value.properties).sort();
+                for (const valueKey of _arr) {
+                    if (value.properties.hasOwnProperty(valueKey)) {
+                        this.var2variable(valueKey, value.properties[valueKey], name);
+                    }
+                }
+                return name;
+            default:
+                return name;
+        }
+    }
+}
 //# sourceMappingURL=ic10Debug.js.map
