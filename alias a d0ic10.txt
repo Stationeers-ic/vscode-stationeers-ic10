@@ -1,0 +1,3 @@
+alias a d0
+alias b r3
+add b b 3

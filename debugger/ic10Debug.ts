@@ -84,7 +84,6 @@ export class ic10DebugSession extends LoggingDebugSession {
 		this.variableMap = new VariableMap(this, this.ic10)
 		
 		var self = this
-		// @ts-ignore
 		this.ic10.setSettings({
 			debugCallback: function (a, b) {
 				this.output.debug = a + ' ' + JSON.stringify(b)

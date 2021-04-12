@@ -2,7 +2,7 @@
   "name": "stationeers-ic10",
   "displayName": "Stationeers ic10",
   "description": "Ic10 support",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "MIT",
   "scripts": {
     "pack": "vsce package"
@@ -40,7 +40,8 @@
     "@types/semver": "^7.1.0",
     "@types/sinon": "^9.0.0",
     "@types/vscode": "^1.41.0",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.3",
+    "vsce": "^*"
   },
   "main": "./core/main.js",
   "browser": "./web/extension.js",

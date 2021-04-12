@@ -85,12 +85,11 @@ ${description}
     return html.join("\r\n");
   }
 
-  public var2str(value, mode = 0) {
+  public var2str(value:any, mode = 0) {
     switch (typeof value) {
       case 'string':
       case 'number':
-        // @ts-ignore
-        if (isNaN(value)) {
+        if (isNaN(<number>value)) {
           if (!mode) {
             value = `<span style="color:var(--vscode-symbolIcon-stringForeground)">${value}</span>`
           } else {

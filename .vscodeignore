@@ -1,11 +1,16 @@
 .vscode/**
+.idea
 typings/**
 test/**
 src/**
 **/*.map
 tools
 logs
+sampleWorkspace
 .gitignore
+.gitattributes
+.vscodeignore
+vsc-extension-quickstart.md
 tsconfig.json
 vsc-extension-quickstart.md
 out/**
