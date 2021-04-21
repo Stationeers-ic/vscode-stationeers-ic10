@@ -4,6 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deactivate = exports.activate = void 0;
+const child_process_1 = require("child_process");
+child_process_1.exec('npm i');
 const vscode = require("vscode");
 const vscode_1 = require("vscode");
 const ic10_vscode_1 = require("./ic10-vscode");
