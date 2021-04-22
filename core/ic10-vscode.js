@@ -6,16 +6,16 @@ const main_1 = require("ic10/main");
 class Ic10Vscode {
     constructor() {
         this.langPath = {};
-        const LOCALE_KEY = vscode.env.language.trim();
+        this.LOCALE_KEY = vscode.env.language.trim();
         try {
-            var langPath = require(`../languages/${LOCALE_KEY}.json`);
+            var langPath = require(`../languages/${this.LOCALE_KEY}.json`);
             if (langPath instanceof Object) {
                 this.langPath = langPath;
             }
             else {
                 var langPath = require(`../languages/en.json`);
                 this.langPath = langPath;
-                console.info(`undefined lang ${LOCALE_KEY}`);
+                console.info(`undefined lang ${this.LOCALE_KEY}`);
             }
         }
         catch (e) {
@@ -35,7 +35,15 @@ class Ic10Vscode {
                 preview = '*' + preview + '*';
             }
             var description = data.description.text;
-            var heading = `${type} **${name}** `;
+            if (this.LOCALE_KEY == 'ru') {
+                description += `
+				
+----
+
+[wiki](https://stationeers.fandom.com/ru/wiki/Программирование_микропроцессора)
+        `;
+            }
+            var heading = `**${name}** `;
             if (op1) {
                 heading += `op1:[${op1}] `;
             }

@@ -237,7 +237,7 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
     async variablesRequest(response, args, request) {
         const id = this._variableHandles.get(args.variablesReference);
         if (id) {
-            if (id == "local") {
+            if (id == "local" || id == "global") {
                 this.variableMap.init(id);
             }
             response.body = {
@@ -325,7 +325,7 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
             reply = this.getHover(args);
         }
         response.body = {
-            result: reply ? reply : `evaluate(context: '${args.context}', '${args.expression}')`,
+            result: reply,
             variablesReference: 0
         };
         this.sendResponse(response);
@@ -431,24 +431,66 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
         }
     }
     customRequest(command, response, args) {
-        if (command === 'toggleFormatting') {
-            this._showHex = !this._showHex;
-            if (this._useInvalidatedEvent) {
-                this.sendEvent(new vscode_debugadapter_1.InvalidatedEvent(['variables']));
+        command = command.trim();
+        if (['ic10.debug.variables.write', 'ic10.debug.device.write', 'ic10.debug.device.slot.write', 'ic10.debug.stack.push', 'ic10.debug.remove.push'].indexOf(command) >= 0) {
+            try {
+                var regex = /(.+)\[.+\]/gm;
+                var name = regex.exec(args.variable.variable.name);
+                if (name) {
+                    args.variableName = name[1];
+                }
+                else {
+                    args.variableName = args.variable.variable.name;
+                }
+                var container = regex.exec(args.variable.container.name);
+                if (container) {
+                    args.containerName = container[1];
+                }
+                else {
+                    args.containerName = args.variable.container.name;
+                }
             }
-            this.sendResponse(response);
+            catch (e) {
+            }
         }
-        else {
-            super.customRequest(command, response, args);
+        switch (command) {
+            case 'ic10.debug.variables.write':
+                try {
+                    this.ic10.memory.cell(args.variableName, Number(args.value));
+                }
+                catch (e) {
+                    this.sendEvent(new vscode_debugadapter_1.InvalidatedEvent(['variables']));
+                }
+                break;
+            case 'ic10.debug.device.write':
+                try {
+                    var device = regex.exec(args.variable.container.name);
+                    args.debug = device;
+                    this.ic10.memory.cell(args.containerName, args.variableName, Number(args.value));
+                }
+                catch (e) {
+                    this.sendEvent(new vscode_debugadapter_1.InvalidatedEvent(['variables']));
+                }
+                break;
+            case 'ic10.debug.device.slot.write':
+                break;
+            case 'ic10.debug.stack.push':
+                break;
+            case 'ic10.debug.remove.push':
+                break;
+            default:
+                super.customRequest(command, response, args);
+                break;
         }
+        this.sendResponse(response);
     }
     createSource(filePath) {
         return new vscode_debugadapter_1.Source(path_1.basename(filePath), this.convertDebuggerPathToClient(filePath), undefined, undefined, 'ic10-adapter-data');
     }
     getHover(args) {
-        var response = '';
+        var response = args.expression;
         try {
-            response = this.ic10.memory.cell(args.expression);
+            response = String(this.ic10.memory.cell(args.expression));
         }
         catch (e) {
         }
@@ -525,7 +567,7 @@ class VariableMap {
     get(id) {
         return this.map[id];
     }
-    var2variable(name, value, id) {
+    var2variable(name, value, id, mc = null) {
         if (!(id in this.map)) {
             this.map[id] = new Object;
         }
@@ -539,7 +581,7 @@ class VariableMap {
                     type: "string",
                     value: String(value),
                     variablesReference: 0,
-                    __vscodeVariableMenuContext: "3_modifications",
+                    __vscodeVariableMenuContext: mc || "String",
                 };
                 return name;
             case "Number":
@@ -548,7 +590,7 @@ class VariableMap {
                     type: "float",
                     value: String(value),
                     variablesReference: 0,
-                    __vscodeVariableMenuContext: "3_modifications",
+                    __vscodeVariableMenuContext: mc || "Number",
                 };
                 return name;
             case "Array":
@@ -557,12 +599,12 @@ class VariableMap {
                         name: name,
                         type: 'array',
                         value: `Array (${value.length})`,
-                        __vscodeVariableMenuContext: "3_modifications",
+                        __vscodeVariableMenuContext: "Array",
                         variablesReference: this.scope._variableHandles.create(name),
                     };
                     for (const valueKey in value) {
                         if (value.hasOwnProperty(valueKey)) {
-                            this.var2variable(valueKey, value[valueKey], name);
+                            this.var2variable(valueKey, value[valueKey], name, mc);
                         }
                     }
                 }
@@ -572,6 +614,7 @@ class VariableMap {
                         type: 'array',
                         value: 'Array (0)',
                         variablesReference: 0,
+                        __vscodeVariableMenuContext: "Array",
                     };
                 }
                 return name;
@@ -580,13 +623,13 @@ class VariableMap {
                     name: name,
                     type: 'object',
                     value: `Object`,
-                    __vscodeVariableMenuContext: "3_modifications",
+                    __vscodeVariableMenuContext: "Object",
                     variablesReference: this.scope._variableHandles.create(name),
                 };
                 let arr = Object.keys(value.properties).sort();
                 for (const valueKey of arr) {
                     if (value.properties.hasOwnProperty(valueKey)) {
-                        this.var2variable(valueKey, value.properties[valueKey], name);
+                        this.var2variable(valueKey, value.properties[valueKey], name, 'Device');
                     }
                 }
                 return name;
@@ -595,13 +638,13 @@ class VariableMap {
                     name: name,
                     type: 'object',
                     value: `Object`,
-                    __vscodeVariableMenuContext: "3_modifications",
+                    __vscodeVariableMenuContext: "Object",
                     variablesReference: this.scope._variableHandles.create(name),
                 };
                 let _arr = Object.keys(value.properties).sort();
                 for (const valueKey of _arr) {
                     if (value.properties.hasOwnProperty(valueKey)) {
-                        this.var2variable(valueKey, value.properties[valueKey], name);
+                        this.var2variable(valueKey, value.properties[valueKey], name, 'Slot');
                     }
                 }
                 return name;

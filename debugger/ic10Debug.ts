@@ -26,6 +26,7 @@ import {basename} from 'path';
 import {FileAccessor, ic10Runtime, Iic10Breakpoint} from './ic10Runtime';
 import {Subject} from 'await-notify';
 import {ConstantCell, ic10Error, InterpreterIc10, MemoryCell} from "ic10";
+// import * as fs from "fs";
 
 function timeout(ms: number) {
 	return new Promise(resolve => setTimeout(resolve, ms));
@@ -380,7 +381,7 @@ export class ic10DebugSession extends LoggingDebugSession {
 	protected async variablesRequest(response: DebugProtocol.VariablesResponse, args: DebugProtocol.VariablesArguments, request?: DebugProtocol.Request) {
 		const id = this._variableHandles.get(args.variablesReference);
 		if (id) {
-			if (id == "local") {
+			if (id == "local" || id == "global") {
 				this.variableMap.init(id)
 			}
 			response.body = {
@@ -477,7 +478,7 @@ export class ic10DebugSession extends LoggingDebugSession {
 		}
 		
 		response.body = {
-			result: reply ? reply : `evaluate(context: '${args.context}', '${args.expression}')`,
+			result: reply,
 			variablesReference: 0
 		};
 		this.sendResponse(response);
@@ -604,15 +605,57 @@ export class ic10DebugSession extends LoggingDebugSession {
 	}
 	
 	protected customRequest(command: string, response: DebugProtocol.Response, args: any) {
-		if (command === 'toggleFormatting') {
-			this._showHex = !this._showHex;
-			if (this._useInvalidatedEvent) {
-				this.sendEvent(new InvalidatedEvent(['variables']));
+		command = command.trim()
+		// fs.writeFileSync("C:\\OSPanel\\domains\\vscode-stationeers-ic10\\logs\\" + command + '0.json', JSON.stringify(args))
+		
+		if (['ic10.debug.variables.write', 'ic10.debug.device.write', 'ic10.debug.device.slot.write', 'ic10.debug.stack.push', 'ic10.debug.remove.push'].indexOf(command) >= 0) {
+			try {
+				var regex = /(.+)\[.+\]/gm
+				var name = regex.exec(args.variable.variable.name)
+				if (name) {
+					args.variableName = name[1]
+				} else {
+					args.variableName = args.variable.variable.name
+				}
+				var container = regex.exec(args.variable.container.name)
+				if (container) {
+					args.containerName = container[1]
+				} else {
+					args.containerName = args.variable.container.name
+				}
+				// fs.writeFileSync("C:\\OSPanel\\domains\\vscode-stationeers-ic10\\logs\\" + command + '1.json', JSON.stringify(args))
+			} catch (e) {
+				// fs.writeFileSync("C:\\OSPanel\\domains\\vscode-stationeers-ic10\\logs\\" + command + '2.json', JSON.stringify(e))
 			}
-			this.sendResponse(response);
-		} else {
-			super.customRequest(command, response, args);
 		}
+		switch (command) {
+			case 'ic10.debug.variables.write':
+				try {
+					this.ic10.memory.cell(args.variableName, Number(args.value))
+				} catch (e) {
+					this.sendEvent(new InvalidatedEvent(['variables']));
+				}
+				break;
+			case 'ic10.debug.device.write':
+				try {
+					var device = regex.exec(args.variable.container.name)
+					args.debug = device
+					this.ic10.memory.cell(args.containerName, args.variableName, Number(args.value))
+				} catch (e) {
+					this.sendEvent(new InvalidatedEvent(['variables']));
+				}
+				break;
+			case 'ic10.debug.device.slot.write':
+				break;
+			case 'ic10.debug.stack.push':
+				break;
+			case 'ic10.debug.remove.push':
+				break;
+			default:
+				super.customRequest(command, response, args);
+				break;
+		}
+		this.sendResponse(response);
 	}
 	
 	//---- helpers
@@ -622,10 +665,11 @@ export class ic10DebugSession extends LoggingDebugSession {
 	}
 	
 	private getHover(args: DebugProtocol.EvaluateArguments) {
-		var response = ''
+		var response = args.expression
 		try {
-			response = this.ic10.memory.cell(args.expression)
+			response = String(this.ic10.memory.cell(args.expression))
 		} catch (e) {
+		
 		}
 		return response;
 	}
@@ -708,7 +752,7 @@ class VariableMap {
 		return this.map[id]
 	}
 	
-	public var2variable(name, value, id) {
+	public var2variable(name, value, id, mc = null) {
 		if (!(id in this.map)) {
 			this.map[id] = new Object
 		}
@@ -722,7 +766,7 @@ class VariableMap {
 					type: "string",
 					value: String(value),
 					variablesReference: 0,
-					__vscodeVariableMenuContext: "3_modifications",
+					__vscodeVariableMenuContext: mc || "String",
 					
 				} as DebugProtocol.Variable
 				return name
@@ -732,7 +776,7 @@ class VariableMap {
 					type: "float",
 					value: String(value),
 					variablesReference: 0,
-					__vscodeVariableMenuContext: "3_modifications",
+					__vscodeVariableMenuContext: mc || "Number",
 				} as DebugProtocol.Variable
 				return name
 			case "Array":
@@ -741,12 +785,12 @@ class VariableMap {
 						name: name,
 						type: 'array',
 						value: `Array (${value.length})`,
-						__vscodeVariableMenuContext: "3_modifications",
+						__vscodeVariableMenuContext: "Array",
 						variablesReference: this.scope._variableHandles.create(name),
 					} as DebugProtocol.Variable
 					for (const valueKey in value) {
 						if (value.hasOwnProperty(valueKey)) {
-							this.var2variable(valueKey, value[valueKey], name)
+							this.var2variable(valueKey, value[valueKey], name, mc)
 						}
 					}
 					
@@ -756,6 +800,7 @@ class VariableMap {
 						type: 'array',
 						value: 'Array (0)',
 						variablesReference: 0,
+						__vscodeVariableMenuContext: "Array",
 					} as DebugProtocol.Variable
 				}
 				
@@ -765,13 +810,13 @@ class VariableMap {
 					name: name,
 					type: 'object',
 					value: `Object`,
-					__vscodeVariableMenuContext: "3_modifications",
+					__vscodeVariableMenuContext: "Object",
 					variablesReference: this.scope._variableHandles.create(name),
 				} as DebugProtocol.Variable
 				let arr = Object.keys(value.properties).sort();
 				for (const valueKey of arr) {
 					if (value.properties.hasOwnProperty(valueKey)) {
-						this.var2variable(valueKey, value.properties[valueKey], name)
+						this.var2variable(valueKey, value.properties[valueKey], name, 'Device')
 					}
 				}
 				return name
@@ -780,13 +825,13 @@ class VariableMap {
 					name: name,
 					type: 'object',
 					value: `Object`,
-					__vscodeVariableMenuContext: "3_modifications",
+					__vscodeVariableMenuContext: "Object",
 					variablesReference: this.scope._variableHandles.create(name),
 				} as DebugProtocol.Variable
 				let _arr = Object.keys(value.properties).sort();
 				for (const valueKey of _arr) {
 					if (value.properties.hasOwnProperty(valueKey)) {
-						this.var2variable(valueKey, value.properties[valueKey], name)
+						this.var2variable(valueKey, value.properties[valueKey], name, 'Slot')
 					}
 				}
 				return name

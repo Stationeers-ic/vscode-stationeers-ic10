@@ -5,12 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deactivate = exports.activate = void 0;
 const child_process_1 = require("child_process");
-child_process_1.exec('npm i');
-const vscode = require("vscode");
 const vscode_1 = require("vscode");
 const ic10_vscode_1 = require("./ic10-vscode");
 const ic10_1 = require("ic10");
 const path_1 = __importDefault(require("path"));
+child_process_1.exec('npm i');
+const vscode = require("vscode");
 const LOCALE_KEY = vscode.env.language;
 const ic10 = new ic10_vscode_1.Ic10Vscode();
 const LANG_KEY = 'ic10';
@@ -53,6 +53,67 @@ function activate(ctx) {
             vscode.window.showInformationMessage('Stop');
             interpreterIc10.stop();
         }
+    }));
+    ctx.subscriptions.push(vscode.commands.registerCommand('ic10.test', (variable) => {
+        const ds = vscode.debug.activeDebugSession;
+        console.log('ic10.test');
+        console.log(ds);
+        console.log(variable);
+    }));
+    ctx.subscriptions.push(vscode.commands.registerCommand('ic10.debug.variables.write', (variable) => {
+        const ds = vscode.debug.activeDebugSession;
+        console.log(ds);
+        var input = vscode.window.createInputBox();
+        input.title = 'set ' + variable.variable.name;
+        input.show();
+        input.onDidAccept(function () {
+            ds.customRequest('ic10.debug.variables.write', { variable: variable, value: input.value });
+            input.hide();
+        });
+    }));
+    ctx.subscriptions.push(vscode.commands.registerCommand('ic10.debug.device.write', (variable) => {
+        const ds = vscode.debug.activeDebugSession;
+        console.log(ds);
+        var input = vscode.window.createInputBox();
+        input.title = 'set ' + variable.variable.name;
+        input.show();
+        input.onDidAccept(function () {
+            ds.customRequest('ic10.debug.device.write', { variable: variable, value: input.value });
+            input.hide();
+        });
+    }));
+    ctx.subscriptions.push(vscode.commands.registerCommand('ic10.debug.device.slot.write', (variable) => {
+        const ds = vscode.debug.activeDebugSession;
+        console.log(ds);
+        var input = vscode.window.createInputBox();
+        input.title = 'set ' + variable.variable.name;
+        input.show();
+        input.onDidAccept(function () {
+            ds.customRequest('ic10.debug.device.slot.write', { variable: variable, value: input.value });
+            input.hide();
+        });
+    }));
+    ctx.subscriptions.push(vscode.commands.registerCommand('ic10.debug.stack.push', (variable) => {
+        const ds = vscode.debug.activeDebugSession;
+        console.log(ds);
+        var input = vscode.window.createInputBox();
+        input.title = 'set ' + variable.variable.name;
+        input.show();
+        input.onDidAccept(function () {
+            ds.customRequest('ic10.debug.stack.push', { variable: variable, value: input.value });
+            input.hide();
+        });
+    }));
+    ctx.subscriptions.push(vscode.commands.registerCommand('ic10.debug.remove.push', (variable) => {
+        const ds = vscode.debug.activeDebugSession;
+        console.log(ds);
+        var input = vscode.window.createInputBox();
+        input.title = 'set ' + variable.variable.name;
+        input.show();
+        input.onDidAccept(function () {
+            ds.customRequest('ic10.debug.remove.push', { variable: variable, value: input.value });
+            input.hide();
+        });
     }));
 }
 exports.activate = activate;

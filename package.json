@@ -2,7 +2,7 @@
   "name": "stationeers-ic10",
   "displayName": "Stationeers ic10",
   "description": "Ic10 support",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "license": "MIT",
   "scripts": {
     "start": "tsc",
@@ -122,7 +122,7 @@
           }
         ],
         "variables": {
-          "AskForProgramName": "extension.mock-debug.getProgramName"
+          "AskForProgramName": "extension.1c10-debug.getProgramName"
         }
       }
     ],
@@ -134,9 +134,40 @@
         "icon": "$(play)"
       },
       {
+        "command": "ic10.test",
+        "title": "ic10: test",
+        "description": "test script",
+        "icon": "$(play)"
+      },
+      {
         "command": "ic10.stop",
         "title": "ic10: Stop",
         "description": "Stop script",
+        "icon": "$(stop)"
+      },
+      {
+        "command": "ic10.debug.variables.write",
+        "title": "Write value",
+        "icon": "$(play)"
+      },
+      {
+        "command": "ic10.debug.device.write",
+         "title": "Write value",
+        "icon": "$(stop)"
+      },
+      {
+        "command": "ic10.debug.device.slot.write",
+          "title": "Write value",
+        "icon": "$(stop)"
+      },
+      {
+        "command": "ic10.debug.stack.push",
+       "title": "Write value",
+        "icon": "$(stop)"
+      },
+      {
+        "command": "ic10.debug.remove.push",
+        "title": "Write value",
         "icon": "$(stop)"
       }
     ],
@@ -166,6 +197,18 @@
         {
           "command": "ic10.stop",
           "when": "resourceLangId == ic10"
+        }
+      ],
+      "debug/variables/context": [
+        {
+          "command": "ic10.debug.variables.write",
+          "group": "3_modifications",
+          "when": "debugProtocolVariableMenuContext == String || debugProtocolVariableMenuContext == Number"
+        },
+        {
+          "command": "ic10.debug.device.write",
+          "group": "3_modifications",
+          "when": "debugProtocolVariableMenuContext == Device"
         }
       ]
     }

@@ -1,24 +1,32 @@
-alias debug d0
-move r0 1
-main:
-	alias furnace dr0
-	sdns r2 furnace
-	s debug Setting r0
-	bnez r2 end
-	ls r1 furnace 0 Occupied
-	bnez r1 process
+# Atmo Controller
+alias Analyser d0
+alias AtmoCO2 d1
+alias AtmoN2 d2
+alias AtmoN2O d3
+alias aaaaa r1 
 
-	end:
-	add r0 r0 1
-	bgt r0 5 f2
-	yield
-j main
-
-process:
-s furnace On 1
-s furnace Activate 1
-j end
-
-f2:
-move r0 0
-j end
+#alias AtmoO2 d1
+#alias AtmoX d2
+#alias AtmoH2 d3
+#Contant
+define MOLES 1
+define PERCENT 0.01
+start:
+yield
+move r10 0 #reset
+l r0 Analyser TotalMoles
+l r1 Analyser RatioCarbonDioxide
+l r2 Analyser RatioNitrogen
+l r3 Analyser RatioNitrousOxide
+#l r1 Analyser RatioOxygen
+#l r2 Analyser RatioPollutant
+#l r3 Analyser RatioVolatiles
+#l r0 Analyser RatioWater
+add r10 r10 1
+brlt r0 MOLES 4
+brlt rr10 PERCENT 3
+s dr10 On 1
+jr 2
+s dr10 On 0
+brne r10 3 -6 #loop
+j start

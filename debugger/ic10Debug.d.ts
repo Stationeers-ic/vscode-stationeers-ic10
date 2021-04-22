@@ -61,6 +61,6 @@ declare class VariableMap {
     constructor(scope: ic10DebugSession, ic10: InterpreterIc10);
     init(id: string): void;
     get(id: any): any;
-    var2variable(name: any, value: any, id: any): any;
+    var2variable(name: any, value: any, id: any, mc?: any): any;
 }
 export {};

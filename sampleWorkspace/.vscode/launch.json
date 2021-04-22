@@ -4,7 +4,7 @@
 		{
 			"type": "ic10",
 			"request": "launch",
-			"name": "Debug test.md",
+			"name": "Debug ic10",
 			"program": "${file}",
 			"stopOnEntry": true,
 			"trace": false
