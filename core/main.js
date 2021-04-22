@@ -62,7 +62,6 @@ function activate(ctx) {
     }));
     ctx.subscriptions.push(vscode.commands.registerCommand('ic10.debug.variables.write', (variable) => {
         const ds = vscode.debug.activeDebugSession;
-        console.log(ds);
         var input = vscode.window.createInputBox();
         input.title = 'set ' + variable.variable.name;
         input.show();
@@ -73,7 +72,6 @@ function activate(ctx) {
     }));
     ctx.subscriptions.push(vscode.commands.registerCommand('ic10.debug.device.write', (variable) => {
         const ds = vscode.debug.activeDebugSession;
-        console.log(ds);
         var input = vscode.window.createInputBox();
         input.title = 'set ' + variable.variable.name;
         input.show();
@@ -84,7 +82,6 @@ function activate(ctx) {
     }));
     ctx.subscriptions.push(vscode.commands.registerCommand('ic10.debug.device.slot.write', (variable) => {
         const ds = vscode.debug.activeDebugSession;
-        console.log(ds);
         var input = vscode.window.createInputBox();
         input.title = 'set ' + variable.variable.name;
         input.show();
@@ -95,7 +92,6 @@ function activate(ctx) {
     }));
     ctx.subscriptions.push(vscode.commands.registerCommand('ic10.debug.stack.push', (variable) => {
         const ds = vscode.debug.activeDebugSession;
-        console.log(ds);
         var input = vscode.window.createInputBox();
         input.title = 'set ' + variable.variable.name;
         input.show();
@@ -106,7 +102,6 @@ function activate(ctx) {
     }));
     ctx.subscriptions.push(vscode.commands.registerCommand('ic10.debug.remove.push', (variable) => {
         const ds = vscode.debug.activeDebugSession;
-        console.log(ds);
         var input = vscode.window.createInputBox();
         input.title = 'set ' + variable.variable.name;
         input.show();

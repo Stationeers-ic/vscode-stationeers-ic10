@@ -9,7 +9,7 @@
     "prepub": "vsce package"
   },
   "publisher": "Traineratwot",
-  "repository": "https://github.com/Traineratwot/vscode-stationeers-ic10/issues",
+  "repository": "https://github.com/Traineratwot/vscode-stationeers-ic10/",
   "author": {
     "name": "Traineratwot"
   },
