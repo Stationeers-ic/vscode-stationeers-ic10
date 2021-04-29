@@ -1,11 +1,7 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ic10Runtime = void 0;
 const events_1 = require("events");
-const chalk_1 = __importDefault(require("chalk"));
 class ic10Runtime extends events_1.EventEmitter {
     constructor(_fileAccessor, ic10) {
         super();
@@ -179,13 +175,13 @@ class ic10Runtime extends events_1.EventEmitter {
             var why = this.ic10.prepareLine();
             var ln = this.ic10.position - 1;
             if (this.ic10?.output?.debug) {
-                this.sendEvent('output', chalk_1.default.gray('[debug]: ' + this.ic10.output.debug), this._sourceFile, ln);
+                this.sendEvent('output', '[debug]: ' + this.ic10.output.debug, this._sourceFile, ln);
             }
             if (this.ic10?.output?.log) {
-                this.sendEvent('output', chalk_1.default.blue(this.ic10.output.log), this._sourceFile, ln + 1);
+                this.sendEvent('output', this.ic10.output.log, this._sourceFile, ln + 1);
             }
             if (this.ic10?.output?.error) {
-                this.sendEvent('output', chalk_1.default.red(this.ic10.output.error), this._sourceFile, ln);
+                this.sendEvent('output', this.ic10.output.error, this._sourceFile, ln);
             }
             if (this.fireEventsForLine(ln, stepEvent)) {
                 this._currentLine = ln;
@@ -198,7 +194,7 @@ class ic10Runtime extends events_1.EventEmitter {
         } while (why === true);
         switch (why) {
             case "timeOut":
-                this.sendEvent('output', chalk_1.default.red.bold("WHILE TRUE!!!!"), this._sourceFile, ln);
+                this.sendEvent('output', "WHILE TRUE!!!!", this._sourceFile, ln);
                 this.sendEvent('stopOnBreakpoint');
                 break;
             default:
