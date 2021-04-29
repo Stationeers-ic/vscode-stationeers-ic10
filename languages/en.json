@@ -1340,5 +1340,379 @@
       "preview": "s d5 Setting 1",
       "text": "port for access to external device No. 5"
     }
+  },
+  "Lock": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "0 - manual control unlocked, 1 - locked"
+    }
+  },
+  "Power": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "0 - no power or off, 1 - power on"
+    }
+  },
+  "Open": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "0 - ejection closed, 1 - open"
+    }
+  },
+  "Error": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "0 - normal operation, 1 - error"
+    }
+  },
+  "Activate": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "-1 - stop, 0 - not working 1 - working"
+    }
+  },
+  "Reagents": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "total weight of ingredients in grams"
+    }
+  },
+  "On": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "0 - disabled 1 - disabled"
+    }
+  },
+  "RequiredPower": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "consumed energy, W"
+    }
+  },
+  "RecipeHash": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "hash of the selected recipe"
+    }
+  },
+  "CompletionRatio": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "production stage in%"
+    }
+  },
+  "ExportCount": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "counter of objects passed through the export slot"
+    }
+  },
+  "ImportCount": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "counter of objects passed through the import slot"
+    }
+  },
+  "Occupied": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "0 - slot free, 1 - busy"
+    }
+  },
+  "OccupantHash": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "hash of the object in the slot"
+    }
+  },
+  "Quantity": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "mass / number of items in the slot"
+    }
+  },
+  "Damage": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "object damage level"
+    }
+  },
+  "Class": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "the class of the object in the slot"
+    }
+  },
+  "MaxQuantity": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "maximum number of items in a slot"
+    }
+  },
+  "PrefabHash": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "hash of the Prefab object"
+    }
+  },
+  "ClearMemory": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "> = 1 - resets counters"
+    }
+  },
+  "SolarAngle": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "angle to the sun in degrees"
+    }
+  },
+  "Horizontal": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "angle with respect to the Sun in degrees in the horizontal projection of the Sun on the plane of the sensor"
+    }
+  },
+  "Vertical": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "angle to the sun in degrees"
+    }
+  },
+  "Mode": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "operating mode"
+    }
+  },
+  "Temperature": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "temperature, K"
+    }
+  },
+  "Pressure": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "pressure, kPa"
+    }
+  },
+  "Combustion": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "1 - ignition detected, 0 - in all other cases"
+    }
+  },
+  "RatioOxygen": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "oxygen fraction"
+    }
+  },
+  "RatioCarbonDioxide": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "fraction of carbon dioxide"
+    }
+  },
+  "RatioNitrogen": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "proportion of nitrogen"
+    }
+  },
+  "RatioPollutant": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "proportion of toxins"
+    }
+  },
+  "RatioVolatiles": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "fraction of volatile gases"
+    }
+  },
+  "RatioWater": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "fraction of water vapor"
+    }
+  },
+  "RatioNitrousOxide": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "proportion of nitrous oxide"
+    }
   }
 }

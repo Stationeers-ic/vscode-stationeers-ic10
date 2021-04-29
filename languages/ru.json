@@ -1,1 +1,1718 @@
-{"l":{"type":"function","op1":"R/N","op2":"D/N","op3":"P","op4":"","description":{"preview":"op1 := op2.op3","text":"Чтение значения параметра op3 из порта op2"}},"s":{"type":"function","op1":"D/N","op2":"P","op3":"R/N/C","op4":"","description":{"preview":"op1.op2 := op3","text":"Запись значения в параметр op2 порта op1"}},"ls":{"type":"function","op1":"R/N","op2":"D/N","op3":"R/N/S","op4":"P","description":{"preview":"op1 := op2.slot(op3).op4","text":"Чтение значения op4 из слота op3 порта op2"}},"lr":{"type":"function","op1":"R/N","op2":"D/N","op3":"R/N/RM","op4":"RC","description":{"preview":"op1 := op2.mode(op3).op4","text":"Чтение значения реагента op4 в режиме op3 из порта op2"}},"alias":{"type":"function","op1":"N","op2":"R/D","op3":"","op4":null,"description":{"preview":"op2 => op1","text":"Задат псевдоним для регистра или канала данных"}},"define":{"type":"function","op1":"Cn","op2":"C","op3":"","op4":null,"description":{"preview":"op2 => op1","text":"Задат имя для константы"}},"move":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := op2","text":"Присвоение значения"}},"add":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"","description":{"preview":"op1 := op2 + op3","text":"Сумма"}},"sub":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"","description":{"preview":"op1 := op2  op3","text":"Разность"}},"mul":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"","description":{"preview":"op1 := op2  op3","text":"Произведение"}},"div":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"","description":{"preview":"op1 :=op2 / op3","text":"Деление"}},"mod":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"","description":{"preview":"op1 := op2 mod op3","text":"Остаток от целочисленного деления op2 на op3 (результат не эквивалентен оператору %, и будет положителен при любых знаках op2 и op3)"}},"sqrt":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := o̅p̅2̅","text":"Квадратный корень"}},"round":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := [op2]","text":"Округление к ближайшему целому"}},"trunc":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := int(op2)","text":"Целая часть числа"}},"ceil":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := op2","text":"Округление до ближайшего целого вверх"}},"floor":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := op2","text":"Округление до ближайшего целого вниз"}},"max":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"","description":{"preview":"op1 := max(op2, op3)","text":"Максимальное из двух"}},"min":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"","description":{"preview":"op1 := min(op2, op3)","text":"Минимальное из двух"}},"abs":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := |op2|","text":"Абсолютная величина числа"}},"log":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := ln(op2)","text":"Натуральный логарифм"}},"exp":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := eop2","text":"Экспонента"}},"rand":{"type":"function","op1":"R/N","op2":"","op3":null,"op4":null,"description":{"preview":"op1 := rand(0,1)","text":"Случайная величина от 0 до 1 включительно"}},"sin":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := sin(op2)","text":"Синус*"}},"cos":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := cos(op2)","text":"Косинус*"}},"tan":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := tan(op2)","text":"Тангенс*"}},"asin":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := asin(op2)","text":"Арксинус*"}},"acos":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := acos(op2)","text":"Арккосинус*"}},"atan":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := atan(op2)","text":"Арктангенс*"}},"slt":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"","description":{"preview":"op1 := (op2 < op3)","text":"Если op2 < op3, то единица, иначе ноль"}},"sltz":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := (op2 < 0)","text":"Если op2 < 0, то единица, иначе ноль"}},"sgt":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"","description":{"preview":"op1 := (op2 > op3)","text":"Если op2 > op3, то единица, иначе ноль"}},"sgtz":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := (op2 > 0)","text":"Если op2 > 0, то единица, иначе ноль"}},"sle":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"","description":{"preview":"op1 := (op2  op3)","text":"Если op2  op3, то единица, иначе ноль"}},"slez":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := (op2  0)","text":"Если op2  0, то единица, иначе ноль"}},"sge":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"","description":{"preview":"op1 := (op2  op3)","text":"Если op2  op3, то единица, иначе ноль"}},"sgez":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := (op2  0)","text":"Если op2  0, то единица, иначе ноль"}},"seq":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"","description":{"preview":"op1 := (op2 = op3)","text":"Если op2 = op3, то единица, иначе ноль"}},"seqz":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := (op2 = 0)","text":"Если op2 = 0, то единица, иначе ноль"}},"sne":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"","description":{"preview":"op1 := (op2  op3)","text":"Если op2  op3, то единица, иначе ноль"}},"snez":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"","op4":null,"description":{"preview":"op1 := (op2  0)","text":"Если op2  0, то единица, иначе ноль"}},"sap":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"R/N/C","description":{"preview":"op1 := (op2  op3)","text":"Если op2  op3 с точностью op4, то единица, иначе ноль"}},"sapz":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"","description":{"preview":"op1 := (op2  0)","text":"Если op2  0 с точностью op3, то единица, иначе ноль"}},"sna":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"R/N/C","description":{"preview":"op1 := (op2  op3)","text":"Если op2  op3 с точностью op4, то единица, иначе ноль"}},"snaz":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"","description":{"preview":"op1 := (op2  0)","text":"Если op2  0 с точностью op3, то единица, иначе ноль"}},"sdse":{"type":"function","op1":"R/N","op2":"D/N","op3":"","op4":null,"description":{"preview":"op1 := isset(op2) ? 1 : 0","text":"Если канал op2 настроен на то единица, иначе ноль"}},"sdns":{"type":"function","op1":"R/N","op2":"D/N","op3":"","op4":null,"description":{"preview":"op1 := ¬isset(op2) ? 1 : 0","text":"Если канал op2 не настроен на то единица, иначе ноль"}},"and":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"","description":{"preview":"op1 := op2  op3","text":"Логическое И, единица, если и op2 и op3 истинны, ноль в противном случае"}},"or":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"","description":{"preview":"op1 := op2  op3","text":"Логическое ИЛИ, ноль, если и op2 и op3 ложны, единица в противном случае"}},"xor":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"","description":{"preview":"op1 := op2  op3","text":"Исключающее ИЛИ, единица, если одно и только одно из op2 и op3 истинно, ноль в противном случае"}},"nor":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"","description":{"preview":"op1 := ¬(op2  op3)","text":"Инверсное ИЛИ, единица, если и op2 и op3 ложны, ноль в противном случае"}},"j":{"type":"function","op1":"","op2":null,"op3":null,"op4":null,"description":{"preview":"Переход на указанную строку","text":"R/N/A/T"}},"blt":{"type":"function","op1":"R/N/C","op2":"R/N/A/T","op3":"","op4":null,"description":{"preview":"Переход на op3, если op1 < op2","text":"R/N/C"}},"bltz":{"type":"function","op1":"R/N/A/T","op2":"","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1 < 0","text":"R/N/C"}},"ble":{"type":"function","op1":"R/N/C","op2":"R/N/A/T","op3":"","op4":null,"description":{"preview":"Переход на op3, если op1  op2","text":"R/N/C"}},"blez":{"type":"function","op1":"R/N/A/T","op2":"","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1  0","text":"R/N/C"}},"bge":{"type":"function","op1":"R/N/C","op2":"R/N/A/T","op3":"","op4":null,"description":{"preview":"Переход на op3, если op1  op2","text":"R/N/C"}},"bgez":{"type":"function","op1":"R/N/A/T","op2":"","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1  0","text":"R/N/C"}},"bgt":{"type":"function","op1":"R/N/C","op2":"R/N/A/T","op3":"","op4":null,"description":{"preview":"Переход на op3, если op1 > op2","text":"R/N/C"}},"bgtz":{"type":"function","op1":"R/N/A/T","op2":"","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1 > 0","text":"R/N/C"}},"beq":{"type":"function","op1":"R/N/C","op2":"R/N/A/T","op3":"","op4":null,"description":{"preview":"Переход на op3, если op1 = op2","text":"R/N/C"}},"beqz":{"type":"function","op1":"R/N/A/T","op2":"","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1 = 0","text":"R/N/C"}},"bne":{"type":"function","op1":"R/N/C","op2":"R/N/A/T","op3":"","op4":null,"description":{"preview":"Переход на op3, если op1  op2","text":"R/N/C"}},"bnez":{"type":"function","op1":"R/N/A/T","op2":"","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1  0","text":"R/N/C"}},"bap":{"type":"function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{"preview":"Переход на op4, если op1  op2 с точностью op3","text":"R/N/C"}},"bapz":{"type":"function","op1":"R/N/C","op2":"R/N/A/T","op3":"","op4":null,"description":{"preview":"Переход на op3, если op1  0 с точностью op2","text":"R/N/C"}},"bna":{"type":"function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{"preview":"Переход на op4, если op1  op2 с точностью op3","text":"R/N/C"}},"bnaz":{"type":"function","op1":"R/N/C","op2":"R/N/A/T","op3":"","op4":null,"description":{"preview":"Переход на op3, если op1  0 с точностью op2","text":"R/N/C"}},"bdse":{"type":"function","op1":"R/N/A/T","op2":"","op3":null,"op4":null,"description":{"preview":"Переход на op2, если канал op1 настроен","text":"D/N"}},"bdns":{"type":"function","op1":"R/N/A/T","op2":"","op3":null,"op4":null,"description":{"preview":"Переход на op2, если канал op1 не настроен","text":"D/N"}},"jal":{"type":"function","op1":"","op2":null,"op3":null,"op4":null,"description":{"preview":"Переход на op1 с записью адреса следующей строки в ra","text":"R/N/A/T"}},"bltzal":{"type":"function","op1":"R/N/A/T","op2":"","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1 < 0 с записью адреса следующей строки в ra","text":"R/N/C"}},"bltal":{"type":"function","op1":"R/N/C","op2":"R/N/A/T","op3":"","op4":null,"description":{"preview":"Переход на op3, если op1 < op2 с записью адреса следующей строки в ra","text":"R/N/C"}},"bgeal":{"type":"function","op1":"R/N/C","op2":"R/N/A/T","op3":"","op4":null,"description":{"preview":"Переход на op3, если op1  op2 с записью адреса следующей строки в ra","text":"R/N/C"}},"bgezal":{"type":"function","op1":"R/N/A/T","op2":"","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1  0 с записью адреса следующей строки в ra","text":"R/N/C"}},"bleal":{"type":"function","op1":"R/N/C","op2":"R/N/A/T","op3":"","op4":null,"description":{"preview":"Переход на op3, если op1  op2 с записью адреса следующей строки в ra","text":"R/N/C"}},"blezal":{"type":"function","op1":"R/N/A/T","op2":"","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1  0 с записью адреса следующей строки в ra","text":"R/N/C"}},"bgtal":{"type":"function","op1":"R/N/C","op2":"R/N/A/T","op3":"","op4":null,"description":{"preview":"Переход на op3, если op1 > op2 с записью адреса следующей строки в ra","text":"R/N/C"}},"bgtzal":{"type":"function","op1":"R/N/A/T","op2":"","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1 > 0 с записью адреса следующей строки в ra","text":"R/N/C"}},"beqal":{"type":"function","op1":"R/N/C","op2":"R/N/A/T","op3":"","op4":null,"description":{"preview":"Переход на op3, если op1 = op2 с записью адреса следующей строки в ra","text":"R/N/C"}},"beqzal":{"type":"function","op1":"R/N/A/T","op2":"","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1 = 0 с записью адреса следующей строки в ra","text":"R/N/C"}},"bneal":{"type":"function","op1":"R/N/C","op2":"R/N/A/T","op3":"","op4":null,"description":{"preview":"Переход на op3, если op1  op2 с записью адреса следующей строки в ra","text":"R/N/C"}},"bnezal":{"type":"function","op1":"R/N/A/T","op2":"","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1  0 с записью адреса следующей строки в ra","text":"R/N/C"}},"bapal":{"type":"function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{"preview":"Переход на op4, если op1  op2 с точностью op3 с записью адреса следующей строки в ra","text":"R/N/C"}},"bapzal":{"type":"function","op1":"R/N/C","op2":"R/N/A/T","op3":"","op4":null,"description":{"preview":"Переход на op3, если op1  0 с точностью op2 с записью адреса следующей строки в ra","text":"R/N/C"}},"bnaal":{"type":"function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{"preview":"Переход на op4, если op1  op2 с точностью op3 с записью адреса следующей строки в ra","text":"R/N/C"}},"bnazal":{"type":"function","op1":"R/N/C","op2":"R/N/A/T","op3":"","op4":null,"description":{"preview":"Переход на op3, если op1  0 с точностью op2 с записью адреса следующей строки в ra","text":"R/N/C"}},"bdseal":{"type":"function","op1":"R/N/A/T","op2":"","op3":null,"op4":null,"description":{"preview":"Переход на op2, если канал op1 настроен с записью адреса следующей строки в ra","text":"D/N"}},"bdnsal":{"type":"function","op1":"R/N/A/T","op2":"","op3":null,"op4":null,"description":{"preview":"Переход на op2, если канал op1 не настроен с записью адреса следующей строки в ra","text":"D/N"}},"jr":{"type":"function","op1":"","op2":null,"op3":null,"op4":null,"description":{"preview":"Относительный переход на +op1","text":"R/N/O"}},"brlt":{"type":"function","op1":"R/N/C","op2":"R/N/O","op3":"","op4":null,"description":{"preview":"Относительный переход на +op3, если op1 < op2","text":"R/N/C"}},"brltz":{"type":"function","op1":"R/N/O","op2":"","op3":null,"op4":null,"description":{"preview":"Относительный переход на +op2, если op1 < 0","text":"R/N/C"}},"brle":{"type":"function","op1":"R/N/C","op2":"R/N/O","op3":"","op4":null,"description":{"preview":"Относительный переход на +op3, если op1  op2","text":"R/N/C"}},"brlez":{"type":"function","op1":"R/N/O","op2":"","op3":null,"op4":null,"description":{"preview":"Относительный переход на +op2, если op1  0","text":"R/N/C"}},"brge":{"type":"function","op1":"R/N/C","op2":"R/N/O","op3":"","op4":null,"description":{"preview":"Относительный переход на +op3, если op1  op2","text":"R/N/C"}},"brgez":{"type":"function","op1":"R/N/O","op2":"","op3":null,"op4":null,"description":{"preview":"Относительный переход на +op2, если op1  0","text":"R/N/C"}},"brgt":{"type":"function","op1":"R/N/C","op2":"R/N/O","op3":"","op4":null,"description":{"preview":"Относительный переход на +op3, если op1 > op2","text":"R/N/C"}},"brgtz":{"type":"function","op1":"R/N/O","op2":"","op3":null,"op4":null,"description":{"preview":"Относительный переход на +op2, если op1 > 0","text":"R/N/C"}},"breq":{"type":"function","op1":"R/N/C","op2":"R/N/O","op3":"","op4":null,"description":{"preview":"Относительный переход на +op3, если op1 = op2","text":"R/N/C"}},"breqz":{"type":"function","op1":"R/N/O","op2":"","op3":null,"op4":null,"description":{"preview":"Относительный переход на +op2, если op1 = 0","text":"R/N/C"}},"brne":{"type":"function","op1":"R/N/C","op2":"","op3":null,"op4":null,"description":{"preview":"Относительный переход на +op3, если op1  op2","text":"R/N/C"}},"brnez":{"type":"function","op1":"R/N/O","op2":"","op3":null,"op4":null,"description":{"preview":"Относительный переход на +op2, если op1  0","text":"R/N/C"}},"brap":{"type":"function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/O","op4":null,"description":{"preview":"Относительный переход на +op4, если op1  op2 с точностью op3","text":"R/N/C"}},"brapz":{"type":"function","op1":"R/N/C","op2":"R/N/O","op3":"","op4":null,"description":{"preview":"Относительный переход на +op3, если op1  0 с точностью op2","text":"R/N/C"}},"brna":{"type":"function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/O","op4":null,"description":{"preview":"Относительный переход на +op4, если op1  op2 с точностью op3","text":"R/N/C"}},"brnaz":{"type":"function","op1":"R/N/C","op2":"R/N/O","op3":"","op4":null,"description":{"preview":"Относительный переход на +op3, если op1  0 с точностью op2","text":"R/N/C"}},"brdse":{"type":"function","op1":"R/N/O","op2":"","op3":null,"op4":null,"description":{"preview":"Относительный переход на +op2, если канал op1 настроен","text":"D/N"}},"brdns":{"type":"function","op1":"R/N/O","op2":"","op3":null,"op4":null,"description":{"preview":"Относительный переход на +op2, если канал op1 не настроен","text":"D/N"}},"yield":{"type":"function","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Приостановка программы до следующего тика","text":""}},"sleep":{"type":"function","op1":"","op2":null,"op3":null,"op4":null,"description":{"preview":"Приостановка программы на op1 секунд","text":"R/N/C"}},"peek":{"type":"function","op1":"R/N","op2":"","op3":null,"op4":null,"description":{"preview":"op1 := stack[sp-1]","text":"Записать в op1 верхнее значение со стека не двигая стек"}},"push":{"type":"function","op1":"R/N/C","op2":"","op3":null,"op4":null,"description":{"preview":"stack[sp++] := op1","text":"Положить op1 на стек"}},"pop":{"type":"function","op1":"R/N","op2":"","op3":null,"op4":null,"description":{"preview":"op1 := stack[--sp]","text":"Снять значение со стека и записать в op1"}},"hcf":{"type":"function","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Остановить работу и сжечь микропроцессор","text":""}},"select":{"type":"function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"R/N/C","description":{"preview":"op1 := (op2 ? op3 : op4)","text":"Тернарный select. Если op2 истинно, то op1 := op3, иначе op1 := op4"}},"db":{"type":"constant","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"s db Setting 1","text":"Специальны порт для доступа к сокету"}},"d0":{"type":"constant","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"s d0 Setting 1","text":"порт для доступа к внешнему устройству №0"}},"d1":{"type":"constant","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"s d1 Setting 1","text":"порт для доступа к внешнему устройству №1"}},"d2":{"type":"constant","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"s d2 Setting 1","text":"порт для доступа к внешнему устройству №2"}},"d3":{"type":"constant","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"s d3 Setting 1","text":"порт для доступа к внешнему устройству №3"}},"d4":{"type":"constant","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"s d4 Setting 1","text":"порт для доступа к внешнему устройству №4"}},"d5":{"type":"constant","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"s d5 Setting 1","text":"порт для доступа к внешнему устройству №5"}}}
+{
+  "l": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "D/N",
+    "op3": "P",
+    "op4": "",
+    "description": {
+      "preview": "op1 := op2.op3",
+      "text": "Чтение значения параметра op3 из порта op2"
+    }
+  },
+  "s": {
+    "type": "function",
+    "op1": "D/N",
+    "op2": "P",
+    "op3": "R/N/C",
+    "op4": "",
+    "description": {
+      "preview": "op1.op2 := op3",
+      "text": "Запись значения в параметр op2 порта op1"
+    }
+  },
+  "ls": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "D/N",
+    "op3": "R/N/S",
+    "op4": "P",
+    "description": {
+      "preview": "op1 := op2.slot(op3).op4",
+      "text": "Чтение значения op4 из слота op3 порта op2"
+    }
+  },
+  "lr": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "D/N",
+    "op3": "R/N/RM",
+    "op4": "RC",
+    "description": {
+      "preview": "op1 := op2.mode(op3).op4",
+      "text": "Чтение значения реагента op4 в режиме op3 из порта op2"
+    }
+  },
+  "alias": {
+    "type": "function",
+    "op1": "N",
+    "op2": "R/D",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op2 => op1",
+      "text": "Задат псевдоним для регистра или канала данных"
+    }
+  },
+  "define": {
+    "type": "function",
+    "op1": "Cn",
+    "op2": "C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op2 => op1",
+      "text": "Задат имя для константы"
+    }
+  },
+  "move": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := op2",
+      "text": "Присвоение значения"
+    }
+  },
+  "add": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "",
+    "description": {
+      "preview": "op1 := op2 + op3",
+      "text": "Сумма"
+    }
+  },
+  "sub": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "",
+    "description": {
+      "preview": "op1 := op2  op3",
+      "text": "Разность"
+    }
+  },
+  "mul": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "",
+    "description": {
+      "preview": "op1 := op2  op3",
+      "text": "Произведение"
+    }
+  },
+  "div": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "",
+    "description": {
+      "preview": "op1 :=op2 / op3",
+      "text": "Деление"
+    }
+  },
+  "mod": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "",
+    "description": {
+      "preview": "op1 := op2 mod op3",
+      "text": "Остаток от целочисленного деления op2 на op3 (результат не эквивалентен оператору %, и будет положителен при любых знаках op2 и op3)"
+    }
+  },
+  "sqrt": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := o̅p̅2̅",
+      "text": "Квадратный корень"
+    }
+  },
+  "round": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := [op2]",
+      "text": "Округление к ближайшему целому"
+    }
+  },
+  "trunc": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := int(op2)",
+      "text": "Целая часть числа"
+    }
+  },
+  "ceil": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := op2",
+      "text": "Округление до ближайшего целого вверх"
+    }
+  },
+  "floor": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := op2",
+      "text": "Округление до ближайшего целого вниз"
+    }
+  },
+  "max": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "",
+    "description": {
+      "preview": "op1 := max(op2, op3)",
+      "text": "Максимальное из двух"
+    }
+  },
+  "min": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "",
+    "description": {
+      "preview": "op1 := min(op2, op3)",
+      "text": "Минимальное из двух"
+    }
+  },
+  "abs": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := |op2|",
+      "text": "Абсолютная величина числа"
+    }
+  },
+  "log": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := ln(op2)",
+      "text": "Натуральный логарифм"
+    }
+  },
+  "exp": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := eop2",
+      "text": "Экспонента"
+    }
+  },
+  "rand": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "op1 := rand(0,1)",
+      "text": "Случайная величина от 0 до 1 включительно"
+    }
+  },
+  "sin": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := sin(op2)",
+      "text": "Синус*"
+    }
+  },
+  "cos": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := cos(op2)",
+      "text": "Косинус*"
+    }
+  },
+  "tan": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := tan(op2)",
+      "text": "Тангенс*"
+    }
+  },
+  "asin": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := asin(op2)",
+      "text": "Арксинус*"
+    }
+  },
+  "acos": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := acos(op2)",
+      "text": "Арккосинус*"
+    }
+  },
+  "atan": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := atan(op2)",
+      "text": "Арктангенс*"
+    }
+  },
+  "slt": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "",
+    "description": {
+      "preview": "op1 := (op2 < op3)",
+      "text": "Если op2 < op3, то единица, иначе ноль"
+    }
+  },
+  "sltz": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := (op2 < 0)",
+      "text": "Если op2 < 0, то единица, иначе ноль"
+    }
+  },
+  "sgt": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "",
+    "description": {
+      "preview": "op1 := (op2 > op3)",
+      "text": "Если op2 > op3, то единица, иначе ноль"
+    }
+  },
+  "sgtz": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := (op2 > 0)",
+      "text": "Если op2 > 0, то единица, иначе ноль"
+    }
+  },
+  "sle": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "",
+    "description": {
+      "preview": "op1 := (op2  op3)",
+      "text": "Если op2  op3, то единица, иначе ноль"
+    }
+  },
+  "slez": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := (op2  0)",
+      "text": "Если op2  0, то единица, иначе ноль"
+    }
+  },
+  "sge": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "",
+    "description": {
+      "preview": "op1 := (op2  op3)",
+      "text": "Если op2  op3, то единица, иначе ноль"
+    }
+  },
+  "sgez": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := (op2  0)",
+      "text": "Если op2  0, то единица, иначе ноль"
+    }
+  },
+  "seq": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "",
+    "description": {
+      "preview": "op1 := (op2 = op3)",
+      "text": "Если op2 = op3, то единица, иначе ноль"
+    }
+  },
+  "seqz": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := (op2 = 0)",
+      "text": "Если op2 = 0, то единица, иначе ноль"
+    }
+  },
+  "sne": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "",
+    "description": {
+      "preview": "op1 := (op2  op3)",
+      "text": "Если op2  op3, то единица, иначе ноль"
+    }
+  },
+  "snez": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := (op2  0)",
+      "text": "Если op2  0, то единица, иначе ноль"
+    }
+  },
+  "sap": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "R/N/C",
+    "description": {
+      "preview": "op1 := (op2  op3)",
+      "text": "Если op2  op3 с точностью op4, то единица, иначе ноль"
+    }
+  },
+  "sapz": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "",
+    "description": {
+      "preview": "op1 := (op2  0)",
+      "text": "Если op2  0 с точностью op3, то единица, иначе ноль"
+    }
+  },
+  "sna": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "R/N/C",
+    "description": {
+      "preview": "op1 := (op2  op3)",
+      "text": "Если op2  op3 с точностью op4, то единица, иначе ноль"
+    }
+  },
+  "snaz": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "",
+    "description": {
+      "preview": "op1 := (op2  0)",
+      "text": "Если op2  0 с точностью op3, то единица, иначе ноль"
+    }
+  },
+  "sdse": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "D/N",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := isset(op2) ? 1 : 0",
+      "text": "Если канал op2 настроен на то единица, иначе ноль"
+    }
+  },
+  "sdns": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "D/N",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "op1 := ¬isset(op2) ? 1 : 0",
+      "text": "Если канал op2 не настроен на то единица, иначе ноль"
+    }
+  },
+  "and": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "",
+    "description": {
+      "preview": "op1 := op2  op3",
+      "text": "Логическое И, единица, если и op2 и op3 истинны, ноль в противном случае"
+    }
+  },
+  "or": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "",
+    "description": {
+      "preview": "op1 := op2  op3",
+      "text": "Логическое ИЛИ, ноль, если и op2 и op3 ложны, единица в противном случае"
+    }
+  },
+  "xor": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "",
+    "description": {
+      "preview": "op1 := op2  op3",
+      "text": "Исключающее ИЛИ, единица, если одно и только одно из op2 и op3 истинно, ноль в противном случае"
+    }
+  },
+  "nor": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "",
+    "description": {
+      "preview": "op1 := ¬(op2  op3)",
+      "text": "Инверсное ИЛИ, единица, если и op2 и op3 ложны, ноль в противном случае"
+    }
+  },
+  "j": {
+    "type": "function",
+    "op1": "",
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Переход на указанную строку",
+      "text": "R/N/A/T"
+    }
+  },
+  "blt": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/A/T",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Переход на op3, если op1 < op2",
+      "text": "R/N/C"
+    }
+  },
+  "bltz": {
+    "type": "function",
+    "op1": "R/N/A/T",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Переход на op2, если op1 < 0",
+      "text": "R/N/C"
+    }
+  },
+  "ble": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/A/T",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Переход на op3, если op1  op2",
+      "text": "R/N/C"
+    }
+  },
+  "blez": {
+    "type": "function",
+    "op1": "R/N/A/T",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Переход на op2, если op1  0",
+      "text": "R/N/C"
+    }
+  },
+  "bge": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/A/T",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Переход на op3, если op1  op2",
+      "text": "R/N/C"
+    }
+  },
+  "bgez": {
+    "type": "function",
+    "op1": "R/N/A/T",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Переход на op2, если op1  0",
+      "text": "R/N/C"
+    }
+  },
+  "bgt": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/A/T",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Переход на op3, если op1 > op2",
+      "text": "R/N/C"
+    }
+  },
+  "bgtz": {
+    "type": "function",
+    "op1": "R/N/A/T",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Переход на op2, если op1 > 0",
+      "text": "R/N/C"
+    }
+  },
+  "beq": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/A/T",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Переход на op3, если op1 = op2",
+      "text": "R/N/C"
+    }
+  },
+  "beqz": {
+    "type": "function",
+    "op1": "R/N/A/T",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Переход на op2, если op1 = 0",
+      "text": "R/N/C"
+    }
+  },
+  "bne": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/A/T",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Переход на op3, если op1  op2",
+      "text": "R/N/C"
+    }
+  },
+  "bnez": {
+    "type": "function",
+    "op1": "R/N/A/T",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Переход на op2, если op1  0",
+      "text": "R/N/C"
+    }
+  },
+  "bap": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/C",
+    "op3": "R/N/A/T",
+    "op4": null,
+    "description": {
+      "preview": "Переход на op4, если op1  op2 с точностью op3",
+      "text": "R/N/C"
+    }
+  },
+  "bapz": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/A/T",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Переход на op3, если op1  0 с точностью op2",
+      "text": "R/N/C"
+    }
+  },
+  "bna": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/C",
+    "op3": "R/N/A/T",
+    "op4": null,
+    "description": {
+      "preview": "Переход на op4, если op1  op2 с точностью op3",
+      "text": "R/N/C"
+    }
+  },
+  "bnaz": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/A/T",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Переход на op3, если op1  0 с точностью op2",
+      "text": "R/N/C"
+    }
+  },
+  "bdse": {
+    "type": "function",
+    "op1": "R/N/A/T",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Переход на op2, если канал op1 настроен",
+      "text": "D/N"
+    }
+  },
+  "bdns": {
+    "type": "function",
+    "op1": "R/N/A/T",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Переход на op2, если канал op1 не настроен",
+      "text": "D/N"
+    }
+  },
+  "jal": {
+    "type": "function",
+    "op1": "",
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Переход на op1 с записью адреса следующей строки в ra",
+      "text": "R/N/A/T"
+    }
+  },
+  "bltzal": {
+    "type": "function",
+    "op1": "R/N/A/T",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Переход на op2, если op1 < 0 с записью адреса следующей строки в ra",
+      "text": "R/N/C"
+    }
+  },
+  "bltal": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/A/T",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Переход на op3, если op1 < op2 с записью адреса следующей строки в ra",
+      "text": "R/N/C"
+    }
+  },
+  "bgeal": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/A/T",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Переход на op3, если op1  op2 с записью адреса следующей строки в ra",
+      "text": "R/N/C"
+    }
+  },
+  "bgezal": {
+    "type": "function",
+    "op1": "R/N/A/T",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Переход на op2, если op1  0 с записью адреса следующей строки в ra",
+      "text": "R/N/C"
+    }
+  },
+  "bleal": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/A/T",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Переход на op3, если op1  op2 с записью адреса следующей строки в ra",
+      "text": "R/N/C"
+    }
+  },
+  "blezal": {
+    "type": "function",
+    "op1": "R/N/A/T",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Переход на op2, если op1  0 с записью адреса следующей строки в ra",
+      "text": "R/N/C"
+    }
+  },
+  "bgtal": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/A/T",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Переход на op3, если op1 > op2 с записью адреса следующей строки в ra",
+      "text": "R/N/C"
+    }
+  },
+  "bgtzal": {
+    "type": "function",
+    "op1": "R/N/A/T",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Переход на op2, если op1 > 0 с записью адреса следующей строки в ra",
+      "text": "R/N/C"
+    }
+  },
+  "beqal": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/A/T",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Переход на op3, если op1 = op2 с записью адреса следующей строки в ra",
+      "text": "R/N/C"
+    }
+  },
+  "beqzal": {
+    "type": "function",
+    "op1": "R/N/A/T",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Переход на op2, если op1 = 0 с записью адреса следующей строки в ra",
+      "text": "R/N/C"
+    }
+  },
+  "bneal": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/A/T",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Переход на op3, если op1  op2 с записью адреса следующей строки в ra",
+      "text": "R/N/C"
+    }
+  },
+  "bnezal": {
+    "type": "function",
+    "op1": "R/N/A/T",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Переход на op2, если op1  0 с записью адреса следующей строки в ra",
+      "text": "R/N/C"
+    }
+  },
+  "bapal": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/C",
+    "op3": "R/N/A/T",
+    "op4": null,
+    "description": {
+      "preview": "Переход на op4, если op1  op2 с точностью op3 с записью адреса следующей строки в ra",
+      "text": "R/N/C"
+    }
+  },
+  "bapzal": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/A/T",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Переход на op3, если op1  0 с точностью op2 с записью адреса следующей строки в ra",
+      "text": "R/N/C"
+    }
+  },
+  "bnaal": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/C",
+    "op3": "R/N/A/T",
+    "op4": null,
+    "description": {
+      "preview": "Переход на op4, если op1  op2 с точностью op3 с записью адреса следующей строки в ra",
+      "text": "R/N/C"
+    }
+  },
+  "bnazal": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/A/T",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Переход на op3, если op1  0 с точностью op2 с записью адреса следующей строки в ra",
+      "text": "R/N/C"
+    }
+  },
+  "bdseal": {
+    "type": "function",
+    "op1": "R/N/A/T",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Переход на op2, если канал op1 настроен с записью адреса следующей строки в ra",
+      "text": "D/N"
+    }
+  },
+  "bdnsal": {
+    "type": "function",
+    "op1": "R/N/A/T",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Переход на op2, если канал op1 не настроен с записью адреса следующей строки в ra",
+      "text": "D/N"
+    }
+  },
+  "jr": {
+    "type": "function",
+    "op1": "",
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Относительный переход на +op1",
+      "text": "R/N/O"
+    }
+  },
+  "brlt": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/O",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Относительный переход на +op3, если op1 < op2",
+      "text": "R/N/C"
+    }
+  },
+  "brltz": {
+    "type": "function",
+    "op1": "R/N/O",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Относительный переход на +op2, если op1 < 0",
+      "text": "R/N/C"
+    }
+  },
+  "brle": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/O",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Относительный переход на +op3, если op1  op2",
+      "text": "R/N/C"
+    }
+  },
+  "brlez": {
+    "type": "function",
+    "op1": "R/N/O",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Относительный переход на +op2, если op1  0",
+      "text": "R/N/C"
+    }
+  },
+  "brge": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/O",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Относительный переход на +op3, если op1  op2",
+      "text": "R/N/C"
+    }
+  },
+  "brgez": {
+    "type": "function",
+    "op1": "R/N/O",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Относительный переход на +op2, если op1  0",
+      "text": "R/N/C"
+    }
+  },
+  "brgt": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/O",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Относительный переход на +op3, если op1 > op2",
+      "text": "R/N/C"
+    }
+  },
+  "brgtz": {
+    "type": "function",
+    "op1": "R/N/O",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Относительный переход на +op2, если op1 > 0",
+      "text": "R/N/C"
+    }
+  },
+  "breq": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/O",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Относительный переход на +op3, если op1 = op2",
+      "text": "R/N/C"
+    }
+  },
+  "breqz": {
+    "type": "function",
+    "op1": "R/N/O",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Относительный переход на +op2, если op1 = 0",
+      "text": "R/N/C"
+    }
+  },
+  "brne": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Относительный переход на +op3, если op1  op2",
+      "text": "R/N/C"
+    }
+  },
+  "brnez": {
+    "type": "function",
+    "op1": "R/N/O",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Относительный переход на +op2, если op1  0",
+      "text": "R/N/C"
+    }
+  },
+  "brap": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/C",
+    "op3": "R/N/O",
+    "op4": null,
+    "description": {
+      "preview": "Относительный переход на +op4, если op1  op2 с точностью op3",
+      "text": "R/N/C"
+    }
+  },
+  "brapz": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/O",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Относительный переход на +op3, если op1  0 с точностью op2",
+      "text": "R/N/C"
+    }
+  },
+  "brna": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/C",
+    "op3": "R/N/O",
+    "op4": null,
+    "description": {
+      "preview": "Относительный переход на +op4, если op1  op2 с точностью op3",
+      "text": "R/N/C"
+    }
+  },
+  "brnaz": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "R/N/O",
+    "op3": "",
+    "op4": null,
+    "description": {
+      "preview": "Относительный переход на +op3, если op1  0 с точностью op2",
+      "text": "R/N/C"
+    }
+  },
+  "brdse": {
+    "type": "function",
+    "op1": "R/N/O",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Относительный переход на +op2, если канал op1 настроен",
+      "text": "D/N"
+    }
+  },
+  "brdns": {
+    "type": "function",
+    "op1": "R/N/O",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Относительный переход на +op2, если канал op1 не настроен",
+      "text": "D/N"
+    }
+  },
+  "yield": {
+    "type": "function",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Приостановка программы до следующего тика",
+      "text": ""
+    }
+  },
+  "sleep": {
+    "type": "function",
+    "op1": "",
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Приостановка программы на op1 секунд",
+      "text": "R/N/C"
+    }
+  },
+  "peek": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "op1 := stack[sp-1]",
+      "text": "Записать в op1 верхнее значение со стека не двигая стек"
+    }
+  },
+  "push": {
+    "type": "function",
+    "op1": "R/N/C",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "stack[sp++] := op1",
+      "text": "Положить op1 на стек"
+    }
+  },
+  "pop": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "",
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "op1 := stack[--sp]",
+      "text": "Снять значение со стека и записать в op1"
+    }
+  },
+  "hcf": {
+    "type": "function",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "Остановить работу и сжечь микропроцессор",
+      "text": ""
+    }
+  },
+  "select": {
+    "type": "function",
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": "R/N/C",
+    "description": {
+      "preview": "op1 := (op2 ? op3 : op4)",
+      "text": "Тернарный select. Если op2 истинно, то op1 := op3, иначе op1 := op4"
+    }
+  },
+  "db": {
+    "type": "constant",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "s db Setting 1",
+      "text": "Специальны порт для доступа к сокету"
+    }
+  },
+  "d0": {
+    "type": "constant",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "s d0 Setting 1",
+      "text": "порт для доступа к внешнему устройству №0"
+    }
+  },
+  "d1": {
+    "type": "constant",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "s d1 Setting 1",
+      "text": "порт для доступа к внешнему устройству №1"
+    }
+  },
+  "d2": {
+    "type": "constant",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "s d2 Setting 1",
+      "text": "порт для доступа к внешнему устройству №2"
+    }
+  },
+  "d3": {
+    "type": "constant",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "s d3 Setting 1",
+      "text": "порт для доступа к внешнему устройству №3"
+    }
+  },
+  "d4": {
+    "type": "constant",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "s d4 Setting 1",
+      "text": "порт для доступа к внешнему устройству №4"
+    }
+  },
+  "d5": {
+    "type": "constant",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "s d5 Setting 1",
+      "text": "порт для доступа к внешнему устройству №5"
+    }
+  },
+  "Lock": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "0 - ручное управление разблокировано, 1 - заблокировано"
+    }
+  },
+  "Power": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "0 - питание отсутствует или выключен, 1 - питание подано"
+    }
+  },
+  "Open": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "0 - выброс закрыт, 1 - открыт"
+    }
+  },
+  "Error": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "0 - нормальная работа, 1 - ошибка"
+    }
+  },
+  "Activate": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "-1 - остановить , 0 - не работает 1 - работает"
+    }
+  },
+  "Reagents": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "общая масса ингредиентов в граммах"
+    }
+  },
+  "On": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "0 - выключен 1 - выключен"
+    }
+  },
+  "RequiredPower": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "потребляемая энергия, Вт"
+    }
+  },
+  "RecipeHash": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "хэш выбранного рецепта"
+    }
+  },
+  "CompletionRatio": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "этап производства в %"
+    }
+  },
+  "ExportCount": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "счётчик объектов, прошедших через слот экспорта"
+    }
+  },
+  "ImportCount": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "счётчик объектов, прошедших через слот импорта"
+    }
+  },
+  "Occupied": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "0 - слот свободен, 1 - занят"
+    }
+  },
+  "OccupantHash": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "хэш объекта в слоте"
+    }
+  },
+  "Quantity": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "масса / количество предметов в слоте"
+    }
+  },
+  "Damage": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "уровень повреждения объекта"
+    }
+  },
+  "Class": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "класс объекта в слоте"
+    }
+  },
+  "MaxQuantity": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "максимальное количество предметов в слоте"
+    }
+  },
+  "PrefabHash": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "хэш Prefab объекта"
+    }
+  },
+  "ClearMemory": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": ">=1 - сбрасывает счётчики"
+    }
+  },
+  "SolarAngle": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "угол по отношению к Солнцу в градусах"
+    }
+  },
+  "Horizontal": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "угол по отношению к Солнцу в градусах в горизонтальной проекции Солнца на плоскость датчика"
+    }
+  },
+  "Vertical": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "угол по отношению к Солнцу в градусах"
+    }
+  },
+  "Mode": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "режим работы"
+    }
+  },
+  "Temperature": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "температура, К"
+    }
+  },
+  "Pressure": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "давление, кПа"
+    }
+  },
+  "Combustion": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "1 - обнаружено воспламенение, 0 - во всех остальных случаях"
+    }
+  },
+  "RatioOxygen": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "доля кислорода"
+    }
+  },
+  "RatioCarbonDioxide": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "доля углекислого газа"
+    }
+  },
+  "RatioNitrogen": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "доля азота"
+    }
+  },
+  "RatioPollutant": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "доля токсинов"
+    }
+  },
+  "RatioVolatiles": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "доля летучих газов"
+    }
+  },
+  "RatioWater": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "доля водяных паров"
+    }
+  },
+  "RatioNitrousOxide": {
+    "type": "parameter",
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "description": {
+      "preview": "",
+      "text": "доля закиси азота"
+    }
+  }
+}

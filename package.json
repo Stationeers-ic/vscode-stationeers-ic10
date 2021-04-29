@@ -152,17 +152,17 @@
       },
       {
         "command": "ic10.debug.device.write",
-         "title": "Write value",
+        "title": "Write value",
         "icon": "$(stop)"
       },
       {
         "command": "ic10.debug.device.slot.write",
-          "title": "Write value",
+        "title": "Write value",
         "icon": "$(stop)"
       },
       {
         "command": "ic10.debug.stack.push",
-       "title": "Write value",
+        "title": "Write value",
         "icon": "$(stop)"
       },
       {
@@ -217,6 +217,7 @@
     "await-notify": "^1.0.1",
     "caller-id": "^0.1.0",
     "chalk": "^4.1.0",
+    "gulp": "^4.0.2",
     "ic10": "^1.0.27",
     "vscode-debugadapter": "^1.46.0",
     "vscode-debugprotocol": "^1.46.0"
