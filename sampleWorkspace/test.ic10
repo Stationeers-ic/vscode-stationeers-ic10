@@ -13,6 +13,7 @@ define MOLES 1
 define PERCENT 0.01
 start:
 yield
+
 move r10 0 #reset
 l r0 Analyser TotalMoles
 l r1 Analyser RatioCarbonDioxide

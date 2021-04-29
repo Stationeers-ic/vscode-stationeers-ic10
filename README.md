@@ -22,9 +22,15 @@
 - Debugger
 
 ## News
+- new snippets
+- new description for variable
 - Write value in debugger 
 - translate to english
 - **Debugger**
+
+new snippets
+![snippets](https://i.imgur.com/Aokz1an.jpg)
+
 
 [demo2](https://youtu.be/ims5SBcao64)
 
