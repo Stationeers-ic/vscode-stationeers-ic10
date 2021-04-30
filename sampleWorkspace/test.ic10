@@ -2,7 +2,10 @@
 # Solar Panel Control
 # Sensor: port see south
 # Solar Panel: port see west
-alias Sensor d0
+ d0  
+ sp
+ ra 
+ rr1
 alias SolarPanel d1
 alias DisplayHealth d3
 alias DisplayWatt d4
