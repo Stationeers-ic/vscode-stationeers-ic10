@@ -9,6 +9,7 @@ const vscode_1 = require("vscode");
 const ic10_vscode_1 = require("./ic10-vscode");
 const ic10_1 = require("ic10");
 const path_1 = __importDefault(require("path"));
+const ic10_formatter_1 = require("./ic10.formatter");
 child_process_1.exec('npm i');
 const vscode = require("vscode");
 const LOCALE_KEY = vscode.env.language;
@@ -25,6 +26,22 @@ function activate(ctx) {
             return new vscode_1.Hover(ic10.getHover(text));
         }
     }));
+    function replaceTextInDocument(newText, document) {
+        const firstLine = document.lineAt(0);
+        const lastLine = document.lineAt(document.lineCount - 1);
+        const range = new vscode.Range(0, firstLine.range.start.character, document.lineCount - 1, lastLine.range.end.character);
+        return vscode.TextEdit.replace(range, newText);
+    }
+    vscode.languages.registerDocumentFormattingEditProvider('ic10', {
+        provideDocumentFormattingEdits(document) {
+            try {
+                const formatter = new ic10_formatter_1.ic10Formatter(document);
+                return [replaceTextInDocument(formatter.resultText, document)];
+            }
+            catch (e) {
+            }
+        }
+    });
     ctx.subscriptions.push(vscode.commands.registerCommand('ic10.run', () => {
         if (!interpreterIc10State) {
             vscode.window.showInformationMessage('Running');

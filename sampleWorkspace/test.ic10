@@ -1,3 +1,9 @@
+#-reset-vars-
+move r10 0
+move r11 0
+move r0 0
+move ra 0
+#-reset-vars-
 define lowContur 273
 define highContur 278
 define lowAir 295
@@ -8,7 +14,6 @@ define highHydro 313
 define ActiveVentHash -1129453144
 define forEnable 10000
 define forDisable 200
-
 alias counter r10
 alias activeVentState r11
 alias sensorContur d0
@@ -22,35 +27,35 @@ move counter 0
 move activeVentState 0
 
 main:
-jal checkContur
-jal checkAir
-jal checkHydro
-jal processFilterVents
-s db Setting counter
+	jal checkContur
+	jal checkAir
+	jal checkHydro
+	jal processFilterVents
+	s db Setting counter
 j main
 
 checkContur:
-l r0 sensorContur Temperature
-brlt r0 highContur 2
-s ventContur On 1
-brgt r0 lowContur 2
-s ventContur On 0
+	l r0 sensorContur Temperature
+	brlt r0 highContur 2
+	s ventContur On 1
+	brgt r0 lowContur 2
+	s ventContur On 0
 j ra
 
 checkAir:
-l r0 sensorAir Temperature
-brlt r0 highAir 2
-s ventAir On 1
-brgt r0 lowAir 2
-s ventAir On 0
+	l r0 sensorAir Temperature
+	brlt r0 highAir 2
+	s ventAir On 1
+	brgt r0 lowAir 2
+	s ventAir On 0
 j ra
 
 checkHydro:
-l r0 sensorHydro Temperature
-brlt r0 highHydro 2
-s ventHydro On 1
-brgt r0 lowHydro 2
-s ventHydro On 0
+	l r0 sensorHydro Temperature
+	brlt r0 highHydro 2
+	s ventHydro On 1
+	brgt r0 lowHydro 2
+	s ventHydro On 0
 j ra
 
 processFilterVents:
@@ -68,4 +73,4 @@ blt counter forDisable ra
 sb ActiveVentHash On 0
 move activeVentState 0
 move counter 0
-j ra
+j main

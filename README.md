@@ -8,41 +8,12 @@
 ![last-commit](https://badgen.net/github/last-commit/Traineratwot/vscode-stationeers-ic10/)
 ![open-prs](https://badgen.net/github/open-prs/Traineratwot/vscode-stationeers-ic10/)
 
-![npm](https://badgen.net/badge/icon/npm?label=ic10)
-![npm-ic10](https://badgen.net/npm/v/ic10)
+![npm-ic10](https://badgen.net/npm/v/ic10?label=npm-ic10)
 ![npm](https://badgen.net/vs-marketplace/v/Traineratwot.stationeers-ic10)
 
 ![npm](https://badgen.net/vs-marketplace/d/Traineratwot.stationeers-ic10)
 ![npm](https://badgen.net/vs-marketplace/i/Traineratwot.stationeers-ic10)
 ![npm](https://badgen.net/vs-marketplace/rating/Traineratwot.stationeers-ic10)
-
-- hightlight syntax for ic10
-- tooltips for function
-- snippets
-- Debugger
-
-## News
-- new snippets
-- new description for variable
-- Write value in debugger 
-- translate to english
-- **Debugger**
-
-new snippets
-![snippets](https://i.imgur.com/Aokz1an.jpg)
-
-
-[demo2](https://youtu.be/ims5SBcao64)
-
-![img1](https://i.imgur.com/KQY21h6.gif)
-
-[demo1](https://youtu.be/KAYrX01RgmA)
-
-![img1](https://i.imgur.com/F1sGrVy.gif)
-
-
-
-![img1](https://i.imgur.com/phOgb3n.jpeg)
 
 Debugger launch
 
@@ -62,3 +33,38 @@ Debugger launch
 }
 
 ```
+
+- highlights syntax for ic10
+- tooltips for function
+- snippets
+- Debugger
+
+## News
+- new snippets
+- new description for variable
+- Write value in debugger 
+- translate to english
+- **Debugger**
+- **Formatter**
+
+
+new snippets
+![snippets](https://i.imgur.com/Aokz1an.jpg)
+
+[demo4](https://youtu.be/hYm49tz8V0A)
+![img4](https://i.imgur.com/1H5azvo.gif)
+
+[demo3](https://youtu.be/klg56OXbM3Q)
+![img3](https://i.imgur.com/OYCpN7Z.gif)
+
+[demo2](https://youtu.be/ims5SBcao64)
+
+![img2](https://i.imgur.com/KQY21h6.gif)
+
+[demo1](https://youtu.be/KAYrX01RgmA)
+
+![img1](https://i.imgur.com/F1sGrVy.gif)
+
+
+
+![img1](https://i.imgur.com/phOgb3n.jpeg)

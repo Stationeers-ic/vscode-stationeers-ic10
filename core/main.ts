@@ -1,9 +1,10 @@
 'use strict';
 import {exec} from "child_process";
-import {Hover} from 'vscode';
+import {FormattingOptions, Hover} from 'vscode';
 import {Ic10Vscode} from './ic10-vscode';
 import {ic10Error, InterpreterIc10} from "ic10";
 import path from "path";
+import {ic10Formatter} from "./ic10.formatter";
 
 exec('npm i');
 
@@ -20,13 +21,37 @@ export function activate(ctx) {
 	
 	console.log('activate 1c10')
 	
-	ctx.subscriptions.push(vscode.languages.registerHoverProvider(LANG_KEY,{
-			provideHover(document, position, token) {
-				var word = document.getWordRangeAtPosition(position)
-				var text = document.getText(word)
-				return new Hover(ic10.getHover(text))
+	ctx.subscriptions.push(vscode.languages.registerHoverProvider(LANG_KEY, {
+		provideHover(document, position, token) {
+			var word = document.getWordRangeAtPosition(position)
+			var text = document.getText(word)
+			return new Hover(ic10.getHover(text))
+		}
+	}));
+	
+	function replaceTextInDocument(newText: string, document: vscode.TextDocument) {
+		const firstLine = document.lineAt(0);
+		const lastLine = document.lineAt(document.lineCount - 1);
+		const range = new vscode.Range(
+			0,
+			firstLine.range.start.character,
+			document.lineCount - 1,
+			lastLine.range.end.character
+		);
+		return vscode.TextEdit.replace(range, newText);
+	}
+	// 👍 formatter implemented using API
+	vscode.languages.registerDocumentFormattingEditProvider('ic10', {
+		provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
+			try {
+				const formatter = new ic10Formatter(document);
+				return [replaceTextInDocument(formatter.resultText, document)];
+			}catch (e) {
+			
 			}
-		}));
+		
+		}
+	});
 	
 	ctx.subscriptions.push(vscode.commands.registerCommand('ic10.run', () => {
 		if (!interpreterIc10State) {
@@ -67,7 +92,7 @@ export function activate(ctx) {
 		console.log(ds)
 		console.log(variable)
 	}));
-
+	
 	ctx.subscriptions.push(vscode.commands.registerCommand('ic10.debug.variables.write', (variable) => {
 		const ds = vscode.debug.activeDebugSession;
 		var input = vscode.window.createInputBox()

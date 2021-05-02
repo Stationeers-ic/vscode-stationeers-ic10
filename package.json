@@ -2,7 +2,7 @@
   "name": "stationeers-ic10",
   "displayName": "Stationeers ic10",
   "description": "Ic10 support",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "license": "MIT",
   "scripts": {
     "start": "tsc",
@@ -129,6 +129,17 @@
         }
       }
     ],
+    "snippets": [
+      {
+        "language": "ic10",
+        "path": "./snippets/ic10.json"
+      }
+    ],
+    "breakpoints": [
+      {
+        "language": "ic10"
+      }
+    ],
     "commands": [
       {
         "command": "ic10.run",
@@ -174,17 +185,6 @@
         "icon": "$(stop)"
       }
     ],
-    "snippets": [
-      {
-        "language": "ic10",
-        "path": "./snippets/ic10.json"
-      }
-    ],
-    "breakpoints": [
-      {
-        "language": "ic10"
-      }
-    ],
     "menus": {
       "commandPalette": [
         {
@@ -218,7 +218,7 @@
   },
   "dependencies": {
     "await-notify": "^1.0.1",
-    "ic10": "^1.0.32",
+    "ic10": "^1.0.39",
     "vscode-debugadapter": "^1.46.0",
     "vscode-debugprotocol": "^1.46.0"
   },
