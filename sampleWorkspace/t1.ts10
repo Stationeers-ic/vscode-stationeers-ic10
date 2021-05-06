@@ -4,15 +4,19 @@ var hash
 var ms
 a++
 
-if a > 0 then fn1 else fn2
+if a > 0 then fn1 else fn2 end
 
 b = a
 
 b = 0
 
-if hash in [1057658015,258339687] then fn1
+if hash in [1057658015,258339687] then
+    fn1
+else
+    fn2
+end
 
-for 0 6 2 
+for 0 6 2
 	d0.Setting = i
 end
 
@@ -26,7 +30,7 @@ function fn1
 	ms = d(hash).Setting(max) #пакетное чтение из портов d0-d5 максимального значение Setting
 end
 
-function fn2
-	
+def fn2
+
 
 end
