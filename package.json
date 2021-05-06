@@ -218,7 +218,7 @@
   },
   "dependencies": {
     "await-notify": "^1.0.1",
-    "ic10": "^1.0.39",
+    "ic10": "^1.0.41",
     "vscode-debugadapter": "^1.46.0",
     "vscode-debugprotocol": "^1.46.0"
   },

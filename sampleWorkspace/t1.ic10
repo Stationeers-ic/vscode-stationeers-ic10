@@ -1,0 +1,35 @@
+alias ts10Temp r0 #-------------
+
+alias a r1 #var a = 2
+move a 2   #var a = 2
+
+alias b r2  # var b = null
+move a 0    # var b = null
+
+alias hash r3 # var hash
+
+alias ms r4 # var ms
+
+add a a 1  # a++
+
+move b a # b = a
+move b 0 # b = 0
+
+bgezal a fn1 # if a > 0 then fn1 else fn2
+blezal a fn2 # if a > 0 then fn1 else fn2
+beqzal a fn2 # if a > 0 then fn1 else fn2
+
+fn1:
+	s d0 Setting 1 #d0.Setting = 1
+
+	ls ts10Temp d0  0 hash  # hash = d0.slot(0).hash
+	move hash ts10Temp 		# hash = d0.slot(0).hash
+
+	lb ts10Temp hash Setting max  # ms = d(hash).Setting(max)
+j ra
+
+move a 0 
+for1:
+	r15
+j for1
+for1exit:
