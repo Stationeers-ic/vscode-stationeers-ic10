@@ -2,7 +2,7 @@
   "name": "stationeers-ic10",
   "displayName": "Stationeers ic10",
   "description": "Ic10 support",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "license": "MIT",
   "scripts": {
     "start": "tsc",
@@ -218,7 +218,7 @@
   },
   "dependencies": {
     "await-notify": "^1.0.1",
-    "ic10": "^1.0.41",
+    "ic10": "^1.0.42",
     "vscode-debugadapter": "^1.46.0",
     "vscode-debugprotocol": "^1.46.0"
   },
