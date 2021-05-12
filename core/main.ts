@@ -5,14 +5,12 @@ import {Ic10Vscode} from './ic10-vscode';
 import {ic10Error, InterpreterIc10} from "ic10";
 import path from "path";
 import {ic10Formatter} from "./ic10.formatter";
-
-exec('npm i');
-
 import vscode = require('vscode');
 
 const LOCALE_KEY: string = vscode.env.language
 const ic10 = new Ic10Vscode();
 const LANG_KEY = 'ic10'
+const LANG_KEY2 = 'icX'
 const interpreterIc10 = new InterpreterIc10(null)
 var interpreterIc10State = 0
 
@@ -28,7 +26,13 @@ export function activate(ctx) {
 			return new Hover(ic10.getHover(text))
 		}
 	}));
-	
+	ctx.subscriptions.push(vscode.languages.registerHoverProvider(LANG_KEY2, {
+		provideHover(document, position, token) {
+			var word = document.getWordRangeAtPosition(position)
+			var text = document.getText(word)
+			return new Hover(ic10.getHover(text))
+		}
+	}));
 	function replaceTextInDocument(newText: string, document: vscode.TextDocument) {
 		const firstLine = document.lineAt(0);
 		const lastLine = document.lineAt(document.lineCount - 1);

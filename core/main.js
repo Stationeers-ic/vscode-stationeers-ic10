@@ -4,22 +4,28 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deactivate = exports.activate = void 0;
-const child_process_1 = require("child_process");
 const vscode_1 = require("vscode");
 const ic10_vscode_1 = require("./ic10-vscode");
 const ic10_1 = require("ic10");
 const path_1 = __importDefault(require("path"));
 const ic10_formatter_1 = require("./ic10.formatter");
-child_process_1.exec('npm i');
 const vscode = require("vscode");
 const LOCALE_KEY = vscode.env.language;
 const ic10 = new ic10_vscode_1.Ic10Vscode();
 const LANG_KEY = 'ic10';
+const LANG_KEY2 = 'icX';
 const interpreterIc10 = new ic10_1.InterpreterIc10(null);
 var interpreterIc10State = 0;
 function activate(ctx) {
     console.log('activate 1c10');
     ctx.subscriptions.push(vscode.languages.registerHoverProvider(LANG_KEY, {
+        provideHover(document, position, token) {
+            var word = document.getWordRangeAtPosition(position);
+            var text = document.getText(word);
+            return new vscode_1.Hover(ic10.getHover(text));
+        }
+    }));
+    ctx.subscriptions.push(vscode.languages.registerHoverProvider(LANG_KEY2, {
         provideHover(document, position, token) {
             var word = document.getWordRangeAtPosition(position);
             var text = document.getText(word);

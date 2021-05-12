@@ -157,12 +157,6 @@ class ic10Formatter {
         this.resultText = this.lines.join("\n");
     }
     addResetVar() {
-        var txt = '#-reset-vars-' + "\n";
-        this.vars.forEach((value) => {
-            txt += `move ${value} 0` + "\n";
-        });
-        txt += '#-reset-vars-' + "\n";
-        this.text = txt + this.text;
     }
     renderSpaces() {
         this.spaces = [];

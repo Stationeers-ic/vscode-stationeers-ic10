@@ -28,11 +28,13 @@
     "Programming Languages",
     "Debuggers",
     "Snippets",
-    "Formatters"
+    "Formatters",
+    "compiler"
   ],
   "activationEvents": [
     "workspaceContains:**/*.ic10",
     "onLanguage:ic10",
+    "onLanguage:icX",
     "onDebugResolve:ic10",
     "onDebugDynamicConfigurations:ic10"
   ],
@@ -40,12 +42,12 @@
     "@types/fs-extra": "^8.1.0",
     "@types/glob": "^7.1.1",
     "@types/mocha": "^7.0.2",
-    "@types/node": "^13.11.1",
-    "@types/semver": "^7.1.0",
+    "@types/node": "^13.13.51",
+    "@types/semver": "^7.3.5",
     "@types/sinon": "^9.0.0",
-    "@types/vscode": "^1.41.0",
+    "@types/vscode": "^1.56.0",
     "typescript": "^4.2.3",
-    "vsce": "^*"
+    "vsce": "^1.88.0"
   },
   "main": "./core/main.js",
   "browser": "./web/extension.js",
@@ -59,7 +61,17 @@
         "extensions": [
           "ic10"
         ],
-        "configuration": "./language-configuration.json"
+        "configuration": "./ic10.language-configuration.json"
+      },
+      {
+        "id": "icX",
+        "aliases": [
+          "icX"
+        ],
+        "extensions": [
+          "icX"
+        ],
+        "configuration": "./icX.language-configuration.json"
       }
     ],
     "grammars": [
@@ -67,6 +79,11 @@
         "language": "ic10",
         "scopeName": "source.ic10",
         "path": "./syntaxes/ic10.tmLanguage.json"
+      },
+      {
+        "language": "icX",
+        "scopeName": "source.icX",
+        "path": "./syntaxes/icX.tmLanguage.json"
       }
     ],
     "debuggers": [
@@ -133,6 +150,10 @@
       {
         "language": "ic10",
         "path": "./snippets/ic10.json"
+      },
+      {
+        "language": "icX",
+        "path": "./snippets/icX.json"
       }
     ],
     "breakpoints": [
@@ -219,8 +240,8 @@
   "dependencies": {
     "await-notify": "^1.0.1",
     "ic10": "^1.0.42",
-    "vscode-debugadapter": "^1.46.0",
-    "vscode-debugprotocol": "^1.46.0"
+    "vscode-debugadapter": "^1.47.0",
+    "vscode-debugprotocol": "^1.47.0"
   },
   "__metadata": {
     "id": "e9ab14ed-1c65-4a3c-835b-f13c96f90ac7",

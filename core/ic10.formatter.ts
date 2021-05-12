@@ -182,12 +182,12 @@ export class ic10Formatter {
 	}
 	
 	addResetVar() {
-		var txt = '#-reset-vars-' + "\n"
-		this.vars.forEach((value) => {
-			txt += `move ${value} 0` + "\n"
-		})
-		txt += '#-reset-vars-' + "\n"
-		this.text = txt + this.text
+		// var txt = '#-reset-vars-' + "\n"
+		// this.vars.forEach((value) => {
+		// 	txt += `move ${value} 0` + "\n"
+		// })
+		// txt += '#-reset-vars-' + "\n"
+		// this.text = txt + this.text
 	}
 	
 	renderSpaces() {
