@@ -10,6 +10,7 @@ const ic10_1 = require("ic10");
 const path_1 = __importDefault(require("path"));
 const ic10_formatter_1 = require("./ic10.formatter");
 const vscode = require("vscode");
+const icx_SemanticProvider_1 = require("./icx.SemanticProvider");
 const LOCALE_KEY = vscode.env.language;
 const ic10 = new ic10_vscode_1.Ic10Vscode();
 const LANG_KEY = 'ic10';
@@ -133,6 +134,14 @@ function activate(ctx) {
             input.hide();
         });
     }));
+    const provider = {
+        provideDocumentSemanticTokens(document) {
+            const tokensBuilder = new vscode.SemanticTokensBuilder(icx_SemanticProvider_1.legend);
+            tokensBuilder.push(new vscode.Range(new vscode.Position(1, 1), new vscode.Position(1, 5)), 'class', ['declaration']);
+            return tokensBuilder.build();
+        }
+    };
+    ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: LANG_KEY2 }, provider, icx_SemanticProvider_1.legend));
 }
 exports.activate = activate;
 function deactivate() {
