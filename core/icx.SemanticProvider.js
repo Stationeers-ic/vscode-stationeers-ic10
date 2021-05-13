@@ -33,12 +33,18 @@ class IcxSemanticTokensProvider {
             var r = [];
             var lines = text.split(/\r\n|\r|\n/);
             var vars = [];
-            var re = /\b(var|alias)\b\s+\b([\w\d]+)\b.+/;
+            var keywords = [];
             lines.forEach((line) => {
                 try {
+                    var re = /\b(var|alias)\s+([\w\d]+).*/;
                     if (re.test(line)) {
                         var match = re.exec(line);
                         vars.push(match[2]);
+                    }
+                    var re = /([\w\d]+):/;
+                    if (re.test(line)) {
+                        var match = re.exec(line);
+                        keywords.push(match[1]);
                     }
                 }
                 catch (e) {
@@ -47,23 +53,10 @@ class IcxSemanticTokensProvider {
             lines.forEach((line, index) => {
                 try {
                     for (let value of vars) {
-                        var find = new RegExp(`\\b` + value + '\\b', 'y');
-                        try {
-                            for (let i = 0; i < line.length; i++) {
-                                find.lastIndex = i;
-                                var match = find.exec(line);
-                                if (match && match[0] == value) {
-                                    r.push({
-                                        line: index,
-                                        startCharacter: match.index,
-                                        length: value.length,
-                                        tokenType: 0,
-                                    });
-                                }
-                            }
-                        }
-                        catch (e) {
-                        }
+                        r = this.pushToken(value, line, index, 0, r);
+                    }
+                    for (let value of keywords) {
+                        r = this.pushToken(value, line, index, 1, r);
                     }
                 }
                 catch (e) {
@@ -74,6 +67,29 @@ class IcxSemanticTokensProvider {
         catch (e) {
         }
         return [];
+    }
+    pushToken(search, line, index, tokenType, out) {
+        var find = new RegExp('\\b' + search + '\\b', 'y');
+        try {
+            for (let i = 0; i < line.length; i++) {
+                if (line[i] == '#') {
+                    break;
+                }
+                find.lastIndex = i;
+                var match = find.exec(line);
+                if (match && match[0] == search) {
+                    out.push({
+                        line: index,
+                        startCharacter: match.index,
+                        length: search.length,
+                        tokenType: tokenType,
+                    });
+                }
+            }
+        }
+        catch (e) {
+        }
+        return out;
     }
 }
 exports.IcxSemanticTokensProvider = IcxSemanticTokensProvider;

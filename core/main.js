@@ -135,6 +135,7 @@ function activate(ctx) {
         });
     }));
     ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: LANG_KEY, scheme: 'file' }, new icx_SemanticProvider_1.IcxSemanticTokensProvider, icx_SemanticProvider_1.legend));
+    ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: LANG_KEY2, scheme: 'file' }, new icx_SemanticProvider_1.IcxSemanticTokensProvider, icx_SemanticProvider_1.legend));
 }
 exports.activate = activate;
 function deactivate() {

@@ -11,5 +11,6 @@ export declare const legend: vscode.SemanticTokensLegend;
 export declare class IcxSemanticTokensProvider implements vscode.DocumentSemanticTokensProvider {
     provideDocumentSemanticTokens(document: TextDocument, token: CancellationToken): ProviderResult<SemanticTokens>;
     _parseText(text: string): IParsedToken[];
+    pushToken(search: any, line: any, index: any, tokenType: any, out: any): any;
 }
 export {};

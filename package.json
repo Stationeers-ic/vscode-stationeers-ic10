@@ -89,7 +89,7 @@
       {
         "language": "icX",
         "scopeName": "source.icX",
-        "path": "./syntaxes/icX.tmLanguage.json0"
+        "path": "./syntaxes/icX.tmLanguage.json"
       }
     ],
     "debuggers": [

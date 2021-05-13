@@ -55,7 +55,6 @@ export function activate(ctx) {
 			} catch (e) {
 
 			}
-
 		}
 	});
 
@@ -152,6 +151,12 @@ export function activate(ctx) {
 
 	ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider(
 		{language: LANG_KEY, scheme: 'file'},
+		new IcxSemanticTokensProvider,
+		legend
+		)
+	);
+	ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider(
+		{language: LANG_KEY2, scheme: 'file'},
 		new IcxSemanticTokensProvider,
 		legend
 		)
