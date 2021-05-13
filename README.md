@@ -15,6 +15,8 @@
 ![npm](https://badgen.net/vs-marketplace/i/Traineratwot.stationeers-ic10)
 ![npm](https://badgen.net/vs-marketplace/rating/Traineratwot.stationeers-ic10)
 
+<img src="https://github.githubassets.com/images/modules/site/icons/funding_platforms/patreon.svg" alt="alt" width="25"></img> [Sponsor this project](https://www.patreon.com/traineratwot)
+
 Debugger launch
 
 ```json5
@@ -52,9 +54,11 @@ new snippets
 ![snippets](https://i.imgur.com/Aokz1an.jpg)
 
 [demo4](https://youtu.be/hYm49tz8V0A)
+
 ![img4](https://i.imgur.com/1H5azvo.gif)
 
 [demo3](https://youtu.be/klg56OXbM3Q)
+
 ![img3](https://i.imgur.com/OYCpN7Z.gif)
 
 [demo2](https://youtu.be/ims5SBcao64)
@@ -64,7 +68,5 @@ new snippets
 [demo1](https://youtu.be/KAYrX01RgmA)
 
 ![img1](https://i.imgur.com/F1sGrVy.gif)
-
-
 
 ![img1](https://i.imgur.com/phOgb3n.jpeg)
