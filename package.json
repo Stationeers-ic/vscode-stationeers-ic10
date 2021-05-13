@@ -2,11 +2,12 @@
   "name": "stationeers-ic10",
   "displayName": "Stationeers ic10",
   "description": "Ic10 support",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "license": "MIT",
   "scripts": {
-    "start": "tsc",
-    "prepub": "vsce package"
+    "start": "tsc -w",
+    "prepub": "vsce package",
+    "vscode:prepublish": "tsc"
   },
   "publisher": "Traineratwot",
   "repository": "https://github.com/Traineratwot/vscode-stationeers-ic10/",
@@ -28,14 +29,13 @@
     "./syntaxes"
   ],
   "engines": {
-    "vscode": "^1.55.0"
+    "vscode": "^1.56.0"
   },
   "categories": [
     "Programming Languages",
     "Debuggers",
     "Snippets",
-    "Formatters",
-    "compiler"
+    "Formatters"
   ],
   "activationEvents": [
     "workspaceContains:**/*.ic10",
@@ -138,7 +138,7 @@
           {
             "label": "Ic10 Debug",
             "description": "Stationers ic10 debugger",
-            "body":  {
+            "body": {
               "type": "ic10",
               "request": "launch",
               "name": "Debug ic10",
@@ -254,7 +254,7 @@
   },
   "dependencies": {
     "await-notify": "^1.0.1",
-    "ic10": "^1.0.43",
+    "ic10": "^1.0.46",
     "vscode-debugadapter": "^1.47.0",
     "vscode-debugprotocol": "^1.47.0"
   },

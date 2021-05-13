@@ -619,6 +619,7 @@ class VariableMap {
                 }
                 return name;
             case "Device":
+            case "Chip":
                 this.map[id][name] = {
                     name: name,
                     type: 'object',

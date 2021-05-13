@@ -712,7 +712,6 @@ class VariableMap {
 			
 			}
 		}
-		
 		for (var environKey in this.ic10.memory.environ) {
 			if (this.ic10.memory.environ.hasOwnProperty(environKey)) {
 				try {
@@ -727,11 +726,10 @@ class VariableMap {
 					}
 					this.var2variable(_name, val, id)
 				} catch (e) {
-				
+
 				}
 			}
 		}
-		
 		for (var aliasesKey in this.ic10.memory.aliases) {
 			if (this.ic10.memory.aliases.hasOwnProperty(aliasesKey)) {
 				try {
@@ -806,6 +804,7 @@ class VariableMap {
 				
 				return name
 			case "Device":
+			case "Chip":
 				this.map[id][name] = {
 					name: name,
 					type: 'object',
