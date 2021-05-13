@@ -1,9 +1,3 @@
-#-reset-vars-
-move r10 0
-move r11 0
-move r0 0
-move ra 0
-#-reset-vars-
 define lowContur 273
 define highContur 278
 define lowAir 295

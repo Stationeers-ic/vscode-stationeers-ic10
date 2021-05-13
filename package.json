@@ -2,7 +2,7 @@
   "name": "stationeers-ic10",
   "displayName": "Stationeers ic10",
   "description": "Ic10 support",
-  "version": "0.0.21",
+  "version": "0.0.23",
   "license": "MIT",
   "scripts": {
     "start": "tsc -w",

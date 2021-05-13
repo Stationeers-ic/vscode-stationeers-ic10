@@ -2,25 +2,26 @@ import vscode, {CancellationToken, ProviderResult, SemanticTokens, TextDocument}
 
 // import * as fs from "fs";
 
-
 interface IParsedToken {
 	line: number;
 	startCharacter: number;
 	length: number;
 	tokenType: number;
+	tokenModifier?:number
 }
 
 export const tokenTypes = new Map<string, number>();
 export const tokenModifiers = new Map<string, number>();
 export const legend = (function () {
 	const tokenTypesLegend = [
-		'parameter', 'keyword', 'number', 'function',
-		'variable', 'property', 'label'
+		'parameter', 'keyword', 'enumMember',
+		'property','function',
+		'variable', 'label'
 	];
 	tokenTypesLegend.forEach((tokenType, index) => tokenTypes.set(tokenType, index));
 	
 	const tokenModifiersLegend = [
-		'declaration', 'definition'
+		'declaration', 'readonly'
 	];
 	tokenModifiersLegend.forEach((tokenModifier, index) => tokenModifiers.set(tokenModifier, index));
 	
@@ -47,6 +48,7 @@ export class IcxSemanticTokensProvider implements vscode.DocumentSemanticTokensP
 			var lines = text.split(/\r\n|\r|\n/);
 			var vars: string[] = [];
 			var keywords: string[] = [];
+			var constants: string[] = [];
 			
 			lines.forEach((line) => {
 				try {
@@ -54,6 +56,11 @@ export class IcxSemanticTokensProvider implements vscode.DocumentSemanticTokensP
 					if (re.test(line)) {
 						var match = re.exec(line)
 						vars.push(match[2])
+					}
+					var re = /\b(const|define)\s+([\w\d]+).*/
+					if (re.test(line)) {
+						var match = re.exec(line)
+						constants.push(match[2])
 					}
 					var re = /([\w\d]+):/
 					if (re.test(line)) {
@@ -67,10 +74,13 @@ export class IcxSemanticTokensProvider implements vscode.DocumentSemanticTokensP
 			lines.forEach((line, index) => {
 				try {
 					for (let value of vars) {
-						r = this.pushToken(value, line, index, 0, r)
+						r = this.pushToken(value, line, index, 0,null, r)
 					}
 					for (let value of keywords) {
-						r = this.pushToken(value, line, index, 1, r)
+						r = this.pushToken(value, line, index, 1,null, r)
+					}
+					for (let value of constants) {
+						r = this.pushToken(value, line, index, 2,1, r)
 					}
 				} catch (e) {
 				}
@@ -81,7 +91,7 @@ export class IcxSemanticTokensProvider implements vscode.DocumentSemanticTokensP
 		return [];
 	}
 	
-	pushToken(search, line, index, tokenType, out) {
+	pushToken(search, line, index, tokenType,tokenModifier, out:IParsedToken[]) {
 		var find = new RegExp('\\b' + search + '\\b', 'y')
 		try {
 			for (let i = 0; i < line.length; i++) {
@@ -91,12 +101,16 @@ export class IcxSemanticTokensProvider implements vscode.DocumentSemanticTokensP
 				find.lastIndex = i
 				var match = find.exec(line)
 				if (match && match[0] == search) {
-					out.push({
+					var a:IParsedToken = {
 						line: index,
 						startCharacter: match.index,
 						length: search.length,
 						tokenType: tokenType,
-					});
+					}
+					if(tokenModifier !== null){
+						a.tokenModifier = tokenModifier
+					}
+					out.push(a);
 				}
 			}
 		} catch (e) {

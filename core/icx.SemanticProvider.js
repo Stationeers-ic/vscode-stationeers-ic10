@@ -9,12 +9,13 @@ exports.tokenTypes = new Map();
 exports.tokenModifiers = new Map();
 exports.legend = (function () {
     const tokenTypesLegend = [
-        'parameter', 'keyword', 'number', 'function',
-        'variable', 'property', 'label'
+        'parameter', 'keyword', 'enumMember',
+        'property', 'function',
+        'variable', 'label'
     ];
     tokenTypesLegend.forEach((tokenType, index) => exports.tokenTypes.set(tokenType, index));
     const tokenModifiersLegend = [
-        'declaration', 'definition'
+        'declaration', 'readonly'
     ];
     tokenModifiersLegend.forEach((tokenModifier, index) => exports.tokenModifiers.set(tokenModifier, index));
     return new vscode_1.default.SemanticTokensLegend(tokenTypesLegend, tokenModifiersLegend);
@@ -34,12 +35,18 @@ class IcxSemanticTokensProvider {
             var lines = text.split(/\r\n|\r|\n/);
             var vars = [];
             var keywords = [];
+            var constants = [];
             lines.forEach((line) => {
                 try {
                     var re = /\b(var|alias)\s+([\w\d]+).*/;
                     if (re.test(line)) {
                         var match = re.exec(line);
                         vars.push(match[2]);
+                    }
+                    var re = /\b(const|define)\s+([\w\d]+).*/;
+                    if (re.test(line)) {
+                        var match = re.exec(line);
+                        constants.push(match[2]);
                     }
                     var re = /([\w\d]+):/;
                     if (re.test(line)) {
@@ -53,10 +60,13 @@ class IcxSemanticTokensProvider {
             lines.forEach((line, index) => {
                 try {
                     for (let value of vars) {
-                        r = this.pushToken(value, line, index, 0, r);
+                        r = this.pushToken(value, line, index, 0, null, r);
                     }
                     for (let value of keywords) {
-                        r = this.pushToken(value, line, index, 1, r);
+                        r = this.pushToken(value, line, index, 1, null, r);
+                    }
+                    for (let value of constants) {
+                        r = this.pushToken(value, line, index, 2, 1, r);
                     }
                 }
                 catch (e) {
@@ -68,7 +78,7 @@ class IcxSemanticTokensProvider {
         }
         return [];
     }
-    pushToken(search, line, index, tokenType, out) {
+    pushToken(search, line, index, tokenType, tokenModifier, out) {
         var find = new RegExp('\\b' + search + '\\b', 'y');
         try {
             for (let i = 0; i < line.length; i++) {
@@ -78,12 +88,16 @@ class IcxSemanticTokensProvider {
                 find.lastIndex = i;
                 var match = find.exec(line);
                 if (match && match[0] == search) {
-                    out.push({
+                    var a = {
                         line: index,
                         startCharacter: match.index,
                         length: search.length,
                         tokenType: tokenType,
-                    });
+                    };
+                    if (tokenModifier !== null) {
+                        a.tokenModifier = tokenModifier;
+                    }
+                    out.push(a);
                 }
             }
         }
