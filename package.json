@@ -2,12 +2,12 @@
   "name": "stationeers-ic10",
   "displayName": "Stationeers ic10",
   "description": "Ic10 support",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "license": "MIT",
   "scripts": {
     "start": "tsc -w",
-    "prepub": "vsce package",
-    "vscode:prepublish": "tsc"
+    "vscode:prepublish": "tsc",
+    "publish": "vsce package && vsce publish"
   },
   "publisher": "Traineratwot",
   "repository": "https://github.com/Traineratwot/vscode-stationeers-ic10/",

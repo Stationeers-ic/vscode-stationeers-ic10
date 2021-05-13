@@ -15,7 +15,7 @@
 ![npm](https://badgen.net/vs-marketplace/i/Traineratwot.stationeers-ic10)
 ![npm](https://badgen.net/vs-marketplace/rating/Traineratwot.stationeers-ic10)
 
-<img src="https://github.githubassets.com/images/modules/site/icons/funding_platforms/patreon.svg" alt="alt" width="25"></img> [Sponsor this project](https://www.patreon.com/traineratwot)
+![](https://i.imgur.com/cl0Xbq1.png) [Sponsor this project](https://www.patreon.com/traineratwot)
 
 Debugger launch
 
