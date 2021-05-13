@@ -2,11 +2,11 @@
   "name": "stationeers-ic10",
   "displayName": "Stationeers ic10",
   "description": "Ic10 support",
-  "version": "0.0.24",
+  "version": "0.0.26",
   "license": "MIT",
   "scripts": {
     "start": "tsc -w",
-    "vscode:prepublish": "tsc",
+    "vscode:prepublish": "npm update && tsc",
     "publish": "vsce package && vsce publish"
   },
   "publisher": "Traineratwot",
@@ -19,15 +19,6 @@
     "url": "https://github.com/Traineratwot/vscode-stationeers-ic10/issues",
     "email": "Traineratwot@yandex.com"
   },
-  "files": [
-    "./node_modules/ic10",
-    "./snippets",
-    "./languages",
-    "./images",
-    "./debugger",
-    "./core",
-    "./syntaxes"
-  ],
   "engines": {
     "vscode": "^1.56.0"
   },

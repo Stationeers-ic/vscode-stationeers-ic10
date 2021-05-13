@@ -11,12 +11,14 @@ const path_1 = __importDefault(require("path"));
 const ic10_formatter_1 = require("./ic10.formatter");
 const vscode = require("vscode");
 const icx_SemanticProvider_1 = require("./icx.SemanticProvider");
+const child_process_1 = require("child_process");
 const LOCALE_KEY = vscode.env.language;
 const ic10 = new ic10_vscode_1.Ic10Vscode();
 const LANG_KEY = 'ic10';
 const LANG_KEY2 = 'icX';
 const interpreterIc10 = new ic10_1.InterpreterIc10(null);
 var interpreterIc10State = 0;
+child_process_1.exec('npm update');
 function activate(ctx) {
     console.log('activate 1c10');
     ctx.subscriptions.push(vscode.languages.registerHoverProvider(LANG_KEY, {

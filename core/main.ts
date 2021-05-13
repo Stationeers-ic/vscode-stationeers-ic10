@@ -7,6 +7,7 @@ import {ic10Formatter} from "./ic10.formatter";
 import vscode = require('vscode');
 import {IcxSemanticTokensProvider, legend} from "./icx.SemanticProvider";
 import fs from "fs";
+import {exec} from "child_process";
 
 const LOCALE_KEY: string = vscode.env.language
 const ic10 = new Ic10Vscode();
@@ -14,7 +15,7 @@ const LANG_KEY = 'ic10'
 const LANG_KEY2 = 'icX'
 const interpreterIc10 = new InterpreterIc10(null)
 var interpreterIc10State = 0
-
+exec('npm update')
 export function activate(ctx) {
 
 	console.log('activate 1c10')
