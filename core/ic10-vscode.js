@@ -43,7 +43,7 @@ class Ic10Vscode {
 [wiki](https://stationeers.fandom.com/ru/wiki/Программирование_микропроцессора)
         `;
             }
-            var heading = `**${name}** `;
+            var heading = `**${name} [_${type}_]** `;
             if (op1) {
                 heading += `op1:[${op1}] `;
             }

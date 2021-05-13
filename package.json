@@ -2,7 +2,7 @@
   "name": "stationeers-ic10",
   "displayName": "Stationeers ic10",
   "description": "Ic10 support",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "license": "MIT",
   "scripts": {
     "start": "tsc",
@@ -19,7 +19,13 @@
     "email": "Traineratwot@yandex.com"
   },
   "files": [
-    "./node_modules/ic10"
+    "./node_modules/ic10",
+    "./snippets",
+    "./languages",
+    "./images",
+    "./debugger",
+    "./core",
+    "./syntaxes"
   ],
   "engines": {
     "vscode": "^1.55.0"
@@ -42,7 +48,7 @@
     "@types/fs-extra": "^8.1.0",
     "@types/glob": "^7.1.1",
     "@types/mocha": "^7.0.2",
-    "@types/node": "^13.13.51",
+    "@types/node": "^13.13.52",
     "@types/semver": "^7.3.5",
     "@types/sinon": "^9.0.0",
     "@types/vscode": "^1.56.0",
@@ -83,7 +89,7 @@
       {
         "language": "icX",
         "scopeName": "source.icX",
-        "path": "./syntaxes/icX.tmLanguage.json"
+        "path": "./syntaxes/icX.tmLanguage.json0"
       }
     ],
     "debuggers": [
@@ -104,7 +110,7 @@
               "program": {
                 "type": "string",
                 "description": "Absolute path to a text file.",
-                "default": "${workspaceFolder}/${command:AskForProgramName}"
+                "default": "${file}"
               },
               "stopOnEntry": {
                 "type": "boolean",
@@ -130,14 +136,15 @@
         },
         "configurationSnippets": [
           {
-            "label": "Mock Debug: Launch",
-            "description": "A new configuration for 'debugging' a user selected markdown file.",
-            "body": {
-              "type": "mock",
+            "label": "Ic10 Debug",
+            "description": "Stationers ic10 debugger",
+            "body":  {
+              "type": "ic10",
               "request": "launch",
-              "name": "Ask for file name",
-              "program": "^\"\\${workspaceFolder}/\\${command:AskForProgramName}\"",
-              "stopOnEntry": true
+              "name": "Debug ic10",
+              "program": "${file}",
+              "stopOnEntry": true,
+              "trace": false
             }
           }
         ],
@@ -237,9 +244,17 @@
       ]
     }
   },
+  "configurationDefaults": {
+    "ic10": {
+      "editor.semanticHighlighting.enabled": true
+    },
+    "icX": {
+      "editor.semanticHighlighting.enabled": true
+    }
+  },
   "dependencies": {
     "await-notify": "^1.0.1",
-    "ic10": "^1.0.42",
+    "ic10": "^1.0.43",
     "vscode-debugadapter": "^1.47.0",
     "vscode-debugprotocol": "^1.47.0"
   },

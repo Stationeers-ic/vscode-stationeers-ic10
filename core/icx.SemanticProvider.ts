@@ -1,26 +1,26 @@
 import vscode, {CancellationToken, ProviderResult, SemanticTokens, TextDocument, workspace} from "vscode";
-import * as fs from "fs";
+
+// import * as fs from "fs";
 
 
 interface IParsedToken {
 	line: number;
 	startCharacter: number;
 	length: number;
-	tokenType: string;
-	tokenModifiers: string[];
+	tokenType: number;
 }
 
 export const tokenTypes = new Map<string, number>();
 export const tokenModifiers = new Map<string, number>();
 export const legend = (function () {
 	const tokenTypesLegend = [
-		'comment', 'keyword', 'number', 'function',
-		'variable', 'parameter', 'property', 'label'
+		'parameter', 'keyword', 'number', 'function',
+		'variable', 'property', 'label'
 	];
 	tokenTypesLegend.forEach((tokenType, index) => tokenTypes.set(tokenType, index));
 
 	const tokenModifiersLegend = [
-		'declaration',
+		'declaration', 'definition'
 	];
 	tokenModifiersLegend.forEach((tokenModifier, index) => tokenModifiers.set(tokenModifier, index));
 
@@ -30,59 +30,62 @@ export const legend = (function () {
 export class IcxSemanticTokensProvider implements vscode.DocumentSemanticTokensProvider {
 
 	provideDocumentSemanticTokens(document: TextDocument, token: CancellationToken): ProviderResult<SemanticTokens> {
-		const allTokens = IcxSemanticTokensProvider._parseText(document.getText());
-		const builder = new vscode.SemanticTokensBuilder();
-		fs.writeFileSync('C:\\OSPanel\\domains\\vscode-stationeers-ic10\\log\\allTokens.json', JSON.stringify(allTokens))
-
+		var allTokens = this._parseText(document.getText());
+		var builder = new vscode.SemanticTokensBuilder(legend);
 		allTokens.forEach((token) => {
 			builder.push(
-				new vscode.Range(new vscode.Position(token.line, token.startCharacter), new vscode.Position(token.line, token.length)),
+				token.line, token.startCharacter, token.length,
 				token.tokenType,
-				token.tokenModifiers
 			);
 		});
 		return builder.build();
 	}
 
-	private static _parseText(text: string): IParsedToken[] {
-		const r: IParsedToken[] = [];
-		const lines = text.split(/\r\n|\r|\n/);
-		var vars: Set<string> = new Set();
+	_parseText(text: string): IParsedToken[] {
+		try {
+			var r: IParsedToken[] = [];
+			var lines = text.split(/\r\n|\r|\n/);
+			var vars: string[] = [];
 
-		const re = /var\\s+([\\w\\d]+).+/
-		lines.forEach((line, index) => {
-
-			if (re.test(line)) {
-				var match = re.exec(line)
-				vars.add(match[1])
-			}
-		})
-
-		lines.forEach((line, index) => {
-			for (let value of vars) {
-				var pos: number = 0
-				var ranges = []
-				var range: number = 0
-				do {
-					pos
-					range = line.indexOf(value, pos)
-					if (range >= 0) {
-						ranges.push({x: range, y: value.length})
+			var re = /\b(var|alias)\b\s+\b([\w\d]+)\b.+/
+			lines.forEach((line) => {
+				try {
+					if (re.test(line)) {
+						var match = re.exec(line)
+						vars.push(match[2])
 					}
-					pos += value.length
-				} while (range >= 0)
-				for (let rrr of ranges) {
-					r.push({
-						line: index,
-						startCharacter: rrr.x,
-						length: rrr.y,
-						tokenType: 'variable',
-						tokenModifiers: ['declaration']
-					});
+				} catch (e) {
 				}
-			}
-		})
-		fs.writeFileSync('C:\\OSPanel\\domains\\vscode-stationeers-ic10\\log\\test.json', JSON.stringify(r))
-		return r;
+			})
+
+			lines.forEach((line, index) => {
+				try {
+					for (let value of vars) {
+						var find = new RegExp(`\\b` + value + '\\b', 'y')
+
+						try {
+							for (let i = 0; i < line.length; i++) {
+								find.lastIndex = i
+								var match = find.exec(line)
+								if (match && match[0] == value) {
+									r.push({
+										line: index,
+										startCharacter: match.index,
+										length: value.length,
+										tokenType: 0,
+									});
+								}
+							}
+						} catch (e) {
+						}
+					}
+				} catch (e) {
+				}
+			})
+			return r;
+		} catch (e) {
+		}
+		return [];
 	}
+
 }

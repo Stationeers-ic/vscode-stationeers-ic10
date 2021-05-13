@@ -39,9 +39,12 @@ var IC10Data = {
 		if(op4) {
 			op4 = op4.trim()
 		}
-		
+
 		if(!(IC10Data['Languages'][lang] instanceof Object)) {
 			IC10Data['Languages'][lang] = {}
+		}
+		if(name in IC10Data['Languages'][lang]){
+			return this
 		}
 		IC10Data['Languages'][lang][name] = {
 			type: type,
@@ -270,20 +273,49 @@ IC10Data
 	.__add('ru', 'PressureAir'  , 'Slot parameter', 'Float'     , 'Давление в баллоне с дыхательной смесью скафандра, установленного в стойку, кПа.')
 	.__add('ru', 'PressureWaste', 'Slot parameter', 'Float'     , 'Давление в баллоне с отработанной смесью скафандра, установленного в стойку, кПа.')
 	
-	.__add('ru', 'PrefabHash' , 'Parameter', 'Hash'     , 'хэш Prefab объекта')
-	.__add('ru', 'Pressure'   , 'Parameter', 'Float'    , 'давление, кПа')
-	.__add('ru', 'Quantity'   , 'Parameter', 'Float/Int', 'масса / количество предметов')
-	.__add('ru', 'Temperature', 'Parameter', 'Float'    , 'температура, К')
+	.__add('ru', 'PrefabHash'               , 'Parameter', 'Hash'     , 'хэш Prefab объекта')
+	.__add('ru', 'Pressure'                 , 'Parameter', 'Float'    , 'давление, кПа')
+	.__add('ru', 'Quantity'                 , 'Parameter', 'Float/Int', 'масса / количество предметов')
+	.__add('ru', 'Temperature'              , 'Parameter', 'Float'    , 'температура, К')
+	.__add('ru', 'Bpm'                      , 'Parameter', 'Float'    , '')
+	.__add('ru', 'CollectableGoods'         , 'Parameter', 'Float'    , '')
+	.__add('ru', 'Combustion'               , 'Parameter', 'Float'    , '')
+	.__add('ru', 'CurrentResearchPodType'   , 'Parameter', 'Float'    , '')
+	.__add('ru', 'Fuel'                     , 'Parameter', 'Float'    , 'Топливо')
+	.__add('ru', 'ManualResearchRequiredPod', 'Parameter', 'Float'    , '')
+	.__add('ru', 'MineablesInQueue'         , 'Parameter', 'Float'    , '')
+	.__add('ru', 'MineablesInVicinity'      , 'Parameter', 'Float'    , '')
+	.__add('ru', 'NextWeatherEventTime'     , 'Parameter', 'Float'    , '')
+	.__add('ru', 'ReturnFuelCost'           , 'Parameter', 'Float'    , '')
+	.__add('ru', 'SettingInput'             , 'Parameter', 'Float'    , '')
+	.__add('ru', 'SettingOutput'            , 'Parameter', 'Float'    , '')
+	.__add('ru', 'SignalID'                 , 'Parameter', 'Float'    , '')
+	.__add('ru', 'SignalStrength'           , 'Parameter', 'Float'    , '')
+	.__add('ru', 'TemperatureSetting'       , 'Parameter', 'Float'    , '')
+	.__add('ru', 'Time'                     , 'Parameter', 'Float'    , '')
+	.__add('ru', 'AirRelease'               , 'Parameter', 'Float'    , '')
+	.__add('ru', 'HorizontalRatio'          , 'Parameter', 'Float'    , '')
+	.__add('ru', 'PressureSetting'          , 'Parameter', 'Float'    , '')
+	.__add('ru', 'RequestHash'              , 'Parameter', 'Float'    , '')
+	.__add('ru', 'VerticalRatio'            , 'Parameter', 'Float'    , '')
+
 
 gulp.task('generate-langs', function() {
 	console.log('generating')
 	console.log(IC10Data.Languages['ru'][0])
+	var keyword = []
+	var functions = []
 	for(const languagesKey in IC10Data.Languages) {
 		fs.writeFileSync(`..\\languages\\${languagesKey}.json`, JSON.stringify(IC10Data.Languages[languagesKey]))
 	}
 	var snippets = JSON.parse(fs.readFileSync(`..\\snippets\\ic10.json`))
 	for(const languageKey in IC10Data.Languages['en']) {
 		var data = IC10Data.Languages['en'][languageKey]
+		if(data.type === 'Function'){
+			functions.push(languageKey)
+		}else{
+			keyword.push(languageKey)
+		}
 		snippets[languageKey] = {
 			'prefix': languageKey,
 			'body': [
@@ -291,9 +323,17 @@ gulp.task('generate-langs', function() {
 			],
 			'description': data.description.text,
 		}
+
 	}
 	fs.writeFileSync(`..\\snippets\\ic10.json`, JSON.stringify(snippets))
-	
+ 	var tmLanguage10 = JSON.parse(fs.readFileSync(`..\\syntaxes\\ic10.tmLanguage.json`));
+	tmLanguage10.repository.keywords.patterns[0].match =`\\b(${keyword.join('|')})\\b`
+	tmLanguage10.repository.entity.patterns[0].match =`\\b(${functions.join('|')})\\b`
+	fs.writeFileSync(`..\\syntaxes\\ic10.tmLanguage.json`, JSON.stringify(tmLanguage10))
+	var tmLanguagex = JSON.parse(fs.readFileSync(`..\\syntaxes\\icX.tmLanguage.json`));
+	tmLanguagex.repository.keywords.patterns[0].match =`\\b(${keyword.join('|')})\\b`
+	tmLanguagex.repository.entity.patterns[0].match =`\\b(${functions.join('|')})\\b`
+	fs.writeFileSync(`..\\syntaxes\\icX.tmLanguage.json`, JSON.stringify(tmLanguagex))
 })
 
 gulp.task('generate-aaa', function() {

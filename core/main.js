@@ -39,7 +39,7 @@ function activate(ctx) {
         const range = new vscode.Range(0, firstLine.range.start.character, document.lineCount - 1, lastLine.range.end.character);
         return vscode.TextEdit.replace(range, newText);
     }
-    vscode.languages.registerDocumentFormattingEditProvider('ic10', {
+    vscode.languages.registerDocumentFormattingEditProvider(LANG_KEY, {
         provideDocumentFormattingEdits(document) {
             try {
                 const formatter = new ic10_formatter_1.ic10Formatter(document);
@@ -49,7 +49,7 @@ function activate(ctx) {
             }
         }
     });
-    ctx.subscriptions.push(vscode.commands.registerCommand('ic10.run', () => {
+    ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + '.run', () => {
         if (!interpreterIc10State) {
             vscode.window.showInformationMessage('Running');
             var code = vscode.window.activeTextEditor.document.getText();
@@ -72,19 +72,19 @@ function activate(ctx) {
             interpreterIc10.setSettings(settings).init(code).run();
         }
     }));
-    ctx.subscriptions.push(vscode.commands.registerCommand('ic10.stop', () => {
+    ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + '.stop', () => {
         if (interpreterIc10State) {
             vscode.window.showInformationMessage('Stop');
             interpreterIc10.stop();
         }
     }));
-    ctx.subscriptions.push(vscode.commands.registerCommand('ic10.test', (variable) => {
+    ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + '.test', (variable) => {
         const ds = vscode.debug.activeDebugSession;
         console.log('ic10.test');
         console.log(ds);
         console.log(variable);
     }));
-    ctx.subscriptions.push(vscode.commands.registerCommand('ic10.debug.variables.write', (variable) => {
+    ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + '.debug.variables.write', (variable) => {
         const ds = vscode.debug.activeDebugSession;
         var input = vscode.window.createInputBox();
         input.title = 'set ' + variable.variable.name;
@@ -94,7 +94,7 @@ function activate(ctx) {
             input.hide();
         });
     }));
-    ctx.subscriptions.push(vscode.commands.registerCommand('ic10.debug.device.write', (variable) => {
+    ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + '.debug.device.write', (variable) => {
         const ds = vscode.debug.activeDebugSession;
         var input = vscode.window.createInputBox();
         input.title = 'set ' + variable.variable.name;
@@ -104,7 +104,7 @@ function activate(ctx) {
             input.hide();
         });
     }));
-    ctx.subscriptions.push(vscode.commands.registerCommand('ic10.debug.device.slot.write', (variable) => {
+    ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + '.debug.device.slot.write', (variable) => {
         const ds = vscode.debug.activeDebugSession;
         var input = vscode.window.createInputBox();
         input.title = 'set ' + variable.variable.name;
@@ -114,7 +114,7 @@ function activate(ctx) {
             input.hide();
         });
     }));
-    ctx.subscriptions.push(vscode.commands.registerCommand('ic10.debug.stack.push', (variable) => {
+    ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + '.debug.stack.push', (variable) => {
         const ds = vscode.debug.activeDebugSession;
         var input = vscode.window.createInputBox();
         input.title = 'set ' + variable.variable.name;
@@ -124,7 +124,7 @@ function activate(ctx) {
             input.hide();
         });
     }));
-    ctx.subscriptions.push(vscode.commands.registerCommand('ic10.debug.remove.push', (variable) => {
+    ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + '.debug.remove.push', (variable) => {
         const ds = vscode.debug.activeDebugSession;
         var input = vscode.window.createInputBox();
         input.title = 'set ' + variable.variable.name;
@@ -134,14 +134,7 @@ function activate(ctx) {
             input.hide();
         });
     }));
-    const provider = {
-        provideDocumentSemanticTokens(document) {
-            const tokensBuilder = new vscode.SemanticTokensBuilder(icx_SemanticProvider_1.legend);
-            tokensBuilder.push(new vscode.Range(new vscode.Position(1, 1), new vscode.Position(1, 5)), 'class', ['declaration']);
-            return tokensBuilder.build();
-        }
-    };
-    ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: LANG_KEY2 }, provider, icx_SemanticProvider_1.legend));
+    ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: LANG_KEY, scheme: 'file' }, new icx_SemanticProvider_1.IcxSemanticTokensProvider, icx_SemanticProvider_1.legend));
 }
 exports.activate = activate;
 function deactivate() {

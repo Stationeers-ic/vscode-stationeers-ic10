@@ -1,18 +1,3 @@
-#-reset-vars-
-move r0 0
-move ra 0
-#-reset-vars-
 loop:
-	jal checkAir
-	checkAir:
-		l r0 sensorAir Temperature
-		brlt r0 highAir 2
-		s ventAir On 1
-		loop2:
-			move ra 0
-		j loop2
-		brgt r0 lowAir 2
-		s ventAir On 0
-	j ra
-	
+	s db Setting -99999
 j loop
