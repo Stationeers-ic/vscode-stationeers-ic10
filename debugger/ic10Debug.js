@@ -33,7 +33,25 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
                 this.output.log = a + ' ' + b;
             },
             executionCallback: function (e) {
-                this.output.error = `[${e.functionName}:${e.line}] (${e.code}) - ${e.message}:`;
+                this.output.error = `(${e.code}) - ${e.message}:`;
+                if (e.obj) {
+                    this.output.error += JSON.stringify(e.obj);
+                }
+                switch (e.lvl) {
+                    case 0:
+                        this.output.error = 'ERROR ' + this.output.error;
+                        break;
+                    case 1:
+                        this.output.error = 'WARN ' + this.output.error;
+                        break;
+                    case 2:
+                        this.output.error = 'INFO ' + this.output.error;
+                        break;
+                    case 3:
+                    default:
+                        this.output.error = 'LOG ' + this.output.error;
+                        break;
+                }
             },
         });
         this.setDebuggerLinesStartAt1(false);

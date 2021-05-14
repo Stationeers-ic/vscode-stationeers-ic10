@@ -48,6 +48,11 @@ Debugger launch
 - translate to english
 - **Debugger**
 - **Formatter**
+- **Semantic code analize**
+- counter left lines
+
+counter left lines
+![counter](https://i.imgur.com/Y2MHtew.jpg)
 
 
 new snippets

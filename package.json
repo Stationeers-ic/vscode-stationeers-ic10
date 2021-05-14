@@ -4,11 +4,18 @@
   "description": "Ic10 support",
   "version": "0.0.26",
   "license": "MIT",
+  "homepage": "https://github.com/Traineratwot/vscode-stationeers-ic10",
+  "galleryBanner": {
+    "color": "#C80000",
+    "theme": "dark"
+  },
+  "type": "commonjs",
   "scripts": {
     "start": "tsc -w",
     "vscode:prepublish": "npm update && tsc",
     "publish": "vsce package && vsce publish"
   },
+  "badges": [],
   "publisher": "Traineratwot",
   "repository": "https://github.com/Traineratwot/vscode-stationeers-ic10/",
   "author": {
@@ -32,8 +39,13 @@
     "workspaceContains:**/*.ic10",
     "onLanguage:ic10",
     "onLanguage:icX",
+    "onView:Ic10ViewProvider",
     "onDebugResolve:ic10",
     "onDebugDynamicConfigurations:ic10"
+  ],
+  "extensionKind": [
+    "ui",
+    "workspace"
   ],
   "devDependencies": {
     "@types/fs-extra": "^8.1.0",
@@ -203,6 +215,7 @@
         "title": "Write value",
         "icon": "$(stop)"
       }
+
     ],
     "menus": {
       "commandPalette": [
@@ -231,6 +244,16 @@
           "command": "ic10.debug.device.write",
           "group": "3_modifications",
           "when": "debugProtocolVariableMenuContext == Device"
+        }
+      ]
+    },
+    "views": {
+      "explorer": [
+        {
+          "type": "webview",
+          "id": "Ic10ViewProvider",
+          "name": "ic10",
+          "icon": "images/logo.png"
         }
       ]
     }
