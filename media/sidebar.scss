@@ -1,0 +1,10 @@
+#leftLineCounter {
+  progress{
+    &::-webkit-progress-bar {
+      background-color: var(--vscode-inputValidation-errorForeground)
+    }
+    &::-webkit-progress-value {
+      background-color: var(--vscode-inputValidation-infoForeground)
+    }
+  }
+}

@@ -215,7 +215,6 @@
         "title": "Write value",
         "icon": "$(stop)"
       }
-
     ],
     "menus": {
       "commandPalette": [
@@ -269,6 +268,8 @@
   "dependencies": {
     "await-notify": "^1.0.1",
     "ic10": "^1.0.46",
+    "jquery": "^3.6.0",
+    "jsdom": "^16.5.3",
     "vscode-debugadapter": "^1.47.0",
     "vscode-debugprotocol": "^1.47.0"
   },

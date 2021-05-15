@@ -7,7 +7,7 @@ import path from "path";
 import {ic10Formatter} from "./ic10.formatter";
 import {IcxSemanticTokensProvider, legend} from "./icx.SemanticProvider";
 import {exec} from "child_process";
-import {Ic10ViewProvider} from "./view";
+import {Ic10SidebarViewProvider} from "./sidebarView";
 
 const LOCALE_KEY: string = vscode.env.language
 const ic10 = new Ic10Vscode();
@@ -30,11 +30,6 @@ export function activate(ctx: vscode.ExtensionContext) {
 	statusBar(ctx)
 	//-------------
 	onChange(ctx)
-}
-
-
-export function deactivate() {
-	console.log('deactivate 1c10')
 }
 
 function hover(ctx: vscode.ExtensionContext) {
@@ -207,19 +202,24 @@ function semantic(ctx: vscode.ExtensionContext) {
 
 function view(ctx: vscode.ExtensionContext) {
 	try {
-		var provider = new Ic10ViewProvider(ctx.extensionUri);
-		ctx.subscriptions.push(vscode.window.registerWebviewViewProvider(Ic10ViewProvider.viewType, provider));
-		// onChangeCallbacks.push(() => {
-		// 	var a = getNumberLeftLines()
-		// 	provider.update({
-		// 		"left line 788": 0
-		// 	})
-		// })
+		var provider = new Ic10SidebarViewProvider(ctx.extensionUri);
+		ctx.subscriptions.push(vscode.window.registerWebviewViewProvider(Ic10SidebarViewProvider.viewType, provider));
+		onChangeCallbacks.push(
+			() => {
+				var a = getNumberLeftLines()
+				var $ = provider.getDom()
+				$('#leftLineCounter').html(`
+					<p>Left lines ${a[1]}</p>
+					<progress value="${a[1]}" max="128" min="0"></progress>
+`
+				)
+				provider.setDom()
+			}
+		)
 	} catch (e) {
 		console.error(e)
 	}
 }
-
 
 function statusBar(ctx: vscode.ExtensionContext) {
 	try {
@@ -233,9 +233,13 @@ function statusBar(ctx: vscode.ExtensionContext) {
 		function updateStatusBarItem(): void {
 			const n = getNumberLeftLines();
 			if (LOCALE_KEY == "ru2") {
-				leftCodeLength.text = `осталось ${n} строк`;
+				leftCodeLength.text =
+					`осталось ${n[0]} ${n[1]} строк`
+				;
 			} else {
-				leftCodeLength.text = `${n} line(s) left`;
+				leftCodeLength.text =
+					`${n}${n[1]} line(s) left`
+				;
 			}
 			leftCodeLength.show();
 		}
@@ -251,13 +255,12 @@ function _onChange(ctx): void {
 	})
 }
 
-
-function onChange(ctx){
+function onChange(ctx) {
 	ctx.subscriptions.push(vscode.window.onDidChangeActiveTextEditor(_onChange));
 	ctx.subscriptions.push(vscode.window.onDidChangeTextEditorSelection(_onChange));
 }
 
-function getNumberLeftLines(): string {
+function getNumberLeftLines(): Array<any> {
 	var text = vscode.window.activeTextEditor.document.getText();
 	var left = 128
 	var a = " ▁▃▅▉";
@@ -265,5 +268,9 @@ function getNumberLeftLines(): string {
 		left = left - text.split('\n').length
 	}
 	var x = a[Math.ceil(left / 32)] ?? ''
-	return `${x} ${left}`;
+	return [x, left];
+}
+
+export function deactivate() {
+	console.log('deactivate 1c10')
 }

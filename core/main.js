@@ -31,7 +31,7 @@ const path_1 = __importDefault(require("path"));
 const ic10_formatter_1 = require("./ic10.formatter");
 const icx_SemanticProvider_1 = require("./icx.SemanticProvider");
 const child_process_1 = require("child_process");
-const view_1 = require("./view");
+const sidebarView_1 = require("./sidebarView");
 const LOCALE_KEY = vscode.env.language;
 const ic10 = new ic10_vscode_1.Ic10Vscode();
 const LANG_KEY = 'ic10';
@@ -53,10 +53,6 @@ function activate(ctx) {
     onChange(ctx);
 }
 exports.activate = activate;
-function deactivate() {
-    console.log('deactivate 1c10');
-}
-exports.deactivate = deactivate;
 function hover(ctx) {
     try {
         ctx.subscriptions.push(vscode.languages.registerHoverProvider(LANG_KEY, {
@@ -204,8 +200,17 @@ function semantic(ctx) {
 }
 function view(ctx) {
     try {
-        var provider = new view_1.Ic10ViewProvider(ctx.extensionUri);
-        ctx.subscriptions.push(vscode.window.registerWebviewViewProvider(view_1.Ic10ViewProvider.viewType, provider));
+        var provider = new sidebarView_1.Ic10SidebarViewProvider(ctx.extensionUri);
+        ctx.subscriptions.push(vscode.window.registerWebviewViewProvider(sidebarView_1.Ic10SidebarViewProvider.viewType, provider));
+        onChangeCallbacks.push(() => {
+            var a = getNumberLeftLines();
+            var $ = provider.getDom();
+            $('#leftLineCounter').html(`
+					<p>Left lines ${a[1]}</p>
+					<progress value="${a[1]}" max="128" min="0"></progress>
+`);
+            provider.setDom();
+        });
     }
     catch (e) {
         console.error(e);
@@ -222,10 +227,12 @@ function statusBar(ctx) {
         function updateStatusBarItem() {
             const n = getNumberLeftLines();
             if (LOCALE_KEY == "ru2") {
-                leftCodeLength.text = `осталось ${n} строк`;
+                leftCodeLength.text =
+                    `осталось ${n[0]} ${n[1]} строк`;
             }
             else {
-                leftCodeLength.text = `${n} line(s) left`;
+                leftCodeLength.text =
+                    `${n}${n[1]} line(s) left`;
             }
             leftCodeLength.show();
         }
@@ -251,6 +258,10 @@ function getNumberLeftLines() {
         left = left - text.split('\n').length;
     }
     var x = a[Math.ceil(left / 32)] ?? '';
-    return `${x} ${left}`;
+    return [x, left];
 }
+function deactivate() {
+    console.log('deactivate 1c10');
+}
+exports.deactivate = deactivate;
 //# sourceMappingURL=main.js.map
