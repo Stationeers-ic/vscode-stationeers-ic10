@@ -4,7 +4,6 @@ exports.ic10DebugSession = void 0;
 const vscode_debugadapter_1 = require("vscode-debugadapter");
 const path_1 = require("path");
 const ic10Runtime_1 = require("./ic10Runtime");
-const await_notify_1 = require("await-notify");
 const ic10_1 = require("ic10");
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -13,7 +12,6 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
     constructor(fileAccessor) {
         super("ic10-debug.txt");
         this._variableHandles = new vscode_debugadapter_1.Handles();
-        this._configurationDone = new await_notify_1.Subject();
         this._cancelationTokens = new Map();
         this._isLongrunning = new Map();
         this._reportProgress = false;
@@ -139,11 +137,9 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
     }
     configurationDoneRequest(response, args) {
         super.configurationDoneRequest(response, args);
-        this._configurationDone.notify();
     }
     async launchRequest(response, args) {
         vscode_debugadapter_1.logger.setup(args.trace ? vscode_debugadapter_1.Logger.LogLevel.Verbose : vscode_debugadapter_1.Logger.LogLevel.Stop, false);
-        await this._configurationDone.wait(1000);
         await this._runtime.start(args.program, !!args.stopOnEntry, !!args.noDebug);
         this.sendResponse(response);
     }

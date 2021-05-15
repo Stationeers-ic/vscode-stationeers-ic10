@@ -16,11 +16,12 @@ const LANG_KEY2 = 'icX'
 const interpreterIc10 = new InterpreterIc10(null)
 var interpreterIc10State = 0
 var leftCodeLength: vscode.StatusBarItem;
-exec('npm update')
+
 var onChangeCallbacks = []
 
 export function activate(ctx: vscode.ExtensionContext) {
 	console.log('activate 1c10')
+	exec('npm update')
 	console.log(ctx)
 	view(ctx)
 	hover(ctx)
@@ -207,17 +208,12 @@ function view(ctx: vscode.ExtensionContext) {
 		onChangeCallbacks.push(
 			() => {
 				var a = getNumberLeftLines()
-				var $ = provider.getDom()
 				if (a) {
-					$('#leftLineCounter').html(`
+					provider.section('leftLineCounter', `
 					<p>Left lines ${a[1]}</p>
-					<progress value="${a[1]}" max="128" min="0"></progress>
-`
-					)
-					provider.setDom()
+					<progress value="${a[1]}" max="128" min="0"></progress>`)
 				} else {
-					$('#leftLineCounter').html(``)
-					provider.setDom()
+					provider.section('leftLineCounter', ``)
 				}
 			}
 		)
@@ -228,7 +224,7 @@ function view(ctx: vscode.ExtensionContext) {
 
 function statusBar(ctx: vscode.ExtensionContext) {
 	try {
-		const leftCodeLength = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
+		leftCodeLength = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
 		ctx.subscriptions.push(leftCodeLength);
 		onChangeCallbacks.push(() => {
 			updateStatusBarItem()

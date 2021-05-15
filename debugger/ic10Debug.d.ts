@@ -12,7 +12,6 @@ export declare class ic10DebugSession extends LoggingDebugSession {
     private static threadID;
     private _runtime;
     _variableHandles: Handles<string>;
-    private _configurationDone;
     private _cancelationTokens;
     private _isLongrunning;
     private _reportProgress;

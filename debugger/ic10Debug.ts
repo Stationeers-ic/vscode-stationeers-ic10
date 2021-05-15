@@ -24,7 +24,6 @@ import {
 import {DebugProtocol} from 'vscode-debugprotocol';
 import {basename} from 'path';
 import {FileAccessor, ic10Runtime, Iic10Breakpoint} from './ic10Runtime';
-import {Subject} from 'await-notify';
 import {ConstantCell, ic10Error, InterpreterIc10, MemoryCell} from "ic10";
 
 // import * as fs from "fs";
@@ -59,8 +58,6 @@ export class ic10DebugSession extends LoggingDebugSession {
 	private _runtime: ic10Runtime;
 	
 	public _variableHandles = new Handles<string>();
-	
-	private _configurationDone = new Subject();
 	
 	private _cancelationTokens = new Map<number, boolean>();
 	private _isLongrunning = new Map<number, boolean>();
@@ -249,7 +246,6 @@ export class ic10DebugSession extends LoggingDebugSession {
 		super.configurationDoneRequest(response, args);
 		
 		// notify the launchRequest that configuration has finished
-		this._configurationDone.notify();
 	}
 	
 	protected async launchRequest(response: DebugProtocol.LaunchResponse, args: ILaunchRequestArguments) {
@@ -258,8 +254,6 @@ export class ic10DebugSession extends LoggingDebugSession {
 		logger.setup(args.trace ? Logger.LogLevel.Verbose : Logger.LogLevel.Stop, false);
 		
 		// wait until configuration has finished (and configurationDoneRequest has been called)
-		await this._configurationDone.wait(1000);
-		
 		// start the program in the runtime
 		await this._runtime.start(args.program, !!args.stopOnEntry, !!args.noDebug);
 		

@@ -21,10 +21,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Ic10SidebarViewProvider = void 0;
 const vscode = __importStar(require("vscode"));
-const jsdom_1 = require("jsdom");
 class Ic10SidebarViewProvider {
     constructor(_extensionUri) {
         this._extensionUri = _extensionUri;
+        this.sections = {};
     }
     resolveWebviewView(webviewView, context, _token) {
         this.view = webviewView;
@@ -38,18 +38,25 @@ class Ic10SidebarViewProvider {
         webviewView.webview.onDidReceiveMessage(data => {
         });
     }
-    getDom() {
-        const { window } = new jsdom_1.JSDOM(this.view.webview.html);
-        this.dom = require("jquery")(window);
-        return this.dom;
+    refresh() {
+        this.view.webview.html = this._getHtmlForWebview();
     }
-    setDom() {
-        this.view.webview.html = this.dom('body').html();
+    section(name, content) {
+        this.sections[name] = content;
+        this.refresh();
     }
-    _getHtmlForWebview(body = '') {
+    _getHtmlForWebview() {
         const styleMainUri = this.view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'sidebar.css'));
         const scriptMainUri = this.view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'sidebar.js'));
         const nonce = this.getNonce();
+        var content = "";
+        for (const sectionsKey in this.sections) {
+            content += `
+				<section id="${sectionsKey}">
+					${this.sections[sectionsKey]}
+				</section>
+			`;
+        }
         return `<!DOCTYPE html>
 			<html lang="en">
 			<head>
@@ -64,10 +71,7 @@ class Ic10SidebarViewProvider {
 				<link href="${styleMainUri}" rel="stylesheet">
 			</head>
 			<body>
-				
-				<section id="leftLineCounter">
-				
-				</section>
+				${content}
 				<script src="${scriptMainUri}" type="text/javascript"></script>
 			</body>
 			</html>`;

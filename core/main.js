@@ -39,10 +39,10 @@ const LANG_KEY2 = 'icX';
 const interpreterIc10 = new ic10_1.InterpreterIc10(null);
 var interpreterIc10State = 0;
 var leftCodeLength;
-child_process_1.exec('npm update');
 var onChangeCallbacks = [];
 function activate(ctx) {
     console.log('activate 1c10');
+    child_process_1.exec('npm update');
     console.log(ctx);
     view(ctx);
     hover(ctx);
@@ -204,17 +204,13 @@ function view(ctx) {
         ctx.subscriptions.push(vscode.window.registerWebviewViewProvider(sidebarView_1.Ic10SidebarViewProvider.viewType, provider));
         onChangeCallbacks.push(() => {
             var a = getNumberLeftLines();
-            var $ = provider.getDom();
             if (a) {
-                $('#leftLineCounter').html(`
+                provider.section('leftLineCounter', `
 					<p>Left lines ${a[1]}</p>
-					<progress value="${a[1]}" max="128" min="0"></progress>
-`);
-                provider.setDom();
+					<progress value="${a[1]}" max="128" min="0"></progress>`);
             }
             else {
-                $('#leftLineCounter').html(``);
-                provider.setDom();
+                provider.section('leftLineCounter', ``);
             }
         });
     }
@@ -224,7 +220,7 @@ function view(ctx) {
 }
 function statusBar(ctx) {
     try {
-        const leftCodeLength = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
+        leftCodeLength = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
         ctx.subscriptions.push(leftCodeLength);
         onChangeCallbacks.push(() => {
             updateStatusBarItem();

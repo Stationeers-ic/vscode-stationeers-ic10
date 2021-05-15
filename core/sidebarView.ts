@@ -1,11 +1,11 @@
 import * as vscode from 'vscode';
-import {JSDOM} from "jsdom";
 
 export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 	public static readonly viewType = 'Ic10ViewProvider';
 	
 	public view?: vscode.WebviewView;
 	private dom: any;
+	private sections: {} = {};
 	
 	constructor(
 		private readonly _extensionUri: vscode.Uri,
@@ -35,22 +35,28 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 		});
 	}
 	
-	getDom() {
-		const {window} = new JSDOM(this.view.webview.html);
-		this.dom = require("jquery")(window);
-		return this.dom
+	refresh() {
+		this.view.webview.html = this._getHtmlForWebview()
 	}
-	
-	setDom() {
-		this.view.webview.html = this.dom('body').html()
+	section(name,content){
+		this.sections[name] = content
+		this.refresh()
 	}
-	
-	private _getHtmlForWebview(body: string = '') {
+	private _getHtmlForWebview() {
 		
 		// Do the same for the stylesheet.
 		const styleMainUri = this.view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'sidebar.css'));
 		const scriptMainUri = this.view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'sidebar.js'));
 		const nonce = this.getNonce();
+		
+		var content = ""
+		for (const sectionsKey in this.sections) {
+			content+=`
+				<section id="${sectionsKey}">
+					${this.sections[sectionsKey]}
+				</section>
+			`
+		}
 		return `<!DOCTYPE html>
 			<html lang="en">
 			<head>
@@ -65,10 +71,7 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 				<link href="${styleMainUri}" rel="stylesheet">
 			</head>
 			<body>
-				
-				<section id="leftLineCounter">
-				
-				</section>
+				${content}
 				<script src="${scriptMainUri}" type="text/javascript"></script>
 			</body>
 			</html>`;
