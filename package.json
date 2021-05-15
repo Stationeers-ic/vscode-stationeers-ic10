@@ -246,6 +246,14 @@
         }
       ]
     },
+    "configurationDefaults": {
+      "[ic10]": {
+        "editor.semanticHighlighting.enabled": true
+      },
+      "[icX]": {
+        "editor.semanticHighlighting.enabled": true
+      }
+    },
     "views": {
       "explorer": [
         {

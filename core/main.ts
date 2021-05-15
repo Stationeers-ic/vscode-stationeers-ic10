@@ -208,12 +208,17 @@ function view(ctx: vscode.ExtensionContext) {
 			() => {
 				var a = getNumberLeftLines()
 				var $ = provider.getDom()
-				$('#leftLineCounter').html(`
+				if (a) {
+					$('#leftLineCounter').html(`
 					<p>Left lines ${a[1]}</p>
 					<progress value="${a[1]}" max="128" min="0"></progress>
 `
-				)
-				provider.setDom()
+					)
+					provider.setDom()
+				} else {
+					$('#leftLineCounter').html(``)
+					provider.setDom()
+				}
 			}
 		)
 	} catch (e) {
@@ -232,17 +237,22 @@ function statusBar(ctx: vscode.ExtensionContext) {
 		
 		function updateStatusBarItem(): void {
 			const n = getNumberLeftLines();
-			if (LOCALE_KEY == "ru2") {
-				leftCodeLength.text =
-					`осталось ${n[0]} ${n[1]} строк`
-				;
+			if (n) {
+				if (LOCALE_KEY == "ru2") {
+					leftCodeLength.text =
+						`осталось ${n[0]} ${n[1]} строк`
+					;
+				} else {
+					leftCodeLength.text =
+						`${n[0]}${n[1]} line(s) left`
+					;
+				}
+				leftCodeLength.show();
 			} else {
-				leftCodeLength.text =
-					`${n}${n[1]} line(s) left`
-				;
+				leftCodeLength.hide();
 			}
-			leftCodeLength.show();
 		}
+		
 		
 	} catch (e) {
 		console.error(e)
@@ -250,9 +260,10 @@ function statusBar(ctx: vscode.ExtensionContext) {
 }
 
 function _onChange(ctx): void {
-	onChangeCallbacks.forEach((e) => {
-		e.call(ctx)
-	})
+	if (vscode.window.activeTextEditor.document.languageId == LANG_KEY || vscode.window.activeTextEditor.document.languageId == LANG_KEY2)
+		onChangeCallbacks.forEach((e) => {
+			e.call(ctx)
+		})
 }
 
 function onChange(ctx) {
@@ -260,15 +271,19 @@ function onChange(ctx) {
 	ctx.subscriptions.push(vscode.window.onDidChangeTextEditorSelection(_onChange));
 }
 
-function getNumberLeftLines(): Array<any> {
+function getNumberLeftLines(): Array<any> | false {
 	var text = vscode.window.activeTextEditor.document.getText();
-	var left = 128
-	var a = " ▁▃▅▉";
-	if (text) {
-		left = left - text.split('\n').length
+	if (vscode.window.activeTextEditor.document.languageId == LANG_KEY) {
+		var left = 128
+		var a = " ▁▃▅▉";
+		if (text) {
+			left = left - text.split('\n').length
+		}
+		var x = a[Math.ceil(left / 32)] ?? ''
+		return [x, left];
+	} else {
+		return false
 	}
-	var x = a[Math.ceil(left / 32)] ?? ''
-	return [x, left];
 }
 
 export function deactivate() {
