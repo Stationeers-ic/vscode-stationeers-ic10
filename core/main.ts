@@ -6,7 +6,6 @@ import {ic10Error, InterpreterIc10} from "ic10";
 import path from "path";
 import {ic10Formatter} from "./ic10.formatter";
 import {IcxSemanticTokensProvider, legend} from "./icx.SemanticProvider";
-import {exec} from "child_process";
 import {Ic10SidebarViewProvider} from "./sidebarView";
 
 const LOCALE_KEY: string = vscode.env.language
@@ -21,8 +20,6 @@ var onChangeCallbacks = []
 
 export function activate(ctx: vscode.ExtensionContext) {
 	console.log('activate 1c10')
-	exec('npm update')
-	console.log(ctx)
 	view(ctx)
 	hover(ctx)
 	formatter(ctx)
@@ -120,13 +117,6 @@ function command(ctx: vscode.ExtensionContext) {
 				interpreterIc10.stop()
 			}
 		}));
-		ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + '.test', (variable) => {
-			const ds = vscode.debug.activeDebugSession;
-			console.log('ic10.test')
-			console.log(ds)
-			console.log(variable)
-		}));
-		
 		ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + '.debug.variables.write', (variable) => {
 			const ds = vscode.debug.activeDebugSession;
 			var input = vscode.window.createInputBox()

@@ -30,7 +30,6 @@ const ic10_1 = require("ic10");
 const path_1 = __importDefault(require("path"));
 const ic10_formatter_1 = require("./ic10.formatter");
 const icx_SemanticProvider_1 = require("./icx.SemanticProvider");
-const child_process_1 = require("child_process");
 const sidebarView_1 = require("./sidebarView");
 const LOCALE_KEY = vscode.env.language;
 const ic10 = new ic10_vscode_1.Ic10Vscode();
@@ -42,8 +41,6 @@ var leftCodeLength;
 var onChangeCallbacks = [];
 function activate(ctx) {
     console.log('activate 1c10');
-    child_process_1.exec('npm update');
-    console.log(ctx);
     view(ctx);
     hover(ctx);
     formatter(ctx);
@@ -127,12 +124,6 @@ function command(ctx) {
                 vscode.window.showInformationMessage('Stop');
                 interpreterIc10.stop();
             }
-        }));
-        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + '.test', (variable) => {
-            const ds = vscode.debug.activeDebugSession;
-            console.log('ic10.test');
-            console.log(ds);
-            console.log(variable);
         }));
         ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + '.debug.variables.write', (variable) => {
             const ds = vscode.debug.activeDebugSession;

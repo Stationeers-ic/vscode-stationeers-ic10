@@ -31,10 +31,6 @@ class ic10Formatter {
         this.text = this.text.replace(regexes.rm, '');
         this.init(this.text);
         this.formatStart();
-        console.log('jumps', this.jumps);
-        console.log('labels', this.labels);
-        console.log('functions', this.functions);
-        console.log('spaces', this.spaces);
     }
     init(text) {
         this.labels = {};
