@@ -1,21 +1,21 @@
 # Stationeers ic10
 
-![issues](https://badgen.net/github/issues/Traineratwot/vscode-stationeers-ic10/)
-![open-issues](https://badgen.net/github/open-issues/Traineratwot/vscode-stationeers-ic10/)
+[![issues](https://badgen.net/github/issues/Traineratwot/vscode-stationeers-ic10/)](https://github.com/Traineratwot/vscode-stationeers-ic10/issues?q=is%3Aissue)
+[![open-issues](https://badgen.net/github/open-issues/Traineratwot/vscode-stationeers-ic10/)](https://github.com/Traineratwot/vscode-stationeers-ic10/issues)
 ![watchers](https://badgen.net/github/watchers/Traineratwot/vscode-stationeers-ic10/)
 ![stars](https://badgen.net/github/stars/Traineratwot/vscode-stationeers-ic10/)
 ![release](https://badgen.net/github/release/Traineratwot/vscode-stationeers-ic10/)
 ![last-commit](https://badgen.net/github/last-commit/Traineratwot/vscode-stationeers-ic10/)
 ![open-prs](https://badgen.net/github/open-prs/Traineratwot/vscode-stationeers-ic10/)
 
-![npm-ic10](https://badgen.net/npm/v/ic10?label=npm-ic10)
-![npm](https://badgen.net/vs-marketplace/v/Traineratwot.stationeers-ic10)
+[![npm-ic10](https://badgen.net/npm/v/ic10?label=npm-ic10)](https://www.npmjs.com/package/ic10)
+[![npm](https://badgen.net/vs-marketplace/v/Traineratwot.stationeers-ic10)](https://marketplace.visualstudio.com/items?itemName=Traineratwot.stationeers-ic10)
 
 ![npm](https://badgen.net/vs-marketplace/d/Traineratwot.stationeers-ic10)
 ![npm](https://badgen.net/vs-marketplace/i/Traineratwot.stationeers-ic10)
 ![npm](https://badgen.net/vs-marketplace/rating/Traineratwot.stationeers-ic10)
 
-![](https://i.imgur.com/cl0Xbq1.png) [Sponsor this project](https://www.patreon.com/traineratwot)
+[![](https://i.imgur.com/cl0Xbq1.png)  Sponsor this project](https://www.patreon.com/traineratwot)
 
 Debugger launch
 

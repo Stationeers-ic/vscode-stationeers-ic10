@@ -13,9 +13,7 @@
   "scripts": {
     "start": "tsc -w",
     "vscode:prepublish": "npm update && tsc",
-    "publish": "vsce package && vsce publish",
-    "vscode:install": "npm update",
-    "install": "npm update"
+    "publish": "vsce package && vsce publish"
   },
   "badges": [],
   "publisher": "Traineratwot",
