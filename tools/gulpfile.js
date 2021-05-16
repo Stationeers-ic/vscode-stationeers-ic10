@@ -325,6 +325,7 @@ gulp.task('generate-langs', function() {
 		}
 
 	}
+	
 	fs.writeFileSync(`..\\snippets\\ic10.json`, JSON.stringify(snippets))
  	var tmLanguage10 = JSON.parse(fs.readFileSync(`..\\syntaxes\\ic10.tmLanguage.json`));
 	tmLanguage10.repository.keywords.patterns[0].match =`\\b(${keyword.join('|')})\\b`
@@ -334,6 +335,9 @@ gulp.task('generate-langs', function() {
 	tmLanguagex.repository.keywords.patterns[0].match =`\\b(${keyword.join('|')})\\b`
 	tmLanguagex.repository.entity.patterns[0].match =`\\b(${functions.join('|')})\\b`
 	fs.writeFileSync(`..\\syntaxes\\icX.tmLanguage.json`, JSON.stringify(tmLanguagex))
+	
+	fs.writeFileSync(`..\\media\\ic10.keyword.json`, JSON.stringify(keyword))
+	fs.writeFileSync(`..\\media\\ic10.functions.json`, JSON.stringify(functions))
 })
 
 gulp.task('generate-aaa', function() {

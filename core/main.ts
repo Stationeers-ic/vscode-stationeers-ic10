@@ -7,6 +7,7 @@ import path from "path";
 import {ic10Formatter} from "./ic10.formatter";
 import {IcxSemanticTokensProvider, legend} from "./icx.SemanticProvider";
 import {Ic10SidebarViewProvider} from "./sidebarView";
+import {ic10Diagnostics} from "./ic10.diagnostics";
 
 const LOCALE_KEY: string = vscode.env.language
 const ic10 = new Ic10Vscode();
@@ -16,7 +17,13 @@ const interpreterIc10 = new InterpreterIc10(null)
 var interpreterIc10State = 0
 var leftCodeLength: vscode.StatusBarItem;
 
-var onChangeCallbacks = []
+var onChangeCallbacks: {
+	ChangeActiveTextEditor: Array<Function>
+	ChangeTextEditorSelection: Array<Function>
+} = {
+	ChangeActiveTextEditor: [],
+	ChangeTextEditorSelection: []
+}
 
 export function activate(ctx: vscode.ExtensionContext) {
 	console.log('activate 1c10')
@@ -26,8 +33,10 @@ export function activate(ctx: vscode.ExtensionContext) {
 	command(ctx)
 	semantic(ctx)
 	statusBar(ctx)
+	diagnostic(ctx)
 	//-------------
 	onChange(ctx)
+	
 }
 
 function hover(ctx: vscode.ExtensionContext) {
@@ -195,18 +204,28 @@ function view(ctx: vscode.ExtensionContext) {
 	try {
 		var provider = new Ic10SidebarViewProvider(ctx.extensionUri);
 		ctx.subscriptions.push(vscode.window.registerWebviewViewProvider(Ic10SidebarViewProvider.viewType, provider));
-		onChangeCallbacks.push(
+		onChangeCallbacks.ChangeTextEditorSelection.push(
 			() => {
 				var a = getNumberLeftLines()
 				if (a) {
 					provider.section('leftLineCounter', `
 					<p>Left lines ${a[1]}</p>
-					<progress value="${a[1]}" max="128" min="0"></progress>`)
+					<progress value="${a[1]}" max="128" min="0"></progress>`, LANG_KEY, -10)
 				} else {
-					provider.section('leftLineCounter', ``)
+					provider.section('leftLineCounter', ``, -10)
 				}
 			}
 		)
+		onChangeCallbacks.ChangeTextEditorSelection.push(() => {
+			provider.section('settings', `
+					<label for="comments">Enable comments</label>
+					<input type="checkbox" name="comments">
+				`, LANG_KEY2)
+		})
+		onChangeCallbacks.ChangeActiveTextEditor.push(() => {
+			provider.clear();
+		})
+		
 	} catch (e) {
 		console.error(e)
 	}
@@ -216,7 +235,7 @@ function statusBar(ctx: vscode.ExtensionContext) {
 	try {
 		leftCodeLength = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
 		ctx.subscriptions.push(leftCodeLength);
-		onChangeCallbacks.push(() => {
+		onChangeCallbacks.ChangeActiveTextEditor.push(() => {
 			updateStatusBarItem()
 		})
 		updateStatusBarItem()
@@ -245,16 +264,26 @@ function statusBar(ctx: vscode.ExtensionContext) {
 	}
 }
 
-function _onChange(ctx): void {
-	if (vscode.window.activeTextEditor.document.languageId == LANG_KEY || vscode.window.activeTextEditor.document.languageId == LANG_KEY2)
-		onChangeCallbacks.forEach((e) => {
-			e.call(ctx)
+function ChangeActiveTextEditor(editor): void {
+	if (vscode.window.activeTextEditor.document.languageId == LANG_KEY || vscode.window.activeTextEditor.document.languageId == LANG_KEY2) {
+		onChangeCallbacks.ChangeActiveTextEditor.forEach((e) => {
+			e.call(null, editor)
 		})
+	}
+}
+
+function ChangeTextEditorSelection(editor): void {
+	if (vscode.window.activeTextEditor.document.languageId == LANG_KEY || vscode.window.activeTextEditor.document.languageId == LANG_KEY2) {
+		
+		onChangeCallbacks.ChangeTextEditorSelection.forEach((e) => {
+			e.call(null, editor)
+		})
+	}
 }
 
 function onChange(ctx) {
-	ctx.subscriptions.push(vscode.window.onDidChangeActiveTextEditor(_onChange));
-	ctx.subscriptions.push(vscode.window.onDidChangeTextEditorSelection(_onChange));
+	ctx.subscriptions.push(vscode.window.onDidChangeActiveTextEditor(ChangeActiveTextEditor));
+	ctx.subscriptions.push(vscode.window.onDidChangeTextEditorSelection(ChangeTextEditorSelection));
 }
 
 function getNumberLeftLines(): Array<any> | false {
@@ -270,6 +299,27 @@ function getNumberLeftLines(): Array<any> | false {
 	} else {
 		return false
 	}
+}
+
+function diagnostic(context) {
+	const ic10DiagnosticsCollection = vscode.languages.createDiagnosticCollection("ic10");
+	context.subscriptions.push(ic10DiagnosticsCollection);
+	
+	onChangeCallbacks.ChangeTextEditorSelection.push((editor) => {
+		if (vscode.window.activeTextEditor.document.languageId == LANG_KEY) {
+			ic10Diagnostics.run(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection)
+		} else {
+			ic10Diagnostics.clear(vscode.window.activeTextEditor.document,ic10DiagnosticsCollection)
+		}
+	})
+	onChangeCallbacks.ChangeActiveTextEditor.push((editor) => {
+		if (vscode.window.activeTextEditor.document.languageId == LANG_KEY) {
+			ic10Diagnostics.run(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection)
+		} else {
+			ic10Diagnostics.clear(vscode.window.activeTextEditor.document,ic10DiagnosticsCollection)
+		}
+	})
+	
 }
 
 export function deactivate() {

@@ -24,7 +24,8 @@ const vscode = __importStar(require("vscode"));
 class Ic10SidebarViewProvider {
     constructor(_extensionUri) {
         this._extensionUri = _extensionUri;
-        this.sections = {};
+        this.sectionsNamed = {};
+        this.sections = [];
     }
     resolveWebviewView(webviewView, context, _token) {
         this.view = webviewView;
@@ -41,21 +42,47 @@ class Ic10SidebarViewProvider {
     refresh() {
         this.view.webview.html = this._getHtmlForWebview();
     }
-    section(name, content) {
-        this.sections[name] = content;
+    section(name, content, lang, priority = 0) {
+        if (!this.sectionsNamed.hasOwnProperty(name)) {
+            this.sections.length;
+            this.sectionsNamed[name] = this.sections.length;
+            this.sections.push({ name, content, lang, priority });
+        }
+        else {
+            this.sections[this.sectionsNamed[name]] = { name, content, lang, priority };
+        }
+        this.refresh();
+    }
+    clear() {
+        this.sectionsNamed = new Set;
+        this.sections = [];
         this.refresh();
     }
     _getHtmlForWebview() {
-        const styleMainUri = this.view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'sidebar.css'));
+        var languageId = vscode.window.activeTextEditor.document.languageId;
+        const styleMainUri = this.
+            view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'sidebar.css'));
         const scriptMainUri = this.view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'sidebar.js'));
         const nonce = this.getNonce();
         var content = "";
+        this.sections.sort((a, b) => {
+            if (a.priority < b.priority) {
+                return -1;
+            }
+            if (a.priority > b.priority) {
+                return 1;
+            }
+            return 0;
+        });
         for (const sectionsKey in this.sections) {
-            content += `
-				<section id="${sectionsKey}">
-					${this.sections[sectionsKey]}
+            var obj = this.sections[sectionsKey];
+            if (obj.lang == 'both' || obj.lang == languageId) {
+                content += `
+				<section id="${obj.name}">
+					${obj.content}
 				</section>
 			`;
+            }
         }
         return `<!DOCTYPE html>
 			<html lang="en">
