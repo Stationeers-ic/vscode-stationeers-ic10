@@ -29,8 +29,8 @@ export class ic10Formatter {
 	private functions: Object;
 	private spaces: Array<any>;
 	private loops: Object;
-	
-	
+
+
 	constructor(document: vscode.TextDocument) {
 		this.document = document;
 		this.text = document.getText();
@@ -46,13 +46,13 @@ export class ic10Formatter {
 			},
 			jal: {},
 		};
-		
+
 		this.text = this.text.replace(regexes.oldSpace, '')
 		this.text = this.text.replace(regexes.rm, '')
 		this.init(this.text)
 		this.formatStart()
 	}
-	
+
 	init(text: string) {
 		this.labels = {};
 		this.functions = {};
@@ -65,9 +65,9 @@ export class ic10Formatter {
 			},
 			jal: {},
 		};
-		
+
 		var self = this
-		
+
 		this.lines = text.split(/\r?\n/);
 		var commands = this.lines
 			.map((line: string) => {
@@ -137,7 +137,7 @@ export class ic10Formatter {
 		this.position = 0
 		return this
 	}
-	
+
 	formatStart() {
 		this.addResetVar()
 		this.init(this.text)
@@ -164,19 +164,19 @@ export class ic10Formatter {
 				if (i > 1) {
 					let prevLine = this.lines[i - 1]
 				}
-				
-				
+
+
 			}
 		}
 		var new_txt = this.lines.join("\n")
 		this.init(new_txt)
 		this.findFunctions()
 		this.findLoos()
-		
+
 		this.renderSpaces()
 		this.resultText = this.lines.join("\n")
 	}
-	
+
 	addResetVar() {
 		// var txt = '#-reset-vars-' + "\n"
 		// this.vars.forEach((value) => {
@@ -185,7 +185,7 @@ export class ic10Formatter {
 		// txt += '#-reset-vars-' + "\n"
 		// this.text = txt + this.text
 	}
-	
+
 	renderSpaces() {
 		this.spaces = []
 		this.lines.forEach((val, i, arr) => {
@@ -215,7 +215,7 @@ export class ic10Formatter {
 			arr[i] = val.padStart(this.spaces[i] + val.trim().length, "\t")
 		})
 	}
-	
+
 	findFunctions() {
 		for (const labelsKey in this.labels) {
 			try {
@@ -242,7 +242,7 @@ export class ic10Formatter {
 			}
 		}
 	}
-	
+
 	findLoos() {
 		for (const labelsKey in this.labels) {
 			try {

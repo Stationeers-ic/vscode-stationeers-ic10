@@ -56,6 +56,7 @@ function activate(ctx) {
 }
 exports.activate = activate;
 function hover(ctx) {
+    console.time('hover');
     try {
         ctx.subscriptions.push(vscode.languages.registerHoverProvider(LANG_KEY, {
             provideHover(document, position, token) {
@@ -75,8 +76,10 @@ function hover(ctx) {
     catch (e) {
         console.error(e);
     }
+    console.timeEnd('hover');
 }
 function formatter(ctx) {
+    console.time('formatter');
     try {
         function replaceTextInDocument(newText, document) {
             const firstLine = document.lineAt(0);
@@ -98,8 +101,10 @@ function formatter(ctx) {
     catch (e) {
         console.error(e);
     }
+    console.timeEnd('formatter');
 }
 function command(ctx) {
+    console.time('command');
     try {
         ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + '.run', () => {
             if (!interpreterIc10State) {
@@ -184,8 +189,10 @@ function command(ctx) {
     catch (e) {
         console.error(e);
     }
+    console.timeEnd('command');
 }
 function semantic(ctx) {
+    console.time('semantic');
     try {
         ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: LANG_KEY, scheme: 'file' }, new icx_SemanticProvider_1.IcxSemanticTokensProvider, icx_SemanticProvider_1.legend));
         ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: LANG_KEY2, scheme: 'file' }, new icx_SemanticProvider_1.IcxSemanticTokensProvider, icx_SemanticProvider_1.legend));
@@ -193,8 +200,10 @@ function semantic(ctx) {
     catch (e) {
         console.error(e);
     }
+    console.timeEnd('semantic');
 }
 function view(ctx) {
+    console.time('view');
     try {
         var provider = new sidebarView_1.Ic10SidebarViewProvider(ctx.extensionUri);
         ctx.subscriptions.push(vscode.window.registerWebviewViewProvider(sidebarView_1.Ic10SidebarViewProvider.viewType, provider));
@@ -222,8 +231,10 @@ function view(ctx) {
     catch (e) {
         console.error(e);
     }
+    console.timeEnd('view');
 }
 function statusBar(ctx) {
+    console.time('statusBar');
     try {
         leftCodeLength = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
         ctx.subscriptions.push(leftCodeLength);
@@ -252,6 +263,7 @@ function statusBar(ctx) {
     catch (e) {
         console.error(e);
     }
+    console.timeEnd('statusBar');
 }
 function ChangeActiveTextEditor(editor) {
     if (vscode.window.activeTextEditor.document.languageId == LANG_KEY || vscode.window.activeTextEditor.document.languageId == LANG_KEY2) {
@@ -287,24 +299,31 @@ function getNumberLeftLines() {
     }
 }
 function diagnostic(context) {
-    const ic10DiagnosticsCollection = vscode.languages.createDiagnosticCollection("ic10");
-    context.subscriptions.push(ic10DiagnosticsCollection);
-    onChangeCallbacks.ChangeTextEditorSelection.push((editor) => {
-        if (vscode.window.activeTextEditor.document.languageId == LANG_KEY) {
-            ic10_diagnostics_1.ic10Diagnostics.run(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection);
-        }
-        else {
-            ic10_diagnostics_1.ic10Diagnostics.clear(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection);
-        }
-    });
-    onChangeCallbacks.ChangeActiveTextEditor.push((editor) => {
-        if (vscode.window.activeTextEditor.document.languageId == LANG_KEY) {
-            ic10_diagnostics_1.ic10Diagnostics.run(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection);
-        }
-        else {
-            ic10_diagnostics_1.ic10Diagnostics.clear(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection);
-        }
-    });
+    console.time('diagnostic');
+    try {
+        const ic10DiagnosticsCollection = vscode.languages.createDiagnosticCollection("ic10");
+        context.subscriptions.push(ic10DiagnosticsCollection);
+        onChangeCallbacks.ChangeTextEditorSelection.push((editor) => {
+            if (vscode.window.activeTextEditor.document.languageId == LANG_KEY) {
+                ic10_diagnostics_1.ic10Diagnostics.run(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection);
+            }
+            else {
+                ic10_diagnostics_1.ic10Diagnostics.clear(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection);
+            }
+        });
+        onChangeCallbacks.ChangeActiveTextEditor.push((editor) => {
+            if (vscode.window.activeTextEditor.document.languageId == LANG_KEY) {
+                ic10_diagnostics_1.ic10Diagnostics.run(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection);
+            }
+            else {
+                ic10_diagnostics_1.ic10Diagnostics.clear(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection);
+            }
+        });
+    }
+    catch (e) {
+        console.error(e);
+    }
+    console.timeEnd('diagnostic');
 }
 function deactivate() {
     console.log('deactivate 1c10');

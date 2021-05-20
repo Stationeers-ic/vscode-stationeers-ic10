@@ -300,6 +300,9 @@ IC10Data
 	.__add('ru', 'VerticalRatio'            , 'Parameter', 'Float'    , '')
 
 
+	.__add('ru', 'debug', 'Function', 'Функция отладки для icX', '')
+
+
 gulp.task('generate-langs', function() {
 	console.log('generating')
 	console.log(IC10Data.Languages['ru'][0])
