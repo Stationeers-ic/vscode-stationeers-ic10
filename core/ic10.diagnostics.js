@@ -41,10 +41,28 @@ class DiagnosticsError {
         this.message = message;
         this.lvl = lvl;
         this.range = new vscode.Range(line, start, line, start + length);
+        this.hash = this.message.replace(/\s+/, '') + line;
+    }
+}
+class DiagnosticsErrors {
+    constructor() {
+        this.values = [];
+        this.index = [];
+    }
+    push(a) {
+        if (this.index.indexOf(a.hash) < 0) {
+            this.index.push(a.hash);
+            this.values.push(a);
+        }
+    }
+    reset() {
+        this.values = [];
+        this.index = [];
     }
 }
 class Ic10Diagnostics {
     constructor() {
+        this.errors = new DiagnosticsErrors;
     }
     clear(doc, container) {
         container.set(doc.uri, []);
@@ -53,20 +71,18 @@ class Ic10Diagnostics {
         const diagnostics = [];
         this.jumps = [];
         this.aliases = [];
-        this.errors = [];
+        this.errors.reset();
         for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
             try {
                 this.parseLine(doc, lineIndex);
             }
             catch (e) {
-                if (e instanceof Array) {
-                    for (const de of e) {
-                        diagnostics.push(this.createDiagnostic(de.range, de.message, de.lvl));
-                    }
-                }
             }
         }
         for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
+        }
+        for (const de of this.errors.values) {
+            diagnostics.push(this.createDiagnostic(de.range, de.message, de.lvl));
         }
         if (doc.lineCount > 128) {
             diagnostics.push(this.createDiagnostic(new vscode.Range(128, 0, 128, 1), 'Max line', vscode.DiagnosticSeverity.Error));
@@ -109,9 +125,6 @@ class Ic10Diagnostics {
             }, this);
             if (test === false) {
                 this.errors.push(new DiagnosticsError(`Unknown function: "${text}"`, 0, 0, text.length, lineIndex));
-            }
-            if (this.errors.length > 0) {
-                throw this.errors;
             }
         }
     }
@@ -184,7 +197,6 @@ class Ic10Diagnostics {
         for (const o of ops) {
             switch (o.toUpperCase()) {
                 case 'H':
-                case 'P':
                 case 'C':
                 case 'A':
                 case 'O':
@@ -214,6 +226,10 @@ class Ic10Diagnostics {
                     break;
                 case 'T':
                     break;
+                case 'P':
+                    if (keywords.indexOf(value) < 0) {
+                        errors++;
+                    }
                     break;
                 case 'RM':
                     if (['Contents', 'Required', 'Recipe', 0, 1, 2].indexOf(value) < 0) {

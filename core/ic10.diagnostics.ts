@@ -1,5 +1,4 @@
 import * as vscode from "vscode";
-import {isObject} from "util";
 
 export const Ic10DiagnosticsName = 'ic10_diagnostic';
 var manual: {
@@ -32,52 +31,70 @@ class DiagnosticsError {
 	public range: vscode.Range
 	public message: string
 	public lvl: number
-
+	public hash: string;
+	
 	constructor(message: string, lvl, start: number, length: number, line) {
 		this.message = message
 		this.lvl = lvl
 		this.range = new vscode.Range(line, start, line, start + length)
+		this.hash = this.message.replace(/\s+/, '') + line
+	}
+}
+
+class DiagnosticsErrors {
+	public values: DiagnosticsError[] = []
+	private index: string[] = []
+	
+	push(a: DiagnosticsError) {
+		if (this.index.indexOf(a.hash) < 0) {
+			this.index.push(a.hash)
+			this.values.push(a)
+		}
+	}
+	
+	reset() {
+		this.values = [];
+		this.index = [];
 	}
 }
 
 class Ic10Diagnostics {
 	private jumps: string[];
 	private aliases: string[];
-	private errors: DiagnosticsError[];
-
+	private errors: DiagnosticsErrors
+	
 	constructor() {
-
+		this.errors = new DiagnosticsErrors;
 	}
-
+	
 	clear(doc: vscode.TextDocument, container: vscode.DiagnosticCollection) {
 		container.set(doc.uri, []);
 	}
-
+	
 	run(doc: vscode.TextDocument, container: vscode.DiagnosticCollection): void {
 		const diagnostics: vscode.Diagnostic[] = [];
 		this.jumps = [];
 		this.aliases = [];
-		this.errors = []
+		this.errors.reset()
 		for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
 			try {
 				this.parseLine(doc, lineIndex)
-			} catch (e: DiagnosticsError[] | any) {
-				if (e instanceof Array) {
-					for (const de of e) {
-						diagnostics.push(this.createDiagnostic(de.range, de.message, de.lvl))
-					}
-				}
+			} catch (e) {
+			
 			}
 		}
 		for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
-
+		
+		}
+		for (const de of this.errors.values) {
+			diagnostics.push(this.createDiagnostic(de.range, de.message, de.lvl))
 		}
 		if (doc.lineCount > 128) {
 			diagnostics.push(this.createDiagnostic(new vscode.Range(128, 0, 128, 1), 'Max line', vscode.DiagnosticSeverity.Error))
 		}
 		container.set(doc.uri, diagnostics);
 	}
-
+	
 	parseLine(doc: vscode.TextDocument, lineIndex) {
 		const lineOfText = doc.lineAt(lineIndex);
 		if (lineOfText.text.trim().length > 0) {
@@ -110,27 +127,24 @@ class Ic10Diagnostics {
 				} else {
 					return false;
 				}
-
+				
 			}, this)
 			if (test === false) {
 				this.errors.push(new DiagnosticsError(`Unknown function: "${text}"`, 0, 0, text.length, lineIndex))
 			}
-			if (this.errors.length > 0) {
-				throw this.errors
-			}
 		}
 	}
-
+	
 	analyzeFunctionInputs(words: string[], text: string, lineIndex: number): errorMsg | true {
 		var fn = words[0] ?? null
 		var op1 = words[1] ?? null
 		var op2 = words[2] ?? null
 		var op3 = words[3] ?? null
 		var op4 = words[4] ?? null
-
+		
 		if (!manual.hasOwnProperty(fn)) {
 			this.errors.push(new DiagnosticsError(`Unknown function: "${text}"`, 0, 0, text.length, lineIndex))
-
+			
 			//return {length: fn.length, msg: `Unknown function "${fn}"`, lvl: 0};
 		} else {
 			var rule = manual[fn];
@@ -165,9 +179,9 @@ class Ic10Diagnostics {
 		}
 		return true;
 	}
-
+	
 	parseOpRule(op, value, start, text, lineIndex) {
-
+		
 		`
 		R - один из регистров r0-r15, в прямой или косвенной адресации
 		N - псевдоним, понятное имя, которое можно задать регистру или каналу данных
@@ -189,7 +203,6 @@ class Ic10Diagnostics {
 		for (const o of ops) {
 			switch (o.toUpperCase()) {
 				case 'H':
-				case 'P':
 				case 'C':
 				case 'A':
 				case 'O':
@@ -219,7 +232,10 @@ class Ic10Diagnostics {
 					break
 				case 'T':
 					break
-
+				case 'P':
+					if (keywords.indexOf(value) < 0) {
+						errors++;
+					}
 					break
 				case 'RM':
 					if (['Contents', 'Required', 'Recipe', 0, 1, 2].indexOf(value) < 0) {
@@ -227,7 +243,7 @@ class Ic10Diagnostics {
 					}
 					break
 				case 'RC':
-
+					
 					break
 				case 'BM':
 					if (['Average', 'Sum', 'Minimum', 'Maximum', 0, 1, 2, 3].indexOf(value) < 0) {
@@ -243,16 +259,16 @@ class Ic10Diagnostics {
 		}
 		return true;
 	}
-
+	
 	createDiagnostic(range: vscode.Range, message: string, lvl: number): vscode.Diagnostic {
-
+		
 		// create range that represents, where in the document the word is
 		const diagnostic = new vscode.Diagnostic(range, message,
 			lvl);
 		diagnostic.code = Ic10DiagnosticsName;
 		return diagnostic;
 	}
-
+	
 	empty(a): boolean {
 		switch (typeof a) {
 			case 'string':
@@ -263,7 +279,7 @@ class Ic10Diagnostics {
 				}
 			case 'number':
 				return Boolean(a)
-
+			
 		}
 		return false
 	}
