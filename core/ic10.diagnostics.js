@@ -115,7 +115,6 @@ class Ic10Diagnostics {
                     if (text.startsWith('define')) {
                         this.aliases.push(words[1]);
                     }
-                    console.log(this.aliases);
                     this.analyzeFunctionInputs(words, text, lineIndex);
                     return true;
                 }

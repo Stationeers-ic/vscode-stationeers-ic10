@@ -300,8 +300,8 @@ IC10Data
 	.__add('ru', 'VerticalRatio'            , 'Parameter', 'Float'    , null)
 
 gulp.task('generate-langs', function() {
-	console.log('generating')
-	console.log(IC10Data.Languages['ru'][0])
+	// console.log('generating')
+	// console.log(IC10Data.Languages['ru'][0])
 	var keyword = []
 	var functions = []
 	for(const languagesKey in IC10Data.Languages) {
@@ -444,7 +444,7 @@ gulp.task('generate-aaa', function() {
 	}
 	fs.writeFileSync(`fn.js`, result)
 	
-	console.log(result)
+	// console.log(result)
 })
 
 

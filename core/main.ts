@@ -26,7 +26,7 @@ var onChangeCallbacks: {
 }
 
 export function activate(ctx: vscode.ExtensionContext) {
-	console.log('activate 1c10')
+	console.info('activate 1c10')
 	view(ctx)
 	hover(ctx)
 	formatter(ctx)
@@ -341,5 +341,5 @@ function diagnostic(context) {
 }
 
 export function deactivate() {
-	console.log('deactivate 1c10')
+	console.info('deactivate 1c10')
 }

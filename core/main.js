@@ -44,7 +44,7 @@ var onChangeCallbacks = {
     ChangeTextEditorSelection: []
 };
 function activate(ctx) {
-    console.log('activate 1c10');
+    console.info('activate 1c10');
     view(ctx);
     hover(ctx);
     formatter(ctx);
@@ -326,7 +326,7 @@ function diagnostic(context) {
     console.timeEnd('diagnostic');
 }
 function deactivate() {
-    console.log('deactivate 1c10');
+    console.info('deactivate 1c10');
 }
 exports.deactivate = deactivate;
 //# sourceMappingURL=main.js.map
