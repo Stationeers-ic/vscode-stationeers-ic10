@@ -275,7 +275,7 @@ function statusBar(ctx: vscode.ExtensionContext) {
 	try {
 		leftCodeLength = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
 		ctx.subscriptions.push(leftCodeLength);
-		onChangeCallbacks.ChangeActiveTextEditor.push(() => {
+		onChangeCallbacks.ChangeTextEditorSelection.push(() => {
 			updateStatusBarItem()
 		})
 		updateStatusBarItem()
