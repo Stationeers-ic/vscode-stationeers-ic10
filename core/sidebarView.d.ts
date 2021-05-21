@@ -6,9 +6,13 @@ export declare class Ic10SidebarViewProvider implements vscode.WebviewViewProvid
     private dom;
     private sectionsNamed;
     private sections;
+    private newContent;
+    private update;
     constructor(_extensionUri: vscode.Uri);
     resolveWebviewView(webviewView: vscode.WebviewView, context: vscode.WebviewViewResolveContext, _token: vscode.CancellationToken): void;
-    refresh(): void;
+    sendCommand(name: any, data: any): void;
+    refresh(newContent?: string): void;
+    start(): void;
     section(name: any, content: any, lang: any, priority?: number): void;
     clear(): void;
     private _getHtmlForWebview;

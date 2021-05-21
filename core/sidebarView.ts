@@ -1,8 +1,9 @@
 import * as vscode from 'vscode';
+import * as fs from "fs";
 
 export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 	public static readonly viewType = 'Ic10ViewProvider';
-	
+
 	public view?: vscode.WebviewView;
 	private dom: any;
 	private sectionsNamed: {} = {};
@@ -12,65 +13,65 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 		lang: string,
 		priority: number
 	}[] = [];
-	
+	private newContent: string;
+	private update: boolean;
+
 	constructor(
 		private readonly _extensionUri: vscode.Uri,
 	) {
 	}
-	
+
 	public resolveWebviewView(
 		webviewView: vscode.WebviewView,
 		context: vscode.WebviewViewResolveContext,
 		_token: vscode.CancellationToken,
 	) {
 		this.view = webviewView;
-		
+
 		webviewView.webview.options = {
 			// Allow scripts in the webview
 			enableScripts: true,
-			
+
 			localResourceRoots: [
 				this._extensionUri
 			]
 		};
-		
+
 		webviewView.webview.html = this._getHtmlForWebview();
-		
+
 		webviewView.webview.onDidReceiveMessage(data => {
-		
+
 		});
 	}
-	
-	refresh() {
-		this.view.webview.html = this._getHtmlForWebview()
+
+	sendCommand(name, data) {
+		this.view.webview.postMessage({fn: name, data: data})
 	}
-	
+
+	refresh(newContent = '') {
+		this.sendCommand('update', newContent)
+	}
+
+	start() {
+
+		setInterval(() => {
+			if (this.update) {
+				this.update = false
+				this.refresh(this.newContent)
+			}
+		}, 100)
+	}
+
 	section(name, content, lang, priority: number = 0) {
 		if (!this.sectionsNamed.hasOwnProperty(name)) {
 			this.sections.length
 			this.sectionsNamed[name] = this.sections.length
 			this.sections.push({name, content, lang, priority})
-		}else{
+		} else {
 			this.sections[this.sectionsNamed[name]] = {name, content, lang, priority}
 		}
-		this.refresh()
-	}
-	
-	clear() {
-		this.sectionsNamed = new Set
-		this.sections = []
-		this.refresh()
-	}
-	
-	private _getHtmlForWebview() {
+		var newContent = ""
 		var languageId = vscode.window.activeTextEditor.document.languageId
-		// Do the same for the stylesheet.
-		const styleMainUri = this.
-		view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'sidebar.css'));
-		const scriptMainUri = this.view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'sidebar.js'));
-		const nonce = this.getNonce();
-		
-		var content = ""
 		this.sections.sort((a, b) => {
 			if (a.priority < b.priority) {
 				return -1;
@@ -83,13 +84,28 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 		for (const sectionsKey in this.sections) {
 			var obj = this.sections[sectionsKey]
 			if (obj.lang == 'both' || obj.lang == languageId) {
-				content += `
+				newContent += `
 				<section id="${obj.name}">
 					${obj.content}
 				</section>
 			`
 			}
 		}
+		this.newContent = newContent
+		this.update = true;
+	}
+
+	clear() {
+		this.sectionsNamed = new Set
+		this.sections = []
+	}
+
+	private _getHtmlForWebview(content = '') {
+		// Do the same for the stylesheet.
+		const styleMainUri = this.view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'sidebar.css'));
+		const scriptMainUri = this.view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'sidebar.js'));
+		const nonce = this.getNonce();
+
 		return `<!DOCTYPE html>
 			<html lang="en">
 			<head>
@@ -104,12 +120,14 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 				<link href="${styleMainUri}" rel="stylesheet">
 			</head>
 			<body>
-				${content}
-				<script src="${scriptMainUri}" type="text/javascript"></script>
+				<div id="content">
+					${content}
+				</div>
+				<script src="${scriptMainUri}" nonce="${nonce}"></script>
 			</body>
 			</html>`;
 	}
-	
+
 	getNonce() {
 		let text = '';
 		const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -118,6 +136,7 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 		}
 		return text;
 	}
+
 }
 
 

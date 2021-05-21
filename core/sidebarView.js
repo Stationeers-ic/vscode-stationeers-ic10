@@ -39,8 +39,19 @@ class Ic10SidebarViewProvider {
         webviewView.webview.onDidReceiveMessage(data => {
         });
     }
-    refresh() {
-        this.view.webview.html = this._getHtmlForWebview();
+    sendCommand(name, data) {
+        this.view.webview.postMessage({ fn: name, data: data });
+    }
+    refresh(newContent = '') {
+        this.sendCommand('update', newContent);
+    }
+    start() {
+        setInterval(() => {
+            if (this.update) {
+                this.update = false;
+                this.refresh(this.newContent);
+            }
+        }, 100);
     }
     section(name, content, lang, priority = 0) {
         if (!this.sectionsNamed.hasOwnProperty(name)) {
@@ -51,20 +62,8 @@ class Ic10SidebarViewProvider {
         else {
             this.sections[this.sectionsNamed[name]] = { name, content, lang, priority };
         }
-        this.refresh();
-    }
-    clear() {
-        this.sectionsNamed = new Set;
-        this.sections = [];
-        this.refresh();
-    }
-    _getHtmlForWebview() {
+        var newContent = "";
         var languageId = vscode.window.activeTextEditor.document.languageId;
-        const styleMainUri = this.
-            view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'sidebar.css'));
-        const scriptMainUri = this.view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'sidebar.js'));
-        const nonce = this.getNonce();
-        var content = "";
         this.sections.sort((a, b) => {
             if (a.priority < b.priority) {
                 return -1;
@@ -77,13 +76,24 @@ class Ic10SidebarViewProvider {
         for (const sectionsKey in this.sections) {
             var obj = this.sections[sectionsKey];
             if (obj.lang == 'both' || obj.lang == languageId) {
-                content += `
+                newContent += `
 				<section id="${obj.name}">
 					${obj.content}
 				</section>
 			`;
             }
         }
+        this.newContent = newContent;
+        this.update = true;
+    }
+    clear() {
+        this.sectionsNamed = new Set;
+        this.sections = [];
+    }
+    _getHtmlForWebview(content = '') {
+        const styleMainUri = this.view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'sidebar.css'));
+        const scriptMainUri = this.view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'sidebar.js'));
+        const nonce = this.getNonce();
         return `<!DOCTYPE html>
 			<html lang="en">
 			<head>
@@ -98,8 +108,10 @@ class Ic10SidebarViewProvider {
 				<link href="${styleMainUri}" rel="stylesheet">
 			</head>
 			<body>
-				${content}
-				<script src="${scriptMainUri}" type="text/javascript"></script>
+				<div id="content">
+					${content}
+				</div>
+				<script src="${scriptMainUri}" nonce="${nonce}"></script>
 			</body>
 			</html>`;
     }

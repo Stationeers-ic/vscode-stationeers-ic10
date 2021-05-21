@@ -28,12 +28,13 @@ var onChangeCallbacks: {
 export function activate(ctx: vscode.ExtensionContext) {
 	console.info('activate 1c10')
 	view(ctx)
-	hover(ctx)
 	formatter(ctx)
 	command(ctx)
 	semantic(ctx)
 	statusBar(ctx)
 	diagnostic(ctx)
+	hover(ctx)
+
 	//-------------
 	onChange(ctx)
 
@@ -213,28 +214,52 @@ function view(ctx: vscode.ExtensionContext) {
 	try {
 		var provider = new Ic10SidebarViewProvider(ctx.extensionUri);
 		ctx.subscriptions.push(vscode.window.registerWebviewViewProvider(Ic10SidebarViewProvider.viewType, provider));
-		onChangeCallbacks.ChangeTextEditorSelection.push(
-			() => {
-				var a = getNumberLeftLines()
-				if (a) {
-					provider.section('leftLineCounter', `
-					<p>Left lines ${a[1]}</p>
-					<progress value="${a[1]}" max="128" min="0"></progress>`, LANG_KEY, -10)
-				} else {
-					provider.section('leftLineCounter', ``, -10)
-				}
-			}
-		)
-		onChangeCallbacks.ChangeTextEditorSelection.push(() => {
+
+		function renderIcX() {
 			provider.section('settings', `
-					<label for="comments">Enable comments</label>
-					<input type="checkbox" name="comments">
+					<form name="settings" id="form-settings">
+						<fieldset title="Settings">
+							<ul>
+								<ol>
+									<input type="checkbox" name="comments" id="comments">
+									<label for="comments">Enable comments</label>
+								</ol>
+								<ol>
+									<input type="checkbox" name="aliases" id="aliases">
+									<label for="aliases">Enable aliases</label>
+								</ol>
+							 </ul>
+						</fieldset>
+					</form>
 				`, LANG_KEY2)
+		}
+
+		function renderIc10() {
+			var a = getNumberLeftLines()
+			if (a) {
+				var b = Math.abs(a[1] - 128)
+				provider.section('leftLineCounter', `
+					<p>Left lines ${a[1]}</p>
+					<progress id="leftLineCounter-progress" value="${b}"  max="128" min="0"></progress>`, LANG_KEY, -10)
+			} else {
+				provider.section('leftLineCounter', ``, -10)
+			}
+		}
+
+		onChangeCallbacks.ChangeTextEditorSelection.push(() => {
+				renderIc10()
+			})
+		onChangeCallbacks.ChangeTextEditorSelection.push(() => {
+			renderIcX()
 		})
 		onChangeCallbacks.ChangeActiveTextEditor.push(() => {
 			provider.clear();
+			renderIcX()
+			renderIc10()
 		})
-
+		renderIcX()
+		renderIc10()
+		provider.start()
 	} catch (e) {
 		console.error(e)
 	}

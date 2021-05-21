@@ -1,3 +1,19 @@
-section{
-  margin-bottom:10px
+section {
+  margin-bottom: 10px
+}
+
+#settings {
+  ul, ol {
+    padding: 0
+  }
+}
+#leftLineCounter {
+  .geMax{
+    &::-webkit-progress-bar{
+      background-color: red;
+    }
+  }
+  .geMin{
+
+  }
 }
