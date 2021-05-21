@@ -276,7 +276,7 @@
   },
   "dependencies": {
     "ic10": "^1.0.48",
-    "stationeers-icx": "^1.0.2",
+    "icx-compiler": "^1.0.3",
     "vscode-debugadapter": "^1.47.0",
     "vscode-debugprotocol": "^1.47.0"
   },

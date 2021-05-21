@@ -8,13 +8,14 @@ import {ic10Formatter} from "./ic10.formatter";
 import {IcxSemanticTokensProvider, legend} from "./icx.SemanticProvider";
 import {Ic10SidebarViewProvider} from "./sidebarView";
 import {ic10Diagnostics} from "./ic10.diagnostics";
+import {icX} from "icx-compiler";
+
 
 const LOCALE_KEY: string = vscode.env.language
 const ic10 = new Ic10Vscode();
 const LANG_KEY = 'ic10'
 const LANG_KEY2 = 'icX'
 const interpreterIc10 = new InterpreterIc10(null)
-const interpreterIc10 = new icX(null)
 var interpreterIc10State = 0
 var leftCodeLength: vscode.StatusBarItem;
 var icSidebar: Ic10SidebarViewProvider
@@ -185,14 +186,21 @@ function command(ctx: vscode.ExtensionContext) {
 			});
 		}));
 		ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY2 + '.compile', () => {
-			vscode.window.showInformationMessage('compiling');
-			var code = vscode.window.activeTextEditor.document.getText()
-			var title = path.basename(vscode.window.activeTextEditor.document.fileName).split('.')[0]
-
-			var content = Buffer.from(code)
-			var file = vscode.workspace.workspaceFolders[0].uri + '/' + title + '.ic10'
-			console.log(file)
-			vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content)
+			try {
+				vscode.window.showInformationMessage('compiling');
+				var code = vscode.window.activeTextEditor.document.getText()
+				var title = path.basename(vscode.window.activeTextEditor.document.fileName).split('.')[0]
+				var icx = new icX(code)
+				var compiled = icx.getCompiled()
+				if (compiled) {
+					console.log(compiled)
+					var content = Buffer.from(compiled)
+					var file = vscode.workspace.workspaceFolders[0].uri + '/' + title + '.ic10'
+					vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content)
+				}
+			} catch (e) {
+				console.error(e)
+			}
 		}));
 	} catch (e) {
 		console.error(e)

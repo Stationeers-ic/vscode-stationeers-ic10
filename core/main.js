@@ -32,6 +32,7 @@ const ic10_formatter_1 = require("./ic10.formatter");
 const icx_SemanticProvider_1 = require("./icx.SemanticProvider");
 const sidebarView_1 = require("./sidebarView");
 const ic10_diagnostics_1 = require("./ic10.diagnostics");
+const icx_compiler_1 = require("icx-compiler");
 const LOCALE_KEY = vscode.env.language;
 const ic10 = new ic10_vscode_1.Ic10Vscode();
 const LANG_KEY = 'ic10';
@@ -188,13 +189,22 @@ function command(ctx) {
             });
         }));
         ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY2 + '.compile', () => {
-            vscode.window.showInformationMessage('compiling');
-            var code = vscode.window.activeTextEditor.document.getText();
-            var title = path_1.default.basename(vscode.window.activeTextEditor.document.fileName).split('.')[0];
-            var content = Buffer.from(code);
-            var file = vscode.workspace.workspaceFolders[0].uri + '/' + title + '.ic10';
-            console.log(file);
-            vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content);
+            try {
+                vscode.window.showInformationMessage('compiling');
+                var code = vscode.window.activeTextEditor.document.getText();
+                var title = path_1.default.basename(vscode.window.activeTextEditor.document.fileName).split('.')[0];
+                var icx = new icx_compiler_1.icX(code);
+                var compiled = icx.getCompiled();
+                if (compiled) {
+                    console.log(compiled);
+                    var content = Buffer.from(compiled);
+                    var file = vscode.workspace.workspaceFolders[0].uri + '/' + title + '.ic10';
+                    vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content);
+                }
+            }
+            catch (e) {
+                console.error(e);
+            }
         }));
     }
     catch (e) {
