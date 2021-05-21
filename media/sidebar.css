@@ -1,1 +1,1 @@
-section{margin-bottom:10px}#settings ul,#settings ol{padding:0}#leftLineCounter .geMax::-webkit-progress-bar{background-color:red}/*# sourceMappingURL=sidebar.css.map */
+section{margin-bottom:10px}#settings ul,#settings ol{padding:0}#leftLineCounter .progress{background-color:#789;border-radius:10px;padding:3px}#leftLineCounter .progress>div{background-color:var(--vscode-inputValidation-infoForeground);height:12px;border-radius:10px}#leftLineCounter .progress.geMax>div{background-color:red !important;color:red !important}/*# sourceMappingURL=sidebar.css.map */

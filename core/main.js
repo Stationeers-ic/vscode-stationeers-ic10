@@ -230,9 +230,13 @@ function view(ctx) {
             var a = getNumberLeftLines();
             if (a) {
                 var b = Math.abs(a[1] - 128);
+                var p = b / 128 * 100;
                 icSidebar.section('leftLineCounter', `
 					<p>Left lines ${a[1]}</p>
-					<progress id="leftLineCounter-progress" value="${b}"  max="128" min="0"></progress>`, LANG_KEY, -10);
+					<div id="leftLineCounter" class="progress" percent="${p}" value="${b}"  max="128" min="0">
+					  <div></div>
+					</div>
+					`, LANG_KEY, -10);
             }
             else {
                 icSidebar.section('leftLineCounter', ``, -10);

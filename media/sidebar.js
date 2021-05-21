@@ -29,17 +29,24 @@ class ic10SideBar {
 
 	p() {
 		try {
-			this.progress = document.querySelector('#leftLineCounter-progress')
-			if(this.progress) {
-				if(this.progress.value >= this.progress.max) {
-					this.progress.classList.add('geMax')
-				} else {
-					this.progress.classList.remove('geMax')
-				}
-				if(this.progress.value <= (this.progress.min ?? 0)) {
-					this.progress.classList.add('leMin')
-				} else {
-					this.progress.classList.remove('leMin')
+			this.progreses = document.querySelectorAll('.progress')
+			for(const progress of this.progreses) {
+				if(progress) {
+					if(progress.getAttribute('percent')) {
+						if(progress.getAttribute('percent') <= 100) {
+							progress.children[0].style.setProperty('width', progress.getAttribute('percent') + '%')
+						}
+					}
+					if(parseFloat(progress.getAttribute('value')) >= parseFloat(progress.getAttribute('max') ?? 0)) {
+						progress.classList.add('geMax')
+					} else {
+						progress.classList.remove('geMax')
+					}
+					if(parseFloat(progress.getAttribute('value')) <= parseFloat(progress.getAttribute('min') ?? 0)) {
+						progress.classList.add('leMin')
+					} else {
+						progress.classList.remove('leMin')
+					}
 				}
 			}
 
