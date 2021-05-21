@@ -14,15 +14,18 @@ const ic10 = new Ic10Vscode();
 const LANG_KEY = 'ic10'
 const LANG_KEY2 = 'icX'
 const interpreterIc10 = new InterpreterIc10(null)
+const interpreterIc10 = new icX(null)
 var interpreterIc10State = 0
 var leftCodeLength: vscode.StatusBarItem;
 var icSidebar: Ic10SidebarViewProvider
 var onChangeCallbacks: {
 	ChangeActiveTextEditor: Array<Function>
 	ChangeTextEditorSelection: Array<Function>
+	SaveTextDocument: Array<Function>
 } = {
 	ChangeActiveTextEditor: [],
-	ChangeTextEditorSelection: []
+	ChangeTextEditorSelection: [],
+	SaveTextDocument: []
 }
 
 export function activate(ctx: vscode.ExtensionContext) {
@@ -181,6 +184,16 @@ function command(ctx: vscode.ExtensionContext) {
 				input.hide();
 			});
 		}));
+		ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY2 + '.compile', () => {
+			vscode.window.showInformationMessage('compiling');
+			var code = vscode.window.activeTextEditor.document.getText()
+			var title = path.basename(vscode.window.activeTextEditor.document.fileName).split('.')[0]
+
+			var content = Buffer.from(code)
+			var file = vscode.workspace.workspaceFolders[0].uri + '/' + title + '.ic10'
+			console.log(file)
+			vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content)
+		}));
 	} catch (e) {
 		console.error(e)
 	}
@@ -322,8 +335,17 @@ function ChangeTextEditorSelection(editor): void {
 	}
 }
 
+function SaveTextDocument(): void {
+	if (vscode.window.activeTextEditor.document.languageId == LANG_KEY || vscode.window.activeTextEditor.document.languageId == LANG_KEY2) {
+		onChangeCallbacks.SaveTextDocument.forEach((e) => {
+			e.call(null)
+		})
+	}
+}
+
 function onChange(ctx) {
 	ctx.subscriptions.push(vscode.window.onDidChangeActiveTextEditor(ChangeActiveTextEditor));
+	ctx.subscriptions.push(vscode.workspace.onDidSaveTextDocument(SaveTextDocument));
 	ctx.subscriptions.push(vscode.window.onDidChangeTextEditorSelection(ChangeTextEditorSelection));
 }
 

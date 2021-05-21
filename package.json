@@ -6,7 +6,6 @@
   "license": "MIT",
   "homepage": "https://github.com/Traineratwot/vscode-stationeers-ic10",
   "galleryBanner": {
-    "color": "#C80000",
     "theme": "dark"
   },
   "type": "commonjs",
@@ -203,6 +202,11 @@
         "command": "ic10.debug.remove.push",
         "title": "Write value",
         "icon": "$(stop)"
+      },
+      {
+        "command": "icX.compile",
+        "title": "Compile",
+        "icon": "$(play)"
       }
     ],
     "menus": {
@@ -210,9 +214,17 @@
         {
           "command": "ic10.run",
           "when": "editorLangId == ic10"
+        },
+        {
+          "command": "icX.compile",
+          "when": "editorLangId == icX"
         }
       ],
       "editor/title/run": [
+        {
+          "command": "icX.compile",
+          "when": "resourceLangId == icX"
+        },
         {
           "command": "ic10.run",
           "when": "resourceLangId == ic10"
@@ -249,7 +261,7 @@
           "type": "webview",
           "id": "Ic10ViewProvider",
           "name": "ic10",
-          "icon": "images/logo.png"
+          "icon": "images/logo.svg"
         }
       ]
     }
@@ -264,6 +276,7 @@
   },
   "dependencies": {
     "ic10": "^1.0.48",
+    "stationeers-icx": "^1.0.2",
     "vscode-debugadapter": "^1.47.0",
     "vscode-debugprotocol": "^1.47.0"
   },
