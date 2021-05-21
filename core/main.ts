@@ -82,7 +82,6 @@ function formatter(ctx: vscode.ExtensionContext) {
 			return vscode.TextEdit.replace(range, newText);
 		}
 
-// 👍 formatter implemented using API
 		vscode.languages.registerDocumentFormattingEditProvider(LANG_KEY, {
 			provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
 				try {
