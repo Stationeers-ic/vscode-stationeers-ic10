@@ -16,7 +16,7 @@ const LANG_KEY2 = 'icX'
 const interpreterIc10 = new InterpreterIc10(null)
 var interpreterIc10State = 0
 var leftCodeLength: vscode.StatusBarItem;
-
+var icSidebar: Ic10SidebarViewProvider
 var onChangeCallbacks: {
 	ChangeActiveTextEditor: Array<Function>
 	ChangeTextEditorSelection: Array<Function>
@@ -212,11 +212,11 @@ function semantic(ctx: vscode.ExtensionContext) {
 function view(ctx: vscode.ExtensionContext) {
 	console.time('view')
 	try {
-		var provider = new Ic10SidebarViewProvider(ctx.extensionUri);
-		ctx.subscriptions.push(vscode.window.registerWebviewViewProvider(Ic10SidebarViewProvider.viewType, provider));
+		icSidebar = new Ic10SidebarViewProvider(ctx.extensionUri);
+		ctx.subscriptions.push(vscode.window.registerWebviewViewProvider(Ic10SidebarViewProvider.viewType, icSidebar));
 
 		function renderIcX() {
-			provider.section('settings', `
+			icSidebar.section('settings', `
 					<form name="settings" id="form-settings">
 						<fieldset title="Settings">
 							<ul>
@@ -238,28 +238,28 @@ function view(ctx: vscode.ExtensionContext) {
 			var a = getNumberLeftLines()
 			if (a) {
 				var b = Math.abs(a[1] - 128)
-				provider.section('leftLineCounter', `
+				icSidebar.section('leftLineCounter', `
 					<p>Left lines ${a[1]}</p>
 					<progress id="leftLineCounter-progress" value="${b}"  max="128" min="0"></progress>`, LANG_KEY, -10)
 			} else {
-				provider.section('leftLineCounter', ``, -10)
+				icSidebar.section('leftLineCounter', ``, -10)
 			}
 		}
 
 		onChangeCallbacks.ChangeTextEditorSelection.push(() => {
-				renderIc10()
-			})
+			renderIc10()
+		})
 		onChangeCallbacks.ChangeTextEditorSelection.push(() => {
 			renderIcX()
 		})
 		onChangeCallbacks.ChangeActiveTextEditor.push(() => {
-			provider.clear();
+			icSidebar.clear();
 			renderIcX()
 			renderIc10()
 		})
 		renderIcX()
 		renderIc10()
-		provider.start()
+		icSidebar.start()
 	} catch (e) {
 		console.error(e)
 	}

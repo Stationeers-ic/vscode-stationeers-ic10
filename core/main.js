@@ -39,6 +39,7 @@ const LANG_KEY2 = 'icX';
 const interpreterIc10 = new ic10_1.InterpreterIc10(null);
 var interpreterIc10State = 0;
 var leftCodeLength;
+var icSidebar;
 var onChangeCallbacks = {
     ChangeActiveTextEditor: [],
     ChangeTextEditorSelection: []
@@ -205,10 +206,10 @@ function semantic(ctx) {
 function view(ctx) {
     console.time('view');
     try {
-        var provider = new sidebarView_1.Ic10SidebarViewProvider(ctx.extensionUri);
-        ctx.subscriptions.push(vscode.window.registerWebviewViewProvider(sidebarView_1.Ic10SidebarViewProvider.viewType, provider));
+        icSidebar = new sidebarView_1.Ic10SidebarViewProvider(ctx.extensionUri);
+        ctx.subscriptions.push(vscode.window.registerWebviewViewProvider(sidebarView_1.Ic10SidebarViewProvider.viewType, icSidebar));
         function renderIcX() {
-            provider.section('settings', `
+            icSidebar.section('settings', `
 					<form name="settings" id="form-settings">
 						<fieldset title="Settings">
 							<ul>
@@ -229,12 +230,12 @@ function view(ctx) {
             var a = getNumberLeftLines();
             if (a) {
                 var b = Math.abs(a[1] - 128);
-                provider.section('leftLineCounter', `
+                icSidebar.section('leftLineCounter', `
 					<p>Left lines ${a[1]}</p>
 					<progress id="leftLineCounter-progress" value="${b}"  max="128" min="0"></progress>`, LANG_KEY, -10);
             }
             else {
-                provider.section('leftLineCounter', ``, -10);
+                icSidebar.section('leftLineCounter', ``, -10);
             }
         }
         onChangeCallbacks.ChangeTextEditorSelection.push(() => {
@@ -244,13 +245,13 @@ function view(ctx) {
             renderIcX();
         });
         onChangeCallbacks.ChangeActiveTextEditor.push(() => {
-            provider.clear();
+            icSidebar.clear();
             renderIcX();
             renderIc10();
         });
         renderIcX();
         renderIc10();
-        provider.start();
+        icSidebar.start();
     }
     catch (e) {
         console.error(e);
