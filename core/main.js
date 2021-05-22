@@ -33,6 +33,7 @@ const icx_SemanticProvider_1 = require("./icx.SemanticProvider");
 const sidebarView_1 = require("./sidebarView");
 const ic10_diagnostics_1 = require("./ic10.diagnostics");
 const icx_compiler_1 = require("icx-compiler");
+const icX_diagnostics_1 = require("./icX.diagnostics");
 const LOCALE_KEY = vscode.env.language;
 const ic10 = new ic10_vscode_1.Ic10Vscode();
 const LANG_KEY = 'ic10';
@@ -190,7 +191,6 @@ function command(ctx) {
         }));
         ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY2 + '.compile', () => {
             try {
-                vscode.window.showInformationMessage('compiling');
                 var code = vscode.window.activeTextEditor.document.getText();
                 var title = path_1.default.basename(vscode.window.activeTextEditor.document.fileName).split('.')[0];
                 var icx = new icx_compiler_1.icX(code);
@@ -203,6 +203,7 @@ function command(ctx) {
                 }
             }
             catch (e) {
+                vscode.window.showInformationMessage('compiling error');
                 console.error(e);
             }
         }));
@@ -228,40 +229,6 @@ function view(ctx) {
     try {
         icSidebar = new sidebarView_1.Ic10SidebarViewProvider(ctx.extensionUri);
         ctx.subscriptions.push(vscode.window.registerWebviewViewProvider(sidebarView_1.Ic10SidebarViewProvider.viewType, icSidebar));
-        function renderIcX() {
-            icSidebar.section('settings', `
-					<form name="settings" id="form-settings">
-						<fieldset title="Settings">
-							<ul>
-								<ol>
-									<input type="checkbox" name="comments" id="comments">
-									<label for="comments">Enable comments</label>
-								</ol>
-								<ol>
-									<input type="checkbox" name="aliases" id="aliases">
-									<label for="aliases">Enable aliases</label>
-								</ol>
-							 </ul>
-						</fieldset>
-					</form>
-				`, LANG_KEY2);
-        }
-        function renderIc10() {
-            var a = getNumberLeftLines();
-            if (a) {
-                var b = Math.abs(a[1] - 128);
-                var p = b / 128 * 100;
-                icSidebar.section('leftLineCounter', `
-					<p>Left lines ${a[1]}</p>
-					<div id="leftLineCounter" class="progress" percent="${p}" value="${b}"  max="128" min="0">
-					  <div></div>
-					</div>
-					`, LANG_KEY, -10);
-            }
-            else {
-                icSidebar.section('leftLineCounter', ``, -10);
-            }
-        }
         onChangeCallbacks.ChangeTextEditorSelection.push(() => {
             renderIc10();
         });
@@ -359,18 +326,36 @@ function diagnostic(context) {
     console.time('diagnostic');
     try {
         const ic10DiagnosticsCollection = vscode.languages.createDiagnosticCollection("ic10");
+        const icXDiagnosticsCollection = vscode.languages.createDiagnosticCollection("icX");
         context.subscriptions.push(ic10DiagnosticsCollection);
+        context.subscriptions.push(icXDiagnosticsCollection);
         onChangeCallbacks.ChangeTextEditorSelection.push((editor) => {
             if (vscode.window.activeTextEditor.document.languageId == LANG_KEY) {
                 ic10_diagnostics_1.ic10Diagnostics.run(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection);
+                icX_diagnostics_1.icXDiagnostics.clear(vscode.window.activeTextEditor.document, icXDiagnosticsCollection);
             }
             else {
                 ic10_diagnostics_1.ic10Diagnostics.clear(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection);
             }
+            if (vscode.window.activeTextEditor.document.languageId == LANG_KEY2) {
+                icX_diagnostics_1.icXDiagnostics.run(vscode.window.activeTextEditor.document, icXDiagnosticsCollection);
+                ic10_diagnostics_1.ic10Diagnostics.clear(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection);
+            }
+            else {
+                icX_diagnostics_1.icXDiagnostics.clear(vscode.window.activeTextEditor.document, icXDiagnosticsCollection);
+            }
         });
         onChangeCallbacks.ChangeActiveTextEditor.push((editor) => {
+            if (vscode.window.activeTextEditor.document.languageId == LANG_KEY2) {
+                icX_diagnostics_1.icXDiagnostics.run(vscode.window.activeTextEditor.document, icXDiagnosticsCollection);
+                ic10_diagnostics_1.ic10Diagnostics.clear(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection);
+            }
+            else {
+                icX_diagnostics_1.icXDiagnostics.clear(vscode.window.activeTextEditor.document, icXDiagnosticsCollection);
+            }
             if (vscode.window.activeTextEditor.document.languageId == LANG_KEY) {
                 ic10_diagnostics_1.ic10Diagnostics.run(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection);
+                icX_diagnostics_1.icXDiagnostics.clear(vscode.window.activeTextEditor.document, icXDiagnosticsCollection);
             }
             else {
                 ic10_diagnostics_1.ic10Diagnostics.clear(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection);
@@ -386,4 +371,38 @@ function deactivate() {
     console.info('deactivate 1c10');
 }
 exports.deactivate = deactivate;
+function renderIcX() {
+    icSidebar.section('settings', `
+					<form name="settings" id="form-settings">
+						<fieldset title="Settings">
+							<ul>
+								<ol>
+									<input type="checkbox" name="comments" id="comments">
+									<label for="comments" class="disabledSelect">Enable comments</label>
+								</ol>
+								<ol>
+									<input type="checkbox" name="aliases" id="aliases">
+									<label for="aliases" class="disabledSelect">Enable aliases</label>
+								</ol>
+							 </ul>
+						</fieldset>
+					</form>
+				`, LANG_KEY2);
+}
+function renderIc10() {
+    var a = getNumberLeftLines();
+    if (a) {
+        var b = Math.abs(a[1] - 128);
+        var p = b / 128 * 100;
+        icSidebar.section('leftLineCounter', `
+					<p>Left lines ${a[1]}</p>
+					<div id="leftLineCounter" class="progress" percent="${p}" value="${b}"  max="128" min="0">
+					  <div></div>
+					</div>
+					`, LANG_KEY, -10);
+    }
+    else {
+        icSidebar.section('leftLineCounter', ``, -10);
+    }
+}
 //# sourceMappingURL=main.js.map

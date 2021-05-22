@@ -19,13 +19,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ic10Diagnostics = exports.Ic10DiagnosticsName = void 0;
+exports.ic10Diagnostics = exports.Ic10Diagnostics = exports.DiagnosticsErrors = exports.DiagnosticsError = exports.regexes = exports.Ic10DiagnosticsName = void 0;
 const vscode = __importStar(require("vscode"));
 exports.Ic10DiagnosticsName = 'ic10_diagnostic';
 var manual = require('../languages/en.json');
 var functions = require('../media/ic10.functions.json');
 var keywords = require('../media/ic10.keyword.json');
-const regexes = {
+exports.regexes = {
     'rr1': new RegExp("[r]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
     'dr1': new RegExp("[d]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
     'r1': new RegExp("^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)$"),
@@ -44,6 +44,7 @@ class DiagnosticsError {
         this.hash = this.message.replace(/\s+/, '') + line;
     }
 }
+exports.DiagnosticsError = DiagnosticsError;
 class DiagnosticsErrors {
     constructor() {
         this.values = [];
@@ -60,6 +61,7 @@ class DiagnosticsErrors {
         this.index = [];
     }
 }
+exports.DiagnosticsErrors = DiagnosticsErrors;
 class Ic10Diagnostics {
     constructor() {
         this.errors = new DiagnosticsErrors;
@@ -67,8 +69,7 @@ class Ic10Diagnostics {
     clear(doc, container) {
         container.set(doc.uri, []);
     }
-    run(doc, container) {
-        const diagnostics = [];
+    prepare(doc) {
         this.jumps = [];
         this.aliases = [];
         this.errors.reset();
@@ -81,6 +82,10 @@ class Ic10Diagnostics {
         }
         for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
         }
+    }
+    run(doc, container) {
+        const diagnostics = [];
+        this.prepare(doc);
         for (const de of this.errors.values) {
             diagnostics.push(this.createDiagnostic(de.range, de.message, de.lvl));
         }
@@ -204,7 +209,7 @@ class Ic10Diagnostics {
                     }
                     break;
                 case 'R':
-                    if (!regexes.rr1.test(value) && !regexes.r1.test(value)) {
+                    if (!exports.regexes.rr1.test(value) && !exports.regexes.r1.test(value)) {
                         errors++;
                     }
                     break;
@@ -214,7 +219,7 @@ class Ic10Diagnostics {
                     }
                     break;
                 case 'D':
-                    if (!regexes.dr1.test(value) && !regexes.d1.test(value)) {
+                    if (!exports.regexes.dr1.test(value) && !exports.regexes.d1.test(value)) {
                         errors++;
                     }
                     break;
@@ -257,6 +262,9 @@ class Ic10Diagnostics {
         return diagnostic;
     }
     empty(a) {
+        if (a == null) {
+            return true;
+        }
         switch (typeof a) {
             case 'string':
                 if (!a || a.trim() == '' || a == null) {
@@ -271,5 +279,6 @@ class Ic10Diagnostics {
         return false;
     }
 }
+exports.Ic10Diagnostics = Ic10Diagnostics;
 exports.ic10Diagnostics = new Ic10Diagnostics;
 //# sourceMappingURL=ic10.diagnostics.js.map
