@@ -1,5 +1,7 @@
 import * as vscode from "vscode";
 import {DiagnosticsError, errorMsg, Ic10Diagnostics} from "./ic10.diagnostics";
+import {icX} from "icx-compiler";
+import {icSidebar, LANG_KEY2} from "./main";
 
 var manual: {
   "type": string,
@@ -25,7 +27,33 @@ class IcXDiagnostics extends Ic10Diagnostics {
   run(doc: vscode.TextDocument, container: vscode.DiagnosticCollection): void {
     const diagnostics: vscode.Diagnostic[] = [];
     this.prepare(doc)
-
+    var code = doc.getText()
+    var compiler = new icX(code)
+    var test = compiler.alalize()
+    icSidebar.section('icxStats', `
+      <fieldset title="Stats">
+							<ul>
+								<ol>
+                    <span>vars:</span>
+                    <ol>
+                        <span>temp:</span>	<span>${test.vars.temps.length}</span>
+                    </ol>
+                    <ol>
+                        <span>aliases:</span>	<span>${test.vars.aliases.length}</span>
+                    </ol>
+                    <ol>
+                        <span>left:</span>	<span>${test.vars.empty.length}</span>
+                    </ol>
+								</ol>
+								<ol>
+								    
+								</ol>
+							 </ul>
+						</fieldset>
+    `, LANG_KEY2)
+    if (test.result.split('\n').length > 128) {
+      diagnostics.push(this.createDiagnostic(new vscode.Range(0, 0, 0, 1), 'Max line', vscode.DiagnosticSeverity.Error))
+    }
 
     for (const de of this.errors.values) {
       diagnostics.push(this.createDiagnostic(de.range, de.message, de.lvl))

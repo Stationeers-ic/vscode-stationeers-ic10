@@ -10,16 +10,14 @@ import {Ic10SidebarViewProvider} from "./sidebarView";
 import {ic10Diagnostics} from "./ic10.diagnostics";
 import {icX} from "icx-compiler";
 import {icXDiagnostics} from "./icX.diagnostics";
-
-
 const LOCALE_KEY: string = vscode.env.language
 const ic10 = new Ic10Vscode();
-const LANG_KEY = 'ic10'
-const LANG_KEY2 = 'icX'
+export const LANG_KEY = 'ic10'
+export const LANG_KEY2 = 'icX'
 const interpreterIc10 = new InterpreterIc10(null)
 var interpreterIc10State = 0
 var leftCodeLength: vscode.StatusBarItem;
-var icSidebar: Ic10SidebarViewProvider
+export var icSidebar: Ic10SidebarViewProvider
 var onChangeCallbacks: {
   ChangeActiveTextEditor: Array<Function>
   ChangeTextEditorSelection: Array<Function>
