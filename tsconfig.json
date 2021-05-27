@@ -18,7 +18,6 @@
     "sourceMap": true,
     "watch": false,
     "declaration": true,
-    "pretty": true,
     "charset": "utf8",
     // "jsx": "preserve",                           /* Specify JSX code generation: 'preserve', 'react-native', 'react', 'react-jsx' or 'react-jsxdev'. */
     // "declaration": true,                         /* Generates corresponding '.d.ts' file. */
