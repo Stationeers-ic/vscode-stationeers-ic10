@@ -1,36 +1,45 @@
 section {
   margin-bottom: 10px
 }
-.disabledSelect{
+
+.disabledSelect {
   user-select: none
 }
-#settings,#icxStats {
+
+#settings, #icxStats {
   ul, ol {
     padding: 0 0 0 5px
   }
 }
 
 #leftLineCounter {
+}
 
-  .progress {
-    background-color: lightslategrey;
+.progress {
+  background-color: lightslategrey;
+  border-radius: 10px;
+  padding: 3px;
+
+  & > div {
+    background-color: var(--vscode-inputValidation-infoForeground);
+    height: 12px;
     border-radius: 10px;
-    padding: 3px;
-
-    & > div {
-      background-color: var(--vscode-inputValidation-infoForeground);
-      height: 12px;
-      border-radius: 10px;
-    }
-
-    &.geMax > div {
-      background-color: red !important;
-      color: red !important;
-    }
-
-    &.geMin {
-
-    }
+    background:
+            linear-gradient(-45deg,
+                    rgba(255, 255, 255, 0.15) 25%,transparent 25%,
+                    transparent 50%, rgba(255, 255, 255, 0.15) 50%,
+                    rgba(255, 255, 255, 0.15) 75%,transparent 75%)
+            left/30px 30px repeat-x,
+            linear-gradient(90deg, rgba(0,255,255,1) 0%, rgba(255,255,0,1) 50%, rgba(255,0,0,1) 100%) left/var(--p,100%) fixed,
+            lightgray;
   }
 
+  &.geMax > div {
+    background-color: red !important;
+    color: red !important;
+  }
+
+  &.geMin {
+
+  }
 }

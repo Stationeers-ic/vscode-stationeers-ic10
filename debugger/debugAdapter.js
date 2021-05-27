@@ -45,11 +45,8 @@ args.forEach(function (val, index, array) {
     }
 });
 if (port > 0) {
-    console.error(`waiting for debug protocol on port ${port}`);
     Net.createServer((socket) => {
-        console.error('>> accepted connection from client');
         socket.on('end', () => {
-            console.error('>> client connection closed\n');
         });
         const session = new ic10Debug_1.ic10DebugSession(fsAccessor);
         session.setRunAsServer(true);

@@ -2,7 +2,7 @@
   "name": "stationeers-ic10",
   "displayName": "Stationeers ic10",
   "description": "Ic10 support",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "license": "MIT",
   "homepage": "https://github.com/Traineratwot/vscode-stationeers-ic10",
   "galleryBanner": {
@@ -11,7 +11,7 @@
   "type": "commonjs",
   "scripts": {
     "start": "tsc -w",
-    "vscode:prepublish": "npm update && tsc",
+    "prepublish": "npm update && tsc",
     "publish": "vsce package && vsce publish"
   },
   "badges": [],
@@ -276,7 +276,7 @@
   },
   "dependencies": {
     "ic10": "^1.0.48",
-    "icx-compiler": "^1.0.3",
+    "icx-compiler": "^1.0.7",
     "vscode-debugadapter": "^1.47.0",
     "vscode-debugprotocol": "^1.47.0"
   },
@@ -288,7 +288,7 @@
     "@types/semver": "^7.3.6",
     "@types/sinon": "^9.0.0",
     "@types/vscode": "^1.56.0",
-    "typescript": "^4.2.3",
+    "typescript": "^4.3.2",
     "vsce": "^1.88.0"
   },
   "__metadata": {

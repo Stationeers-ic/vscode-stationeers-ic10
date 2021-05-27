@@ -206,7 +206,6 @@ class ic10Formatter {
                 }
             }
             catch (e) {
-                console.warn(e);
             }
         }
     }
@@ -234,7 +233,6 @@ class ic10Formatter {
                 }
             }
             catch (e) {
-                console.warn(e);
             }
         }
     }

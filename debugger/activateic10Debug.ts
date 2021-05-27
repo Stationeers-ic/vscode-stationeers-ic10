@@ -53,6 +53,7 @@ export function activateic10Debug(context: vscode.ExtensionContext, factory?: vs
 	}
 	context.subscriptions.push(vscode.debug.registerDebugAdapterDescriptorFactory('ic10', factory));
 	if ('dispose' in factory) {
+		// @ts-ignore
 		context.subscriptions.push(factory);
 	}
 

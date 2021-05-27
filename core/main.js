@@ -22,7 +22,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deactivate = exports.activate = exports.icSidebar = exports.LANG_KEY2 = exports.LANG_KEY = void 0;
+exports.deactivate = exports.activate = exports.icxOptions = exports.icSidebar = exports.LANG_KEY2 = exports.LANG_KEY = void 0;
 const vscode = __importStar(require("vscode"));
 const vscode_1 = require("vscode");
 const ic10_vscode_1 = require("./ic10-vscode");
@@ -46,8 +46,11 @@ var onChangeCallbacks = {
     ChangeTextEditorSelection: [],
     SaveTextDocument: []
 };
+exports.icxOptions = {
+    comments: false,
+    aliases: false,
+};
 function activate(ctx) {
-    console.info('activate 1c10');
     view(ctx);
     formatter(ctx);
     command(ctx);
@@ -55,11 +58,18 @@ function activate(ctx) {
     statusBar(ctx);
     diagnostic(ctx);
     hover(ctx);
+    icxStart();
     onChange(ctx);
 }
 exports.activate = activate;
+function icxStart() {
+    onChangeCallbacks.SaveTextDocument.push(() => {
+        if (vscode.window.activeTextEditor.document.languageId == exports.LANG_KEY2) {
+            vscode.commands.executeCommand(exports.LANG_KEY2 + '.compile');
+        }
+    });
+}
 function hover(ctx) {
-    console.time('hover');
     try {
         ctx.subscriptions.push(vscode.languages.registerHoverProvider(exports.LANG_KEY, {
             provideHover(document, position, token) {
@@ -77,12 +87,9 @@ function hover(ctx) {
         }));
     }
     catch (e) {
-        console.error(e);
     }
-    console.timeEnd('hover');
 }
 function formatter(ctx) {
-    console.time('formatter');
     try {
         function replaceTextInDocument(newText, document) {
             const firstLine = document.lineAt(0);
@@ -102,12 +109,9 @@ function formatter(ctx) {
         });
     }
     catch (e) {
-        console.error(e);
     }
-    console.timeEnd('formatter');
 }
 function command(ctx) {
-    console.time('command');
     try {
         ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_KEY + '.run', () => {
             if (!interpreterIc10State) {
@@ -192,10 +196,9 @@ function command(ctx) {
             try {
                 var code = vscode.window.activeTextEditor.document.getText();
                 var title = path_1.default.basename(vscode.window.activeTextEditor.document.fileName).split('.')[0];
-                var icx = new icx_compiler_1.icX(code);
+                var icx = new icx_compiler_1.icX(code, exports.icxOptions);
                 var compiled = icx.getCompiled();
                 if (compiled) {
-                    console.log(compiled);
                     var content = Buffer.from(compiled);
                     var file = vscode.workspace.workspaceFolders[0].uri + '/' + title + '.ic10';
                     vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content);
@@ -203,28 +206,21 @@ function command(ctx) {
             }
             catch (e) {
                 vscode.window.showInformationMessage('compiling error');
-                console.error(e);
             }
         }));
     }
     catch (e) {
-        console.error(e);
     }
-    console.timeEnd('command');
 }
 function semantic(ctx) {
-    console.time('semantic');
     try {
         ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: exports.LANG_KEY, scheme: 'file' }, new icx_SemanticProvider_1.IcxSemanticTokensProvider, icx_SemanticProvider_1.legend));
         ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: exports.LANG_KEY2, scheme: 'file' }, new icx_SemanticProvider_1.IcxSemanticTokensProvider, icx_SemanticProvider_1.legend));
     }
     catch (e) {
-        console.error(e);
     }
-    console.timeEnd('semantic');
 }
 function view(ctx) {
-    console.time('view');
     try {
         exports.icSidebar = new sidebarView_1.Ic10SidebarViewProvider(ctx.extensionUri);
         ctx.subscriptions.push(vscode.window.registerWebviewViewProvider(sidebarView_1.Ic10SidebarViewProvider.viewType, exports.icSidebar));
@@ -244,12 +240,9 @@ function view(ctx) {
         exports.icSidebar.start();
     }
     catch (e) {
-        console.error(e);
     }
-    console.timeEnd('view');
 }
 function statusBar(ctx) {
-    console.time('statusBar');
     try {
         leftCodeLength = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
         ctx.subscriptions.push(leftCodeLength);
@@ -276,9 +269,7 @@ function statusBar(ctx) {
         }
     }
     catch (e) {
-        console.error(e);
     }
-    console.timeEnd('statusBar');
 }
 function ChangeActiveTextEditor(editor) {
     if (vscode.window.activeTextEditor.document.languageId == exports.LANG_KEY || vscode.window.activeTextEditor.document.languageId == exports.LANG_KEY2) {
@@ -322,7 +313,6 @@ function getNumberLeftLines() {
     }
 }
 function diagnostic(context) {
-    console.time('diagnostic');
     try {
         const ic10DiagnosticsCollection = vscode.languages.createDiagnosticCollection("ic10");
         const icXDiagnosticsCollection = vscode.languages.createDiagnosticCollection("icX");
@@ -362,12 +352,9 @@ function diagnostic(context) {
         });
     }
     catch (e) {
-        console.error(e);
     }
-    console.timeEnd('diagnostic');
 }
 function deactivate() {
-    console.info('deactivate 1c10');
 }
 exports.deactivate = deactivate;
 function renderIcX() {
@@ -387,6 +374,12 @@ function renderIcX() {
 						</fieldset>
 					</form>
 				`, exports.LANG_KEY2);
+    exports.icSidebar.events.icxComments = (data) => {
+        exports.icxOptions.comments = Boolean(data.value);
+    };
+    exports.icSidebar.events.icxAliases = (data) => {
+        exports.icxOptions.aliases = Boolean(data.value);
+    };
 }
 function renderIc10() {
     var a = getNumberLeftLines();

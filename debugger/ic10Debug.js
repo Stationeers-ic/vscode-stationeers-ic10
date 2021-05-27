@@ -9,17 +9,22 @@ function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
+    static threadID = 1;
+    _runtime;
+    _variableHandles = new vscode_debugadapter_1.Handles();
+    _cancelationTokens = new Map();
+    _isLongrunning = new Map();
+    _reportProgress = false;
+    _progressId = 10000;
+    _cancelledProgressId = undefined;
+    _isProgressCancellable = true;
+    _showHex = false;
+    _useInvalidatedEvent = false;
+    ic10;
+    _variables;
+    variableMap;
     constructor(fileAccessor) {
         super("ic10-debug.txt");
-        this._variableHandles = new vscode_debugadapter_1.Handles();
-        this._cancelationTokens = new Map();
-        this._isLongrunning = new Map();
-        this._reportProgress = false;
-        this._progressId = 10000;
-        this._cancelledProgressId = undefined;
-        this._isProgressCancellable = true;
-        this._showHex = false;
-        this._useInvalidatedEvent = false;
         this.ic10 = new ic10_1.InterpreterIc10();
         this.variableMap = new VariableMap(this, this.ic10);
         var self = this;
@@ -512,10 +517,12 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
     }
 }
 exports.ic10DebugSession = ic10DebugSession;
-ic10DebugSession.threadID = 1;
 class VariableMap {
+    map;
+    ic10;
+    counter = 1000;
+    scope;
     constructor(scope, ic10) {
-        this.counter = 1000;
         this.ic10 = ic10;
         this.scope = scope;
         this.map = {};

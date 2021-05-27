@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import * as fs from "fs";
+import {icXElem} from "icx-compiler/src/classes";
 
 export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 	public static readonly viewType = 'Ic10ViewProvider';
@@ -7,6 +8,14 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 	public view?: vscode.WebviewView;
 	private dom: any;
 	private sectionsNamed: {} = {};
+	public events: {
+		[name: string]: (data: {
+			id: string
+			value: any
+			type: string
+			name: string
+		}) => void
+	} = {}
 	private sections: {
 		name: string,
 		content: string,
@@ -15,10 +24,11 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 	}[] = [];
 	private newContent: string;
 	private update: boolean;
-
+	private isEvent:boolean = false
 	constructor(
 		private readonly _extensionUri: vscode.Uri,
 	) {
+
 	}
 
 	public resolveWebviewView(
@@ -53,13 +63,29 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 	}
 
 	start() {
-
 		setInterval(() => {
 			if (this.update) {
 				this.update = false
 				this.refresh(this.newContent)
 			}
+			if(!this.isEvent){
+				try{
+					this.view.webview.onDidReceiveMessage(
+						message => {
+							// console.log(message)
+							if (typeof this.events[message.fn] == 'function') {
+								this.events[message.fn](message.data)
+							}
+						},
+						this,
+					);
+					this.isEvent = true
+				}catch(e){
+					
+				}
+			}
 		}, 100)
+		
 	}
 
 	section(name, content, lang, priority: number = 0) {

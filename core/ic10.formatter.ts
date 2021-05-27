@@ -238,7 +238,7 @@ export class ic10Formatter {
 					}
 				}
 			} catch (e) {
-				console.warn(e)
+				// console.warn(e)
 			}
 		}
 	}
@@ -266,7 +266,7 @@ export class ic10Formatter {
 					continue
 				}
 			} catch (e) {
-				console.warn(e)
+				// console.warn(e)
 			}
 		}
 	}

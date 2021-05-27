@@ -36,32 +36,81 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
         const diagnostics = [];
         this.prepare(doc);
         var code = doc.getText();
-        var compiler = new icx_compiler_1.icX(code);
+        var compiler = new icx_compiler_1.icX(code, main_1.icxOptions);
         var test = compiler.alalize();
+        var b = Math.abs(test.vars.empty.length - 16);
+        var p = b / 16 * 100;
+        var linesCount = test.result.split('\n').length;
+        if (linesCount > 128) {
+            diagnostics.push(this.createDiagnostic(new vscode.Range(0, 0, 0, 1), 'Max line', vscode.DiagnosticSeverity.Error));
+        }
+        var b2 = linesCount;
+        var p2 = b2 / 128 * 100;
         main_1.icSidebar.section('icxStats', `
       <fieldset title="Stats">
 							<ul>
 								<ol>
-                    <span>vars:</span>
-                    <ol>
-                        <span>temp:</span>	<span>${test.vars.temps.length}</span>
-                    </ol>
-                    <ol>
-                        <span>aliases:</span>	<span>${test.vars.aliases.length}</span>
-                    </ol>
-                    <ol>
-                        <span>left:</span>	<span>${test.vars.empty.length}</span>
-                    </ol>
+									<span>vars:</span>
+									<ol>
+										<span>temp:</span>	<span>${test.vars.temps.length}</span>
+									</ol>
+									<ol>
+										<span>aliases:</span>	<span>${test.vars.aliases.length}</span>
+									</ol>
+									<ol>
+										<span>left vars:</span>	<span>${test.vars.empty.length}</span>
+										<ol>
+											<div id="leftVarsCounter" class="progress" percent="${p}" value="${b}"  max="16" min="0">
+												<div></div>
+											</div>
+										</ol>	
+									</ol>
 								</ol>
 								<ol>
-								    
+								    <ol>
+										<span>left ic10 lines:</span>	<span>${linesCount}</span>
+										<ol>
+											<div id="leftVarsCounter" class="progress" percent="${p2}" value="${b2}"  max="128" min="0">
+												<div></div>
+											</div>
+										</ol>
+									</ol>
 								</ol>
 							 </ul>
 						</fieldset>
     `, main_1.LANG_KEY2);
-        if (test.result.split('\n').length > 128) {
-            diagnostics.push(this.createDiagnostic(new vscode.Range(0, 0, 0, 1), 'Max line', vscode.DiagnosticSeverity.Error));
+        var comments = test.use.has('comments');
+        var aliases = test.use.has('aliases');
+        comments = comments ? comments : main_1.icxOptions.comments;
+        aliases = aliases ? aliases : main_1.icxOptions.aliases;
+        if (comments) {
+            comments = 'checked';
         }
+        else {
+            comments = '';
+        }
+        if (aliases) {
+            aliases = 'checked';
+        }
+        else {
+            aliases = '';
+        }
+        main_1.icSidebar.section('settings', `
+					<form name="settings" id="form-settings">
+						<fieldset title="Settings">
+							<ul>
+								<ol>
+									<input type="checkbox" data-fn="icxComments" ${comments} name="comments" id="comments">
+									<label for="comments" class="disabledSelect">Enable comments</label>
+								</ol>
+								<ol>
+									<input type="checkbox" data-fn="icxAliases" ${aliases} name="aliases" id="aliases">
+									<label for="aliases" class="disabledSelect">Enable aliases</label>
+								</ol>
+							 </ul>
+						</fieldset>
+					</form>
+				`, main_1.LANG_KEY2);
         for (const de of this.errors.values) {
             diagnostics.push(this.createDiagnostic(de.range, de.message, de.lvl));
         }

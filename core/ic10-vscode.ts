@@ -17,10 +17,10 @@ export class Ic10Vscode {
 			} else {
 				var langPath = require(`../languages/en.json`);
 				this.langPath = langPath
-				console.info(`undefined lang ${this.LOCALE_KEY}`)
+				// console.info(`undefined lang ${this.LOCALE_KEY}`)
 			}
 		} catch (e) {
-			console.warn(e)
+			// console.warn(e)
 		}
 	}
 	

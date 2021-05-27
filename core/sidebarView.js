@@ -25,7 +25,9 @@ class Ic10SidebarViewProvider {
     constructor(_extensionUri) {
         this._extensionUri = _extensionUri;
         this.sectionsNamed = {};
+        this.events = {};
         this.sections = [];
+        this.isEvent = false;
     }
     resolveWebviewView(webviewView, context, _token) {
         this.view = webviewView;
@@ -50,6 +52,18 @@ class Ic10SidebarViewProvider {
             if (this.update) {
                 this.update = false;
                 this.refresh(this.newContent);
+            }
+            if (!this.isEvent) {
+                try {
+                    this.view.webview.onDidReceiveMessage(message => {
+                        if (typeof this.events[message.fn] == 'function') {
+                            this.events[message.fn](message.data);
+                        }
+                    }, this);
+                    this.isEvent = true;
+                }
+                catch (e) {
+                }
             }
         }, 100);
     }

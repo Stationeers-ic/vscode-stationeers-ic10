@@ -288,7 +288,7 @@ export class ic10Runtime extends EventEmitter {
 			try {
 				this.ic10.init(contents)
 			} catch (e) {
-				console.error(e)
+				// console.error(e)
 			}
 			this._sourceLines = contents.split(/\r?\n/);
 		}
@@ -377,7 +377,7 @@ export class ic10Runtime extends EventEmitter {
 		
 		const line = this._sourceLines[ln].trim();
 		
-		// if 'log(...)' found in source -> send argument to debug console
+		// if 'log(...)' found in source -> send argument to debug // console
 		//const matches = /log\((.*)\)/.exec(line);
 		//if (matches && matches.length === 2) {
 		//	this.sendEvent('output', matches[1], this._sourceFile, ln, matches.index);

@@ -164,7 +164,6 @@ class ic10Runtime extends events_1.EventEmitter {
                 this.ic10.init(contents);
             }
             catch (e) {
-                console.error(e);
             }
             this._sourceLines = contents.split(/\r?\n/);
         }

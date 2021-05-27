@@ -68,6 +68,7 @@ class DebugAdapterExecutableFactory {
     }
 }
 class ic10DebugAdapterServerDescriptorFactory {
+    server;
     createDebugAdapterDescriptor(session, executable) {
         if (!this.server) {
             this.server = Net.createServer(socket => {
@@ -85,6 +86,7 @@ class ic10DebugAdapterServerDescriptorFactory {
     }
 }
 class ic10DebugAdapterNamedPipeServerDescriptorFactory {
+    server;
     createDebugAdapterDescriptor(session, executable) {
         if (!this.server) {
             const pipeName = crypto_1.randomBytes(10).toString('utf8');
