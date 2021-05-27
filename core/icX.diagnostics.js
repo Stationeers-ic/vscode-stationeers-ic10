@@ -38,8 +38,8 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
         var code = doc.getText();
         var compiler = new icx_compiler_1.icX(code, main_1.icxOptions);
         var test = compiler.alalize();
-        var b = Math.abs(test.vars.empty.length - 16);
-        var p = b / 16 * 100;
+        var b = Math.abs(test.vars.empty.length - 15);
+        var p = b / 15 * 100;
         var linesCount = test.result.split('\n').length;
         if (linesCount > 128) {
             diagnostics.push(this.createDiagnostic(new vscode.Range(0, 0, 0, 1), 'Max line', vscode.DiagnosticSeverity.Error));
@@ -60,7 +60,7 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
 									<ol>
 										<span>left vars:</span>	<span>${test.vars.empty.length}</span>
 										<ol>
-											<div id="leftVarsCounter" class="progress" percent="${p}" value="${b}"  max="16" min="0">
+											<div id="leftVarsCounter" class="progress" percent="${p}" value="${b}"  max="15" min="0">
 												<div></div>
 											</div>
 										</ol>	
