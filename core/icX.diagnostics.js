@@ -24,6 +24,7 @@ const vscode = __importStar(require("vscode"));
 const ic10_diagnostics_1 = require("./ic10.diagnostics");
 const icx_compiler_1 = require("icx-compiler");
 const main_1 = require("./main");
+const err_1 = require("icx-compiler/src/err");
 var manual = require('../languages/en.json');
 var functions = require('../media/ic10.functions.json');
 var keywords = require('../media/ic10.keyword.json');
@@ -32,18 +33,60 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
     constructor() {
         super();
     }
+    prepare(doc) {
+        this.jumps = [];
+        this.aliases = [];
+        this.errors.reset();
+        for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
+            try {
+                this.parseLine(doc, lineIndex);
+            }
+            catch (e) {
+                console.warn(e);
+            }
+        }
+    }
     run(doc, container) {
         const diagnostics = [];
         this.prepare(doc);
         var code = doc.getText();
-        var compiler = new icx_compiler_1.icX(code, main_1.icxOptions);
-        var test = compiler.alalize();
+        try {
+            var compiler = new icx_compiler_1.icX(code, main_1.icxOptions);
+            var test = compiler.alalize();
+            console.log(test);
+        }
+        catch (e) {
+            console.error(e);
+            return;
+        }
+        if (test.error instanceof err_1.Errors) {
+            if (test.error.isError()) {
+                for (const eKey in test.error.e) {
+                    var err = test.error.e[eKey];
+                    if (err instanceof err_1.Err) {
+                        var l = doc.lineAt(err.line);
+                        diagnostics.push(this.createDiagnostic(l.range, err.message, vscode.DiagnosticSeverity.Error));
+                    }
+                }
+            }
+        }
+        try {
+            var linesCount = test.result.split('\n').length;
+            if (linesCount > 128) {
+                diagnostics.push(this.createDiagnostic(new vscode.Range(0, 0, 0, 1), 'Max line', vscode.DiagnosticSeverity.Error));
+            }
+            this.view(test, linesCount);
+        }
+        catch (e) {
+        }
+        for (const de of this.errors.values) {
+            diagnostics.push(this.createDiagnostic(de.range, de.message, de.lvl));
+        }
+        container.set(doc.uri, diagnostics);
+    }
+    view(test, linesCount) {
         var b = Math.abs(test.vars.empty.length - 15);
         var p = b / 15 * 100;
-        var linesCount = test.result.split('\n').length;
-        if (linesCount > 128) {
-            diagnostics.push(this.createDiagnostic(new vscode.Range(0, 0, 0, 1), 'Max line', vscode.DiagnosticSeverity.Error));
-        }
         var b2 = linesCount;
         var p2 = b2 / 128 * 100;
         main_1.icSidebar.section('icxStats', `
@@ -81,8 +124,10 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
     `, main_1.LANG_KEY2);
         var comments = test.use.has('comments');
         var aliases = test.use.has('aliases');
+        var loop = test.use.has('loop');
         comments = comments ? comments : main_1.icxOptions.comments;
         aliases = aliases ? aliases : main_1.icxOptions.aliases;
+        loop = loop ? loop : main_1.icxOptions.loop;
         if (comments) {
             comments = 'checked';
         }
@@ -94,6 +139,12 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
         }
         else {
             aliases = '';
+        }
+        if (loop) {
+            loop = 'checked';
+        }
+        else {
+            loop = '';
         }
         main_1.icSidebar.section('settings', `
 					<form name="settings" id="form-settings">
@@ -107,14 +158,14 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
 									<input type="checkbox" data-fn="icxAliases" ${aliases} name="aliases" id="aliases">
 									<label for="aliases" class="disabledSelect">Enable aliases</label>
 								</ol>
+								<ol>
+									<input type="checkbox" data-fn="icxAliases" ${loop} name="loop" id="loop">
+									<label for="aliases" class="disabledSelect">Enable loop</label>
+								</ol>
 							 </ul>
 						</fieldset>
 					</form>
 				`, main_1.LANG_KEY2);
-        for (const de of this.errors.values) {
-            diagnostics.push(this.createDiagnostic(de.range, de.message, de.lvl));
-        }
-        container.set(doc.uri, diagnostics);
     }
     parseLine(doc, lineIndex) {
         const lineOfText = doc.lineAt(lineIndex);
@@ -194,6 +245,11 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
             }
         }
         return true;
+    }
+    createDiagnostic(range, message, lvl) {
+        const diagnostic = new vscode.Diagnostic(range, message, lvl);
+        diagnostic.code = exports.IcXDiagnosticsName;
+        return diagnostic;
     }
 }
 exports.icXDiagnostics = new IcXDiagnostics;

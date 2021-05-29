@@ -49,6 +49,7 @@ var onChangeCallbacks = {
 exports.icxOptions = {
     comments: false,
     aliases: false,
+    loop: false,
 };
 function activate(ctx) {
     view(ctx);

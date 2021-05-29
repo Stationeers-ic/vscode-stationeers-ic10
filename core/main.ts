@@ -31,9 +31,11 @@ var onChangeCallbacks: {
 export const icxOptions: {
 	comments: boolean
 	aliases: boolean
+	loop: boolean
 } = {
 	comments: false,
 	aliases: false,
+	loop: false,
 }
 
 export function activate(ctx: vscode.ExtensionContext) {

@@ -79,11 +79,8 @@ export class Ic10Diagnostics {
       try {
         this.parseLine(doc, lineIndex)
       } catch (e) {
-
+          console.warn(e)
       }
-    }
-    for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
-
     }
   }
 

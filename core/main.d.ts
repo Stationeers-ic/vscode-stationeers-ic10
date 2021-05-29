@@ -6,6 +6,7 @@ export declare var icSidebar: Ic10SidebarViewProvider;
 export declare const icxOptions: {
     comments: boolean;
     aliases: boolean;
+    loop: boolean;
 };
 export declare function activate(ctx: vscode.ExtensionContext): void;
 export declare function deactivate(): void;

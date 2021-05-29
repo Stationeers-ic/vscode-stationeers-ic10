@@ -12,6 +12,18 @@ const regexes = {
     'strEnd': new RegExp(".+\"$"),
 };
 class ic10Formatter {
+    text;
+    labels;
+    lines;
+    commands;
+    position;
+    jumps;
+    resultText;
+    document;
+    vars;
+    functions;
+    spaces;
+    loops;
     constructor(document) {
         this.document = document;
         this.text = document.getText();

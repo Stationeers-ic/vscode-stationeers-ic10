@@ -3,21 +3,26 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ic10Runtime = void 0;
 const events_1 = require("events");
 class ic10Runtime extends events_1.EventEmitter {
+    _fileAccessor;
+    _sourceFile = '';
+    datetime;
+    get sourceFile() {
+        return this._sourceFile;
+    }
+    _sourceLines = [];
+    _currentLine = 0;
+    _currentColumn;
+    _breakPoints = new Map();
+    _breakpointId = 1;
+    _breakAddresses = new Set();
+    _noDebug = false;
+    _namedException;
+    _otherExceptions = false;
+    ic10;
     constructor(_fileAccessor, ic10) {
         super();
         this._fileAccessor = _fileAccessor;
-        this._sourceFile = '';
-        this._sourceLines = [];
-        this._currentLine = 0;
-        this._breakPoints = new Map();
-        this._breakpointId = 1;
-        this._breakAddresses = new Set();
-        this._noDebug = false;
-        this._otherExceptions = false;
         this.ic10 = ic10;
-    }
-    get sourceFile() {
-        return this._sourceFile;
     }
     async start(program, stopOnEntry, noDebug) {
         this._noDebug = noDebug;

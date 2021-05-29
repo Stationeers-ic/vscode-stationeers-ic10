@@ -4,6 +4,8 @@ exports.Ic10Vscode = void 0;
 const vscode = require("vscode");
 const main_1 = require("ic10/main");
 class Ic10Vscode {
+    langPath;
+    LOCALE_KEY;
     constructor() {
         this.langPath = {};
         this.LOCALE_KEY = vscode.env.language.trim();

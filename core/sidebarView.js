@@ -22,12 +22,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Ic10SidebarViewProvider = void 0;
 const vscode = __importStar(require("vscode"));
 class Ic10SidebarViewProvider {
+    _extensionUri;
+    static viewType = 'Ic10ViewProvider';
+    view;
+    dom;
+    sectionsNamed = {};
+    events = {};
+    sections = [];
+    newContent;
+    update;
+    isEvent = false;
     constructor(_extensionUri) {
         this._extensionUri = _extensionUri;
-        this.sectionsNamed = {};
-        this.events = {};
-        this.sections = [];
-        this.isEvent = false;
     }
     resolveWebviewView(webviewView, context, _token) {
         this.view = webviewView;
@@ -139,5 +145,4 @@ class Ic10SidebarViewProvider {
     }
 }
 exports.Ic10SidebarViewProvider = Ic10SidebarViewProvider;
-Ic10SidebarViewProvider.viewType = 'Ic10ViewProvider';
 //# sourceMappingURL=sidebarView.js.map

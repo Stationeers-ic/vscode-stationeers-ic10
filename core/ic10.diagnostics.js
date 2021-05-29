@@ -37,6 +37,10 @@ exports.regexes = {
     'strEnd': new RegExp(".+\"$"),
 };
 class DiagnosticsError {
+    range;
+    message;
+    lvl;
+    hash;
     constructor(message, lvl, start, length, line) {
         this.message = message;
         this.lvl = lvl;
@@ -46,10 +50,8 @@ class DiagnosticsError {
 }
 exports.DiagnosticsError = DiagnosticsError;
 class DiagnosticsErrors {
-    constructor() {
-        this.values = [];
-        this.index = [];
-    }
+    values = [];
+    index = [];
     push(a) {
         if (this.index.indexOf(a.hash) < 0) {
             this.index.push(a.hash);
@@ -63,6 +65,9 @@ class DiagnosticsErrors {
 }
 exports.DiagnosticsErrors = DiagnosticsErrors;
 class Ic10Diagnostics {
+    jumps;
+    aliases;
+    errors;
     constructor() {
         this.errors = new DiagnosticsErrors;
     }
@@ -78,9 +83,8 @@ class Ic10Diagnostics {
                 this.parseLine(doc, lineIndex);
             }
             catch (e) {
+                console.warn(e);
             }
-        }
-        for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
         }
     }
     run(doc, container) {
