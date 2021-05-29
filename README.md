@@ -17,6 +17,9 @@
 
 [![](https://i.imgur.com/cl0Xbq1.png)  Sponsor this project](https://www.patreon.com/traineratwot)
 
+[<img src="https://discord.com/assets/847541504914fd33810e70a0ea73177e.ico" width="20"> discord](https://discord.gg/KSVjXufkA9)
+
+
 Debugger launch
 
 ```json5
