@@ -216,8 +216,8 @@ function command(ctx: vscode.ExtensionContext) {
 					vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content)
 				}
 			} catch (e) {
-				vscode.window.showInformationMessage('compiling error');
-				// console.error(e)
+				vscode.window.showInformationMessage('compiling error',e);
+				console.error(e)
 			}
 		}));
 	} catch (e) {

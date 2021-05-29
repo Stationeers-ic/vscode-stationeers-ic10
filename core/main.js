@@ -206,7 +206,8 @@ function command(ctx) {
                 }
             }
             catch (e) {
-                vscode.window.showInformationMessage('compiling error');
+                vscode.window.showInformationMessage('compiling error', e);
+                console.error(e);
             }
         }));
     }
