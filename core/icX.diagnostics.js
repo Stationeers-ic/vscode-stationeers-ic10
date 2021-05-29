@@ -125,9 +125,11 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
         var comments = test.use.has('comments');
         var aliases = test.use.has('aliases');
         var loop = test.use.has('loop');
+        var constants = test.use.has('constants');
         comments = comments ? comments : main_1.icxOptions.comments;
         aliases = aliases ? aliases : main_1.icxOptions.aliases;
         loop = loop ? loop : main_1.icxOptions.loop;
+        constants = constants ? constants : main_1.icxOptions.constants;
         if (comments) {
             comments = 'checked';
         }
@@ -146,6 +148,12 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
         else {
             loop = '';
         }
+        if (constants) {
+            constants = 'checked';
+        }
+        else {
+            constants = '';
+        }
         main_1.icSidebar.section('settings', `
 					<form name="settings" id="form-settings">
 						<fieldset title="Settings">
@@ -161,6 +169,10 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
 								<ol>
 									<input type="checkbox" data-fn="icxLoop" ${loop} name="loop" id="loop">
 									<label for="loop" class="disabledSelect">use loop</label>
+								</ol>
+                <ol>
+									<input type="checkbox" data-fn="icxConstants" ${constants} name="constants" id="constants">
+									<label for="constants" class="disabledSelect">use constants</label>
 								</ol>
 							 </ul>
 						</fieldset>

@@ -50,6 +50,7 @@ exports.icxOptions = {
     comments: false,
     aliases: false,
     loop: false,
+    constants: false,
 };
 function activate(ctx) {
     view(ctx);
@@ -365,16 +366,20 @@ function renderIcX() {
 						<fieldset title="Settings">
 							<ul>
 								<ol>
-									<input type="checkbox" name="comments" id="comments">
+									<input type="checkbox" data-fn="icxComments" name="comments" id="comments">
 									<label for="comments" class="disabledSelect">Enable comments</label>
 								</ol>
 								<ol>
-									<input type="checkbox" name="aliases" id="aliases">
+									<input type="checkbox" data-fn="icxAliases" name="aliases" id="aliases">
 									<label for="aliases" class="disabledSelect">Enable aliases</label>
 								</ol>
 								<ol>
-									<input type="checkbox" name="loop" id="loop">
+									<input type="checkbox" data-fn="icxLoop" name="loop" id="loop">
 									<label for="loop" class="disabledSelect">use loop</label>
+								</ol>
+								<ol>
+									<input type="checkbox" data-fn="icxConstants" name="constants" id="constants">
+									<label for="constants" class="disabledSelect">use constants</label>
 								</ol>
 							 </ul>
 						</fieldset>
@@ -388,6 +393,9 @@ function renderIcX() {
     };
     exports.icSidebar.events.icxLoop = (data) => {
         exports.icxOptions.loop = Boolean(data.value);
+    };
+    exports.icSidebar.events.icxConstants = (data) => {
+        exports.icxOptions.constants = Boolean(data.value);
     };
 }
 function renderIc10() {

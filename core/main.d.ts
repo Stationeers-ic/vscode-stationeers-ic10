@@ -7,6 +7,7 @@ export declare const icxOptions: {
     comments: boolean;
     aliases: boolean;
     loop: boolean;
+    constants: boolean;
 };
 export declare function activate(ctx: vscode.ExtensionContext): void;
 export declare function deactivate(): void;
