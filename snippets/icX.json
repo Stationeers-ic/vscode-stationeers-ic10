@@ -1413,5 +1413,27 @@
       "end"
     ],
     "description": "if"
+  },
+  "break": {
+    "prefix": "break",
+    "body": [
+      "break",
+      "$1"
+    ],
+    "description": "break"
+  },
+  "var": {
+    "prefix": "var",
+    "body": [
+      "var"
+    ],
+    "description": "var"
+  },
+  "const": {
+    "prefix": "const",
+    "body": [
+      "const"
+    ],
+    "description": "const"
   }
 }
