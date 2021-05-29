@@ -299,6 +299,11 @@ IC10Data
 	.__add('ru', 'RequestHash'              , 'Parameter', 'Float'    , null)
 	.__add('ru', 'VerticalRatio'            , 'Parameter', 'Float'    , null)
 
+	.__add('ru', 'Average','Const', 'string', null)
+	.__add('ru', 'Sum','Const', 'string', null)
+	.__add('ru', 'Minimum','Const', 'string', null)
+	.__add('ru', 'Maximum','Const', 'string', null)
+
 gulp.task('generate-langs', function() {
 	// console.log('generating')
 	// console.log(IC10Data.Languages['ru'][0])

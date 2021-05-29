@@ -45,7 +45,7 @@ class IcXDiagnostics extends Ic10Diagnostics {
     try {
       var compiler = new icX(code, icxOptions)
       var test = compiler.alalize()
-      console.log(test)
+      // console.log(test)
     } catch (e) {
       console.error(e)
       return
