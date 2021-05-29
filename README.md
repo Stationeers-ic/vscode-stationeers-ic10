@@ -81,8 +81,7 @@ new snippets
 
 
 
-# Instructions for icX
-
+# Instructions
 - vars
     ```
     ---icX
@@ -107,7 +106,35 @@ new snippets
        move r0 0
        add r0 r0 1
     ```
+- math
 
+  ```
+  ---icX
+     var x =  5 + 5 * 2 
+  ---ic10
+     move r0 15
+  ```
+  ```
+  ---icX
+     var k = 2
+     var y = 5
+     var x =  y + y * k
+  ---ic10
+     move r0 2
+     move r1 5
+     mul r15 r1 r0
+     add r2 r1 r15
+     add r2 r2 5
+  ```
+
+  ```
+  ---icX
+     const x = 2 + 2
+     const y = x + 2
+     var z = y + 2
+  ---ic10
+     move r0 8
+  ```
 
 - if,else
     ```
@@ -156,6 +183,7 @@ new snippets
        var a = d0.Setting
        var b = d0.slot(a).PrefabHash
        a = d(5438547545).Setting(sum)
+       d(5438547545).Setting = b
     ---ic10
        s d0 Setting 1
        l r0 d0 Setting
@@ -180,3 +208,4 @@ new snippets
        j ra
        _icXstart:
     ```
+

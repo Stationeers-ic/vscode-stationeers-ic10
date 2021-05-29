@@ -371,6 +371,10 @@ function renderIcX() {
 									<input type="checkbox" name="aliases" id="aliases">
 									<label for="aliases" class="disabledSelect">Enable aliases</label>
 								</ol>
+								<ol>
+									<input type="checkbox" name="loop" id="loop">
+									<label for="loop" class="disabledSelect">use loop</label>
+								</ol>
 							 </ul>
 						</fieldset>
 					</form>
@@ -380,6 +384,9 @@ function renderIcX() {
     };
     exports.icSidebar.events.icxAliases = (data) => {
         exports.icxOptions.aliases = Boolean(data.value);
+    };
+    exports.icSidebar.events.icxLoop = (data) => {
+        exports.icxOptions.loop = Boolean(data.value);
     };
 }
 function renderIc10() {

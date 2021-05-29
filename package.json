@@ -272,7 +272,7 @@
     }
   },
   "dependencies": {
-    "ic10": "^1.0.48",
+    "ic10": "^1.0.50",
     "icx-compiler": "^1.0.9",
     "vscode-debugadapter": "^1.47.0",
     "vscode-debugprotocol": "^1.47.0"

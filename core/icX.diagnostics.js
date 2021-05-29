@@ -87,8 +87,8 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
     view(test, linesCount) {
         var b = Math.abs(test.vars.empty.length - 15);
         var p = b / 15 * 100;
-        var b2 = linesCount;
-        var p2 = b2 / 128 * 100;
+        var b2 = Math.abs(linesCount - 128);
+        var p2 = linesCount / 128 * 100;
         main_1.icSidebar.section('icxStats', `
       <fieldset title="Stats">
 							<ul>
@@ -111,7 +111,7 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
 								</ol>
 								<ol>
 								    <ol>
-										<span>left ic10 lines:</span>	<span>${linesCount}</span>
+										<span>left ic10 lines:</span>	<span>${b2}</span>
 										<ol>
 											<div id="leftVarsCounter" class="progress" percent="${p2}" value="${b2}"  max="128" min="0">
 												<div></div>
@@ -159,8 +159,8 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
 									<label for="aliases" class="disabledSelect">Enable aliases</label>
 								</ol>
 								<ol>
-									<input type="checkbox" data-fn="icxAliases" ${loop} name="loop" id="loop">
-									<label for="aliases" class="disabledSelect">Enable loop</label>
+									<input type="checkbox" data-fn="icxLoop" ${loop} name="loop" id="loop">
+									<label for="loop" class="disabledSelect">use loop</label>
 								</ol>
 							 </ul>
 						</fieldset>
@@ -190,7 +190,13 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
                     if (text.startsWith('alias')) {
                         this.aliases.push(words[1]);
                     }
+                    if (text.startsWith('var')) {
+                        this.aliases.push(words[1]);
+                    }
                     if (text.startsWith('define')) {
+                        this.aliases.push(words[1]);
+                    }
+                    if (text.startsWith('const')) {
                         this.aliases.push(words[1]);
                     }
                     this.analyzeFunctionInputs(words, text, lineIndex);
