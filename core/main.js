@@ -198,12 +198,14 @@ function command(ctx) {
             try {
                 var code = vscode.window.activeTextEditor.document.getText();
                 var title = path_1.default.basename(vscode.window.activeTextEditor.document.fileName).split('.')[0];
+                var dir = path_1.default.dirname(vscode.window.activeTextEditor.document.uri._formatted);
                 var icx = new icx_compiler_1.icX(code, exports.icxOptions);
                 var compiled = icx.getCompiled();
                 if (compiled) {
                     var content = Buffer.from(compiled);
-                    var file = vscode.workspace.workspaceFolders[0].uri + '/' + title + '.ic10';
+                    var file = dir + '/' + title + '.ic10';
                     vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content);
+                    console.log('file', file);
                 }
             }
             catch (e) {

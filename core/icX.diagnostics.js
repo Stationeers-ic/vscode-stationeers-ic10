@@ -53,7 +53,6 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
         try {
             var compiler = new icx_compiler_1.icX(code, main_1.icxOptions);
             var test = compiler.alalize();
-            console.log(test);
         }
         catch (e) {
             console.error(e);
@@ -191,31 +190,33 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
                     }
                     return true;
                 }
+                var words = text.split(/ +/);
                 text = text.replace(/#.+$/, '');
                 text = text.trim();
                 if (text.endsWith(':')) {
                     this.jumps.push(text);
                     return true;
                 }
+                if (text.startsWith('alias')) {
+                    this.aliases.push(words[1]);
+                }
+                if (text.startsWith('var')) {
+                    this.aliases.push(words[1]);
+                }
+                if (text.startsWith('define')) {
+                    this.aliases.push(words[1]);
+                }
+                if (text.startsWith('const')) {
+                    this.aliases.push(words[1]);
+                }
                 if (text.startsWith(substring)) {
-                    var words = text.split(/ +/);
-                    if (text.startsWith('alias')) {
-                        this.aliases.push(words[1]);
-                    }
-                    if (text.startsWith('var')) {
-                        this.aliases.push(words[1]);
-                    }
-                    if (text.startsWith('define')) {
-                        this.aliases.push(words[1]);
-                    }
-                    if (text.startsWith('const')) {
-                        this.aliases.push(words[1]);
-                    }
                     this.analyzeFunctionInputs(words, text, lineIndex);
                 }
                 return false;
             }, this);
+            this.aliases = [...new Set(this.aliases)];
         }
+        console.log(this.aliases);
     }
     analyzeFunctionInputs(words, text, lineIndex) {
         var fn = words[0] ?? null;

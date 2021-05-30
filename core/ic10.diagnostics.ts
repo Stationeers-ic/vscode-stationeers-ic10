@@ -131,6 +131,7 @@ export class Ic10Diagnostics {
         }
 
       }, this)
+      this.aliases = [...new Set(this.aliases)];
       if (test === false) {
         this.errors.push(new DiagnosticsError(`Unknown function: "${text}"`, 0, 0, text.length, lineIndex))
       }
@@ -208,7 +209,7 @@ export class Ic10Diagnostics {
         case 'C':
         case 'A':
         case 'O':
-          if (isNaN(parseFloat(value))) {
+          if (isNaN(parseFloat(value)) && this.aliases.indexOf(value) < 0 ) {
             errors++;
           }
           break;

@@ -180,32 +180,34 @@ class IcXDiagnostics extends Ic10Diagnostics {
           }
           return true;
         }
+        var words = text.split(/ +/)
         text = text.replace(/#.+$/, '')
         text = text.trim()
         if (text.endsWith(':')) {
           this.jumps.push(text)
           return true;
         }
+        if (text.startsWith('alias')) {
+          this.aliases.push(words[1])
+        }
+        if (text.startsWith('var')) {
+          this.aliases.push(words[1])
+        }
+        if (text.startsWith('define')) {
+          this.aliases.push(words[1])
+        }
+        if (text.startsWith('const')) {
+          this.aliases.push(words[1])
+        }
         if (text.startsWith(substring)) {
-          var words = text.split(/ +/)
-          if (text.startsWith('alias')) {
-            this.aliases.push(words[1])
-          }
-          if (text.startsWith('var')) {
-            this.aliases.push(words[1])
-          }
-          if (text.startsWith('define')) {
-            this.aliases.push(words[1])
-          }
-          if (text.startsWith('const')) {
-            this.aliases.push(words[1])
-          }
-          // console.log(this.aliases)
           this.analyzeFunctionInputs(words, text, lineIndex)
         }
         return false
       }, this)
+      this.aliases = [...new Set(this.aliases)];
+
     }
+    console.log(this.aliases)
   }
 
   analyzeFunctionInputs(words: string[], text: string, lineIndex: number): errorMsg | true {
