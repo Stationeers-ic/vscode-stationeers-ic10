@@ -207,7 +207,7 @@ class IcXDiagnostics extends Ic10Diagnostics {
       this.aliases = [...new Set(this.aliases)];
 
     }
-    console.log(this.aliases)
+    //console.log(this.aliases)
   }
 
   analyzeFunctionInputs(words: string[], text: string, lineIndex: number): errorMsg | true {

@@ -205,7 +205,6 @@ function command(ctx) {
                     var content = Buffer.from(compiled);
                     var file = dir + '/' + title + '.ic10';
                     vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content);
-                    console.log('file', file);
                 }
             }
             catch (e) {

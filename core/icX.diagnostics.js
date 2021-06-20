@@ -216,7 +216,6 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
             }, this);
             this.aliases = [...new Set(this.aliases)];
         }
-        console.log(this.aliases);
     }
     analyzeFunctionInputs(words, text, lineIndex) {
         var fn = words[0] ?? null;

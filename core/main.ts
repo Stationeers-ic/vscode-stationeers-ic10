@@ -217,7 +217,7 @@ function command(ctx: vscode.ExtensionContext) {
           var content = Buffer.from(compiled)
           var file = dir + '/' + title + '.ic10'
           vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content)
-          console.log('file', file)
+         // console.log('file', file)
         }
       } catch (e) {
         vscode.window.showInformationMessage('compiling error', e);
