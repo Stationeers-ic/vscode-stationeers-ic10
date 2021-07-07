@@ -14,6 +14,7 @@
 ![npm](https://badgen.net/vs-marketplace/d/Traineratwot.stationeers-ic10)
 ![npm](https://badgen.net/vs-marketplace/i/Traineratwot.stationeers-ic10)
 ![npm](https://badgen.net/vs-marketplace/rating/Traineratwot.stationeers-ic10)
+![](https://stat.aytour.ru/stat/b4b55c18a3677f92ff2fe4c73d2e55d3.png)
 
 [![](https://i.imgur.com/cl0Xbq1.png)  Sponsor this project](https://www.patreon.com/traineratwot)
 
