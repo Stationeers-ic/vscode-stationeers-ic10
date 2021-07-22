@@ -1391,7 +1391,7 @@
     "prefix": "if",
     "body": [
       "if $1",
-      "$2",
+      "\t$2",
       "end"
     ],
     "description": "if"
@@ -1400,7 +1400,7 @@
     "prefix": "function",
     "body": [
       "function $1",
-      "$2",
+      "\t$2",
       "end"
     ],
     "description": "if"
@@ -1409,7 +1409,7 @@
     "prefix": "while",
     "body": [
       "while $1",
-      "$2",
+      "\t$2",
       "end"
     ],
     "description": "if"
@@ -1425,15 +1425,26 @@
   "var": {
     "prefix": "var",
     "body": [
-      "var"
+      "var $1 $2"
     ],
     "description": "var"
   },
   "const": {
     "prefix": "const",
     "body": [
-      "const"
+      "const $1 $2"
     ],
     "description": "const"
+  },
+  "switch": {
+    "prefix": "switch",
+    "body": [
+      "switch $1",
+      "\tcase $2",
+      "\t\t$3",
+      "\tend",
+      "end"
+    ],
+    "description": "switch"
   }
 }
