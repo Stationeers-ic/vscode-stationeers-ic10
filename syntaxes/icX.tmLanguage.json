@@ -46,7 +46,7 @@
           "name": "keyword.other.icX"
         },
         {
-          "match": "\\b(if|while|else|end|switch|case)\\b",
+          "match": "\\b(if|while|else|end|switch|case|break)\\b",
           "name": "keyword.control.icX"
         },
         {

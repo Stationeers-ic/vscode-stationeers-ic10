@@ -199,8 +199,10 @@ function command(ctx) {
                 var code = vscode.window.activeTextEditor.document.getText();
                 var title = path_1.default.basename(vscode.window.activeTextEditor.document.fileName).split('.')[0];
                 var dir = path_1.default.dirname(vscode.window.activeTextEditor.document.uri._formatted);
+                console.log(exports.icxOptions);
                 var icx = new icx_compiler_1.icX(code, exports.icxOptions);
                 var compiled = icx.getCompiled();
+                console.log(compiled);
                 if (compiled) {
                     var content = Buffer.from(compiled);
                     var file = dir + '/' + title + '.ic10';

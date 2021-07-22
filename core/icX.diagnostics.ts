@@ -44,7 +44,7 @@ class IcXDiagnostics extends Ic10Diagnostics {
     var code = doc.getText()
     try {
       var compiler = new icX(code, icxOptions)
-      var test = compiler.alalize()
+      var test = compiler.analyze()
       // console.log(test)
     } catch (e) {
       console.error(e)

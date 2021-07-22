@@ -210,14 +210,15 @@ function command(ctx: vscode.ExtensionContext) {
         var title = path.basename(vscode.window.activeTextEditor.document.fileName).split('.')[0]
         // @ts-ignore
         var dir = path.dirname(vscode.window.activeTextEditor.document.uri._formatted);
+        console.log(icxOptions)
         var icx = new icX(code, icxOptions)
         var compiled = icx.getCompiled()
+        console.log(compiled)
         if (compiled) {
           // console.log(compiled)
           var content = Buffer.from(compiled)
           var file = dir + '/' + title + '.ic10'
-          vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content)
-         // console.log('file', file)
+          vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content)// console.log('file', file)
         }
       } catch (e) {
         vscode.window.showInformationMessage('compiling error', e);
