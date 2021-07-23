@@ -1,0 +1,24 @@
+on: push
+name: 'Release Vscode Plugin'
+jobs:
+  npmInstall:
+    name: npm install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: npm install
+        uses: actions/npm@master
+        with:
+          args: install --unsafe-perm
+      - name: Master
+        uses: actions/bin/filter@master
+        with:
+          args: branch main
+      - name: compile
+        run: tsc
+      - name: Vscode release plugin
+        uses: JCofman/vscodeaction@master
+        env:
+          PUBLISHER_TOKEN: ${{ secrets.PUBLISHER_TOKEN }}
+        with:
+          args: publish -p $PUBLISHER_TOKEN
