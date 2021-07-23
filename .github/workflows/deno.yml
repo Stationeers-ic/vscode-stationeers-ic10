@@ -17,8 +17,6 @@ jobs:
       - uses: Jaid/action-npm-install@v1.2.4
       - run: tsc
       
-      - name: run tests
-        run: npm run tests 
       - name: Vscode release plugin
         uses: JCofman/vscodeaction@v2.0.1
         with:
