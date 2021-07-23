@@ -15,6 +15,11 @@ jobs:
         with:
           node-version: '16.x'
       - uses: Jaid/action-npm-install@v1.2.4
+      - name: npm install
+        uses: actions/npm@master
+        with:
+          args: install --unsafe-perm
+      - name: compile
       - run: tsc
       
       - name: Vscode release plugin
