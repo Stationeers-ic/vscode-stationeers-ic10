@@ -5,17 +5,13 @@ jobs:
     name: npm install
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: npm install
-        uses: actions/npm@master
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
-          args: install --unsafe-perm
-      - name: Master
-        uses: actions/bin/filter@master
-        with:
-          args: branch main
-      - name: compile
-        run: tsc
+          node-version: '16.x'
+      - uses: Jaid/action-npm-install@v1.2.4
+      - run: tsc
+
       - name: Vscode release plugin
         uses: JCofman/vscodeaction@master
         env:
