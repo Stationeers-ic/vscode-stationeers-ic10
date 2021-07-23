@@ -4,7 +4,7 @@ name: Testing icx
 on:
   push:
     branches:
-    - main
+    - master
 jobs:
   my_job:
     name: deploy to staging
