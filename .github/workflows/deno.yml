@@ -10,12 +10,15 @@ jobs:
     name: deploy to staging
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: setup
+        uses: actions/checkout@v2
+      - name: setup2
+        uses: actions/setup-node@v1
         with:
           node-version: '16.x'
-      - uses: Jaid/action-npm-install@v1.2.4
-      - name: npm install
+      - name: setup3
+        uses: Jaid/action-npm-install@v1.2.4
+      - name: setup4
         uses: actions/npm@master
         with:
           args: install --unsafe-perm
