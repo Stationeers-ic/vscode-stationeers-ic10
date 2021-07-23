@@ -20,7 +20,7 @@ jobs:
         with:
           args: install --unsafe-perm
       - name: compile
-      - run: tsc
+        run: tsc
       
       - name: Vscode release plugin
         uses: JCofman/vscodeaction@v2.0.1
