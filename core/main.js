@@ -29,11 +29,12 @@ const ic10_vscode_1 = require("./ic10-vscode");
 const ic10_1 = require("ic10");
 const path_1 = __importDefault(require("path"));
 const ic10_formatter_1 = require("./ic10.formatter");
-const icx_SemanticProvider_1 = require("./icx.SemanticProvider");
+const icX_SemanticProvider_1 = require("./icX.SemanticProvider");
 const sidebarView_1 = require("./sidebarView");
 const ic10_diagnostics_1 = require("./ic10.diagnostics");
 const icx_compiler_1 = require("icx-compiler");
 const icX_diagnostics_1 = require("./icX.diagnostics");
+const icX_formatter_1 = require("./icX.formatter");
 const LOCALE_KEY = vscode.env.language;
 const ic10 = new ic10_vscode_1.Ic10Vscode();
 exports.LANG_KEY = 'ic10';
@@ -99,16 +100,34 @@ function formatter(ctx) {
             const range = new vscode.Range(0, firstLine.range.start.character, document.lineCount - 1, lastLine.range.end.character);
             return vscode.TextEdit.replace(range, newText);
         }
-        vscode.languages.registerDocumentFormattingEditProvider(exports.LANG_KEY, {
-            provideDocumentFormattingEdits(document) {
-                try {
-                    const formatter = new ic10_formatter_1.ic10Formatter(document);
-                    return [replaceTextInDocument(formatter.resultText, document)];
+        try {
+            vscode.languages.registerDocumentFormattingEditProvider(exports.LANG_KEY, {
+                provideDocumentFormattingEdits(document) {
+                    try {
+                        const formatter = new ic10_formatter_1.ic10Formatter(document);
+                        return [replaceTextInDocument(formatter.resultText, document)];
+                    }
+                    catch (e) {
+                    }
                 }
-                catch (e) {
+            });
+        }
+        catch (e) {
+        }
+        try {
+            vscode.languages.registerDocumentFormattingEditProvider(exports.LANG_KEY2, {
+                provideDocumentFormattingEdits(document) {
+                    try {
+                        const formatter = new icX_formatter_1.icXFormatter(document, exports.icxOptions);
+                        return [replaceTextInDocument(formatter.resultText, document)];
+                    }
+                    catch (e) {
+                    }
                 }
-            }
-        });
+            });
+        }
+        catch (e) {
+        }
     }
     catch (e) {
     }
@@ -220,8 +239,8 @@ function command(ctx) {
 }
 function semantic(ctx) {
     try {
-        ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: exports.LANG_KEY, scheme: 'file' }, new icx_SemanticProvider_1.IcxSemanticTokensProvider, icx_SemanticProvider_1.legend));
-        ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: exports.LANG_KEY2, scheme: 'file' }, new icx_SemanticProvider_1.IcxSemanticTokensProvider, icx_SemanticProvider_1.legend));
+        ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: exports.LANG_KEY, scheme: 'file' }, new icX_SemanticProvider_1.IcxSemanticTokensProvider, icX_SemanticProvider_1.legend));
+        ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: exports.LANG_KEY2, scheme: 'file' }, new icX_SemanticProvider_1.IcxSemanticTokensProvider, icX_SemanticProvider_1.legend));
     }
     catch (e) {
     }

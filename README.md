@@ -342,10 +342,10 @@ Use _use comments_ to transfer your comments to ic10 code
 ### Additional examples of icX code
 
 ```
-#alias SolarSensor d0
-#alias SolarPanel d1
-#alias LedVertical d2
-#alias LedHorizontal d3
+alias SolarSensor d0
+alias SolarPanel d1
+alias LedVertical d2
+alias LedHorizontal d3
 var SOLAR_HASH = d1.PrefabHash
 
 var verical = 180

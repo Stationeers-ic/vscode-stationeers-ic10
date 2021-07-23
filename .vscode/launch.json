@@ -7,7 +7,7 @@
             "request": "launch",	
             "args": [	
                 "--extensionDevelopmentPath=${workspaceFolder}",
-                "C:\\OpenServer\\domains\\icX\\tests"
+                "..\\icX\\tests"
             ]	
         }	
     ]	

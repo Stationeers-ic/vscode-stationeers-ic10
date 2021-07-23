@@ -107,4 +107,4 @@ class IcxSemanticTokensProvider {
     }
 }
 exports.IcxSemanticTokensProvider = IcxSemanticTokensProvider;
-//# sourceMappingURL=icx.SemanticProvider.js.map
+//# sourceMappingURL=icX.SemanticProvider.js.map
