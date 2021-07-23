@@ -18,10 +18,6 @@ jobs:
           node-version: '16.x'
       - name: setup3
         uses: Jaid/action-npm-install@v1.2.4
-      - name: setup4
-        uses: actions/npm@master
-        with:
-          args: install --unsafe-perm
       - name: compile
         run: tsc
       
