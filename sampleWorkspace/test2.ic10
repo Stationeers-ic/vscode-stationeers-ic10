@@ -1,3 +1,0 @@
-loop:
-	s db Setting -99999
-j loop

@@ -7,7 +7,7 @@
             "request": "launch",	
             "args": [	
                 "--extensionDevelopmentPath=${workspaceFolder}",
-                "..\\icX\\tests"
+                "${workspaceFolder}/sampleWorkspace"
             ]	
         }	
     ]	
