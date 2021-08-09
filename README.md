@@ -46,13 +46,14 @@ Debugger launch
 - Debugger
 
 ## News
+- **Rework Stack**
 - new snippets
 - new description for variable
 - Write value in debugger 
 - translate to english
-- **Debugger**
-- **Formatter**
-- **Semantic code analize**
+- Debugger
+- Formatter
+- Semantic code analize
 - counter left lines
 
 counter left lines
@@ -283,6 +284,42 @@ end
  example:
  move r0 1
  j ra
+```
+### Stack
+
+To easily write in stack, use the _stack_ keyword
+```
+---icX
+   stack 342423 432423 54534 6567
+---ic10
+   push 342423
+   push 432423
+   push 54534
+   push 6567
+```
+
+For each stack
+```
+---icX
+   var YourVariabele = 0
+   foreach YourVariabele
+    if a == 6567
+       var b = 5
+    end
+   end
+---ic10
+   move sp 0 # reset counter
+   while0:
+      peek r0 # get value to YourVariabele
+      #------- block code ---------
+      seq r15 r0 6567
+      beqz r15 if0exit
+      move r1 5
+      if0exit:
+      #------- block code ---------
+      breqz r0 2 # end of cycle
+      add sp sp 1 # increment counter
+   j while0
 ```
 
 ### Use
