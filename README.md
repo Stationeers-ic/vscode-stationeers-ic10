@@ -46,6 +46,7 @@ Debugger launch
 - Debugger
 
 ## News
+- **add icX Formatter**
 - **Rework Stack**
 - new snippets
 - new description for variable
