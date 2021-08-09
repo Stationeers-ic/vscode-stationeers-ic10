@@ -39,7 +39,7 @@ var IC10Data = {
 		if(op4) {
 			op4 = op4.trim() ?? null
 		}
-		
+
 		if(!(IC10Data['Languages'][lang] instanceof Object)) {
 			IC10Data['Languages'][lang] = {}
 		}
@@ -57,24 +57,7 @@ var IC10Data = {
 				'text': text,
 			}
 		}
-		try {
-			if(!(IC10Data['Languages']['en'] instanceof Object)) {
-				IC10Data['Languages']['en'] = {}
-			}
-			IC10Data['Languages']['en'][name] = {
-				type: type,
-				op1: op1 ? op1 : null,
-				op2: op2 ? op2 : null,
-				op3: op3 ? op3 : null,
-				op4: op4 ? op4 : null,
-				description: {
-					'preview': preview,
-					'text': translate(text),
-				}
-			}
-		} catch(e) {
-		
-		}
+
 		return this
 	}
 }
@@ -197,7 +180,8 @@ IC10Data
 	.__add('ru', 'lb'    , 'Function', 'op1 := op2.op3.mode(op4)'                                                              , 'Пакетное чтение в op1 из всех устройств с хешем op2 параметра op3 в режиме op4'                                                      , 'R/N'     , 'H'      , 'P'       , 'BM')
 	.__add('ru', 'sb'    , 'Function', 'op1.op2 := op3'                                                                        , 'Пакетная запись во все устройства с хешем op1 в параметр op2 значения op3'                                                           , 'H'       , 'P'      , 'R/N/C'   , null)
 	.__add('ru', 'ls'    , 'Function', 'op1 := op2.slot(op3).op4'                                                              , 'Чтение значения op4 из слота op3 порта op2'                                                                                          , 'R/N'     , 'D/N'    , 'R/N/S'   , 'P')
-	
+	.__add('ru', 'stack' , 'Function', 'stack 1 2 3 ...'                                                                       , 'Заполняет стак значиниями аргументов'                                                                                                , 'R/N/C'   , 'R/N/C'  , 'R/N/C'   , 'R/N/C')
+
 	.__add('ru', 'Activate'           , 'Device parameter', 'Trigger'       , '-1 - остановить , 0 - не работает 1 - работает')
 	.__add('ru', 'Charge'             , 'Device parameter', 'Float'         , 'Заряд батареи или аккумулятора, Дж. Уровень генерации электричества солнечной панелью, Вт.')
 	.__add('ru', 'Class'              , 'Device parameter', null            , 'класс объекта в слоте')
@@ -259,7 +243,7 @@ IC10Data
 	.__add('ru', 'VelocityRelativeZ'  , 'Device parameter', 'Float'         , 'скорость движения по координате Z')
 	.__add('ru', 'Vertical'           , 'Device parameter', 'Float'         , 'угол по отношению к Солнцу в градусах')
 	.__add('ru', 'Volume'             , 'Device parameter', 'Float'         , 'Громкость')
-	
+
 	.__add('ru', 'Charge'       , 'Slot parameter', 'Float'     , 'Заряд аккумулятора в слоте, Дж.')
 	.__add('ru', 'ChargeRatio'  , 'Slot parameter', 'Float[0-1]', 'Уровень заряда аккумулятора в слоте.')
 	.__add('ru', 'Class'        , 'Slot parameter', 'Int'       , `0 - всё                                                                                                                   , что не относится к остальным классам;<br>     1 - шлемы;<br>     2 - скафандры и броня;<br>     3 - джетпаки и рюкзаки;<br>     4 - газовые фильтры;<br>     5 - газовые баллоны;<br>     6 - материнские платы;<br>     7 - печатные платы;<br>     8 - диск данных;<br>     9 - органы (мозг, лёгкие);<br>   10 - руды;<br>   11 - растения;<br>   12 - униформа;<br>   13 - существа (в том числе и персонажи);<br>   14 - аккумуляторы;<br>   14 - яйца;<br>   15 - пояса;<br>   16 - инструменты;<br>   17 - настольное оборудование (микроволновка, смеситель красок и т.п.);<br>   18 - слитки;<br>   19 - торпеды;<br>   20 - картриджи;<br>   21 - карты доступа, <br>   22 - магазины к оружию;<br>   23 - логические чипы;<br>   24 - бутылки (молоко, соевое масло);<br>   25 - микропроцессоры;<br>   26 - очки.`)
@@ -272,7 +256,7 @@ IC10Data
 	.__add('ru', 'Occupied'     , 'Slot parameter', 'Bool'      , '0 - слот свободен, 1 - занят')
 	.__add('ru', 'PressureAir'  , 'Slot parameter', 'Float'     , 'Давление в баллоне с дыхательной смесью скафандра, установленного в стойку, кПа.')
 	.__add('ru', 'PressureWaste', 'Slot parameter', 'Float'     , 'Давление в баллоне с отработанной смесью скафандра, установленного в стойку, кПа.')
-	
+
 	.__add('ru', 'PrefabHash'               , 'Parameter', 'Hash'     , 'хэш Prefab объекта')
 	.__add('ru', 'Pressure'                 , 'Parameter', 'Float'    , 'давление, кПа')
 	.__add('ru', 'Quantity'                 , 'Parameter', 'Float/Int', 'масса / количество предметов')
@@ -299,10 +283,10 @@ IC10Data
 	.__add('ru', 'RequestHash'              , 'Parameter', 'Float'    , null)
 	.__add('ru', 'VerticalRatio'            , 'Parameter', 'Float'    , null)
 
-	.__add('ru', 'Average','Const', 'string', null)
-	.__add('ru', 'Sum','Const', 'string', null)
-	.__add('ru', 'Minimum','Const', 'string', null)
-	.__add('ru', 'Maximum','Const', 'string', null)
+	.__add('ru', 'Average', 'Const', 'string', null)
+	.__add('ru', 'Sum'    , 'Const', 'string', null)
+	.__add('ru', 'Minimum', 'Const', 'string', null)
+	.__add('ru', 'Maximum', 'Const', 'string', null)
 
 gulp.task('generate-langs', function() {
 	// console.log('generating')

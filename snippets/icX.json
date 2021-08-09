@@ -1446,5 +1446,14 @@
       "end"
     ],
     "description": "switch"
+  },
+  "switch": {
+    "prefix": "foreach",
+    "body": [
+      "foreach $1",
+      "$2",
+      "end"
+    ],
+    "description": "foreach"
   }
 }
