@@ -1,8 +1,29 @@
-var a = 0
-stack 342423 432423 54534 6567 
-foreach a
- if a == 6567
-	var b = 5
- end
+alias SolarSensor d0
+alias SolarPanel d1
+alias LedVertical d2
+alias LedHorizontal d3
+var SOLAR_HASH = d1.PrefabHash
+
+var verical = 180
+var horizontal = 180
+
+main1:
+	updateLED()
+	setSolarPanels()
+	yield
+j main1
+
+function setSolarPanels
+	d(SOLAR_HASH).Vertical = verical
+	d(SOLAR_HASH).Horizontal = horizontal
 end
 
+function updateLED
+	d2.Setting = verical
+	d3.Setting = horizontal
+	main:
+		updateLED()
+		setSolarPanels()
+		yield
+	j main
+end

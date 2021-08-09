@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
-import {icxOptions} from "./main";
+import {icX} from "icx-compiler";
+import {icXBlock, icXElem} from "icx-compiler/src/classes";
 
 const regexes = {
 	'rr1': new RegExp("[rd]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
@@ -36,31 +37,21 @@ export class icXFormatter {
 		loop: boolean
 		constants: boolean
 	}
+	private icX: icX;
 
 	constructor(document: vscode.TextDocument, icxOptions) {
 		this.document = document;
 		this.icxOptions = icxOptions;
 		this.text = document.getText();
-		this.resultText = this.text + '';
-		this.labels = {};
-		this.functions = {};
-		this.loops = {};
-		this.spaces = [];
-		this.vars = new Set;
-		this.jumps = {
-			j: {
-				ra: []
-			},
-			jal: {},
-		};
 
+		this.resultText = ''
 		this.text = this.text.replace(regexes.oldSpace, '')
-		this.text = this.text.replace(regexes.rm, '')
-		this.init(this.text)
-		this.formatStart()
+		this.lines = this.text.split(/\r?\n/);
+		this.icX = new icX(this.text, icxOptions)
+		this.init()
 	}
 
-	init(text: string) {
+	init() {
 		this.labels = {};
 		this.functions = {};
 		this.loops = {};
@@ -75,7 +66,6 @@ export class icXFormatter {
 
 		var self = this
 
-		this.lines = text.split(/\r?\n/);
 		var commands = this.lines
 			.map((line: string) => {
 				let m = regexes.rr.exec(line);
@@ -142,103 +132,43 @@ export class icXFormatter {
 			}
 		}
 		this.position = 0
-		return this
+		this.findLoos()
+		this.renderSpaces()
+		this.recursiveSpace(this.icX.structure.content)
+		this.resultText = this.lines.join('\n');
 	}
 
-	formatStart() {
-		this.init(this.text)
-		var maxIterations = 1
-		for (var o = 0; o < maxIterations; o++) {
-			var lineCount = this.lines.length
-			for (var i = 0; i < lineCount; i++) {
-				let line = this.lines[i]
-				if (i == 0) {
-					if ((/^\s{0,}$/.test(line) || !line)) {
-						this.lines.splice(0, 1)
-						maxIterations++;
-						break;
-					}
-				}
-				if (i + 1 <= lineCount) {
-					let nextLine = this.lines[i + 1]
-					if ((/^\s{0,}$/.test(nextLine) || !nextLine) && (/^\s{0,}$/.test(line) || !line)) {
-						this.lines.splice(i, 1)
-						maxIterations++;
-						break;
-					}
-				}
-				if (i > 1) {
-					let prevLine = this.lines[i - 1]
-				}
+	addSpace(text, count) {
+		return '\t'.repeat(count) + text;
+	}
 
-
+	recursiveSpace(content, level = 0) {
+		for (const contentKey in content) {
+			if (content.hasOwnProperty(contentKey)) {
+				var c = content[contentKey]
+				if (c instanceof icXBlock) {
+					for (let i = c.originalPosition + 1; i <= c.end; i++) {
+						this.lines[i] = this.addSpace(this.lines[i], level + 1);
+					}
+					this.recursiveSpace(c.content, level)
+				} else if (c instanceof icXElem) {
+					this.lines[c.originalPosition] = this.addSpace(this.lines[c.originalPosition], level);
+				}
 			}
 		}
-		var new_txt = this.lines.join("\n")
-		this.init(new_txt)
-		this.findFunctions()
-		this.findLoos()
-
-		this.renderSpaces()
-		this.resultText = this.lines.join("\n")
 	}
 
 	renderSpaces() {
-		this.spaces = []
-		this.lines.forEach((val, i, arr) => {
-			this.spaces.push(0)
-		})
-		for (const functionsKey in this.functions) {
-			var fn = this.functions[functionsKey]
-			let start = fn.start
-			let end = fn.end - 2
-			this.spaces.forEach(function (value, i, arr) {
-				if (i >= start && i <= end) {
-					arr[i] = value + 1
-				}
-			})
-		}
 		for (const loopsKey in this.loops) {
 			var fn = this.loops[loopsKey]
 			let start = fn.start
 			let end = fn.end - 2
-			this.spaces.forEach(function (value, i, arr) {
-				if (i >= start && i <= end) {
-					arr[i] = value + 1
-				}
-			})
-		}
-		this.lines.forEach((val, i, arr) => {
-			arr[i] = val.padStart(this.spaces[i] + val.trim().length, "\t")
-		})
-	}
-
-	findFunctions() {
-		for (const labelsKey in this.labels) {
-			try {
-				let position = this.labels[labelsKey]
-				if (this.jumps.jal.hasOwnProperty(labelsKey)) {
-					this.jumps.j.ra.sort((a, b) => {
-						return b - a
-					})
-					var j_pos = 0
-					this.jumps.j.ra.forEach((v) => {
-						if (v > position) {
-							j_pos = v
-							return true
-						}
-					})
-					this.functions[labelsKey] = {
-						start: position,
-						end: j_pos,
-						calls: this.jumps.jal[labelsKey]
-					}
-				}
-			} catch (e) {
-				// console.warn(e)
+			for (let i = start; i <= end; i++) {
+				this.lines[i] = this.addSpace(this.lines[i], 1);
 			}
 		}
 	}
+
 
 	findLoos() {
 		for (const labelsKey in this.labels) {

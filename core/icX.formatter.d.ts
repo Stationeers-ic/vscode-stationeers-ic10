@@ -13,10 +13,11 @@ export declare class icXFormatter {
     private spaces;
     private loops;
     private icxOptions;
+    private icX;
     constructor(document: vscode.TextDocument, icxOptions: any);
-    init(text: string): this;
-    formatStart(): void;
+    init(): void;
+    addSpace(text: any, count: any): string;
+    recursiveSpace(content: any, level?: number): void;
     renderSpaces(): void;
-    findFunctions(): void;
     findLoos(): void;
 }
