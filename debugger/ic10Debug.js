@@ -546,7 +546,7 @@ class VariableMap {
                     this.var2variable(_name, val, id);
                 }
                 else {
-                    this.var2variable(_name, val, id);
+                    this.var2variable(_name, this.ic10.memory.cells[cellsKey], id);
                 }
             }
             catch (e) {
@@ -595,7 +595,13 @@ class VariableMap {
         if (value === null) {
             value = 0;
         }
-        switch (value.constructor.name) {
+        var type = value.constructor.name;
+        if (name == 'r16') {
+            type = 'Array';
+            value = value.value;
+            var index = value.get();
+        }
+        switch (type) {
             case "String":
                 this.map[id][name] = {
                     name: name,

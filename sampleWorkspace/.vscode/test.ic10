@@ -1,3 +1,7 @@
-move sp 1
-add sp sp 1
-move r1 sp
+push 432
+push 657
+push 878
+move sp 0
+push 4320
+push 6570
+push 8780
