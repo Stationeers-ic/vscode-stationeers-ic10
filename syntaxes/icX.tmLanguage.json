@@ -46,7 +46,7 @@
           "name": "keyword.other.icX"
         },
         {
-          "match": "\\b(if|while|else|end|switch|case|break)\\b",
+          "match": "\\b(if|while|else|end|switch|case|break|foreach|each|for)\\b",
           "name": "keyword.control.icX"
         },
         {
@@ -163,7 +163,7 @@
         },
         {
           "name": "entity.name.function.icX",
-          "match": "\\b(debug)\\b"
+          "match": "\\b(debug|stack)\\b"
         }
       ]
     },

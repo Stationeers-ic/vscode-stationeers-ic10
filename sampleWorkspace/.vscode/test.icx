@@ -1,0 +1,8 @@
+var a = 0
+stack 342423 432423 54534 6567 
+foreach a
+ if a == 6567
+	var b = 5
+ end
+end
+

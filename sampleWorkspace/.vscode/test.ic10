@@ -5,13 +5,11 @@ push 54534
 push 6567
 move sp 0
 while0:
-	peek r0
-	seq r15 r0 6567
-	beqz r15 if0exit
-	move r1 5
-	if0exit:
-	breqz r0 2
-	add sp sp 1
+peek r0
+seq r15 r0 6567
+beqz r15 if0exit
+move r1 5
+if0exit:
+breqz r0 2
+add sp sp 1
 j while0
-yield
-yield
