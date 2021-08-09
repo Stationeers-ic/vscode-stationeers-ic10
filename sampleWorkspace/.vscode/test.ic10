@@ -1,22 +1,8 @@
-l r0 d1 PrefabHash
-move r1 180
-move r2 180
-main1:
-jal updateLED
-jal setSolarPanels
-yield
-j main1
-jr 17
-setSolarPanels:
-sb r0 Vertical r1
-sb r0 Horizontal r2
-j ra
-updateLED:
-s d2 Setting r1
-s d3 Setting r2
-main:
-jal updateLED
-jal setSolarPanels
-yield
-j main
-j ra
+start:
+	move r0 0
+	breq r0 0 2 #This jump go too far
+	move r0 1
+	move r0 2 # Must jump here
+	move r0 3 # Not here
+	breq r0 3 -2 #This jump is OK
+j start
