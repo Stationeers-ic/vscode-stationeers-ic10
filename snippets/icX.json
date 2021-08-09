@@ -1447,7 +1447,7 @@
     ],
     "description": "switch"
   },
-  "switch": {
+  "foreach": {
     "prefix": "foreach",
     "body": [
       "foreach $1",
