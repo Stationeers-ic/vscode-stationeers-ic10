@@ -1,7 +1,7 @@
 import { Handles, LoggingDebugSession } from 'vscode-debugadapter';
 import { DebugProtocol } from 'vscode-debugprotocol';
 import { FileAccessor } from './ic10Runtime';
-import { InterpreterIc10 } from "ic10";
+import { InterpreterIc10, MemoryStack } from "ic10";
 interface ILaunchRequestArguments extends DebugProtocol.LaunchRequestArguments {
     program: string;
     stopOnEntry?: boolean;
@@ -60,6 +60,6 @@ declare class VariableMap {
     constructor(scope: ic10DebugSession, ic10: InterpreterIc10);
     init(id: string): void;
     get(id: any): any;
-    var2variable(name: any, value: any, id: any, mc?: any): any;
+    var2variable(name: any, value: any | MemoryStack, id: any, mc?: any): any;
 }
 export {};

@@ -542,15 +542,14 @@ class VariableMap {
                 else {
                     _name = name;
                 }
-                if (cellsKey != '16') {
-                    this.var2variable(_name, val, id);
-                }
-                else {
-                    this.var2variable(_name, this.ic10.memory.cells[cellsKey], id);
-                }
+                this.var2variable(_name, val, id);
             }
             catch (e) {
             }
+        }
+        var stack = this.ic10.memory.cells[16];
+        if (stack instanceof ic10_1.MemoryStack) {
+            this.var2variable('Stack', stack.getStack(), id);
         }
         for (var environKey in this.ic10.memory.environ) {
             if (this.ic10.memory.environ.hasOwnProperty(environKey)) {
@@ -596,11 +595,6 @@ class VariableMap {
             value = 0;
         }
         var type = value.constructor.name;
-        if (name == 'r16') {
-            type = 'Array';
-            value = value.value;
-            var index = value.get();
-        }
         switch (type) {
             case "String":
                 this.map[id][name] = {
@@ -631,7 +625,14 @@ class VariableMap {
                     };
                     for (const valueKey in value) {
                         if (value.hasOwnProperty(valueKey)) {
-                            this.var2variable(valueKey, value[valueKey], name, mc);
+                            var index = `[${valueKey}]`;
+                            var stack = this.ic10.memory.cells[16];
+                            if (stack instanceof ic10_1.MemoryStack) {
+                                if (parseInt(valueKey) == parseInt(String(stack.get()))) {
+                                    index = `(${valueKey})`;
+                                }
+                            }
+                            this.var2variable(index, value[valueKey], name, mc);
                         }
                     }
                 }

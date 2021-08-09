@@ -5,3 +5,5 @@ move sp 0
 push 4320
 push 6570
 push 8780
+yield
+yield
