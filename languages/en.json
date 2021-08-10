@@ -2344,10 +2344,10 @@
   },
   "foreach": {
     "type": "Function",
-    "op1": "R/N/C",
-    "op2": "R/N/C",
-    "op3": "R/N/C",
-    "op4": "R/N/C",
+    "op1": "R",
+    "op2": null,
+    "op3": null,
+    "op4": null,
     "description": {
       "preview": "foreach a\n ... \nend",
       "text": "for each stack"
