@@ -32,17 +32,17 @@ const runMode = 'inline';
 function activate(context) {
     switch (runMode) {
         case 'server':
-            activateic10Debug_1.activateic10Debug(context, new ic10DebugAdapterServerDescriptorFactory());
+            (0, activateic10Debug_1.activateic10Debug)(context, new ic10DebugAdapterServerDescriptorFactory());
             break;
         case 'namedPipeServer':
-            activateic10Debug_1.activateic10Debug(context, new ic10DebugAdapterNamedPipeServerDescriptorFactory());
+            (0, activateic10Debug_1.activateic10Debug)(context, new ic10DebugAdapterNamedPipeServerDescriptorFactory());
             break;
         case 'external':
         default:
-            activateic10Debug_1.activateic10Debug(context, new DebugAdapterExecutableFactory());
+            (0, activateic10Debug_1.activateic10Debug)(context, new DebugAdapterExecutableFactory());
             break;
         case 'inline':
-            activateic10Debug_1.activateic10Debug(context);
+            (0, activateic10Debug_1.activateic10Debug)(context);
             break;
     }
 }
@@ -89,8 +89,8 @@ class ic10DebugAdapterNamedPipeServerDescriptorFactory {
     server;
     createDebugAdapterDescriptor(session, executable) {
         if (!this.server) {
-            const pipeName = crypto_1.randomBytes(10).toString('utf8');
-            const pipePath = process_1.platform === "win32" ? path_1.join('\\\\.\\pipe\\', pipeName) : path_1.join(os_1.tmpdir(), pipeName);
+            const pipeName = (0, crypto_1.randomBytes)(10).toString('utf8');
+            const pipePath = process_1.platform === "win32" ? (0, path_1.join)('\\\\.\\pipe\\', pipeName) : (0, path_1.join)((0, os_1.tmpdir)(), pipeName);
             this.server = Net.createServer(socket => {
                 const session = new ic10Debug_1.ic10DebugSession(activateic10Debug_1.workspaceFileAccessor);
                 session.setRunAsServer(true);

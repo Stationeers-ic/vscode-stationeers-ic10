@@ -25,7 +25,7 @@ const Net = __importStar(require("net"));
 const fsAccessor = {
     async readFile(path) {
         return new Promise((resolve, reject) => {
-            fs_1.readFile(path, (err, data) => {
+            (0, fs_1.readFile)(path, (err, data) => {
                 if (err) {
                     reject(err);
                 }
