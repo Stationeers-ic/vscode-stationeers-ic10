@@ -1536,7 +1536,7 @@
     "op4": null,
     "description": {
       "preview": "Bool",
-      "text": "0 - disabled 1 - disabled"
+      "text": "0 - disabled 1 - enabled"
     }
   },
   "Open": {

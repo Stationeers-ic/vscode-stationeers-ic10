@@ -1547,7 +1547,7 @@
     "op4": null,
     "description": {
       "preview": "Bool",
-      "text": "0 - выключен 1 - выключен"
+      "text": "0 - выключен 1 - включен"
     }
   },
   "Open": {
