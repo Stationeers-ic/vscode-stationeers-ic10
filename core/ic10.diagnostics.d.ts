@@ -32,6 +32,7 @@ export declare class Ic10Diagnostics {
     clear(doc: vscode.TextDocument, container: vscode.DiagnosticCollection): void;
     prepare(doc: vscode.TextDocument): void;
     run(doc: vscode.TextDocument, container: vscode.DiagnosticCollection): void;
+    parseLine2(doc: vscode.TextDocument, lineIndex: any): void;
     parseLine(doc: vscode.TextDocument, lineIndex: any): void;
     analyzeFunctionInputs(words: string[], text: string, lineIndex: number): errorMsg | true;
     parseOpRule(op: any, value: any, start: any, text: any, lineIndex: any): boolean;

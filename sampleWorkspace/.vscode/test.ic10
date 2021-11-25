@@ -1,8 +1,6 @@
+
 start:
-	move r0 0
-	breq r0 0 2 #This jump go too far
-	move r0 1
-	move r0 2 # Must jump here
-	move r0 3 # Not here
-	breq r0 3 -2 #This jump is OK
+	move r0 end
 j start
+
+end:

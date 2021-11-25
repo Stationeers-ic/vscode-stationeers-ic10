@@ -86,6 +86,14 @@ class Ic10Diagnostics {
                 console.warn(e);
             }
         }
+        for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
+            try {
+                this.parseLine2(doc, lineIndex);
+            }
+            catch (e) {
+                console.warn(e);
+            }
+        }
     }
     run(doc, container) {
         const diagnostics = [];
@@ -97,6 +105,34 @@ class Ic10Diagnostics {
             diagnostics.push(this.createDiagnostic(new vscode.Range(128, 0, 128, 1), 'Max line', vscode.DiagnosticSeverity.Error));
         }
         container.set(doc.uri, diagnostics);
+    }
+    parseLine2(doc, lineIndex) {
+        const lineOfText = doc.lineAt(lineIndex);
+        if (lineOfText.text.trim().length > 0) {
+            var text = lineOfText.text.trim();
+            functions.some((substring) => {
+                if (text.startsWith('#')) {
+                    if (text.startsWith('#log')) {
+                        this.errors.push(new DiagnosticsError(`Debug function: "${text}"`, 2, 0, text.length, lineIndex));
+                        return true;
+                    }
+                    return true;
+                }
+                text = text.replace(/#.+$/, '');
+                text = text.trim();
+                if (text.endsWith(':')) {
+                    return true;
+                }
+                if (text.startsWith(substring)) {
+                    var words = text.split(/ +/);
+                    this.analyzeFunctionInputs(words, text, lineIndex);
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }, this);
+        }
     }
     parseLine(doc, lineIndex) {
         const lineOfText = doc.lineAt(lineIndex);
@@ -114,6 +150,7 @@ class Ic10Diagnostics {
                 text = text.trim();
                 if (text.endsWith(':')) {
                     this.jumps.push(text);
+                    this.aliases.push(text.replace(':', ''));
                     return true;
                 }
                 if (text.startsWith(substring)) {
@@ -124,12 +161,9 @@ class Ic10Diagnostics {
                     if (text.startsWith('define')) {
                         this.aliases.push(words[1]);
                     }
-                    this.analyzeFunctionInputs(words, text, lineIndex);
                     return true;
                 }
-                else {
-                    return false;
-                }
+                return false;
             }, this);
             this.aliases = [...new Set(this.aliases)];
             if (test === false) {
