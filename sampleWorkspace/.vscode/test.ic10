@@ -1,6 +1,6 @@
 
 start:
-	move r0 end
+	brdns d1 3
 j start
 
 end:
