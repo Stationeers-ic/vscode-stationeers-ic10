@@ -1,29 +1,12 @@
-alias SolarSensor d0
-alias SolarPanel d1
-alias LedVertical d2
-alias LedHorizontal d3
-var SOLAR_HASH = d1.PrefabHash
-
-var verical = 180
-var horizontal = 180
-
-main1:
-	updateLED()
-	setSolarPanels()
-	yield
-j main1
-
-function setSolarPanels
-	d(SOLAR_HASH).Vertical = verical
-	d(SOLAR_HASH).Horizontal = horizontal
-end
-
-function updateLED
-	d2.Setting = verical
-	d3.Setting = horizontal
-	main:
-		updateLED()
-		setSolarPanels()
-		yield
-	j main
-end
+use comments
+var test = 0
+test++
+test++
+test++
+test++
+test++
+test++
+test++
+test++
+test++
+#log test

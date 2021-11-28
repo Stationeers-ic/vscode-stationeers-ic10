@@ -1,26 +1,7 @@
 /*---------------------------------------------------------
  * Copyright (C) Microsoft Corporation. All rights reserved.
  *--------------------------------------------------------*/
-import {
-	Breakpoint,
-	BreakpointEvent,
-	Handles,
-	InitializedEvent,
-	InvalidatedEvent,
-	Logger,
-	logger,
-	LoggingDebugSession,
-	OutputEvent,
-	ProgressEndEvent,
-	ProgressStartEvent,
-	ProgressUpdateEvent,
-	Scope,
-	Source,
-	StackFrame,
-	StoppedEvent,
-	TerminatedEvent,
-	Thread
-} from 'vscode-debugadapter';
+import {Breakpoint, BreakpointEvent, Handles, InitializedEvent, InvalidatedEvent, Logger, logger, LoggingDebugSession, OutputEvent, ProgressEndEvent, ProgressStartEvent, ProgressUpdateEvent, Scope, Source, StackFrame, StoppedEvent, TerminatedEvent, Thread} from 'vscode-debugadapter';
 import {DebugProtocol} from 'vscode-debugprotocol';
 import {basename} from 'path';
 import {FileAccessor, ic10Runtime, Iic10Breakpoint} from './ic10Runtime';
@@ -86,11 +67,9 @@ export class ic10DebugSession extends LoggingDebugSession {
 		this.ic10.setSettings({
 			debugCallback: function (a, b) {
 				this.output.debug = a + ' ' + JSON.stringify(b)
-
 			},
-			logCallback: function (a, b) {
-				this.output.log = a + ' ' + b
-
+			logCallback: function (a, b: Array<string>) {
+				this.output.log = a + ' ' + b.join('')
 			},
 			executionCallback: function (e: ic10Error) {
 				// this.output.error = `[${e.functionName}:${e.line}] (${e.code}) - ${e.message}:`

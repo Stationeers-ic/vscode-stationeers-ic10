@@ -181,7 +181,7 @@ class ic10Runtime extends events_1.EventEmitter {
             if (this.ic10?.output?.debug && this.ic10.ignoreLine.indexOf(ln) < 0) {
                 this.sendEvent('output', '[debug]: ' + this.ic10.output.debug, this._sourceFile, ln - 1);
             }
-            if (this.ic10?.output?.log && this.ic10.ignoreLine.indexOf(ln) < 0) {
+            if (this.ic10?.output?.log) {
                 this.sendEvent('output', this.ic10.output.log, this._sourceFile, ln - 1);
             }
             if (this.ic10?.output?.error && this.ic10.ignoreLine.indexOf(ln) < 0) {
