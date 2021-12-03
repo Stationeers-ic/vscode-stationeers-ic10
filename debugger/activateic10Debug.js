@@ -25,7 +25,7 @@ const ic10Debug_1 = require("./ic10Debug");
 function activateic10Debug(context, factory) {
     context.subscriptions.push(vscode.commands.registerCommand('extension.ic10-debug.getProgramName', config => {
         return vscode.window.showInputBox({
-            placeHolder: "Please enter the name of a markdown file in the workspace folder",
+            placeHolder: "Please enter the name of a ic10 file in the workspace folder",
             value: "readme.md"
         });
     }));
@@ -62,13 +62,13 @@ function activateic10Debug(context, factory) {
     if ('dispose' in factory) {
         context.subscriptions.push(factory);
     }
-    context.subscriptions.push(vscode.languages.registerEvaluatableExpressionProvider('markdown', {
+    context.subscriptions.push(vscode.languages.registerEvaluatableExpressionProvider('ic10', {
         provideEvaluatableExpression(document, position) {
             const wordRange = document.getWordRangeAtPosition(position);
             return wordRange ? new vscode.EvaluatableExpression(wordRange) : undefined;
         }
     }));
-    context.subscriptions.push(vscode.languages.registerInlineValuesProvider('markdown', {
+    context.subscriptions.push(vscode.languages.registerInlineValuesProvider('ic10', {
         provideInlineValues(document, viewport, context) {
             const allValues = [];
             for (let l = viewport.start.line; l <= context.stoppedLocation.end.line; l++) {
@@ -92,7 +92,8 @@ class ic10ConfigurationProvider {
     resolveDebugConfiguration(folder, config, token) {
         if (!config.type && !config.request && !config.name) {
             const editor = vscode.window.activeTextEditor;
-            if (editor && editor.document.languageId === 'markdown') {
+            if (editor && editor.document.languageId === 'ic10') {
+                console.log(editor.document.languageId);
                 config.type = 'ic10';
                 config.name = 'Launch';
                 config.request = 'launch';

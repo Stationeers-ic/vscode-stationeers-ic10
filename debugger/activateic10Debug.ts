@@ -13,7 +13,7 @@ export function activateic10Debug(context: vscode.ExtensionContext, factory?: vs
 	
 	context.subscriptions.push(vscode.commands.registerCommand('extension.ic10-debug.getProgramName', config => {
 		return vscode.window.showInputBox({
-			placeHolder: "Please enter the name of a markdown file in the workspace folder",
+			placeHolder: "Please enter the name of a ic10 file in the workspace folder",
 			value: "readme.md"
 		});
 	}));
@@ -58,7 +58,7 @@ export function activateic10Debug(context: vscode.ExtensionContext, factory?: vs
 	}
 
 	// override VS Code's default implementation of the debug hover
-	context.subscriptions.push(vscode.languages.registerEvaluatableExpressionProvider('markdown', {
+	context.subscriptions.push(vscode.languages.registerEvaluatableExpressionProvider('ic10', {
 		provideEvaluatableExpression(document: vscode.TextDocument, position: vscode.Position): vscode.ProviderResult<vscode.EvaluatableExpression> {
 			const wordRange = document.getWordRangeAtPosition(position);
 			return wordRange ? new vscode.EvaluatableExpression(wordRange) : undefined;
@@ -66,7 +66,7 @@ export function activateic10Debug(context: vscode.ExtensionContext, factory?: vs
 	}));
 
 	// override VS Code's default implementation of the "inline values" feature"
-	context.subscriptions.push(vscode.languages.registerInlineValuesProvider('markdown', {
+	context.subscriptions.push(vscode.languages.registerInlineValuesProvider('ic10', {
 
 		provideInlineValues(document: vscode.TextDocument, viewport: vscode.Range, context: vscode.InlineValueContext) : vscode.ProviderResult<vscode.InlineValue[]> {
 
@@ -109,7 +109,8 @@ class ic10ConfigurationProvider implements vscode.DebugConfigurationProvider {
 		// if launch.json is missing or empty
 		if (!config.type && !config.request && !config.name) {
 			const editor = vscode.window.activeTextEditor;
-			if (editor && editor.document.languageId === 'markdown') {
+			if (editor && editor.document.languageId === 'ic10') {
+				console.log(editor.document.languageId)
 				config.type = 'ic10';
 				config.name = 'Launch';
 				config.request = 'launch';

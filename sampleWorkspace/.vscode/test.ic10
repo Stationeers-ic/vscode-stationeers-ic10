@@ -1,8 +1,12 @@
-l r0 d0 Temperature
+move r0 1
+move r1 1
+sle r15 r0 r1
+sne r14 r1 r0
+seq r13 r0 r1
+sge r12 r1 r0
+and r11 r15 r14
+or r11 r11 r13
+and r11 r11 r12
+beqz r11 if0exit
 yield
-sne r15 r0 500
-beqz r15 if0exit
-#log r0
 if0exit:
-yield
-yield
