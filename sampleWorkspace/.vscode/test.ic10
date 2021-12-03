@@ -1,8 +1,8 @@
-move r0 0
-add r0 r0 1
-
-
+l r0 d0 Temperature
+yield
+sne r15 r0 500
+beqz r15 if0exit
 #log r0
-#log r0 5 test
-#log d0.Activate
-#log test
+if0exit:
+yield
+yield

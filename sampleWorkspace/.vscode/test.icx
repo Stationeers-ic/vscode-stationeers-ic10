@@ -1,12 +1,6 @@
-use comments
-var test = 0
-test++
-test++
-test++
-test++
-test++
-test++
-test++
-test++
-test++
-#log test
+alias test d0
+var testTemp = test.Temperature
+if testTemp != 500
+ debug testTemp
+end
+

@@ -301,17 +301,19 @@ export class ic10Runtime extends EventEmitter {
 	private run(reverse = false, stepEvent?: string) {
 		var counter = 0
 		do {
-
 			var why = this.ic10.prepareLine(-1, true)
 			var ln = this.ic10.position
 			if (this.ic10?.output?.debug && this.ic10.ignoreLine.indexOf(ln) < 0) {
 				this.sendEvent('output', '[debug]: ' + this.ic10.output.debug, this._sourceFile, ln - 1);
+				this.ic10.output.debug = ''
 			}
 			if (this.ic10?.output?.log) {
 				this.sendEvent('output', this.ic10.output.log, this._sourceFile, ln - 1);
+				this.ic10.output.log = ''
 			}
 			if (this.ic10?.output?.error && this.ic10.ignoreLine.indexOf(ln) < 0) {
 				this.sendEvent('output', this.ic10.output.error, this._sourceFile, ln - 1);
+				this.ic10.output.error = ''
 			}
 			if (this.fireEventsForLine(ln, stepEvent)) {
 				this._currentLine = ln;
