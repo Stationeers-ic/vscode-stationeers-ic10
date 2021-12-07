@@ -1288,10 +1288,10 @@
   },
   "stack"                    :{
 	"type"       :"Function",
-	"op1"        :"R/N/C",
-	"op2"        :"R/N/C",
-	"op3"        :"R/N/C",
-	"op4"        :"R/N/C",
+	"op1"        :null,
+	"op2"        :null,
+	"op3"        :null,
+	"op4"        :null,
 	"description":{
 	  "preview":"stack 1 2 3 ...",
 	  "text"   :"Fills the stack with the values ​​of the arguments"

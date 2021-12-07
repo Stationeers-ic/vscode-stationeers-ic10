@@ -180,7 +180,7 @@ IC10Data
 	.__add('ru', 'lb', 'Function', 'op1 := op2.op3.mode(op4)', 'Пакетное чтение в op1 из всех устройств с хешем op2 параметра op3 в режиме op4', 'R/N', 'H', 'P', 'BM')
 	.__add('ru', 'sb', 'Function', 'op1.op2 := op3', 'Пакетная запись во все устройства с хешем op1 в параметр op2 значения op3', 'H', 'P', 'R/N/C', null)
 	.__add('ru', 'ls', 'Function', 'op1 := op2.slot(op3).op4', 'Чтение значения op4 из слота op3 порта op2', 'R/N', 'D/N', 'R/N/S', 'P')
-	.__add('ru', 'stack', 'Function', 'stack 1 2 3 ...', 'Заполняет стак значиниями аргументов', 'R/N/C', 'R/N/C', 'R/N/C', 'R/N/C')
+	.__add('ru', 'stack', 'Function', 'stack 1 2 3 ...', 'Заполняет стак значиниями аргументов', 'R/N/C', null, null, null)
 
 	.__add('ru', 'Activate', 'Device parameter', 'Trigger', '-1 - остановить , 0 - не работает 1 - работает')
 	.__add('ru', 'Charge', 'Device parameter', 'Float', 'Заряд батареи или аккумулятора, Дж. Уровень генерации электричества солнечной панелью, Вт.')

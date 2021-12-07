@@ -8,7 +8,7 @@
   "type": "commonjs",
   "scripts": {
     "start": "npm update && tsc -w",
-    "prepublish": "tsc",
+    "prepublish": "npm update && tsc",
     "publish": "vsce package"
   },
   "badges": [],
