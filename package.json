@@ -1,7 +1,7 @@
 {
   "name": "stationeers-ic10",
   "displayName": "Stationeers ic10",
-  "description": "Ic10  & icX support",
+  "description": "Ic10 & icX support",
   "version": "0.4.2",
   "license": "MIT",
   "homepage": "https://github.com/Traineratwot/vscode-stationeers-ic10",
@@ -23,7 +23,7 @@
     "email": "Traineratwot@yandex.com"
   },
   "engines": {
-    "vscode": "^1.56.0"
+    "vscode": "^1.63.1"
   },
   "categories": [
     "Programming Languages",
@@ -272,7 +272,7 @@
     }
   },
   "dependencies": {
-    "ic10": "^1.3.0",
+    "ic10": "^1.3.1",
     "icx-compiler": "^1.1.6",
     "vscode-debugadapter": "^1.47.0",
     "vscode-debugprotocol": "^1.47.0"
@@ -284,8 +284,8 @@
     "@types/node": "^13.13.52",
     "@types/semver": "^7.3.6",
     "@types/sinon": "^9.0.0",
-    "@types/vscode": "^1.56.0",
-    "typescript": "^4.3.2",
+    "@types/vscode": "^1.63.1",
+    "typescript": "^4.5.4",
     "vsce": "^1.88.0"
   },
   "__metadata": {

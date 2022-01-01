@@ -1,5 +1,6 @@
 .vscode/**
 .idea
+.github
 typings/**
 test/**
 src/**
@@ -18,3 +19,6 @@ webpack.config.js
 **/*.ts
 .git/**
 pnpm-lock.yaml
+tsconfig.json
+*.md
+*.txt
