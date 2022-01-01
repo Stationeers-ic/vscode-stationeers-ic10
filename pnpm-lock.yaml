@@ -8,16 +8,16 @@ specifiers:
   '@types/semver': ^7.3.6
   '@types/sinon': ^9.0.0
   '@types/vscode': ^1.56.0
-  ic10: ^1.2.0
-  icx-compiler: ^1.1.1
+  ic10: ^1.3.0
+  icx-compiler: ^1.1.6
   typescript: ^4.3.2
   vsce: ^1.88.0
   vscode-debugadapter: ^1.47.0
   vscode-debugprotocol: ^1.47.0
 
 dependencies:
-  ic10: 1.2.0
-  icx-compiler: 1.1.1
+  ic10: 1.3.1
+  icx-compiler: 1.1.7
   vscode-debugadapter: 1.50.0
   vscode-debugprotocol: 1.50.1
 
@@ -413,12 +413,12 @@ packages:
       entities: 2.2.0
     dev: true
 
-  /ic10/1.2.0:
-    resolution: {integrity: sha512-lXaNie7/vVNxpVAZ8+mstdc8eNpfTi7BEdkvg9+TDSkvbflYrTveJ/weOzdQJqMzRLyb5Hkrl/v53WTFgIBCLw==}
+  /ic10/1.3.1:
+    resolution: {integrity: sha512-HSypJQMsgGqkPWa3+cK4GhtjpMkEQ/v6XQWokYTF3jFxXFHO7nlsPxmbxHJOtWDyRt7LtN1PI0liG8yDVXI8RA==}
     dev: false
 
-  /icx-compiler/1.1.1:
-    resolution: {integrity: sha512-8o99JDFHU7LX5pJernXlXmbiRmqDz6pi5Nm83RBlw9eI1ZVeEnT/WLfGhLLpJOPgm39t4qA5H20B1K0wDU68FA==}
+  /icx-compiler/1.1.7:
+    resolution: {integrity: sha512-dHbqA7L0rwrwMYoXydQQ91/GusNNEK4NMpwohg46yc5znP5TUpm4RWgt6rjIE2PHdPR67P59He7BRopjYFJ/cA==}
     dependencies:
       '@scicave/math-parser': 5.1.0
     dev: false

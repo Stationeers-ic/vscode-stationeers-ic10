@@ -17,3 +17,4 @@ out/**
 webpack.config.js
 **/*.ts
 .git/**
+pnpm-lock.yaml
