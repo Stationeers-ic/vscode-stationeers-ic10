@@ -1,5 +1,5 @@
 'use strict'
-// const gulp = require('gulp')
+const gulp = require('gulp')
 const fs = require('fs')
 var request = require('sync-request')
 
@@ -46,6 +46,9 @@ var IC10Data = {
 		if(name in IC10Data['Languages'][lang]) {
 			return this
 		}
+		if(!(IC10Data['Languages']['en'] instanceof Object)) {
+			IC10Data['Languages']['en'] = {}
+		}
 		IC10Data['Languages'][lang][name] = {
 			type: type,
 			op1: op1 ? op1 : null,
@@ -55,6 +58,17 @@ var IC10Data = {
 			description: {
 				'preview': preview,
 				'text': text,
+			}
+		}
+		IC10Data['Languages']['en'][name] = {
+			type: type,
+			op1: op1 ? op1 : null,
+			op2: op2 ? op2 : null,
+			op3: op3 ? op3 : null,
+			op4: op4 ? op4 : null,
+			description: {
+				'preview': translate(preview),
+				'text': translate(text),
 			}
 		}
 
@@ -289,7 +303,7 @@ IC10Data
 	.__add('ru ', 'Minimum ', 'Const ', 'string ', null)
 	.__add('ru ', 'Maximum ', 'Const ', 'string ', null)
 
-gulp.task('generate-langs', function() {
+gulp.task('generate-langs', async function() {
 	// console.log('generating')
 	// console.log(IC10Data.Languages['ru'][0])
 	var keyword = []

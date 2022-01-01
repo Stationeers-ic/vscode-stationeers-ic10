@@ -1,1 +1,2367 @@
-{"abs":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := |op2|","text":"Абсолютная величина числа"}},"acos":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := acos(op2)","text":"Арккосинус*"}},"add":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{"preview":"op1 := op2 + op3","text":"Сумма"}},"alias":{"type":"Function","op1":"N","op2":"R/D","op3":null,"op4":null,"description":{"preview":"op2 => op1","text":"Задат псевдоним для регистра или канала данных"}},"and":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{"preview":"op1 := op2  op3","text":"Логическое И, единица, если и op2 и op3 истинны, ноль в противном случае"}},"asin":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := asin(op2)","text":"Арксинус*"}},"atan":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := atan(op2)","text":"Арктангенс*"}},"bap":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/C","op4":"R/N/A/T","description":{"preview":"Переход на op4, если op1  op2 с точностью op3","text":null}},"bapal":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/C","op4":"R/N/A/T","description":{"preview":"Переход на op4, если op1  op2 с точностью op3 с записью адреса следующей строки в ra","text":null}},"bapz":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{"preview":"Переход на op3, если op1  0 с точностью op2","text":null}},"bapzal":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{"preview":"Переход на op3, если op1  0 с точностью op2 с записью адреса следующей строки в ra","text":null}},"bdns":{"type":"Function","op1":"D/N","op2":"R/N/A/T","op3":null,"op4":null,"description":{"preview":"Переход на op2, если канал op1 не настроен","text":null}},"bdnsal":{"type":"Function","op1":"D/N","op2":"R/N/A/T","op3":null,"op4":null,"description":{"preview":"Переход на op2, если канал op1 не настроен с записью адреса следующей строки в ra","text":null}},"bdse":{"type":"Function","op1":"D/N","op2":"R/N/A/T","op3":null,"op4":null,"description":{"preview":"Переход на op2, если канал op1 настроен","text":null}},"bdseal":{"type":"Function","op1":"D/N","op2":"R/N/A/T","op3":null,"op4":null,"description":{"preview":"Переход на op2, если канал op1 настроен с записью адреса следующей строки в ra","text":null}},"beq":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{"preview":"Переход на op3, если op1 = op2","text":null}},"beqal":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{"preview":"Переход на op3, если op1 = op2 с записью адреса следующей строки в ra","text":null}},"beqz":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1 = 0","text":null}},"beqzal":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1 = 0 с записью адреса следующей строки в ra","text":null}},"bge":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{"preview":"Переход на op3, если op1 >= op2","text":null}},"bgeal":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{"preview":"Переход на op3, если op1 >= op2 с записью адреса следующей строки в ra","text":null}},"bgez":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1 >= 0","text":null}},"bgezal":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1 >= 0 с записью адреса следующей строки в ra","text":null}},"bgt":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{"preview":"Переход на op3, если op1 > op2","text":null}},"bgtal":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{"preview":"Переход на op3, если op1 > op2 с записью адреса следующей строки в ra","text":null}},"bgtz":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1 > 0","text":null}},"bgtzal":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1 > 0 с записью адреса следующей строки в ra","text":null}},"ble":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{"preview":"Переход на op3, если op1 <= op2","text":null}},"bleal":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{"preview":"Переход на op3, если op1 <= op2 с записью адреса следующей строки в ra","text":null}},"blez":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1 <= 0","text":null}},"blezal":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1 <= 0 с записью адреса следующей строки в ra","text":null}},"blt":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{"preview":"Переход на op3, если op1 < op2","text":null}},"bltal":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{"preview":"Переход на op3, если op1 < op2 с записью адреса следующей строки в ra","text":null}},"bltz":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1 < 0","text":null}},"bltzal":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1 < 0 с записью адреса следующей строки в ra","text":null}},"bna":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/C","op4":"R/N/A/T","description":{"preview":"Переход на op4, если op1 ~= op2 с точностью op3","text":null}},"bnaal":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/C","op4":"R/N/A/T","description":{"preview":"Переход на op4, если op1 ~= op2 с точностью op3 с записью адреса следующей строки в ra","text":null}},"bnaz":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{"preview":"Переход на op3, если op1 ~= 0 с точностью op2","text":null}},"bnazal":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{"preview":"Переход на op3, если op1 ~= 0 с точностью op2 с записью адреса следующей строки в ra","text":null}},"bne":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{"preview":"Переход на op3, если op1 != op2","text":null}},"bneal":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{"preview":"Переход на op3, если op1 != op2 с записью адреса следующей строки в ra","text":null}},"bnez":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1 != 0","text":null}},"bnezal":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{"preview":"Переход на op2, если op1 != 0 с записью адреса следующей строки в ra","text":null}},"brap":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/C","op4":"R/N/O","description":{"preview":"Относительный переход на +op4, если op1  op2 с точностью op3","text":null}},"brapz":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/O","op4":null,"description":{"preview":"Относительный переход на +op3, если op1  0 с точностью op2","text":null}},"brdns":{"type":"Function","op1":"D/N","op2":"R/N/O","op3":null,"op4":null,"description":{"preview":"Относительный переход на +op2, если канал op1 не настроен","text":null}},"brdse":{"type":"Function","op1":"D/N","op2":"R/N/O","op3":null,"op4":null,"description":{"preview":"Относительный переход на +op2, если канал op1 настроен","text":null}},"breq":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/O","op4":null,"description":{"preview":"Относительный переход на +op3, если op1 = op2","text":null}},"breqz":{"type":"Function","op1":"R/N/C","op2":"R/N/O","op3":null,"op4":null,"description":{"preview":"Относительный переход на +op2, если op1 = 0","text":null}},"brge":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/O","op4":null,"description":{"preview":"Относительный переход на +op3, если op1 >= op2","text":null}},"brgez":{"type":"Function","op1":"R/N/C","op2":"R/N/O","op3":null,"op4":null,"description":{"preview":"Относительный переход на +op2, если op1 >= 0","text":null}},"brgt":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/O","op4":null,"description":{"preview":"Относительный переход на +op3, если op1 > op2","text":null}},"brgtz":{"type":"Function","op1":"R/N/C","op2":"R/N/O","op3":null,"op4":null,"description":{"preview":"Относительный переход на +op2, если op1 > 0","text":null}},"brle":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/O","op4":null,"description":{"preview":"Относительный переход на +op3, если op1 <= op2","text":null}},"brlez":{"type":"Function","op1":"R/N/C","op2":"R/N/O","op3":null,"op4":null,"description":{"preview":"Относительный переход на +op2, если op1 <= 0","text":null}},"brlt":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/O","op4":null,"description":{"preview":"Относительный переход на +op3, если op1 < op2","text":null}},"brltz":{"type":"Function","op1":"R/N/C","op2":"R/N/O","op3":null,"op4":null,"description":{"preview":"Относительный переход на +op2, если op1 < 0","text":null}},"brna":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/C","op4":"R/N/O","description":{"preview":"Относительный переход на +op4, если op1  op2 с точностью op3","text":null}},"brnaz":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/O","op4":null,"description":{"preview":"Относительный переход на +op3, если op1  0 с точностью op2","text":null}},"brne":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"Относительный переход на +op3, если op1 != op2","text":null}},"brnez":{"type":"Function","op1":"R/N/C","op2":"R/N/O","op3":null,"op4":null,"description":{"preview":"Относительный переход на +op2, если op1 != 0","text":null}},"ceil":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := op2","text":"Округление до ближайшего целого вверх"}},"cos":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := cos(op2)","text":"Косинус*"}},"define":{"type":"Function","op1":"Cn","op2":"C","op3":null,"op4":null,"description":{"preview":"op2 => op1","text":"Задать имя для константы"}},"div":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{"preview":"op1 :=op2 / op3","text":"Деление"}},"exp":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := eop2","text":"Экспонента"}},"floor":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := op2","text":"Округление до ближайшего целого вниз"}},"hcf":{"type":"Function","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Остановить работу и сжечь микропроцессор","text":null}},"j":{"type":"Function","op1":"R/N/A/T","op2":null,"op3":null,"op4":null,"description":{"preview":"Переход на указанную строку","text":null}},"jal":{"type":"Function","op1":"R/N/A/T","op2":null,"op3":null,"op4":null,"description":{"preview":"Переход на op1 с записью адреса следующей строки в ra","text":null}},"jr":{"type":"Function","op1":"R/N/O","op2":null,"op3":null,"op4":null,"description":{"preview":"Относительный переход на +op1","text":null}},"l":{"type":"Function","op1":"R/N","op2":"D/N","op3":"P","op4":null,"description":{"preview":"op1 := op2.op3","text":"Чтение значения параметра op3 из порта op2"}},"log":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := ln(op2)","text":"Натуральный логарифм"}},"lr":{"type":"Function","op1":"R/N","op2":"D/N","op3":"R/N/RM","op4":"RC","description":{"preview":"op1 := op2.mode(op3).op4","text":"Чтение значения реагента op4 в режиме op3 из порта op2"}},"ls":{"type":"Function","op1":"R/N","op2":"D/N","op3":"R/N/S","op4":"P","description":{"preview":"op1 := op2.slot(op3).op4","text":"Чтение значения op4 из слота op3 порта op2"}},"max":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{"preview":"op1 := max(op2, op3)","text":"Максимальное из двух"}},"min":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{"preview":"op1 := min(op2, op3)","text":"Минимальное из двух"}},"mod":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{"preview":"op1 := op2 mod op3","text":"Остаток от целочисленного деления op2 на op3 (результат не эквивалентен оператору %, и будет положителен при любых знаках op2 и op3)"}},"move":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := op2","text":"Присвоение значения"}},"mul":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{"preview":"op1 := op2  op3","text":"Произведение"}},"nor":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{"preview":"op1 := ¬(op2  op3)","text":"Инверсное ИЛИ, единица, если и op2 и op3 ложны, ноль в противном случае"}},"or":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{"preview":"op1 := op2  op3","text":"Логическое ИЛИ, ноль, если и op2 и op3 ложны, единица в противном случае"}},"peek":{"type":"Function","op1":"R/N","op2":null,"op3":null,"op4":null,"description":{"preview":"op1 := stack[sp-1]","text":"Записать в op1 верхнее значение со стека не двигая стек"}},"pop":{"type":"Function","op1":"R/N","op2":null,"op3":null,"op4":null,"description":{"preview":"op1 := stack[--sp]","text":"Снять значение со стека и записать в op1"}},"push":{"type":"Function","op1":"R/N/C","op2":null,"op3":null,"op4":null,"description":{"preview":"stack[sp++] := op1","text":"Положить op1 на стек"}},"rand":{"type":"Function","op1":"R/N","op2":null,"op3":null,"op4":null,"description":{"preview":"op1 := rand(0,1)","text":"Случайная величина от 0 до 1 включительно"}},"round":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := [op2]","text":"Округление к ближайшему целому"}},"s":{"type":"Function","op1":"D/N","op2":"P","op3":"R/N/C","op4":null,"description":{"preview":"op1.op2 := op3","text":"Запись значения в параметр op2 порта op1"}},"sap":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"R/N/C","description":{"preview":"op1 := (op2  op3)","text":"Если op2  op3 с точностью op4, то единица, иначе ноль"}},"sapz":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{"preview":"op1 := (op2  0)","text":"Если op2  0 с точностью op3, то единица, иначе ноль"}},"sdns":{"type":"Function","op1":"R/N","op2":"D/N","op3":null,"op4":null,"description":{"preview":"op1 := ¬isset(op2) ? 1 : 0","text":"Если канал op2 не настроен на то единица, иначе ноль"}},"sdse":{"type":"Function","op1":"R/N","op2":"D/N","op3":null,"op4":null,"description":{"preview":"op1 := isset(op2) ? 1 : 0","text":"Если канал op2 настроен на то единица, иначе ноль"}},"select":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"R/N/C","description":{"preview":"op1 := (op2 ? op3 : op4)","text":"Тернарный select. Если op2 истинно, то op1 := op3, иначе op1 := op4"}},"seq":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{"preview":"op1 := (op2 = op3)","text":"Если op2 = op3, то единица, иначе ноль"}},"seqz":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := (op2 = 0)","text":"Если op2 = 0, то единица, иначе ноль"}},"sge":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{"preview":"op1 := (op2  op3)","text":"Если op2  op3, то единица, иначе ноль"}},"sgez":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := (op2  0)","text":"Если op2  0, то единица, иначе ноль"}},"sgt":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{"preview":"op1 := (op2 > op3)","text":"Если op2 > op3, то единица, иначе ноль"}},"sgtz":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := (op2 > 0)","text":"Если op2 > 0, то единица, иначе ноль"}},"sin":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := sin(op2)","text":"Синус*"}},"sle":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{"preview":"op1 := (op2  op3)","text":"Если op2  op3, то единица, иначе ноль"}},"sleep":{"type":"Function","op1":"R/N/C","op2":null,"op3":null,"op4":null,"description":{"preview":"Приостановка программы на op1 секунд","text":"R/N/C"}},"slez":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := (op2  0)","text":"Если op2  0, то единица, иначе ноль"}},"slt":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{"preview":"op1 := (op2 < op3)","text":"Если op2 < op3, то единица, иначе ноль"}},"sltz":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := (op2 < 0)","text":"Если op2 < 0, то единица, иначе ноль"}},"sna":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"R/N/C","description":{"preview":"op1 := (op2  op3)","text":"Если op2  op3 с точностью op4, то единица, иначе ноль"}},"snaz":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{"preview":"op1 := (op2  0)","text":"Если op2  0 с точностью op3, то единица, иначе ноль"}},"sne":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{"preview":"op1 := (op2  op3)","text":"Если op2  op3, то единица, иначе ноль"}},"snez":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := (op2  0)","text":"Если op2  0, то единица, иначе ноль"}},"sqrt":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := o̅p̅2̅","text":"Квадратный корень"}},"sub":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{"preview":"op1 := op2  op3","text":"Разность"}},"tan":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := tan(op2)","text":"Тангенс*"}},"trunc":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{"preview":"op1 := int(op2)","text":"Целая часть числа"}},"xor":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{"preview":"op1 := op2  op3","text":"Исключающее ИЛИ, единица, если одно и только одно из op2 и op3 истинно, ноль в противном случае"}},"yield":{"type":"Function","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Приостановка программы до следующего тика","text":null}},"lb":{"type":"Function","op1":"R/N","op2":"H","op3":"P","op4":"BM","description":{"preview":"op1 := op2.op3.mode(op4)","text":"Пакетное чтение в op1 из всех устройств с хешем op2 параметра op3 в режиме op4"}},"sb":{"type":"Function","op1":"H","op2":"P","op3":"R/N/C","op4":null,"description":{"preview":"op1.op2 := op3","text":"Пакетная запись во все устройства с хешем op1 в параметр op2 значения op3"}},"stack":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/C","op4":"R/N/C","description":{"preview":"stack 1 2 3 ...","text":"Заполняет стак значиниями аргументов"}},"Activate":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Trigger","text":"-1 - остановить , 0 - не работает 1 - работает"}},"Charge":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"Заряд батареи или аккумулятора, Дж. Уровень генерации электричества солнечной панелью, Вт."}},"Class":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":null,"text":"класс объекта в слоте"}},"ClearMemory":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Trigger","text":">=1 - сбрасывает счётчики"}},"Color":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"0-синий        , 1-серый                                                                                                                                                                                           , 2-зелёный            , 3-оранжевый                                      , 4-красный                                                            , 5-жёлтый, 6-белый, 7-чёрный, 8-коричневый, 9-хаки, 10-розовый, 11-фиолетовый","text":"Цвет LED-лампы, стационарного маяка и светодиодного дисплея"}},"Combustion":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Bool","text":"1 - обнаружено воспламенение, 0 - во всех остальных случаях"}},"CompletionRatio":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float[0-1]","text":"этап производства в %"}},"Damage":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float[0-1]","text":"уровень повреждения объекта"}},"ElevatorLevel":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Int","text":"На чтение - уровень, на котором находится кабинка лифта, или -1, если кабинки нет. На запись - отправляет лифт на указанный этаж."}},"ElevatorSpeed":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"Скорость движения кабинки лифта, м/тик. Отрицательное значение соответствуют движению вниз, 0 - неподвижной кабинке, положительное - движению вверх."}},"Error":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Bool","text":"0 - нормальная работа, 1 - ошибка"}},"ExportCount":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Int","text":"счётчик объектов, прошедших через слот экспорта"}},"Filtration":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Bool","text":"Переключает фильтрацию отработанной смеси в прочном скафандре."}},"ForceWrite":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Trigger","text":"Принудительно заставляет чипы записи и множественной записи передать текущее значение в оборудование."}},"Harvest":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Trigger","text":"Активирует сбор урожая в автоматической гидропонной станции."}},"Horizontal":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float[0 - 360]","text":"угол по отношению к Солнцу в градусах в горизонтальной проекции Солнца на плоскость датчика"}},"Idle":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Bool","text":"Загрузка дуговой печи. 0 - руда не загружена, 1 - загружена."}},"ImportCount":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Int","text":"счётчик объектов, прошедших через слот импорта"}},"Lock":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Bool","text":"0 - ручное управление разблокировано, 1 - заблокировано"}},"Maximum":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"Максимальное значение какого-либо параметра оборудования, например, заряда батареи или давления на входе в камеру сгорания реактивного двигателя. Очень часто присутствует, но не используется."}},"MaxQuantity":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"максимальное количество предметов в слоте"}},"Mode":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Int","text":"режим работы"}},"On":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Bool","text":"0 - выключен 1 - включен"}},"Open":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Bool","text":"0 - выброс закрыт, 1 - открыт"}},"Output":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Int/Trigger","text":"Для сортировщика - r/w                                                                                                                                                                           , Int - следующий выход, на который будет выдан объект.<br>Для стакера - w, Trigger - выгружает накопленную упаковку объектов в слот экспорта."}},"Plant":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Trigger","text":"Запускает процесс посадки растения из слота импорта в автоматической гидропонной станции."}},"PositionX":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"координата X текущего положения"}},"PositionY":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"координата Y текущего положения"}},"PositionZ":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"координата Z текущего положения"}},"Power":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Bool","text":"0 - питание отсутствует или выключен, 1 - питание подано"}},"PowerActual":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"Суммарное потребление электроэнергии всеми устройствами в сети, Вт."}},"PowerGeneration":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"Текущее производство электроэнергии генератором, Вт."}},"PowerPotential":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"Предельная доступная мощность сети, Вт."}},"PowerRequired":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"Суммарная потребность в электроэнергии всех устройств в сети, Вт."}},"PressureExternal":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"атмосферное давление во внешней среде, кПа"}},"PressureInternal":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"Давление в трубопроводе, при котором останавливается работа активной вентиляции, кПа. Устанавливается, но не используется."}},"Ratio":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"Для батарей - соотношение Charge/Maximum.<br>Для остальных устройств - соотношение Setting/Maximum."}},"RatioCarbonDioxide":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"доля углекислого газа"}},"RatioNitrogen":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"доля азота"}},"RatioNitrousOxide":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"доля закиси азота"}},"RatioOxygen":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"доля кислорода"}},"RatioPollutant":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"доля токсинов"}},"RatioVolatiles":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"доля летучих газов"}},"RatioWater":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"доля водяных паров"}},"Reagents":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"общая масса ингредиентов в граммах"}},"RecipeHash":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Int","text":"хэш выбранного рецепта"}},"RequiredPower":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"Энергия, требуемая для рабботы устройства, Вт."}},"Setting":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Any","text":"Текущее значение какого-то параметра оборудования. Тип и возможные значения зависят от оборудования."}},"SolarAngle":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"угол по отношению к Солнцу в градусах"}},"TargetX":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Int","text":"координата X цели"}},"TargetY":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Int","text":"координата Y цели"}},"TargetZ":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Int","text":"координата Z цели"}},"TemperatureExternal":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"температура внешней атмосферы, К"}},"TemperatureSetting":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"Заданная температура внутри прочного скафандра, К."}},"TotalMoles":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"Общее количество газа внутри трубопровода, моль."}},"VelocityMagnitude":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"модуль скорости движения бота"}},"VelocityRelativeX":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"скорость движения по координате X"}},"VelocityRelativeY":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"скорость движения по координате Y"}},"VelocityRelativeZ":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"скорость движения по координате Z"}},"Vertical":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"угол по отношению к Солнцу в градусах"}},"Volume":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"Громкость"}},"ChargeRatio":{"type":"Slot parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float[0-1]","text":"Уровень заряда аккумулятора в слоте."}},"Efficiency":{"type":"Slot parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float[0-1]","text":"Эффективность роста растения в автоматической гидропонной станции. -1, если растения нет."}},"Growth":{"type":"Slot parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float[0-1]","text":"Стадия роста растения в автоматической гидропонной станции. -1, если растения нет."}},"Health":{"type":"Slot parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float[0-1]","text":"Здоровье растения в автоматической гидропонной станции. 0 - умершаа растение, 1 - полностью здоровое, -1 - растения нет."}},"Mature":{"type":"Slot parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float[0-1]","text":"Готовность растения в автоматической гидропонной станции к сбору урожая. -1 если растения нет."}},"OccupantHash":{"type":"Slot parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Hash","text":"хэш объекта в слоте"}},"Occupied":{"type":"Slot parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Bool","text":"0 - слот свободен, 1 - занят"}},"PressureAir":{"type":"Slot parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"Давление в баллоне с дыхательной смесью скафандра, установленного в стойку, кПа."}},"PressureWaste":{"type":"Slot parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"Давление в баллоне с отработанной смесью скафандра, установленного в стойку, кПа."}},"PrefabHash":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Hash","text":"хэш Prefab объекта"}},"Pressure":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"давление, кПа"}},"Quantity":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float/Int","text":"масса / количество предметов"}},"Temperature":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"температура, К"}},"Bpm":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":null}},"CollectableGoods":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":null}},"CurrentResearchPodType":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":null}},"Fuel":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":"Топливо"}},"ManualResearchRequiredPod":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":null}},"MineablesInQueue":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":null}},"MineablesInVicinity":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":null}},"NextWeatherEventTime":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":null}},"ReturnFuelCost":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":null}},"SettingInput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":null}},"SettingOutput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":null}},"SignalID":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":null}},"SignalStrength":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":null}},"Time":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":null}},"AirRelease":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":null}},"HorizontalRatio":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":null}},"PressureSetting":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":null}},"RequestHash":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":null}},"VerticalRatio":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"Float","text":null}},"Average":{"type":"Const","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"string","text":null}},"Sum":{"type":"Const","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"string","text":null}},"Minimum":{"type":"Const","op1":null,"op2":null,"op3":null,"op4":null,"description":{"preview":"string","text":null}}}
+{
+	"abs"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := |op2|",
+			"text"   :"Абсолютная величина числа"
+		}
+	},
+	"acos"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := acos(op2)",
+			"text"   :"Арккосинус*"
+		}
+	},
+	"add"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := op2 + op3",
+			"text"   :"Сумма"
+		}
+	},
+	"alias"                    :{
+		"type"       :"Function",
+		"op1"        :"N",
+		"op2"        :"R/D",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op2 => op1",
+			"text"   :"Задат псевдоним для регистра или канала данных"
+		}
+	},
+	"and"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := op2 op3",
+			"text"   :"Логическое И, единица, если и op2 и op3 истинны, ноль в противном случае"
+		}
+	},
+	"asin"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := asin(op2)",
+			"text"   :"Арксинус*"
+		}
+	},
+	"atan"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := atan(op2)",
+			"text"   :"Арктангенс*"
+		}
+	},
+	"bap"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :"R/N/A/T",
+		"description":{
+			"preview":"Переход на op4, если op1 op2 с точностью op3",
+			"text"   :null
+		}
+	},
+	"bapal"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :"R/N/A/T",
+		"description":{
+			"preview":"Переход на op4, если op1 op2 с точностью op3 с записью адреса следующей строки в ra",
+			"text"   :null
+		}
+	},
+	"bapz"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/A/T",
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op3, если op1 0 с точностью op2",
+			"text"   :null
+		}
+	},
+	"bapzal"                   :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/A/T",
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op3, если op1 0 с точностью op2 с записью адреса следующей строки в ra",
+			"text"   :null
+		}
+	},
+	"bdns"                     :{
+		"type"       :"Function",
+		"op1"        :"D/N",
+		"op2"        :"R/N/A/T",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op2, если канал op1 не настроен",
+			"text"   :null
+		}
+	},
+	"bdnsal"                   :{
+		"type"       :"Function",
+		"op1"        :"D/N",
+		"op2"        :"R/N/A/T",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op2, если канал op1 не настроен с записью адреса следующей строки в ra",
+			"text"   :null
+		}
+	},
+	"bdse"                     :{
+		"type"       :"Function",
+		"op1"        :"D/N",
+		"op2"        :"R/N/A/T",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op2, если канал op1 настроен",
+			"text"   :null
+		}
+	},
+	"bdseal"                   :{
+		"type"       :"Function",
+		"op1"        :"D/N",
+		"op2"        :"R/N/A/T",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op2, если канал op1 настроен с записью адреса следующей строки в ra",
+			"text"   :null
+		}
+	},
+	"beq"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/A/T",
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op3, если op1 = op2",
+			"text"   :null
+		}
+	},
+	"beqal"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/A/T",
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op3, если op1 = op2 с записью адреса следующей строки в ra",
+			"text"   :null
+		}
+	},
+	"beqz"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/A/T",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op2, если op1 = 0",
+			"text"   :null
+		}
+	},
+	"beqzal"                   :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/A/T",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op2, если op1 = 0 с записью адреса следующей строки в ra",
+			"text"   :null
+		}
+	},
+	"bge"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/A/T",
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op3, если op1 >= op2",
+			"text"   :null
+		}
+	},
+	"bgeal"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/A/T",
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op3, если op1 >= op2 с записью адреса следующей строки в ra",
+			"text"   :null
+		}
+	},
+	"bgez"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/A/T",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op2, если op1 >= 0",
+			"text"   :null
+		}
+	},
+	"bgezal"                   :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/A/T",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op2, если op1 >= 0 с записью адреса следующей строки в ra",
+			"text"   :null
+		}
+	},
+	"bgt"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/A/T",
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op3, если op1 > op2",
+			"text"   :null
+		}
+	},
+	"bgtal"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/A/T",
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op3, если op1 > op2 с записью адреса следующей строки в ra",
+			"text"   :null
+		}
+	},
+	"bgtz"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/A/T",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op2, если op1 > 0",
+			"text"   :null
+		}
+	},
+	"bgtzal"                   :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/A/T",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op2, если op1 > 0 с записью адреса следующей строки в ra",
+			"text"   :null
+		}
+	},
+	"ble"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/A/T",
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op3, если op1 <= op2",
+			"text"   :null
+		}
+	},
+	"bleal"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/A/T",
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op3, если op1 <= op2 с записью адреса следующей строки в ra",
+			"text"   :null
+		}
+	},
+	"blez"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/A/T",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op2, если op1 <= 0",
+			"text"   :null
+		}
+	},
+	"blezal"                   :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/A/T",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op2, если op1 <= 0 с записью адреса следующей строки в ra",
+			"text"   :null
+		}
+	},
+	"blt"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/A/T",
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op3, если op1 < op2",
+			"text"   :null
+		}
+	},
+	"bltal"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/A/T",
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op3, если op1 < op2 с записью адреса следующей строки в ra",
+			"text"   :null
+		}
+	},
+	"bltz"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/A/T",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op2, если op1 < 0",
+			"text"   :null
+		}
+	},
+	"bltzal"                   :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/A/T",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op2, если op1 < 0 с записью адреса следующей строки в ra",
+			"text"   :null
+		}
+	},
+	"bna"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :"R/N/A/T",
+		"description":{
+			"preview":"Переход на op4, если op1 ~= op2 с точностью op3",
+			"text"   :null
+		}
+	},
+	"bnaal"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :"R/N/A/T",
+		"description":{
+			"preview":"Переход на op4, если op1 ~= op2 с точностью op3 с записью адреса следующей строки в ra",
+			"text"   :null
+		}
+	},
+	"bnaz"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/A/T",
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op3, если op1 ~= 0 с точностью op2",
+			"text"   :null
+		}
+	},
+	"bnazal"                   :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/A/T",
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op3, если op1 ~= 0 с точностью op2 с записью адреса следующей строки в ra",
+			"text"   :null
+		}
+	},
+	"bne"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/A/T",
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op3, если op1 != op2",
+			"text"   :null
+		}
+	},
+	"bneal"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/A/T",
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op3, если op1 != op2 с записью адреса следующей строки в ra",
+			"text"   :null
+		}
+	},
+	"bnez"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/A/T",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op2, если op1 != 0",
+			"text"   :null
+		}
+	},
+	"bnezal"                   :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/A/T",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op2, если op1 != 0 с записью адреса следующей строки в ra",
+			"text"   :null
+		}
+	},
+	"brap"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :"R/N/O",
+		"description":{
+			"preview":"Относительный переход на +op4, если op1 op2 с точностью op3",
+			"text"   :null
+		}
+	},
+	"brapz"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/O",
+		"op4"        :null,
+		"description":{
+			"preview":"Относительный переход на +op3, если op1 0 с точностью op2",
+			"text"   :null
+		}
+	},
+	"brdns"                    :{
+		"type"       :"Function",
+		"op1"        :"D/N",
+		"op2"        :"R/N/O",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Относительный переход на +op2, если канал op1 не настроен",
+			"text"   :null
+		}
+	},
+	"brdse"                    :{
+		"type"       :"Function",
+		"op1"        :"D/N",
+		"op2"        :"R/N/O",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Относительный переход на +op2, если канал op1 настроен",
+			"text"   :null
+		}
+	},
+	"breq"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/O",
+		"op4"        :null,
+		"description":{
+			"preview":"Относительный переход на +op3, если op1 = op2",
+			"text"   :null
+		}
+	},
+	"breqz"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/O",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Относительный переход на +op2, если op1 = 0",
+			"text"   :null
+		}
+	},
+	"brge"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/O",
+		"op4"        :null,
+		"description":{
+			"preview":"Относительный переход на +op3, если op1 >= op2",
+			"text"   :null
+		}
+	},
+	"brgez"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/O",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Относительный переход на +op2, если op1 >= 0",
+			"text"   :null
+		}
+	},
+	"brgt"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/O",
+		"op4"        :null,
+		"description":{
+			"preview":"Относительный переход на +op3, если op1 > op2",
+			"text"   :null
+		}
+	},
+	"brgtz"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/O",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Относительный переход на +op2, если op1 > 0",
+			"text"   :null
+		}
+	},
+	"brle"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/O",
+		"op4"        :null,
+		"description":{
+			"preview":"Относительный переход на +op3, если op1 <= op2",
+			"text"   :null
+		}
+	},
+	"brlez"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/O",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Относительный переход на +op2, если op1 <= 0",
+			"text"   :null
+		}
+	},
+	"brlt"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/O",
+		"op4"        :null,
+		"description":{
+			"preview":"Относительный переход на +op3, если op1 < op2",
+			"text"   :null
+		}
+	},
+	"brltz"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/O",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Относительный переход на +op2, если op1 < 0",
+			"text"   :null
+		}
+	},
+	"brna"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :"R/N/O",
+		"description":{
+			"preview":"Относительный переход на +op4, если op1 op2 с точностью op3",
+			"text"   :null
+		}
+	},
+	"brnaz"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/O",
+		"op4"        :null,
+		"description":{
+			"preview":"Относительный переход на +op3, если op1 0 с точностью op2",
+			"text"   :null
+		}
+	},
+	"brne"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Относительный переход на +op3, если op1 != op2",
+			"text"   :null
+		}
+	},
+	"brnez"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :"R/N/O",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Относительный переход на +op2, если op1 != 0",
+			"text"   :null
+		}
+	},
+	"ceil"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := op2",
+			"text"   :"Округление до ближайшего целого вверх"
+		}
+	},
+	"cos"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := cos(op2)",
+			"text"   :"Косинус*"
+		}
+	},
+	"define"                   :{
+		"type"       :"Function",
+		"op1"        :"Cn",
+		"op2"        :"C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op2 => op1",
+			"text"   :"Задать имя для константы"
+		}
+	},
+	"div"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1 :=op2 / op3",
+			"text"   :"Деление"
+		}
+	},
+	"exp"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := eop2",
+			"text"   :"Экспонента"
+		}
+	},
+	"floor"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := op2",
+			"text"   :"Округление до ближайшего целого вниз"
+		}
+	},
+	"hcf"                      :{
+		"type"       :"Function",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Остановить работу и сжечь микропроцессор",
+			"text"   :null
+		}
+	},
+	"j"                        :{
+		"type"       :"Function",
+		"op1"        :"R/N/A/T",
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на указанную строку",
+			"text"   :null
+		}
+	},
+	"jal"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N/A/T",
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Переход на op1 с записью адреса следующей строки в ra",
+			"text"   :null
+		}
+	},
+	"jr"                       :{
+		"type"       :"Function",
+		"op1"        :"R/N/O",
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Относительный переход на +op1",
+			"text"   :null
+		}
+	},
+	"l"                        :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"D/N",
+		"op3"        :"P",
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := op2.op3",
+			"text"   :"Чтение значения параметра op3 из порта op2"
+		}
+	},
+	"log"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := ln(op2)",
+			"text"   :"Натуральный логарифм"
+		}
+	},
+	"lr"                       :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"D/N",
+		"op3"        :"R/N/RM",
+		"op4"        :"RC",
+		"description":{
+			"preview":"op1 := op2.mode(op3).op4",
+			"text"   :"Чтение значения реагента op4 в режиме op3 из порта op2"
+		}
+	},
+	"ls"                       :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"D/N",
+		"op3"        :"R/N/S",
+		"op4"        :"P",
+		"description":{
+			"preview":"op1 := op2.slot(op3).op4",
+			"text"   :"Чтение значения op4 из слота op3 порта op2"
+		}
+	},
+	"max"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := max(op2, op3)",
+			"text"   :"Максимальное из двух"
+		}
+	},
+	"min"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := min(op2, op3)",
+			"text"   :"Минимальное из двух"
+		}
+	},
+	"mod"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := op2 mod op3",
+			"text"   :"Остаток от целочисленного деления op2 на op3 (результат не эквивалентен оператору %, и будет положителен при любых знаках op2 и op3)"
+		}
+	},
+	"move"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := op2",
+			"text"   :"Присвоение значения"
+		}
+	},
+	"mul"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := op2 op3",
+			"text"   :"Произведение"
+		}
+	},
+	"nor"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := ¬(op2 op3)",
+			"text"   :"Инверсное ИЛИ, единица, если и op2 и op3 ложны, ноль в противном случае"
+		}
+	},
+	"or"                       :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := op2 op3",
+			"text"   :"Логическое ИЛИ, ноль, если и op2 и op3 ложны, единица в противном случае"
+		}
+	},
+	"peek"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := stack[sp-1]",
+			"text"   :"Записать в op1 верхнее значение со стека не двигая стек"
+		}
+	},
+	"pop"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := stack[--sp]",
+			"text"   :"Снять значение со стека и записать в op1"
+		}
+	},
+	"push"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"stack[sp++] := op1",
+			"text"   :"Положить op1 на стек"
+		}
+	},
+	"rand"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := rand(0,1)",
+			"text"   :"Случайная величина от 0 до 1 включительно"
+		}
+	},
+	"round"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := [op2]",
+			"text"   :"Округление к ближайшему целому"
+		}
+	},
+	"s"                        :{
+		"type"       :"Function",
+		"op1"        :"D/N",
+		"op2"        :"P",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1.op2 := op3",
+			"text"   :"Запись значения в параметр op2 порта op1"
+		}
+	},
+	"sap"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :"R/N/C",
+		"description":{
+			"preview":"op1 := (op2 op3)",
+			"text"   :"Если op2 op3 с точностью op4, то единица, иначе ноль"
+		}
+	},
+	"sapz"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := (op2 0)",
+			"text"   :"Если op2 0 с точностью op3, то единица, иначе ноль"
+		}
+	},
+	"sdns"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"D/N",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := ¬isset(op2) ? 1 : 0",
+			"text"   :"Если канал op2 не настроен на то единица, иначе ноль"
+		}
+	},
+	"sdse"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"D/N",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := isset(op2) ? 1 : 0",
+			"text"   :"Если канал op2 настроен на то единица, иначе ноль"
+		}
+	},
+	"select"                   :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :"R/N/C",
+		"description":{
+			"preview":"op1 := (op2 ? op3 : op4)",
+			"text"   :"Тернарный select. Если op2 истинно, то op1 := op3, иначе op1 := op4"
+		}
+	},
+	"seq"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := (op2 = op3)",
+			"text"   :"Если op2 = op3, то единица, иначе ноль"
+		}
+	},
+	"seqz"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := (op2 = 0)",
+			"text"   :"Если op2 = 0, то единица, иначе ноль"
+		}
+	},
+	"sge"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := (op2 op3)",
+			"text"   :"Если op2 op3, то единица, иначе ноль"
+		}
+	},
+	"sgez"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := (op2 0)",
+			"text"   :"Если op2 0, то единица, иначе ноль"
+		}
+	},
+	"sgt"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := (op2 > op3)",
+			"text"   :"Если op2 > op3, то единица, иначе ноль"
+		}
+	},
+	"sgtz"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := (op2 > 0)",
+			"text"   :"Если op2 > 0, то единица, иначе ноль"
+		}
+	},
+	"sin"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := sin(op2)",
+			"text"   :"Синус*"
+		}
+	},
+	"sle"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := (op2 op3)",
+			"text"   :"Если op2 op3, то единица, иначе ноль"
+		}
+	},
+	"sleep"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Приостановка программы на op1 секунд",
+			"text"   :"R/N/C"
+		}
+	},
+	"slez"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := (op2 0)",
+			"text"   :"Если op2 0, то единица, иначе ноль"
+		}
+	},
+	"slt"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := (op2 < op3)",
+			"text"   :"Если op2 < op3, то единица, иначе ноль"
+		}
+	},
+	"sltz"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := (op2 < 0)",
+			"text"   :"Если op2 < 0, то единица, иначе ноль"
+		}
+	},
+	"sna"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :"R/N/C",
+		"description":{
+			"preview":"op1 := (op2 op3)",
+			"text"   :"Если op2 op3 с точностью op4, то единица, иначе ноль"
+		}
+	},
+	"snaz"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := (op2 0)",
+			"text"   :"Если op2 0 с точностью op3, то единица, иначе ноль"
+		}
+	},
+	"sne"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := (op2 op3)",
+			"text"   :"Если op2 op3, то единица, иначе ноль"
+		}
+	},
+	"snez"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := (op2 0)",
+			"text"   :"Если op2 0, то единица, иначе ноль"
+		}
+	},
+	"sqrt"                     :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := o̅p̅2̅",
+			"text"   :"Квадратный корень"
+		}
+	},
+	"sub"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := op2 op3",
+			"text"   :"Разность"
+		}
+	},
+	"tan"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := tan(op2)",
+			"text"   :"Тангенс*"
+		}
+	},
+	"trunc"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := int(op2)",
+			"text"   :"Целая часть числа"
+		}
+	},
+	"xor"                      :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"R/N/C",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1 := op2 op3",
+			"text"   :"Исключающее ИЛИ, единица, если одно и только одно из op2 и op3 истинно, ноль в противном случае"
+		}
+	},
+	"yield"                    :{
+		"type"       :"Function",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Приостановка программы до следующего тика",
+			"text"   :null
+		}
+	},
+	"lb"                       :{
+		"type"       :"Function",
+		"op1"        :"R/N",
+		"op2"        :"H",
+		"op3"        :"P",
+		"op4"        :"BM",
+		"description":{
+			"preview":"op1 := op2.op3.mode(op4)",
+			"text"   :"Пакетное чтение в op1 из всех устройств с хешем op2 параметра op3 в режиме op4"
+		}
+	},
+	"sb"                       :{
+		"type"       :"Function",
+		"op1"        :"H",
+		"op2"        :"P",
+		"op3"        :"R/N/C",
+		"op4"        :null,
+		"description":{
+			"preview":"op1.op2 := op3",
+			"text"   :"Пакетная запись во все устройства с хешем op1 в параметр op2 значения op3"
+		}
+	},
+	"stack"                    :{
+		"type"       :"Function",
+		"op1"        :"R/N/C",
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"stack 1 2 3 ...",
+			"text"   :"Заполняет стак значиниями аргументов"
+		}
+	},
+	"Activate"                 :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Trigger",
+			"text"   :"-1 - остановить , 0 - не работает 1 - работает"
+		}
+	},
+	"Charge"                   :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"Заряд батареи или аккумулятора, Дж. Уровень генерации электричества солнечной панелью, Вт."
+		}
+	},
+	"Class"                    :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":null,
+			"text"   :"класс объекта в слоте"
+		}
+	},
+	"ClearMemory"              :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Trigger",
+			"text"   :">=1 - сбрасывает счётчики"
+		}
+	},
+	"Color"                    :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"0-синий , 1-серый , 2-зелёный , 3-оранжевый , 4-красный , 5-жёлтый, 6-белый, 7-чёрный, 8-коричневый, 9-хаки, 10-розовый, 11-фиолетовый",
+			"text"   :"Цвет LED-лампы, стационарного маяка и светодиодного дисплея"
+		}
+	},
+	"Combustion"               :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Bool",
+			"text"   :"1 - обнаружено воспламенение, 0 - во всех остальных случаях"
+		}
+	},
+	"CompletionRatio"          :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float[0-1]",
+			"text"   :"этап производства в %"
+		}
+	},
+	"Damage"                   :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float[0-1]",
+			"text"   :"уровень повреждения объекта"
+		}
+	},
+	"ElevatorLevel"            :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Int",
+			"text"   :"На чтение - уровень, на котором находится кабинка лифта, или -1, если кабинки нет. На запись - отправляет лифт на указанный этаж."
+		}
+	},
+	"ElevatorSpeed"            :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"Скорость движения кабинки лифта, м/тик. Отрицательное значение соответствуют движению вниз, 0 - неподвижной кабинке, положительное - движению вверх."
+		}
+	},
+	"Error"                    :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Bool",
+			"text"   :"0 - нормальная работа, 1 - ошибка"
+		}
+	},
+	"ExportCount"              :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Int",
+			"text"   :"счётчик объектов, прошедших через слот экспорта"
+		}
+	},
+	"Filtration"               :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Bool",
+			"text"   :"Переключает фильтрацию отработанной смеси в прочном скафандре."
+		}
+	},
+	"ForceWrite"               :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Trigger",
+			"text"   :"Принудительно заставляет чипы записи и множественной записи передать текущее значение в оборудование."
+		}
+	},
+	"Harvest"                  :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Trigger",
+			"text"   :"Активирует сбор урожая в автоматической гидропонной станции."
+		}
+	},
+	"Horizontal"               :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float[0 - 360]",
+			"text"   :"угол по отношению к Солнцу в градусах в горизонтальной проекции Солнца на плоскость датчика"
+		}
+	},
+	"Idle"                     :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Bool",
+			"text"   :"Загрузка дуговой печи. 0 - руда не загружена, 1 - загружена."
+		}
+	},
+	"ImportCount"              :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Int",
+			"text"   :"счётчик объектов, прошедших через слот импорта"
+		}
+	},
+	"Lock"                     :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Bool",
+			"text"   :"0 - ручное управление разблокировано, 1 - заблокировано"
+		}
+	},
+	"Maximum"                  :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"Максимальное значение какого-либо параметра оборудования, например, заряда батареи или давления на входе в камеру сгорания реактивного двигателя. Очень часто присутствует, но не используется."
+		}
+	},
+	"MaxQuantity"              :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"максимальное количество предметов в слоте"
+		}
+	},
+	"Mode"                     :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Int",
+			"text"   :"режим работы"
+		}
+	},
+	"On"                       :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Bool",
+			"text"   :"0 - выключен 1 - включен"
+		}
+	},
+	"Open"                     :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Bool",
+			"text"   :"0 - выброс закрыт, 1 - открыт"
+		}
+	},
+	"Output"                   :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Int/Trigger",
+			"text"   :"Для сортировщика - r/w , Int - следующий выход, на который будет выдан объект.<br>Для стакера - w, Trigger - выгружает накопленную упаковку объектов в слот экспорта."
+		}
+	},
+	"Plant"                    :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Trigger",
+			"text"   :"Запускает процесс посадки растения из слота импорта в автоматической гидропонной станции."
+		}
+	},
+	"PositionX"                :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"координата X текущего положения"
+		}
+	},
+	"PositionY"                :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"координата Y текущего положения"
+		}
+	},
+	"PositionZ"                :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"координата Z текущего положения"
+		}
+	},
+	"Power"                    :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Bool",
+			"text"   :"0 - питание отсутствует или выключен, 1 - питание подано"
+		}
+	},
+	"PowerActual"              :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"Суммарное потребление электроэнергии всеми устройствами в сети, Вт."
+		}
+	},
+	"PowerGeneration"          :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"Текущее производство электроэнергии генератором, Вт."
+		}
+	},
+	"PowerPotential"           :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"Предельная доступная мощность сети, Вт."
+		}
+	},
+	"PowerRequired"            :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"Суммарная потребность в электроэнергии всех устройств в сети, Вт."
+		}
+	},
+	"PressureExternal"         :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"атмосферное давление во внешней среде, кПа"
+		}
+	},
+	"PressureInternal"         :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"Давление в трубопроводе, при котором останавливается работа активной вентиляции, кПа. Устанавливается, но не используется."
+		}
+	},
+	"Ratio"                    :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"Для батарей - соотношение Charge/Maximum.<br>Для остальных устройств - соотношение Setting/Maximum."
+		}
+	},
+	"RatioCarbonDioxide"       :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"доля углекислого газа"
+		}
+	},
+	"RatioNitrogen"            :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"доля азота"
+		}
+	},
+	"RatioNitrousOxide"        :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"доля закиси азота"
+		}
+	},
+	"RatioOxygen"              :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"доля кислорода"
+		}
+	},
+	"RatioPollutant"           :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"доля токсинов"
+		}
+	},
+	"RatioVolatiles"           :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"доля летучих газов"
+		}
+	},
+	"RatioWater"               :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"доля водяных паров"
+		}
+	},
+	"Reagents"                 :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"общая масса ингредиентов в граммах"
+		}
+	},
+	"RecipeHash"               :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Int",
+			"text"   :"хэш выбранного рецепта"
+		}
+	},
+	"RequiredPower"            :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"Энергия, требуемая для рабботы устройства, Вт."
+		}
+	},
+	"Setting"                  :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Any",
+			"text"   :"Текущее значение какого-то параметра оборудования. Тип и возможные значения зависят от оборудования."
+		}
+	},
+	"SolarAngle"               :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"угол по отношению к Солнцу в градусах"
+		}
+	},
+	"TargetX"                  :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Int",
+			"text"   :"координата X цели"
+		}
+	},
+	"TargetY"                  :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Int",
+			"text"   :"координата Y цели"
+		}
+	},
+	"TargetZ"                  :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Int",
+			"text"   :"координата Z цели"
+		}
+	},
+	"TemperatureExternal"      :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"температура внешней атмосферы, К"
+		}
+	},
+	"TemperatureSetting"       :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"Заданная температура внутри прочного скафандра, К."
+		}
+	},
+	"TotalMoles"               :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"Общее количество газа внутри трубопровода, моль."
+		}
+	},
+	"VelocityMagnitude"        :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"модуль скорости движения бота"
+		}
+	},
+	"VelocityRelativeX"        :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"скорость движения по координате X"
+		}
+	},
+	"VelocityRelativeY"        :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"скорость движения по координате Y"
+		}
+	},
+	"VelocityRelativeZ"        :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"скорость движения по координате Z"
+		}
+	},
+	"Vertical"                 :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"угол по отношению к Солнцу в градусах"
+		}
+	},
+	"Volume"                   :{
+		"type"       :"Device parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"Громкость"
+		}
+	},
+	"ChargeRatio"              :{
+		"type"       :"Slot parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float[0-1]",
+			"text"   :"Уровень заряда аккумулятора в слоте."
+		}
+	},
+	"Efficiency"               :{
+		"type"       :"Slot parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float[0-1]",
+			"text"   :"Эффективность роста растения в автоматической гидропонной станции. -1, если растения нет."
+		}
+	},
+	"Growth"                   :{
+		"type"       :"Slot parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float[0-1]",
+			"text"   :"Стадия роста растения в автоматической гидропонной станции. -1, если растения нет."
+		}
+	},
+	"Health"                   :{
+		"type"       :"Slot parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float[0-1]",
+			"text"   :"Здоровье растения в автоматической гидропонной станции. 0 - умершаа растение, 1 - полностью здоровое, -1 - растения нет."
+		}
+	},
+	"Mature"                   :{
+		"type"       :"Slot parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float[0-1]",
+			"text"   :"Готовность растения в автоматической гидропонной станции к сбору урожая. -1 если растения нет."
+		}
+	},
+	"OccupantHash"             :{
+		"type"       :"Slot parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Hash",
+			"text"   :"хэш объекта в слоте"
+		}
+	},
+	"Occupied"                 :{
+		"type"       :"Slot parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Bool",
+			"text"   :"0 - слот свободен, 1 - занят"
+		}
+	},
+	"PressureAir"              :{
+		"type"       :"Slot parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"Давление в баллоне с дыхательной смесью скафандра, установленного в стойку, кПа."
+		}
+	},
+	"PressureWaste"            :{
+		"type"       :"Slot parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"Давление в баллоне с отработанной смесью скафандра, установленного в стойку, кПа."
+		}
+	},
+	"PrefabHash"               :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Hash",
+			"text"   :"хэш Prefab объекта"
+		}
+	},
+	"Pressure"                 :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"давление, кПа"
+		}
+	},
+	"Quantity"                 :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float/Int",
+			"text"   :"масса / количество предметов"
+		}
+	},
+	"Temperature"              :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"температура, К"
+		}
+	},
+	"Bpm"                      :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :null
+		}
+	},
+	"CollectableGoods"         :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :null
+		}
+	},
+	"CurrentResearchPodType"   :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :null
+		}
+	},
+	"Fuel"                     :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :"Топливо"
+		}
+	},
+	"ManualResearchRequiredPod":{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :null
+		}
+	},
+	"MineablesInQueue"         :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :null
+		}
+	},
+	"MineablesInVicinity"      :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :null
+		}
+	},
+	"NextWeatherEventTime"     :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :null
+		}
+	},
+	"ReturnFuelCost"           :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :null
+		}
+	},
+	"SettingInput"             :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :null
+		}
+	},
+	"SettingOutput"            :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :null
+		}
+	},
+	"SignalID"                 :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :null
+		}
+	},
+	"SignalStrength"           :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :null
+		}
+	},
+	"Time"                     :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :null
+		}
+	},
+	"AirRelease"               :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :null
+		}
+	},
+	"HorizontalRatio"          :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :null
+		}
+	},
+	"PressureSetting"          :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :null
+		}
+	},
+	"RequestHash"              :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :null
+		}
+	},
+	"VerticalRatio"            :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"Float",
+			"text"   :null
+		}
+	},
+	"Seeding"                  :{
+		"type"       :"Parameter",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"int",
+			"text"   :"-1 - нельзя собрать семена, 1 - можно"
+		}
+	},
+	"Average"                  :{
+		"type"       :"Const",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"string",
+			"text"   :null
+		}
+	},
+	"Sum"                      :{
+		"type"       :"Const",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"string",
+			"text"   :null
+		}
+	},
+	"Minimum"                  :{
+		"type"       :"Const",
+		"op1"        :null,
+		"op2"        :null,
+		"op3"        :null,
+		"op4"        :null,
+		"description":{
+			"preview":"string",
+			"text"   :null
+		}
+	}
+}
