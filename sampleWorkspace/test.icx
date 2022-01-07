@@ -1,10 +1,17 @@
+use comments
+use constants
 #d0 111111 #set device hash
 #d0 Activate 1 #set device parameter
 #d0 0 PrefabHash 22222 #set slot parameter
-push 1
-push 2
-push 3
-move sp 2
-#log d0.Activate
-#log d0.hash
-#log d0.slot.0.PrefabHash
+
+const PI = 3.14
+stack 2 4 8 16 32 64
+debug  d0.Activate
+debug  d0.hash
+debug  d0.slot.0.PrefabHash
+debug PI
+debug d0.Activate
+debug 1 2 3
+debug r0 r1 r2
+debug "Some text"
+debug sp
