@@ -1,8 +1,4 @@
-start:
-move r0 0
-breqz r0 2
-move r0 1
-move r0 2
-move r0 3
-brgtz r0 -2
-j start
+push 1
+push 2
+push 3
+move sp 2

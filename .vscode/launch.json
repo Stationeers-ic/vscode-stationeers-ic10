@@ -3,7 +3,8 @@
     "configurations": [	
         {	
             "name": "Extension Ic10-vscode",
-            "type": "extensionHost",	
+            "type": "extensionHost",
+            "stopOnEntry": true,	
             "request": "launch",	
             "args": [	
                 "--extensionDevelopmentPath=${workspaceFolder}",

@@ -2,10 +2,10 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  *--------------------------------------------------------*/
 import {Breakpoint, BreakpointEvent, Handles, InitializedEvent, InvalidatedEvent, Logger, logger, LoggingDebugSession, OutputEvent, ProgressEndEvent, ProgressStartEvent, ProgressUpdateEvent, Scope, Source, StackFrame, StoppedEvent, TerminatedEvent, Thread} from 'vscode-debugadapter';
-import {DebugProtocol} from 'vscode-debugprotocol';
-import {basename} from 'path';
-import {FileAccessor, ic10Runtime, Iic10Breakpoint} from './ic10Runtime';
-import {ConstantCell, ic10Error, InterpreterIc10, MemoryCell, MemoryStack} from "ic10";
+import {DebugProtocol}                                                                                                                                                                                                                                           from 'vscode-debugprotocol';
+import {basename}                                                                                                                                                                                                                                                from 'path';
+import {FileAccessor, ic10Runtime, Iic10Breakpoint}                                                                                                                                                                                                              from './ic10Runtime';
+import {ConstantCell, ic10Error, InterpreterIc10, MemoryCell, MemoryStack, Slot}                                                                                                                                                                                 from "ic10";
 
 // import * as fs from "fs";
 
@@ -783,11 +783,14 @@ class VariableMap {
 					} as DebugProtocol.Variable
 					for (const valueKey in value) {
 						if (value.hasOwnProperty(valueKey)) {
-							var index = `[${valueKey}]`
-							var stack: MemoryCell | MemoryStack = this.ic10.memory.cells[16]
-							if (stack instanceof MemoryStack) {
-								if (parseInt(valueKey) == parseInt(String(stack.get()))) {
-									index = `(${valueKey})`
+							var index = `${valueKey}`
+							if (!(value[valueKey] instanceof Slot)) {
+								index                               = `[${valueKey}]`
+								var stack: MemoryCell | MemoryStack = this.ic10.memory.cells[16]
+								if (stack instanceof MemoryStack) {
+									if (parseInt(valueKey) == parseInt(String(stack.get()))) {
+										index = `(${valueKey})`
+									}
 								}
 							}
 							this.var2variable(index, value[valueKey], name, mc)

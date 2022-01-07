@@ -1,0 +1,1 @@
+{"number":0,"properties":{"Charge":0,"ChargeRatio":0,"Class":0,"Damage":0,"Efficiency":0,"Growth":0,"Health":0,"Mature":0,"MaxQuantity":0,"OccupantHash":0,"Occupied":0,"PrefabHash":22222,"Pressure":0,"PressureAir":0,"PressureWaste":0,"Quantity":0,"Temperature":0}}

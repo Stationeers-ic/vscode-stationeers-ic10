@@ -625,11 +625,14 @@ class VariableMap {
                     };
                     for (const valueKey in value) {
                         if (value.hasOwnProperty(valueKey)) {
-                            var index = `[${valueKey}]`;
-                            var stack = this.ic10.memory.cells[16];
-                            if (stack instanceof ic10_1.MemoryStack) {
-                                if (parseInt(valueKey) == parseInt(String(stack.get()))) {
-                                    index = `(${valueKey})`;
+                            var index = `${valueKey}`;
+                            if (!(value[valueKey] instanceof ic10_1.Slot)) {
+                                index = `[${valueKey}]`;
+                                var stack = this.ic10.memory.cells[16];
+                                if (stack instanceof ic10_1.MemoryStack) {
+                                    if (parseInt(valueKey) == parseInt(String(stack.get()))) {
+                                        index = `(${valueKey})`;
+                                    }
                                 }
                             }
                             this.var2variable(index, value[valueKey], name, mc);

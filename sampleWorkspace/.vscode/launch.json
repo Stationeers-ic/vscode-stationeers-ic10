@@ -1,13 +1,13 @@
-{
+{ 
     "version": "0.2.0",
     "configurations": [
-        {
-            "type": "ic10",
-            "request": "launch",
-            "name": "Debug ic10",
-            "program": "${fileWorkspaceFolder}${pathSeparator}${fileBasenameNoExtension}.ic10",
-            "stopOnEntry": true,
-            "trace": false
-        }
+      { 
+        "type": "ic10",
+        "request": "launch",
+        "name": "Debug ic10",
+        "program": "${file}",
+        "stopOnEntry": true,
+        "trace": false
+      }
     ]
-}
+  }
