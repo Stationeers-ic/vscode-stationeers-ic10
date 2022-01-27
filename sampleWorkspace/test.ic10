@@ -1,19 +1,8 @@
-#d0 111111 #set device hash
-#d0 Activate 1 #set device parameter
-#d0 0 PrefabHash 22222 #set slot parameter
-define PI 3.14
-push 2
-push 4
-push 8
-push 16
-push 32
-push 64
-#log d0.Activate
-#log d0.hash
-#log d0.slot.0.PrefabHash
-#log PI
-#log d0.Activate
-#log 1 2 3
-#log r0 r1 r2
-#log "Some text"
-#log sp
+alias b r0
+define a 6
+l b d0 Power
+sgt r15 b a
+beqz r15 if0exit
+s d1 Activate 1
+if0exit:
+j 0

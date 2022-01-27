@@ -1,7 +1,10 @@
 # Stationeers ic10
 
 NEW WIKI [http://traineratwot.aytour.ru/wiki/icx](http://traineratwot.aytour.ru/wiki/icx)
+
 VS code Sample project [https://github.com/Traineratwot/Ic10-and-Icx-Sample](https://github.com/Traineratwot/Ic10-and-Icx-Sample)
+
+
 
 [![issues](https://badgen.net/github/issues/Traineratwot/vscode-stationeers-ic10/)](https://github.com/Traineratwot/vscode-stationeers-ic10/issues?q=is%3Aissue)
 [![open-issues](https://badgen.net/github/open-issues/Traineratwot/vscode-stationeers-ic10/)](https://github.com/Traineratwot/vscode-stationeers-ic10/issues)
@@ -21,7 +24,7 @@ VS code Sample project [https://github.com/Traineratwot/Ic10-and-Icx-Sample](htt
 
 [![](https://i.imgur.com/cl0Xbq1.png)  Sponsor this project](https://www.patreon.com/traineratwot)
 
-[<img src="https://discord.com/assets/847541504914fd33810e70a0ea73177e.ico" width="20"> discord](https://discord.gg/KSVjXufkA9)
+[![](https://i.imgur.com/j50yyPG.jpeg) discord](https://discord.gg/KSVjXufkA9)
 
 
 Debugger launch
@@ -60,11 +63,17 @@ Debugger launch
 - Semantic code analize
 - counter left lines
 
+## icX - compiler
+
+![](https://i.imgur.com/W4KRn28.png)
+
 counter left lines
+
 ![counter](https://i.imgur.com/Y2MHtew.jpg)
 
 
 new snippets
+
 ![snippets](https://i.imgur.com/Aokz1an.jpg)
 
 [demo4](https://youtu.be/hYm49tz8V0A)
