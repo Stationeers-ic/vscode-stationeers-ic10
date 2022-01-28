@@ -1,9 +1,7 @@
-use constants
-use comments
-use loop
-use aliases
-const a = 2 + 2 * 2
-var b = d0.Power
-if b > a
- d1.Activate = 1
+var a = 0
+stack 342423 432423 54534 6567 
+foreach a
+ if a == 6567
+	var b = 5
+ end
 end
