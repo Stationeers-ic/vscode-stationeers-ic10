@@ -1,7 +1,8 @@
 var a = 0
-stack 342423 432423 54534 6567 
-foreach a
+stack 342423 432423 54534 6567
+foreach a 1
  if a == 6567
-	var b = 5
+	var b = sp
+	break
  end
 end
