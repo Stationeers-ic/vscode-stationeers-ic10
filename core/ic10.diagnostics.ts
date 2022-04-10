@@ -275,15 +275,14 @@ export class Ic10Diagnostics {
 					}
 					break
 				case 'RM':
-					if (['Contents', 'Required', 'Recipe', 0, 1, 2].indexOf(value) < 0) {
+					if (['Contents', 'Required', 'Recipe', 0, 1, 2, "0", "1", "2"].indexOf(value) < 0) {
 						errors++;
 					}
 					break
 				case 'RC':
-
 					break
 				case 'BM':
-					if (['Average', 'Sum', 'Minimum', 'Maximum', 0, 1, 2, 3].indexOf(value) < 0) {
+					if (['Average', 'Sum', 'Minimum', 'Maximum', 0, 1, 2, 3, "0", "1", "2", "3"].indexOf(value) < 0) {
 						errors++;
 					}
 					break

@@ -2,13 +2,13 @@
   "name": "stationeers-ic10",
   "displayName": "Stationeers ic10",
   "description": "Ic10 & icX support",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "license": "MIT",
   "homepage": "https://github.com/Traineratwot/vscode-stationeers-ic10",
   "type": "commonjs",
   "scripts": {
     "start": "npm update && tsc -w",
-    "prepublish": "npm update && tsc",
+    "prepublish": "tsc",
     "publish": "vsce package"
   },
   "badges": [],

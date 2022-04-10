@@ -1,17 +1,2 @@
-move r0 0
-push 342423
-push 432423
-push 54534
-push 6567
-move sp 1
-while0:
-peek r0
-seq r15 r0 6567
-beqz r15 if0exit
-move r1 r16
-j while0exit
-if0exit:
-breqz r0 3
-add sp sp 1
-j while0
-while0exit:
+move r0 1
+lb r0 545937711 Pressure 1
