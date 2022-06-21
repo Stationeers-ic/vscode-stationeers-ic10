@@ -12,7 +12,7 @@ import {join} from 'path';
 import {platform} from 'process';
 import {ProviderResult} from 'vscode';
 import {ic10DebugSession}                         from './ic10Debug';
-import {activateIc10Debug, workspaceFileAccessor} from './activateic10Debug';
+import {activateIc10Debug, workspaceFileAccessor} from './activateIc10Debug';
 
 /*
  * The compile time flag 'runMode' controls how the debug adapter is run.
