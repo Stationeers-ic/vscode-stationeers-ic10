@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -25,9 +29,9 @@ const ic10_diagnostics_1 = require("./ic10.diagnostics");
 const icx_compiler_1 = require("icx-compiler");
 const main_1 = require("./main");
 const err_1 = require("icx-compiler/src/err");
-var manual = require('../languages/en.json');
-var functions = require('../media/ic10.functions.json');
-var keywords = require('../media/ic10.keyword.json');
+const manual = require('../languages/en.json');
+const functions = require('../media/ic10.functions.json');
+require('../media/ic10.keyword.json');
 exports.IcXDiagnosticsName = 'icX_diagnostic';
 class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
     constructor() {
@@ -47,30 +51,24 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
         }
     }
     run(doc, container) {
+        const code = doc.getText();
+        const compiler = new icx_compiler_1.icX(code, main_1.icxOptions);
+        const test = compiler.analyze();
         const diagnostics = [];
         this.prepare(doc);
-        var code = doc.getText();
-        try {
-            var compiler = new icx_compiler_1.icX(code, main_1.icxOptions);
-            var test = compiler.analyze();
-        }
-        catch (e) {
-            console.error(e);
-            return;
-        }
         if (test.error instanceof err_1.Errors) {
             if (test.error.isError()) {
                 for (const eKey in test.error.e) {
-                    var err = test.error.e[eKey];
+                    const err = test.error.e[eKey];
                     if (err instanceof err_1.Err) {
-                        var l = doc.lineAt(err.line);
+                        const l = doc.lineAt(err.line);
                         diagnostics.push(this.createDiagnostic(l.range, err.message, vscode.DiagnosticSeverity.Error));
                     }
                 }
             }
         }
         try {
-            var linesCount = test.result.split('\n').length;
+            const linesCount = test.result.split('\n').length;
             if (linesCount > 128) {
                 diagnostics.push(this.createDiagnostic(new vscode.Range(0, 0, 0, 1), 'Max line', vscode.DiagnosticSeverity.Error));
             }
@@ -181,8 +179,8 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
     parseLine(doc, lineIndex) {
         const lineOfText = doc.lineAt(lineIndex);
         if (lineOfText.text.trim().length > 0) {
-            var text = lineOfText.text.trim();
-            var test = functions.some((substring) => {
+            let text = lineOfText.text.trim();
+            functions.some((substring) => {
                 if (text.startsWith('#')) {
                     if (text.startsWith('#log') || text.startsWith('debug')) {
                         this.errors.push(new ic10_diagnostics_1.DiagnosticsError(`Debug function: "${text}"`, 2, 0, text.length, lineIndex));
@@ -190,7 +188,7 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
                     }
                     return true;
                 }
-                var words = text.split(/ +/);
+                const words = text.split(/ +/);
                 text = text.replace(/#.+$/, '');
                 text = text.trim();
                 if (text.endsWith(':')) {

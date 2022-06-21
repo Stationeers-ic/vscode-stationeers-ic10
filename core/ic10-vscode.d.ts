@@ -1,5 +1,5 @@
 export declare class Ic10Vscode {
-    private langPath;
+    private readonly langPath;
     LOCALE_KEY: string;
     constructor();
     getHover(name?: string): string;

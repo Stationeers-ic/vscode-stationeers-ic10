@@ -1,10 +1,10 @@
-import * as vscode from "vscode";
-import {DiagnosticsError, errorMsg, Ic10Diagnostics, regexes} from "./ic10.diagnostics";
-import {icX} from "icx-compiler";
-import {icSidebar, icxOptions, LANG_KEY2} from "./main";
-import {Err, Errors} from "icx-compiler/src/err";
+import * as vscode                                   from "vscode";
+import {DiagnosticsError, errorMsg, Ic10Diagnostics} from "./ic10.diagnostics";
+import {icX}                                         from "icx-compiler";
+import {icSidebar, icxOptions, LANG_KEY2}            from "./main";
+import {Err, Errors}                                 from "icx-compiler/src/err";
 
-var manual: {
+const manual: {
   "type": string,
   "op1": string | null,
   "op2": string | null,
@@ -14,9 +14,9 @@ var manual: {
     "preview": string | null,
     "text": string | null
   }
-}[] = require('../languages/en.json')
-var functions: string[] = require('../media/ic10.functions.json')
-var keywords: string[] = require('../media/ic10.keyword.json')
+}[]                       = require('../languages/en.json');
+const functions: string[] = require('../media/ic10.functions.json');
+require('../media/ic10.keyword.json');
 export const IcXDiagnosticsName = 'icX_diagnostic';
 
 
@@ -26,7 +26,7 @@ class IcXDiagnostics extends Ic10Diagnostics {
   }
 
   prepare(doc: vscode.TextDocument) {
-    this.jumps = [];
+    this.jumps   = [];
     this.aliases = [];
     this.errors.reset()
     for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
@@ -39,30 +39,25 @@ class IcXDiagnostics extends Ic10Diagnostics {
   }
 
   run(doc: vscode.TextDocument, container: vscode.DiagnosticCollection): void {
+    const code                             = doc.getText();
+    const compiler                         = new icX(code, icxOptions);
+    const test                             = compiler.analyze();
+    // console.log(test)
     const diagnostics: vscode.Diagnostic[] = [];
     this.prepare(doc)
-    var code = doc.getText()
-    try {
-      var compiler = new icX(code, icxOptions)
-      var test = compiler.analyze()
-      // console.log(test)
-    } catch (e) {
-      console.error(e)
-      return
-    }
     if (test.error instanceof Errors) {
       if (test.error.isError()) {
         for (const eKey in test.error.e) {
-          var err = test.error.e[eKey]
+          const err = test.error.e[eKey];
           if (err instanceof Err) {
-            var l = doc.lineAt(err.line)
+            const l = doc.lineAt(err.line);
             diagnostics.push(this.createDiagnostic(l.range, err.message, vscode.DiagnosticSeverity.Error))
           }
         }
       }
     }
     try {
-      var linesCount = test.result.split('\n').length
+      const linesCount = test.result.split('\n').length;
       if (linesCount > 128) {
         diagnostics.push(this.createDiagnostic(new vscode.Range(0, 0, 0, 1), 'Max line', vscode.DiagnosticSeverity.Error))
       }
@@ -171,8 +166,8 @@ class IcXDiagnostics extends Ic10Diagnostics {
   parseLine(doc: vscode.TextDocument, lineIndex) {
     const lineOfText = doc.lineAt(lineIndex);
     if (lineOfText.text.trim().length > 0) {
-      var text = lineOfText.text.trim()
-      var test = functions.some((substring) => {
+      let text = lineOfText.text.trim();
+      functions.some((substring) => {
         if (text.startsWith('#')) {
           if (text.startsWith('#log') || text.startsWith('debug')) {
             this.errors.push(new DiagnosticsError(`Debug function: "${text}"`, 2, 0, text.length, lineIndex))
@@ -180,9 +175,9 @@ class IcXDiagnostics extends Ic10Diagnostics {
           }
           return true;
         }
-        var words = text.split(/ +/)
-        text = text.replace(/#.+$/, '')
-        text = text.trim()
+        const words = text.split(/ +/);
+        text        = text.replace(/#.+$/, '')
+        text        = text.trim()
         if (text.endsWith(':')) {
           this.jumps.push(text)
           return true;
@@ -203,7 +198,7 @@ class IcXDiagnostics extends Ic10Diagnostics {
           this.analyzeFunctionInputs(words, text, lineIndex)
         }
         return false
-      }, this)
+      }, this);
       this.aliases = [...new Set(this.aliases)];
 
     }

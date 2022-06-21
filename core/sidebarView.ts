@@ -1,12 +1,10 @@
-import * as vscode from 'vscode';
-import * as fs from "fs";
-import {icXElem} from "icx-compiler/src/classes";
+import * as vscode                                                 from 'vscode';
+import {CancellationToken, WebviewView, WebviewViewResolveContext} from "vscode";
 
 export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 	public static readonly viewType = 'Ic10ViewProvider';
 
 	public view?: vscode.WebviewView;
-	private dom: any;
 	private sectionsNamed: {} = {};
 	public events: {
 		[name: string]: (data: {
@@ -29,29 +27,6 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 		private readonly _extensionUri: vscode.Uri,
 	) {
 
-	}
-
-	public resolveWebviewView(
-		webviewView: vscode.WebviewView,
-		context: vscode.WebviewViewResolveContext,
-		_token: vscode.CancellationToken,
-	) {
-		this.view = webviewView;
-
-		webviewView.webview.options = {
-			// Allow scripts in the webview
-			enableScripts: true,
-
-			localResourceRoots: [
-				this._extensionUri
-			]
-		};
-
-		webviewView.webview.html = this._getHtmlForWebview();
-
-		webviewView.webview.onDidReceiveMessage(data => {
-
-		});
 	}
 
 	sendCommand(name, data) {
@@ -135,7 +110,8 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 		return `<!DOCTYPE html>
 			<html lang="en">
 			<head>
-			<meta charset="UTF-8">
+			<title></title>
+				<meta charset="UTF-8">
 				<!--
 				\tUse a content security policy to only allow loading images from https or from our extension directory,
 				\tand only allow scripts that have a specific nonce.
@@ -161,6 +137,25 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 			text += possible.charAt(Math.floor(Math.random() * possible.length));
 		}
 		return text;
+	}
+
+	resolveWebviewView(webviewView: WebviewView, context: WebviewViewResolveContext, token: CancellationToken): Thenable<void> | void {
+		this.view = webviewView;
+
+		webviewView.webview.options = {
+			// Allow scripts in the webview
+			enableScripts: true,
+
+			localResourceRoots: [
+				this._extensionUri
+			]
+		};
+
+		webviewView.webview.html = this._getHtmlForWebview();
+
+		webviewView.webview.onDidReceiveMessage(data => {
+			console.log(data)
+		});
 	}
 
 }

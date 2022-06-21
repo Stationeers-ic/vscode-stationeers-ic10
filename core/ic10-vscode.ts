@@ -3,19 +3,18 @@ import vscode = require("vscode");
 import {ic10Error} from "ic10/main";
 
 export class Ic10Vscode {
-	private langPath: {};
+	private readonly langPath: {};
 	LOCALE_KEY: string;
 	
 	constructor() {
 		this.langPath = {};
 		this.LOCALE_KEY = vscode.env.language.trim()
 		try {
-			
-			var langPath = require(`../languages/${this.LOCALE_KEY}.json`);
+			let langPath = require(`../languages/${this.LOCALE_KEY}.json`);
 			if (langPath instanceof Object) {
 				this.langPath = langPath
 			} else {
-				var langPath = require(`../languages/en.json`);
+				langPath      = require(`../languages/en.json`);
 				this.langPath = langPath
 				// console.info(`undefined lang ${this.LOCALE_KEY}`)
 			}

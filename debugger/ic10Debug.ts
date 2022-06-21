@@ -40,18 +40,13 @@ export class ic10DebugSession extends LoggingDebugSession {
 
 	public _variableHandles = new Handles<string>();
 
-	private _cancelationTokens = new Map<number, boolean>();
-	private _isLongrunning = new Map<number, boolean>();
-
+	private _cancelActionTokens = new Map<number, boolean>();
 	private _reportProgress = false;
 	private _progressId = 10000;
 	private _cancelledProgressId: string | undefined = undefined;
 	private _isProgressCancellable = true;
-
-	private _showHex = false;
 	private _useInvalidatedEvent = false;
-	private ic10: InterpreterIc10;
-	private _variables: Set<MemoryCell>;
+	private readonly ic10: InterpreterIc10;
 	variableMap: VariableMap;
 
 	/**
@@ -62,8 +57,6 @@ export class ic10DebugSession extends LoggingDebugSession {
 		super("ic10-debug.txt");
 		this.ic10 = new InterpreterIc10()
 		this.variableMap = new VariableMap(this, this.ic10)
-
-		var self = this
 		this.ic10.setSettings({
 			debugCallback: function (a, b) {
 				this.output.debug = a + ' ' + JSON.stringify(b)
@@ -436,7 +429,7 @@ export class ic10DebugSession extends LoggingDebugSession {
 
 		if (args.context === 'repl') {
 			// 'evaluate' supports to create and delete breakpoints from the 'repl':
-			const matches = /new +([0-9]+)/.exec(args.expression);
+			const matches = /new +(\d+)/.exec(args.expression);
 			if (matches && matches.length === 2) {
 				const mbp = await this._runtime.setBreakPoint(this._runtime.sourceFile, this.convertClientLineToDebugger(parseInt(matches[1])));
 				const bp = new Breakpoint(mbp.verified, this.convertDebuggerLineToClient(mbp.line), undefined, this.createSource(this._runtime.sourceFile)) as DebugProtocol.Breakpoint;
@@ -444,7 +437,7 @@ export class ic10DebugSession extends LoggingDebugSession {
 				this.sendEvent(new BreakpointEvent('new', bp));
 				reply = `breakpoint created`;
 			} else {
-				const matches = /del +([0-9]+)/.exec(args.expression);
+				const matches = /del +(\d+)/.exec(args.expression);
 				if (matches && matches.length === 2) {
 					const mbp = this._runtime.clearBreakPoint(this._runtime.sourceFile, this.convertClientLineToDebugger(parseInt(matches[1])));
 					if (mbp) {
@@ -458,7 +451,7 @@ export class ic10DebugSession extends LoggingDebugSession {
 					if (matches && matches.length === 1) {
 						if (this._reportProgress) {
 							reply = `progress started`;
-							this.progressSequence();
+							await this.progressSequence();
 						} else {
 							reply = `frontend doesn't support progress (capability 'supportsProgressReporting' not set)`;
 						}
@@ -591,7 +584,7 @@ export class ic10DebugSession extends LoggingDebugSession {
 
 	protected cancelRequest(response: DebugProtocol.CancelResponse, args: DebugProtocol.CancelArguments) {
 		if (args.requestId) {
-			this._cancelationTokens.set(args.requestId, true);
+			this._cancelActionTokens.set(args.requestId, true);
 		}
 		if (args.progressId) {
 			this._cancelledProgressId = args.progressId;
@@ -599,19 +592,19 @@ export class ic10DebugSession extends LoggingDebugSession {
 	}
 
 	protected customRequest(command: string, response: DebugProtocol.Response, args: any) {
-		command = command.trim()
+		const regex = /(.+)\[.+]/gm;
+		command     = command.trim()
 		// fs.writeFileSync("C:\\OSPanel\\domains\\vscode-stationeers-ic10\\logs\\" + command + '0.json', JSON.stringify(args))
 
 		if (['ic10.debug.variables.write', 'ic10.debug.device.write', 'ic10.debug.device.slot.write', 'ic10.debug.stack.push', 'ic10.debug.remove.push'].indexOf(command) >= 0) {
 			try {
-				var regex = /(.+)\[.+\]/gm
-				var name = regex.exec(args.variable.variable.name)
+				const name = regex.exec(args.variable.variable.name);
 				if (name) {
 					args.variableName = name[1]
 				} else {
 					args.variableName = args.variable.variable.name
 				}
-				var container = regex.exec(args.variable.container.name)
+				const container = regex.exec(args.variable.container.name);
 				if (container) {
 					args.containerName = container[1]
 				} else {
@@ -632,8 +625,7 @@ export class ic10DebugSession extends LoggingDebugSession {
 				break;
 			case 'ic10.debug.device.write':
 				try {
-					var device = regex.exec(args.variable.container.name)
-					args.debug = device
+					args.debug = regex.exec(args.variable.container.name);
 					this.ic10.memory.cell(args.containerName, args.variableName, Number(args.value))
 				} catch (e) {
 					this.sendEvent(new InvalidatedEvent(['variables']));
@@ -659,7 +651,7 @@ export class ic10DebugSession extends LoggingDebugSession {
 	}
 
 	private getHover(args: DebugProtocol.EvaluateArguments) {
-		var response = args.expression
+		let response = args.expression;
 		try {
 			response = String(this.ic10.memory.cell(args.expression))
 		} catch (e) {
@@ -673,7 +665,6 @@ export class ic10DebugSession extends LoggingDebugSession {
 class VariableMap {
 	private map: object;
 	private ic10: InterpreterIc10;
-	private counter: number = 1000;
 	scope: ic10DebugSession;
 
 
@@ -684,8 +675,8 @@ class VariableMap {
 	}
 
 	init(id: string) {
-		this.map = new Object
-		for (var cellsKey in this.ic10.memory.cells) {
+		this.map = {}
+		for (let cellsKey in this.ic10.memory.cells) {
 			try {
 				cellsKey = String(cellsKey)
 				let val = this.ic10.memory.cells[cellsKey].get()
@@ -702,11 +693,11 @@ class VariableMap {
 
 			}
 		}
-		var stack: MemoryCell | MemoryStack = this.ic10.memory.cells[16]
+		const stack: MemoryCell | MemoryStack = this.ic10.memory.cells[16];
 		if (stack instanceof MemoryStack) {
 			this.var2variable('Stack', stack.getStack(), id)
 		}
-		for (var environKey in this.ic10.memory.environ) {
+		for (const environKey in this.ic10.memory.environ) {
 			if (this.ic10.memory.environ.hasOwnProperty(environKey)) {
 				try {
 					let val = this.ic10.memory.environ[environKey]
@@ -724,7 +715,7 @@ class VariableMap {
 				}
 			}
 		}
-		for (var aliasesKey in this.ic10.memory.aliases) {
+		for (const aliasesKey in this.ic10.memory.aliases) {
 			if (this.ic10.memory.aliases.hasOwnProperty(aliasesKey)) {
 				try {
 					let val = this.ic10.memory.aliases[aliasesKey]
@@ -746,12 +737,12 @@ class VariableMap {
 
 	public var2variable(name, value: any | MemoryStack, id, mc = null) {
 		if (!(id in this.map)) {
-			this.map[id] = new Object
+			this.map[id] = {}
 		}
 		if (value === null) {
 			value = 0
 		}
-		var type = value.constructor.name;
+		const type = value.constructor.name;
 		switch (type) {
 			case "String":
 				this.map[id][name] = {
@@ -783,10 +774,10 @@ class VariableMap {
 					} as DebugProtocol.Variable
 					for (const valueKey in value) {
 						if (value.hasOwnProperty(valueKey)) {
-							var index = `${valueKey}`
+							let index = `${valueKey}`;
 							if (!(value[valueKey] instanceof Slot)) {
 								index                               = `[${valueKey}]`
-								var stack: MemoryCell | MemoryStack = this.ic10.memory.cells[16]
+								const stack: MemoryCell | MemoryStack = this.ic10.memory.cells[16];
 								if (stack instanceof MemoryStack) {
 									if (parseInt(valueKey) == parseInt(String(stack.get()))) {
 										index = `(${valueKey})`

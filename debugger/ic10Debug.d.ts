@@ -12,16 +12,13 @@ export declare class ic10DebugSession extends LoggingDebugSession {
     private static threadID;
     private _runtime;
     _variableHandles: Handles<string>;
-    private _cancelationTokens;
-    private _isLongrunning;
+    private _cancelActionTokens;
     private _reportProgress;
     private _progressId;
     private _cancelledProgressId;
     private _isProgressCancellable;
-    private _showHex;
     private _useInvalidatedEvent;
-    private ic10;
-    private _variables;
+    private readonly ic10;
     variableMap: VariableMap;
     constructor(fileAccessor: FileAccessor);
     protected initializeRequest(response: DebugProtocol.InitializeResponse, args: DebugProtocol.InitializeRequestArguments): void;
@@ -55,7 +52,6 @@ export declare class ic10DebugSession extends LoggingDebugSession {
 declare class VariableMap {
     private map;
     private ic10;
-    private counter;
     scope: ic10DebugSession;
     constructor(scope: ic10DebugSession, ic10: InterpreterIc10);
     init(id: string): void;

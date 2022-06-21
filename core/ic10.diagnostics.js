@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -22,9 +26,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ic10Diagnostics = exports.Ic10Diagnostics = exports.DiagnosticsErrors = exports.DiagnosticsError = exports.regexes = exports.Ic10DiagnosticsName = void 0;
 const vscode = __importStar(require("vscode"));
 exports.Ic10DiagnosticsName = 'ic10_diagnostic';
-var manual = require('../languages/en.json');
-var functions = require('../media/ic10.functions.json');
-var keywords = require('../media/ic10.keyword.json');
+const manual = require('../languages/en.json');
+const functions = require('../media/ic10.functions.json');
+const keywords = require('../media/ic10.keyword.json');
 exports.regexes = {
     'rr1': new RegExp("[r]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
     'dr1': new RegExp("[d]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
@@ -306,7 +310,7 @@ class Ic10Diagnostics {
         }
         switch (typeof a) {
             case 'string':
-                if (!a || a.trim() == '' || a == null) {
+                if (!a || a.trim() == '') {
                     return true;
                 }
                 else {

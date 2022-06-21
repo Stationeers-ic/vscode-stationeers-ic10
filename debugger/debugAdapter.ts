@@ -43,7 +43,7 @@ const fsAccessor:  FileAccessor = {
 // first parse command line arguments to see whether the debug adapter should run as a server
 let port = 0;
 const args = process.argv.slice(2);
-args.forEach(function (val, index, array) {
+args.forEach(function (val) {
 	const portMatch = /^--server=(\d{4,5})$/.exec(val);
 	if (portMatch) {
 		port = parseInt(portMatch[1], 10);

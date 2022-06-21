@@ -5,7 +5,6 @@ const events_1 = require("events");
 class ic10Runtime extends events_1.EventEmitter {
     _fileAccessor;
     _sourceFile = '';
-    datetime;
     get sourceFile() {
         return this._sourceFile;
     }
@@ -174,39 +173,46 @@ class ic10Runtime extends events_1.EventEmitter {
         }
     }
     run(reverse = false, stepEvent) {
-        var counter = 0;
-        do {
-            var why = this.ic10.prepareLine(-1, true);
-            var ln = this.ic10.position;
-            if (this.ic10?.output?.debug && this.ic10.ignoreLine.indexOf(ln) < 0) {
-                this.sendEvent('output', '[debug]: ' + this.ic10.output.debug, this._sourceFile, ln - 1);
-                this.ic10.output.debug = '';
+        if (!reverse) {
+            const ln = this.ic10.position;
+            let why;
+            let counter = 0;
+            do {
+                why = this.ic10.prepareLine(-1, true);
+                if (this.ic10?.output?.debug && this.ic10.ignoreLine.indexOf(ln) < 0) {
+                    this.sendEvent('output', '[debug]: ' + this.ic10.output.debug, this._sourceFile, ln - 1);
+                    this.ic10.output.debug = '';
+                }
+                if (this.ic10?.output?.log) {
+                    this.sendEvent('output', this.ic10.output.log, this._sourceFile, ln - 1);
+                    this.ic10.output.log = '';
+                }
+                if (this.ic10?.output?.error && this.ic10.ignoreLine.indexOf(ln) < 0) {
+                    this.sendEvent('output', this.ic10.output.error, this._sourceFile, ln - 1);
+                    this.ic10.output.error = '';
+                }
+                if (this.fireEventsForLine(ln, stepEvent)) {
+                    this._currentLine = ln;
+                    this._currentColumn = undefined;
+                    return true;
+                }
+                if (counter++ > 1000) {
+                    why = 'timeOut';
+                }
+            } while (why === true);
+            switch (why) {
+                case "timeOut":
+                    this.sendEvent('output', "WHILE TRUE!!!!", this._sourceFile, ln);
+                    this.sendEvent('stopOnBreakpoint');
+                    break;
+                default:
+                    this.sendEvent('end');
+                    break;
             }
-            if (this.ic10?.output?.log) {
-                this.sendEvent('output', this.ic10.output.log, this._sourceFile, ln - 1);
-                this.ic10.output.log = '';
-            }
-            if (this.ic10?.output?.error && this.ic10.ignoreLine.indexOf(ln) < 0) {
-                this.sendEvent('output', this.ic10.output.error, this._sourceFile, ln - 1);
-                this.ic10.output.error = '';
-            }
-            if (this.fireEventsForLine(ln, stepEvent)) {
-                this._currentLine = ln;
-                this._currentColumn = undefined;
-                return true;
-            }
-            if (counter++ > 1000) {
-                why = 'timeOut';
-            }
-        } while (why === true);
-        switch (why) {
-            case "timeOut":
-                this.sendEvent('output', "WHILE TRUE!!!!", this._sourceFile, ln);
-                this.sendEvent('stopOnBreakpoint');
-                break;
-            default:
-                this.sendEvent('end');
-                break;
+        }
+        else {
+            this.sendEvent('output', "can`t go back", this._sourceFile, 0);
+            this.sendEvent('stopOnBreakpoint');
         }
     }
     async verifyBreakpoints(path) {

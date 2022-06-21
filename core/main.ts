@@ -1,43 +1,43 @@
 'use strict';
-import * as vscode from 'vscode';
-import {Hover} from 'vscode';
-import {Ic10Vscode} from './ic10-vscode';
-import {ic10Error, InterpreterIc10} from "ic10";
-import path from "path";
-import {ic10Formatter} from "./ic10.formatter";
+import * as vscode                         from 'vscode';
+import {Hover}                             from 'vscode';
+import {Ic10Vscode}                        from './ic10-vscode';
+import {ic10Error, InterpreterIc10}        from "ic10";
+import path                                from "path";
+import {ic10Formatter}                     from "./ic10.formatter";
 import {IcxSemanticTokensProvider, legend} from "./icX.SemanticProvider";
-import {Ic10SidebarViewProvider} from "./sidebarView";
-import {ic10Diagnostics} from "./ic10.diagnostics";
-import {icX} from "icx-compiler";
-import {icXDiagnostics} from "./icX.diagnostics";
-import {icXFormatter} from "./icX.formatter";
+import {Ic10SidebarViewProvider}           from "./sidebarView";
+import {ic10Diagnostics}                   from "./ic10.diagnostics";
+import {icX}                               from "icx-compiler";
+import {icXDiagnostics}                    from "./icX.diagnostics";
+import {icXFormatter}                      from "./icX.formatter";
 
 const LOCALE_KEY: string = vscode.env.language
-const ic10 = new Ic10Vscode();
-export const LANG_KEY = 'ic10'
-export const LANG_KEY2 = 'icX'
-const interpreterIc10 = new InterpreterIc10(null)
-var interpreterIc10State = 0
-var leftCodeLength: vscode.StatusBarItem;
+const ic10               = new Ic10Vscode();
+export const LANG_KEY    = 'ic10'
+export const LANG_KEY2   = 'icX'
+const interpreterIc10    = new InterpreterIc10(null)
+let interpreterIc10State = 0;
+let leftCodeLength: vscode.StatusBarItem;
 export var icSidebar: Ic10SidebarViewProvider
-var onChangeCallbacks: {
+const onChangeCallbacks: {
 	ChangeActiveTextEditor: Array<Function>
 	ChangeTextEditorSelection: Array<Function>
 	SaveTextDocument: Array<Function>
-} = {
-	ChangeActiveTextEditor: [],
+}                        = {
+	ChangeActiveTextEditor   : [],
 	ChangeTextEditorSelection: [],
-	SaveTextDocument: []
-}
+	SaveTextDocument         : []
+};
 export const icxOptions: {
 	comments: boolean
 	aliases: boolean
 	loop: boolean
 	constants: boolean
-} = {
-	comments: false,
-	aliases: false,
-	loop: false,
+}                        = {
+	comments : false,
+	aliases  : false,
+	loop     : false,
 	constants: false,
 }
 
@@ -69,16 +69,16 @@ function hover(ctx: vscode.ExtensionContext) {
 	// console.time('hover')
 	try {
 		ctx.subscriptions.push(vscode.languages.registerHoverProvider(LANG_KEY, {
-			provideHover(document, position, token) {
-				var word = document.getWordRangeAtPosition(position)
-				var text = document.getText(word)
+			provideHover(document, position) {
+				const word = document.getWordRangeAtPosition(position);
+				const text = document.getText(word);
 				return new Hover(ic10.getHover(text))
 			}
 		}));
 		ctx.subscriptions.push(vscode.languages.registerHoverProvider(LANG_KEY2, {
-			provideHover(document, position, token) {
-				var word = document.getWordRangeAtPosition(position)
-				var text = document.getText(word)
+			provideHover(document, position) {
+				const word = document.getWordRangeAtPosition(position);
+				const text = document.getText(word);
 				return new Hover(ic10.getHover(text))
 			}
 		}));
@@ -144,8 +144,8 @@ function command(ctx: vscode.ExtensionContext) {
 		ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + '.run', () => {
 			if (!interpreterIc10State) {
 				vscode.window.showInformationMessage('Running');
-				var code = vscode.window.activeTextEditor.document.getText()
-				var title = path.basename(vscode.window.activeTextEditor.document.fileName)
+				const code = vscode.window.activeTextEditor.document.getText();
+				const title = path.basename(vscode.window.activeTextEditor.document.fileName);
 				interpreterIc10State = 1
 				const panel = vscode.window.createWebviewPanel(
 					'ic10.debug', // Identifies the type of the webview. Used internally
@@ -175,8 +175,8 @@ function command(ctx: vscode.ExtensionContext) {
 			}
 		}));
 		ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + '.debug.variables.write', (variable) => {
-			const ds = vscode.debug.activeDebugSession;
-			var input = vscode.window.createInputBox()
+			const ds    = vscode.debug.activeDebugSession;
+			const input = vscode.window.createInputBox();
 			input.title = 'set ' + variable.variable.name
 			input.show()
 			input.onDidAccept(function () {
@@ -185,8 +185,8 @@ function command(ctx: vscode.ExtensionContext) {
 			});
 		}));
 		ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + '.debug.device.write', (variable) => {
-			const ds = vscode.debug.activeDebugSession;
-			var input = vscode.window.createInputBox()
+			const ds    = vscode.debug.activeDebugSession;
+			const input = vscode.window.createInputBox();
 			input.title = 'set ' + variable.variable.name
 			input.show()
 			input.onDidAccept(function () {
@@ -195,8 +195,8 @@ function command(ctx: vscode.ExtensionContext) {
 			});
 		}));
 		ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + '.debug.device.slot.write', (variable) => {
-			const ds = vscode.debug.activeDebugSession;
-			var input = vscode.window.createInputBox()
+			const ds    = vscode.debug.activeDebugSession;
+			const input = vscode.window.createInputBox();
 			input.title = 'set ' + variable.variable.name
 			input.show()
 			input.onDidAccept(function () {
@@ -205,8 +205,8 @@ function command(ctx: vscode.ExtensionContext) {
 			});
 		}));
 		ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + '.debug.stack.push', (variable) => {
-			const ds = vscode.debug.activeDebugSession;
-			var input = vscode.window.createInputBox()
+			const ds    = vscode.debug.activeDebugSession;
+			const input = vscode.window.createInputBox();
 			input.title = 'set ' + variable.variable.name
 			input.show()
 			input.onDidAccept(function () {
@@ -215,8 +215,8 @@ function command(ctx: vscode.ExtensionContext) {
 			});
 		}));
 		ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + '.debug.remove.push', (variable) => {
-			const ds = vscode.debug.activeDebugSession;
-			var input = vscode.window.createInputBox()
+			const ds    = vscode.debug.activeDebugSession;
+			const input = vscode.window.createInputBox();
 			input.title = 'set ' + variable.variable.name
 			input.show()
 			input.onDidAccept(function () {
@@ -226,18 +226,18 @@ function command(ctx: vscode.ExtensionContext) {
 		}));
 		ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY2 + '.compile', () => {
 			try {
-				var code = vscode.window.activeTextEditor.document.getText()
-				var title = path.basename(vscode.window.activeTextEditor.document.fileName).split('.')[0]
+				const code = vscode.window.activeTextEditor.document.getText();
+				const title = path.basename(vscode.window.activeTextEditor.document.fileName).split('.')[0];
 				// @ts-ignore
-				var dir = path.dirname(vscode.window.activeTextEditor.document.uri._formatted);
+				const dir = path.dirname(vscode.window.activeTextEditor.document.uri._formatted);
 				console.log(icxOptions)
-				var icx = new icX(code, icxOptions)
-				var compiled = icx.getCompiled()
+				const icx = new icX(code, icxOptions);
+				const compiled = icx.getCompiled();
 				console.log(compiled)
 				if (compiled) {
 					// console.log(compiled)
-					var content = Buffer.from(compiled)
-					var file = dir + '/' + title + '.ic10'
+					const content = Buffer.from(compiled);
+					const file    = dir + '/' + title + '.ic10';
 					vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content)// console.log('file', file)
 				}
 			} catch (e) {
@@ -245,8 +245,45 @@ function command(ctx: vscode.ExtensionContext) {
 				console.error(e)
 			}
 		}));
+		ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY2 + '.open.wiki', () => {
+			const panel = vscode.window.createWebviewPanel(
+				'icX.wiki', // Identifies the type of the webview. Used internally
+				`wiki`, // Title of the panel displayed to the user
+				vscode.ViewColumn.Beside, // Editor column to show the new webview panel in.
+			);
+			 const _disposables: vscode.Disposable[] = [];
+			// Listen for when the panel is disposed
+			// This happens when the user closes the panel or when the panel is closed programmatically
+			panel.onDidDispose(() => this.dispose(), null, _disposables);
+
+			// Update the content based on view changes
+			panel.onDidChangeViewState(
+				e => {
+					if (panel.visible) {
+						this._update();
+					}
+				},
+				null,
+				_disposables
+			);
+
+			// Handle messages from the webview
+			panel.webview.onDidReceiveMessage(
+				message => {
+					switch (message.command) {
+						case 'alert':
+							vscode.window.showErrorMessage(message.text);
+							return;
+					}
+				},
+				null,
+				_disposables
+			);
+
+			panel.webview.html = "TEST";
+		}));
 	} catch (e) {
-		// console.error(e)
+		console.error(e)
 	}
 	// console.timeEnd('command')
 
@@ -274,7 +311,7 @@ function semantic(ctx: vscode.ExtensionContext) {
 }
 
 function view(ctx: vscode.ExtensionContext) {
-	// console.time('view')
+	console.time('view')
 	try {
 		icSidebar = new Ic10SidebarViewProvider(ctx.extensionUri);
 		ctx.subscriptions.push(vscode.window.registerWebviewViewProvider(Ic10SidebarViewProvider.viewType, icSidebar));
@@ -293,9 +330,9 @@ function view(ctx: vscode.ExtensionContext) {
 		renderIc10()
 		icSidebar.start()
 	} catch (e) {
-		// console.error(e)
+		console.error(e)
 	}
-	// console.timeEnd('view')
+	console.timeEnd('view')
 }
 
 function statusBar(ctx: vscode.ExtensionContext) {
@@ -365,14 +402,14 @@ function onChange(ctx) {
 }
 
 function getNumberLeftLines(): Array<any> | false {
-	var text = vscode.window.activeTextEditor.document.getText();
+	const text = vscode.window.activeTextEditor.document.getText();
 	if (vscode.window.activeTextEditor.document.languageId == LANG_KEY) {
-		var left = 128
-		var a = " ▁▃▅▉";
+		let left = 128;
+		const a  = " ▁▃▅▉";
 		if (text) {
 			left = left - text.split('\n').length
 		}
-		var x = a[Math.ceil(left / 32)] ?? ''
+		const x = a[Math.ceil(left / 32)] ?? '';
 		return [x, left];
 	} else {
 		return false
@@ -388,7 +425,7 @@ function diagnostic(context) {
 		context.subscriptions.push(ic10DiagnosticsCollection);
 		context.subscriptions.push(icXDiagnosticsCollection);
 
-		onChangeCallbacks.ChangeTextEditorSelection.push((editor) => {
+		onChangeCallbacks.ChangeTextEditorSelection.push(() => {
 			if (vscode.window.activeTextEditor.document.languageId == LANG_KEY) {
 				ic10Diagnostics.run(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection)
 				icXDiagnostics.clear(vscode.window.activeTextEditor.document, icXDiagnosticsCollection)
@@ -402,7 +439,7 @@ function diagnostic(context) {
 				icXDiagnostics.clear(vscode.window.activeTextEditor.document, icXDiagnosticsCollection)
 			}
 		})
-		onChangeCallbacks.ChangeActiveTextEditor.push((editor) => {
+		onChangeCallbacks.ChangeActiveTextEditor.push(() => {
 			if (vscode.window.activeTextEditor.document.languageId == LANG_KEY2) {
 				icXDiagnostics.run(vscode.window.activeTextEditor.document, icXDiagnosticsCollection)
 				ic10Diagnostics.clear(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection)
@@ -467,10 +504,10 @@ function renderIcX() {
 }
 
 function renderIc10() {
-	var a = getNumberLeftLines()
+	const a = getNumberLeftLines();
 	if (a) {
-		var b = Math.abs(a[1] - 128)
-		var p = b / 128 * 100
+		const b = Math.abs(a[1] - 128);
+		const p = b / 128 * 100;
 		icSidebar.section('leftLineCounter', `
 					<p>Left lines ${a[1]}</p>
 					<div id="leftLineCounter" class="progress" percent="${p}" value="${b}"  max="128" min="0">

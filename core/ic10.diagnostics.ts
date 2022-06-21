@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 
 export const Ic10DiagnosticsName = 'ic10_diagnostic';
-var manual: {
+const manual: {
 	"type": string,
 	"op1": string | null,
 	"op2": string | null,
@@ -11,9 +11,9 @@ var manual: {
 		"preview": string | null,
 		"text": string | null
 	}
-}[] = require('../languages/en.json')
-var functions: string[] = require('../media/ic10.functions.json')
-var keywords: string[] = require('../media/ic10.keyword.json')
+}[]                       = require('../languages/en.json');
+const functions: string[] = require('../media/ic10.functions.json');
+const keywords: string[]  = require('../media/ic10.keyword.json');
 
 export const regexes = {
 	'rr1': new RegExp("[r]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
@@ -311,7 +311,7 @@ export class Ic10Diagnostics {
 		}
 		switch (typeof a) {
 			case 'string':
-				if (!a || a.trim() == '' || a == null) {
+				if (!a || a.trim() == '') {
 					return true
 				} else {
 					return false

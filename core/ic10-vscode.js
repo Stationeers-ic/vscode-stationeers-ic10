@@ -10,12 +10,12 @@ class Ic10Vscode {
         this.langPath = {};
         this.LOCALE_KEY = vscode.env.language.trim();
         try {
-            var langPath = require(`../languages/${this.LOCALE_KEY}.json`);
+            let langPath = require(`../languages/${this.LOCALE_KEY}.json`);
             if (langPath instanceof Object) {
                 this.langPath = langPath;
             }
             else {
-                var langPath = require(`../languages/en.json`);
+                langPath = require(`../languages/en.json`);
                 this.langPath = langPath;
             }
         }

@@ -20,8 +20,8 @@ class ic10SideBar {
 
 
 	form() {
+		const self = this
 		try {
-			var self = this
 			self.events = {}
 			window.addEventListener('input', function(event) {
 				var fn = event.target.getAttribute('data-fn')
@@ -62,7 +62,7 @@ class ic10SideBar {
 		setInterval(() => {
 			for(const eventsKey in self.events) {
 				if(self.events.hasOwnProperty(eventsKey)) {
-					var data = self.events[eventsKey]
+					const data = self.events[eventsKey]
 					self.events[eventsKey] = null
 					delete  self.events[eventsKey]
 					// console.log(data)

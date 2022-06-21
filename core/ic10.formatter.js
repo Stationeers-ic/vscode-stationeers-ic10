@@ -2,11 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ic10Formatter = void 0;
 const regexes = {
-    'rr1': new RegExp("[rd]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
+    'rr1': new RegExp("[rd]+(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
     'r1': new RegExp("(^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)$)|(sp)"),
-    'd1': new RegExp("^d(0|1|2|3|4|5|b)$"),
+    'd1': new RegExp("^d([012345b])$"),
     'rr': new RegExp(`\\br(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|17|a)\\b`),
-    'rm': new RegExp(`(#-reset-vars-)[\\s\\S]{0,}?(#-reset-vars-)`),
+    'rm': new RegExp(`(#-reset-vars-)[\\s\\S]*?(#-reset-vars-)`),
     'oldSpace': new RegExp("^[\\t ]+", 'gmi'),
     'strStart': new RegExp("^\".+$"),
     'strEnd': new RegExp(".+\"$"),
@@ -56,9 +56,9 @@ class ic10Formatter {
             },
             jal: {},
         };
-        var self = this;
+        const self = this;
         this.lines = text.split(/\r?\n/);
-        var commands = this.lines
+        const commands = this.lines
             .map((line) => {
             let m = regexes.rr.exec(line);
             if (m) {
@@ -71,9 +71,9 @@ class ic10Formatter {
         for (const commandsKey in this.lines) {
             if (commands.hasOwnProperty(commandsKey)) {
                 let command = commands[commandsKey];
-                var newArgs = {};
-                var mode = 0;
-                var argNumber = 0;
+                const newArgs = {};
+                let mode = 0;
+                let argNumber = 0;
                 for (let argsKey in command.args) {
                     if (command.args.hasOwnProperty(argsKey)) {
                         let arg = command.args[argsKey];
@@ -132,13 +132,13 @@ class ic10Formatter {
     formatStart() {
         this.addResetVar();
         this.init(this.text);
-        var maxIterations = 1;
-        for (var o = 0; o < maxIterations; o++) {
-            var lineCount = this.lines.length;
-            for (var i = 0; i < lineCount; i++) {
+        let maxIterations = 1;
+        for (let o = 0; o < maxIterations; o++) {
+            const lineCount = this.lines.length;
+            for (let i = 0; i < lineCount; i++) {
                 let line = this.lines[i];
                 if (i == 0) {
-                    if ((/^\s{0,}$/.test(line) || !line)) {
+                    if ((/^\s*$/.test(line) || !line)) {
                         this.lines.splice(0, 1);
                         maxIterations++;
                         break;
@@ -146,18 +146,15 @@ class ic10Formatter {
                 }
                 if (i + 1 <= lineCount) {
                     let nextLine = this.lines[i + 1];
-                    if ((/^\s{0,}$/.test(nextLine) || !nextLine) && (/^\s{0,}$/.test(line) || !line)) {
+                    if ((/^\s*$/.test(nextLine) || !nextLine) && (/^\s*$/.test(line) || !line)) {
                         this.lines.splice(i, 1);
                         maxIterations++;
                         break;
                     }
                 }
-                if (i > 1) {
-                    let prevLine = this.lines[i - 1];
-                }
             }
         }
-        var new_txt = this.lines.join("\n");
+        const new_txt = this.lines.join("\n");
         this.init(new_txt);
         this.findFunctions();
         this.findLoos();
@@ -167,12 +164,13 @@ class ic10Formatter {
     addResetVar() {
     }
     renderSpaces() {
+        let fn;
         this.spaces = [];
-        this.lines.forEach((val, i, arr) => {
+        this.lines.forEach(() => {
             this.spaces.push(0);
         });
         for (const functionsKey in this.functions) {
-            var fn = this.functions[functionsKey];
+            fn = this.functions[functionsKey];
             let start = fn.start;
             let end = fn.end - 2;
             this.spaces.forEach(function (value, i, arr) {
@@ -182,7 +180,7 @@ class ic10Formatter {
             });
         }
         for (const loopsKey in this.loops) {
-            var fn = this.loops[loopsKey];
+            fn = this.loops[loopsKey];
             let start = fn.start;
             let end = fn.end - 2;
             this.spaces.forEach(function (value, i, arr) {
@@ -203,7 +201,7 @@ class ic10Formatter {
                     this.jumps.j.ra.sort((a, b) => {
                         return b - a;
                     });
-                    var j_pos = 0;
+                    let j_pos = 0;
                     this.jumps.j.ra.forEach((v) => {
                         if (v > position) {
                             j_pos = v;
@@ -229,7 +227,7 @@ class ic10Formatter {
                     this.jumps.j[labelsKey].sort((a, b) => {
                         return b - a;
                     });
-                    var j_pos = 0;
+                    let j_pos = 0;
                     this.jumps.j[labelsKey].forEach((v) => {
                         if (v > position) {
                             j_pos = v;
@@ -241,7 +239,6 @@ class ic10Formatter {
                         end: j_pos,
                         calls: this.jumps.j[labelsKey]
                     };
-                    continue;
                 }
             }
             catch (e) {

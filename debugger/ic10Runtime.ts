@@ -2,7 +2,7 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  *--------------------------------------------------------*/
 
-import {EventEmitter} from 'events';
+import {EventEmitter}    from 'events';
 import {InterpreterIc10} from "ic10";
 
 export interface FileAccessor {
@@ -34,13 +34,12 @@ interface IStack {
 }
 
 /**
- * A ic10 runtime with minimal debugger functionality.
+ *  ic10 runtime with minimal debugger functionality.
  */
 export class ic10Runtime extends EventEmitter {
 
 	// the initial (and one and only) file we are 'debugging'
 	private _sourceFile: string = '';
-	private datetime: any;
 
 	public get sourceFile() {
 		return this._sourceFile;
@@ -103,7 +102,7 @@ export class ic10Runtime extends EventEmitter {
 	}
 
 	/**
-	 * Step to the next/previous non empty line.
+	 * Step to the next/previous not empty line.
 	 */
 	public step(reverse = false, event = 'stopOnStep') {
 		this.run(reverse, event);
@@ -299,39 +298,45 @@ export class ic10Runtime extends EventEmitter {
 	 * If stepEvent is specified only run a single step and emit the stepEvent.
 	 */
 	private run(reverse = false, stepEvent?: string) {
-		var counter = 0
-		do {
-			var why = this.ic10.prepareLine(-1, true)
-			var ln = this.ic10.position
-			if (this.ic10?.output?.debug && this.ic10.ignoreLine.indexOf(ln) < 0) {
-				this.sendEvent('output', '[debug]: ' + this.ic10.output.debug, this._sourceFile, ln - 1);
-				this.ic10.output.debug = ''
+		if (!reverse) {
+			const ln    = this.ic10.position;
+			let why;
+			let counter = 0;
+			do {
+				why = this.ic10.prepareLine(-1, true);
+				if (this.ic10?.output?.debug && this.ic10.ignoreLine.indexOf(ln) < 0) {
+					this.sendEvent('output', '[debug]: ' + this.ic10.output.debug, this._sourceFile, ln - 1);
+					this.ic10.output.debug = ''
+				}
+				if (this.ic10?.output?.log) {
+					this.sendEvent('output', this.ic10.output.log, this._sourceFile, ln - 1);
+					this.ic10.output.log = ''
+				}
+				if (this.ic10?.output?.error && this.ic10.ignoreLine.indexOf(ln) < 0) {
+					this.sendEvent('output', this.ic10.output.error, this._sourceFile, ln - 1);
+					this.ic10.output.error = ''
+				}
+				if (this.fireEventsForLine(ln, stepEvent)) {
+					this._currentLine   = ln;
+					this._currentColumn = undefined;
+					return true;
+				}
+				if (counter++ > 1000) {
+					why = 'timeOut'
+				}
+			} while (why === true)
+			switch (why) {
+				case "timeOut":
+					this.sendEvent('output', "WHILE TRUE!!!!", this._sourceFile, ln);
+					this.sendEvent('stopOnBreakpoint')
+					break;
+				default:
+					this.sendEvent('end');
+					break;
 			}
-			if (this.ic10?.output?.log) {
-				this.sendEvent('output', this.ic10.output.log, this._sourceFile, ln - 1);
-				this.ic10.output.log = ''
-			}
-			if (this.ic10?.output?.error && this.ic10.ignoreLine.indexOf(ln) < 0) {
-				this.sendEvent('output', this.ic10.output.error, this._sourceFile, ln - 1);
-				this.ic10.output.error = ''
-			}
-			if (this.fireEventsForLine(ln, stepEvent)) {
-				this._currentLine = ln;
-				this._currentColumn = undefined;
-				return true;
-			}
-			if (counter++ > 1000) {
-				why = 'timeOut'
-			}
-		} while (why === true)
-		switch (why) {
-			case "timeOut":
-				this.sendEvent('output', "WHILE TRUE!!!!", this._sourceFile, ln);
-				this.sendEvent('stopOnBreakpoint')
-				break;
-			default:
-				this.sendEvent('end');
-				break;
+		} else {
+			this.sendEvent('output', "can`t go back", this._sourceFile, 0);
+			this.sendEvent('stopOnBreakpoint')
 		}
 	}
 

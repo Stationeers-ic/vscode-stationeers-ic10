@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -25,7 +29,6 @@ class Ic10SidebarViewProvider {
     _extensionUri;
     static viewType = 'Ic10ViewProvider';
     view;
-    dom;
     sectionsNamed = {};
     events = {};
     sections = [];
@@ -34,18 +37,6 @@ class Ic10SidebarViewProvider {
     isEvent = false;
     constructor(_extensionUri) {
         this._extensionUri = _extensionUri;
-    }
-    resolveWebviewView(webviewView, context, _token) {
-        this.view = webviewView;
-        webviewView.webview.options = {
-            enableScripts: true,
-            localResourceRoots: [
-                this._extensionUri
-            ]
-        };
-        webviewView.webview.html = this._getHtmlForWebview();
-        webviewView.webview.onDidReceiveMessage(data => {
-        });
     }
     sendCommand(name, data) {
         this.view.webview.postMessage({ fn: name, data: data });
@@ -117,7 +108,8 @@ class Ic10SidebarViewProvider {
         return `<!DOCTYPE html>
 			<html lang="en">
 			<head>
-			<meta charset="UTF-8">
+			<title></title>
+				<meta charset="UTF-8">
 				<!--
 				\tUse a content security policy to only allow loading images from https or from our extension directory,
 				\tand only allow scripts that have a specific nonce.
@@ -142,6 +134,19 @@ class Ic10SidebarViewProvider {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         }
         return text;
+    }
+    resolveWebviewView(webviewView, context, token) {
+        this.view = webviewView;
+        webviewView.webview.options = {
+            enableScripts: true,
+            localResourceRoots: [
+                this._extensionUri
+            ]
+        };
+        webviewView.webview.html = this._getHtmlForWebview();
+        webviewView.webview.onDidReceiveMessage(data => {
+            console.log(data);
+        });
     }
 }
 exports.Ic10SidebarViewProvider = Ic10SidebarViewProvider;

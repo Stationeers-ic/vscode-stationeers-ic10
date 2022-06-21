@@ -3,20 +3,20 @@ import {icX} from "icx-compiler";
 import {icXBlock, icXElem} from "icx-compiler/src/classes";
 
 const regexes = {
-	'rr1': new RegExp("[rd]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
+	'rr1': new RegExp("[rd]+(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
 	'r1': new RegExp("(^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)$)|(sp)"),
-	'd1': new RegExp("^d(0|1|2|3|4|5|b)$"),
+	'd1': new RegExp("^d([012345b])$"),
 	'rr': new RegExp(`\\br(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|17|a)\\b`),
-	'rm': new RegExp(`(#-reset-vars-)[\\s\\S]{0,}?(#-reset-vars-)`),
+	'rm': new RegExp(`(#-reset-vars-)[\\s\\S]*?(#-reset-vars-)`),
 	'oldSpace': new RegExp("^[\\t ]+", 'gmi'),
 	'strStart': new RegExp("^\".+$"),
 	'strEnd': new RegExp(".+\"$"),
 }
 
 export class icXFormatter {
-	private text: string;
+	private readonly text: string;
 	private labels: {};
-	private lines: Array<string>;
+	private readonly lines: Array<string>;
 	private commands: any;
 	private position: number;
 	private jumps: {
@@ -64,24 +64,24 @@ export class icXFormatter {
 			jal: {},
 		};
 
-		var self = this
+		const self = this;
 
-		var commands = this.lines
-			.map((line: string) => {
-				let m = regexes.rr.exec(line);
-				if (m) {
-					self.vars.add(m[0])
-				}
-				const args = line.trim().split(/ +/)
-				const command = args.shift()
-				return {command, args}
-			})
+		const commands = this.lines
+							 .map((line: string) => {
+								 let m = regexes.rr.exec(line);
+								 if (m) {
+									 self.vars.add(m[0])
+								 }
+								 const args    = line.trim().split(/ +/)
+								 const command = args.shift()
+								 return {command, args}
+							 });
 		for (const commandsKey in this.lines) {
 			if (commands.hasOwnProperty(commandsKey)) {
-				let command = commands[commandsKey]
-				var newArgs = {}
-				var mode = 0;
-				var argNumber = 0;
+				let command   = commands[commandsKey]
+				const newArgs = {};
+				let mode      = 0;
+				let argNumber = 0;
 				for (let argsKey in command.args) {
 					if (command.args.hasOwnProperty(argsKey)) {
 						let arg = command.args[argsKey]
@@ -145,7 +145,7 @@ export class icXFormatter {
 	recursiveSpace(content, level = 0) {
 		for (const contentKey in content) {
 			if (content.hasOwnProperty(contentKey)) {
-				var c = content[contentKey]
+				const c = content[contentKey];
 				if (c instanceof icXBlock) {
 					for (let i = c.originalPosition + 1; i <= c.end; i++) {
 						this.lines[i] = this.addSpace(this.lines[i], level + 1);
@@ -160,7 +160,7 @@ export class icXFormatter {
 
 	renderSpaces() {
 		for (const loopsKey in this.loops) {
-			var fn = this.loops[loopsKey]
+			const fn = this.loops[loopsKey];
 			let start = fn.start
 			let end = fn.end - 2
 			for (let i = start; i <= end; i++) {
@@ -178,7 +178,7 @@ export class icXFormatter {
 					this.jumps.j[labelsKey].sort((a, b) => {
 						return b - a
 					})
-					var j_pos = 0
+					let j_pos = 0;
 					this.jumps.j[labelsKey].forEach((v) => {
 						if (v > position) {
 							j_pos = v
@@ -190,7 +190,7 @@ export class icXFormatter {
 						end: j_pos,
 						calls: this.jumps.j[labelsKey]
 					}
-					continue
+
 				}
 			} catch (e) {
 				// console.warn(e)

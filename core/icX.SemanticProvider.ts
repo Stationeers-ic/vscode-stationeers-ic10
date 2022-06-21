@@ -31,8 +31,8 @@ export const legend = (function () {
 export class IcxSemanticTokensProvider implements vscode.DocumentSemanticTokensProvider {
 	
 	provideDocumentSemanticTokens(document: TextDocument, token: CancellationToken): ProviderResult<SemanticTokens> {
-		var allTokens = this._parseText(document.getText());
-		var builder = new vscode.SemanticTokensBuilder(legend);
+		const allTokens = this._parseText(document.getText());
+		const builder   = new vscode.SemanticTokensBuilder(legend);
 		allTokens.forEach((token) => {
 			builder.push(
 				token.line, token.startCharacter, token.length,
@@ -44,27 +44,28 @@ export class IcxSemanticTokensProvider implements vscode.DocumentSemanticTokensP
 	
 	_parseText(text: string): IParsedToken[] {
 		try {
-			var r: IParsedToken[] = [];
-			var lines = text.split(/\r\n|\r|\n/);
-			var vars: string[] = [];
-			var keywords: string[] = [];
-			var constants: string[] = [];
-			
+			let r: IParsedToken[] = [];
+			const lines           = text.split(/\r\n|\r|\n/);
+			const vars: string[]  = [];
+			const keywords: string[] = [];
+			const constants: string[] = [];
+
 			lines.forEach((line) => {
+				let match;
 				try {
-					var re = /\b(var|alias)\s+([\w\d]+).*/
+					let re = /\b(var|alias)\s+([\w\d]+).*/;
 					if (re.test(line)) {
-						var match = re.exec(line)
+						match = re.exec(line);
 						vars.push(match[2])
 					}
-					var re = /\b(const|define)\s+([\w\d]+).*/
+					re = /\b(const|define)\s+([\w\d]+).*/;
 					if (re.test(line)) {
-						var match = re.exec(line)
+						match = re.exec(line);
 						constants.push(match[2])
 					}
-					var re = /([\w\d]+):/
+					re = /([\w\d]+):/;
 					if (re.test(line)) {
-						var match = re.exec(line)
+						match = re.exec(line);
 						keywords.push(match[1])
 					}
 				} catch (e) {
@@ -92,21 +93,21 @@ export class IcxSemanticTokensProvider implements vscode.DocumentSemanticTokensP
 	}
 	
 	pushToken(search, line, index, tokenType,tokenModifier, out:IParsedToken[]) {
-		var find = new RegExp('\\b' + search + '\\b', 'y')
+		const find = new RegExp('\\b' + search + '\\b', 'y');
 		try {
 			for (let i = 0; i < line.length; i++) {
 				if (line[i] == '#') {
 					break;
 				}
 				find.lastIndex = i
-				var match = find.exec(line)
+				const match    = find.exec(line);
 				if (match && match[0] == search) {
-					var a:IParsedToken = {
-						line: index,
+					const a: IParsedToken = {
+						line          : index,
 						startCharacter: match.index,
-						length: search.length,
-						tokenType: tokenType,
-					}
+						length        : search.length,
+						tokenType     : tokenType,
+					};
 					if(tokenModifier !== null){
 						a.tokenModifier = tokenModifier
 					}

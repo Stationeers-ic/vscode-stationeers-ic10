@@ -11,8 +11,8 @@ import {tmpdir} from 'os';
 import {join} from 'path';
 import {platform} from 'process';
 import {ProviderResult} from 'vscode';
-import {ic10DebugSession} from './ic10Debug';
-import {activateic10Debug, workspaceFileAccessor} from './activateic10Debug';
+import {ic10DebugSession}                         from './ic10Debug';
+import {activateIc10Debug, workspaceFileAccessor} from './activateic10Debug';
 
 /*
  * The compile time flag 'runMode' controls how the debug adapter is run.
@@ -26,23 +26,23 @@ export function activate(context: vscode.ExtensionContext) {
   switch (runMode) {
     case 'server':
       // run the debug adapter as a server inside the extension and communicate via a socket
-      activateic10Debug(context, new ic10DebugAdapterServerDescriptorFactory());
+      activateIc10Debug(context, new ic10DebugAdapterServerDescriptorFactory());
       break;
 
     case 'namedPipeServer':
       // run the debug adapter as a server inside the extension and communicate via a named pipe (Windows) or UNIX domain socket (non-Windows)
-      activateic10Debug(context, new ic10DebugAdapterNamedPipeServerDescriptorFactory());
+      activateIc10Debug(context, new ic10DebugAdapterNamedPipeServerDescriptorFactory());
       break;
 
     case 'external':
     default:
       // run the debug adapter as a separate process
-      activateic10Debug(context, new DebugAdapterExecutableFactory());
+      activateIc10Debug(context, new DebugAdapterExecutableFactory());
       break;
 
     case 'inline':
       // run the debug adapter inside the extension and directly talk to it
-      activateic10Debug(context);
+      activateIc10Debug(context);
       break;
   }
 }

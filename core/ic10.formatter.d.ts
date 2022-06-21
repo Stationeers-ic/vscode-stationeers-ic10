@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
 export declare class ic10Formatter {
-    private text;
+    private readonly text;
     private labels;
     private lines;
     private commands;

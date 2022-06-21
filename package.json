@@ -17,13 +17,13 @@
   "author": {
     "name": "Traineratwot"
   },
-  "icon": "images/logo.png",
+  "icon": "./images/logo.png",
   "bugs": {
     "url": "https://github.com/Traineratwot/vscode-stationeers-ic10/issues",
     "email": "Traineratwot@yandex.com"
   },
   "engines": {
-    "vscode": "^1.63.1"
+    "vscode": "^1.68.1"
   },
   "categories": [
     "Programming Languages",
@@ -37,10 +37,10 @@
     "onLanguage:icX",
     "onView:Ic10ViewProvider",
     "onDebugResolve:ic10",
-    "onDebugDynamicConfigurations:ic10"
+    "onDebugDynamicConfigurations:ic10",
+    "onWebviewPanel:icX.wiki"
   ],
   "extensionKind": [
-    "ui",
     "workspace"
   ],
   "main": "./core/main.js",
@@ -204,9 +204,28 @@
         "command": "icX.compile",
         "title": "Compile",
         "icon": "$(play)"
+      },
+      {
+        "command": "icX.open.wiki",
+        "title": "Open wiki",
+        "icon": "$(play)"
       }
     ],
     "menus": {
+      "editor/context": [
+        {
+          "command": "ic10.run",
+          "when": "editorLangId == ic10"
+        },
+        {
+          "command": "icX.compile",
+          "when": "editorLangId == icX"
+        },
+        {
+          "command": "icX.open.wiki",
+          "when": "editorLangId == icX"
+        }
+      ],      
       "commandPalette": [
         {
           "command": "ic10.run",
@@ -220,6 +239,10 @@
       "editor/title/run": [
         {
           "command": "icX.compile",
+          "when": "resourceLangId == icX"
+        },
+        {
+          "command": "icX.open.wiki",
           "when": "resourceLangId == icX"
         },
         {
@@ -245,10 +268,10 @@
       ]
     },
     "configurationDefaults": {
-      "[ic10]": {
+      "ic10": {
         "editor.semanticHighlighting.enabled": true
       },
-      "[icX]": {
+      "icX": {
         "editor.semanticHighlighting.enabled": true
       }
     },
@@ -258,7 +281,8 @@
           "type": "webview",
           "id": "Ic10ViewProvider",
           "name": "ic10",
-          "icon": "images/logo.svg"
+          "icon": "images/logo.svg",
+          "contextualTitle": "ic10/icX"
         }
       ]
     }

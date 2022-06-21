@@ -22,8 +22,8 @@ exports.legend = (function () {
 })();
 class IcxSemanticTokensProvider {
     provideDocumentSemanticTokens(document, token) {
-        var allTokens = this._parseText(document.getText());
-        var builder = new vscode_1.default.SemanticTokensBuilder(exports.legend);
+        const allTokens = this._parseText(document.getText());
+        const builder = new vscode_1.default.SemanticTokensBuilder(exports.legend);
         allTokens.forEach((token) => {
             builder.push(token.line, token.startCharacter, token.length, token.tokenType);
         });
@@ -31,26 +31,27 @@ class IcxSemanticTokensProvider {
     }
     _parseText(text) {
         try {
-            var r = [];
-            var lines = text.split(/\r\n|\r|\n/);
-            var vars = [];
-            var keywords = [];
-            var constants = [];
+            let r = [];
+            const lines = text.split(/\r\n|\r|\n/);
+            const vars = [];
+            const keywords = [];
+            const constants = [];
             lines.forEach((line) => {
+                let match;
                 try {
-                    var re = /\b(var|alias)\s+([\w\d]+).*/;
+                    let re = /\b(var|alias)\s+([\w\d]+).*/;
                     if (re.test(line)) {
-                        var match = re.exec(line);
+                        match = re.exec(line);
                         vars.push(match[2]);
                     }
-                    var re = /\b(const|define)\s+([\w\d]+).*/;
+                    re = /\b(const|define)\s+([\w\d]+).*/;
                     if (re.test(line)) {
-                        var match = re.exec(line);
+                        match = re.exec(line);
                         constants.push(match[2]);
                     }
-                    var re = /([\w\d]+):/;
+                    re = /([\w\d]+):/;
                     if (re.test(line)) {
-                        var match = re.exec(line);
+                        match = re.exec(line);
                         keywords.push(match[1]);
                     }
                 }
@@ -79,16 +80,16 @@ class IcxSemanticTokensProvider {
         return [];
     }
     pushToken(search, line, index, tokenType, tokenModifier, out) {
-        var find = new RegExp('\\b' + search + '\\b', 'y');
+        const find = new RegExp('\\b' + search + '\\b', 'y');
         try {
             for (let i = 0; i < line.length; i++) {
                 if (line[i] == '#') {
                     break;
                 }
                 find.lastIndex = i;
-                var match = find.exec(line);
+                const match = find.exec(line);
                 if (match && match[0] == search) {
-                    var a = {
+                    const a = {
                         line: index,
                         startCharacter: match.index,
                         length: search.length,
