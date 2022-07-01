@@ -297,7 +297,7 @@
   },
   "dependencies": {
     "ic10": "^1.4.3",
-    "icx-compiler": "^1.2.3",
+    "icx-compiler": "^1.2.7",
     "vscode-debugadapter": "^1.47.0",
     "vscode-debugprotocol": "^1.47.0"
   },

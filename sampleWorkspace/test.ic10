@@ -1,6 +1,7 @@
-move r0 1
-lb r0 545937711 Pressure 1
-lb r0 545937711 Pressure 1
-lb r0 545937711 Pressure 1
-lb r0 545937711 Pressure 1
-lb r0 545937711 Pressure 1
+alias a r0
+beqz undefined if0else
+move a 1
+j if0exit
+if0else:
+move a 9
+if0exit:

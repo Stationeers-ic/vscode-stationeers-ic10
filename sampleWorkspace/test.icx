@@ -1,6 +1,8 @@
-var furpres = 1
-lb furpres 545937711 Pressure 1
-lb furpres 545937711 Pressure 1
-lb furpres 545937711 Pressure 1
-lb furpres 545937711 Pressure 1
-lb furpres 545937711 Pressure 1
+use aliases
+use constants
+var a
+if d1 dse  0
+	a = 1
+else
+	a = 9
+end

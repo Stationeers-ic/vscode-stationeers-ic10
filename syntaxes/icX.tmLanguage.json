@@ -50,7 +50,7 @@
 					"name" :"keyword.control.icX"
 				},
 				{
-					"match":"([\\+\\-\\=\\<\\>\\&\\|\\*\\\\ ])",
+					"match":"([~!+-=<>&|*]|dse)",
 					"name" :"keyword.operator.icX"
 				},
 				{
