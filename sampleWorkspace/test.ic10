@@ -1,7 +1,10 @@
 alias a r0
-beqz undefined if0else
+alias b r1
+sdse r15 d1
+beqz r15 if0else
 move a 1
 j if0exit
 if0else:
 move a 9
 if0exit:
+select b 1 2 a

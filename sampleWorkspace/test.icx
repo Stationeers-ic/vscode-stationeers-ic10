@@ -1,8 +1,10 @@
 use aliases
 use constants
 var a
-if d1 dse  0
+if d1 dse 0
 	a = 1
 else
 	a = 9
 end
+
+var b = select(1,2,a)
