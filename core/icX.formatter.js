@@ -134,7 +134,12 @@ class icXFormatter {
                 const c = content[contentKey];
                 if (c instanceof classes_1.icXBlock) {
                     for (let i = c.originalPosition + 1; i <= c.end; i++) {
-                        this.lines[i] = this.addSpace(this.lines[i], level + 1);
+                        if (this.lines[i].trim() === "else") {
+                            this.lines[i] = this.addSpace(this.lines[i], level);
+                        }
+                        else {
+                            this.lines[i] = this.addSpace(this.lines[i], level + 1);
+                        }
                     }
                     this.recursiveSpace(c.content, level);
                 }

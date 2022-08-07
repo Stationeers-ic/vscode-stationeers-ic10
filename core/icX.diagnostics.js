@@ -51,18 +51,18 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
         }
     }
     run(doc, container) {
+        const diagnostics = [];
         const code = doc.getText();
         const compiler = new icx_compiler_1.icX(code, main_1.icxOptions);
-        const test = compiler.analyze();
-        const diagnostics = [];
         this.prepare(doc);
+        const test = compiler.analyze();
         if (test.error instanceof err_1.Errors) {
             if (test.error.isError()) {
                 for (const eKey in test.error.e) {
                     const err = test.error.e[eKey];
                     if (err instanceof err_1.Err) {
                         const l = doc.lineAt(err.line);
-                        diagnostics.push(this.createDiagnostic(l.range, err.message, vscode.DiagnosticSeverity.Error));
+                        diagnostics.push(this.createDiagnostic(l.range, err.getUserMessage(), vscode.DiagnosticSeverity.Error));
                     }
                 }
             }
@@ -82,11 +82,15 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
         container.set(doc.uri, diagnostics);
     }
     view(test, linesCount) {
-        var b = Math.abs(test.vars.empty.length - 15);
-        var p = b / 15 * 100;
-        var b2 = Math.abs(linesCount - 128);
-        var p2 = linesCount / 128 * 100;
-        main_1.icSidebar.section('icxStats', `
+        const b = Math.abs(test.vars.empty.length - 15);
+        const p = b / 15 * 100;
+        const b2 = Math.abs(linesCount - 128);
+        const p2 = linesCount / 128 * 100;
+        let errors = '<ul>';
+        this.errors.values.forEach((item) => {
+            errors += "<ol style=\"color:var(--vscode-editorError-foreground) !important;\">[" + item.line + "]: " + item.message + "</ol>";
+        });
+        let content = `
       <fieldset title="Stats">
 							<ul>
 								<ol>
@@ -100,7 +104,7 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
 									<ol>
 										<span>left vars:</span>	<span>${test.vars.empty.length}</span>
 										<ol>
-											<div id="leftVarsCounter" class="progress" percent="${p}" value="${b}"  max="15" min="0">
+											<div id="leftVarsCounter" class="progress" data-percent="${p}" data-value="${b}"  data-max="15" data-min="0">
 												<div></div>
 											</div>
 										</ol>	
@@ -110,7 +114,7 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
 								    <ol>
 										<span>left ic10 lines:</span>	<span>${b2}</span>
 										<ol>
-											<div id="leftVarsCounter" class="progress" percent="${p2}" value="${b2}"  max="128" min="0">
+											<div id="leftVarsCounter" class="progress" data-percent="${p2}" data-value="${b2}"  data-max="128" data-min="0">
 												<div></div>
 											</div>
 										</ol>
@@ -118,11 +122,20 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
 								</ol>
 							 </ul>
 						</fieldset>
-    `, main_1.LANG_KEY2);
-        var comments = test.use.has('comments');
-        var aliases = test.use.has('aliases');
-        var loop = test.use.has('loop');
-        var constants = test.use.has('constants');
+						<br>
+					
+    `;
+        if (this.errors.values.length > 0) {
+            content += `
+<fieldset title="errors">
+	${errors}
+</fieldset>`;
+        }
+        main_1.icSidebar.section('icxStats', content, main_1.LANG_KEY2);
+        let comments = test.use.has('comments');
+        let aliases = test.use.has('aliases');
+        let loop = test.use.has('loop');
+        let constants = test.use.has('constants');
         comments = comments ? comments : main_1.icxOptions.comments;
         aliases = aliases ? aliases : main_1.icxOptions.aliases;
         loop = loop ? loop : main_1.icxOptions.loop;
@@ -167,7 +180,7 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
 									<input type="checkbox" data-fn="icxLoop" ${loop} name="loop" id="loop">
 									<label for="loop" class="disabledSelect">use loop</label>
 								</ol>
-                <ol>
+                                <ol>
 									<input type="checkbox" data-fn="icxConstants" ${constants} name="constants" id="constants">
 									<label for="constants" class="disabledSelect">use constants</label>
 								</ol>
@@ -206,6 +219,14 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
                 }
                 if (text.startsWith('const')) {
                     this.aliases.push(words[1]);
+                }
+                if (text.startsWith("if")) {
+                    this.analyzeIF(words, text, lineIndex);
+                    return true;
+                }
+                if (text.startsWith(substring)) {
+                    this.analyzeFunctionInputs(words, text, lineIndex);
+                    return true;
                 }
                 if (text.startsWith(substring)) {
                     this.analyzeFunctionInputs(words, text, lineIndex);
@@ -258,6 +279,24 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
             }
             else {
                 return true;
+            }
+        }
+        return true;
+    }
+    analyzeIF(words, text, lineIndex) {
+        if (text.includes("&")) {
+            if (!text.includes("&&")) {
+                this.errors.push(new ic10_diagnostics_1.DiagnosticsError(`missing incorrect 'and'  operator "$" must be "&&"`, 0, 0, text.length, lineIndex));
+            }
+        }
+        if (text.includes("|")) {
+            if (!text.includes("||")) {
+                this.errors.push(new ic10_diagnostics_1.DiagnosticsError(`missing incorrect 'or'  operator "|" must be "||"`, 0, 0, text.length, lineIndex));
+            }
+        }
+        if (text.includes("=")) {
+            if (!text.includes("==") && !text.includes("~=") && !text.includes("!=")) {
+                this.errors.push(new ic10_diagnostics_1.DiagnosticsError(`missing incorrect  operator  must be "==" or "!=" or "~=" `, 0, 0, text.length, lineIndex));
             }
         }
         return true;

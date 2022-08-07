@@ -39,6 +39,7 @@ const ic10_diagnostics_1 = require("./ic10.diagnostics");
 const icx_compiler_1 = require("icx-compiler");
 const icX_diagnostics_1 = require("./icX.diagnostics");
 const icX_formatter_1 = require("./icX.formatter");
+const err_1 = require("icx-compiler/src/err");
 const LOCALE_KEY = vscode.env.language;
 const ic10 = new ic10_vscode_1.Ic10Vscode();
 exports.LANG_KEY = 'ic10';
@@ -233,7 +234,12 @@ function command(ctx) {
                 }
             }
             catch (e) {
-                vscode.window.showInformationMessage('compiling error', e);
+                if (e instanceof err_1.Errors || e instanceof err_1.Err) {
+                    vscode.window.showInformationMessage('compiling error: ' + e.getUserMessage());
+                }
+                else {
+                    vscode.window.showInformationMessage('compiling error', e);
+                }
                 console.error(e);
             }
         }));
@@ -453,7 +459,7 @@ function renderIc10() {
         const p = b / 128 * 100;
         exports.icSidebar.section('leftLineCounter', `
 					<p>Left lines ${a[1]}</p>
-					<div id="leftLineCounter" class="progress" percent="${p}" value="${b}"  max="128" min="0">
+					<div id="leftLineCounter" class="progress" data-percent="${p}" data-value="${b}"  data-max="128" data-min="0">
 					  <div></div>
 					</div>
 					`, exports.LANG_KEY, -10);

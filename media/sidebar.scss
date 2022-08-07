@@ -24,14 +24,7 @@ section {
     background-color: var(--vscode-inputValidation-infoForeground);
     height: 12px;
     border-radius: 10px;
-    background:
-            linear-gradient(-45deg,
-                    rgba(255, 255, 255, 0.15) 25%,transparent 25%,
-                    transparent 50%, rgba(255, 255, 255, 0.15) 50%,
-                    rgba(255, 255, 255, 0.15) 75%,transparent 75%)
-            left/30px 30px repeat-x,
-            linear-gradient(90deg, rgba(0,255,255,1) 0%, rgba(255,255,0,1) 50%, rgba(255,0,0,1) 100%) left/var(--p,100%) fixed,
-            lightgray;
+    background: var(--vscode-list-errorForeground);
   }
 
   &.geMax > div {

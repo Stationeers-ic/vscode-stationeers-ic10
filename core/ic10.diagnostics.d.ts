@@ -15,6 +15,7 @@ export declare class DiagnosticsError {
     range: vscode.Range;
     message: string;
     lvl: number;
+    line: number;
     hash: string;
     constructor(message: string, lvl: any, start: number, length: number, line: any);
 }

@@ -11,6 +11,7 @@ import {ic10Diagnostics}                   from "./ic10.diagnostics";
 import {icX}                               from "icx-compiler";
 import {icXDiagnostics}                    from "./icX.diagnostics";
 import {icXFormatter}                      from "./icX.formatter";
+import {Err, Errors}                       from "icx-compiler/src/err";
 
 const LOCALE_KEY: string = vscode.env.language
 const ic10               = new Ic10Vscode();
@@ -93,8 +94,8 @@ function formatter(ctx: vscode.ExtensionContext) {
 	try {
 		function replaceTextInDocument(newText: string, document: vscode.TextDocument) {
 			const firstLine = document.lineAt(0);
-			const lastLine = document.lineAt(document.lineCount - 1);
-			const range = new vscode.Range(
+			const lastLine  = document.lineAt(document.lineCount - 1);
+			const range     = new vscode.Range(
 				0,
 				firstLine.range.start.character,
 				document.lineCount - 1,
@@ -122,7 +123,7 @@ function formatter(ctx: vscode.ExtensionContext) {
 			vscode.languages.registerDocumentFormattingEditProvider(LANG_KEY2, {
 				provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
 					try {
-						const formatter = new icXFormatter(document,icxOptions);
+						const formatter = new icXFormatter(document, icxOptions);
 						return [replaceTextInDocument(formatter.resultText, document)];
 					} catch (e) {
 
@@ -144,21 +145,21 @@ function command(ctx: vscode.ExtensionContext) {
 		ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + '.run', () => {
 			if (!interpreterIc10State) {
 				vscode.window.showInformationMessage('Running');
-				const code = vscode.window.activeTextEditor.document.getText();
-				const title = path.basename(vscode.window.activeTextEditor.document.fileName);
+				const code           = vscode.window.activeTextEditor.document.getText();
+				const title          = path.basename(vscode.window.activeTextEditor.document.fileName);
 				interpreterIc10State = 1
-				const panel = vscode.window.createWebviewPanel(
+				const panel          = vscode.window.createWebviewPanel(
 					'ic10.debug', // Identifies the type of the webview. Used internally
 					`${title}-Debug`, // Title of the panel displayed to the user
 					vscode.ViewColumn.Two, // Editor column to show the new webview panel in.
 				);
-				const settings = {
-					debug: true,
-					tickTime: 500,
-					debugCallback: function () {
+				const settings       = {
+					debug            : true,
+					tickTime         : 500,
+					debugCallback    : function () {
 						panel.webview.html += ic10.htmlLog(...arguments) + "<br>"
 					},
-					logCallback: function () {
+					logCallback      : function () {
 						panel.webview.html += ic10.htmlLog(...arguments) + "<br>"
 					},
 					executionCallback: function (e: ic10Error) {
@@ -226,12 +227,12 @@ function command(ctx: vscode.ExtensionContext) {
 		}));
 		ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY2 + '.compile', () => {
 			try {
-				const code = vscode.window.activeTextEditor.document.getText();
+				const code  = vscode.window.activeTextEditor.document.getText();
 				const title = path.basename(vscode.window.activeTextEditor.document.fileName).split('.')[0];
 				// @ts-ignore
-				const dir = path.dirname(vscode.window.activeTextEditor.document.uri._formatted);
+				const dir   = path.dirname(vscode.window.activeTextEditor.document.uri._formatted);
 				console.log(icxOptions)
-				const icx = new icX(code, icxOptions);
+				const icx      = new icX(code, icxOptions);
 				const compiled = icx.getCompiled();
 				console.log(compiled)
 				if (compiled) {
@@ -241,17 +242,21 @@ function command(ctx: vscode.ExtensionContext) {
 					vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content)// console.log('file', file)
 				}
 			} catch (e) {
-				vscode.window.showInformationMessage('compiling error', e);
+				if (e instanceof Errors || e instanceof Err) {
+					vscode.window.showInformationMessage('compiling error: ' + e.getUserMessage());
+				} else {
+					vscode.window.showInformationMessage('compiling error', e);
+				}
 				console.error(e)
 			}
 		}));
 		ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY2 + '.open.wiki', () => {
-			const panel = vscode.window.createWebviewPanel(
+			const panel                             = vscode.window.createWebviewPanel(
 				'icX.wiki', // Identifies the type of the webview. Used internally
 				`wiki`, // Title of the panel displayed to the user
 				vscode.ViewColumn.Beside, // Editor column to show the new webview panel in.
 			);
-			 const _disposables: vscode.Disposable[] = [];
+			const _disposables: vscode.Disposable[] = [];
 			// Listen for when the panel is disposed
 			// This happens when the user closes the panel or when the panel is closed programmatically
 			panel.onDidDispose(() => this.dispose(), null, _disposables);
@@ -293,16 +298,16 @@ function semantic(ctx: vscode.ExtensionContext) {
 	// console.time('semantic')
 	try {
 		ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider(
-			{language: LANG_KEY, scheme: 'file'},
-			new IcxSemanticTokensProvider,
-			legend
-			)
+								   {language: LANG_KEY, scheme: 'file'},
+								   new IcxSemanticTokensProvider,
+								   legend
+							   )
 		);
 		ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider(
-			{language: LANG_KEY2, scheme: 'file'},
-			new IcxSemanticTokensProvider,
-			legend
-			)
+								   {language: LANG_KEY2, scheme: 'file'},
+								   new IcxSemanticTokensProvider,
+								   legend
+							   )
 		);
 	} catch (e) {
 		// console.error(e)
@@ -421,7 +426,7 @@ function diagnostic(context) {
 
 	try {
 		const ic10DiagnosticsCollection = vscode.languages.createDiagnosticCollection("ic10");
-		const icXDiagnosticsCollection = vscode.languages.createDiagnosticCollection("icX");
+		const icXDiagnosticsCollection  = vscode.languages.createDiagnosticCollection("icX");
 		context.subscriptions.push(ic10DiagnosticsCollection);
 		context.subscriptions.push(icXDiagnosticsCollection);
 
@@ -489,13 +494,13 @@ function renderIcX() {
 					</form>
 				`, LANG_KEY2)
 
-	icSidebar.events.icxComments = (data) => {
+	icSidebar.events.icxComments  = (data) => {
 		icxOptions.comments = Boolean(data.value)
 	}
-	icSidebar.events.icxAliases = (data) => {
+	icSidebar.events.icxAliases   = (data) => {
 		icxOptions.aliases = Boolean(data.value)
 	}
-	icSidebar.events.icxLoop = (data) => {
+	icSidebar.events.icxLoop      = (data) => {
 		icxOptions.loop = Boolean(data.value)
 	}
 	icSidebar.events.icxConstants = (data) => {
@@ -510,7 +515,7 @@ function renderIc10() {
 		const p = b / 128 * 100;
 		icSidebar.section('leftLineCounter', `
 					<p>Left lines ${a[1]}</p>
-					<div id="leftLineCounter" class="progress" percent="${p}" value="${b}"  max="128" min="0">
+					<div id="leftLineCounter" class="progress" data-percent="${p}" data-value="${b}"  data-max="128" data-min="0">
 					  <div></div>
 					</div>
 					`, LANG_KEY, -10)

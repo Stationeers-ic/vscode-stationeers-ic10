@@ -44,8 +44,10 @@ class DiagnosticsError {
     range;
     message;
     lvl;
+    line;
     hash;
     constructor(message, lvl, start, length, line) {
+        this.line = line;
         this.message = message;
         this.lvl = lvl;
         this.range = new vscode.Range(line, start, line, start + length);

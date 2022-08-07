@@ -1,16 +1,16 @@
-import * as vscode from "vscode";
-import {icX} from "icx-compiler";
+import * as vscode         from "vscode";
+import {icX}               from "icx-compiler";
 import {icXBlock, icXElem} from "icx-compiler/src/classes";
 
 const regexes = {
-	'rr1': new RegExp("[rd]+(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
-	'r1': new RegExp("(^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)$)|(sp)"),
-	'd1': new RegExp("^d([012345b])$"),
-	'rr': new RegExp(`\\br(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|17|a)\\b`),
-	'rm': new RegExp(`(#-reset-vars-)[\\s\\S]*?(#-reset-vars-)`),
+	'rr1'     : new RegExp("[rd]+(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
+	'r1'      : new RegExp("(^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)$)|(sp)"),
+	'd1'      : new RegExp("^d([012345b])$"),
+	'rr'      : new RegExp(`\\br(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|17|a)\\b`),
+	'rm'      : new RegExp(`(#-reset-vars-)[\\s\\S]*?(#-reset-vars-)`),
 	'oldSpace': new RegExp("^[\\t ]+", 'gmi'),
 	'strStart': new RegExp("^\".+$"),
-	'strEnd': new RegExp(".+\"$"),
+	'strEnd'  : new RegExp(".+\"$"),
 }
 
 export class icXFormatter {
@@ -40,25 +40,25 @@ export class icXFormatter {
 	private icX: icX;
 
 	constructor(document: vscode.TextDocument, icxOptions) {
-		this.document = document;
+		this.document   = document;
 		this.icxOptions = icxOptions;
-		this.text = document.getText();
+		this.text       = document.getText();
 
 		this.resultText = ''
-		this.text = this.text.replace(regexes.oldSpace, '')
-		this.lines = this.text.split(/\r?\n/);
-		this.icX = new icX(this.text, icxOptions)
+		this.text       = this.text.replace(regexes.oldSpace, '')
+		this.lines      = this.text.split(/\r?\n/);
+		this.icX        = new icX(this.text, icxOptions)
 		this.init()
 	}
 
 	init() {
-		this.labels = {};
+		this.labels    = {};
 		this.functions = {};
-		this.loops = {};
-		this.spaces = [];
-		this.vars = new Set;
-		this.jumps = {
-			j: {
+		this.loops     = {};
+		this.spaces    = [];
+		this.vars      = new Set;
+		this.jumps     = {
+			j  : {
 				ra: []
 			},
 			jal: {},
@@ -148,7 +148,11 @@ export class icXFormatter {
 				const c = content[contentKey];
 				if (c instanceof icXBlock) {
 					for (let i = c.originalPosition + 1; i <= c.end; i++) {
-						this.lines[i] = this.addSpace(this.lines[i], level + 1);
+						if (this.lines[i].trim() === "else") {
+							this.lines[i] = this.addSpace(this.lines[i], level);
+						} else {
+							this.lines[i] = this.addSpace(this.lines[i], level + 1);
+						}
 					}
 					this.recursiveSpace(c.content, level)
 				} else if (c instanceof icXElem) {
@@ -160,9 +164,9 @@ export class icXFormatter {
 
 	renderSpaces() {
 		for (const loopsKey in this.loops) {
-			const fn = this.loops[loopsKey];
+			const fn  = this.loops[loopsKey];
 			let start = fn.start
-			let end = fn.end - 2
+			let end   = fn.end - 2
 			for (let i = start; i <= end; i++) {
 				this.lines[i] = this.addSpace(this.lines[i], 1);
 			}
@@ -187,7 +191,7 @@ export class icXFormatter {
 					})
 					this.loops[labelsKey] = {
 						start: position,
-						end: j_pos,
+						end  : j_pos,
 						calls: this.jumps.j[labelsKey]
 					}
 

@@ -8,6 +8,7 @@ declare class IcXDiagnostics extends Ic10Diagnostics {
     view(test: any, linesCount: any): void;
     parseLine(doc: vscode.TextDocument, lineIndex: any): void;
     analyzeFunctionInputs(words: string[], text: string, lineIndex: number): errorMsg | true;
+    analyzeIF(words: string[], text: string, lineIndex: number): errorMsg | true;
     createDiagnostic(range: vscode.Range, message: string, lvl: number): vscode.Diagnostic;
 }
 export declare var icXDiagnostics: IcXDiagnostics;

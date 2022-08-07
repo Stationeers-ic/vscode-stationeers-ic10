@@ -1288,7 +1288,7 @@
 	},
 	"sb"                       :{
 		"type"       :"Function",
-		"op1"        :"H",
+		"op1"        :"R/N/C/H",
 		"op2"        :"P",
 		"op3"        :"R/N/C",
 		"op4"        :null,

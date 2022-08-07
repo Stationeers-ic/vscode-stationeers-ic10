@@ -1,10 +1,25 @@
-alias a r0
-alias b r1
-sdse r15 d1
-beqz r15 if0else
-move a 1
-j if0exit
-if0else:
-move a 9
+alias h r0
+alias a r1
+alias b r2
+alias c r3
+l h d0 PrefabHash
+move a -1
+move b 0
+move c 0
+sb h On 1
+main:
+add a a 1
+sgt r15 a 5
+beqz r15 if0exit
+move a 0
 if0exit:
-select b 1 2 a
+ls c dr1 0 Occupied
+sdse b dr1
+seq r15 b 1
+sgtz r14 c
+and r13 r15 r14
+beqz r13 if1exit
+s dr1 Activate 1
+if1exit:
+j main
+j 0

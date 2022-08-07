@@ -90,17 +90,17 @@ class ic10SideBar {
 			this.progreses = document.querySelectorAll('.progress')
 			for(const progress of this.progreses) {
 				if(progress) {
-					if(progress.getAttribute('percent')) {
-						if(progress.getAttribute('percent') <= 100) {
-							progress.children[0].style.setProperty('width', progress.getAttribute('percent') + '%')
+					if(progress.getAttribute('data-percent')) {
+						if(progress.getAttribute('data-percent') <= 100) {
+							progress.children[0].style.setProperty('width', progress.getAttribute('data-percent') + '%')
 						}
 					}
-					if(parseFloat(progress.getAttribute('value')) >= parseFloat(progress.getAttribute('max') ?? 0)) {
+					if(parseFloat(progress.getAttribute('data-value')) >= parseFloat(progress.getAttribute('data-max') ?? 0)) {
 						progress.classList.add('geMax')
 					} else {
 						progress.classList.remove('geMax')
 					}
-					if(parseFloat(progress.getAttribute('value')) <= parseFloat(progress.getAttribute('min') ?? 0)) {
+					if(parseFloat(progress.getAttribute('data-value')) <= parseFloat(progress.getAttribute('data-min') ?? 0)) {
 						progress.classList.add('leMin')
 					} else {
 						progress.classList.remove('leMin')

@@ -11,39 +11,41 @@ const manual: {
 		"preview": string | null,
 		"text": string | null
 	}
-}[]                       = require('../languages/en.json');
-const functions: string[] = require('../media/ic10.functions.json');
-const keywords: string[]  = require('../media/ic10.keyword.json');
+}[]                              = require('../languages/en.json');
+const functions: string[]        = require('../media/ic10.functions.json');
+const keywords: string[]         = require('../media/ic10.keyword.json');
 
 export const regexes = {
-	'rr1': new RegExp("[r]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
-	'dr1': new RegExp("[d]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
-	'r1': new RegExp("(^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)$)|(sp)"),
-	'd1': new RegExp("^d(0|1|2|3|4|5|b)$"),
-	'rr': new RegExp(`\\br(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|17|a)\\b`),
-	'rm': new RegExp(`(#-reset-vars-)[\\s\\S]{0,}?(#-reset-vars-)`),
+	'rr1'     : new RegExp("[r]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
+	'dr1'     : new RegExp("[d]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
+	'r1'      : new RegExp("(^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)$)|(sp)"),
+	'd1'      : new RegExp("^d(0|1|2|3|4|5|b)$"),
+	'rr'      : new RegExp(`\\br(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|17|a)\\b`),
+	'rm'      : new RegExp(`(#-reset-vars-)[\\s\\S]{0,}?(#-reset-vars-)`),
 	'oldSpace': new RegExp("^[\\t ]+", 'gmi'),
 	'strStart': new RegExp("^\".+$"),
-	'strEnd': new RegExp(".+\"$"),
+	'strEnd'  : new RegExp(".+\"$"),
 }
 
 export class DiagnosticsError {
 	public range: vscode.Range
 	public message: string
 	public lvl: number
+	public line: number
 	public hash: string;
 
 	constructor(message: string, lvl, start: number, length: number, line) {
+		this.line    = line
 		this.message = message
-		this.lvl = lvl
-		this.range = new vscode.Range(line, start, line, start + length)
-		this.hash = this.message.replace(/\s+/, '') + line
+		this.lvl     = lvl
+		this.range   = new vscode.Range(line, start, line, start + length)
+		this.hash    = this.message.replace(/\s+/, '') + line
 	}
 }
 
 export class DiagnosticsErrors {
 	public values: DiagnosticsError[] = []
-	private index: string[] = []
+	private index: string[]           = []
 
 	push(a: DiagnosticsError) {
 		if (this.index.indexOf(a.hash) < 0) {
@@ -54,7 +56,7 @@ export class DiagnosticsErrors {
 
 	reset() {
 		this.values = [];
-		this.index = [];
+		this.index  = [];
 	}
 }
 
@@ -72,7 +74,7 @@ export class Ic10Diagnostics {
 	}
 
 	prepare(doc: vscode.TextDocument) {
-		this.jumps = [];
+		this.jumps   = [];
 		this.aliases = [];
 		this.errors.reset()
 		for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
@@ -137,8 +139,8 @@ export class Ic10Diagnostics {
 	parseLine(doc: vscode.TextDocument, lineIndex) {
 		const lineOfText = doc.lineAt(lineIndex);
 		if (lineOfText.text.trim().length > 0) {
-			var text = lineOfText.text.trim()
-			var test = functions.some((substring) => {
+			var text     = lineOfText.text.trim()
+			var test     = functions.some((substring) => {
 				if (text.startsWith('#')) {
 					if (text.startsWith('#log')) {
 						this.errors.push(new DiagnosticsError(`Debug function: "${text}"`, 2, 0, text.length, lineIndex))
@@ -173,7 +175,7 @@ export class Ic10Diagnostics {
 	}
 
 	analyzeFunctionInputs(words: string[], text: string, lineIndex: number): errorMsg | true {
-		var fn = words[0] ?? null
+		var fn  = words[0] ?? null
 		var op1 = words[1] ?? null
 		var op2 = words[2] ?? null
 		var op3 = words[3] ?? null
@@ -234,8 +236,8 @@ export class Ic10Diagnostics {
 		H - хеш устройств, с которыми выполняется операция пакетного чтения lb или записи sb
 		BM - режим пакетного чтения, одно из Average, Sum, Minimum или Maximum (можно 0, 1, 2 или 3, соотвественно)
 		`
-		var ops = op.replace(/ */, '').split('/')
-		var errors = 0
+		var ops       = op.replace(/ */, '').split('/')
+		var errors    = 0
 		var maxErrors = ops.length
 		for (const o of ops) {
 			switch (o.toUpperCase()) {
@@ -300,8 +302,8 @@ export class Ic10Diagnostics {
 
 		// create range that represents, where in the document the word is
 		const diagnostic = new vscode.Diagnostic(range, message,
-			lvl);
-		diagnostic.code = Ic10DiagnosticsName;
+												 lvl);
+		diagnostic.code  = Ic10DiagnosticsName;
 		return diagnostic;
 	}
 
