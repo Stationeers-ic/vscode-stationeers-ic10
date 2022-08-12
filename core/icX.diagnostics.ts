@@ -282,7 +282,7 @@ class IcXDiagnostics extends Ic10Diagnostics {
 		}
 		if (text.includes("=")) {
 			if (!text.includes("==") && !text.includes("~=") && !text.includes("!=") && !text.includes("<=") && !text.includes(">=")) {
-				this.errors.push(new DiagnosticsError(`missing incorrect  operator  must be "==" or "!=" or "~=" or ">=" or "<="`, 0, 0, text.length, lineIndex))
+				this.errors.push(new DiagnosticsError(`missing incorrect operator must be "==" or "!=" or "~=" or ">=" or "<="`, 0, 0, text.length, lineIndex))
 			}
 		}
 		return true;

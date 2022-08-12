@@ -5,15 +5,15 @@ const getData = require(__dirname+'/data.js')
 gulp.task('generate-langs', async function() {
 	// console.log('generating')
 	// console.log(IC10Data.Languages['ru'][0])
-	getData()
-	var keyword = []
-	var functions = []
-	for(const languagesKey in IC10Data.Languages) {
+	const IC10Data = getData()
+	const keyword = []
+	const functions = []
+	for(const languagesKey in IC10Data?.Languages) {
 		fs.writeFileSync(`..\\languages\\${languagesKey}.json`, JSON.stringify(IC10Data.Languages[languagesKey]))
 	}
-	var snippets = JSON.parse(fs.readFileSync(`..\\snippets\\ic10.json`))
+	const snippets = JSON.parse(fs.readFileSync(`..\\snippets\\ic10.json`))
 	for(const languageKey in IC10Data.Languages['en']) {
-		var data = IC10Data.Languages['en'][languageKey]
+		const data = IC10Data.Languages['en'][languageKey]
 		if(data.type === 'Function') {
 			functions.push(languageKey)
 		} else {

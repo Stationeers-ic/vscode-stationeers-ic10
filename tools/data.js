@@ -3,8 +3,8 @@ function getData(){
 	const IC10Data = {
 		translate: function (str, source = 'ru', target = 'en') {
 			console.time('translate')
-			var url = encodeURI('http://traineratwot.aytour.ru/translate?string=' + str + '&source=' + source + '&target=' + target)
-			var res = request('GET', url)
+			const url = encodeURI('http://traineratwot.aytour.ru/translate?string=' + str + '&source=' + source + '&target=' + target)
+			const res = request('GET', url)
 			console.timeEnd('translate')
 			return res.getBody('utf8')
 		},
@@ -47,6 +47,9 @@ function getData(){
 			if(!(this.Languages['en'] instanceof Object)) {
 				this.Languages['en'] = {}
 			}
+			if(!(this.Languages['zh'] instanceof Object)) {
+				this.Languages['zh'] = {}
+			}
 			this.Languages[lang][name] = {
 				type: type,
 				op1: op1 ? op1 : null,
@@ -69,7 +72,17 @@ function getData(){
 					'text': this.translate(text),
 				}
 			}
-
+			this.Languages['zh'][name] = {
+				type: type,
+				op1: op1 ? op1 : null,
+				op2: op2 ? op2 : null,
+				op3: op3 ? op3 : null,
+				op4: op4 ? op4 : null,
+				description: {
+					'preview': this.translate(preview,'ru','zh'),
+					'text': this.translate(text,'ru','zh'),
+				}
+			}
 			return this
 		}
 	}
@@ -301,6 +314,8 @@ function getData(){
 		.__add('ru ', 'Sum ', 'Const ', 'string ', null)
 		.__add('ru ', 'Minimum ', 'Const ', 'string ', null)
 		.__add('ru ', 'Maximum ', 'Const ', 'string ', null)
+
+		.__add('ru ', 'Maximum ', 'ERROR ', 'string ', null)
 return IC10Data
 }
 module.exports = getData

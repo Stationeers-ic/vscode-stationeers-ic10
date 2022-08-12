@@ -10,6 +10,9 @@ class Ic10Vscode {
         this.langPath = {};
         this.LOCALE_KEY = vscode.env.language.trim();
         try {
+            if (this.LOCALE_KEY === 'zh-cn') {
+                this.LOCALE_KEY = 'zh';
+            }
             let langPath = require(`../languages/${this.LOCALE_KEY}.json`);
             if (langPath instanceof Object) {
                 this.langPath = langPath;
