@@ -295,8 +295,8 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
             }
         }
         if (text.includes("=")) {
-            if (!text.includes("==") && !text.includes("~=") && !text.includes("!=")) {
-                this.errors.push(new ic10_diagnostics_1.DiagnosticsError(`missing incorrect  operator  must be "==" or "!=" or "~=" `, 0, 0, text.length, lineIndex));
+            if (!text.includes("==") && !text.includes("~=") && !text.includes("!=") && !text.includes("<=") && !text.includes(">=")) {
+                this.errors.push(new ic10_diagnostics_1.DiagnosticsError(`missing incorrect  operator  must be "==" or "!=" or "~=" or ">=" or "<="`, 0, 0, text.length, lineIndex));
             }
         }
         return true;
