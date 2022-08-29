@@ -1,15 +1,16 @@
 const request = require('sync-request')
-function getData(){
+
+function getData() {
 	const IC10Data = {
-		translate: function (str, source = 'ru', target = 'en') {
-			console.time('translate')
+		translate: function(str, source = 'ru', target = 'en') {
+			console.time('translate ' + str)
 			const url = encodeURI('http://traineratwot.aytour.ru/translate?string=' + str + '&source=' + source + '&target=' + target)
 			const res = request('GET', url)
-			console.timeEnd('translate')
+			console.timeEnd('translate ' + str)
 			return res.getBody('utf8')
 		},
 		Languages: {},
-		__add: function(lang = null, name = null, type = null, preview = null, text = null, op1 = null, op2 = null, op3 = null, op4 = null) {
+		__add    : function(lang = null, name = null, type = null, preview = null, text = null, op1 = null, op2 = null, op3 = null, op4 = null) {
 			if(lang) {
 				lang = lang.trim() ?? null
 			}
@@ -51,36 +52,36 @@ function getData(){
 				this.Languages['zh'] = {}
 			}
 			this.Languages[lang][name] = {
-				type: type,
-				op1: op1 ? op1 : null,
-				op2: op2 ? op2 : null,
-				op3: op3 ? op3 : null,
-				op4: op4 ? op4 : null,
+				type       : type,
+				op1        : op1 ? op1 : null,
+				op2        : op2 ? op2 : null,
+				op3        : op3 ? op3 : null,
+				op4        : op4 ? op4 : null,
 				description: {
 					'preview': preview,
-					'text': text,
+					'text'   : text,
 				}
 			}
 			this.Languages['en'][name] = {
-				type: type,
-				op1: op1 ? op1 : null,
-				op2: op2 ? op2 : null,
-				op3: op3 ? op3 : null,
-				op4: op4 ? op4 : null,
+				type       : type,
+				op1        : op1 ? op1 : null,
+				op2        : op2 ? op2 : null,
+				op3        : op3 ? op3 : null,
+				op4        : op4 ? op4 : null,
 				description: {
 					'preview': this.translate(preview),
-					'text': this.translate(text),
+					'text'   : this.translate(text),
 				}
 			}
 			this.Languages['zh'][name] = {
-				type: type,
-				op1: op1 ? op1 : null,
-				op2: op2 ? op2 : null,
-				op3: op3 ? op3 : null,
-				op4: op4 ? op4 : null,
+				type       : type,
+				op1        : op1 ? op1 : null,
+				op2        : op2 ? op2 : null,
+				op3        : op3 ? op3 : null,
+				op4        : op4 ? op4 : null,
 				description: {
-					'preview': this.translate(preview,'ru','zh'),
-					'text': this.translate(text,'ru','zh'),
+					'preview': this.translate(preview, 'ru', 'zh'),
+					'text'   : this.translate(text, 'ru', 'zh'),
 				}
 			}
 			return this
@@ -94,7 +95,7 @@ function getData(){
 		.__add('ru ', 'and ', 'Function ', 'op1 := op2 op3 ', 'Логическое И, единица, если и op2 и op3 истинны, ноль в противном случае ', 'R/N ', 'R/N/C ', 'R/N/C ', null)
 		.__add('ru ', 'asin ', 'Function ', 'op1 := asin(op2) ', 'Арксинус* ', 'R/N ', 'R/N/C ', null)
 		.__add('ru ', 'atan ', 'Function ', 'op1 := atan(op2) ', 'Арктангенс* ', 'R/N ', 'R/N/C ', null)
-		.__add('ru ', 'atan2', 'Function ', 'op1 := atan2(op2,op3) ', 'Арктангенс с 2 аргументами', 'R/N ', 'R/N/C','R/N/C',null)
+		.__add('ru ', 'atan2', 'Function ', 'op1 := atan2(op2,op3) ', 'Арктангенс с 2 аргументами', 'R/N ', 'R/N/C', 'R/N/C', null)
 		.__add('ru ', 'bap ', 'Function ', 'Переход на op4, если op1 op2 с точностью op3 ', null, 'R/N/C ', 'R/N/C ', 'R/N/C ', 'R/N/A/T')
 		.__add('ru ', 'bapal ', 'Function ', 'Переход на op4, если op1 op2 с точностью op3 с записью адреса следующей строки в ra ', null, 'R/N/C ', 'R/N/C ', 'R/N/C ', 'R/N/A/T')
 		.__add('ru ', 'bapz ', 'Function ', 'Переход на op3, если op1 0 с точностью op2 ', null, 'R/N/C ', 'R/N/C ', 'R/N/A/T ', null)
@@ -165,7 +166,15 @@ function getData(){
 		.__add('ru ', 'ls ', 'Function ', 'op1 := op2.slot(op3).op4 ', 'Чтение значения op4 из слота op3 порта op2 ', 'R/N ', 'D/N ', 'R/N/S ', 'P')
 		.__add('ru ', 'max ', 'Function ', 'op1 := max(op2, op3) ', 'Максимальное из двух ', 'R/N ', 'R/N/C ', 'R/N/C ', null)
 		.__add('ru ', 'min ', 'Function ', 'op1 := min(op2, op3) ', 'Минимальное из двух ', 'R/N ', 'R/N/C ', 'R/N/C ', null)
-		.__add('ru ', 'mod ', 'Function ', 'op1 := op2 mod op3 ', 'Остаток от целочисленного деления op2 на op3 (результат не эквивалентен оператору %, и будет положителен при любых знаках op2 и op3) ', 'R/N ', 'R/N/C ', 'R/N/C ', null)
+		.__add('ru ',
+			   'mod ',
+			   'Function ',
+			   'op1 := op2 mod op3 ',
+			   'Остаток от целочисленного деления op2 на op3 (результат не эквивалентен оператору %, и будет положителен при любых знаках op2 и op3) ',
+			   'R/N ',
+			   'R/N/C ',
+			   'R/N/C ',
+			   null)
 		.__add('ru ', 'move ', 'Function ', 'op1 := op2 ', 'Присвоение значения ', 'R/N ', 'R/N/C ', null)
 		.__add('ru ', 'mul ', 'Function ', 'op1 := op2 * op3 ', 'Произведение ', 'R/N ', 'R/N/C ', 'R/N/C ', null)
 		.__add('ru ', 'nor ', 'Function ', 'op1 := ¬(op2 op3) ', 'Инверсное ИЛИ, единица, если и op2 и op3 ложны, ноль в противном случае ', 'R/N ', 'R/N/C ', 'R/N/C ', null)
@@ -212,12 +221,24 @@ function getData(){
 		.__add('ru ', 'Charge ', 'Device parameter ', 'Float ', 'Заряд батареи или аккумулятора, Дж. Уровень генерации электричества солнечной панелью, Вт.')
 		.__add('ru ', 'Class ', 'Device parameter ', null, 'класс объекта в слоте')
 		.__add('ru ', 'ClearMemory ', 'Device parameter ', 'Trigger ', '>=1 - сбрасывает счётчики')
-		.__add('ru ', 'Color ', 'Device parameter ', `0-синий , 1-серый , 2-зелёный , 3-оранжевый , 4-красный , 5-жёлтый, 6-белый, 7-чёрный, 8-коричневый, 9-хаки, 10-розовый, 11-фиолетовый`, 'Цвет LED-лампы, стационарного маяка и светодиодного дисплея')
+		.__add('ru ',
+			   'Color ',
+			   'Device parameter ',
+			   `0-синий , 1-серый , 2-зелёный , 3-оранжевый , 4-красный , 5-жёлтый, 6-белый, 7-чёрный, 8-коричневый, 9-хаки, 10-розовый, 11-фиолетовый`,
+			   'Цвет LED-лампы, стационарного маяка и светодиодного дисплея')
 		.__add('ru ', 'Combustion ', 'Device parameter ', 'Bool ', '1 - обнаружено воспламенение, 0 - во всех остальных случаях')
 		.__add('ru ', 'CompletionRatio ', 'Device parameter ', 'Float[0-1] ', 'этап производства в %')
 		.__add('ru ', 'Damage ', 'Device parameter ', 'Float[0-1] ', 'уровень повреждения объекта')
-		.__add('ru ', 'ElevatorLevel ', 'Device parameter ', 'Int ', 'На чтение - уровень, на котором находится кабинка лифта, или -1, если кабинки нет. На запись - отправляет лифт на указанный этаж.')
-		.__add('ru ', 'ElevatorSpeed ', 'Device parameter ', 'Float ', 'Скорость движения кабинки лифта, м/тик. Отрицательное значение соответствуют движению вниз, 0 - неподвижной кабинке, положительное - движению вверх.')
+		.__add('ru ',
+			   'ElevatorLevel ',
+			   'Device parameter ',
+			   'Int ',
+			   'На чтение - уровень, на котором находится кабинка лифта, или -1, если кабинки нет. На запись - отправляет лифт на указанный этаж.')
+		.__add('ru ',
+			   'ElevatorSpeed ',
+			   'Device parameter ',
+			   'Float ',
+			   'Скорость движения кабинки лифта, м/тик. Отрицательное значение соответствуют движению вниз, 0 - неподвижной кабинке, положительное - движению вверх.')
 		.__add('ru ', 'Error ', 'Device parameter ', 'Bool ', '0 - нормальная работа, 1 - ошибка')
 		.__add('ru ', 'ExportCount ', 'Device parameter ', 'Int ', 'счётчик объектов, прошедших через слот экспорта')
 		.__add('ru ', 'Filtration ', 'Device parameter ', 'Bool ', 'Переключает фильтрацию отработанной смеси в прочном скафандре.')
@@ -227,12 +248,20 @@ function getData(){
 		.__add('ru ', 'Idle ', 'Device parameter ', 'Bool ', 'Загрузка дуговой печи. 0 - руда не загружена, 1 - загружена.')
 		.__add('ru ', 'ImportCount ', 'Device parameter ', 'Int ', 'счётчик объектов, прошедших через слот импорта')
 		.__add('ru ', 'Lock ', 'Device parameter ', 'Bool ', '0 - ручное управление разблокировано, 1 - заблокировано')
-		.__add('ru ', 'Maximum ', 'Device parameter ', 'Float ', 'Максимальное значение какого-либо параметра оборудования, например, заряда батареи или давления на входе в камеру сгорания реактивного двигателя. Очень часто присутствует, но не используется.')
+		.__add('ru ',
+			   'Maximum ',
+			   'Device parameter ',
+			   'Float ',
+			   'Максимальное значение какого-либо параметра оборудования, например, заряда батареи или давления на входе в камеру сгорания реактивного двигателя. Очень часто присутствует, но не используется.')
 		.__add('ru ', 'MaxQuantity ', 'Device parameter ', 'Float ', 'максимальное количество предметов в слоте')
 		.__add('ru ', 'Mode ', 'Device parameter ', 'Int ', ' режим работы')
 		.__add('ru ', 'On ', 'Device parameter ', 'Bool ', '0 - выключен 1 - включен')
 		.__add('ru ', 'Open ', 'Device parameter ', 'Bool ', '0 - выброс закрыт, 1 - открыт')
-		.__add('ru ', 'Output ', 'Device parameter ', 'Int/Trigger ', `Для сортировщика - r/w , Int - следующий выход, на который будет выдан объект.<br>Для стакера - w, Trigger - выгружает накопленную упаковку объектов в слот экспорта.	`)
+		.__add('ru ',
+			   'Output ',
+			   'Device parameter ',
+			   'Int/Trigger ',
+			   `Для сортировщика - r/w , Int - следующий выход, на который будет выдан объект.<br>Для стакера - w, Trigger - выгружает накопленную упаковку объектов в слот экспорта.	`)
 		.__add('ru ', 'Plant ', 'Device parameter ', 'Trigger ', 'Запускает процесс посадки растения из слота импорта в автоматической гидропонной станции.')
 		.__add('ru ', 'PositionX ', 'Device parameter ', 'Float ', 'координата X текущего положения')
 		.__add('ru ', 'PositionY ', 'Device parameter ', 'Float ', 'координата Y текущего положения')
@@ -272,7 +301,11 @@ function getData(){
 
 		.__add('ru ', 'Charge ', 'Slot parameter ', 'Float ', 'Заряд аккумулятора в слоте, Дж.')
 		.__add('ru ', 'ChargeRatio ', 'Slot parameter ', 'Float[0-1] ', 'Уровень заряда аккумулятора в слоте.')
-		.__add('ru ', 'Class ', 'Slot parameter ', 'Int ', `0 - всё , что не относится к остальным классам;<br> 1 - шлемы;<br> 2 - скафандры и броня;<br> 3 - джетпаки и рюкзаки;<br> 4 - газовые фильтры;<br> 5 - газовые баллоны;<br> 6 - материнские платы;<br> 7 - печатные платы;<br> 8 - диск данных;<br> 9 - органы (мозг, лёгкие);<br> 10 - руды;<br> 11 - растения;<br> 12 - униформа;<br> 13 - существа (в том числе и персонажи);<br> 14 - аккумуляторы;<br> 14 - яйца;<br> 15 - пояса;<br> 16 - инструменты;<br> 17 - настольное оборудование (микроволновка, смеситель красок и т.п.);<br> 18 - слитки;<br> 19 - торпеды;<br> 20 - картриджи;<br> 21 - карты доступа, <br> 22 - магазины к оружию;<br> 23 - логические чипы;<br> 24 - бутылки (молоко, соевое масло);<br> 25 - микропроцессоры;<br> 26 - очки.`)
+		.__add('ru ',
+			   'Class ',
+			   'Slot parameter ',
+			   'Int ',
+			   `0 - всё , что не относится к остальным классам;<br> 1 - шлемы;<br> 2 - скафандры и броня;<br> 3 - джетпаки и рюкзаки;<br> 4 - газовые фильтры;<br> 5 - газовые баллоны;<br> 6 - материнские платы;<br> 7 - печатные платы;<br> 8 - диск данных;<br> 9 - органы (мозг, лёгкие);<br> 10 - руды;<br> 11 - растения;<br> 12 - униформа;<br> 13 - существа (в том числе и персонажи);<br> 14 - аккумуляторы;<br> 14 - яйца;<br> 15 - пояса;<br> 16 - инструменты;<br> 17 - настольное оборудование (микроволновка, смеситель красок и т.п.);<br> 18 - слитки;<br> 19 - торпеды;<br> 20 - картриджи;<br> 21 - карты доступа, <br> 22 - магазины к оружию;<br> 23 - логические чипы;<br> 24 - бутылки (молоко, соевое масло);<br> 25 - микропроцессоры;<br> 26 - очки.`)
 		.__add('ru ', 'Damage ', 'Slot parameter ', 'Float[0-1] ', 'Уровень повреждения объекта в слоте. 0 - объект целый, 1 - полностью разрушен.')
 		.__add('ru ', 'Efficiency ', 'Slot parameter ', 'Float[0-1] ', 'Эффективность роста растения в автоматической гидропонной станции. -1, если растения нет.')
 		.__add('ru ', 'Growth ', 'Slot parameter ', 'Float[0-1] ', 'Стадия роста растения в автоматической гидропонной станции. -1, если растения нет.')
@@ -310,12 +343,50 @@ function getData(){
 		.__add('ru ', 'VerticalRatio ', 'Parameter ', 'Float ', null)
 		.__add('ru ', 'Seeding ', 'Parameter ', 'int ', '-1 - нельзя собрать семена, 1 - можно')
 
-		.__add('ru ', 'Average ', 'Const ', 'string ', null)
-		.__add('ru ', 'Sum ', 'Const ', 'string ', null)
-		.__add('ru ', 'Minimum ', 'Const ', 'string ', null)
-		.__add('ru ', 'Maximum ', 'Const ', 'string ', null)
+			.__add('ru ', 'CombustionInput ', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'CombustionOutput ', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'CombustionOutput2', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'TemperatureInput', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'TemperatureOutput', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'TemperatureOutput2', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'PressureInput', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'PressureOutput', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'PressureOutput2', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'TotalMolesInput', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'TotalMolesOutput', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'TotalMolesOutput2', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioCarbonDioxideInput', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioCarbonDioxideOutput', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioCarbonDioxideOutput2', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioNitrogenInput', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioNitrogenOutput', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioNitrogenOutput2', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioNitrousOxideInput', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioNitrousOxideOutput', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioNitrousOxideOutput2', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioOxygenInput', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioOxygenOutput', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioOxygenOutput2', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioPollutantInput', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioPollutantOutpu', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioPollutantOutput2', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioVolatilesInput', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioVolatilesOutput', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioVolatilesOutput2', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioWaterInput', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioWaterOutput', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'RatioWaterOutput2', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'PressureEfficiency', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'OperationalTemperatureEfficiency', 'Parameter ', 'Float ', null)
+			.__add('ru ', 'TemperatureDifferentialEfficiency', 'Parameter ', 'Float ', null)
 
-		.__add('ru ', 'Maximum ', 'ERROR ', 'string ', null)
-return IC10Data
+			.__add('ru ', 'Average ', 'Const ', 'string ', null)
+			.__add('ru ', 'Sum ', 'Const ', 'string ', null)
+			.__add('ru ', 'Minimum ', 'Const ', 'string ', null)
+			.__add('ru ', 'Maximum ', 'Const ', 'string ', null)
+
+			.__add('ru ', 'Maximum ', 'ERROR ', 'string ', null)
+	return IC10Data
 }
+
 module.exports = getData
