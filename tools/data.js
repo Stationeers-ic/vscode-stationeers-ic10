@@ -1,13 +1,54 @@
 const request = require('sync-request')
+const fs = require('fs')
+const path = require('path')
+const md5 = require('md5')
+
+class cache {
+	constructor() {
+		if(!fs.existsSync(path.join(__dirname, 'cache'))) {
+			fs.mkdirSync(path.join(__dirname, 'cache'))
+		}
+	}
+
+
+	static getCache(str, source, target) {
+		const key = md5(str + source + target)
+		try {
+			return fs.readFileSync(path.join(__dirname, 'cache', key))
+		} catch(err) {
+			return null
+		}
+	}
+
+
+	static setCache(str, source, target, value) {
+		const key = md5(str + source + target)
+		fs.writeFileSync(path.join(__dirname, 'cache', key), value)
+		return value
+	}
+
+
+	static call(str, source, target, callback) {
+		let res = cache.getCache(str, source, target)
+		if(!res) {
+			return cache.setCache(str, source, target, callback(str, source, target))
+		}
+		return res
+	}
+}
+
+new cache()
 
 function getData() {
 	const IC10Data = {
 		translate: function(str, source = 'ru', target = 'en') {
 			console.time('translate ' + str)
-			const url = encodeURI('http://traineratwot.aytour.ru/translate?string=' + str + '&source=' + source + '&target=' + target)
-			const res = request('GET', url)
+			cache.call(str, source, target, (str, source, target) => {
+				const url = encodeURI('http://traineratwot.aytour.ru/translate?string=' + str + '&source=' + source + '&target=' + target)
+				const res = request('GET', url)
+				return res.getBody('utf8')
+			})
 			console.timeEnd('translate ' + str)
-			return res.getBody('utf8')
 		},
 		Languages: {},
 		__add    : function(lang = null, name = null, type = null, preview = null, text = null, op1 = null, op2 = null, op3 = null, op4 = null) {
@@ -212,8 +253,8 @@ function getData() {
 		.__add('ru ', 'trunc ', 'Function ', 'op1 := int(op2) ', 'Целая часть числа ', 'R/N ', 'R/N/C ', null)
 		.__add('ru ', 'xor ', 'Function ', 'op1 := op2 op3 ', 'Исключающее ИЛИ, единица, если одно и только одно из op2 и op3 истинно, ноль в противном случае ', 'R/N ', 'R/N/C ', 'R/N/C ', null)
 		.__add('ru ', 'yield ', 'Function ', 'Приостановка программы до следующего тика ', null)
-		.__add('ru ', 'lb ', 'Function ', 'op1 := op2.op3.mode(op4) ', 'Пакетное чтение в op1 из всех устройств с хешем op2 параметра op3 в режиме op4 ', 'R/N ', 'H ', 'P ', 'BM')
-		.__add('ru ', 'sb ', 'Function ', 'op1.op2 := op3 ', 'Пакетная запись во все устройства с хешем op1 в параметр op2 значения op3 ', 'H ', 'P ', 'R/N/C ', null)
+		.__add('ru ', 'lb ', 'Function ', 'op1 := op2.op3.mode(op4) ', 'Пакетное чтение в op1 из всех устройств с хешем op2 параметра op3 в режиме op4 ', 'R/N ', 'R/N/C/H ', 'P ', 'BM')
+		.__add('ru ', 'sb ', 'Function ', 'op1.op2 := op3 ', 'Пакетная запись во все устройства с хешем op1 в параметр op2 значения op3 ', 'R/N/C/H', 'P ', 'R/N/C ', null)
 		.__add('ru ', 'ls ', 'Function ', 'op1 := op2.slot(op3).op4 ', 'Чтение значения op4 из слота op3 порта op2 ', 'R/N ', 'D/N ', 'R/N/S ', 'P')
 		.__add('ru ', 'stack ', 'Function ', 'stack 1 2 3 ... ', 'Заполняет стак значиниями аргументов ', 'R/N/C ', null, null, null)
 
@@ -343,49 +384,49 @@ function getData() {
 		.__add('ru ', 'VerticalRatio ', 'Parameter ', 'Float ', null)
 		.__add('ru ', 'Seeding ', 'Parameter ', 'int ', '-1 - нельзя собрать семена, 1 - можно')
 
-			.__add('ru ', 'CombustionInput ', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'CombustionOutput ', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'CombustionOutput2', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'TemperatureInput', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'TemperatureOutput', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'TemperatureOutput2', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'PressureInput', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'PressureOutput', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'PressureOutput2', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'TotalMolesInput', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'TotalMolesOutput', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'TotalMolesOutput2', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioCarbonDioxideInput', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioCarbonDioxideOutput', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioCarbonDioxideOutput2', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioNitrogenInput', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioNitrogenOutput', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioNitrogenOutput2', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioNitrousOxideInput', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioNitrousOxideOutput', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioNitrousOxideOutput2', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioOxygenInput', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioOxygenOutput', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioOxygenOutput2', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioPollutantInput', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioPollutantOutpu', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioPollutantOutput2', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioVolatilesInput', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioVolatilesOutput', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioVolatilesOutput2', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioWaterInput', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioWaterOutput', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'RatioWaterOutput2', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'PressureEfficiency', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'OperationalTemperatureEfficiency', 'Parameter ', 'Float ', null)
-			.__add('ru ', 'TemperatureDifferentialEfficiency', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'CombustionInput ', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'CombustionOutput ', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'CombustionOutput2', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'TemperatureInput', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'TemperatureOutput', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'TemperatureOutput2', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'PressureInput', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'PressureOutput', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'PressureOutput2', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'TotalMolesInput', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'TotalMolesOutput', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'TotalMolesOutput2', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioCarbonDioxideInput', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioCarbonDioxideOutput', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioCarbonDioxideOutput2', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioNitrogenInput', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioNitrogenOutput', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioNitrogenOutput2', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioNitrousOxideInput', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioNitrousOxideOutput', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioNitrousOxideOutput2', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioOxygenInput', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioOxygenOutput', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioOxygenOutput2', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioPollutantInput', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioPollutantOutpu', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioPollutantOutput2', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioVolatilesInput', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioVolatilesOutput', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioVolatilesOutput2', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioWaterInput', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioWaterOutput', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'RatioWaterOutput2', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'PressureEfficiency', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'OperationalTemperatureEfficiency', 'Parameter ', 'Float ', null)
+		.__add('ru ', 'TemperatureDifferentialEfficiency', 'Parameter ', 'Float ', null)
 
-			.__add('ru ', 'Average ', 'Const ', 'string ', null)
-			.__add('ru ', 'Sum ', 'Const ', 'string ', null)
-			.__add('ru ', 'Minimum ', 'Const ', 'string ', null)
-			.__add('ru ', 'Maximum ', 'Const ', 'string ', null)
+		.__add('ru ', 'Average ', 'Const ', 'string ', null)
+		.__add('ru ', 'Sum ', 'Const ', 'string ', null)
+		.__add('ru ', 'Minimum ', 'Const ', 'string ', null)
+		.__add('ru ', 'Maximum ', 'Const ', 'string ', null)
 
-			.__add('ru ', 'Maximum ', 'ERROR ', 'string ', null)
+		.__add('ru ', 'Maximum ', 'ERROR ', 'string ', null)
 	return IC10Data
 }
 
