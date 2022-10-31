@@ -9,3 +9,5 @@ tools/interpreter/interpreter.js
 tools/fn.js
 logs
 tools/cache/*
+
+.project-manager/
