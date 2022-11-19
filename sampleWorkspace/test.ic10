@@ -1,5 +1,7 @@
+slt r15 r0 0.05
+beqz r15 if0else
 move r0 1
-sap r15 r0 3 9
-beqz r15 if0exit
-move r0 2
+j if0exit
+if0else:
+move r0 0
 if0exit:
