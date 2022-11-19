@@ -1,17 +1,4 @@
-var h = d0.PrefabHash
-var a = -1
-var b = 0
-var c = 0
-var c
-d(h).On = 1 
-main:
-	a++
-	if a > 5
-		a = 0
-	end
-	c = dr1.slot(0).Occupied
-	b = sdse(dr1)
-	if b == 1 && c > 0
-		dr1.Activate = 1
-	end
-j main
+var a = 1
+if a ~= 3, 9
+	a = 2
+end
