@@ -1,11 +1,12 @@
 'use strict'
 const gulp = require('gulp')
 const fs = require('fs')
-const getData = require(__dirname+'/data.js')
+const getData = require(__dirname+'/ajax.js')
 gulp.task('generate-langs', async function() {
 	// console.log('generating')
 	// console.log(IC10Data.Languages['ru'][0])
-	const IC10Data = getData()
+	const IC10Data = await getData()
+	console.log(IC10Data)
 	const keyword = []
 	const functions = []
 	for(const languagesKey in IC10Data?.Languages) {

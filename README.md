@@ -1,6 +1,6 @@
 # Stationeers ic10
 
-NEW WIKI [http://traineratwot.aytour.ru/wiki/icx](http://traineratwot.aytour.ru/wiki/icx)
+WIKI [https://icx.traineratwot.site/wiki/icx](https://icx.traineratwot.site/wiki/icx)
 
 VS code Sample project [https://github.com/Traineratwot/Ic10-and-Icx-Sample](https://github.com/Traineratwot/Ic10-and-Icx-Sample)
 
