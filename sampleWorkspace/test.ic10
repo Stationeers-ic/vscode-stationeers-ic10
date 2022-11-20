@@ -1,7 +1,5 @@
-slt r15 r0 0.05
-beqz r15 if0else
-move r0 1
-j if0exit
-if0else:
-move r0 0
-if0exit:
+s d0 Setting 1
+l r0 d0 Setting
+ls r1 d0 r0 PrefabHash
+lb r0 5438547545 Setting Sum
+sb 5438547545 Setting r1

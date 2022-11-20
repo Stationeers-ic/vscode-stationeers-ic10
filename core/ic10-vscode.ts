@@ -3,6 +3,7 @@ import vscode = require("vscode");
 import {ic10Error} from "ic10/main";
 
 export class Ic10Vscode {
+	public wiki = "https://icx.traineratwot.site/wiki/ic10"
 	private readonly langPath: {};
 	LOCALE_KEY: string;
 	
@@ -29,26 +30,26 @@ export class Ic10Vscode {
 	public getHover(name = '') {
 		
 		if (this.langPath.hasOwnProperty(name)) {
-			var data = this.langPath[name]
-			var type = data?.type
-			var op1 = data?.op1
-			var op2 = data?.op2
-			var op3 = data?.op3
-			var op4 = data?.op4
-			var preview = data?.description?.preview
+			const data = this.langPath[name];
+			const type = data?.type;
+			const op1 = data?.op1;
+			const op2 = data?.op2;
+			const op3   = data?.op3;
+			const op4   = data?.op4;
+			let preview = data?.description?.preview;
 			if (preview) {
 				preview = '*' + preview + '*'
 			}
-			var description = data.description.text
+			let description = data.description.text;
 			if (this.LOCALE_KEY == 'ru') {
 				description += `
 				
 ----
 
-[wiki](https://stationeers.fandom.com/ru/wiki/Программирование_микропроцессора)
+[wiki](${this.wiki})
         `
 			}
-			var heading = `**${name} [_${type}_]** `
+			let heading = `**${name} [_${type}_]** `;
 			if (op1) {
 				heading += `op1:[${op1}] `
 			}

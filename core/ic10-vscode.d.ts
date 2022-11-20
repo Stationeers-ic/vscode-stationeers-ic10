@@ -1,4 +1,5 @@
 export declare class Ic10Vscode {
+    wiki: string;
     private readonly langPath;
     LOCALE_KEY: string;
     constructor();

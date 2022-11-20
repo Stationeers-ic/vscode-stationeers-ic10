@@ -12,9 +12,11 @@ import {icX}                               from "icx-compiler";
 import {icXDiagnostics}                    from "./icX.diagnostics";
 import {icXFormatter}                      from "./icX.formatter";
 import {Err, Errors}                       from "icx-compiler/src/err";
+import {IcXVscode}                         from "./icX-vscode";
 
 const LOCALE_KEY: string = vscode.env.language
-const ic10               = new Ic10Vscode();
+const ic10_hover         = new Ic10Vscode();
+const icX_hover          = new IcXVscode();
 export const LANG_KEY    = 'ic10'
 export const LANG_KEY2   = 'icX'
 const interpreterIc10    = new InterpreterIc10(null)
@@ -73,14 +75,14 @@ function hover(ctx: vscode.ExtensionContext) {
 			provideHover(document, position) {
 				const word = document.getWordRangeAtPosition(position);
 				const text = document.getText(word);
-				return new Hover(ic10.getHover(text))
+				return new Hover(ic10_hover.getHover(text))
 			}
 		}));
 		ctx.subscriptions.push(vscode.languages.registerHoverProvider(LANG_KEY2, {
 			provideHover(document, position) {
 				const word = document.getWordRangeAtPosition(position);
 				const text = document.getText(word);
-				return new Hover(ic10.getHover(text))
+				return new Hover(icX_hover.getHover(text))
 			}
 		}));
 	} catch (e) {
@@ -157,13 +159,13 @@ function command(ctx: vscode.ExtensionContext) {
 					debug            : true,
 					tickTime         : 500,
 					debugCallback    : function () {
-						panel.webview.html += ic10.htmlLog(...arguments) + "<br>"
+						panel.webview.html += ic10_hover.htmlLog(...arguments) + "<br>"
 					},
 					logCallback      : function () {
-						panel.webview.html += ic10.htmlLog(...arguments) + "<br>"
+						panel.webview.html += ic10_hover.htmlLog(...arguments) + "<br>"
 					},
 					executionCallback: function (e: ic10Error) {
-						panel.webview.html += ic10.htmlLog(...arguments) + "<br>"
+						panel.webview.html += ic10_hover.htmlLog(...arguments) + "<br>"
 					},
 				}
 				interpreterIc10.setSettings(settings).init(code).run()

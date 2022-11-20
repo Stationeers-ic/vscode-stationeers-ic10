@@ -40,8 +40,10 @@ const icx_compiler_1 = require("icx-compiler");
 const icX_diagnostics_1 = require("./icX.diagnostics");
 const icX_formatter_1 = require("./icX.formatter");
 const err_1 = require("icx-compiler/src/err");
+const icX_vscode_1 = require("./icX-vscode");
 const LOCALE_KEY = vscode.env.language;
-const ic10 = new ic10_vscode_1.Ic10Vscode();
+const ic10_hover = new ic10_vscode_1.Ic10Vscode();
+const icX_hover = new icX_vscode_1.IcXVscode();
 exports.LANG_KEY = 'ic10';
 exports.LANG_KEY2 = 'icX';
 const interpreterIc10 = new ic10_1.InterpreterIc10(null);
@@ -83,14 +85,14 @@ function hover(ctx) {
             provideHover(document, position) {
                 const word = document.getWordRangeAtPosition(position);
                 const text = document.getText(word);
-                return new vscode_1.Hover(ic10.getHover(text));
+                return new vscode_1.Hover(ic10_hover.getHover(text));
             }
         }));
         ctx.subscriptions.push(vscode.languages.registerHoverProvider(exports.LANG_KEY2, {
             provideHover(document, position) {
                 const word = document.getWordRangeAtPosition(position);
                 const text = document.getText(word);
-                return new vscode_1.Hover(ic10.getHover(text));
+                return new vscode_1.Hover(icX_hover.getHover(text));
             }
         }));
     }
@@ -150,13 +152,13 @@ function command(ctx) {
                     debug: true,
                     tickTime: 500,
                     debugCallback: function () {
-                        panel.webview.html += ic10.htmlLog(...arguments) + "<br>";
+                        panel.webview.html += ic10_hover.htmlLog(...arguments) + "<br>";
                     },
                     logCallback: function () {
-                        panel.webview.html += ic10.htmlLog(...arguments) + "<br>";
+                        panel.webview.html += ic10_hover.htmlLog(...arguments) + "<br>";
                     },
                     executionCallback: function (e) {
-                        panel.webview.html += ic10.htmlLog(...arguments) + "<br>";
+                        panel.webview.html += ic10_hover.htmlLog(...arguments) + "<br>";
                     },
                 };
                 interpreterIc10.setSettings(settings).init(code).run();

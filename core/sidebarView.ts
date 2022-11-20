@@ -71,8 +71,8 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 		} else {
 			this.sections[this.sectionsNamed[name]] = {name, content, lang, priority}
 		}
-		var newContent = ""
-		var languageId = vscode.window.activeTextEditor.document.languageId
+		let newContent   = "";
+		const languageId = vscode.window.activeTextEditor.document.languageId;
 		this.sections.sort((a, b) => {
 			if (a.priority < b.priority) {
 				return -1;
@@ -83,7 +83,7 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 			return 0;
 		})
 		for (const sectionsKey in this.sections) {
-			var obj = this.sections[sectionsKey]
+			const obj = this.sections[sectionsKey];
 			if (obj.lang == 'both' || obj.lang == languageId) {
 				newContent += `
 				<section id="${obj.name}">
