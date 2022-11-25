@@ -1,5 +1,1 @@
-s d0 Setting 1
-l r0 d0 Setting
-ls r1 d0 r0 PrefabHash
-lb r0 5438547545 Setting Sum
-sb 5438547545 Setting r1
+define test 1

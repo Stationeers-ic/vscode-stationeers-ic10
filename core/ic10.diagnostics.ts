@@ -235,12 +235,24 @@ export class Ic10Diagnostics {
 		RC - код реагента
 		H - хеш устройств, с которыми выполняется операция пакетного чтения lb или записи sb
 		BM - режим пакетного чтения, одно из Average, Sum, Minimum или Maximum (можно 0, 1, 2 или 3, соотвественно)
+		Y - текст
 		`
-		var ops       = op.replace(/ */, '').split('/')
-		var errors    = 0
-		var maxErrors = ops.length
+		const ops       = op.replace(/ */, '').split('/');
+		let errors      = 0;
+		const maxErrors = ops.length;
 		for (const o of ops) {
 			switch (o.toUpperCase()) {
+				case 'T':
+				case 'RC':
+					break;
+				case 'Y':
+					if (!isNaN(parseFloat(value))) {
+						errors++;
+					}
+					if (regexes.rr1.test(value) || regexes.r1.test(value) || regexes.dr1.test(value) || regexes.d1.test(value)) {
+						errors++;
+					}
+					break;
 				case 'H':
 				case 'C':
 				case 'A':
@@ -269,8 +281,6 @@ export class Ic10Diagnostics {
 						errors++;
 					}
 					break
-				case 'T':
-					break
 				case 'P':
 					if (keywords.indexOf(value) < 0) {
 						errors++;
@@ -280,8 +290,6 @@ export class Ic10Diagnostics {
 					if (['Contents', 'Required', 'Recipe', 0, 1, 2, "0", "1", "2"].indexOf(value) < 0) {
 						errors++;
 					}
-					break
-				case 'RC':
 					break
 				case 'BM':
 					if (['Average', 'Sum', 'Minimum', 'Maximum', 0, 1, 2, 3, "0", "1", "2", "3"].indexOf(value) < 0) {

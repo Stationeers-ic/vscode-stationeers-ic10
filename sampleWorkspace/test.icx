@@ -1,5 +1,1 @@
-d0.Setting = 1                  # Set device param
-var a = d0.Setting              # Load device param into a register 
-var b = d0.slot(a).PrefabHash   # Using a slot of the device
-a = d(5438547545).Setting(Sum)  # Batch load, where 5438547545 is hash of the device
-d(5438547545).Setting = b       # Batch configuration
+const test = 1
