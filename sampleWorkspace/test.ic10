@@ -1,1 +1,24 @@
-define test 1
+#
+#
+# The next lines are correctly parsed.
+#
+brnez r0 r15 # Here is a comment, works fine.
+brnez r0 r15 # We can throw symbols in here too !@
+min r0 r1 r2 # Some programs are iffy
+max r0 r1 r2 # But programming can be worthwhile
+add r0 r1 r2 # I am (not) become "beqz undefined," eater of loops
+move r0 r1 # move b c
+#
+# The next lines are not correctly parsed.
+#
+#1
+move r0 r15 # However, the word "if" screws it up.
+#2
+brnez r0 r15 # Also, the word "while" screws it up.
+#3
+seq r0 r1 r2 # It doesn't matter what the operation is, if it has if
+#4
+sub r0 r1 r2 # Let's talk about a function that I like.
+#5
+#6
+abs r0 r1 # Here's food for thought.
