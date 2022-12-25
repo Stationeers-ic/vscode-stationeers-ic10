@@ -2,7 +2,6 @@
 import * as vscode                         from 'vscode';
 import {Hover}                             from 'vscode';
 import {Ic10Vscode}                        from './ic10-vscode';
-import {ic10Error, InterpreterIc10}        from "ic10";
 import path                                from "path";
 import {ic10Formatter}                     from "./ic10.formatter";
 import {IcxSemanticTokensProvider, legend} from "./icX.SemanticProvider";
@@ -13,6 +12,9 @@ import {icXDiagnostics}                    from "./icX.diagnostics";
 import {icXFormatter}                      from "./icX.formatter";
 import {Err, Errors}                       from "icx-compiler/src/err";
 import {IcXVscode}                         from "./icX-vscode";
+import InterpreterIc10                     from "ic10";
+import {ic10Error}                         from "ic10/src/ic10Error";
+
 
 const LOCALE_KEY: string = vscode.env.language
 const ic10_hover         = new Ic10Vscode();

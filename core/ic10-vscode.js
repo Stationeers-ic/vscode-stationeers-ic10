@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Ic10Vscode = void 0;
 const vscode = require("vscode");
-const main_1 = require("ic10/main");
+const ic10Error_1 = require("ic10/src/ic10Error");
 class Ic10Vscode {
     wiki = "https://icx.traineratwot.site/wiki/ic10";
     langPath;
@@ -74,19 +74,19 @@ ${description}
         }
     }
     baseName(str) {
-        var base = new String(str).split('/');
+        const base = String(str).split('/');
         return base.unshift();
     }
     htmlLog(e = null) {
-        var html = [];
-        if (e instanceof main_1.ic10Error) {
-            var string = `[${this.var2str(e.functionName, 1)}:${this.var2str(e.line, 1)}] (${this.var2str(e.code, 1)}) - ${this.var2str(e.message, 1)}:`;
+        const html = [];
+        if (e instanceof ic10Error_1.ic10Error) {
+            const string = `[${this.var2str(e.functionName, 1)}:${this.var2str(e.line, 1)}] (${this.var2str(e.code, 1)}) - ${this.var2str(e.message, 1)}:`;
             html.push(string);
         }
         else {
             for (const argumentsKey in arguments) {
                 if (arguments.hasOwnProperty(argumentsKey)) {
-                    var value = arguments[argumentsKey];
+                    const value = arguments[argumentsKey];
                     html.push(this.var2str(value));
                 }
             }

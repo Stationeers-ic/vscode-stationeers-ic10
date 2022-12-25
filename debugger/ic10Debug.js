@@ -5,6 +5,9 @@ const vscode_debugadapter_1 = require("vscode-debugadapter");
 const path_1 = require("path");
 const ic10Runtime_1 = require("./ic10Runtime");
 const ic10_1 = require("ic10");
+const MemoryStack_1 = require("ic10/src/MemoryStack");
+const ConstantCell_1 = require("ic10/src/ConstantCell");
+const Slot_1 = require("ic10/src/Slot");
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -542,7 +545,7 @@ class VariableMap {
             }
         }
         const stack = this.ic10.memory.cells[16];
-        if (stack instanceof ic10_1.MemoryStack) {
+        if (stack instanceof MemoryStack_1.MemoryStack) {
             this.var2variable('Stack', stack.getStack(), id);
         }
         for (const environKey in this.ic10.memory.environ) {
@@ -569,7 +572,7 @@ class VariableMap {
                 try {
                     let val = this.ic10.memory.aliases[aliasesKey];
                     let name = String(val.name);
-                    if (val instanceof ic10_1.ConstantCell) {
+                    if (val instanceof ConstantCell_1.ConstantCell) {
                         this.var2variable(name, val.get(), id);
                     }
                 }
@@ -620,10 +623,10 @@ class VariableMap {
                     for (const valueKey in value) {
                         if (value.hasOwnProperty(valueKey)) {
                             let index = `${valueKey}`;
-                            if (!(value[valueKey] instanceof ic10_1.Slot)) {
+                            if (!(value[valueKey] instanceof Slot_1.Slot)) {
                                 index = `[${valueKey}]`;
                                 const stack = this.ic10.memory.cells[16];
-                                if (stack instanceof ic10_1.MemoryStack) {
+                                if (stack instanceof MemoryStack_1.MemoryStack) {
                                     if (parseInt(valueKey) == parseInt(String(stack.get()))) {
                                         index = `(${valueKey})`;
                                     }

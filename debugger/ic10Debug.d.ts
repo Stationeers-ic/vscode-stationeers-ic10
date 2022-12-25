@@ -1,7 +1,8 @@
 import { Handles, LoggingDebugSession } from 'vscode-debugadapter';
 import { DebugProtocol } from 'vscode-debugprotocol';
 import { FileAccessor } from './ic10Runtime';
-import { InterpreterIc10, MemoryStack } from "ic10";
+import { InterpreterIc10 } from "ic10";
+import { MemoryStack } from "ic10/src/MemoryStack";
 interface ILaunchRequestArguments extends DebugProtocol.LaunchRequestArguments {
     program: string;
     stopOnEntry?: boolean;

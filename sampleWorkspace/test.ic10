@@ -1,24 +1,24 @@
-#
-#
-# The next lines are correctly parsed.
-#
-brnez r0 r15 # Here is a comment, works fine.
-brnez r0 r15 # We can throw symbols in here too !@
-min r0 r1 r2 # Some programs are iffy
-max r0 r1 r2 # But programming can be worthwhile
-add r0 r1 r2 # I am (not) become "beqz undefined," eater of loops
-move r0 r1 # move b c
-#
-# The next lines are not correctly parsed.
-#
-#1
-move r0 r15 # However, the word "if" screws it up.
-#2
-brnez r0 r15 # Also, the word "while" screws it up.
-#3
-seq r0 r1 r2 # It doesn't matter what the operation is, if it has if
-#4
-sub r0 r1 r2 # Let's talk about a function that I like.
-#5
-#6
-abs r0 r1 # Here's food for thought.
+move r0 5
+slt r15 r0 5
+beqz r15 if0exit
+s d0 Setting 0
+if0exit:
+move r15 80
+move r14 15
+jal update
+move r13 r0
+move r12 0
+jal update2
+jr 13
+update:
+alias b r15
+alias a r14
+s d0 Setting b
+s d0 Vertical a
+j ra
+update2:
+alias b r13
+alias c r12
+s d0 Setting b
+s d0 Vertical a
+j ra

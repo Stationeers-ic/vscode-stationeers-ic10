@@ -1,17 +1,17 @@
 "use strict";
 import vscode = require("vscode");
-import {ic10Error} from "ic10/main";
+import {ic10Error} from "ic10/src/ic10Error";
 
 export class Ic10Vscode {
 	public wiki = "https://icx.traineratwot.site/wiki/ic10"
 	private readonly langPath: {};
 	LOCALE_KEY: string;
-	
+
 	constructor() {
-		this.langPath = {};
+		this.langPath   = {};
 		this.LOCALE_KEY = vscode.env.language.trim()
 		try {
-			if(this.LOCALE_KEY === 'zh-cn'){
+			if (this.LOCALE_KEY === 'zh-cn') {
 				this.LOCALE_KEY = 'zh'
 			}
 			let langPath = require(`../languages/${this.LOCALE_KEY}.json`);
@@ -26,14 +26,14 @@ export class Ic10Vscode {
 			// console.warn(e)
 		}
 	}
-	
+
 	public getHover(name = '') {
-		
+
 		if (this.langPath.hasOwnProperty(name)) {
-			const data = this.langPath[name];
-			const type = data?.type;
-			const op1 = data?.op1;
-			const op2 = data?.op2;
+			const data  = this.langPath[name];
+			const type  = data?.type;
+			const op1   = data?.op1;
+			const op2   = data?.op2;
 			const op3   = data?.op3;
 			const op4   = data?.op4;
 			let preview = data?.description?.preview;
@@ -62,7 +62,7 @@ export class Ic10Vscode {
 			if (op4) {
 				heading += `op4:[${op4}] `
 			}
-			
+
 			return `
 ${heading}
 
@@ -75,28 +75,28 @@ ${description}
 			return null
 		}
 	}
-	
+
 	public baseName(str) {
-		var base = new String(str).split('/')
+		const base = String(str).split('/');
 		return base.unshift();
 	}
-	
+
 	public htmlLog(e = null) {
-		var html = [];
+		const html = [];
 		if (e instanceof ic10Error) {
-			var string = `[${this.var2str(e.functionName, 1)}:${this.var2str(e.line, 1)}] (${this.var2str(e.code, 1)}) - ${this.var2str(e.message, 1)}:`
+			const string = `[${this.var2str(e.functionName, 1)}:${this.var2str(e.line, 1)}] (${this.var2str(e.code, 1)}) - ${this.var2str(e.message, 1)}:`;
 			html.push(string)
 		} else {
 			for (const argumentsKey in arguments) {
 				if (arguments.hasOwnProperty(argumentsKey)) {
-					var value = arguments[argumentsKey]
+					const value = arguments[argumentsKey];
 					html.push(this.var2str(value))
 				}
 			}
 		}
 		return html.join("\r\n");
 	}
-	
+
 	public var2str(value: any, mode = 0) {
 		switch (typeof value) {
 			case 'string':
@@ -139,7 +139,7 @@ ${description}
 				}
 				break;
 		}
-		
+
 		return value
 	}
 }

@@ -30,7 +30,6 @@ exports.deactivate = exports.activate = exports.icxOptions = exports.icSidebar =
 const vscode = __importStar(require("vscode"));
 const vscode_1 = require("vscode");
 const ic10_vscode_1 = require("./ic10-vscode");
-const ic10_1 = require("ic10");
 const path_1 = __importDefault(require("path"));
 const ic10_formatter_1 = require("./ic10.formatter");
 const icX_SemanticProvider_1 = require("./icX.SemanticProvider");
@@ -41,12 +40,13 @@ const icX_diagnostics_1 = require("./icX.diagnostics");
 const icX_formatter_1 = require("./icX.formatter");
 const err_1 = require("icx-compiler/src/err");
 const icX_vscode_1 = require("./icX-vscode");
+const ic10_1 = __importDefault(require("ic10"));
 const LOCALE_KEY = vscode.env.language;
 const ic10_hover = new ic10_vscode_1.Ic10Vscode();
 const icX_hover = new icX_vscode_1.IcXVscode();
 exports.LANG_KEY = 'ic10';
 exports.LANG_KEY2 = 'icX';
-const interpreterIc10 = new ic10_1.InterpreterIc10(null);
+const interpreterIc10 = new ic10_1.default(null);
 let interpreterIc10State = 0;
 let leftCodeLength;
 const onChangeCallbacks = {
