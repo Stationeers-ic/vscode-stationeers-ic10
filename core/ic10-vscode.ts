@@ -46,7 +46,7 @@ export class Ic10Vscode {
 				
 ----
 
-[wiki](${this.wiki})
+[wiki](${this.wiki}#${name})
         `
 			}
 			let heading = `**${name} [_${type}_]** `;
