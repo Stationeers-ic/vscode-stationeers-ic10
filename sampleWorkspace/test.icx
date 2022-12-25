@@ -1,31 +1,24 @@
 use comments
-#
-var a
-var b
-var c
-#
-# The next lines are correctly parsed.
-#
-brnez a r15 # Here is a comment, works fine.
-brnez a r15 # We can throw symbols in here too !@#$%^&*()_+<>,.i'"
-min a b c # Some programs are iffy
-max a b c # But programming can be worthwhile
-add a b c # I am (not) become "beqz undefined," eater of loops
-move a b # move b c
-#
-# The next lines are not correctly parsed.
-# They contain the word if, while, function, or end within them
-#
-#1
-move a r15 # However, the word "if" screws it up.
-#2
-brnez a r15 # Also, the word "while" screws it up.
-#3
-seq a b c # It doesn't matter what the operation is, if it has if
-#4
-sub a b c # Let's talk about a function that I like. # Here is another comment, but this one will be erased, even though the # is already commented
-#5
-hcf # It's the end of the world! This entire instruction is ignored.
-#6
-abs a b # Here's food for thought.
-# End
+var x = 5
+const y = 15
+
+if a < 5
+	d0.Setting =0
+end
+
+function update(b, a =0)
+	d0.Setting = b
+	d0.Vertical = a
+end
+
+
+
+update(80,y)
+
+function pifagor(b, c =10)
+	var a = (b*b) + (c*c)
+	return a
+end
+
+
+var result = pifagor(x)
