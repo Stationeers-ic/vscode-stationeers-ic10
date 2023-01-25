@@ -2,6 +2,9 @@ import * as vscode from "vscode";
 import { errorMsg, Ic10Diagnostics } from "./ic10.diagnostics";
 export declare const IcXDiagnosticsName = "icX_diagnostic";
 declare class IcXDiagnostics extends Ic10Diagnostics {
+    private InFunction;
+    private blockCount;
+    private endCount;
     constructor();
     prepare(doc: vscode.TextDocument): void;
     run(doc: vscode.TextDocument, container: vscode.DiagnosticCollection): void;

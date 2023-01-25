@@ -180,7 +180,6 @@ class ic10Runtime extends events_1.EventEmitter {
             do {
                 why = this.ic10.prepareLine(-1, true);
                 if (this.ic10?.output?.debug && this.ic10.ignoreLine.indexOf(ln) < 0) {
-                    this.sendEvent('output', '[debug]: ' + this.ic10.output.debug, this._sourceFile, ln - 1);
                     this.ic10.output.debug = '';
                 }
                 if (this.ic10?.output?.log) {

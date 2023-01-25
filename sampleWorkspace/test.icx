@@ -1,24 +1,10 @@
-use comments
-var x = 5
-const y = 15
 
-if a < 5
-	d0.Setting =0
+function pifagor(a, b=10)
+	a = (b*b) + (a*a)
+	b = sqrt(a)
+	return b
 end
 
-function update(b, a =0)
-	d0.Setting = b
-	d0.Vertical = a
-end
+var result = pifagor(4,3)
 
-
-
-update(80,y)
-
-function pifagor(b, c =10)
-	var a = (b*b) + (c*c)
-	return a
-end
-
-
-var result = pifagor(x)
+debug result

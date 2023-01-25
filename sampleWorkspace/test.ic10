@@ -1,29 +1,12 @@
-alias x r0
-alias result r2
-move x 5
-slt r15 a 5
-beqz r15 if0exit
-s d0 Setting 0
-if0exit:
-move r15 80
-move r14 15
-jal update
-move r13 r0
-move r12 10
+move r15 4
+move r14 3
 jal pifagor
-move result a
-jr 16
-update:
-alias b r15
-alias a r14
-s d0 Setting b
-s d0 Vertical a
-j ra
+move r0 r14
+#debug r0
+jr 9
 pifagor:
-alias b r13
-alias c r12
-alias a r1
-mul r11 b b
-mul r10 c c
-add a r11 r10
+mul r13 r14 r14
+mul r12 r15 r15
+add r15 r13 r12
+sqrt r14 r15
 j ra

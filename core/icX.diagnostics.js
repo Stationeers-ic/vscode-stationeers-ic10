@@ -34,6 +34,9 @@ const functions = require('../media/ic10.functions.json');
 require('../media/ic10.keyword.json');
 exports.IcXDiagnosticsName = 'icX_diagnostic';
 class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
+    InFunction = false;
+    blockCount = 0;
+    endCount = 0;
     constructor() {
         super();
     }
@@ -41,13 +44,23 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
         this.jumps = [];
         this.aliases = [];
         this.errors.reset();
+        this.blockCount = 0;
+        this.endCount = 0;
+        this.InFunction = false;
         for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
             try {
                 this.parseLine(doc, lineIndex);
+                const text = doc.lineAt(lineIndex).text;
+                if (text.trim() === "end") {
+                    this.endCount++;
+                }
             }
             catch (e) {
                 console.warn(e);
             }
+        }
+        if (this.blockCount !== this.endCount) {
+            this.errors.push(new ic10_diagnostics_1.DiagnosticsError(`some block is not closed. blockCount:${this.blockCount}, endCount:${this.endCount}`, 0, 0, 0, doc.lineCount));
         }
     }
     run(doc, container) {
@@ -221,8 +234,23 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
                     this.aliases.push(words[1]);
                 }
                 if (text.startsWith("if")) {
+                    this.blockCount++;
                     this.analyzeIF(words, text, lineIndex);
                     return true;
+                }
+                if (this.InFunction !== false) {
+                    if (text.startsWith("function") && this.InFunction !== lineIndex) {
+                        this.errors.push(new ic10_diagnostics_1.DiagnosticsError(`Do not create function in function`, 0, 0, text.length, lineIndex));
+                    }
+                    if (text.trim() === "end") {
+                        this.InFunction = false;
+                    }
+                }
+                else {
+                    if (text.startsWith("function")) {
+                        this.blockCount++;
+                        this.InFunction = lineIndex;
+                    }
                 }
                 if (text.startsWith(substring)) {
                     this.analyzeFunctionInputs(words, text, lineIndex);
@@ -237,16 +265,22 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
         }
     }
     analyzeFunctionInputs(words, text, lineIndex) {
-        var fn = words[0] ?? null;
-        var op1 = words[1] ?? null;
-        var op2 = words[2] ?? null;
-        var op3 = words[3] ?? null;
-        var op4 = words[4] ?? null;
+        const fn = words[0] ?? null;
+        const op1 = words[1] ?? null;
+        const op2 = words[2] ?? null;
+        const op3 = words[3] ?? null;
+        const op4 = words[4] ?? null;
         if (!manual.hasOwnProperty(fn)) {
             return true;
         }
         else {
-            var rule = manual[fn];
+            const rule = manual[fn];
+            if (fn === 'return') {
+                if (!this.InFunction) {
+                    this.errors.push(new ic10_diagnostics_1.DiagnosticsError(`"return" must be in function`, 0, 0, text.length, lineIndex));
+                }
+                return true;
+            }
             if (rule.type == 'Function') {
                 if (op1 !== null && this.empty(rule.op1)) {
                     this.errors.push(new ic10_diagnostics_1.DiagnosticsError(`this function have\`t any Arguments: "${text}"`, 0, 0, text.length, lineIndex));
@@ -286,17 +320,17 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
     analyzeIF(words, text, lineIndex) {
         if (text.includes("&")) {
             if (!text.includes("&&")) {
-                this.errors.push(new ic10_diagnostics_1.DiagnosticsError(`missing incorrect 'and'  operator "$" must be "&&"`, 0, 0, text.length, lineIndex));
+                this.errors.push(new ic10_diagnostics_1.DiagnosticsError(`Incorrect 'and'  operator "$" must be "&&"`, 0, 0, text.length, lineIndex));
             }
         }
         if (text.includes("|")) {
             if (!text.includes("||")) {
-                this.errors.push(new ic10_diagnostics_1.DiagnosticsError(`missing incorrect 'or'  operator "|" must be "||"`, 0, 0, text.length, lineIndex));
+                this.errors.push(new ic10_diagnostics_1.DiagnosticsError(`Incorrect 'or'  operator "|" must be "||"`, 0, 0, text.length, lineIndex));
             }
         }
         if (text.includes("=")) {
             if (!text.includes("==") && !text.includes("~=") && !text.includes("!=") && !text.includes("<=") && !text.includes(">=")) {
-                this.errors.push(new ic10_diagnostics_1.DiagnosticsError(`missing incorrect operator must be "==" or "!=" or "~=" or ">=" or "<="`, 0, 0, text.length, lineIndex));
+                this.errors.push(new ic10_diagnostics_1.DiagnosticsError(`Incorrect operator must be "==" or "!=" or "~=" or ">=" or "<="`, 0, 0, text.length, lineIndex));
             }
         }
         return true;
