@@ -1,10 +1,70 @@
+# Automated Trade Control
+# Hangar System
 
-function pifagor(a, b=10)
-	a = (b*b) + (a*a)
-	b = sqrt(a)
-	return b
+use aliases
+use constants
+
+# Input Devices
+alias Self db
+alias Memory d0
+alias Dial d1
+alias Lever d2
+alias Display d3
+
+# Constants
+const SENSOR_HASH = -1252983604
+const ACTIVE_VENT_HASH = -1129453144
+const HANGAR_DOOR_HASH = -1351081801
+const FLASHING_LIGHT_HASH = -1535893860
+const SPEAKER_HASH = -1
+
+const INWARD = 1
+const OUTWARD = 0
+
+const TARGET_PRESSURE_FILLED = 0.5
+const TARGET_PRESSURE_EMPTY = 0.5
+
+const STATE_IDLE = 0
+const STATE_PRESURIZING = 1
+const STATE_DEPRESSURIZING = 2
+
+# Variables
+var State
+var Mode
+
+# Functions
+Main:
+    UpdateState(Memory.Setting)
+    var ShouldToggleState = Lever.Setting
+
+    if State == STATE_IDLE && ShouldToggleState == 1
+        var Mode = Dial.Setting
+        if Mode > 1
+            j Main
+        end
+
+        ToggleStateTask()
+    end
+    yield
+j Main
+
+function ToggleStateTask()
+    if Mode == 0
+        Pressurize()
+    end
+
+    if Mode == 1
+        Depressurize()
+    end
 end
 
-var result = pifagor(4,3)
+function Pressurize()
+    updateState(STATE_PRESURIZING)
 
-debug result
+end
+
+function UpdateState(NewState)
+    Memory.Setting = NewState
+    Self.Setting = NewState
+    State = new State
+end

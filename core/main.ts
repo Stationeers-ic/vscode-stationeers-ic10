@@ -14,6 +14,7 @@ import {Err, Errors}                       from "icx-compiler/src/err";
 import {IcXVscode}                         from "./icX-vscode";
 import InterpreterIc10                     from "ic10";
 import {ic10Error}                         from "ic10/src/ic10Error";
+import json = Mocha.reporters.json;
 
 
 const LOCALE_KEY: string = vscode.env.language
@@ -248,8 +249,8 @@ function command(ctx: vscode.ExtensionContext) {
 			} catch (e) {
 				if (e instanceof Errors || e instanceof Err) {
 					vscode.window.showInformationMessage('compiling error: ' + e.getUserMessage());
-				} else {
-					vscode.window.showInformationMessage('compiling error', e);
+				}else {
+					vscode.window.showInformationMessage('compiling error', JSON.stringify(e));
 				}
 				console.error(e)
 			}

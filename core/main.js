@@ -240,7 +240,7 @@ function command(ctx) {
                     vscode.window.showInformationMessage('compiling error: ' + e.getUserMessage());
                 }
                 else {
-                    vscode.window.showInformationMessage('compiling error', e);
+                    vscode.window.showInformationMessage('compiling error', JSON.stringify(e));
                 }
                 console.error(e);
             }
