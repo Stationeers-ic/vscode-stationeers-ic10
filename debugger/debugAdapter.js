@@ -50,7 +50,7 @@ args.forEach(function (val) {
 });
 if (port > 0) {
     Net.createServer((socket) => {
-        socket.on('end', () => {
+        socket.on("end", () => {
         });
         const session = new ic10Debug_1.ic10DebugSession(fsAccessor);
         session.setRunAsServer(true);
@@ -59,7 +59,7 @@ if (port > 0) {
 }
 else {
     const session = new ic10Debug_1.ic10DebugSession(fsAccessor);
-    process.on('SIGTERM', () => {
+    process.on("SIGTERM", () => {
         session.shutdown();
     });
     session.start(process.stdin, process.stdout);

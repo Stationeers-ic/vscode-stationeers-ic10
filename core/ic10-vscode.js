@@ -2,17 +2,17 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Ic10Vscode = void 0;
 const vscode = require("vscode");
-const ic10Error_1 = require("ic10/src/ic10Error");
+const Ic10Error_1 = require("ic10/src/Ic10Error");
 class Ic10Vscode {
     wiki = "https://icx.traineratwot.site/wiki/ic10";
-    langPath;
     LOCALE_KEY;
+    langPath;
     constructor() {
         this.langPath = {};
         this.LOCALE_KEY = vscode.env.language.trim();
         try {
-            if (this.LOCALE_KEY === 'zh-cn') {
-                this.LOCALE_KEY = 'zh';
+            if (this.LOCALE_KEY === "zh-cn") {
+                this.LOCALE_KEY = "zh";
             }
             let langPath = require(`../languages/${this.LOCALE_KEY}.json`);
             if (langPath instanceof Object) {
@@ -26,7 +26,7 @@ class Ic10Vscode {
         catch (e) {
         }
     }
-    getHover(name = '') {
+    getHover(name = "") {
         if (this.langPath.hasOwnProperty(name)) {
             const data = this.langPath[name];
             const type = data?.type;
@@ -36,10 +36,10 @@ class Ic10Vscode {
             const op4 = data?.op4;
             let preview = data?.description?.preview;
             if (preview) {
-                preview = '*' + preview + '*';
+                preview = "*" + preview + "*";
             }
             let description = data.description.text;
-            if (this.LOCALE_KEY == 'ru') {
+            if (this.LOCALE_KEY == "ru") {
                 description += `
 				
 ----
@@ -74,12 +74,12 @@ ${description}
         }
     }
     baseName(str) {
-        const base = String(str).split('/');
+        const base = String(str).split("/");
         return base.unshift();
     }
     htmlLog(e = null) {
         const html = [];
-        if (e instanceof ic10Error_1.ic10Error) {
+        if (e instanceof Ic10Error_1.Ic10Error) {
             const string = `[${this.var2str(e.functionName, 1)}:${this.var2str(e.line, 1)}] (${this.var2str(e.code, 1)}) - ${this.var2str(e.message, 1)}:`;
             html.push(string);
         }
@@ -95,8 +95,8 @@ ${description}
     }
     var2str(value, mode = 0) {
         switch (typeof value) {
-            case 'string':
-            case 'number':
+            case "string":
+            case "number":
                 if (isNaN(value)) {
                     if (!mode) {
                         value = `<span style="color:var(--vscode-symbolIcon-stringForeground)">${value}</span>`;
@@ -114,7 +114,7 @@ ${description}
                     }
                 }
                 break;
-            case 'boolean':
+            case "boolean":
                 if (!mode) {
                     value = `<span style="color:var(--vscode-symbolIcon-booleanForeground)">${Number(value)}</span>`;
                 }

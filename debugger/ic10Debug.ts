@@ -24,12 +24,12 @@ import {
 import {DebugProtocol} from "vscode-debugprotocol"
 import {basename} from "path"
 import {FileAccessor, ic10Runtime, Iic10Breakpoint} from "./ic10Runtime"
-import {ic10Error} from "ic10/src/ic10Error"
+import {Ic10Error} from "ic10/src/Ic10Error"
 import {InterpreterIc10} from "ic10"
 import {MemoryStack} from "ic10/src/MemoryStack"
-import {MemoryCell} from "ic10/src/MemoryCell"
 import {ConstantCell} from "ic10/src/ConstantCell"
 import {Slot} from "ic10/src/Slot"
+import {RegisterCell} from "ic10/src/RegisterCell"
 
 // import * as fs from "fs";
 
@@ -85,7 +85,7 @@ export class ic10DebugSession extends LoggingDebugSession {
 			logCallback:       function (a, b: Array<string>) {
 				this.output.log = a + " " + b.join("")
 			},
-			executionCallback: function (e: ic10Error) {
+			executionCallback: function (e: Ic10Error) {
 				// this.output.error = `[${e.functionName}:${e.line}] (${e.code}) - ${e.message}:`
 				this.output.error = `(${e.code}) - ${e.message}:`
 				if (e.obj) {
@@ -612,7 +612,7 @@ export class ic10DebugSession extends LoggingDebugSession {
 		switch (command) {
 			case "ic10.debug.variables.write":
 				try {
-					this.ic10.memory.cell(args.variableName, Number(args.value))
+					// this.ic10.memory.cell(args.variableName, Number(args.value))
 				} catch (e) {
 					this.sendEvent(new InvalidatedEvent(["variables"]))
 				}
@@ -620,7 +620,7 @@ export class ic10DebugSession extends LoggingDebugSession {
 			case "ic10.debug.device.write":
 				try {
 					args.debug = regex.exec(args.variable.container.name)
-					this.ic10.memory.cell(args.containerName, args.variableName, Number(args.value))
+					// this.ic10.memory.cell(args.containerName, args.variableName, Number(args.value))
 				} catch (e) {
 					this.sendEvent(new InvalidatedEvent(["variables"]))
 				}
@@ -678,7 +678,7 @@ export class ic10DebugSession extends LoggingDebugSession {
 	private getHover(args: DebugProtocol.EvaluateArguments) {
 		let response = args.expression
 		try {
-			response = String(this.ic10.memory.cell(args.expression))
+			// response = String(this.ic10.memory.cell(args.expression))
 		} catch (e) {
 
 		}
@@ -702,22 +702,22 @@ class VariableMap {
 		this.map = {}
 		for (let cellsKey in this.ic10.memory.cells) {
 			try {
-				cellsKey = String(cellsKey)
-				let val = this.ic10.memory.cells[cellsKey].get()
-				let alias = this.ic10.memory.cells[cellsKey].alias
-				let name = this.ic10.memory.cells[cellsKey].name
-				let _name = ""
-				if (alias) {
-					_name = name + `[${alias}]`
-				} else {
-					_name = name
-				}
-				this.var2variable(_name, val, id)
+				// cellsKey = String(cellsKey)
+				// let val = this.ic10.memory.cells[cellsKey].get()
+				// let alias = this.ic10.memory.cells[cellsKey].alias
+				// let name = this.ic10.memory.cells[cellsKey].name
+				// let _name = ""
+				// if (alias) {
+				// 	_name = name + `[${alias}]`
+				// } else {
+				// 	_name = name
+				// }
+				// this.var2variable(_name, val, id)
 			} catch (e) {
 
 			}
 		}
-		const stack: MemoryCell | MemoryStack = this.ic10.memory.cells[16]
+		const stack: RegisterCell | MemoryStack = this.ic10.memory.cells[16]
 		if (stack instanceof MemoryStack) {
 			this.var2variable("Stack", stack.getStack(), id)
 		}
@@ -743,9 +743,9 @@ class VariableMap {
 			if (this.ic10.memory.aliases.hasOwnProperty(aliasesKey)) {
 				try {
 					let val = this.ic10.memory.aliases[aliasesKey]
-					let name = String(val.name)
+					// let name = String(val.name)
 					if (val instanceof ConstantCell) {
-						this.var2variable(name, val.get(), id)
+						// this.var2variable(name, val.get(), id)
 					}
 
 				} catch (e) {
@@ -801,11 +801,11 @@ class VariableMap {
 							let index = `${valueKey}`
 							if (!(value[valueKey] instanceof Slot)) {
 								index = `[${valueKey}]`
-								const stack: MemoryCell | MemoryStack = this.ic10.memory.cells[16]
+								const stack: RegisterCell | MemoryStack = this.ic10.memory.cells[16]
 								if (stack instanceof MemoryStack) {
-									if (parseInt(valueKey) == parseInt(String(stack.get()))) {
-										index = `(${valueKey})`
-									}
+									// if (parseInt(valueKey) == parseInt(String(stack.get()))) {
+									// 	index = `(${valueKey})`
+									// }
 								}
 							}
 							this.var2variable(index, value[valueKey], name, mc)

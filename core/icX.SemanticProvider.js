@@ -9,13 +9,13 @@ exports.tokenTypes = new Map();
 exports.tokenModifiers = new Map();
 exports.legend = (function () {
     const tokenTypesLegend = [
-        'parameter', 'keyword', 'enumMember',
-        'property', 'function',
-        'variable', 'label'
+        "parameter", "keyword", "enumMember",
+        "property", "function",
+        "variable", "label"
     ];
     tokenTypesLegend.forEach((tokenType, index) => exports.tokenTypes.set(tokenType, index));
     const tokenModifiersLegend = [
-        'declaration', 'readonly'
+        "declaration", "readonly"
     ];
     tokenModifiersLegend.forEach((tokenModifier, index) => exports.tokenModifiers.set(tokenModifier, index));
     return new vscode_1.default.SemanticTokensLegend(tokenTypesLegend, tokenModifiersLegend);
@@ -80,10 +80,10 @@ class IcxSemanticTokensProvider {
         return [];
     }
     pushToken(search, line, index, tokenType, tokenModifier, out) {
-        const find = new RegExp('\\b' + search + '\\b', 'y');
+        const find = new RegExp("\\b" + search + "\\b", "y");
         try {
             for (let i = 0; i < line.length; i++) {
-                if (line[i] == '#') {
+                if (line[i] == "#") {
                     break;
                 }
                 find.lastIndex = i;

@@ -20,6 +20,8 @@ export const regexes = {
 	"dr1":      new RegExp("[d]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
 	"r1":       new RegExp("(^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)$)|(^sp$)"),
 	"d1":       new RegExp("^d(0|1|2|3|4|5|b)$"),
+	"hash":     new RegExp("HASH\\(.+\\)"),
+	"chanel":   new RegExp("d[0-5]:[0-7]"),
 	"rr":       new RegExp(`\\br(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|17|a)\\b`),
 	"rm":       new RegExp(`(#-reset-vars-)[\\s\\S]{0,}?(#-reset-vars-)`),
 	"oldSpace": new RegExp("^[\\t ]+", "gmi"),
@@ -254,6 +256,10 @@ export class Ic10Diagnostics {
 					}
 					break
 				case "H":
+					if (isNaN(parseFloat(value)) && this.aliases.indexOf(value) < 0 && !regexes.hash.test(value)) {
+						errors++
+					}
+					break
 				case "C":
 				case "A":
 				case "O":
@@ -272,7 +278,7 @@ export class Ic10Diagnostics {
 					}
 					break
 				case "D":
-					if (!regexes.dr1.test(value) && !regexes.d1.test(value)) {
+					if (!regexes.dr1.test(value) && !regexes.d1.test(value) && !regexes.chanel.test(value)) {
 						errors++
 					}
 					break

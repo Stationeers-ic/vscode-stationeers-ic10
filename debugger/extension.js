@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -32,20 +32,20 @@ const path_1 = require("path");
 const process_1 = require("process");
 const ic10Debug_1 = require("./ic10Debug");
 const activateIc10Debug_1 = require("./activateIc10Debug");
-const runMode = 'inline';
+const runMode = "inline";
 function activate(context) {
     switch (runMode) {
-        case 'server':
+        case "server":
             (0, activateIc10Debug_1.activateIc10Debug)(context, new ic10DebugAdapterServerDescriptorFactory());
             break;
-        case 'namedPipeServer':
+        case "namedPipeServer":
             (0, activateIc10Debug_1.activateIc10Debug)(context, new ic10DebugAdapterNamedPipeServerDescriptorFactory());
             break;
-        case 'external':
+        case "external":
         default:
             (0, activateIc10Debug_1.activateIc10Debug)(context, new DebugAdapterExecutableFactory());
             break;
-        case 'inline':
+        case "inline":
             (0, activateIc10Debug_1.activateIc10Debug)(context);
             break;
     }
@@ -93,8 +93,8 @@ class ic10DebugAdapterNamedPipeServerDescriptorFactory {
     server;
     createDebugAdapterDescriptor(session, executable) {
         if (!this.server) {
-            const pipeName = (0, crypto_1.randomBytes)(10).toString('utf8');
-            const pipePath = process_1.platform === "win32" ? (0, path_1.join)('\\\\.\\pipe\\', pipeName) : (0, path_1.join)((0, os_1.tmpdir)(), pipeName);
+            const pipeName = (0, crypto_1.randomBytes)(10).toString("utf8");
+            const pipePath = process_1.platform === "win32" ? (0, path_1.join)("\\\\.\\pipe\\", pipeName) : (0, path_1.join)((0, os_1.tmpdir)(), pipeName);
             this.server = Net.createServer(socket => {
                 const session = new ic10Debug_1.ic10DebugSession(activateIc10Debug_1.workspaceFileAccessor);
                 session.setRunAsServer(true);

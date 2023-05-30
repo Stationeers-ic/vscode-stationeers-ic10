@@ -13,8 +13,9 @@ function timeout(ms) {
 }
 class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
     static threadID = 1;
-    _runtime;
     _variableHandles = new vscode_debugadapter_1.Handles();
+    variableMap;
+    _runtime;
     _cancelActionTokens = new Map();
     _reportProgress = false;
     _progressId = 10000;
@@ -22,17 +23,16 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
     _isProgressCancellable = true;
     _useInvalidatedEvent = false;
     ic10;
-    variableMap;
     constructor(fileAccessor) {
         super("ic10-debug.txt");
         this.ic10 = new ic10_1.InterpreterIc10();
         this.variableMap = new VariableMap(this, this.ic10);
         this.ic10.setSettings({
             debugCallback: function (a, b) {
-                this.output.debug = a + ' ' + JSON.stringify(b);
+                this.output.debug = a + " " + JSON.stringify(b);
             },
             logCallback: function (a, b) {
-                this.output.log = a + ' ' + b.join('');
+                this.output.log = a + " " + b.join("");
             },
             executionCallback: function (e) {
                 this.output.error = `(${e.code}) - ${e.message}:`;
@@ -41,17 +41,17 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
                 }
                 switch (e.lvl) {
                     case 0:
-                        this.output.error = 'ERROR ' + this.output.error;
+                        this.output.error = "ERROR " + this.output.error;
                         break;
                     case 1:
-                        this.output.error = 'WARN ' + this.output.error;
+                        this.output.error = "WARN " + this.output.error;
                         break;
                     case 2:
-                        this.output.error = 'INFO ' + this.output.error;
+                        this.output.error = "INFO " + this.output.error;
                         break;
                     case 3:
                     default:
-                        this.output.error = 'LOG ' + this.output.error;
+                        this.output.error = "LOG " + this.output.error;
                         break;
                 }
             },
@@ -59,35 +59,35 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
         this.setDebuggerLinesStartAt1(false);
         this.setDebuggerColumnsStartAt1(false);
         this._runtime = new ic10Runtime_1.ic10Runtime(fileAccessor, this.ic10);
-        this._runtime.on('stopOnEntry', () => {
-            this.sendEvent(new vscode_debugadapter_1.StoppedEvent('entry', ic10DebugSession.threadID));
+        this._runtime.on("stopOnEntry", () => {
+            this.sendEvent(new vscode_debugadapter_1.StoppedEvent("entry", ic10DebugSession.threadID));
         });
-        this._runtime.on('stopOnStep', () => {
-            this.sendEvent(new vscode_debugadapter_1.StoppedEvent('step', ic10DebugSession.threadID));
+        this._runtime.on("stopOnStep", () => {
+            this.sendEvent(new vscode_debugadapter_1.StoppedEvent("step", ic10DebugSession.threadID));
         });
-        this._runtime.on('stopOnBreakpoint', () => {
-            this.sendEvent(new vscode_debugadapter_1.StoppedEvent('breakpoint', ic10DebugSession.threadID));
+        this._runtime.on("stopOnBreakpoint", () => {
+            this.sendEvent(new vscode_debugadapter_1.StoppedEvent("breakpoint", ic10DebugSession.threadID));
         });
-        this._runtime.on('stopOnDataBreakpoint', () => {
-            this.sendEvent(new vscode_debugadapter_1.StoppedEvent('data breakpoint', ic10DebugSession.threadID));
+        this._runtime.on("stopOnDataBreakpoint", () => {
+            this.sendEvent(new vscode_debugadapter_1.StoppedEvent("data breakpoint", ic10DebugSession.threadID));
         });
-        this._runtime.on('stopOnException', (exception) => {
+        this._runtime.on("stopOnException", (exception) => {
             if (exception) {
                 this.sendEvent(new vscode_debugadapter_1.StoppedEvent(`exception(${exception})`, ic10DebugSession.threadID));
             }
             else {
-                this.sendEvent(new vscode_debugadapter_1.StoppedEvent('exception', ic10DebugSession.threadID));
+                this.sendEvent(new vscode_debugadapter_1.StoppedEvent("exception", ic10DebugSession.threadID));
             }
         });
-        this._runtime.on('breakpointValidated', (bp) => {
-            this.sendEvent(new vscode_debugadapter_1.BreakpointEvent('changed', {
+        this._runtime.on("breakpointValidated", (bp) => {
+            this.sendEvent(new vscode_debugadapter_1.BreakpointEvent("changed", {
                 verified: bp.verified,
                 id: bp.id
             }));
         });
-        this._runtime.on('output', (text, filePath, line, column) => {
+        this._runtime.on("output", (text, filePath, line, column) => {
             const e = new vscode_debugadapter_1.OutputEvent(`${text}\n`);
-            if (text === 'start' || text === 'startCollapsed' || text === 'end') {
+            if (text === "start" || text === "startCollapsed" || text === "end") {
                 e.body.group = text;
                 e.body.output = `group-${text}\n`;
             }
@@ -96,7 +96,7 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
             e.body.column = this.convertDebuggerColumnToClient(column);
             this.sendEvent(e);
         });
-        this._runtime.on('end', () => {
+        this._runtime.on("end", () => {
             this.sendEvent(new vscode_debugadapter_1.TerminatedEvent());
         });
     }
@@ -120,7 +120,7 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
         response.body.supportsExceptionFilterOptions = true;
         response.body.exceptionBreakpointFilters = [
             {
-                filter: 'namedException',
+                filter: "namedException",
                 label: "Named Exception",
                 description: `Break on named exceptions. Enter the exception's name as the Condition.`,
                 default: false,
@@ -128,9 +128,9 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
                 conditionDescription: `Enter the exception's name`
             },
             {
-                filter: 'otherExceptions',
+                filter: "otherExceptions",
                 label: "Other Exceptions",
-                description: 'This is a other exception',
+                description: "This is a other exception",
                 default: true,
                 supportsCondition: false
             }
@@ -188,17 +188,17 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
         if (args.filterOptions) {
             for (const filterOption of args.filterOptions) {
                 switch (filterOption.filterId) {
-                    case 'namedException':
+                    case "namedException":
                         namedException = args.filterOptions[0].condition;
                         break;
-                    case 'otherExceptions':
+                    case "otherExceptions":
                         otherExceptions = true;
                         break;
                 }
             }
         }
         if (args.filters) {
-            if (args.filters.indexOf('otherExceptions') >= 0) {
+            if (args.filters.indexOf("otherExceptions") >= 0) {
                 otherExceptions = true;
             }
         }
@@ -207,13 +207,13 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
     }
     exceptionInfoRequest(response, args) {
         response.body = {
-            exceptionId: 'Exception ID',
-            description: 'This is a descriptive description of the exception.',
-            breakMode: 'always',
+            exceptionId: "Exception ID",
+            description: "This is a descriptive description of the exception.",
+            breakMode: "always",
             details: {
-                message: 'Message contained in the exception.',
-                typeName: 'Short type name of the exception object',
-                stackTrace: 'stack frame 1\nstack frame 2',
+                message: "Message contained in the exception.",
+                typeName: "Short type name of the exception object",
+                stackTrace: "stack frame 1\nstack frame 2",
             }
         };
         this.sendResponse(response);
@@ -227,14 +227,14 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
         this.sendResponse(response);
     }
     stackTraceRequest(response, args) {
-        const startFrame = typeof args.startFrame === 'number' ? args.startFrame : 0;
-        const maxLevels = typeof args.levels === 'number' ? args.levels : 1000;
+        const startFrame = typeof args.startFrame === "number" ? args.startFrame : 0;
+        const maxLevels = typeof args.levels === "number" ? args.levels : 1000;
         const endFrame = startFrame + maxLevels;
         const stk = this._runtime.stack(startFrame, endFrame);
         response.body = {
             stackFrames: stk.frames.map(f => {
                 const sf = new vscode_debugadapter_1.StackFrame(f.index, f.name, this.createSource(f.file), this.convertDebuggerLineToClient(f.line));
-                if (typeof f.column === 'number') {
+                if (typeof f.column === "number") {
                     sf.column = this.convertDebuggerColumnToClient(f.column);
                 }
                 return sf;
@@ -305,13 +305,13 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
     }
     async evaluateRequest(response, args) {
         let reply = undefined;
-        if (args.context === 'repl') {
+        if (args.context === "repl") {
             const matches = /new +(\d+)/.exec(args.expression);
             if (matches && matches.length === 2) {
                 const mbp = await this._runtime.setBreakPoint(this._runtime.sourceFile, this.convertClientLineToDebugger(parseInt(matches[1])));
                 const bp = new vscode_debugadapter_1.Breakpoint(mbp.verified, this.convertDebuggerLineToClient(mbp.line), undefined, this.createSource(this._runtime.sourceFile));
                 bp.id = mbp.id;
-                this.sendEvent(new vscode_debugadapter_1.BreakpointEvent('new', bp));
+                this.sendEvent(new vscode_debugadapter_1.BreakpointEvent("new", bp));
                 reply = `breakpoint created`;
             }
             else {
@@ -321,7 +321,7 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
                     if (mbp) {
                         const bp = new vscode_debugadapter_1.Breakpoint(false);
                         bp.id = mbp.id;
-                        this.sendEvent(new vscode_debugadapter_1.BreakpointEvent('removed', bp));
+                        this.sendEvent(new vscode_debugadapter_1.BreakpointEvent("removed", bp));
                         reply = `breakpoint deleted`;
                     }
                 }
@@ -339,7 +339,7 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
                 }
             }
         }
-        if (args.context === 'hover') {
+        if (args.context === "hover") {
             reply = this.getHover(args);
         }
         response.body = {
@@ -347,30 +347,6 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
             variablesReference: 0
         };
         this.sendResponse(response);
-    }
-    async progressSequence() {
-        const ID = '' + this._progressId++;
-        await timeout(100);
-        const title = this._isProgressCancellable ? 'Cancellable operation' : 'Long running operation';
-        const startEvent = new vscode_debugadapter_1.ProgressStartEvent(ID, title);
-        startEvent.body.cancellable = this._isProgressCancellable;
-        this._isProgressCancellable = !this._isProgressCancellable;
-        this.sendEvent(startEvent);
-        this.sendEvent(new vscode_debugadapter_1.OutputEvent(`start progress: ${ID}\n`));
-        let endMessage = 'progress ended';
-        for (let i = 0; i < 100; i++) {
-            await timeout(500);
-            this.sendEvent(new vscode_debugadapter_1.ProgressUpdateEvent(ID, `progress: ${i}`));
-            if (this._cancelledProgressId === ID) {
-                endMessage = 'progress cancelled';
-                this._cancelledProgressId = undefined;
-                this.sendEvent(new vscode_debugadapter_1.OutputEvent(`cancel progress: ${ID}\n`));
-                break;
-            }
-        }
-        this.sendEvent(new vscode_debugadapter_1.ProgressEndEvent(ID, endMessage));
-        this.sendEvent(new vscode_debugadapter_1.OutputEvent(`end progress: ${ID}\n`));
-        this._cancelledProgressId = undefined;
     }
     dataBreakpointInfoRequest(response, args) {
         response.body = {
@@ -402,7 +378,7 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
             breakpoints: []
         };
         for (const dbp of args.breakpoints) {
-            const dataId = dbp.dataId + `_${dbp.accessType ? dbp.accessType : 'write'}`;
+            const dataId = dbp.dataId + `_${dbp.accessType ? dbp.accessType : "write"}`;
             const ok = this._runtime.setDataBreakpoint(dataId);
             response.body.breakpoints.push({
                 verified: ok
@@ -451,7 +427,11 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
     customRequest(command, response, args) {
         const regex = /(.+)\[.+]/gm;
         command = command.trim();
-        if (['ic10.debug.variables.write', 'ic10.debug.device.write', 'ic10.debug.device.slot.write', 'ic10.debug.stack.push', 'ic10.debug.remove.push'].indexOf(command) >= 0) {
+        if (["ic10.debug.variables.write",
+            "ic10.debug.device.write",
+            "ic10.debug.device.slot.write",
+            "ic10.debug.stack.push",
+            "ic10.debug.remove.push"].indexOf(command) >= 0) {
             try {
                 const name = regex.exec(args.variable.variable.name);
                 if (name) {
@@ -472,28 +452,26 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
             }
         }
         switch (command) {
-            case 'ic10.debug.variables.write':
+            case "ic10.debug.variables.write":
                 try {
-                    this.ic10.memory.cell(args.variableName, Number(args.value));
                 }
                 catch (e) {
-                    this.sendEvent(new vscode_debugadapter_1.InvalidatedEvent(['variables']));
+                    this.sendEvent(new vscode_debugadapter_1.InvalidatedEvent(["variables"]));
                 }
                 break;
-            case 'ic10.debug.device.write':
+            case "ic10.debug.device.write":
                 try {
                     args.debug = regex.exec(args.variable.container.name);
-                    this.ic10.memory.cell(args.containerName, args.variableName, Number(args.value));
                 }
                 catch (e) {
-                    this.sendEvent(new vscode_debugadapter_1.InvalidatedEvent(['variables']));
+                    this.sendEvent(new vscode_debugadapter_1.InvalidatedEvent(["variables"]));
                 }
                 break;
-            case 'ic10.debug.device.slot.write':
+            case "ic10.debug.device.slot.write":
                 break;
-            case 'ic10.debug.stack.push':
+            case "ic10.debug.stack.push":
                 break;
-            case 'ic10.debug.remove.push':
+            case "ic10.debug.remove.push":
                 break;
             default:
                 super.customRequest(command, response, args);
@@ -501,13 +479,36 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
         }
         this.sendResponse(response);
     }
+    async progressSequence() {
+        const ID = "" + this._progressId++;
+        await timeout(100);
+        const title = this._isProgressCancellable ? "Cancellable operation" : "Long running operation";
+        const startEvent = new vscode_debugadapter_1.ProgressStartEvent(ID, title);
+        startEvent.body.cancellable = this._isProgressCancellable;
+        this._isProgressCancellable = !this._isProgressCancellable;
+        this.sendEvent(startEvent);
+        this.sendEvent(new vscode_debugadapter_1.OutputEvent(`start progress: ${ID}\n`));
+        let endMessage = "progress ended";
+        for (let i = 0; i < 100; i++) {
+            await timeout(500);
+            this.sendEvent(new vscode_debugadapter_1.ProgressUpdateEvent(ID, `progress: ${i}`));
+            if (this._cancelledProgressId === ID) {
+                endMessage = "progress cancelled";
+                this._cancelledProgressId = undefined;
+                this.sendEvent(new vscode_debugadapter_1.OutputEvent(`cancel progress: ${ID}\n`));
+                break;
+            }
+        }
+        this.sendEvent(new vscode_debugadapter_1.ProgressEndEvent(ID, endMessage));
+        this.sendEvent(new vscode_debugadapter_1.OutputEvent(`end progress: ${ID}\n`));
+        this._cancelledProgressId = undefined;
+    }
     createSource(filePath) {
-        return new vscode_debugadapter_1.Source((0, path_1.basename)(filePath), this.convertDebuggerPathToClient(filePath), undefined, undefined, 'ic10-adapter-data');
+        return new vscode_debugadapter_1.Source((0, path_1.basename)(filePath), this.convertDebuggerPathToClient(filePath), undefined, undefined, "ic10-adapter-data");
     }
     getHover(args) {
         let response = args.expression;
         try {
-            response = String(this.ic10.memory.cell(args.expression));
         }
         catch (e) {
         }
@@ -516,9 +517,9 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
 }
 exports.ic10DebugSession = ic10DebugSession;
 class VariableMap {
+    scope;
     map;
     ic10;
-    scope;
     constructor(scope, ic10) {
         this.ic10 = ic10;
         this.scope = scope;
@@ -528,25 +529,13 @@ class VariableMap {
         this.map = {};
         for (let cellsKey in this.ic10.memory.cells) {
             try {
-                cellsKey = String(cellsKey);
-                let val = this.ic10.memory.cells[cellsKey].get();
-                let alias = this.ic10.memory.cells[cellsKey].alias;
-                let name = this.ic10.memory.cells[cellsKey].name;
-                let _name = '';
-                if (alias) {
-                    _name = name + `[${alias}]`;
-                }
-                else {
-                    _name = name;
-                }
-                this.var2variable(_name, val, id);
             }
             catch (e) {
             }
         }
         const stack = this.ic10.memory.cells[16];
         if (stack instanceof MemoryStack_1.MemoryStack) {
-            this.var2variable('Stack', stack.getStack(), id);
+            this.var2variable("Stack", stack.getStack(), id);
         }
         for (const environKey in this.ic10.memory.environ) {
             if (this.ic10.memory.environ.hasOwnProperty(environKey)) {
@@ -554,7 +543,7 @@ class VariableMap {
                     let val = this.ic10.memory.environ[environKey];
                     let alias = val.alias;
                     let name = val.name;
-                    let _name = '';
+                    let _name = "";
                     if (alias) {
                         _name = name + `[${alias}]`;
                     }
@@ -571,9 +560,7 @@ class VariableMap {
             if (this.ic10.memory.aliases.hasOwnProperty(aliasesKey)) {
                 try {
                     let val = this.ic10.memory.aliases[aliasesKey];
-                    let name = String(val.name);
                     if (val instanceof ConstantCell_1.ConstantCell) {
-                        this.var2variable(name, val.get(), id);
                     }
                 }
                 catch (e) {
@@ -615,7 +602,7 @@ class VariableMap {
                 if (value.length != 0) {
                     this.map[id][name] = {
                         name: name,
-                        type: 'array',
+                        type: "array",
                         value: `Array (${value.length})`,
                         __vscodeVariableMenuContext: "Array",
                         variablesReference: this.scope._variableHandles.create(name),
@@ -627,9 +614,6 @@ class VariableMap {
                                 index = `[${valueKey}]`;
                                 const stack = this.ic10.memory.cells[16];
                                 if (stack instanceof MemoryStack_1.MemoryStack) {
-                                    if (parseInt(valueKey) == parseInt(String(stack.get()))) {
-                                        index = `(${valueKey})`;
-                                    }
                                 }
                             }
                             this.var2variable(index, value[valueKey], name, mc);
@@ -639,8 +623,8 @@ class VariableMap {
                 else {
                     this.map[id][name] = {
                         name: name,
-                        type: 'array',
-                        value: 'Array (0)',
+                        type: "array",
+                        value: "Array (0)",
                         variablesReference: 0,
                         __vscodeVariableMenuContext: "Array",
                     };
@@ -650,7 +634,7 @@ class VariableMap {
             case "Chip":
                 this.map[id][name] = {
                     name: name,
-                    type: 'object',
+                    type: "object",
                     value: `Object`,
                     __vscodeVariableMenuContext: "Object",
                     variablesReference: this.scope._variableHandles.create(name),
@@ -658,14 +642,14 @@ class VariableMap {
                 let arr = Object.keys(value.properties).sort();
                 for (const valueKey of arr) {
                     if (value.properties.hasOwnProperty(valueKey)) {
-                        this.var2variable(valueKey, value.properties[valueKey], name, 'Device');
+                        this.var2variable(valueKey, value.properties[valueKey], name, "Device");
                     }
                 }
                 return name;
             case "Slot":
                 this.map[id][name] = {
                     name: name,
-                    type: 'object',
+                    type: "object",
                     value: `Object`,
                     __vscodeVariableMenuContext: "Object",
                     variablesReference: this.scope._variableHandles.create(name),
@@ -673,7 +657,7 @@ class VariableMap {
                 let _arr = Object.keys(value.properties).sort();
                 for (const valueKey of _arr) {
                     if (value.properties.hasOwnProperty(valueKey)) {
-                        this.var2variable(valueKey, value.properties[valueKey], name, 'Slot');
+                        this.var2variable(valueKey, value.properties[valueKey], name, "Slot");
                     }
                 }
                 return name;

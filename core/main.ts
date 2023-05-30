@@ -13,7 +13,7 @@ import {icXFormatter} from "./icX.formatter"
 import {Err, Errors} from "icx-compiler/src/err"
 import {IcXVscode} from "./icX-vscode"
 import InterpreterIc10 from "ic10"
-import {ic10Error} from "ic10/src/ic10Error"
+import {Ic10Error} from "ic10/src/Ic10Error"
 
 
 const LOCALE_KEY: string = vscode.env.language
@@ -166,7 +166,7 @@ function command(ctx: vscode.ExtensionContext) {
 					logCallback:       function () {
 						panel.webview.html += ic10_hover.htmlLog(...arguments) + "<br>"
 					},
-					executionCallback: function (e: ic10Error) {
+					executionCallback: function (e: Ic10Error) {
 						panel.webview.html += ic10_hover.htmlLog(...arguments) + "<br>"
 					},
 				}

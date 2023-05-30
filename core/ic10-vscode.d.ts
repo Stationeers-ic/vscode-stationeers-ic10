@@ -1,7 +1,7 @@
 export declare class Ic10Vscode {
     wiki: string;
-    private readonly langPath;
     LOCALE_KEY: string;
+    private readonly langPath;
     constructor();
     getHover(name?: string): string;
     baseName(str: any): number;

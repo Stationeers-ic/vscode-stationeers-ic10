@@ -1,4 +1,4 @@
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
 import { Ic10SidebarViewProvider } from "./sidebarView";
 export declare const LANG_KEY = "ic10";
 export declare const LANG_KEY2 = "icX";

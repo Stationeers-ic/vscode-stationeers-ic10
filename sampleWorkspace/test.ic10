@@ -65,25 +65,6 @@ push HASH("H62")
 push HASH("H63")
 push HASH("H64")
 push HASH("H65")
-push HASH("H66")
-push HASH("H67")
-push HASH("H68")
-push HASH("H69")
-push HASH("H70")
-push HASH("H71")
-push HASH("H72")
-push HASH("H73")
-push HASH("H74")
-push HASH("H75")
-push HASH("H76")
-push HASH("H77")
-push HASH("H78")
-push HASH("H79")
-push HASH("H80")
-push HASH("H81")
-push HASH("H82")
-push HASH("H83")
-push HASH("H84")
 light:
 mod r0 sp 3
 brnez r0 6
@@ -126,3 +107,4 @@ sbn 958056199 r0 On r7 # Харви
 sbn 958056199 r0 Plant r8 # Харви
 sbn 958056199 r0 Harvest r9 # Харви
 j light
+s d0:4 Setting 1

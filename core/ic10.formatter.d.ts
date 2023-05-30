@@ -1,12 +1,12 @@
 import * as vscode from "vscode";
 export declare class ic10Formatter {
+    resultText: string;
     private readonly text;
     private labels;
     private lines;
     private commands;
     private position;
     private jumps;
-    resultText: string;
     private document;
     private vars;
     private functions;

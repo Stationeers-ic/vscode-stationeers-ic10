@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -44,8 +44,8 @@ const ic10_1 = __importDefault(require("ic10"));
 const LOCALE_KEY = vscode.env.language;
 const ic10_hover = new ic10_vscode_1.Ic10Vscode();
 const icX_hover = new icX_vscode_1.IcXVscode();
-exports.LANG_KEY = 'ic10';
-exports.LANG_KEY2 = 'icX';
+exports.LANG_KEY = "ic10";
+exports.LANG_KEY2 = "icX";
 const interpreterIc10 = new ic10_1.default(null);
 let interpreterIc10State = 0;
 let leftCodeLength;
@@ -75,7 +75,7 @@ exports.activate = activate;
 function icxStart() {
     onChangeCallbacks.SaveTextDocument.push(() => {
         if (vscode.window.activeTextEditor.document.languageId == exports.LANG_KEY2) {
-            vscode.commands.executeCommand(exports.LANG_KEY2 + '.compile');
+            vscode.commands.executeCommand(exports.LANG_KEY2 + ".compile");
         }
     });
 }
@@ -141,13 +141,13 @@ function formatter(ctx) {
 }
 function command(ctx) {
     try {
-        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_KEY + '.run', () => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_KEY + ".run", () => {
             if (!interpreterIc10State) {
-                vscode.window.showInformationMessage('Running');
+                vscode.window.showInformationMessage("Running");
                 const code = vscode.window.activeTextEditor.document.getText();
                 const title = path_1.default.basename(vscode.window.activeTextEditor.document.fileName);
                 interpreterIc10State = 1;
-                const panel = vscode.window.createWebviewPanel('ic10.debug', `${title}-Debug`, vscode.ViewColumn.Two);
+                const panel = vscode.window.createWebviewPanel("ic10.debug", `${title}-Debug`, vscode.ViewColumn.Two);
                 const settings = {
                     debug: true,
                     tickTime: 500,
@@ -164,66 +164,66 @@ function command(ctx) {
                 interpreterIc10.setSettings(settings).init(code).run();
             }
         }));
-        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_KEY + '.stop', () => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_KEY + ".stop", () => {
             if (interpreterIc10State) {
-                vscode.window.showInformationMessage('Stop');
+                vscode.window.showInformationMessage("Stop");
                 interpreterIc10.stop();
             }
         }));
-        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_KEY + '.debug.variables.write', (variable) => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_KEY + ".debug.variables.write", (variable) => {
             const ds = vscode.debug.activeDebugSession;
             const input = vscode.window.createInputBox();
-            input.title = 'set ' + variable.variable.name;
+            input.title = "set " + variable.variable.name;
             input.show();
             input.onDidAccept(function () {
-                ds.customRequest('ic10.debug.variables.write', { variable: variable, value: input.value });
+                ds.customRequest("ic10.debug.variables.write", { variable: variable, value: input.value });
                 input.hide();
             });
         }));
-        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_KEY + '.debug.device.write', (variable) => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_KEY + ".debug.device.write", (variable) => {
             const ds = vscode.debug.activeDebugSession;
             const input = vscode.window.createInputBox();
-            input.title = 'set ' + variable.variable.name;
+            input.title = "set " + variable.variable.name;
             input.show();
             input.onDidAccept(function () {
-                ds.customRequest('ic10.debug.device.write', { variable: variable, value: input.value });
+                ds.customRequest("ic10.debug.device.write", { variable: variable, value: input.value });
                 input.hide();
             });
         }));
-        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_KEY + '.debug.device.slot.write', (variable) => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_KEY + ".debug.device.slot.write", (variable) => {
             const ds = vscode.debug.activeDebugSession;
             const input = vscode.window.createInputBox();
-            input.title = 'set ' + variable.variable.name;
+            input.title = "set " + variable.variable.name;
             input.show();
             input.onDidAccept(function () {
-                ds.customRequest('ic10.debug.device.slot.write', { variable: variable, value: input.value });
+                ds.customRequest("ic10.debug.device.slot.write", { variable: variable, value: input.value });
                 input.hide();
             });
         }));
-        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_KEY + '.debug.stack.push', (variable) => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_KEY + ".debug.stack.push", (variable) => {
             const ds = vscode.debug.activeDebugSession;
             const input = vscode.window.createInputBox();
-            input.title = 'set ' + variable.variable.name;
+            input.title = "set " + variable.variable.name;
             input.show();
             input.onDidAccept(function () {
-                ds.customRequest('ic10.debug.stack.push', { variable: variable, value: input.value });
+                ds.customRequest("ic10.debug.stack.push", { variable: variable, value: input.value });
                 input.hide();
             });
         }));
-        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_KEY + '.debug.remove.push', (variable) => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_KEY + ".debug.remove.push", (variable) => {
             const ds = vscode.debug.activeDebugSession;
             const input = vscode.window.createInputBox();
-            input.title = 'set ' + variable.variable.name;
+            input.title = "set " + variable.variable.name;
             input.show();
             input.onDidAccept(function () {
-                ds.customRequest('ic10.debug.remove.push', { variable: variable, value: input.value });
+                ds.customRequest("ic10.debug.remove.push", { variable: variable, value: input.value });
                 input.hide();
             });
         }));
-        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_KEY2 + '.compile', () => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_KEY2 + ".compile", () => {
             try {
                 const code = vscode.window.activeTextEditor.document.getText();
-                const title = path_1.default.basename(vscode.window.activeTextEditor.document.fileName).split('.')[0];
+                const title = path_1.default.basename(vscode.window.activeTextEditor.document.fileName).split(".")[0];
                 const dir = path_1.default.dirname(vscode.window.activeTextEditor.document.uri._formatted);
                 console.log(exports.icxOptions);
                 const icx = new icx_compiler_1.icX(code, exports.icxOptions);
@@ -231,22 +231,22 @@ function command(ctx) {
                 console.log(compiled);
                 if (compiled) {
                     const content = Buffer.from(compiled);
-                    const file = dir + '/' + title + '.ic10';
+                    const file = dir + "/" + title + ".ic10";
                     vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content);
                 }
             }
             catch (e) {
                 if (e instanceof err_1.Errors || e instanceof err_1.Err) {
-                    vscode.window.showInformationMessage('compiling error: ' + e.getUserMessage());
+                    vscode.window.showInformationMessage("compiling error: " + e.getUserMessage());
                 }
                 else {
-                    vscode.window.showInformationMessage('compiling error', JSON.stringify(e));
+                    vscode.window.showInformationMessage("compiling error", JSON.stringify(e));
                 }
                 console.error(e);
             }
         }));
-        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_KEY2 + '.open.wiki', () => {
-            const panel = vscode.window.createWebviewPanel('icX.wiki', `wiki`, vscode.ViewColumn.Beside);
+        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_KEY2 + ".open.wiki", () => {
+            const panel = vscode.window.createWebviewPanel("icX.wiki", `wiki`, vscode.ViewColumn.Beside);
             const _disposables = [];
             panel.onDidDispose(() => this.dispose(), null, _disposables);
             panel.onDidChangeViewState(e => {
@@ -256,7 +256,7 @@ function command(ctx) {
             }, null, _disposables);
             panel.webview.onDidReceiveMessage(message => {
                 switch (message.command) {
-                    case 'alert':
+                    case "alert":
                         vscode.window.showErrorMessage(message.text);
                         return;
                 }
@@ -270,14 +270,14 @@ function command(ctx) {
 }
 function semantic(ctx) {
     try {
-        ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: exports.LANG_KEY, scheme: 'file' }, new icX_SemanticProvider_1.IcxSemanticTokensProvider, icX_SemanticProvider_1.legend));
-        ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: exports.LANG_KEY2, scheme: 'file' }, new icX_SemanticProvider_1.IcxSemanticTokensProvider, icX_SemanticProvider_1.legend));
+        ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: exports.LANG_KEY, scheme: "file" }, new icX_SemanticProvider_1.IcxSemanticTokensProvider, icX_SemanticProvider_1.legend));
+        ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: exports.LANG_KEY2, scheme: "file" }, new icX_SemanticProvider_1.IcxSemanticTokensProvider, icX_SemanticProvider_1.legend));
     }
     catch (e) {
     }
 }
 function view(ctx) {
-    console.time('view');
+    console.time("view");
     try {
         exports.icSidebar = new sidebarView_1.Ic10SidebarViewProvider(ctx.extensionUri);
         ctx.subscriptions.push(vscode.window.registerWebviewViewProvider(sidebarView_1.Ic10SidebarViewProvider.viewType, exports.icSidebar));
@@ -299,7 +299,7 @@ function view(ctx) {
     catch (e) {
         console.error(e);
     }
-    console.timeEnd('view');
+    console.timeEnd("view");
 }
 function statusBar(ctx) {
     try {
@@ -362,9 +362,9 @@ function getNumberLeftLines() {
         let left = 128;
         const a = " ▁▃▅▉";
         if (text) {
-            left = left - text.split('\n').length;
+            left = left - text.split("\n").length;
         }
-        const x = a[Math.ceil(left / 32)] ?? '';
+        const x = a[Math.ceil(left / 32)] ?? "";
         return [x, left];
     }
     else {
@@ -417,7 +417,7 @@ function deactivate() {
 }
 exports.deactivate = deactivate;
 function renderIcX() {
-    exports.icSidebar.section('settings', `
+    exports.icSidebar.section("settings", `
 					<form name="settings" id="form-settings">
 						<fieldset title="Settings">
 							<ul>
@@ -459,7 +459,7 @@ function renderIc10() {
     if (a) {
         const b = Math.abs(a[1] - 128);
         const p = b / 128 * 100;
-        exports.icSidebar.section('leftLineCounter', `
+        exports.icSidebar.section("leftLineCounter", `
 					<p>Left lines ${a[1]}</p>
 					<div id="leftLineCounter" class="progress" data-percent="${p}" data-value="${b}"  data-max="128" data-min="0">
 					  <div></div>
@@ -467,7 +467,7 @@ function renderIc10() {
 					`, exports.LANG_KEY, -10);
     }
     else {
-        exports.icSidebar.section('leftLineCounter', ``, -10);
+        exports.icSidebar.section("leftLineCounter", ``, -10);
     }
 }
 //# sourceMappingURL=main.js.map

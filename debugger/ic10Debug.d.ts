@@ -1,6 +1,6 @@
-import { Handles, LoggingDebugSession } from 'vscode-debugadapter';
-import { DebugProtocol } from 'vscode-debugprotocol';
-import { FileAccessor } from './ic10Runtime';
+import { Handles, LoggingDebugSession } from "vscode-debugadapter";
+import { DebugProtocol } from "vscode-debugprotocol";
+import { FileAccessor } from "./ic10Runtime";
 import { InterpreterIc10 } from "ic10";
 import { MemoryStack } from "ic10/src/MemoryStack";
 interface ILaunchRequestArguments extends DebugProtocol.LaunchRequestArguments {
@@ -11,8 +11,9 @@ interface ILaunchRequestArguments extends DebugProtocol.LaunchRequestArguments {
 }
 export declare class ic10DebugSession extends LoggingDebugSession {
     private static threadID;
-    private _runtime;
     _variableHandles: Handles<string>;
+    variableMap: VariableMap;
+    private _runtime;
     private _cancelActionTokens;
     private _reportProgress;
     private _progressId;
@@ -20,7 +21,6 @@ export declare class ic10DebugSession extends LoggingDebugSession {
     private _isProgressCancellable;
     private _useInvalidatedEvent;
     private readonly ic10;
-    variableMap: VariableMap;
     constructor(fileAccessor: FileAccessor);
     protected initializeRequest(response: DebugProtocol.InitializeResponse, args: DebugProtocol.InitializeRequestArguments): void;
     protected configurationDoneRequest(response: DebugProtocol.ConfigurationDoneResponse, args: DebugProtocol.ConfigurationDoneArguments): void;
@@ -41,19 +41,19 @@ export declare class ic10DebugSession extends LoggingDebugSession {
     protected stepInRequest(response: DebugProtocol.StepInResponse, args: DebugProtocol.StepInArguments): void;
     protected stepOutRequest(response: DebugProtocol.StepOutResponse, args: DebugProtocol.StepOutArguments): void;
     protected evaluateRequest(response: DebugProtocol.EvaluateResponse, args: DebugProtocol.EvaluateArguments): Promise<void>;
-    private progressSequence;
     protected dataBreakpointInfoRequest(response: DebugProtocol.DataBreakpointInfoResponse, args: DebugProtocol.DataBreakpointInfoArguments): void;
     protected setDataBreakpointsRequest(response: DebugProtocol.SetDataBreakpointsResponse, args: DebugProtocol.SetDataBreakpointsArguments): void;
     protected completionsRequest(response: DebugProtocol.CompletionsResponse, args: DebugProtocol.CompletionsArguments): void;
     protected cancelRequest(response: DebugProtocol.CancelResponse, args: DebugProtocol.CancelArguments): void;
     protected customRequest(command: string, response: DebugProtocol.Response, args: any): void;
+    private progressSequence;
     private createSource;
     private getHover;
 }
 declare class VariableMap {
+    scope: ic10DebugSession;
     private map;
     private ic10;
-    scope: ic10DebugSession;
     constructor(scope: ic10DebugSession, ic10: InterpreterIc10);
     init(id: string): void;
     get(id: any): any;

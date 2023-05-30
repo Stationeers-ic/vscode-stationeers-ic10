@@ -1,6 +1,6 @@
 "use strict"
 import vscode = require("vscode")
-import {ic10Error} from "ic10/src/ic10Error"
+import {Ic10Error} from "ic10/src/Ic10Error"
 
 export class Ic10Vscode {
 	public wiki = "https://icx.traineratwot.site/wiki/ic10"
@@ -83,7 +83,7 @@ ${description}
 
 	public htmlLog(e = null) {
 		const html = []
-		if (e instanceof ic10Error) {
+		if (e instanceof Ic10Error) {
 			const string = `[${this.var2str(e.functionName, 1)}:${this.var2str(e.line, 1)}] (${this.var2str(e.code, 1)}) - ${this.var2str(e.message, 1)}:`
 			html.push(string)
 		} else {

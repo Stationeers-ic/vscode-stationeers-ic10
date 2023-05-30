@@ -4,10 +4,6 @@ exports.ic10Runtime = void 0;
 const events_1 = require("events");
 class ic10Runtime extends events_1.EventEmitter {
     _fileAccessor;
-    _sourceFile = '';
-    get sourceFile() {
-        return this._sourceFile;
-    }
     _sourceLines = [];
     _currentLine = 0;
     _currentColumn;
@@ -23,13 +19,17 @@ class ic10Runtime extends events_1.EventEmitter {
         this._fileAccessor = _fileAccessor;
         this.ic10 = ic10;
     }
+    _sourceFile = "";
+    get sourceFile() {
+        return this._sourceFile;
+    }
     async start(program, stopOnEntry, noDebug) {
         this._noDebug = noDebug;
         await this.loadSource(program);
         this._currentLine = -1;
         await this.verifyBreakpoints(this._sourceFile);
         if (stopOnEntry) {
-            this.step(false, 'stopOnEntry');
+            this.step(false, "stopOnEntry");
         }
         else {
             this.continue();
@@ -38,16 +38,16 @@ class ic10Runtime extends events_1.EventEmitter {
     continue(reverse = false) {
         this.run(reverse, undefined);
     }
-    step(reverse = false, event = 'stopOnStep') {
+    step(reverse = false, event = "stopOnStep") {
         this.run(reverse, event);
     }
     stepIn(targetId) {
-        if (typeof targetId === 'number') {
+        if (typeof targetId === "number") {
             this._currentColumn = targetId;
-            this.sendEvent('stopOnStep');
+            this.sendEvent("stopOnStep");
         }
         else {
-            if (typeof this._currentColumn === 'number') {
+            if (typeof this._currentColumn === "number") {
                 if (this._currentColumn <= this._sourceLines[this._currentLine].length) {
                     this._currentColumn += 1;
                 }
@@ -55,17 +55,17 @@ class ic10Runtime extends events_1.EventEmitter {
             else {
                 this._currentColumn = 1;
             }
-            this.sendEvent('stopOnStep');
+            this.sendEvent("stopOnStep");
         }
     }
     stepOut() {
-        if (typeof this._currentColumn === 'number') {
+        if (typeof this._currentColumn === "number") {
             this._currentColumn -= 1;
             if (this._currentColumn === 0) {
                 this._currentColumn = undefined;
             }
         }
-        this.sendEvent('stopOnStep');
+        this.sendEvent("stopOnStep");
     }
     getStepInTargets(frameId) {
         const line = this._sourceLines[this._currentLine].trim();
@@ -75,7 +75,7 @@ class ic10Runtime extends events_1.EventEmitter {
         }
         const frame = words[frameId];
         const pos = line.indexOf(frame);
-        return frame.split('').map((c, ix) => {
+        return frame.split("").map((c, ix) => {
             return {
                 id: pos + ix,
                 label: `target: ${c}`
@@ -93,7 +93,7 @@ class ic10Runtime extends events_1.EventEmitter {
                 file: this._sourceFile,
                 line: this._currentLine
             };
-            if (typeof this._currentColumn === 'number') {
+            if (typeof this._currentColumn === "number") {
                 stackFrame.column = this._currentColumn;
             }
             frames.push(stackFrame);
@@ -108,7 +108,7 @@ class ic10Runtime extends events_1.EventEmitter {
         let sawSpace = true;
         const bps = [];
         for (let i = 0; i < l.length; i++) {
-            if (l[i] !== ' ') {
+            if (l[i] !== " ") {
                 if (sawSpace) {
                     bps.push(i);
                     sawSpace = false;
@@ -180,15 +180,15 @@ class ic10Runtime extends events_1.EventEmitter {
             do {
                 why = this.ic10.prepareLine(-1, true);
                 if (this.ic10?.output?.debug && this.ic10.ignoreLine.indexOf(ln) < 0) {
-                    this.ic10.output.debug = '';
+                    this.ic10.output.debug = "";
                 }
                 if (this.ic10?.output?.log) {
-                    this.sendEvent('output', this.ic10.output.log, this._sourceFile, ln - 1);
-                    this.ic10.output.log = '';
+                    this.sendEvent("output", this.ic10.output.log, this._sourceFile, ln - 1);
+                    this.ic10.output.log = "";
                 }
                 if (this.ic10?.output?.error && this.ic10.ignoreLine.indexOf(ln) < 0) {
-                    this.sendEvent('output', this.ic10.output.error, this._sourceFile, ln - 1);
-                    this.ic10.output.error = '';
+                    this.sendEvent("output", this.ic10.output.error, this._sourceFile, ln - 1);
+                    this.ic10.output.error = "";
                 }
                 if (this.fireEventsForLine(ln, stepEvent)) {
                     this._currentLine = ln;
@@ -196,22 +196,22 @@ class ic10Runtime extends events_1.EventEmitter {
                     return true;
                 }
                 if (counter++ > 1000) {
-                    why = 'timeOut';
+                    why = "timeOut";
                 }
             } while (why === true);
             switch (why) {
                 case "timeOut":
-                    this.sendEvent('output', "WHILE TRUE!!!!", this._sourceFile, ln);
-                    this.sendEvent('stopOnBreakpoint');
+                    this.sendEvent("output", "WHILE TRUE!!!!", this._sourceFile, ln);
+                    this.sendEvent("stopOnBreakpoint");
                     break;
                 default:
-                    this.sendEvent('end');
+                    this.sendEvent("end");
                     break;
             }
         }
         else {
-            this.sendEvent('output', "can`t go back", this._sourceFile, 0);
-            this.sendEvent('stopOnBreakpoint');
+            this.sendEvent("output", "can`t go back", this._sourceFile, 0);
+            this.sendEvent("stopOnBreakpoint");
         }
     }
     async verifyBreakpoints(path) {
@@ -224,15 +224,15 @@ class ic10Runtime extends events_1.EventEmitter {
             bps.forEach(bp => {
                 if (!bp.verified && bp.line < this._sourceLines.length) {
                     const srcLine = this._sourceLines[bp.line].trim();
-                    if (srcLine.length === 0 || srcLine.indexOf('+') === 0) {
+                    if (srcLine.length === 0 || srcLine.indexOf("+") === 0) {
                         bp.line++;
                     }
-                    if (srcLine.indexOf('-') === 0) {
+                    if (srcLine.indexOf("-") === 0) {
                         bp.line--;
                     }
-                    if (srcLine.indexOf('lazy') < 0) {
+                    if (srcLine.indexOf("lazy") < 0) {
                         bp.verified = true;
-                        this.sendEvent('breakpointValidated', bp);
+                        this.sendEvent("breakpointValidated", bp);
                     }
                 }
             });
@@ -246,7 +246,7 @@ class ic10Runtime extends events_1.EventEmitter {
         const words = line.split(" ");
         for (const word of words) {
             if (this._breakAddresses.has(word)) {
-                this.sendEvent('stopOnDataBreakpoint');
+                this.sendEvent("stopOnDataBreakpoint");
                 return true;
             }
         }
@@ -254,20 +254,20 @@ class ic10Runtime extends events_1.EventEmitter {
         if (matches2 && matches2.length === 2) {
             const exception = matches2[1].trim();
             if (this._namedException === exception) {
-                this.sendEvent('stopOnException', exception);
+                this.sendEvent("stopOnException", exception);
                 return true;
             }
             else {
                 if (this._otherExceptions) {
-                    this.sendEvent('stopOnException', undefined);
+                    this.sendEvent("stopOnException", undefined);
                     return true;
                 }
             }
         }
         else {
-            if (line.indexOf('exception') >= 0) {
+            if (line.indexOf("exception") >= 0) {
                 if (this._otherExceptions) {
-                    this.sendEvent('stopOnException', undefined);
+                    this.sendEvent("stopOnException", undefined);
                     return true;
                 }
             }
@@ -276,10 +276,10 @@ class ic10Runtime extends events_1.EventEmitter {
         if (breakpoints) {
             const bps = breakpoints.filter(bp => bp.line === ln);
             if (bps.length > 0) {
-                this.sendEvent('stopOnBreakpoint');
+                this.sendEvent("stopOnBreakpoint");
                 if (!bps[0].verified) {
                     bps[0].verified = true;
-                    this.sendEvent('breakpointValidated', bps[0]);
+                    this.sendEvent("breakpointValidated", bps[0]);
                 }
                 return true;
             }
