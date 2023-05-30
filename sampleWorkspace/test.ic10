@@ -1,91 +1,128 @@
-alias State r0
-alias HangarMode r1
-alias ManualCommand r2
-alias Self db
-alias Memory d0
-alias Dial d1
-alias Lever d2
-alias Display d3
-define StateIdle 0
-define StatePressurizing 1
-define StateDepressurizing 2
-define SensorHash -1252983604
-define ActiveVentHash -1129453144
-define HangarDoorHash -1351081801
-define FlashingLightHash -1535893860
-define SpeakerHash -1
-define Inward 1
-define Outward 0
-define TargetPressureFilled 0.5
-define TargetPressureEmtpy 0.5
-Main:
-l State Self Setting
-s Display Setting 111
-l ManualCommand Lever Setting
-l HangarMode Dial Setting
+define Harvy 42 # 42 or 84  # ---=< MeteorSbor >=---
+define LightOn 400 # среднее 400 из 600 тиков. 0 - 600
+push HASH("H1") # Имена харви и лотков
+push HASH("H2")
+push HASH("H3")
+push HASH("H4")
+push HASH("H5")
+push HASH("H6")
+push HASH("H7")
+push HASH("H8")
+push HASH("H9")
+push HASH("H10")
+push HASH("H11")
+push HASH("H12")
+push HASH("H13")
+push HASH("H14")
+push HASH("H15")
+push HASH("H16")
+push HASH("H17")
+push HASH("H18")
+push HASH("H19")
+push HASH("H20")
+push HASH("H21")
+push HASH("H22")
+push HASH("H23")
+push HASH("H24")
+push HASH("H25")
+push HASH("H26")
+push HASH("H27")
+push HASH("H28")
+push HASH("H29")
+push HASH("H30")
+push HASH("H31")
+push HASH("H32")
+push HASH("H33")
+push HASH("H34")
+push HASH("H35")
+push HASH("H36")
+push HASH("H37")
+push HASH("H38")
+push HASH("H39")
+push HASH("H40")
+push HASH("H41")
+push HASH("H42")
+push HASH("H43")
+push HASH("H44")
+push HASH("H45")
+push HASH("H46")
+push HASH("H47")
+push HASH("H48")
+push HASH("H49")
+push HASH("H50")
+push HASH("H51")
+push HASH("H52")
+push HASH("H53")
+push HASH("H54")
+push HASH("H55")
+push HASH("H56")
+push HASH("H57")
+push HASH("H58")
+push HASH("H59")
+push HASH("H60")
+push HASH("H61")
+push HASH("H62")
+push HASH("H63")
+push HASH("H64")
+push HASH("H65")
+push HASH("H66")
+push HASH("H67")
+push HASH("H68")
+push HASH("H69")
+push HASH("H70")
+push HASH("H71")
+push HASH("H72")
+push HASH("H73")
+push HASH("H74")
+push HASH("H75")
+push HASH("H76")
+push HASH("H77")
+push HASH("H78")
+push HASH("H79")
+push HASH("H80")
+push HASH("H81")
+push HASH("H82")
+push HASH("H83")
+push HASH("H84")
+light:
+mod r0 sp 3
+brnez r0 6
 yield
-jal Execute
-j Main
-jr 86
-WaitDoors:
-alias HangarDoorState r3
-lb HangarDoorState HangarDoorHash Idle Sum
-s Display Setting HangarDoorState
-yield
-sgtz r15 HangarDoorState
-beqz r15 if0exit
-s Display Setting 666
-yield
-jal WaitDoors
-if0exit:
-j ra
-StandBy:
-seq r15 ManualCommand 1
-beqz r15 if1exit
-seqz r14 HangarMode
-beqz r14 if2exit
-j Main
-if2exit:
-move State HangarMode
-if1exit:
-jal Execute
-j ra
-ToggleDoors:
-alias Status r15
-s Display Setting r15
-sb HangarDoorHash Open r15
-jal WaitDoors
-j ra
-Pressurize:
-s Self Setting StatePressurizing
-s Display Setting 222
-move r15 1
-jal ToggleDoors
-jal Finalize
-j ra
-Depressurize:
-s Display Setting 555
-s Self Setting StateDepressurizing
-move r15 0
-jal ToggleDoors
-jal Finalize
-j ra
-Finalize:
-s Self Setting StateIdle
-s Display Setting 1010
-yield
-j ra
-Execute:
-brne State StateIdle 4
-s Display Setting 222
-yield
-jal StandBy
-brne State StatePressurizing 4
-s Display Setting 333
-yield
-jal Pressurize
-brne State StateDepressurizing 4
-s Display Setting 444
-yield
-jal Depressurize
-j ra
+add r11 r11 1
+mod r11 r11 600
+slt r0 r11 LightOn  # Длинна включенного света
+sb -1758710260 On r0 # Закоментировять для отключения
+seqz r4 sp # 
+add r12 r12 r4
+mod r12 r12 21
+select sp sp sp Harvy
+pop r0
+lbn r9 958056199 r0 Activate Average # Харви
+bnan r9 light  # нету харви ===>
+beq r9 1 light # активен ===>
+lbns r6 -1841632400 r0 0 PrefabHash Average # Лоток
+bnan r6 light  # Нет лотка ===>
+move r5 4 # Сдадия сбора
+breq r6 -81376085 11   # 4 Красный цветок
+breq r6 -1513337058 10 # 4 Зеленый цветок
+breq r6 1712822019 9   # 4 Желтый цветок
+breq r6 -1411986716 8  # 4 Ораньжевый цветок
+breq r6 -1573623434 7  # 4 Синий цветок
+move r5 6 # Сдадия сбора
+breq r6 258339687 5   # 6 Кукуруза
+breq r6 1277828144 3  # 6 Тыква
+breq r6 -998592080 2  # 6 Томат
+move r5 5 # Сдадия сбора
+lbns r9 -1841632400 r0 0 Growth Average # Лоток
+seq r8 r9 -1 # Пусто
+lbns r7 958056199 r0 0 Occupied Average # Харви семя для посадки
+mod r4 sp 21
+seq r4 r12 r4
+or r7 r7 r4
+select r7 r8 r7 0 # Не тестировать посажено
+seq r9 r9 r5 # Стадия сбора
+or r7 r7 r9 # Включить для посадки или сбора
+sbn 958056199 r0 On r7 # Харви
+sbn 958056199 r0 Plant r8 # Харви
+sbn 958056199 r0 Harvest r9 # Харви
+j light
