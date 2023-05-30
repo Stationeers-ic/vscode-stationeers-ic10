@@ -1,15 +1,15 @@
-const request = require('sync-request')
-const axios = require('axios')
+const request = require("sync-request")
+const axios   = require("axios")
 
 async function getData() {
 
 	const Languages = {
-		'en': await getLang('en'),
-		'ru': await getLang('eu'),
+		"en": await getLang("en"),
+		"ru": await getLang("eu"),
 	}
 
-	async function getLang(lang = 'en') {
-		const r = await axios.get('https://icx.traineratwot.site/GetIc10?lang=' + lang)
+	async function getLang(lang = "en") {
+		const r = await axios.get("https://icx.traineratwot.site/GetIc10?lang=" + lang)
 		return r.data
 	}
 

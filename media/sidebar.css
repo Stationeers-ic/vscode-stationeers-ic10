@@ -1,23 +1,31 @@
 section {
-  margin-bottom: 10px; }
+		margin-bottom: 10px;
+		}
 
 .disabledSelect {
-  user-select: none; }
+		user-select: none;
+		}
 
 #settings ul, #settings ol, #icxStats ul, #icxStats ol {
-  padding: 0 0 0 5px; }
+		padding: 0 0 0 5px;
+		}
 
 .progress {
-  background-color: lightslategrey;
-  border-radius: 10px;
-  padding: 3px; }
-  .progress > div {
-    background-color: var(--vscode-inputValidation-infoForeground);
-    height: 12px;
-    border-radius: 10px;
-    background: var(--vscode-list-errorForeground); }
-  .progress.geMax > div {
-    background-color: red !important;
-    color: red !important; }
+		padding: 3px;
+		border-radius: 10px;
+		background-color: lightslategrey;
+		}
+
+.progress > div {
+		height: 12px;
+		border-radius: 10px;
+		background: var(--vscode-list-errorForeground);
+		background-color: var(--vscode-inputValidation-infoForeground);
+		}
+
+.progress.geMax > div {
+		color: red !important;
+		background-color: red !important;
+		}
 
 /*# sourceMappingURL=sidebar.css.map */

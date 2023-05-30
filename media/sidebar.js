@@ -3,9 +3,9 @@ class ic10SideBar {
 		this.vscode = acquireVsCodeApi()
 		// this.oldState = vscode.getState()
 		this.run()
-		window.addEventListener('message', event => {
+		window.addEventListener("message", event => {
 			const message = event.data // The json data that the extension sent
-			if(typeof this[message.fn] == 'function') {
+			if (typeof this[message.fn] == "function") {
 				this[message.fn](message.data)
 				this.run()
 			}
@@ -23,48 +23,48 @@ class ic10SideBar {
 		const self = this
 		try {
 			self.events = {}
-			window.addEventListener('input', function(event) {
-				var fn = event.target.getAttribute('data-fn')
-				if(fn && event.target.id) {
+			window.addEventListener("input", function (event) {
+				var fn = event.target.getAttribute("data-fn")
+				if (fn && event.target.id) {
 
 					var data = {
-						id: event.target.id ?? null,
+						id:    event.target.id ?? null,
 						value: event.target.value ?? null,
-						type: event.target.type ?? null,
-						name: event.target.name ?? null,
+						type:  event.target.type ?? null,
+						name:  event.target.name ?? null,
 					}
-					switch( event.target.tagName ) {
-						case 'INPUT':
-							switch( event.target.type ) {
-								case 'checkbox':
+					switch (event.target.tagName) {
+						case "INPUT":
+							switch (event.target.type) {
+								case "checkbox":
 									data.value = event.target.checked
 									break
 								default:
 									break
 							}
 							break
-						case 'SELECT':
+						case "SELECT":
 							break
-						case 'BUTTON':
+						case "BUTTON":
 							data.value = event.target.value ?? true
 							break
 					}
 					self.events[event.target.id] = {
-						event: 'input',
-						data: data,
-						fn: fn,
+						event: "input",
+						data:  data,
+						fn:    fn,
 					}
 				}
 			})
-		} catch(e) {
+		} catch (e) {
 			// console.error(e)
 		}
 		setInterval(() => {
-			for(const eventsKey in self.events) {
-				if(self.events.hasOwnProperty(eventsKey)) {
-					const data = self.events[eventsKey]
+			for (const eventsKey in self.events) {
+				if (self.events.hasOwnProperty(eventsKey)) {
+					const data             = self.events[eventsKey]
 					self.events[eventsKey] = null
-					delete  self.events[eventsKey]
+					delete self.events[eventsKey]
 					// console.log(data)
 					self.vscode.postMessage(data)
 
@@ -77,9 +77,9 @@ class ic10SideBar {
 
 	update(newContent) {
 		try {
-			this.content = document.querySelector('#content')
+			this.content           = document.querySelector("#content")
 			this.content.innerHTML = newContent
-		} catch(e) {
+		} catch (e) {
 
 		}
 	}
@@ -87,28 +87,28 @@ class ic10SideBar {
 
 	p() {
 		try {
-			this.progreses = document.querySelectorAll('.progress')
-			for(const progress of this.progreses) {
-				if(progress) {
-					if(progress.getAttribute('data-percent')) {
-						if(progress.getAttribute('data-percent') <= 100) {
-							progress.children[0].style.setProperty('width', progress.getAttribute('data-percent') + '%')
+			this.progreses = document.querySelectorAll(".progress")
+			for (const progress of this.progreses) {
+				if (progress) {
+					if (progress.getAttribute("data-percent")) {
+						if (progress.getAttribute("data-percent") <= 100) {
+							progress.children[0].style.setProperty("width", progress.getAttribute("data-percent") + "%")
 						}
 					}
-					if(parseFloat(progress.getAttribute('data-value')) >= parseFloat(progress.getAttribute('data-max') ?? 0)) {
-						progress.classList.add('geMax')
+					if (parseFloat(progress.getAttribute("data-value")) >= parseFloat(progress.getAttribute("data-max") ?? 0)) {
+						progress.classList.add("geMax")
 					} else {
-						progress.classList.remove('geMax')
+						progress.classList.remove("geMax")
 					}
-					if(parseFloat(progress.getAttribute('data-value')) <= parseFloat(progress.getAttribute('data-min') ?? 0)) {
-						progress.classList.add('leMin')
+					if (parseFloat(progress.getAttribute("data-value")) <= parseFloat(progress.getAttribute("data-min") ?? 0)) {
+						progress.classList.add("leMin")
 					} else {
-						progress.classList.remove('leMin')
+						progress.classList.remove("leMin")
 					}
 				}
 			}
 
-		} catch(e) {
+		} catch (e) {
 
 		}
 	}

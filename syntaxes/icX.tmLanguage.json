@@ -1,190 +1,190 @@
 {
-	"$schema"           :"https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name"              :"icX",
-	"foldingStartMarker":"^#\\s{0,1}Section:\\s{0,}\\w+$",
-	"foldingStopMarker" :"^#\\s{0,1}endSection$",
-	"patterns"          :[
-		{
-			"include":"#goto"
-		},
-		{
-			"include":"#keywords"
-		},
-		{
-			"include":"#entity"
-		},
-		{
-			"include":"#variable"
-		},
-		{
-			"include":"#constant"
-		},
-		{
-			"include":"#comments"
-		},
-		{
-			"include":"#operator"
-		}
-	],
-	"repository"        :{
-		"GOTO"    :{
-			"patterns":[
-				{
-					"name" :"support.function",
-					"match":"^.+(?=:)"
-				},
-				{
-					"name" :"support.function",
-					"match":"(?!j)(?!\\s).+"
-				}
-			]
-		},
-		"keywords":{
-			"patterns":[
-				{
-					"match":"\\b(Activate|Charge|Class|ClearMemory|Color|Combustion|CompletionRatio|Damage|ElevatorLevel|ElevatorSpeed|Error|ExportCount|Filtration|ForceWrite|Harvest|Horizontal|Idle|ImportCount|Lock|Maximum|MaxQuantity|Mode|On|Open|Output|Plant|PositionX|PositionY|PositionZ|Power|PowerActual|PowerGeneration|PowerPotential|PowerRequired|PressureExternal|PressureInternal|Ratio|RatioCarbonDioxide|RatioNitrogen|RatioNitrousOxide|RatioOxygen|RatioPollutant|RatioVolatiles|RatioWater|Reagents|RecipeHash|RequiredPower|Setting|SolarAngle|TargetX|TargetY|TargetZ|TemperatureExternal|TemperatureSetting|TotalMoles|VelocityMagnitude|VelocityRelativeX|VelocityRelativeY|VelocityRelativeZ|Vertical|Volume|ChargeRatio|Efficiency|Growth|Health|Mature|OccupantHash|Occupied|PressureAir|PressureWaste|Average|Sum|Minimum|Throttle|CombustionLimiter|Contents|Required|Recipe)\\b",
-					"name" :"keyword.other.icX"
-				},
-				{
-					"match":"\\b(if|while|else|end|switch|case|break|foreach|each|for)\\b",
-					"name" :"keyword.control.icX"
-				},
-				{
-					"match":"([~!+-=<>&|*]|dse)",
-					"name" :"keyword.operator.icX"
-				},
-				{
-					"match"   :"(var) ([\\d\\w]+)\\s*(=)",
-					"captures":{
-						"1":{
-							"name":"keyword.control.icX"
-						},
-						"2":{
-							"name"    :"variable.parameter.icX",
-							"patterns":[
-								{
-									"include":"#variable"
-								}
-							]
-						},
-						"3":{
-							"name":"keyword.operator.icX"
-						}
-					}
-				},
-				{
-					"match"   :"(const) ([\\d\\w]+)\\s*(=)",
-					"captures":{
-						"1":{
-							"name":"keyword.control.icX"
-						},
-						"2":{
-							"name"    :"variable.parameter.icX",
-							"patterns":[
-								{
-									"include":"#constant"
-								}
-							]
-						},
-						"3":{
-							"name":"keyword.operator.icX"
-						}
-					}
-				},
-				{
-					"match"   :"(var) ([\\d\\w]+)",
-					"captures":{
-						"1":{
-							"name":"keyword.control.untitled"
-						},
-						"2":{
-							"name"    :"variable.parameter.icX",
-							"patterns":[
-								{
-									"include":"#variable"
-								}
-							]
-						}
-					}
-				},
-				{
-					"match"   :"\\b(function) ([\\d\\w]+)",
-					"name"    :"keyword.operator.icX",
-					"captures":{
-						"1":{
-							"name":"keyword.control.untitled"
-						},
-						"2":{
-							"name":"entity.name.function.icX"
-						}
-					}
-				}
-			]
-		},
-		"comments":{
-			"patterns":[
-				{
-					"begin"        :"#",
-					"beginCaptures":{
-						"0":{
-							"name":"punctuation.definition.comment.icX"
-						}
-					},
-					"end"          :"$",
-					"name"         :"comment.line.number-sign.icX"
-				},
-				{
-					"begin"        :"use",
-					"beginCaptures":{
-						"0":{
-							"name":"punctuation.definition.comment.icX"
-						}
-					},
-					"end"          :"$",
-					"name"         :"comment.line.number-sign.icX"
-				}
-			]
-		},
-		"constant":{
-			"patterns":[
-				{
-					"name" :"constant.numeric.icX",
-					"match":"\\b[\\d\\.]+\\b"
-				}
-			]
-		},
-		"entity"  :{
-			"patterns":[
-				{
-					"name" :"entity.name.function.icX",
-					"match":"\\b(abs|acos|add|alias|and|asin|atan|atan2|bap|bapal|bapz|bapzal|bdns|bdnsal|bdse|bdseal|beq|beqal|beqz|beqzal|bge|bgeal|bgez|bgezal|bgt|bgtal|bgtz|bgtzal|ble|bleal|blez|blezal|blt|bltal|bltz|bltzal|bna|bnaal|bnaz|bnazal|bne|bneal|bnez|bnezal|brap|brapz|brdns|brdse|breq|breqz|brge|brgez|brgt|brgtz|brle|brlez|brlt|brltz|brna|brnaz|brne|brnez|ceil|cos|define|div|exp|floor|hcf|j|jal|jr|l|log|lr|ls|max|min|mod|move|mul|nor|or|peek|pop|push|rand|round|s|sap|sapz|sdns|sdse|select|seq|seqz|sge|sgez|sgt|sgtz|sin|sle|sleep|slez|slt|sltz|sna|snaz|sne|snez|sqrt|sub|tan|trunc|xor|yield|lb|sb|stack|debug|return)\\b"
-				},
-				{
-					"name" :"entity.name.function.icX",
-					"match":"([\\d\\w]+)\\(\\)"
-				},
-				{
-					"name" :"entity.name.tag.icX",
-					"match":"(^\\s{0,}j \\w+$)|(^\\s{0,}\\w+:$)"
-				},
-				{
-					"name" :"entity.name.function.icX",
-					"match":"\\b(debug|stack)\\b"
-				}
-			]
-		},
-		"variable":{
-			"patterns":[
-				{
-					"name" :"variable.parameter.icX",
-					"match":"\\b(([rd]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)))|(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))|(d(0|1|2|3|4|5|b)))\\b"
-				},
-				{
-					"name" :"variable.language.icX",
-					"match":"\\bsp\\b"
-				}
-			]
-		}
-	},
-	"scopeName"         :"source.icX"
+  "$schema":            "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name":               "icX",
+  "foldingStartMarker": "^#\\s{0,1}Section:\\s{0,}\\w+$",
+  "foldingStopMarker":  "^#\\s{0,1}endSection$",
+  "patterns":           [
+    {
+      "include": "#goto"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#entity"
+    },
+    {
+      "include": "#variable"
+    },
+    {
+      "include": "#constant"
+    },
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#operator"
+    }
+  ],
+  "repository":         {
+    "GOTO":     {
+      "patterns": [
+        {
+          "name":  "support.function",
+          "match": "^.+(?=:)"
+        },
+        {
+          "name":  "support.function",
+          "match": "(?!j)(?!\\s).+"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "match": "\\b(Activate|Charge|Class|ClearMemory|Color|Combustion|CompletionRatio|Damage|ElevatorLevel|ElevatorSpeed|Error|ExportCount|Filtration|ForceWrite|Harvest|Horizontal|Idle|ImportCount|Lock|Maximum|MaxQuantity|Mode|On|Open|Output|Plant|PositionX|PositionY|PositionZ|Power|PowerActual|PowerGeneration|PowerPotential|PowerRequired|PressureExternal|PressureInternal|Ratio|RatioCarbonDioxide|RatioNitrogen|RatioNitrousOxide|RatioOxygen|RatioPollutant|RatioVolatiles|RatioWater|Reagents|RecipeHash|RequiredPower|Setting|SolarAngle|TargetX|TargetY|TargetZ|TemperatureExternal|TemperatureSetting|TotalMoles|VelocityMagnitude|VelocityRelativeX|VelocityRelativeY|VelocityRelativeZ|Vertical|Volume|ChargeRatio|Efficiency|Growth|Health|Mature|OccupantHash|Occupied|PressureAir|PressureWaste|Average|Sum|Minimum|Throttle|CombustionLimiter|Contents|Required|Recipe)\\b",
+          "name":  "keyword.other.icX"
+        },
+        {
+          "match": "\\b(if|while|else|end|switch|case|break|foreach|each|for)\\b",
+          "name":  "keyword.control.icX"
+        },
+        {
+          "match": "([~!+-=<>&|*]|dse)",
+          "name":  "keyword.operator.icX"
+        },
+        {
+          "match":    "(var) ([\\d\\w]+)\\s*(=)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.icX"
+            },
+            "2": {
+              "name":     "variable.parameter.icX",
+              "patterns": [
+                {
+                  "include": "#variable"
+                }
+              ]
+            },
+            "3": {
+              "name": "keyword.operator.icX"
+            }
+          }
+        },
+        {
+          "match":    "(const) ([\\d\\w]+)\\s*(=)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.icX"
+            },
+            "2": {
+              "name":     "variable.parameter.icX",
+              "patterns": [
+                {
+                  "include": "#constant"
+                }
+              ]
+            },
+            "3": {
+              "name": "keyword.operator.icX"
+            }
+          }
+        },
+        {
+          "match":    "(var) ([\\d\\w]+)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.untitled"
+            },
+            "2": {
+              "name":     "variable.parameter.icX",
+              "patterns": [
+                {
+                  "include": "#variable"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "match":    "\\b(function) ([\\d\\w]+)",
+          "name":     "keyword.operator.icX",
+          "captures": {
+            "1": {
+              "name": "keyword.control.untitled"
+            },
+            "2": {
+              "name": "entity.name.function.icX"
+            }
+          }
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        {
+          "begin":         "#",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.icX"
+            }
+          },
+          "end":           "$",
+          "name":          "comment.line.number-sign.icX"
+        },
+        {
+          "begin":         "use",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.icX"
+            }
+          },
+          "end":           "$",
+          "name":          "comment.line.number-sign.icX"
+        }
+      ]
+    },
+    "constant": {
+      "patterns": [
+        {
+          "name":  "constant.numeric.icX",
+          "match": "\\b[\\d\\.]+\\b"
+        }
+      ]
+    },
+    "entity":   {
+      "patterns": [
+        {
+          "name":  "entity.name.function.icX",
+          "match": "\\b(abs|acos|add|alias|and|asin|atan|atan2|bap|bapal|bapz|bapzal|bdns|bdnsal|bdse|bdseal|beq|beqal|beqz|beqzal|bge|bgeal|bgez|bgezal|bgt|bgtal|bgtz|bgtzal|ble|bleal|blez|blezal|blt|bltal|bltz|bltzal|bna|bnaal|bnaz|bnazal|bne|bneal|bnez|bnezal|brap|brapz|brdns|brdse|breq|breqz|brge|brgez|brgt|brgtz|brle|brlez|brlt|brltz|brna|brnaz|brne|brnez|ceil|cos|define|div|exp|floor|hcf|j|jal|jr|l|log|lr|ls|max|min|mod|move|mul|nor|or|peek|pop|push|rand|round|s|sap|sapz|sdns|sdse|select|seq|seqz|sge|sgez|sgt|sgtz|sin|sle|sleep|slez|slt|sltz|sna|snaz|sne|snez|sqrt|sub|tan|trunc|xor|yield|lb|sb|stack|debug|return)\\b"
+        },
+        {
+          "name":  "entity.name.function.icX",
+          "match": "([\\d\\w]+)\\(\\)"
+        },
+        {
+          "name":  "entity.name.tag.icX",
+          "match": "(^\\s{0,}j \\w+$)|(^\\s{0,}\\w+:$)"
+        },
+        {
+          "name":  "entity.name.function.icX",
+          "match": "\\b(debug|stack)\\b"
+        }
+      ]
+    },
+    "variable": {
+      "patterns": [
+        {
+          "name":  "variable.parameter.icX",
+          "match": "\\b(([rd]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)))|(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))|(d(0|1|2|3|4|5|b)))\\b"
+        },
+        {
+          "name":  "variable.language.icX",
+          "match": "\\bsp\\b"
+        }
+      ]
+    }
+  },
+  "scopeName":          "source.icX"
 }

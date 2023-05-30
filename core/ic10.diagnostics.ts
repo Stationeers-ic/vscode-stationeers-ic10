@@ -1,6 +1,6 @@
-import * as vscode from "vscode";
+import * as vscode from "vscode"
 
-export const Ic10DiagnosticsName = 'ic10_diagnostic';
+export const Ic10DiagnosticsName = "ic10_diagnostic"
 const manual: {
 	"type": string,
 	"op1": string | null,
@@ -11,20 +11,20 @@ const manual: {
 		"preview": string | null,
 		"text": string | null
 	}
-}[]                              = require('../languages/en.json');
-const functions: string[]        = require('../media/ic10.functions.json');
-const keywords: string[]         = require('../media/ic10.keyword.json');
+}[] = require("../languages/en.json")
+const functions: string[] = require("../media/ic10.functions.json")
+const keywords: string[] = require("../media/ic10.keyword.json")
 
 export const regexes = {
-	'rr1'     : new RegExp("[r]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
-	'dr1'     : new RegExp("[d]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
-	'r1'      : new RegExp("(^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)$)|(^sp$)"),
-	'd1'      : new RegExp("^d(0|1|2|3|4|5|b)$"),
-	'rr'      : new RegExp(`\\br(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|17|a)\\b`),
-	'rm'      : new RegExp(`(#-reset-vars-)[\\s\\S]{0,}?(#-reset-vars-)`),
-	'oldSpace': new RegExp("^[\\t ]+", 'gmi'),
-	'strStart': new RegExp("^\".+$"),
-	'strEnd'  : new RegExp(".+\"$"),
+	"rr1":      new RegExp("[r]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
+	"dr1":      new RegExp("[d]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
+	"r1":       new RegExp("(^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)$)|(^sp$)"),
+	"d1":       new RegExp("^d(0|1|2|3|4|5|b)$"),
+	"rr":       new RegExp(`\\br(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|17|a)\\b`),
+	"rm":       new RegExp(`(#-reset-vars-)[\\s\\S]{0,}?(#-reset-vars-)`),
+	"oldSpace": new RegExp("^[\\t ]+", "gmi"),
+	"strStart": new RegExp("^\".+$"),
+	"strEnd":   new RegExp(".+\"$"),
 }
 
 export class DiagnosticsError {
@@ -32,20 +32,20 @@ export class DiagnosticsError {
 	public message: string
 	public lvl: number
 	public line: number
-	public hash: string;
+	public hash: string
 
 	constructor(message: string, lvl, start: number, length: number, line) {
-		this.line    = line
+		this.line = line
 		this.message = message
-		this.lvl     = lvl
-		this.range   = new vscode.Range(line, start, line, start + length)
-		this.hash    = this.message.replace(/\s+/, '') + line
+		this.lvl = lvl
+		this.range = new vscode.Range(line, start, line, start + length)
+		this.hash = this.message.replace(/\s+/, "") + line
 	}
 }
 
 export class DiagnosticsErrors {
 	public values: DiagnosticsError[] = []
-	private index: string[]           = []
+	private index: string[] = []
 
 	push(a: DiagnosticsError) {
 		if (this.index.indexOf(a.hash) < 0) {
@@ -55,27 +55,27 @@ export class DiagnosticsErrors {
 	}
 
 	reset() {
-		this.values = [];
-		this.index  = [];
+		this.values = []
+		this.index = []
 	}
 }
 
 export class Ic10Diagnostics {
-	public jumps: string[];
-	public aliases: string[];
+	public jumps: string[]
+	public aliases: string[]
 	public errors: DiagnosticsErrors
 
 	constructor() {
-		this.errors = new DiagnosticsErrors;
+		this.errors = new DiagnosticsErrors
 	}
 
 	clear(doc: vscode.TextDocument, container: vscode.DiagnosticCollection) {
-		container.set(doc.uri, []);
+		container.set(doc.uri, [])
 	}
 
 	prepare(doc: vscode.TextDocument) {
-		this.jumps   = [];
-		this.aliases = [];
+		this.jumps = []
+		this.aliases = []
 		this.errors.reset()
 		for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
 			try {
@@ -94,34 +94,34 @@ export class Ic10Diagnostics {
 	}
 
 	run(doc: vscode.TextDocument, container: vscode.DiagnosticCollection): void {
-		const diagnostics: vscode.Diagnostic[] = [];
+		const diagnostics: vscode.Diagnostic[] = []
 		this.prepare(doc)
 
 		for (const de of this.errors.values) {
 			diagnostics.push(this.createDiagnostic(de.range, de.message, de.lvl))
 		}
 		if (doc.lineCount > 128) {
-			diagnostics.push(this.createDiagnostic(new vscode.Range(128, 0, 128, 1), 'Max line', vscode.DiagnosticSeverity.Error))
+			diagnostics.push(this.createDiagnostic(new vscode.Range(128, 0, 128, 1), "Max line", vscode.DiagnosticSeverity.Error))
 		}
-		container.set(doc.uri, diagnostics);
+		container.set(doc.uri, diagnostics)
 	}
 
 	parseLine2(doc: vscode.TextDocument, lineIndex) {
-		const lineOfText = doc.lineAt(lineIndex);
+		const lineOfText = doc.lineAt(lineIndex)
 		if (lineOfText.text.trim().length > 0) {
 			var text = lineOfText.text.trim()
 			functions.some((substring) => {
-				if (text.startsWith('#')) {
-					if (text.startsWith('#log')) {
+				if (text.startsWith("#")) {
+					if (text.startsWith("#log")) {
 						this.errors.push(new DiagnosticsError(`Debug function: "${text}"`, 2, 0, text.length, lineIndex))
-						return true;
+						return true
 					}
-					return true;
+					return true
 				}
-				text = text.replace(/#.+$/, '')
+				text = text.replace(/#.+$/, "")
 				text = text.trim()
-				if (text.endsWith(':')) {
-					return true;
+				if (text.endsWith(":")) {
+					return true
 				}
 				if (text.startsWith(substring)) {
 					// console.log(this.aliases)
@@ -129,7 +129,7 @@ export class Ic10Diagnostics {
 					this.analyzeFunctionInputs(words, text, lineIndex)
 					return true
 				} else {
-					return false;
+					return false
 				}
 
 			}, this)
@@ -137,37 +137,37 @@ export class Ic10Diagnostics {
 	}
 
 	parseLine(doc: vscode.TextDocument, lineIndex) {
-		const lineOfText = doc.lineAt(lineIndex);
+		const lineOfText = doc.lineAt(lineIndex)
 		if (lineOfText.text.trim().length > 0) {
-			var text     = lineOfText.text.trim()
-			var test     = functions.some((substring) => {
-				if (text.startsWith('#')) {
-					if (text.startsWith('#log')) {
+			var text = lineOfText.text.trim()
+			var test = functions.some((substring) => {
+				if (text.startsWith("#")) {
+					if (text.startsWith("#log")) {
 						this.errors.push(new DiagnosticsError(`Debug function: "${text}"`, 2, 0, text.length, lineIndex))
-						return true;
+						return true
 					}
-					return true;
+					return true
 				}
-				text = text.replace(/#.+$/, '')
+				text = text.replace(/#.+$/, "")
 				text = text.trim()
-				if (text.endsWith(':')) {
+				if (text.endsWith(":")) {
 					this.jumps.push(text)
-					this.aliases.push(text.replace(':', ''));
-					return true;
+					this.aliases.push(text.replace(":", ""))
+					return true
 				}
 				if (text.startsWith(substring)) {
 					var words = text.split(/ +/)
-					if (text.startsWith('alias')) {
+					if (text.startsWith("alias")) {
 						this.aliases.push(words[1])
 					}
-					if (text.startsWith('define')) {
+					if (text.startsWith("define")) {
 						this.aliases.push(words[1])
 					}
 					return true
 				}
-				return false;
+				return false
 			}, this)
-			this.aliases = [...new Set(this.aliases)];
+			this.aliases = [...new Set(this.aliases)]
 			if (test === false) {
 				this.errors.push(new DiagnosticsError(`Unknown function: "${text}"`, 0, 0, text.length, lineIndex))
 			}
@@ -175,7 +175,7 @@ export class Ic10Diagnostics {
 	}
 
 	analyzeFunctionInputs(words: string[], text: string, lineIndex: number): errorMsg | true {
-		var fn  = words[0] ?? null
+		var fn = words[0] ?? null
 		var op1 = words[1] ?? null
 		var op2 = words[2] ?? null
 		var op3 = words[3] ?? null
@@ -186,11 +186,11 @@ export class Ic10Diagnostics {
 
 			//return {length: fn.length, msg: `Unknown function "${fn}"`, lvl: 0};
 		} else {
-			var rule = manual[fn];
-			if (rule.type == 'Function') {
+			var rule = manual[fn]
+			if (rule.type == "Function") {
 				if (op1 !== null && this.empty(rule.op1)) {
 					this.errors.push(new DiagnosticsError(`this function have\`t any Arguments: "${text}"`, 0, 0, text.length, lineIndex))
-					return true;
+					return true
 				}
 				if (!this.empty(op1) && !this.empty(rule.op1)) {
 					this.parseOpRule(rule.op1, op1, text.indexOf(op1, fn.length), text, lineIndex)
@@ -216,7 +216,7 @@ export class Ic10Diagnostics {
 				this.errors.push(new DiagnosticsError(`Unknown function: "${text}"`, 0, 0, text.length, lineIndex))
 			}
 		}
-		return true;
+		return true
 	}
 
 	parseOpRule(op, value, start, text, lineIndex) {
@@ -237,63 +237,63 @@ export class Ic10Diagnostics {
 		BM - режим пакетного чтения, одно из Average, Sum, Minimum или Maximum (можно 0, 1, 2 или 3, соотвественно)
 		Y - текст
 		`
-		const ops       = op.replace(/ */, '').split('/');
-		let errors      = 0;
-		const maxErrors = ops.length;
+		const ops = op.replace(/ */, "").split("/")
+		let errors = 0
+		const maxErrors = ops.length
 		for (const o of ops) {
 			switch (o.toUpperCase()) {
-				case 'T':
-				case 'RC':
-					break;
-				case 'Y':
+				case "T":
+				case "RC":
+					break
+				case "Y":
 					if (!isNaN(parseFloat(value))) {
-						errors++;
+						errors++
 					}
 					if (regexes.rr1.test(value) || regexes.r1.test(value) || regexes.dr1.test(value) || regexes.d1.test(value)) {
-						errors++;
+						errors++
 					}
-					break;
-				case 'H':
-				case 'C':
-				case 'A':
-				case 'O':
+					break
+				case "H":
+				case "C":
+				case "A":
+				case "O":
 					if (isNaN(parseFloat(value)) && this.aliases.indexOf(value) < 0) {
-						errors++;
+						errors++
 					}
-					break;
-				case 'R':
+					break
+				case "R":
 					if (!regexes.rr1.test(value) && !regexes.r1.test(value)) {
-						errors++;
+						errors++
 					}
-					break;
-				case 'N':
+					break
+				case "N":
 					if (this.aliases.indexOf(value) < 0) {
-						errors++;
+						errors++
 					}
 					break
-				case 'D':
+				case "D":
 					if (!regexes.dr1.test(value) && !regexes.d1.test(value)) {
-						errors++;
+						errors++
 					}
 					break
-				case 'S':
+				case "S":
 					if (isNaN(parseFloat(value))) {
-						errors++;
+						errors++
 					}
 					break
-				case 'P':
+				case "P":
 					if (keywords.indexOf(value) < 0) {
-						errors++;
+						errors++
 					}
 					break
-				case 'RM':
-					if (['Contents', 'Required', 'Recipe', 0, 1, 2, "0", "1", "2"].indexOf(value) < 0) {
-						errors++;
+				case "RM":
+					if (["Contents", "Required", "Recipe", 0, 1, 2, "0", "1", "2"].indexOf(value) < 0) {
+						errors++
 					}
 					break
-				case 'BM':
-					if (['Average', 'Sum', 'Minimum', 'Maximum', 0, 1, 2, 3, "0", "1", "2", "3"].indexOf(value) < 0) {
-						errors++;
+				case "BM":
+					if (["Average", "Sum", "Minimum", "Maximum", 0, 1, 2, 3, "0", "1", "2", "3"].indexOf(value) < 0) {
+						errors++
 					}
 					break
 				default :
@@ -303,16 +303,16 @@ export class Ic10Diagnostics {
 		if (errors >= ops.length) {
 			this.errors.push(new DiagnosticsError(`invalid parameter: ${value}, must be "${op}"`, 0, start, value.length, lineIndex))
 		}
-		return true;
+		return true
 	}
 
 	createDiagnostic(range: vscode.Range, message: string, lvl: number): vscode.Diagnostic {
 
 		// create range that represents, where in the document the word is
 		const diagnostic = new vscode.Diagnostic(range, message,
-												 lvl);
-		diagnostic.code  = Ic10DiagnosticsName;
-		return diagnostic;
+			lvl)
+		diagnostic.code = Ic10DiagnosticsName
+		return diagnostic
 	}
 
 	empty(a): boolean {
@@ -320,13 +320,13 @@ export class Ic10Diagnostics {
 			return true
 		}
 		switch (typeof a) {
-			case 'string':
-				if (!a || a.trim() == '') {
+			case "string":
+				if (!a || a.trim() == "") {
 					return true
 				} else {
 					return false
 				}
-			case 'number':
+			case "number":
 				return Boolean(a)
 
 		}

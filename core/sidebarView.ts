@@ -1,11 +1,10 @@
-import * as vscode                                                 from 'vscode';
-import {CancellationToken, WebviewView, WebviewViewResolveContext} from "vscode";
+import * as vscode from "vscode"
+import {CancellationToken, WebviewView, WebviewViewResolveContext} from "vscode"
 
 export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
-	public static readonly viewType = 'Ic10ViewProvider';
+	public static readonly viewType = "Ic10ViewProvider"
 
-	public view?: vscode.WebviewView;
-	private sectionsNamed: {} = {};
+	public view?: vscode.WebviewView
 	public events: {
 		[name: string]: (data: {
 			id: string
@@ -14,15 +13,17 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 			name: string
 		}) => void
 	} = {}
+	private sectionsNamed: {} = {}
 	private sections: {
 		name: string,
 		content: string,
 		lang: string,
 		priority: number
-	}[] = [];
-	private newContent: string;
-	private update: boolean;
-	private isEvent:boolean = false
+	}[] = []
+	private newContent: string
+	private update: boolean
+	private isEvent: boolean = false
+
 	constructor(
 		private readonly _extensionUri: vscode.Uri,
 	) {
@@ -33,8 +34,8 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 		this.view.webview.postMessage({fn: name, data: data})
 	}
 
-	refresh(newContent = '') {
-		this.sendCommand('update', newContent)
+	refresh(newContent = "") {
+		this.sendCommand("update", newContent)
 	}
 
 	start() {
@@ -43,24 +44,24 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 				this.update = false
 				this.refresh(this.newContent)
 			}
-			if(!this.isEvent){
-				try{
+			if (!this.isEvent) {
+				try {
 					this.view.webview.onDidReceiveMessage(
 						message => {
 							// console.log(message)
-							if (typeof this.events[message.fn] == 'function') {
+							if (typeof this.events[message.fn] == "function") {
 								this.events[message.fn](message.data)
 							}
 						},
 						this,
-					);
+					)
 					this.isEvent = true
-				}catch(e){
-					
+				} catch (e) {
+
 				}
 			}
 		}, 100)
-		
+
 	}
 
 	section(name, content, lang, priority: number = 0) {
@@ -71,20 +72,20 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 		} else {
 			this.sections[this.sectionsNamed[name]] = {name, content, lang, priority}
 		}
-		let newContent   = "";
-		const languageId = vscode.window.activeTextEditor.document.languageId;
+		let newContent = ""
+		const languageId = vscode.window.activeTextEditor.document.languageId
 		this.sections.sort((a, b) => {
 			if (a.priority < b.priority) {
-				return -1;
+				return -1
 			}
 			if (a.priority > b.priority) {
-				return 1;
+				return 1
 			}
-			return 0;
+			return 0
 		})
 		for (const sectionsKey in this.sections) {
-			const obj = this.sections[sectionsKey];
-			if (obj.lang == 'both' || obj.lang == languageId) {
+			const obj = this.sections[sectionsKey]
+			if (obj.lang == "both" || obj.lang == languageId) {
 				newContent += `
 				<section id="${obj.name}">
 					${obj.content}
@@ -93,7 +94,7 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 			}
 		}
 		this.newContent = newContent
-		this.update = true;
+		this.update = true
 	}
 
 	clear() {
@@ -101,11 +102,39 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 		this.sections = []
 	}
 
-	private _getHtmlForWebview(content = '') {
+	getNonce() {
+		let text = ""
+		const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+		for (let i = 0; i < 32; i++) {
+			text += possible.charAt(Math.floor(Math.random() * possible.length))
+		}
+		return text
+	}
+
+	resolveWebviewView(webviewView: WebviewView, context: WebviewViewResolveContext, token: CancellationToken): Thenable<void> | void {
+		this.view = webviewView
+
+		webviewView.webview.options = {
+			// Allow scripts in the webview
+			enableScripts: true,
+
+			localResourceRoots: [
+				this._extensionUri
+			]
+		}
+
+		webviewView.webview.html = this._getHtmlForWebview()
+
+		webviewView.webview.onDidReceiveMessage(data => {
+			console.log(data)
+		})
+	}
+
+	private _getHtmlForWebview(content = "") {
 		// Do the same for the stylesheet.
-		const styleMainUri = this.view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'sidebar.css'));
-		const scriptMainUri = this.view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'sidebar.js'));
-		const nonce = this.getNonce();
+		const styleMainUri = this.view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "media", "sidebar.css"))
+		const scriptMainUri = this.view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "media", "sidebar.js"))
+		const nonce = this.getNonce()
 
 		return `<!DOCTYPE html>
 			<html lang="en">
@@ -127,35 +156,7 @@ export class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
 				</div>
 				<script src="${scriptMainUri}" nonce="${nonce}"></script>
 			</body>
-			</html>`;
-	}
-
-	getNonce() {
-		let text = '';
-		const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-		for (let i = 0; i < 32; i++) {
-			text += possible.charAt(Math.floor(Math.random() * possible.length));
-		}
-		return text;
-	}
-
-	resolveWebviewView(webviewView: WebviewView, context: WebviewViewResolveContext, token: CancellationToken): Thenable<void> | void {
-		this.view = webviewView;
-
-		webviewView.webview.options = {
-			// Allow scripts in the webview
-			enableScripts: true,
-
-			localResourceRoots: [
-				this._extensionUri
-			]
-		};
-
-		webviewView.webview.html = this._getHtmlForWebview();
-
-		webviewView.webview.onDidReceiveMessage(data => {
-			console.log(data)
-		});
+			</html>`
 	}
 
 }

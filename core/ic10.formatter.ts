@@ -1,95 +1,95 @@
-import * as vscode from "vscode";
+import * as vscode from "vscode"
 
 const regexes = {
-	'rr1': new RegExp("[rd]+(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
-	'r1': new RegExp("(^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)$)|(sp)"),
-	'd1': new RegExp("^d([012345b])$"),
-	'rr': new RegExp(`\\br(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|17|a)\\b`),
-	'rm': new RegExp(`(#-reset-vars-)[\\s\\S]*?(#-reset-vars-)`),
-	'oldSpace': new RegExp("^[\\t ]+", 'gmi'),
-	'strStart': new RegExp("^\".+$"),
-	'strEnd': new RegExp(".+\"$"),
+	"rr1":      new RegExp("[rd]+(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
+	"r1":       new RegExp("(^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)$)|(sp)"),
+	"d1":       new RegExp("^d([012345b])$"),
+	"rr":       new RegExp(`\\br(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|17|a)\\b`),
+	"rm":       new RegExp(`(#-reset-vars-)[\\s\\S]*?(#-reset-vars-)`),
+	"oldSpace": new RegExp("^[\\t ]+", "gmi"),
+	"strStart": new RegExp("^\".+$"),
+	"strEnd":   new RegExp(".+\"$"),
 }
 
 export class ic10Formatter {
-	private readonly text: string;
-	private labels: {};
-	private lines: Array<string>;
-	private commands: any;
-	private position: number;
+	public resultText: string
+	private readonly text: string
+	private labels: {}
+	private lines: Array<string>
+	private commands: any
+	private position: number
 	private jumps: {
 		jal: Object;
 		j: {
 			ra: Array<number>
 		}
-	};
-	public resultText: string;
-	private document: vscode.TextDocument;
-	private vars: Set<string>;
-	private functions: Object;
-	private spaces: Array<any>;
-	private loops: Object;
+	}
+	private document: vscode.TextDocument
+	private vars: Set<string>
+	private functions: Object
+	private spaces: Array<any>
+	private loops: Object
 
 
 	constructor(document: vscode.TextDocument) {
-		this.document = document;
-		this.text = document.getText();
-		this.resultText = this.text + '';
-		this.labels = {};
-		this.functions = {};
-		this.loops = {};
-		this.spaces = [];
-		this.vars = new Set;
+		this.document = document
+		this.text = document.getText()
+		this.resultText = this.text + ""
+		this.labels = {}
+		this.functions = {}
+		this.loops = {}
+		this.spaces = []
+		this.vars = new Set
 		this.jumps = {
-			j: {
+			j:   {
 				ra: []
 			},
 			jal: {},
-		};
+		}
 
-		this.text = this.text.replace(regexes.oldSpace, '')
-		this.text = this.text.replace(regexes.rm, '')
+		this.text = this.text.replace(regexes.oldSpace, "")
+		this.text = this.text.replace(regexes.rm, "")
 		this.init(this.text)
 		this.formatStart()
 	}
 
 	init(text: string) {
-		this.labels = {};
-		this.functions = {};
-		this.loops = {};
-		this.spaces = [];
-		this.vars = new Set;
+		this.labels = {}
+		this.functions = {}
+		this.loops = {}
+		this.spaces = []
+		this.vars = new Set
 		this.jumps = {
-			j: {
+			j:   {
 				ra: []
 			},
 			jal: {},
-		};
+		}
 
-		const self = this;
+		const self = this
 
-		this.lines = text.split(/\r?\n/);
+		this.lines = text.split(/\r?\n/)
 		const commands = this.lines
-							 .map((line: string) => {
-								 let m = regexes.rr.exec(line);
-								 if (m) {
-									 self.vars.add(m[0])
-								 }
-								 const args    = line.trim().split(/ +/)
-								 const command = args.shift()
-								 return {command, args}
-							 });
+			.map((line: string) => {
+				let m = regexes.rr.exec(line)
+				if (m) {
+					self.vars.add(m[0])
+				}
+				const args = line.trim().split(/ +/)
+				const command = args.shift()
+				return {command, args}
+			})
 		for (const commandsKey in this.lines) {
 			if (commands.hasOwnProperty(commandsKey)) {
-				let command   = commands[commandsKey]
-				const newArgs = {};
-				let mode      = 0;
-				let argNumber = 0;
+				let command = commands[commandsKey]
+				const newArgs = {}
+				let mode = 0
+				let argNumber = 0
 				for (let argsKey in command.args) {
 					if (command.args.hasOwnProperty(argsKey)) {
 						let arg = command.args[argsKey]
 						if (arg.startsWith("#")) {
-							break;
+							break
 						}
 						if (mode === 0) {
 							argNumber++
@@ -98,7 +98,7 @@ export class ic10Formatter {
 							mode = 1
 						}
 						if (argNumber in newArgs) {
-							newArgs[argNumber] += ' ' + arg
+							newArgs[argNumber] += " " + arg
 						} else {
 							newArgs[argNumber] = arg
 						}
@@ -109,7 +109,7 @@ export class ic10Formatter {
 				}
 				commands[commandsKey].args = Object.values(newArgs)
 			} else {
-				commands.push({command: '', args: []})
+				commands.push({command: "", args: []})
 			}
 		}
 		this.commands = commands
@@ -120,10 +120,10 @@ export class ic10Formatter {
 			if (command.match(/^\w+:$/)) {
 				this.labels[command.replace(":", "")] = this.position
 			}
-			if (command == 'j' && (args[0] == 'ra' || args[0] == 'r17')) {
+			if (command == "j" && (args[0] == "ra" || args[0] == "r17")) {
 				this.jumps.j.ra.push(this.position)
 			} else {
-				if (command == 'j' || command == 'jr' || command == 'jal') {
+				if (command == "j" || command == "jr" || command == "jal") {
 					if (typeof this.jumps[command] == "undefined") {
 						this.jumps[command] = {}
 					}
@@ -141,29 +141,29 @@ export class ic10Formatter {
 	formatStart() {
 		this.addResetVar()
 		this.init(this.text)
-		let maxIterations = 1;
+		let maxIterations = 1
 		for (let o = 0; o < maxIterations; o++) {
-			const lineCount = this.lines.length;
+			const lineCount = this.lines.length
 			for (let i = 0; i < lineCount; i++) {
 				let line = this.lines[i]
 				if (i == 0) {
 					if ((/^\s*$/.test(line) || !line)) {
 						this.lines.splice(0, 1)
-						maxIterations++;
-						break;
+						maxIterations++
+						break
 					}
 				}
 				if (i + 1 <= lineCount) {
 					let nextLine = this.lines[i + 1]
 					if ((/^\s*$/.test(nextLine) || !nextLine) && (/^\s*$/.test(line) || !line)) {
 						this.lines.splice(i, 1)
-						maxIterations++;
-						break;
+						maxIterations++
+						break
 					}
 				}
 			}
 		}
-		const new_txt = this.lines.join("\n");
+		const new_txt = this.lines.join("\n")
 		this.init(new_txt)
 		this.findFunctions()
 		this.findLoos()
@@ -182,15 +182,15 @@ export class ic10Formatter {
 	}
 
 	renderSpaces() {
-		let fn;
+		let fn
 		this.spaces = []
 		this.lines.forEach(() => {
 			this.spaces.push(0)
 		})
 		for (const functionsKey in this.functions) {
-			fn        = this.functions[functionsKey];
+			fn = this.functions[functionsKey]
 			let start = fn.start
-			let end   = fn.end - 2
+			let end = fn.end - 2
 			this.spaces.forEach(function (value, i, arr) {
 				if (i >= start && i <= end) {
 					arr[i] = value + 1
@@ -198,7 +198,7 @@ export class ic10Formatter {
 			})
 		}
 		for (const loopsKey in this.loops) {
-			fn = this.loops[loopsKey];
+			fn = this.loops[loopsKey]
 			let start = fn.start
 			let end = fn.end - 2
 			this.spaces.forEach(function (value, i, arr) {
@@ -220,7 +220,7 @@ export class ic10Formatter {
 					this.jumps.j.ra.sort((a, b) => {
 						return b - a
 					})
-					let j_pos = 0;
+					let j_pos = 0
 					this.jumps.j.ra.forEach((v) => {
 						if (v > position) {
 							j_pos = v
@@ -229,7 +229,7 @@ export class ic10Formatter {
 					})
 					this.functions[labelsKey] = {
 						start: position,
-						end: j_pos,
+						end:   j_pos,
 						calls: this.jumps.jal[labelsKey]
 					}
 				}
@@ -247,7 +247,7 @@ export class ic10Formatter {
 					this.jumps.j[labelsKey].sort((a, b) => {
 						return b - a
 					})
-					let j_pos = 0;
+					let j_pos = 0
 					this.jumps.j[labelsKey].forEach((v) => {
 						if (v > position) {
 							j_pos = v
@@ -256,7 +256,7 @@ export class ic10Formatter {
 					})
 					this.loops[labelsKey] = {
 						start: position,
-						end: j_pos,
+						end:   j_pos,
 						calls: this.jumps.j[labelsKey]
 					}
 				}

@@ -1,1 +1,1272 @@
-{"alias":{"prefix":"alias","body":["alias"],"description":"Specify an alias for a register or data channel"},"aliasD0":{"prefix":"aliasd0","body":["alias $1 d0"],"description":"alias {name} d0"},"aliasD1":{"prefix":"aliasd1","body":["alias $1 d1"],"description":"alias {name} d1"},"aliasD2":{"prefix":"aliasd2","body":["alias $1 d2"],"description":"alias {name} d2"},"aliasD3":{"prefix":"aliasd3","body":["alias $1 d3"],"description":"alias {name} d3"},"aliasD4":{"prefix":"aliasd4","body":["alias $1 d4"],"description":"alias {name} d4"},"aliasD5":{"prefix":"aliasd5","body":["alias $1 d5"],"description":"alias {name} d5"},"loop":{"prefix":"j l","body":["loop:","$1","j loop"],"description":"main loop"},"abs":{"prefix":"abs","body":["abs"],"description":"The absolute value of the number"},"acos":{"prefix":"acos","body":["acos"],"description":"Arccosine*"},"add":{"prefix":"add","body":["add"],"description":"Sum"},"and":{"prefix":"and","body":["and"],"description":"Logical AND, one if both op2 and op3 are true, zero otherwise"},"asin":{"prefix":"asin","body":["asin"],"description":"Arcsine*"},"atan":{"prefix":"atan","body":["atan"],"description":"Arctangent*"},"bap":{"prefix":"bap","body":["bap"],"description":"Jump to op4 if op1 op2 with precision op3"},"bapal":{"prefix":"bapal","body":["bapal"],"description":"Jump to op4 if op1 op2 with precision op3, writing the address of the next line to ra"},"bapz":{"prefix":"bapz","body":["bapz"],"description":"Jump to op3 if op1 0 with precision op2"},"bapzal":{"prefix":"bapzal","body":["bapzal"],"description":"Jump to op3 if op1 0 with precision op2, writing the address of the next line to ra"},"bdns":{"prefix":"bdns","body":["bdns"],"description":"Jump to op2 if op1 channel is not configured"},"bdnsal":{"prefix":"bdnsal","body":["bdnsal"],"description":"Jump to op2 if channel op1 is not configured, writing next line address to ra"},"bdse":{"prefix":"bdse","body":["bdse"],"description":"Jump to op2 if channel op1 is configured"},"bdseal":{"prefix":"bdseal","body":["bdseal"],"description":"Jump to op2 if channel op1 is configured with next line address written to ra"},"beq":{"prefix":"beq","body":["beq"],"description":"Jump to op3 if op1 = op2"},"beqal":{"prefix":"beqal","body":["beqal"],"description":"Jump to op3 if op1 = op2, writing the address of the next line to ra"},"beqz":{"prefix":"beqz","body":["beqz"],"description":"Jump to op2 if op1 = 0"},"beqzal":{"prefix":"beqzal","body":["beqzal"],"description":"Jump to op2 if op1 = 0, writing the address of the next line to ra"},"bge":{"prefix":"bge","body":["bge"],"description":"Jump to op3 if op1 >= op2"},"bgeal":{"prefix":"bgeal","body":["bgeal"],"description":"Jump to op3 if op1 >= op2, writing next line address to ra"},"bgez":{"prefix":"bgez","body":["bgez"],"description":"Jump to op2 if op1 >= 0"},"bgezal":{"prefix":"bgezal","body":["bgezal"],"description":"Jump to op2 if op1 >= 0, writing next line address to ra"},"bgt":{"prefix":"bgt","body":["bgt"],"description":"Jump to op3 if op1 > op2"},"bgtal":{"prefix":"bgtal","body":["bgtal"],"description":"Jump to op3 if op1 > op2, writing next line address to ra"},"bgtz":{"prefix":"bgtz","body":["bgtz"],"description":"Jump to op2 if op1 > 0"},"bgtzal":{"prefix":"bgtzal","body":["bgtzal"],"description":"Jump to op2 if op1 > 0, writing the address of the next line to ra"},"ble":{"prefix":"ble","body":["ble"],"description":"Jump to op3 if op1 <= op2"},"bleal":{"prefix":"bleal","body":["bleal"],"description":"Jump to op3 if op1 <= op2, writing next line address to ra"},"blez":{"prefix":"blez","body":["blez"],"description":"Jump to op2 if op1 <= 0"},"blezal":{"prefix":"blezal","body":["blezal"],"description":"Jump to op2 if op1 <= 0, writing the address of the next line to ra"},"blt":{"prefix":"blt","body":["blt"],"description":"Jump to op3 if op1 < op2"},"bltal":{"prefix":"bltal","body":["bltal"],"description":"Jump to op3 if op1 < op2, writing the address of the next line to ra"},"bltz":{"prefix":"bltz","body":["bltz"],"description":"Jump to op2 if op1 < 0"},"bltzal":{"prefix":"bltzal","body":["bltzal"],"description":"Jump to op2 if op1 < 0, writing the address of the next line to ra"},"bna":{"prefix":"bna","body":["bna"],"description":"Jump to op4 if op1 ~= op2 with precision op3"},"bnaal":{"prefix":"bnaal","body":["bnaal"],"description":"Jump to op4 if op1 ~= op2 with precision op3, writing next line address to ra"},"bnaz":{"prefix":"bnaz","body":["bnaz"],"description":"Jump to op3 if op1 ~= 0 with precision op2"},"bnazal":{"prefix":"bnazal","body":["bnazal"],"description":"Jump to op3 if op1 ~= 0 with precision op2, writing next line address to ra"},"bne":{"prefix":"bne","body":["bne"],"description":"Jump to op3 if op1 != op2"},"bneal":{"prefix":"bneal","body":["bneal"],"description":"Jump to op3 if op1 != op2, writing next line address to ra"},"bnez":{"prefix":"bnez","body":["bnez"],"description":"Jump to op2 if op1 != 0"},"bnezal":{"prefix":"bnezal","body":["bnezal"],"description":"Jump to op2 if op1 != 0, writing the address of the next line to ra"},"brap":{"prefix":"brap","body":["brap"],"description":"Relative jump to +op4 if op1 op2 with precision op3"},"brapz":{"prefix":"brapz","body":["brapz"],"description":"Relative jump to +op3 if op1 0 with precision op2"},"brdns":{"prefix":"brdns","body":["brdns"],"description":"Relative jump to +op2 if channel op1 is not configured"},"brdse":{"prefix":"brdse","body":["brdse"],"description":"Relative jump to +op2 if channel op1 is configured"},"breq":{"prefix":"breq","body":["breq"],"description":"Relative jump to +op3 if op1 = op2"},"breqz":{"prefix":"breqz","body":["breqz"],"description":"Relative jump to +op2 if op1 = 0"},"brge":{"prefix":"brge","body":["brge"],"description":"Relative jump to +op3 if op1 >= op2"},"brgez":{"prefix":"brgez","body":["brgez"],"description":"Relative jump to +op2 if op1 >= 0"},"brgt":{"prefix":"brgt","body":["brgt"],"description":"Relative jump to +op3 if op1 > op2"},"brgtz":{"prefix":"brgtz","body":["brgtz"],"description":"Relative jump to +op2 if op1 > 0"},"brle":{"prefix":"brle","body":["brle"],"description":"Relative jump to +op3 if op1 <= op2"},"brlez":{"prefix":"brlez","body":["brlez"],"description":"Relative jump to +op2 if op1 <= 0"},"brlt":{"prefix":"brlt","body":["brlt"],"description":"Relative jump to +op3 if op1 < op2"},"brltz":{"prefix":"brltz","body":["brltz"],"description":"Relative jump to +op2 if op1 < 0"},"brna":{"prefix":"brna","body":["brna"],"description":"Relative jump to +op4 if op1 op2 with precision op3"},"brnaz":{"prefix":"brnaz","body":["brnaz"],"description":"Relative jump to +op3 if op1 0 with precision op2"},"brne":{"prefix":"brne","body":["brne"],"description":"Relative jump to +op3 if op1 != op2"},"brnez":{"prefix":"brnez","body":["brnez"],"description":"Relative jump to +op2 if op1 != 0"},"ceil":{"prefix":"ceil","body":["ceil"],"description":"Round up to nearest integer"},"cos":{"prefix":"cos","body":["cos"],"description":"Cosine*"},"define":{"prefix":"define","body":["define"],"description":"Set a name for the constant"},"div":{"prefix":"div","body":["div"],"description":"Division"},"exp":{"prefix":"exp","body":["exp"],"description":"Exhibitor"},"floor":{"prefix":"floor","body":["floor"],"description":"Rounding down to nearest integer"},"hcf":{"prefix":"hcf","body":["hcf"],"description":"Stop work and burn the microprocessor"},"j":{"prefix":"j","body":["j"],"description":"Jump to the specified line"},"jal":{"prefix":"jal","body":["jal"],"description":"Jump to op1, writing the address of the next line to ra"},"jr":{"prefix":"jr","body":["jr"],"description":"Relative jump to +op1"},"l":{"prefix":"l","body":["l"],"description":"Reading the value of parameter op3 from port op2"},"log":{"prefix":"log","body":["log"],"description":"natural logarithm"},"lr":{"prefix":"lr","body":["lr"],"description":"Read reagent value op4 in op3 mode from port op2"},"ls":{"prefix":"ls","body":["ls"],"description":"Read value op4 from slot op3 of port op2"},"max":{"prefix":"max","body":["max"],"description":"Maximum of two"},"min":{"prefix":"min","body":["min"],"description":"Minimum of two"},"mod":{"prefix":"mod","body":["mod"],"description":"Remainder of integer division of op2 by op3 (the result is not equivalent to the % operator, and will be positive for any signs of op2 and op3)"},"move":{"prefix":"move","body":["move"],"description":"Value assignment"},"mul":{"prefix":"mul","body":["mul"],"description":"Work"},"nor":{"prefix":"nor","body":["nor"],"description":"Inverse OR, one if both op2 and op3 are false, zero otherwise"},"or":{"prefix":"or","body":["or"],"description":"Logical OR, zero if both op2 and op3 are false, one otherwise"},"peek":{"prefix":"peek","body":["peek"],"description":"Push the top value off the stack into op1 without moving the stack"},"pop":{"prefix":"pop","body":["pop"],"description":"Pop a value from the stack and write to op1"},"push":{"prefix":"push","body":["push"],"description":"Push op1 onto the stack"},"rand":{"prefix":"rand","body":["rand"],"description":"Random value from 0 to 1 inclusive"},"round":{"prefix":"round","body":["round"],"description":"Rounding to nearest integer"},"s":{"prefix":"s","body":["s"],"description":"Writing a value to the op2 parameter of port op1"},"sap":{"prefix":"sap","body":["sap"],"description":"If op2 op3 with precision op4, then one, otherwise zero"},"sapz":{"prefix":"sapz","body":["sapz"],"description":"If op2 0 with precision op3, then one, otherwise zero"},"sdns":{"prefix":"sdns","body":["sdns"],"description":"If channel op2 is not set to one, otherwise zero"},"sdse":{"prefix":"sdse","body":["sdse"],"description":"If channel op2 is set to one, otherwise zero"},"select":{"prefix":"select","body":["select"],"description":"Ternary select. If op2 is true then op1 := op3, otherwise op1 := op4"},"seq":{"prefix":"seq","body":["seq"],"description":"If op2 = op3, then one, otherwise zero"},"seqz":{"prefix":"seqz","body":["seqz"],"description":"If op2 = 0, then one, otherwise zero"},"sge":{"prefix":"sge","body":["sge"],"description":"If op2 op3, then one, otherwise zero"},"sgez":{"prefix":"sgez","body":["sgez"],"description":"If op2 0, then one, otherwise zero"},"sgt":{"prefix":"sgt","body":["sgt"],"description":"If op2 > op3, then one, otherwise zero"},"sgtz":{"prefix":"sgtz","body":["sgtz"],"description":"If op2 > 0, then one, otherwise zero"},"sin":{"prefix":"sin","body":["sin"],"description":"Sinus*"},"sle":{"prefix":"sle","body":["sle"],"description":"If op2 op3, then one, otherwise zero"},"sleep":{"prefix":"sleep","body":["sleep"],"description":"Pause the program for op1 seconds"},"slez":{"prefix":"slez","body":["slez"],"description":"If op2 0, then one, otherwise zero"},"slt":{"prefix":"slt","body":["slt"],"description":"If op2 < op3, then one, otherwise zero"},"sltz":{"prefix":"sltz","body":["sltz"],"description":"If op2 < 0, then one, otherwise zero"},"sna":{"prefix":"sna","body":["sna"],"description":"If op2 op3 with precision op4, then one, otherwise zero"},"snaz":{"prefix":"snaz","body":["snaz"],"description":"If op2 0 with precision op3, then one, otherwise zero"},"sne":{"prefix":"sne","body":["sne"],"description":"If op2 op3, then one, otherwise zero"},"snez":{"prefix":"snez","body":["snez"],"description":"If op2 0, then one, otherwise zero"},"sqrt":{"prefix":"sqrt","body":["sqrt"],"description":"Square root"},"sub":{"prefix":"sub","body":["sub"],"description":"Difference"},"tan":{"prefix":"tan","body":["tan"],"description":"Tangent*"},"trunc":{"prefix":"trunc","body":["trunc"],"description":"The integer part of number"},"xor":{"prefix":"xor","body":["xor"],"description":"XOR, one if one and only one of op2 and op3 is true, zero otherwise"},"yield":{"prefix":"yield","body":["yield"],"description":"Pausing the program until the next tick"},"Activate":{"prefix":"Activate","body":["Activate"],"description":"-1 - stop, 0 - not working 1 - working"},"Charge":{"prefix":"Charge","body":["Charge"],"description":"Battery or accumulator charge, J. Level of electricity generation by a solar panel, W."},"Class":{"prefix":"Class","body":["Class"],"description":"the class of the object in the slot"},"ClearMemory":{"prefix":"ClearMemory","body":["ClearMemory"],"description":">=1 - reset counters"},"Color":{"prefix":"Color","body":["Color"],"description":"Color of LED lamp, fixed beacon and LED display"},"Combustion":{"prefix":"Combustion","body":["Combustion"],"description":"1 - ignition detected, 0 - in all other cases"},"CompletionRatio":{"prefix":"CompletionRatio","body":["CompletionRatio"],"description":"production stage in %"},"Damage":{"prefix":"Damage","body":["Damage"],"description":"object damage level"},"ElevatorLevel":{"prefix":"ElevatorLevel","body":["ElevatorLevel"],"description":"For reading - the level at which the elevator cabin is located, or -1 if there is no cabin. On record - sends the elevator to the specified floor."},"ElevatorSpeed":{"prefix":"ElevatorSpeed","body":["ElevatorSpeed"],"description":"The speed of the elevator cabin, m / tick. A negative value corresponds to downward movement, 0 to a stationary booth, a positive value to upward movement."},"Error":{"prefix":"Error","body":["Error"],"description":"0 - normal operation, 1 - error"},"ExportCount":{"prefix":"ExportCount","body":["ExportCount"],"description":"counter of objects passed through the export slot"},"Filtration":{"prefix":"Filtration","body":["Filtration"],"description":"Switches the filtration of the spent mixture in a durable suit."},"ForceWrite":{"prefix":"ForceWrite","body":["ForceWrite"],"description":"Forces the write and multiwrite chips to transfer the current value to the hardware."},"Harvest":{"prefix":"Harvest","body":["Harvest"],"description":"Activates harvesting in an automatic hydroponic station."},"Horizontal":{"prefix":"Horizontal","body":["Horizontal"],"description":"angle with respect to the Sun in degrees in the horizontal projection of the Sun onto the sensor plane"},"Idle":{"prefix":"Idle","body":["Idle"],"description":"Loading the arc furnace. 0 - ore is not loaded, 1 - loaded."},"ImportCount":{"prefix":"ImportCount","body":["ImportCount"],"description":"counter of objects passed through the import slot"},"Lock":{"prefix":"Lock","body":["Lock"],"description":"0 - manual control unlocked, 1 - locked"},"Maximum":{"prefix":"Maximum","body":["Maximum"],"description":"The maximum value of some equipment parameter, such as battery charge or pressure at the inlet to the combustion chamber of a jet engine. Very often present but not used."},"MaxQuantity":{"prefix":"MaxQuantity","body":["MaxQuantity"],"description":"maximum number of items in a slot"},"Mode":{"prefix":"Mode","body":["Mode"],"description":"working mode"},"On":{"prefix":"On","body":["On"],"description":"0 - disabled 1 - enabled"},"Open":{"prefix":"Open","body":["Open"],"description":"0 - release closed, 1 - open"},"Output":{"prefix":"Output","body":["Output"],"description":"For a sorter - r/w , Int - the next output to which the object will be issued.<br>For a stacker - w, Trigger - unloads the accumulated packing of objects into the export slot."},"Plant":{"prefix":"Plant","body":["Plant"],"description":"Starts the process of planting a plant from the import slot in an automatic hydroponic station."},"PositionX":{"prefix":"PositionX","body":["PositionX"],"description":"X coordinate of current position"},"PositionY":{"prefix":"PositionY","body":["PositionY"],"description":"Y coordinate of the current position"},"PositionZ":{"prefix":"PositionZ","body":["PositionZ"],"description":"Z coordinate of the current position"},"Power":{"prefix":"Power","body":["Power"],"description":"0 - no power or off, 1 - power on"},"PowerActual":{"prefix":"PowerActual","body":["PowerActual"],"description":"Total electricity consumption by all devices in the network, W."},"PowerGeneration":{"prefix":"PowerGeneration","body":["PowerGeneration"],"description":"Current generation of electricity by the generator, W."},"PowerPotential":{"prefix":"PowerPotential","body":["PowerPotential"],"description":"Maximum available network power, W."},"PowerRequired":{"prefix":"PowerRequired","body":["PowerRequired"],"description":"The total electricity demand of all devices in the network, W."},"PressureExternal":{"prefix":"PressureExternal","body":["PressureExternal"],"description":"atmospheric pressure in the environment, kPa"},"PressureInternal":{"prefix":"PressureInternal","body":["PressureInternal"],"description":"The pressure in the pipeline at which the operation of active ventilation stops, kPa. Installed but not used."},"Ratio":{"prefix":"Ratio","body":["Ratio"],"description":"For batteries - Charge/Maximum ratio.<br>For other devices - Setting/Maximum ratio."},"RatioCarbonDioxide":{"prefix":"RatioCarbonDioxide","body":["RatioCarbonDioxide"],"description":"share of carbon dioxide"},"RatioNitrogen":{"prefix":"RatioNitrogen","body":["RatioNitrogen"],"description":"proportion of nitrogen"},"RatioNitrousOxide":{"prefix":"RatioNitrousOxide","body":["RatioNitrousOxide"],"description":"share of nitrous oxide"},"RatioOxygen":{"prefix":"RatioOxygen","body":["RatioOxygen"],"description":"fraction of oxygen"},"RatioPollutant":{"prefix":"RatioPollutant","body":["RatioPollutant"],"description":"proportion of toxins"},"RatioVolatiles":{"prefix":"RatioVolatiles","body":["RatioVolatiles"],"description":"fraction of volatile gases"},"RatioWater":{"prefix":"RatioWater","body":["RatioWater"],"description":"proportion of water vapor"},"Reagents":{"prefix":"Reagents","body":["Reagents"],"description":"total weight of ingredients in grams"},"RecipeHash":{"prefix":"RecipeHash","body":["RecipeHash"],"description":"hash of the selected recipe"},"RequiredPower":{"prefix":"RequiredPower","body":["RequiredPower"],"description":"The energy required for the operation of the device, W."},"Setting":{"prefix":"Setting","body":["Setting"],"description":"The current value of some hardware parameter. The type and possible values ​​depend on the hardware."},"SolarAngle":{"prefix":"SolarAngle","body":["SolarAngle"],"description":"angle relative to the sun in degrees"},"TargetX":{"prefix":"TargetX","body":["TargetX"],"description":"target x-coordinate"},"TargetY":{"prefix":"TargetY","body":["TargetY"],"description":"target y-coordinate"},"TargetZ":{"prefix":"TargetZ","body":["TargetZ"],"description":"target's z-coordinate"},"TemperatureExternal":{"prefix":"TemperatureExternal","body":["TemperatureExternal"],"description":"temperature of the external atmosphere, K"},"TemperatureSetting":{"prefix":"TemperatureSetting","body":["TemperatureSetting"],"description":"The specified temperature inside the durable suit, K."},"TotalMoles":{"prefix":"TotalMoles","body":["TotalMoles"],"description":"The total amount of gas inside the pipeline, mol."},"VelocityMagnitude":{"prefix":"VelocityMagnitude","body":["VelocityMagnitude"],"description":"bot movement speed module"},"VelocityRelativeX":{"prefix":"VelocityRelativeX","body":["VelocityRelativeX"],"description":"speed of movement along the X coordinate"},"VelocityRelativeY":{"prefix":"VelocityRelativeY","body":["VelocityRelativeY"],"description":"Y-axis movement speed"},"VelocityRelativeZ":{"prefix":"VelocityRelativeZ","body":["VelocityRelativeZ"],"description":"movement speed along Z coordinate"},"Vertical":{"prefix":"Vertical","body":["Vertical"],"description":"angle relative to the sun in degrees"},"Volume":{"prefix":"Volume","body":["Volume"],"description":"Volume"},"ChargeRatio":{"prefix":"ChargeRatio","body":["ChargeRatio"],"description":"The battery level in the slot."},"Efficiency":{"prefix":"Efficiency","body":["Efficiency"],"description":"Plant growth efficiency in an automatic hydroponic station. -1 if there is no plant."},"Growth":{"prefix":"Growth","body":["Growth"],"description":"Plant growth stage in automatic hydroponic station. -1 if there is no plant."},"Health":{"prefix":"Health","body":["Health"],"description":"Plant health in an automatic hydroponic station. 0 - dead plant, 1 - completely healthy, -1 - no plant."},"Mature":{"prefix":"Mature","body":["Mature"],"description":"Readiness of the plant in the automatic hydroponic station for harvesting. -1 if there is no plant."},"OccupantHash":{"prefix":"OccupantHash","body":["OccupantHash"],"description":"hash of the object in the slot"},"Occupied":{"prefix":"Occupied","body":["Occupied"],"description":"0 - slot free, 1 - occupied"},"PressureAir":{"prefix":"PressureAir","body":["PressureAir"],"description":"Pressure in the cylinder with the breathing mixture of the suit installed in the rack, kPa."},"PressureWaste":{"prefix":"PressureWaste","body":["PressureWaste"],"description":"Pressure in the cylinder with the spent mixture of the suit installed in the rack, kPa."},"PrefabHash":{"prefix":"PrefabHash","body":["PrefabHash"]},"Pressure":{"prefix":"Pressure","body":["Pressure"]},"Quantity":{"prefix":"Quantity","body":["Quantity"]},"Temperature":{"prefix":"Temperature","body":["Temperature"]},"lb":{"prefix":"lb","body":["lb"],"description":"Batch read in op1 from all devices with hash op2 of parameter op3 in op4 mode"},"sb":{"prefix":"sb","body":["sb"],"description":"Batch write to all devices with hash op1 to parameter op2 of value op3"},"Bpm":{"prefix":"Bpm","body":["Bpm"]},"CollectableGoods":{"prefix":"CollectableGoods","body":["CollectableGoods"]},"CurrentResearchPodType":{"prefix":"CurrentResearchPodType","body":["CurrentResearchPodType"]},"Fuel":{"prefix":"Fuel","body":["Fuel"]},"ManualResearchRequiredPod":{"prefix":"ManualResearchRequiredPod","body":["ManualResearchRequiredPod"]},"MineablesInQueue":{"prefix":"MineablesInQueue","body":["MineablesInQueue"]},"MineablesInVicinity":{"prefix":"MineablesInVicinity","body":["MineablesInVicinity"]},"NextWeatherEventTime":{"prefix":"NextWeatherEventTime","body":["NextWeatherEventTime"]},"ReturnFuelCost":{"prefix":"ReturnFuelCost","body":["ReturnFuelCost"]},"SettingInput":{"prefix":"SettingInput","body":["SettingInput"]},"SettingOutput":{"prefix":"SettingOutput","body":["SettingOutput"]},"SignalID":{"prefix":"SignalID","body":["SignalID"]},"SignalStrength":{"prefix":"SignalStrength","body":["SignalStrength"]},"Time":{"prefix":"Time","body":["Time"]},"AirRelease":{"prefix":"AirRelease","body":["AirRelease"]},"HorizontalRatio":{"prefix":"HorizontalRatio","body":["HorizontalRatio"]},"PressureSetting":{"prefix":"PressureSetting","body":["PressureSetting"]},"RequestHash":{"prefix":"RequestHash","body":["RequestHash"]},"VerticalRatio":{"prefix":"VerticalRatio","body":["VerticalRatio"]},"Average":{"prefix":"Average","body":["Average"],"description":null},"Sum":{"prefix":"Sum","body":["Sum"],"description":null},"Minimum":{"prefix":"Minimum","body":["Minimum"],"description":null},"stack":{"prefix":"stack","body":["stack"],"description":"[icX] Populates the stack with argument values"},"Seeding":{"prefix":"Seeding","body":["Seeding"]},"atan2":{"prefix":"atan2","body":["atan2"],"description":"Arc tangent with 2 arguments"},"CombustionInput":{"prefix":"CombustionInput","body":["CombustionInput"]},"CombustionOutput":{"prefix":"CombustionOutput","body":["CombustionOutput"]},"CombustionOutput2":{"prefix":"CombustionOutput2","body":["CombustionOutput2"]},"TemperatureInput":{"prefix":"TemperatureInput","body":["TemperatureInput"]},"TemperatureOutput":{"prefix":"TemperatureOutput","body":["TemperatureOutput"]},"TemperatureOutput2":{"prefix":"TemperatureOutput2","body":["TemperatureOutput2"]},"PressureInput":{"prefix":"PressureInput","body":["PressureInput"]},"PressureOutput":{"prefix":"PressureOutput","body":["PressureOutput"]},"PressureOutput2":{"prefix":"PressureOutput2","body":["PressureOutput2"]},"TotalMolesInput":{"prefix":"TotalMolesInput","body":["TotalMolesInput"]},"TotalMolesOutput":{"prefix":"TotalMolesOutput","body":["TotalMolesOutput"]},"TotalMolesOutput2":{"prefix":"TotalMolesOutput2","body":["TotalMolesOutput2"]},"RatioCarbonDioxideInput":{"prefix":"RatioCarbonDioxideInput","body":["RatioCarbonDioxideInput"]},"RatioCarbonDioxideOutput":{"prefix":"RatioCarbonDioxideOutput","body":["RatioCarbonDioxideOutput"]},"RatioCarbonDioxideOutput2":{"prefix":"RatioCarbonDioxideOutput2","body":["RatioCarbonDioxideOutput2"]},"RatioNitrogenInput":{"prefix":"RatioNitrogenInput","body":["RatioNitrogenInput"]},"RatioNitrogenOutput":{"prefix":"RatioNitrogenOutput","body":["RatioNitrogenOutput"]},"RatioNitrogenOutput2":{"prefix":"RatioNitrogenOutput2","body":["RatioNitrogenOutput2"]},"RatioNitrousOxideInput":{"prefix":"RatioNitrousOxideInput","body":["RatioNitrousOxideInput"]},"RatioNitrousOxideOutput":{"prefix":"RatioNitrousOxideOutput","body":["RatioNitrousOxideOutput"]},"RatioNitrousOxideOutput2":{"prefix":"RatioNitrousOxideOutput2","body":["RatioNitrousOxideOutput2"]},"RatioOxygenInput":{"prefix":"RatioOxygenInput","body":["RatioOxygenInput"]},"RatioOxygenOutput":{"prefix":"RatioOxygenOutput","body":["RatioOxygenOutput"]},"RatioOxygenOutput2":{"prefix":"RatioOxygenOutput2","body":["RatioOxygenOutput2"]},"RatioPollutantInput":{"prefix":"RatioPollutantInput","body":["RatioPollutantInput"]},"RatioPollutantOutpu":{"prefix":"RatioPollutantOutpu","body":["RatioPollutantOutpu"]},"RatioPollutantOutput2":{"prefix":"RatioPollutantOutput2","body":["RatioPollutantOutput2"]},"RatioVolatilesInput":{"prefix":"RatioVolatilesInput","body":["RatioVolatilesInput"]},"RatioVolatilesOutput":{"prefix":"RatioVolatilesOutput","body":["RatioVolatilesOutput"]},"RatioVolatilesOutput2":{"prefix":"RatioVolatilesOutput2","body":["RatioVolatilesOutput2"]},"RatioWaterInput":{"prefix":"RatioWaterInput","body":["RatioWaterInput"]},"RatioWaterOutput":{"prefix":"RatioWaterOutput","body":["RatioWaterOutput"]},"RatioWaterOutput2":{"prefix":"RatioWaterOutput2","body":["RatioWaterOutput2"]},"PressureEfficiency":{"prefix":"PressureEfficiency","body":["PressureEfficiency"]},"OperationalTemperatureEfficiency":{"prefix":"OperationalTemperatureEfficiency","body":["OperationalTemperatureEfficiency"]},"TemperatureDifferentialEfficiency":{"prefix":"TemperatureDifferentialEfficiency","body":["TemperatureDifferentialEfficiency"]},"Throttle":{"prefix":"Throttle","body":["Throttle"],"description":"Sets the throttle of Combustion Centrifuge."},"CombustionLimiter":{"prefix":"CombustionLimiter","body":["CombustionLimiter"],"description":"Sets the combustion limiter of Combustion Centrifuge."},"debug":{"prefix":"debug","body":["debug"],"description":"[icX] logs passed values ​​in the debugger"},"Contents":{"prefix":"Contents","body":["Contents"],"description":null},"Required":{"prefix":"Required","body":["Required"],"description":null},"Recipe":{"prefix":"Recipe","body":["Recipe"],"description":null},"return":{"prefix":"return","body":["return"],"description":"[icX] return value from functions"}}
+{
+  "alias":                             {
+    "prefix":      "alias",
+    "body":        ["alias"],
+    "description": "Specify an alias for a register or data channel"
+  },
+  "aliasD0":                           {
+    "prefix":      "aliasd0",
+    "body":        ["alias $1 d0"],
+    "description": "alias {name} d0"
+  },
+  "aliasD1":                           {
+    "prefix":      "aliasd1",
+    "body":        ["alias $1 d1"],
+    "description": "alias {name} d1"
+  },
+  "aliasD2":                           {
+    "prefix":      "aliasd2",
+    "body":        ["alias $1 d2"],
+    "description": "alias {name} d2"
+  },
+  "aliasD3":                           {
+    "prefix":      "aliasd3",
+    "body":        ["alias $1 d3"],
+    "description": "alias {name} d3"
+  },
+  "aliasD4":                           {
+    "prefix":      "aliasd4",
+    "body":        ["alias $1 d4"],
+    "description": "alias {name} d4"
+  },
+  "aliasD5":                           {
+    "prefix":      "aliasd5",
+    "body":        ["alias $1 d5"],
+    "description": "alias {name} d5"
+  },
+  "loop":                              {
+    "prefix":      "j l",
+    "body":        ["loop:", "$1", "j loop"],
+    "description": "main loop"
+  },
+  "abs":                               {
+    "prefix":      "abs",
+    "body":        ["abs"],
+    "description": "The absolute value of the number"
+  },
+  "acos":                              {
+    "prefix":      "acos",
+    "body":        ["acos"],
+    "description": "Arccosine*"
+  },
+  "add":                               {
+    "prefix":      "add",
+    "body":        ["add"],
+    "description": "Sum"
+  },
+  "and":                               {
+    "prefix":      "and",
+    "body":        ["and"],
+    "description": "Logical AND, one if both op2 and op3 are true, zero otherwise"
+  },
+  "asin":                              {
+    "prefix":      "asin",
+    "body":        ["asin"],
+    "description": "Arcsine*"
+  },
+  "atan":                              {
+    "prefix":      "atan",
+    "body":        ["atan"],
+    "description": "Arctangent*"
+  },
+  "bap":                               {
+    "prefix":      "bap",
+    "body":        ["bap"],
+    "description": "Jump to op4 if op1 op2 with precision op3"
+  },
+  "bapal":                             {
+    "prefix":      "bapal",
+    "body":        ["bapal"],
+    "description": "Jump to op4 if op1 op2 with precision op3, writing the address of the next line to ra"
+  },
+  "bapz":                              {
+    "prefix":      "bapz",
+    "body":        ["bapz"],
+    "description": "Jump to op3 if op1 0 with precision op2"
+  },
+  "bapzal":                            {
+    "prefix":      "bapzal",
+    "body":        ["bapzal"],
+    "description": "Jump to op3 if op1 0 with precision op2, writing the address of the next line to ra"
+  },
+  "bdns":                              {
+    "prefix":      "bdns",
+    "body":        ["bdns"],
+    "description": "Jump to op2 if op1 channel is not configured"
+  },
+  "bdnsal":                            {
+    "prefix":      "bdnsal",
+    "body":        ["bdnsal"],
+    "description": "Jump to op2 if channel op1 is not configured, writing next line address to ra"
+  },
+  "bdse":                              {
+    "prefix":      "bdse",
+    "body":        ["bdse"],
+    "description": "Jump to op2 if channel op1 is configured"
+  },
+  "bdseal":                            {
+    "prefix":      "bdseal",
+    "body":        ["bdseal"],
+    "description": "Jump to op2 if channel op1 is configured with next line address written to ra"
+  },
+  "beq":                               {
+    "prefix":      "beq",
+    "body":        ["beq"],
+    "description": "Jump to op3 if op1 = op2"
+  },
+  "beqal":                             {
+    "prefix":      "beqal",
+    "body":        ["beqal"],
+    "description": "Jump to op3 if op1 = op2, writing the address of the next line to ra"
+  },
+  "beqz":                              {
+    "prefix":      "beqz",
+    "body":        ["beqz"],
+    "description": "Jump to op2 if op1 = 0"
+  },
+  "beqzal":                            {
+    "prefix":      "beqzal",
+    "body":        ["beqzal"],
+    "description": "Jump to op2 if op1 = 0, writing the address of the next line to ra"
+  },
+  "bge":                               {
+    "prefix":      "bge",
+    "body":        ["bge"],
+    "description": "Jump to op3 if op1 >= op2"
+  },
+  "bgeal":                             {
+    "prefix":      "bgeal",
+    "body":        ["bgeal"],
+    "description": "Jump to op3 if op1 >= op2, writing next line address to ra"
+  },
+  "bgez":                              {
+    "prefix":      "bgez",
+    "body":        ["bgez"],
+    "description": "Jump to op2 if op1 >= 0"
+  },
+  "bgezal":                            {
+    "prefix":      "bgezal",
+    "body":        ["bgezal"],
+    "description": "Jump to op2 if op1 >= 0, writing next line address to ra"
+  },
+  "bgt":                               {
+    "prefix":      "bgt",
+    "body":        ["bgt"],
+    "description": "Jump to op3 if op1 > op2"
+  },
+  "bgtal":                             {
+    "prefix":      "bgtal",
+    "body":        ["bgtal"],
+    "description": "Jump to op3 if op1 > op2, writing next line address to ra"
+  },
+  "bgtz":                              {
+    "prefix":      "bgtz",
+    "body":        ["bgtz"],
+    "description": "Jump to op2 if op1 > 0"
+  },
+  "bgtzal":                            {
+    "prefix":      "bgtzal",
+    "body":        ["bgtzal"],
+    "description": "Jump to op2 if op1 > 0, writing the address of the next line to ra"
+  },
+  "ble":                               {
+    "prefix":      "ble",
+    "body":        ["ble"],
+    "description": "Jump to op3 if op1 <= op2"
+  },
+  "bleal":                             {
+    "prefix":      "bleal",
+    "body":        ["bleal"],
+    "description": "Jump to op3 if op1 <= op2, writing next line address to ra"
+  },
+  "blez":                              {
+    "prefix":      "blez",
+    "body":        ["blez"],
+    "description": "Jump to op2 if op1 <= 0"
+  },
+  "blezal":                            {
+    "prefix":      "blezal",
+    "body":        ["blezal"],
+    "description": "Jump to op2 if op1 <= 0, writing the address of the next line to ra"
+  },
+  "blt":                               {
+    "prefix":      "blt",
+    "body":        ["blt"],
+    "description": "Jump to op3 if op1 < op2"
+  },
+  "bltal":                             {
+    "prefix":      "bltal",
+    "body":        ["bltal"],
+    "description": "Jump to op3 if op1 < op2, writing the address of the next line to ra"
+  },
+  "bltz":                              {
+    "prefix":      "bltz",
+    "body":        ["bltz"],
+    "description": "Jump to op2 if op1 < 0"
+  },
+  "bltzal":                            {
+    "prefix":      "bltzal",
+    "body":        ["bltzal"],
+    "description": "Jump to op2 if op1 < 0, writing the address of the next line to ra"
+  },
+  "bna":                               {
+    "prefix":      "bna",
+    "body":        ["bna"],
+    "description": "Jump to op4 if op1 ~= op2 with precision op3"
+  },
+  "bnaal":                             {
+    "prefix":      "bnaal",
+    "body":        ["bnaal"],
+    "description": "Jump to op4 if op1 ~= op2 with precision op3, writing next line address to ra"
+  },
+  "bnaz":                              {
+    "prefix":      "bnaz",
+    "body":        ["bnaz"],
+    "description": "Jump to op3 if op1 ~= 0 with precision op2"
+  },
+  "bnazal":                            {
+    "prefix":      "bnazal",
+    "body":        ["bnazal"],
+    "description": "Jump to op3 if op1 ~= 0 with precision op2, writing next line address to ra"
+  },
+  "bne":                               {
+    "prefix":      "bne",
+    "body":        ["bne"],
+    "description": "Jump to op3 if op1 != op2"
+  },
+  "bneal":                             {
+    "prefix":      "bneal",
+    "body":        ["bneal"],
+    "description": "Jump to op3 if op1 != op2, writing next line address to ra"
+  },
+  "bnez":                              {
+    "prefix":      "bnez",
+    "body":        ["bnez"],
+    "description": "Jump to op2 if op1 != 0"
+  },
+  "bnezal":                            {
+    "prefix":      "bnezal",
+    "body":        ["bnezal"],
+    "description": "Jump to op2 if op1 != 0, writing the address of the next line to ra"
+  },
+  "brap":                              {
+    "prefix":      "brap",
+    "body":        ["brap"],
+    "description": "Relative jump to +op4 if op1 op2 with precision op3"
+  },
+  "brapz":                             {
+    "prefix":      "brapz",
+    "body":        ["brapz"],
+    "description": "Relative jump to +op3 if op1 0 with precision op2"
+  },
+  "brdns":                             {
+    "prefix":      "brdns",
+    "body":        ["brdns"],
+    "description": "Relative jump to +op2 if channel op1 is not configured"
+  },
+  "brdse":                             {
+    "prefix":      "brdse",
+    "body":        ["brdse"],
+    "description": "Relative jump to +op2 if channel op1 is configured"
+  },
+  "breq":                              {
+    "prefix":      "breq",
+    "body":        ["breq"],
+    "description": "Relative jump to +op3 if op1 = op2"
+  },
+  "breqz":                             {
+    "prefix":      "breqz",
+    "body":        ["breqz"],
+    "description": "Relative jump to +op2 if op1 = 0"
+  },
+  "brge":                              {
+    "prefix":      "brge",
+    "body":        ["brge"],
+    "description": "Relative jump to +op3 if op1 >= op2"
+  },
+  "brgez":                             {
+    "prefix":      "brgez",
+    "body":        ["brgez"],
+    "description": "Relative jump to +op2 if op1 >= 0"
+  },
+  "brgt":                              {
+    "prefix":      "brgt",
+    "body":        ["brgt"],
+    "description": "Relative jump to +op3 if op1 > op2"
+  },
+  "brgtz":                             {
+    "prefix":      "brgtz",
+    "body":        ["brgtz"],
+    "description": "Relative jump to +op2 if op1 > 0"
+  },
+  "brle":                              {
+    "prefix":      "brle",
+    "body":        ["brle"],
+    "description": "Relative jump to +op3 if op1 <= op2"
+  },
+  "brlez":                             {
+    "prefix":      "brlez",
+    "body":        ["brlez"],
+    "description": "Relative jump to +op2 if op1 <= 0"
+  },
+  "brlt":                              {
+    "prefix":      "brlt",
+    "body":        ["brlt"],
+    "description": "Relative jump to +op3 if op1 < op2"
+  },
+  "brltz":                             {
+    "prefix":      "brltz",
+    "body":        ["brltz"],
+    "description": "Relative jump to +op2 if op1 < 0"
+  },
+  "brna":                              {
+    "prefix":      "brna",
+    "body":        ["brna"],
+    "description": "Relative jump to +op4 if op1 op2 with precision op3"
+  },
+  "brnaz":                             {
+    "prefix":      "brnaz",
+    "body":        ["brnaz"],
+    "description": "Relative jump to +op3 if op1 0 with precision op2"
+  },
+  "brne":                              {
+    "prefix":      "brne",
+    "body":        ["brne"],
+    "description": "Relative jump to +op3 if op1 != op2"
+  },
+  "brnez":                             {
+    "prefix":      "brnez",
+    "body":        ["brnez"],
+    "description": "Relative jump to +op2 if op1 != 0"
+  },
+  "ceil":                              {
+    "prefix":      "ceil",
+    "body":        ["ceil"],
+    "description": "Round up to nearest integer"
+  },
+  "cos":                               {
+    "prefix":      "cos",
+    "body":        ["cos"],
+    "description": "Cosine*"
+  },
+  "define":                            {
+    "prefix":      "define",
+    "body":        ["define"],
+    "description": "Set a name for the constant"
+  },
+  "div":                               {
+    "prefix":      "div",
+    "body":        ["div"],
+    "description": "Division"
+  },
+  "exp":                               {
+    "prefix":      "exp",
+    "body":        ["exp"],
+    "description": "Exhibitor"
+  },
+  "floor":                             {
+    "prefix":      "floor",
+    "body":        ["floor"],
+    "description": "Rounding down to nearest integer"
+  },
+  "hcf":                               {
+    "prefix":      "hcf",
+    "body":        ["hcf"],
+    "description": "Stop work and burn the microprocessor"
+  },
+  "j":                                 {
+    "prefix":      "j",
+    "body":        ["j"],
+    "description": "Jump to the specified line"
+  },
+  "jal":                               {
+    "prefix":      "jal",
+    "body":        ["jal"],
+    "description": "Jump to op1, writing the address of the next line to ra"
+  },
+  "jr":                                {
+    "prefix":      "jr",
+    "body":        ["jr"],
+    "description": "Relative jump to +op1"
+  },
+  "l":                                 {
+    "prefix":      "l",
+    "body":        ["l"],
+    "description": "Reading the value of parameter op3 from port op2"
+  },
+  "log":                               {
+    "prefix":      "log",
+    "body":        ["log"],
+    "description": "natural logarithm"
+  },
+  "lr":                                {
+    "prefix":      "lr",
+    "body":        ["lr"],
+    "description": "Read reagent value op4 in op3 mode from port op2"
+  },
+  "ls":                                {
+    "prefix":      "ls",
+    "body":        ["ls"],
+    "description": "Read value op4 from slot op3 of port op2"
+  },
+  "max":                               {
+    "prefix":      "max",
+    "body":        ["max"],
+    "description": "Maximum of two"
+  },
+  "min":                               {
+    "prefix":      "min",
+    "body":        ["min"],
+    "description": "Minimum of two"
+  },
+  "mod":                               {
+    "prefix":      "mod",
+    "body":        ["mod"],
+    "description": "Remainder of integer division of op2 by op3 (the result is not equivalent to the % operator, and will be positive for any signs of op2 and op3)"
+  },
+  "move":                              {
+    "prefix":      "move",
+    "body":        ["move"],
+    "description": "Value assignment"
+  },
+  "mul":                               {
+    "prefix":      "mul",
+    "body":        ["mul"],
+    "description": "Work"
+  },
+  "nor":                               {
+    "prefix":      "nor",
+    "body":        ["nor"],
+    "description": "Inverse OR, one if both op2 and op3 are false, zero otherwise"
+  },
+  "or":                                {
+    "prefix":      "or",
+    "body":        ["or"],
+    "description": "Logical OR, zero if both op2 and op3 are false, one otherwise"
+  },
+  "peek":                              {
+    "prefix":      "peek",
+    "body":        ["peek"],
+    "description": "Push the top value off the stack into op1 without moving the stack"
+  },
+  "pop":                               {
+    "prefix":      "pop",
+    "body":        ["pop"],
+    "description": "Pop a value from the stack and write to op1"
+  },
+  "push":                              {
+    "prefix":      "push",
+    "body":        ["push"],
+    "description": "Push op1 onto the stack"
+  },
+  "rand":                              {
+    "prefix":      "rand",
+    "body":        ["rand"],
+    "description": "Random value from 0 to 1 inclusive"
+  },
+  "round":                             {
+    "prefix":      "round",
+    "body":        ["round"],
+    "description": "Rounding to nearest integer"
+  },
+  "s":                                 {
+    "prefix":      "s",
+    "body":        ["s"],
+    "description": "Writing a value to the op2 parameter of port op1"
+  },
+  "sap":                               {
+    "prefix":      "sap",
+    "body":        ["sap"],
+    "description": "If op2 op3 with precision op4, then one, otherwise zero"
+  },
+  "sapz":                              {
+    "prefix":      "sapz",
+    "body":        ["sapz"],
+    "description": "If op2 0 with precision op3, then one, otherwise zero"
+  },
+  "sdns":                              {
+    "prefix":      "sdns",
+    "body":        ["sdns"],
+    "description": "If channel op2 is not set to one, otherwise zero"
+  },
+  "sdse":                              {
+    "prefix":      "sdse",
+    "body":        ["sdse"],
+    "description": "If channel op2 is set to one, otherwise zero"
+  },
+  "select":                            {
+    "prefix":      "select",
+    "body":        ["select"],
+    "description": "Ternary select. If op2 is true then op1 := op3, otherwise op1 := op4"
+  },
+  "seq":                               {
+    "prefix":      "seq",
+    "body":        ["seq"],
+    "description": "If op2 = op3, then one, otherwise zero"
+  },
+  "seqz":                              {
+    "prefix":      "seqz",
+    "body":        ["seqz"],
+    "description": "If op2 = 0, then one, otherwise zero"
+  },
+  "sge":                               {
+    "prefix":      "sge",
+    "body":        ["sge"],
+    "description": "If op2 op3, then one, otherwise zero"
+  },
+  "sgez":                              {
+    "prefix":      "sgez",
+    "body":        ["sgez"],
+    "description": "If op2 0, then one, otherwise zero"
+  },
+  "sgt":                               {
+    "prefix":      "sgt",
+    "body":        ["sgt"],
+    "description": "If op2 > op3, then one, otherwise zero"
+  },
+  "sgtz":                              {
+    "prefix":      "sgtz",
+    "body":        ["sgtz"],
+    "description": "If op2 > 0, then one, otherwise zero"
+  },
+  "sin":                               {
+    "prefix":      "sin",
+    "body":        ["sin"],
+    "description": "Sinus*"
+  },
+  "sle":                               {
+    "prefix":      "sle",
+    "body":        ["sle"],
+    "description": "If op2 op3, then one, otherwise zero"
+  },
+  "sleep":                             {
+    "prefix":      "sleep",
+    "body":        ["sleep"],
+    "description": "Pause the program for op1 seconds"
+  },
+  "slez":                              {
+    "prefix":      "slez",
+    "body":        ["slez"],
+    "description": "If op2 0, then one, otherwise zero"
+  },
+  "slt":                               {
+    "prefix":      "slt",
+    "body":        ["slt"],
+    "description": "If op2 < op3, then one, otherwise zero"
+  },
+  "sltz":                              {
+    "prefix":      "sltz",
+    "body":        ["sltz"],
+    "description": "If op2 < 0, then one, otherwise zero"
+  },
+  "sna":                               {
+    "prefix":      "sna",
+    "body":        ["sna"],
+    "description": "If op2 op3 with precision op4, then one, otherwise zero"
+  },
+  "snaz":                              {
+    "prefix":      "snaz",
+    "body":        ["snaz"],
+    "description": "If op2 0 with precision op3, then one, otherwise zero"
+  },
+  "sne":                               {
+    "prefix":      "sne",
+    "body":        ["sne"],
+    "description": "If op2 op3, then one, otherwise zero"
+  },
+  "snez":                              {
+    "prefix":      "snez",
+    "body":        ["snez"],
+    "description": "If op2 0, then one, otherwise zero"
+  },
+  "sqrt":                              {
+    "prefix":      "sqrt",
+    "body":        ["sqrt"],
+    "description": "Square root"
+  },
+  "sub":                               {
+    "prefix":      "sub",
+    "body":        ["sub"],
+    "description": "Difference"
+  },
+  "tan":                               {
+    "prefix":      "tan",
+    "body":        ["tan"],
+    "description": "Tangent*"
+  },
+  "trunc":                             {
+    "prefix":      "trunc",
+    "body":        ["trunc"],
+    "description": "The integer part of number"
+  },
+  "xor":                               {
+    "prefix":      "xor",
+    "body":        ["xor"],
+    "description": "XOR, one if one and only one of op2 and op3 is true, zero otherwise"
+  },
+  "yield":                             {
+    "prefix":      "yield",
+    "body":        ["yield"],
+    "description": "Pausing the program until the next tick"
+  },
+  "Activate":                          {
+    "prefix":      "Activate",
+    "body":        ["Activate"],
+    "description": "-1 - stop, 0 - not working 1 - working"
+  },
+  "Charge":                            {
+    "prefix":      "Charge",
+    "body":        ["Charge"],
+    "description": "Battery or accumulator charge, J. Level of electricity generation by a solar panel, W."
+  },
+  "Class":                             {
+    "prefix":      "Class",
+    "body":        ["Class"],
+    "description": "the class of the object in the slot"
+  },
+  "ClearMemory":                       {
+    "prefix":      "ClearMemory",
+    "body":        ["ClearMemory"],
+    "description": ">=1 - reset counters"
+  },
+  "Color":                             {
+    "prefix":      "Color",
+    "body":        ["Color"],
+    "description": "Color of LED lamp, fixed beacon and LED display"
+  },
+  "Combustion":                        {
+    "prefix":      "Combustion",
+    "body":        ["Combustion"],
+    "description": "1 - ignition detected, 0 - in all other cases"
+  },
+  "CompletionRatio":                   {
+    "prefix":      "CompletionRatio",
+    "body":        ["CompletionRatio"],
+    "description": "production stage in %"
+  },
+  "Damage":                            {
+    "prefix":      "Damage",
+    "body":        ["Damage"],
+    "description": "object damage level"
+  },
+  "ElevatorLevel":                     {
+    "prefix":      "ElevatorLevel",
+    "body":        ["ElevatorLevel"],
+    "description": "For reading - the level at which the elevator cabin is located, or -1 if there is no cabin. On record - sends the elevator to the specified floor."
+  },
+  "ElevatorSpeed":                     {
+    "prefix":      "ElevatorSpeed",
+    "body":        ["ElevatorSpeed"],
+    "description": "The speed of the elevator cabin, m / tick. A negative value corresponds to downward movement, 0 to a stationary booth, a positive value to upward movement."
+  },
+  "Error":                             {
+    "prefix":      "Error",
+    "body":        ["Error"],
+    "description": "0 - normal operation, 1 - error"
+  },
+  "ExportCount":                       {
+    "prefix":      "ExportCount",
+    "body":        ["ExportCount"],
+    "description": "counter of objects passed through the export slot"
+  },
+  "Filtration":                        {
+    "prefix":      "Filtration",
+    "body":        ["Filtration"],
+    "description": "Switches the filtration of the spent mixture in a durable suit."
+  },
+  "ForceWrite":                        {
+    "prefix":      "ForceWrite",
+    "body":        ["ForceWrite"],
+    "description": "Forces the write and multiwrite chips to transfer the current value to the hardware."
+  },
+  "Harvest":                           {
+    "prefix":      "Harvest",
+    "body":        ["Harvest"],
+    "description": "Activates harvesting in an automatic hydroponic station."
+  },
+  "Horizontal":                        {
+    "prefix":      "Horizontal",
+    "body":        ["Horizontal"],
+    "description": "angle with respect to the Sun in degrees in the horizontal projection of the Sun onto the sensor plane"
+  },
+  "Idle":                              {
+    "prefix":      "Idle",
+    "body":        ["Idle"],
+    "description": "Loading the arc furnace. 0 - ore is not loaded, 1 - loaded."
+  },
+  "ImportCount":                       {
+    "prefix":      "ImportCount",
+    "body":        ["ImportCount"],
+    "description": "counter of objects passed through the import slot"
+  },
+  "Lock":                              {
+    "prefix":      "Lock",
+    "body":        ["Lock"],
+    "description": "0 - manual control unlocked, 1 - locked"
+  },
+  "Maximum":                           {
+    "prefix":      "Maximum",
+    "body":        ["Maximum"],
+    "description": "The maximum value of some equipment parameter, such as battery charge or pressure at the inlet to the combustion chamber of a jet engine. Very often present but not used."
+  },
+  "MaxQuantity":                       {
+    "prefix":      "MaxQuantity",
+    "body":        ["MaxQuantity"],
+    "description": "maximum number of items in a slot"
+  },
+  "Mode":                              {
+    "prefix":      "Mode",
+    "body":        ["Mode"],
+    "description": "working mode"
+  },
+  "On":                                {
+    "prefix":      "On",
+    "body":        ["On"],
+    "description": "0 - disabled 1 - enabled"
+  },
+  "Open":                              {
+    "prefix":      "Open",
+    "body":        ["Open"],
+    "description": "0 - release closed, 1 - open"
+  },
+  "Output":                            {
+    "prefix":      "Output",
+    "body":        ["Output"],
+    "description": "For a sorter - r/w , Int - the next output to which the object will be issued.<br>For a stacker - w, Trigger - unloads the accumulated packing of objects into the export slot."
+  },
+  "Plant":                             {
+    "prefix":      "Plant",
+    "body":        ["Plant"],
+    "description": "Starts the process of planting a plant from the import slot in an automatic hydroponic station."
+  },
+  "PositionX":                         {
+    "prefix":      "PositionX",
+    "body":        ["PositionX"],
+    "description": "X coordinate of current position"
+  },
+  "PositionY":                         {
+    "prefix":      "PositionY",
+    "body":        ["PositionY"],
+    "description": "Y coordinate of the current position"
+  },
+  "PositionZ":                         {
+    "prefix":      "PositionZ",
+    "body":        ["PositionZ"],
+    "description": "Z coordinate of the current position"
+  },
+  "Power":                             {
+    "prefix":      "Power",
+    "body":        ["Power"],
+    "description": "0 - no power or off, 1 - power on"
+  },
+  "PowerActual":                       {
+    "prefix":      "PowerActual",
+    "body":        ["PowerActual"],
+    "description": "Total electricity consumption by all devices in the network, W."
+  },
+  "PowerGeneration":                   {
+    "prefix":      "PowerGeneration",
+    "body":        ["PowerGeneration"],
+    "description": "Current generation of electricity by the generator, W."
+  },
+  "PowerPotential":                    {
+    "prefix":      "PowerPotential",
+    "body":        ["PowerPotential"],
+    "description": "Maximum available network power, W."
+  },
+  "PowerRequired":                     {
+    "prefix":      "PowerRequired",
+    "body":        ["PowerRequired"],
+    "description": "The total electricity demand of all devices in the network, W."
+  },
+  "PressureExternal":                  {
+    "prefix":      "PressureExternal",
+    "body":        ["PressureExternal"],
+    "description": "atmospheric pressure in the environment, kPa"
+  },
+  "PressureInternal":                  {
+    "prefix":      "PressureInternal",
+    "body":        ["PressureInternal"],
+    "description": "The pressure in the pipeline at which the operation of active ventilation stops, kPa. Installed but not used."
+  },
+  "Ratio":                             {
+    "prefix":      "Ratio",
+    "body":        ["Ratio"],
+    "description": "For batteries - Charge/Maximum ratio.<br>For other devices - Setting/Maximum ratio."
+  },
+  "RatioCarbonDioxide":                {
+    "prefix":      "RatioCarbonDioxide",
+    "body":        ["RatioCarbonDioxide"],
+    "description": "share of carbon dioxide"
+  },
+  "RatioNitrogen":                     {
+    "prefix":      "RatioNitrogen",
+    "body":        ["RatioNitrogen"],
+    "description": "proportion of nitrogen"
+  },
+  "RatioNitrousOxide":                 {
+    "prefix":      "RatioNitrousOxide",
+    "body":        ["RatioNitrousOxide"],
+    "description": "share of nitrous oxide"
+  },
+  "RatioOxygen":                       {
+    "prefix":      "RatioOxygen",
+    "body":        ["RatioOxygen"],
+    "description": "fraction of oxygen"
+  },
+  "RatioPollutant":                    {
+    "prefix":      "RatioPollutant",
+    "body":        ["RatioPollutant"],
+    "description": "proportion of toxins"
+  },
+  "RatioVolatiles":                    {
+    "prefix":      "RatioVolatiles",
+    "body":        ["RatioVolatiles"],
+    "description": "fraction of volatile gases"
+  },
+  "RatioWater":                        {
+    "prefix":      "RatioWater",
+    "body":        ["RatioWater"],
+    "description": "proportion of water vapor"
+  },
+  "Reagents":                          {
+    "prefix":      "Reagents",
+    "body":        ["Reagents"],
+    "description": "total weight of ingredients in grams"
+  },
+  "RecipeHash":                        {
+    "prefix":      "RecipeHash",
+    "body":        ["RecipeHash"],
+    "description": "hash of the selected recipe"
+  },
+  "RequiredPower":                     {
+    "prefix":      "RequiredPower",
+    "body":        ["RequiredPower"],
+    "description": "The energy required for the operation of the device, W."
+  },
+  "Setting":                           {
+    "prefix":      "Setting",
+    "body":        ["Setting"],
+    "description": "The current value of some hardware parameter. The type and possible values ​​depend on the hardware."
+  },
+  "SolarAngle":                        {
+    "prefix":      "SolarAngle",
+    "body":        ["SolarAngle"],
+    "description": "angle relative to the sun in degrees"
+  },
+  "TargetX":                           {
+    "prefix":      "TargetX",
+    "body":        ["TargetX"],
+    "description": "target x-coordinate"
+  },
+  "TargetY":                           {
+    "prefix":      "TargetY",
+    "body":        ["TargetY"],
+    "description": "target y-coordinate"
+  },
+  "TargetZ":                           {
+    "prefix":      "TargetZ",
+    "body":        ["TargetZ"],
+    "description": "target's z-coordinate"
+  },
+  "TemperatureExternal":               {
+    "prefix":      "TemperatureExternal",
+    "body":        ["TemperatureExternal"],
+    "description": "temperature of the external atmosphere, K"
+  },
+  "TemperatureSetting":                {
+    "prefix":      "TemperatureSetting",
+    "body":        ["TemperatureSetting"],
+    "description": "The specified temperature inside the durable suit, K."
+  },
+  "TotalMoles":                        {
+    "prefix":      "TotalMoles",
+    "body":        ["TotalMoles"],
+    "description": "The total amount of gas inside the pipeline, mol."
+  },
+  "VelocityMagnitude":                 {
+    "prefix":      "VelocityMagnitude",
+    "body":        ["VelocityMagnitude"],
+    "description": "bot movement speed module"
+  },
+  "VelocityRelativeX":                 {
+    "prefix":      "VelocityRelativeX",
+    "body":        ["VelocityRelativeX"],
+    "description": "speed of movement along the X coordinate"
+  },
+  "VelocityRelativeY":                 {
+    "prefix":      "VelocityRelativeY",
+    "body":        ["VelocityRelativeY"],
+    "description": "Y-axis movement speed"
+  },
+  "VelocityRelativeZ":                 {
+    "prefix":      "VelocityRelativeZ",
+    "body":        ["VelocityRelativeZ"],
+    "description": "movement speed along Z coordinate"
+  },
+  "Vertical":                          {
+    "prefix":      "Vertical",
+    "body":        ["Vertical"],
+    "description": "angle relative to the sun in degrees"
+  },
+  "Volume":                            {
+    "prefix":      "Volume",
+    "body":        ["Volume"],
+    "description": "Volume"
+  },
+  "ChargeRatio":                       {
+    "prefix":      "ChargeRatio",
+    "body":        ["ChargeRatio"],
+    "description": "The battery level in the slot."
+  },
+  "Efficiency":                        {
+    "prefix":      "Efficiency",
+    "body":        ["Efficiency"],
+    "description": "Plant growth efficiency in an automatic hydroponic station. -1 if there is no plant."
+  },
+  "Growth":                            {
+    "prefix":      "Growth",
+    "body":        ["Growth"],
+    "description": "Plant growth stage in automatic hydroponic station. -1 if there is no plant."
+  },
+  "Health":                            {
+    "prefix":      "Health",
+    "body":        ["Health"],
+    "description": "Plant health in an automatic hydroponic station. 0 - dead plant, 1 - completely healthy, -1 - no plant."
+  },
+  "Mature":                            {
+    "prefix":      "Mature",
+    "body":        ["Mature"],
+    "description": "Readiness of the plant in the automatic hydroponic station for harvesting. -1 if there is no plant."
+  },
+  "OccupantHash":                      {
+    "prefix":      "OccupantHash",
+    "body":        ["OccupantHash"],
+    "description": "hash of the object in the slot"
+  },
+  "Occupied":                          {
+    "prefix":      "Occupied",
+    "body":        ["Occupied"],
+    "description": "0 - slot free, 1 - occupied"
+  },
+  "PressureAir":                       {
+    "prefix":      "PressureAir",
+    "body":        ["PressureAir"],
+    "description": "Pressure in the cylinder with the breathing mixture of the suit installed in the rack, kPa."
+  },
+  "PressureWaste":                     {
+    "prefix":      "PressureWaste",
+    "body":        ["PressureWaste"],
+    "description": "Pressure in the cylinder with the spent mixture of the suit installed in the rack, kPa."
+  },
+  "PrefabHash":                        {
+    "prefix": "PrefabHash",
+    "body":   ["PrefabHash"]
+  },
+  "Pressure":                          {
+    "prefix": "Pressure",
+    "body":   ["Pressure"]
+  },
+  "Quantity":                          {
+    "prefix": "Quantity",
+    "body":   ["Quantity"]
+  },
+  "Temperature":                       {
+    "prefix": "Temperature",
+    "body":   ["Temperature"]
+  },
+  "lb":                                {
+    "prefix":      "lb",
+    "body":        ["lb"],
+    "description": "Batch read in op1 from all devices with hash op2 of parameter op3 in op4 mode"
+  },
+  "sb":                                {
+    "prefix":      "sb",
+    "body":        ["sb"],
+    "description": "Batch write to all devices with hash op1 to parameter op2 of value op3"
+  },
+  "Bpm":                               {
+    "prefix": "Bpm",
+    "body":   ["Bpm"]
+  },
+  "CollectableGoods":                  {
+    "prefix": "CollectableGoods",
+    "body":   ["CollectableGoods"]
+  },
+  "CurrentResearchPodType":            {
+    "prefix": "CurrentResearchPodType",
+    "body":   ["CurrentResearchPodType"]
+  },
+  "Fuel":                              {
+    "prefix": "Fuel",
+    "body":   ["Fuel"]
+  },
+  "ManualResearchRequiredPod":         {
+    "prefix": "ManualResearchRequiredPod",
+    "body":   ["ManualResearchRequiredPod"]
+  },
+  "MineablesInQueue":                  {
+    "prefix": "MineablesInQueue",
+    "body":   ["MineablesInQueue"]
+  },
+  "MineablesInVicinity":               {
+    "prefix": "MineablesInVicinity",
+    "body":   ["MineablesInVicinity"]
+  },
+  "NextWeatherEventTime":              {
+    "prefix": "NextWeatherEventTime",
+    "body":   ["NextWeatherEventTime"]
+  },
+  "ReturnFuelCost":                    {
+    "prefix": "ReturnFuelCost",
+    "body":   ["ReturnFuelCost"]
+  },
+  "SettingInput":                      {
+    "prefix": "SettingInput",
+    "body":   ["SettingInput"]
+  },
+  "SettingOutput":                     {
+    "prefix": "SettingOutput",
+    "body":   ["SettingOutput"]
+  },
+  "SignalID":                          {
+    "prefix": "SignalID",
+    "body":   ["SignalID"]
+  },
+  "SignalStrength":                    {
+    "prefix": "SignalStrength",
+    "body":   ["SignalStrength"]
+  },
+  "Time":                              {
+    "prefix": "Time",
+    "body":   ["Time"]
+  },
+  "AirRelease":                        {
+    "prefix": "AirRelease",
+    "body":   ["AirRelease"]
+  },
+  "HorizontalRatio":                   {
+    "prefix": "HorizontalRatio",
+    "body":   ["HorizontalRatio"]
+  },
+  "PressureSetting":                   {
+    "prefix": "PressureSetting",
+    "body":   ["PressureSetting"]
+  },
+  "RequestHash":                       {
+    "prefix": "RequestHash",
+    "body":   ["RequestHash"]
+  },
+  "VerticalRatio":                     {
+    "prefix": "VerticalRatio",
+    "body":   ["VerticalRatio"]
+  },
+  "Average":                           {
+    "prefix":      "Average",
+    "body":        ["Average"],
+    "description": null
+  },
+  "Sum":                               {
+    "prefix":      "Sum",
+    "body":        ["Sum"],
+    "description": null
+  },
+  "Minimum":                           {
+    "prefix":      "Minimum",
+    "body":        ["Minimum"],
+    "description": null
+  },
+  "stack":                             {
+    "prefix":      "stack",
+    "body":        ["stack"],
+    "description": "[icX] Populates the stack with argument values"
+  },
+  "Seeding":                           {
+    "prefix": "Seeding",
+    "body":   ["Seeding"]
+  },
+  "atan2":                             {
+    "prefix":      "atan2",
+    "body":        ["atan2"],
+    "description": "Arc tangent with 2 arguments"
+  },
+  "CombustionInput":                   {
+    "prefix": "CombustionInput",
+    "body":   ["CombustionInput"]
+  },
+  "CombustionOutput":                  {
+    "prefix": "CombustionOutput",
+    "body":   ["CombustionOutput"]
+  },
+  "CombustionOutput2":                 {
+    "prefix": "CombustionOutput2",
+    "body":   ["CombustionOutput2"]
+  },
+  "TemperatureInput":                  {
+    "prefix": "TemperatureInput",
+    "body":   ["TemperatureInput"]
+  },
+  "TemperatureOutput":                 {
+    "prefix": "TemperatureOutput",
+    "body":   ["TemperatureOutput"]
+  },
+  "TemperatureOutput2":                {
+    "prefix": "TemperatureOutput2",
+    "body":   ["TemperatureOutput2"]
+  },
+  "PressureInput":                     {
+    "prefix": "PressureInput",
+    "body":   ["PressureInput"]
+  },
+  "PressureOutput":                    {
+    "prefix": "PressureOutput",
+    "body":   ["PressureOutput"]
+  },
+  "PressureOutput2":                   {
+    "prefix": "PressureOutput2",
+    "body":   ["PressureOutput2"]
+  },
+  "TotalMolesInput":                   {
+    "prefix": "TotalMolesInput",
+    "body":   ["TotalMolesInput"]
+  },
+  "TotalMolesOutput":                  {
+    "prefix": "TotalMolesOutput",
+    "body":   ["TotalMolesOutput"]
+  },
+  "TotalMolesOutput2":                 {
+    "prefix": "TotalMolesOutput2",
+    "body":   ["TotalMolesOutput2"]
+  },
+  "RatioCarbonDioxideInput":           {
+    "prefix": "RatioCarbonDioxideInput",
+    "body":   ["RatioCarbonDioxideInput"]
+  },
+  "RatioCarbonDioxideOutput":          {
+    "prefix": "RatioCarbonDioxideOutput",
+    "body":   ["RatioCarbonDioxideOutput"]
+  },
+  "RatioCarbonDioxideOutput2":         {
+    "prefix": "RatioCarbonDioxideOutput2",
+    "body":   ["RatioCarbonDioxideOutput2"]
+  },
+  "RatioNitrogenInput":                {
+    "prefix": "RatioNitrogenInput",
+    "body":   ["RatioNitrogenInput"]
+  },
+  "RatioNitrogenOutput":               {
+    "prefix": "RatioNitrogenOutput",
+    "body":   ["RatioNitrogenOutput"]
+  },
+  "RatioNitrogenOutput2":              {
+    "prefix": "RatioNitrogenOutput2",
+    "body":   ["RatioNitrogenOutput2"]
+  },
+  "RatioNitrousOxideInput":            {
+    "prefix": "RatioNitrousOxideInput",
+    "body":   ["RatioNitrousOxideInput"]
+  },
+  "RatioNitrousOxideOutput":           {
+    "prefix": "RatioNitrousOxideOutput",
+    "body":   ["RatioNitrousOxideOutput"]
+  },
+  "RatioNitrousOxideOutput2":          {
+    "prefix": "RatioNitrousOxideOutput2",
+    "body":   ["RatioNitrousOxideOutput2"]
+  },
+  "RatioOxygenInput":                  {
+    "prefix": "RatioOxygenInput",
+    "body":   ["RatioOxygenInput"]
+  },
+  "RatioOxygenOutput":                 {
+    "prefix": "RatioOxygenOutput",
+    "body":   ["RatioOxygenOutput"]
+  },
+  "RatioOxygenOutput2":                {
+    "prefix": "RatioOxygenOutput2",
+    "body":   ["RatioOxygenOutput2"]
+  },
+  "RatioPollutantInput":               {
+    "prefix": "RatioPollutantInput",
+    "body":   ["RatioPollutantInput"]
+  },
+  "RatioPollutantOutpu":               {
+    "prefix": "RatioPollutantOutpu",
+    "body":   ["RatioPollutantOutpu"]
+  },
+  "RatioPollutantOutput2":             {
+    "prefix": "RatioPollutantOutput2",
+    "body":   ["RatioPollutantOutput2"]
+  },
+  "RatioVolatilesInput":               {
+    "prefix": "RatioVolatilesInput",
+    "body":   ["RatioVolatilesInput"]
+  },
+  "RatioVolatilesOutput":              {
+    "prefix": "RatioVolatilesOutput",
+    "body":   ["RatioVolatilesOutput"]
+  },
+  "RatioVolatilesOutput2":             {
+    "prefix": "RatioVolatilesOutput2",
+    "body":   ["RatioVolatilesOutput2"]
+  },
+  "RatioWaterInput":                   {
+    "prefix": "RatioWaterInput",
+    "body":   ["RatioWaterInput"]
+  },
+  "RatioWaterOutput":                  {
+    "prefix": "RatioWaterOutput",
+    "body":   ["RatioWaterOutput"]
+  },
+  "RatioWaterOutput2":                 {
+    "prefix": "RatioWaterOutput2",
+    "body":   ["RatioWaterOutput2"]
+  },
+  "PressureEfficiency":                {
+    "prefix": "PressureEfficiency",
+    "body":   ["PressureEfficiency"]
+  },
+  "OperationalTemperatureEfficiency":  {
+    "prefix": "OperationalTemperatureEfficiency",
+    "body":   ["OperationalTemperatureEfficiency"]
+  },
+  "TemperatureDifferentialEfficiency": {
+    "prefix": "TemperatureDifferentialEfficiency",
+    "body":   ["TemperatureDifferentialEfficiency"]
+  },
+  "Throttle":                          {
+    "prefix":      "Throttle",
+    "body":        ["Throttle"],
+    "description": "Sets the throttle of Combustion Centrifuge."
+  },
+  "CombustionLimiter":                 {
+    "prefix":      "CombustionLimiter",
+    "body":        ["CombustionLimiter"],
+    "description": "Sets the combustion limiter of Combustion Centrifuge."
+  },
+  "debug":                             {
+    "prefix":      "debug",
+    "body":        ["debug"],
+    "description": "[icX] logs passed values ​​in the debugger"
+  },
+  "Contents":                          {
+    "prefix":      "Contents",
+    "body":        ["Contents"],
+    "description": null
+  },
+  "Required":                          {
+    "prefix":      "Required",
+    "body":        ["Required"],
+    "description": null
+  },
+  "Recipe":                            {
+    "prefix":      "Recipe",
+    "body":        ["Recipe"],
+    "description": null
+  },
+  "return":                            {
+    "prefix":      "return",
+    "body":        ["return"],
+    "description": "[icX] return value from functions"
+  }
+}

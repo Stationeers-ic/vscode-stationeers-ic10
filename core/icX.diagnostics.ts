@@ -1,8 +1,8 @@
-import * as vscode                                   from "vscode";
-import {DiagnosticsError, errorMsg, Ic10Diagnostics} from "./ic10.diagnostics";
-import {icX}                                         from "icx-compiler";
-import {icSidebar, icxOptions, LANG_KEY2}            from "./main";
-import {Err, Errors}                                 from "icx-compiler/src/err";
+import * as vscode from "vscode"
+import {DiagnosticsError, errorMsg, Ic10Diagnostics} from "./ic10.diagnostics"
+import {icX} from "icx-compiler"
+import {icSidebar, icxOptions, LANG_KEY2} from "./main"
+import {Err, Errors} from "icx-compiler/src/err"
 
 const manual: {
 	"type": string,
@@ -14,27 +14,27 @@ const manual: {
 		"preview": string | null,
 		"text": string | null
 	}
-}[]                       = require('../languages/en.json');
-const functions: string[] = require('../media/ic10.functions.json');
-require('../media/ic10.keyword.json');
-export const IcXDiagnosticsName = 'icX_diagnostic';
+}[] = require("../languages/en.json")
+const functions: string[] = require("../media/ic10.functions.json")
+require("../media/ic10.keyword.json")
+export const IcXDiagnosticsName = "icX_diagnostic"
 
 
 class IcXDiagnostics extends Ic10Diagnostics {
-	private InFunction: number | false = false;
-	private blockCount: number         = 0;
-	private endCount: number           = 0;
+	private InFunction: number | false = false
+	private blockCount: number = 0
+	private endCount: number = 0
 
 	constructor() {
 		super()
 	}
 
 	prepare(doc: vscode.TextDocument) {
-		this.jumps   = [];
-		this.aliases = [];
+		this.jumps = []
+		this.aliases = []
 		this.errors.reset()
 		this.blockCount = 0
-		this.endCount   = 0
+		this.endCount = 0
 		this.InFunction = false
 		for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
 			try {
@@ -53,27 +53,27 @@ class IcXDiagnostics extends Ic10Diagnostics {
 	}
 
 	run(doc: vscode.TextDocument, container: vscode.DiagnosticCollection): void {
-		const diagnostics: vscode.Diagnostic[] = [];
-		const code                             = doc.getText();
-		const compiler                         = new icX(code, icxOptions);
+		const diagnostics: vscode.Diagnostic[] = []
+		const code = doc.getText()
+		const compiler = new icX(code, icxOptions)
 		// console.log(test)
 		this.prepare(doc)
-		const test = compiler.analyze();
+		const test = compiler.analyze()
 		if (test.error instanceof Errors) {
 			if (test.error.isError()) {
 				for (const eKey in test.error.e) {
-					const err = test.error.e[eKey];
+					const err = test.error.e[eKey]
 					if (err instanceof Err) {
-						const l = doc.lineAt(err.line);
+						const l = doc.lineAt(err.line)
 						diagnostics.push(this.createDiagnostic(l.range, err.getUserMessage(), vscode.DiagnosticSeverity.Error))
 					}
 				}
 			}
 		}
 		try {
-			const linesCount = test.result.split('\n').length;
+			const linesCount = test.result.split("\n").length
 			if (linesCount > 128) {
-				diagnostics.push(this.createDiagnostic(new vscode.Range(0, 0, 0, 1), 'Max line', vscode.DiagnosticSeverity.Error))
+				diagnostics.push(this.createDiagnostic(new vscode.Range(0, 0, 0, 1), "Max line", vscode.DiagnosticSeverity.Error))
 			}
 			this.view(test, linesCount)
 		} catch (e) {
@@ -82,15 +82,15 @@ class IcXDiagnostics extends Ic10Diagnostics {
 		for (const de of this.errors.values) {
 			diagnostics.push(this.createDiagnostic(de.range, de.message, de.lvl))
 		}
-		container.set(doc.uri, diagnostics);
+		container.set(doc.uri, diagnostics)
 	}
 
 	view(test, linesCount) {
-		const b    = Math.abs(test.vars.empty.length - 15);
-		const p    = b / 15 * 100;
-		const b2   = Math.abs(linesCount - 128);
-		const p2   = linesCount / 128 * 100;
-		let errors = '<ul>'
+		const b = Math.abs(test.vars.empty.length - 15)
+		const p = b / 15 * 100
+		const b2 = Math.abs(linesCount - 128)
+		const p2 = linesCount / 128 * 100
+		let errors = "<ul>"
 		this.errors.values.forEach((item) => {
 			errors += "<ol style=\"color:var(--vscode-editorError-foreground) !important;\">[" + item.line + "]: " + item.message + "</ol>"
 		})
@@ -135,36 +135,36 @@ class IcXDiagnostics extends Ic10Diagnostics {
 	${errors}
 </fieldset>`
 		}
-		icSidebar.section('icxStats', content, LANG_KEY2)
-		let comments: any  = test.use.has('comments');
-		let aliases: any   = test.use.has('aliases');
-		let loop: any      = test.use.has('loop');
-		let constants: any = test.use.has('constants');
-		comments           = comments ? comments : icxOptions.comments
-		aliases            = aliases ? aliases : icxOptions.aliases
-		loop               = loop ? loop : icxOptions.loop
-		constants          = constants ? constants : icxOptions.constants
+		icSidebar.section("icxStats", content, LANG_KEY2)
+		let comments: any = test.use.has("comments")
+		let aliases: any = test.use.has("aliases")
+		let loop: any = test.use.has("loop")
+		let constants: any = test.use.has("constants")
+		comments = comments ? comments : icxOptions.comments
+		aliases = aliases ? aliases : icxOptions.aliases
+		loop = loop ? loop : icxOptions.loop
+		constants = constants ? constants : icxOptions.constants
 		if (comments) {
-			comments = 'checked';
+			comments = "checked"
 		} else {
-			comments = '';
+			comments = ""
 		}
 		if (aliases) {
-			aliases = 'checked';
+			aliases = "checked"
 		} else {
-			aliases = '';
+			aliases = ""
 		}
 		if (loop) {
-			loop = 'checked';
+			loop = "checked"
 		} else {
-			loop = '';
+			loop = ""
 		}
 		if (constants) {
-			constants = 'checked';
+			constants = "checked"
 		} else {
-			constants = '';
+			constants = ""
 		}
-		icSidebar.section('settings', `
+		icSidebar.section("settings", `
 					<form name="settings" id="form-settings">
 						<fieldset title="Settings">
 							<ul>
@@ -191,40 +191,40 @@ class IcXDiagnostics extends Ic10Diagnostics {
 	}
 
 	parseLine(doc: vscode.TextDocument, lineIndex) {
-		const lineOfText = doc.lineAt(lineIndex);
+		const lineOfText = doc.lineAt(lineIndex)
 		if (lineOfText.text.trim().length > 0) {
-			let text = lineOfText.text.trim();
+			let text = lineOfText.text.trim()
 			functions.some((substring) => {
-				if (text.startsWith('#')) {
-					if (text.startsWith('#log') || text.startsWith('debug')) {
+				if (text.startsWith("#")) {
+					if (text.startsWith("#log") || text.startsWith("debug")) {
 						this.errors.push(new DiagnosticsError(`Debug function: "${text}"`, 2, 0, text.length, lineIndex))
-						return true;
+						return true
 					}
-					return true;
+					return true
 				}
-				const words = text.split(/ +/);
-				text        = text.replace(/#.+$/, '')
-				text        = text.trim()
-				if (text.endsWith(':')) {
+				const words = text.split(/ +/)
+				text = text.replace(/#.+$/, "")
+				text = text.trim()
+				if (text.endsWith(":")) {
 					this.jumps.push(text)
-					return true;
+					return true
 				}
-				if (text.startsWith('alias')) {
+				if (text.startsWith("alias")) {
 					this.aliases.push(words[1])
 				}
-				if (text.startsWith('var')) {
+				if (text.startsWith("var")) {
 					this.aliases.push(words[1])
 				}
-				if (text.startsWith('define')) {
+				if (text.startsWith("define")) {
 					this.aliases.push(words[1])
 				}
-				if (text.startsWith('const')) {
+				if (text.startsWith("const")) {
 					this.aliases.push(words[1])
 				}
 				if (text.startsWith("if")) {
 					this.blockCount++
 					this.analyzeIF(words, text, lineIndex)
-					return true;
+					return true
 				}
 				if (this.InFunction !== false) {
 					if (text.startsWith("function") && this.InFunction !== lineIndex) {
@@ -241,40 +241,40 @@ class IcXDiagnostics extends Ic10Diagnostics {
 				}
 				if (text.startsWith(substring)) {
 					this.analyzeFunctionInputs(words, text, lineIndex)
-					return true;
+					return true
 				}
 				if (text.startsWith(substring)) {
 					this.analyzeFunctionInputs(words, text, lineIndex)
 				}
 				return false
-			}, this);
-			this.aliases = [...new Set(this.aliases)];
+			}, this)
+			this.aliases = [...new Set(this.aliases)]
 		}
 		//console.log(this.aliases)
 	}
 
 	analyzeFunctionInputs(words: string[], text: string, lineIndex: number): errorMsg | true {
-		const fn  = words[0] ?? null;
-		const op1 = words[1] ?? null;
-		const op2 = words[2] ?? null;
-		const op3 = words[3] ?? null;
-		const op4 = words[4] ?? null;
+		const fn = words[0] ?? null
+		const op1 = words[1] ?? null
+		const op2 = words[2] ?? null
+		const op3 = words[3] ?? null
+		const op4 = words[4] ?? null
 
 		if (!manual.hasOwnProperty(fn)) {
-			return true;
+			return true
 			//return {length: fn.length, msg: `Unknown function "${fn}"`, lvl: 0};
 		} else {
-			const rule = manual[fn];
-			if (fn === 'return') {
+			const rule = manual[fn]
+			if (fn === "return") {
 				if (!this.InFunction) {
 					this.errors.push(new DiagnosticsError(`"return" must be in function`, 0, 0, text.length, lineIndex))
 				}
-				return true;
+				return true
 			}
-			if (rule.type == 'Function') {
+			if (rule.type == "Function") {
 				if (op1 !== null && this.empty(rule.op1)) {
 					this.errors.push(new DiagnosticsError(`this function have\`t any Arguments: "${text}"`, 0, 0, text.length, lineIndex))
-					return true;
+					return true
 				}
 				if (!this.empty(op1) && !this.empty(rule.op1)) {
 					this.parseOpRule(rule.op1, op1, text.indexOf(op1, fn.length), text, lineIndex)
@@ -297,10 +297,10 @@ class IcXDiagnostics extends Ic10Diagnostics {
 					this.errors.push(new DiagnosticsError(`missing fourth "Argument": "${text}"`, 0, 0, text.length, lineIndex))
 				}
 			} else {
-				return true;
+				return true
 			}
 		}
-		return true;
+		return true
 	}
 
 	analyzeIF(words: string[], text: string, lineIndex: number): errorMsg | true {
@@ -319,16 +319,16 @@ class IcXDiagnostics extends Ic10Diagnostics {
 				this.errors.push(new DiagnosticsError(`Incorrect operator must be "==" or "!=" or "~=" or ">=" or "<="`, 0, 0, text.length, lineIndex))
 			}
 		}
-		return true;
+		return true
 	}
 
 	createDiagnostic(range: vscode.Range, message: string, lvl: number): vscode.Diagnostic {
 
 		// create range that represents, where in the document the word is
 		const diagnostic = new vscode.Diagnostic(range, message,
-												 lvl);
-		diagnostic.code  = IcXDiagnosticsName;
-		return diagnostic;
+			lvl)
+		diagnostic.code = IcXDiagnosticsName
+		return diagnostic
 	}
 }
 

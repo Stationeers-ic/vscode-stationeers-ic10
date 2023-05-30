@@ -2,9 +2,8 @@
 
 WIKI [https://icx.traineratwot.site/wiki/icx](https://icx.traineratwot.site/wiki/icx)
 
-VS code Sample project [https://github.com/Traineratwot/Ic10-and-Icx-Sample](https://github.com/Traineratwot/Ic10-and-Icx-Sample)
-
-
+VS code Sample
+project [https://github.com/Traineratwot/Ic10-and-Icx-Sample](https://github.com/Traineratwot/Ic10-and-Icx-Sample)
 
 [![issues](https://badgen.net/github/issues/Traineratwot/vscode-stationeers-ic10/)](https://github.com/Traineratwot/vscode-stationeers-ic10/issues?q=is%3Aissue)
 [![open-issues](https://badgen.net/github/open-issues/Traineratwot/vscode-stationeers-ic10/)](https://github.com/Traineratwot/vscode-stationeers-ic10/issues)
@@ -25,7 +24,6 @@ VS code Sample project [https://github.com/Traineratwot/Ic10-and-Icx-Sample](htt
 [![](https://i.imgur.com/cl0Xbq1.png)  Sponsor this project](https://www.patreon.com/traineratwot)
 
 [![](https://i.imgur.com/j50yyPG.jpeg) discord](https://discord.gg/KSVjXufkA9)
-
 
 Debugger launch
 
@@ -52,11 +50,12 @@ Debugger launch
 - Debugger
 
 ## News
+
 - **add icX Formatter**
 - **Rework Stack**
 - new snippets
 - new description for variable
-- Write value in debugger 
+- Write value in debugger
 - translate to english
 - Debugger
 - Formatter
@@ -70,7 +69,6 @@ Debugger launch
 counter left lines
 
 ![counter](https://i.imgur.com/Y2MHtew.jpg)
-
 
 new snippets
 
@@ -94,12 +92,13 @@ new snippets
 
 ![img1](https://i.imgur.com/phOgb3n.jpeg)
 
-
 # icX
 
 icX is a programming language translated to ic10 used to simplify the programming of ic10 microprocessors in
 the Stationeers game.
+
 # Quick start
+
 1. Install [plugin for VSC](https://marketplace.visualstudio.com/items?itemName=Traineratwot.stationeers-ic10)
 2. Create a file with **.icX** type
 3. Write a program. For example:
@@ -113,6 +112,7 @@ the Stationeers game.
 6. Paste code into microprocessor Ic10 in the game
 
 # Instructions
+
 ### Comments
 
   ```
@@ -122,6 +122,7 @@ the Stationeers game.
 ### Vars
 
 icX will automatically replace variable names with register names
+
 ```
 ---icX
    var a = 10
@@ -130,6 +131,7 @@ icX will automatically replace variable names with register names
 ```
 
 Using _alias_
+
 ```
 ---icX
    use aliases
@@ -140,6 +142,7 @@ Using _alias_
 ```
 
 Using _define_
+
 ```
 ---icX
    use constants
@@ -149,9 +152,11 @@ Using _define_
 ```
 
 ### Math
+
 #### Unary operations (++, --)
 
 inc
+
 ```
 ---icX
    var a = 0
@@ -162,6 +167,7 @@ inc
 ```
 
 dec
+
 ```
 ---icX
    var a = 0
@@ -174,12 +180,14 @@ dec
 #### Binary operations (+, -, *, /, %)
 
 Constants will be calculated automatically
+
 ```
 ---icX
    var x =  5 + 5 * 2 
 ---ic10
    move r0 15
 ```
+
 ```
 ---icX
    const x = 2 + 2
@@ -269,6 +277,7 @@ Binary logical operations used (<, >, ==, !=, <=, >=, &, |, ~=)
 ### Function
 
 To write a function, use the _function_ keyword
+
 ```
 {function name}()
 
@@ -298,9 +307,11 @@ end
  move r0 1
  j ra
 ```
+
 ### Stack
 
 To easily write in stack, use the _stack_ keyword
+
 ```
 ---icX
    stack 342423 432423 54534 6567
@@ -312,6 +323,7 @@ To easily write in stack, use the _stack_ keyword
 ```
 
 For each stack
+
 ```
 ---icX
    var YourVariabele = 0
@@ -340,6 +352,7 @@ For each stack
 In addition to _use aliases_ and _use constant_, the following constructs are supported:
 
 To loop the application, use _use loop_
+
 ```
 ---icX
  move r0 0
@@ -362,6 +375,7 @@ To loop the application, use _use loop_
 ```
 
 Use _use comments_ to transfer your comments to ic10 code
+
 ```
 ---icX
  use comments
