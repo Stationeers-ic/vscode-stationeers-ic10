@@ -1,1 +1,1953 @@
-{"alias":{"prefix":"alias","body":["alias"],"description":null},"aliasD0":{"prefix":"aliasd0","body":["alias $1 d0"],"description":"alias {name} d0"},"aliasD1":{"prefix":"aliasd1","body":["alias $1 d1"],"description":"alias {name} d1"},"aliasD2":{"prefix":"aliasd2","body":["alias $1 d2"],"description":"alias {name} d2"},"aliasD3":{"prefix":"aliasd3","body":["alias $1 d3"],"description":"alias {name} d3"},"aliasD4":{"prefix":"aliasd4","body":["alias $1 d4"],"description":"alias {name} d4"},"aliasD5":{"prefix":"aliasd5","body":["alias $1 d5"],"description":"alias {name} d5"},"loop":{"prefix":"j l","body":["loop:","$1","j loop"],"description":"main loop"},"abs":{"prefix":"abs","body":["abs"],"description":null},"acos":{"prefix":"acos","body":["acos"],"description":null},"add":{"prefix":"add","body":["add"],"description":null},"and":{"prefix":"and","body":["and"],"description":null},"asin":{"prefix":"asin","body":["asin"],"description":null},"atan":{"prefix":"atan","body":["atan"],"description":null},"bap":{"prefix":"bap","body":["bap"],"description":null},"bapal":{"prefix":"bapal","body":["bapal"],"description":null},"bapz":{"prefix":"bapz","body":["bapz"],"description":null},"bapzal":{"prefix":"bapzal","body":["bapzal"],"description":null},"bdns":{"prefix":"bdns","body":["bdns"],"description":null},"bdnsal":{"prefix":"bdnsal","body":["bdnsal"],"description":null},"bdse":{"prefix":"bdse","body":["bdse"],"description":null},"bdseal":{"prefix":"bdseal","body":["bdseal"],"description":null},"beq":{"prefix":"beq","body":["beq"],"description":null},"beqal":{"prefix":"beqal","body":["beqal"],"description":null},"beqz":{"prefix":"beqz","body":["beqz"],"description":null},"beqzal":{"prefix":"beqzal","body":["beqzal"],"description":null},"bge":{"prefix":"bge","body":["bge"],"description":null},"bgeal":{"prefix":"bgeal","body":["bgeal"],"description":null},"bgez":{"prefix":"bgez","body":["bgez"],"description":null},"bgezal":{"prefix":"bgezal","body":["bgezal"],"description":null},"bgt":{"prefix":"bgt","body":["bgt"],"description":null},"bgtal":{"prefix":"bgtal","body":["bgtal"],"description":null},"bgtz":{"prefix":"bgtz","body":["bgtz"],"description":null},"bgtzal":{"prefix":"bgtzal","body":["bgtzal"],"description":null},"ble":{"prefix":"ble","body":["ble"],"description":null},"bleal":{"prefix":"bleal","body":["bleal"],"description":null},"blez":{"prefix":"blez","body":["blez"],"description":null},"blezal":{"prefix":"blezal","body":["blezal"],"description":null},"blt":{"prefix":"blt","body":["blt"],"description":null},"bltal":{"prefix":"bltal","body":["bltal"],"description":null},"bltz":{"prefix":"bltz","body":["bltz"],"description":null},"bltzal":{"prefix":"bltzal","body":["bltzal"],"description":null},"bna":{"prefix":"bna","body":["bna"],"description":null},"bnaal":{"prefix":"bnaal","body":["bnaal"],"description":null},"bnaz":{"prefix":"bnaz","body":["bnaz"],"description":null},"bnazal":{"prefix":"bnazal","body":["bnazal"],"description":null},"bne":{"prefix":"bne","body":["bne"],"description":null},"bneal":{"prefix":"bneal","body":["bneal"],"description":null},"bnez":{"prefix":"bnez","body":["bnez"],"description":null},"bnezal":{"prefix":"bnezal","body":["bnezal"],"description":null},"brap":{"prefix":"brap","body":["brap"],"description":null},"brapz":{"prefix":"brapz","body":["brapz"],"description":null},"brdns":{"prefix":"brdns","body":["brdns"],"description":null},"brdse":{"prefix":"brdse","body":["brdse"],"description":null},"breq":{"prefix":"breq","body":["breq"],"description":null},"breqz":{"prefix":"breqz","body":["breqz"],"description":null},"brge":{"prefix":"brge","body":["brge"],"description":null},"brgez":{"prefix":"brgez","body":["brgez"],"description":null},"brgt":{"prefix":"brgt","body":["brgt"],"description":null},"brgtz":{"prefix":"brgtz","body":["brgtz"],"description":null},"brle":{"prefix":"brle","body":["brle"],"description":null},"brlez":{"prefix":"brlez","body":["brlez"],"description":null},"brlt":{"prefix":"brlt","body":["brlt"],"description":null},"brltz":{"prefix":"brltz","body":["brltz"],"description":null},"brna":{"prefix":"brna","body":["brna"],"description":null},"brnaz":{"prefix":"brnaz","body":["brnaz"],"description":null},"brne":{"prefix":"brne","body":["brne"],"description":null},"brnez":{"prefix":"brnez","body":["brnez"],"description":null},"ceil":{"prefix":"ceil","body":["ceil"],"description":null},"cos":{"prefix":"cos","body":["cos"],"description":null},"define":{"prefix":"define","body":["define"],"description":null},"div":{"prefix":"div","body":["div"],"description":null},"exp":{"prefix":"exp","body":["exp"],"description":null},"floor":{"prefix":"floor","body":["floor"],"description":null},"hcf":{"prefix":"hcf","body":["hcf"],"description":null},"j":{"prefix":"j","body":["j"],"description":null},"jal":{"prefix":"jal","body":["jal"],"description":null},"jr":{"prefix":"jr","body":["jr"],"description":null},"l":{"prefix":"l","body":["l"],"description":null},"log":{"prefix":"log","body":["log"],"description":null},"lr":{"prefix":"lr","body":["lr"],"description":null},"ls":{"prefix":"ls","body":["ls"],"description":null},"max":{"prefix":"max","body":["max"],"description":null},"min":{"prefix":"min","body":["min"],"description":null},"mod":{"prefix":"mod","body":["mod"],"description":null},"move":{"prefix":"move","body":["move"],"description":null},"mul":{"prefix":"mul","body":["mul"],"description":null},"nor":{"prefix":"nor","body":["nor"],"description":null},"or":{"prefix":"or","body":["or"],"description":null},"peek":{"prefix":"peek","body":["peek"],"description":null},"pop":{"prefix":"pop","body":["pop"],"description":null},"push":{"prefix":"push","body":["push"],"description":null},"rand":{"prefix":"rand","body":["rand"],"description":null},"round":{"prefix":"round","body":["round"],"description":null},"s":{"prefix":"s","body":["s"],"description":null},"sap":{"prefix":"sap","body":["sap"],"description":null},"sapz":{"prefix":"sapz","body":["sapz"],"description":null},"sdns":{"prefix":"sdns","body":["sdns"],"description":null},"sdse":{"prefix":"sdse","body":["sdse"],"description":null},"select":{"prefix":"select","body":["select"],"description":null},"seq":{"prefix":"seq","body":["seq"],"description":null},"seqz":{"prefix":"seqz","body":["seqz"],"description":null},"sge":{"prefix":"sge","body":["sge"],"description":null},"sgez":{"prefix":"sgez","body":["sgez"],"description":null},"sgt":{"prefix":"sgt","body":["sgt"],"description":null},"sgtz":{"prefix":"sgtz","body":["sgtz"],"description":null},"sin":{"prefix":"sin","body":["sin"],"description":null},"sle":{"prefix":"sle","body":["sle"],"description":null},"sleep":{"prefix":"sleep","body":["sleep"],"description":null},"slez":{"prefix":"slez","body":["slez"],"description":null},"slt":{"prefix":"slt","body":["slt"],"description":null},"sltz":{"prefix":"sltz","body":["sltz"],"description":null},"sna":{"prefix":"sna","body":["sna"],"description":null},"snaz":{"prefix":"snaz","body":["snaz"],"description":null},"sne":{"prefix":"sne","body":["sne"],"description":null},"snez":{"prefix":"snez","body":["snez"],"description":null},"sqrt":{"prefix":"sqrt","body":["sqrt"],"description":null},"sub":{"prefix":"sub","body":["sub"],"description":null},"tan":{"prefix":"tan","body":["tan"],"description":null},"trunc":{"prefix":"trunc","body":["trunc"],"description":null},"xor":{"prefix":"xor","body":["xor"],"description":null},"yield":{"prefix":"yield","body":["yield"],"description":null},"Activate":{"prefix":"Activate","body":["Activate"],"description":null},"Charge":{"prefix":"Charge","body":["Charge"],"description":null},"Class":{"prefix":"Class","body":["Class"],"description":null},"ClearMemory":{"prefix":"ClearMemory","body":["ClearMemory"],"description":null},"Color":{"prefix":"Color","body":["Color"],"description":null},"Combustion":{"prefix":"Combustion","body":["Combustion"],"description":null},"CompletionRatio":{"prefix":"CompletionRatio","body":["CompletionRatio"],"description":null},"Damage":{"prefix":"Damage","body":["Damage"],"description":null},"ElevatorLevel":{"prefix":"ElevatorLevel","body":["ElevatorLevel"],"description":null},"ElevatorSpeed":{"prefix":"ElevatorSpeed","body":["ElevatorSpeed"],"description":null},"Error":{"prefix":"Error","body":["Error"],"description":null},"ExportCount":{"prefix":"ExportCount","body":["ExportCount"],"description":null},"Filtration":{"prefix":"Filtration","body":["Filtration"],"description":null},"ForceWrite":{"prefix":"ForceWrite","body":["ForceWrite"],"description":null},"Harvest":{"prefix":"Harvest","body":["Harvest"],"description":null},"Horizontal":{"prefix":"Horizontal","body":["Horizontal"],"description":null},"Idle":{"prefix":"Idle","body":["Idle"],"description":null},"ImportCount":{"prefix":"ImportCount","body":["ImportCount"],"description":null},"Lock":{"prefix":"Lock","body":["Lock"],"description":null},"Maximum":{"prefix":"Maximum","body":["Maximum"],"description":null},"MaxQuantity":{"prefix":"MaxQuantity","body":["MaxQuantity"],"description":null},"Mode":{"prefix":"Mode","body":["Mode"],"description":null},"On":{"prefix":"On","body":["On"],"description":null},"Open":{"prefix":"Open","body":["Open"],"description":null},"Output":{"prefix":"Output","body":["Output"],"description":null},"Plant":{"prefix":"Plant","body":["Plant"],"description":null},"PositionX":{"prefix":"PositionX","body":["PositionX"],"description":null},"PositionY":{"prefix":"PositionY","body":["PositionY"],"description":null},"PositionZ":{"prefix":"PositionZ","body":["PositionZ"],"description":null},"Power":{"prefix":"Power","body":["Power"],"description":null},"PowerActual":{"prefix":"PowerActual","body":["PowerActual"],"description":null},"PowerGeneration":{"prefix":"PowerGeneration","body":["PowerGeneration"],"description":null},"PowerPotential":{"prefix":"PowerPotential","body":["PowerPotential"],"description":null},"PowerRequired":{"prefix":"PowerRequired","body":["PowerRequired"],"description":null},"PressureExternal":{"prefix":"PressureExternal","body":["PressureExternal"],"description":null},"PressureInternal":{"prefix":"PressureInternal","body":["PressureInternal"],"description":null},"Ratio":{"prefix":"Ratio","body":["Ratio"],"description":null},"RatioCarbonDioxide":{"prefix":"RatioCarbonDioxide","body":["RatioCarbonDioxide"],"description":null},"RatioNitrogen":{"prefix":"RatioNitrogen","body":["RatioNitrogen"],"description":null},"RatioNitrousOxide":{"prefix":"RatioNitrousOxide","body":["RatioNitrousOxide"],"description":null},"RatioOxygen":{"prefix":"RatioOxygen","body":["RatioOxygen"],"description":null},"RatioPollutant":{"prefix":"RatioPollutant","body":["RatioPollutant"],"description":null},"RatioVolatiles":{"prefix":"RatioVolatiles","body":["RatioVolatiles"],"description":null},"RatioWater":{"prefix":"RatioWater","body":["RatioWater"],"description":null},"Reagents":{"prefix":"Reagents","body":["Reagents"],"description":null},"RecipeHash":{"prefix":"RecipeHash","body":["RecipeHash"],"description":null},"RequiredPower":{"prefix":"RequiredPower","body":["RequiredPower"],"description":null},"Setting":{"prefix":"Setting","body":["Setting"],"description":null},"SolarAngle":{"prefix":"SolarAngle","body":["SolarAngle"],"description":null},"TargetX":{"prefix":"TargetX","body":["TargetX"],"description":null},"TargetY":{"prefix":"TargetY","body":["TargetY"],"description":null},"TargetZ":{"prefix":"TargetZ","body":["TargetZ"],"description":null},"TemperatureExternal":{"prefix":"TemperatureExternal","body":["TemperatureExternal"],"description":null},"TemperatureSetting":{"prefix":"TemperatureSetting","body":["TemperatureSetting"],"description":null},"TotalMoles":{"prefix":"TotalMoles","body":["TotalMoles"],"description":null},"VelocityMagnitude":{"prefix":"VelocityMagnitude","body":["VelocityMagnitude"],"description":null},"VelocityRelativeX":{"prefix":"VelocityRelativeX","body":["VelocityRelativeX"],"description":null},"VelocityRelativeY":{"prefix":"VelocityRelativeY","body":["VelocityRelativeY"],"description":null},"VelocityRelativeZ":{"prefix":"VelocityRelativeZ","body":["VelocityRelativeZ"],"description":null},"Vertical":{"prefix":"Vertical","body":["Vertical"],"description":null},"Volume":{"prefix":"Volume","body":["Volume"],"description":null},"ChargeRatio":{"prefix":"ChargeRatio","body":["ChargeRatio"],"description":null},"Efficiency":{"prefix":"Efficiency","body":["Efficiency"],"description":null},"Growth":{"prefix":"Growth","body":["Growth"],"description":null},"Health":{"prefix":"Health","body":["Health"],"description":null},"Mature":{"prefix":"Mature","body":["Mature"],"description":null},"OccupantHash":{"prefix":"OccupantHash","body":["OccupantHash"],"description":null},"Occupied":{"prefix":"Occupied","body":["Occupied"],"description":null},"PressureAir":{"prefix":"PressureAir","body":["PressureAir"],"description":null},"PressureWaste":{"prefix":"PressureWaste","body":["PressureWaste"],"description":null},"PrefabHash":{"prefix":"PrefabHash","body":["PrefabHash"]},"Pressure":{"prefix":"Pressure","body":["Pressure"]},"Quantity":{"prefix":"Quantity","body":["Quantity"]},"Temperature":{"prefix":"Temperature","body":["Temperature"]},"lb":{"prefix":"lb","body":["lb"],"description":null},"sb":{"prefix":"sb","body":["sb"],"description":null},"Bpm":{"prefix":"Bpm","body":["Bpm"]},"CollectableGoods":{"prefix":"CollectableGoods","body":["CollectableGoods"]},"CurrentResearchPodType":{"prefix":"CurrentResearchPodType","body":["CurrentResearchPodType"]},"Fuel":{"prefix":"Fuel","body":["Fuel"]},"ManualResearchRequiredPod":{"prefix":"ManualResearchRequiredPod","body":["ManualResearchRequiredPod"]},"MineablesInQueue":{"prefix":"MineablesInQueue","body":["MineablesInQueue"]},"MineablesInVicinity":{"prefix":"MineablesInVicinity","body":["MineablesInVicinity"]},"NextWeatherEventTime":{"prefix":"NextWeatherEventTime","body":["NextWeatherEventTime"]},"ReturnFuelCost":{"prefix":"ReturnFuelCost","body":["ReturnFuelCost"]},"SettingInput":{"prefix":"SettingInput","body":["SettingInput"]},"SettingOutput":{"prefix":"SettingOutput","body":["SettingOutput"]},"SignalID":{"prefix":"SignalID","body":["SignalID"]},"SignalStrength":{"prefix":"SignalStrength","body":["SignalStrength"]},"Time":{"prefix":"Time","body":["Time"]},"AirRelease":{"prefix":"AirRelease","body":["AirRelease"]},"HorizontalRatio":{"prefix":"HorizontalRatio","body":["HorizontalRatio"]},"PressureSetting":{"prefix":"PressureSetting","body":["PressureSetting"]},"RequestHash":{"prefix":"RequestHash","body":["RequestHash"]},"VerticalRatio":{"prefix":"VerticalRatio","body":["VerticalRatio"]},"Average":{"prefix":"Average","body":["Average"],"description":null},"Sum":{"prefix":"Sum","body":["Sum"],"description":null},"Minimum":{"prefix":"Minimum","body":["Minimum"],"description":null},"stack":{"prefix":"stack","body":["stack"],"description":null},"Seeding":{"prefix":"Seeding","body":["Seeding"]},"atan2":{"prefix":"atan2","body":["atan2"],"description":null},"CombustionInput":{"prefix":"CombustionInput","body":["CombustionInput"]},"CombustionOutput":{"prefix":"CombustionOutput","body":["CombustionOutput"]},"CombustionOutput2":{"prefix":"CombustionOutput2","body":["CombustionOutput2"]},"TemperatureInput":{"prefix":"TemperatureInput","body":["TemperatureInput"]},"TemperatureOutput":{"prefix":"TemperatureOutput","body":["TemperatureOutput"]},"TemperatureOutput2":{"prefix":"TemperatureOutput2","body":["TemperatureOutput2"]},"PressureInput":{"prefix":"PressureInput","body":["PressureInput"]},"PressureOutput":{"prefix":"PressureOutput","body":["PressureOutput"]},"PressureOutput2":{"prefix":"PressureOutput2","body":["PressureOutput2"]},"TotalMolesInput":{"prefix":"TotalMolesInput","body":["TotalMolesInput"]},"TotalMolesOutput":{"prefix":"TotalMolesOutput","body":["TotalMolesOutput"]},"TotalMolesOutput2":{"prefix":"TotalMolesOutput2","body":["TotalMolesOutput2"]},"RatioCarbonDioxideInput":{"prefix":"RatioCarbonDioxideInput","body":["RatioCarbonDioxideInput"]},"RatioCarbonDioxideOutput":{"prefix":"RatioCarbonDioxideOutput","body":["RatioCarbonDioxideOutput"]},"RatioCarbonDioxideOutput2":{"prefix":"RatioCarbonDioxideOutput2","body":["RatioCarbonDioxideOutput2"]},"RatioNitrogenInput":{"prefix":"RatioNitrogenInput","body":["RatioNitrogenInput"]},"RatioNitrogenOutput":{"prefix":"RatioNitrogenOutput","body":["RatioNitrogenOutput"]},"RatioNitrogenOutput2":{"prefix":"RatioNitrogenOutput2","body":["RatioNitrogenOutput2"]},"RatioNitrousOxideInput":{"prefix":"RatioNitrousOxideInput","body":["RatioNitrousOxideInput"]},"RatioNitrousOxideOutput":{"prefix":"RatioNitrousOxideOutput","body":["RatioNitrousOxideOutput"]},"RatioNitrousOxideOutput2":{"prefix":"RatioNitrousOxideOutput2","body":["RatioNitrousOxideOutput2"]},"RatioOxygenInput":{"prefix":"RatioOxygenInput","body":["RatioOxygenInput"]},"RatioOxygenOutput":{"prefix":"RatioOxygenOutput","body":["RatioOxygenOutput"]},"RatioOxygenOutput2":{"prefix":"RatioOxygenOutput2","body":["RatioOxygenOutput2"]},"RatioPollutantInput":{"prefix":"RatioPollutantInput","body":["RatioPollutantInput"]},"RatioPollutantOutpu":{"prefix":"RatioPollutantOutpu","body":["RatioPollutantOutpu"]},"RatioPollutantOutput2":{"prefix":"RatioPollutantOutput2","body":["RatioPollutantOutput2"]},"RatioVolatilesInput":{"prefix":"RatioVolatilesInput","body":["RatioVolatilesInput"]},"RatioVolatilesOutput":{"prefix":"RatioVolatilesOutput","body":["RatioVolatilesOutput"]},"RatioVolatilesOutput2":{"prefix":"RatioVolatilesOutput2","body":["RatioVolatilesOutput2"]},"RatioWaterInput":{"prefix":"RatioWaterInput","body":["RatioWaterInput"]},"RatioWaterOutput":{"prefix":"RatioWaterOutput","body":["RatioWaterOutput"]},"RatioWaterOutput2":{"prefix":"RatioWaterOutput2","body":["RatioWaterOutput2"]},"PressureEfficiency":{"prefix":"PressureEfficiency","body":["PressureEfficiency"]},"OperationalTemperatureEfficiency":{"prefix":"OperationalTemperatureEfficiency","body":["OperationalTemperatureEfficiency"]},"TemperatureDifferentialEfficiency":{"prefix":"TemperatureDifferentialEfficiency","body":["TemperatureDifferentialEfficiency"]},"Throttle":{"prefix":"Throttle","body":["Throttle"],"description":null},"CombustionLimiter":{"prefix":"CombustionLimiter","body":["CombustionLimiter"],"description":null},"debug":{"prefix":"debug","body":["debug"],"description":null},"Contents":{"prefix":"Contents","body":["Contents"],"description":null},"Required":{"prefix":"Required","body":["Required"],"description":null},"Recipe":{"prefix":"Recipe","body":["Recipe"],"description":null},"return":{"prefix":"return","body":["return"],"description":null}}
+{
+  "alias": {
+    "prefix": "alias",
+    "body": [
+      "alias"
+    ],
+    "description": null
+  },
+  "aliasD0": {
+    "prefix": "aliasd0",
+    "body": [
+      "alias $1 d0"
+    ],
+    "description": "alias {name} d0"
+  },
+  "aliasD1": {
+    "prefix": "aliasd1",
+    "body": [
+      "alias $1 d1"
+    ],
+    "description": "alias {name} d1"
+  },
+  "aliasD2": {
+    "prefix": "aliasd2",
+    "body": [
+      "alias $1 d2"
+    ],
+    "description": "alias {name} d2"
+  },
+  "aliasD3": {
+    "prefix": "aliasd3",
+    "body": [
+      "alias $1 d3"
+    ],
+    "description": "alias {name} d3"
+  },
+  "aliasD4": {
+    "prefix": "aliasd4",
+    "body": [
+      "alias $1 d4"
+    ],
+    "description": "alias {name} d4"
+  },
+  "aliasD5": {
+    "prefix": "aliasd5",
+    "body": [
+      "alias $1 d5"
+    ],
+    "description": "alias {name} d5"
+  },
+  "loop": {
+    "prefix": "j l",
+    "body": [
+      "loop:",
+      "$1",
+      "j loop"
+    ],
+    "description": "main loop"
+  },
+  "abs": {
+    "prefix": "abs",
+    "body": [
+      "abs"
+    ],
+    "description": null
+  },
+  "acos": {
+    "prefix": "acos",
+    "body": [
+      "acos"
+    ],
+    "description": null
+  },
+  "add": {
+    "prefix": "add",
+    "body": [
+      "add"
+    ],
+    "description": null
+  },
+  "and": {
+    "prefix": "and",
+    "body": [
+      "and"
+    ],
+    "description": null
+  },
+  "asin": {
+    "prefix": "asin",
+    "body": [
+      "asin"
+    ],
+    "description": null
+  },
+  "atan": {
+    "prefix": "atan",
+    "body": [
+      "atan"
+    ],
+    "description": null
+  },
+  "bap": {
+    "prefix": "bap",
+    "body": [
+      "bap"
+    ],
+    "description": null
+  },
+  "bapal": {
+    "prefix": "bapal",
+    "body": [
+      "bapal"
+    ],
+    "description": null
+  },
+  "bapz": {
+    "prefix": "bapz",
+    "body": [
+      "bapz"
+    ],
+    "description": null
+  },
+  "bapzal": {
+    "prefix": "bapzal",
+    "body": [
+      "bapzal"
+    ],
+    "description": null
+  },
+  "bdns": {
+    "prefix": "bdns",
+    "body": [
+      "bdns"
+    ],
+    "description": null
+  },
+  "bdnsal": {
+    "prefix": "bdnsal",
+    "body": [
+      "bdnsal"
+    ],
+    "description": null
+  },
+  "bdse": {
+    "prefix": "bdse",
+    "body": [
+      "bdse"
+    ],
+    "description": null
+  },
+  "bdseal": {
+    "prefix": "bdseal",
+    "body": [
+      "bdseal"
+    ],
+    "description": null
+  },
+  "beq": {
+    "prefix": "beq",
+    "body": [
+      "beq"
+    ],
+    "description": null
+  },
+  "beqal": {
+    "prefix": "beqal",
+    "body": [
+      "beqal"
+    ],
+    "description": null
+  },
+  "beqz": {
+    "prefix": "beqz",
+    "body": [
+      "beqz"
+    ],
+    "description": null
+  },
+  "beqzal": {
+    "prefix": "beqzal",
+    "body": [
+      "beqzal"
+    ],
+    "description": null
+  },
+  "bge": {
+    "prefix": "bge",
+    "body": [
+      "bge"
+    ],
+    "description": null
+  },
+  "bgeal": {
+    "prefix": "bgeal",
+    "body": [
+      "bgeal"
+    ],
+    "description": null
+  },
+  "bgez": {
+    "prefix": "bgez",
+    "body": [
+      "bgez"
+    ],
+    "description": null
+  },
+  "bgezal": {
+    "prefix": "bgezal",
+    "body": [
+      "bgezal"
+    ],
+    "description": null
+  },
+  "bgt": {
+    "prefix": "bgt",
+    "body": [
+      "bgt"
+    ],
+    "description": null
+  },
+  "bgtal": {
+    "prefix": "bgtal",
+    "body": [
+      "bgtal"
+    ],
+    "description": null
+  },
+  "bgtz": {
+    "prefix": "bgtz",
+    "body": [
+      "bgtz"
+    ],
+    "description": null
+  },
+  "bgtzal": {
+    "prefix": "bgtzal",
+    "body": [
+      "bgtzal"
+    ],
+    "description": null
+  },
+  "ble": {
+    "prefix": "ble",
+    "body": [
+      "ble"
+    ],
+    "description": null
+  },
+  "bleal": {
+    "prefix": "bleal",
+    "body": [
+      "bleal"
+    ],
+    "description": null
+  },
+  "blez": {
+    "prefix": "blez",
+    "body": [
+      "blez"
+    ],
+    "description": null
+  },
+  "blezal": {
+    "prefix": "blezal",
+    "body": [
+      "blezal"
+    ],
+    "description": null
+  },
+  "blt": {
+    "prefix": "blt",
+    "body": [
+      "blt"
+    ],
+    "description": null
+  },
+  "bltal": {
+    "prefix": "bltal",
+    "body": [
+      "bltal"
+    ],
+    "description": null
+  },
+  "bltz": {
+    "prefix": "bltz",
+    "body": [
+      "bltz"
+    ],
+    "description": null
+  },
+  "bltzal": {
+    "prefix": "bltzal",
+    "body": [
+      "bltzal"
+    ],
+    "description": null
+  },
+  "bna": {
+    "prefix": "bna",
+    "body": [
+      "bna"
+    ],
+    "description": null
+  },
+  "bnaal": {
+    "prefix": "bnaal",
+    "body": [
+      "bnaal"
+    ],
+    "description": null
+  },
+  "bnaz": {
+    "prefix": "bnaz",
+    "body": [
+      "bnaz"
+    ],
+    "description": null
+  },
+  "bnazal": {
+    "prefix": "bnazal",
+    "body": [
+      "bnazal"
+    ],
+    "description": null
+  },
+  "bne": {
+    "prefix": "bne",
+    "body": [
+      "bne"
+    ],
+    "description": null
+  },
+  "bneal": {
+    "prefix": "bneal",
+    "body": [
+      "bneal"
+    ],
+    "description": null
+  },
+  "bnez": {
+    "prefix": "bnez",
+    "body": [
+      "bnez"
+    ],
+    "description": null
+  },
+  "bnezal": {
+    "prefix": "bnezal",
+    "body": [
+      "bnezal"
+    ],
+    "description": null
+  },
+  "brap": {
+    "prefix": "brap",
+    "body": [
+      "brap"
+    ],
+    "description": null
+  },
+  "brapz": {
+    "prefix": "brapz",
+    "body": [
+      "brapz"
+    ],
+    "description": null
+  },
+  "brdns": {
+    "prefix": "brdns",
+    "body": [
+      "brdns"
+    ],
+    "description": null
+  },
+  "brdse": {
+    "prefix": "brdse",
+    "body": [
+      "brdse"
+    ],
+    "description": null
+  },
+  "breq": {
+    "prefix": "breq",
+    "body": [
+      "breq"
+    ],
+    "description": null
+  },
+  "breqz": {
+    "prefix": "breqz",
+    "body": [
+      "breqz"
+    ],
+    "description": null
+  },
+  "brge": {
+    "prefix": "brge",
+    "body": [
+      "brge"
+    ],
+    "description": null
+  },
+  "brgez": {
+    "prefix": "brgez",
+    "body": [
+      "brgez"
+    ],
+    "description": null
+  },
+  "brgt": {
+    "prefix": "brgt",
+    "body": [
+      "brgt"
+    ],
+    "description": null
+  },
+  "brgtz": {
+    "prefix": "brgtz",
+    "body": [
+      "brgtz"
+    ],
+    "description": null
+  },
+  "brle": {
+    "prefix": "brle",
+    "body": [
+      "brle"
+    ],
+    "description": null
+  },
+  "brlez": {
+    "prefix": "brlez",
+    "body": [
+      "brlez"
+    ],
+    "description": null
+  },
+  "brlt": {
+    "prefix": "brlt",
+    "body": [
+      "brlt"
+    ],
+    "description": null
+  },
+  "brltz": {
+    "prefix": "brltz",
+    "body": [
+      "brltz"
+    ],
+    "description": null
+  },
+  "brna": {
+    "prefix": "brna",
+    "body": [
+      "brna"
+    ],
+    "description": null
+  },
+  "brnaz": {
+    "prefix": "brnaz",
+    "body": [
+      "brnaz"
+    ],
+    "description": null
+  },
+  "brne": {
+    "prefix": "brne",
+    "body": [
+      "brne"
+    ],
+    "description": null
+  },
+  "brnez": {
+    "prefix": "brnez",
+    "body": [
+      "brnez"
+    ],
+    "description": null
+  },
+  "ceil": {
+    "prefix": "ceil",
+    "body": [
+      "ceil"
+    ],
+    "description": null
+  },
+  "cos": {
+    "prefix": "cos",
+    "body": [
+      "cos"
+    ],
+    "description": null
+  },
+  "define": {
+    "prefix": "define",
+    "body": [
+      "define"
+    ],
+    "description": null
+  },
+  "div": {
+    "prefix": "div",
+    "body": [
+      "div"
+    ],
+    "description": null
+  },
+  "exp": {
+    "prefix": "exp",
+    "body": [
+      "exp"
+    ],
+    "description": null
+  },
+  "floor": {
+    "prefix": "floor",
+    "body": [
+      "floor"
+    ],
+    "description": null
+  },
+  "hcf": {
+    "prefix": "hcf",
+    "body": [
+      "hcf"
+    ],
+    "description": null
+  },
+  "j": {
+    "prefix": "j",
+    "body": [
+      "j"
+    ],
+    "description": null
+  },
+  "jal": {
+    "prefix": "jal",
+    "body": [
+      "jal"
+    ],
+    "description": null
+  },
+  "jr": {
+    "prefix": "jr",
+    "body": [
+      "jr"
+    ],
+    "description": null
+  },
+  "l": {
+    "prefix": "l",
+    "body": [
+      "l"
+    ],
+    "description": null
+  },
+  "log": {
+    "prefix": "log",
+    "body": [
+      "log"
+    ],
+    "description": null
+  },
+  "lr": {
+    "prefix": "lr",
+    "body": [
+      "lr"
+    ],
+    "description": null
+  },
+  "ls": {
+    "prefix": "ls",
+    "body": [
+      "ls"
+    ],
+    "description": null
+  },
+  "max": {
+    "prefix": "max",
+    "body": [
+      "max"
+    ],
+    "description": null
+  },
+  "min": {
+    "prefix": "min",
+    "body": [
+      "min"
+    ],
+    "description": null
+  },
+  "mod": {
+    "prefix": "mod",
+    "body": [
+      "mod"
+    ],
+    "description": null
+  },
+  "move": {
+    "prefix": "move",
+    "body": [
+      "move"
+    ],
+    "description": null
+  },
+  "mul": {
+    "prefix": "mul",
+    "body": [
+      "mul"
+    ],
+    "description": null
+  },
+  "nor": {
+    "prefix": "nor",
+    "body": [
+      "nor"
+    ],
+    "description": null
+  },
+  "or": {
+    "prefix": "or",
+    "body": [
+      "or"
+    ],
+    "description": null
+  },
+  "peek": {
+    "prefix": "peek",
+    "body": [
+      "peek"
+    ],
+    "description": null
+  },
+  "pop": {
+    "prefix": "pop",
+    "body": [
+      "pop"
+    ],
+    "description": null
+  },
+  "push": {
+    "prefix": "push",
+    "body": [
+      "push"
+    ],
+    "description": null
+  },
+  "rand": {
+    "prefix": "rand",
+    "body": [
+      "rand"
+    ],
+    "description": null
+  },
+  "round": {
+    "prefix": "round",
+    "body": [
+      "round"
+    ],
+    "description": null
+  },
+  "s": {
+    "prefix": "s",
+    "body": [
+      "s"
+    ],
+    "description": null
+  },
+  "sap": {
+    "prefix": "sap",
+    "body": [
+      "sap"
+    ],
+    "description": null
+  },
+  "sapz": {
+    "prefix": "sapz",
+    "body": [
+      "sapz"
+    ],
+    "description": null
+  },
+  "sdns": {
+    "prefix": "sdns",
+    "body": [
+      "sdns"
+    ],
+    "description": null
+  },
+  "sdse": {
+    "prefix": "sdse",
+    "body": [
+      "sdse"
+    ],
+    "description": null
+  },
+  "select": {
+    "prefix": "select",
+    "body": [
+      "select"
+    ],
+    "description": null
+  },
+  "seq": {
+    "prefix": "seq",
+    "body": [
+      "seq"
+    ],
+    "description": null
+  },
+  "seqz": {
+    "prefix": "seqz",
+    "body": [
+      "seqz"
+    ],
+    "description": null
+  },
+  "sge": {
+    "prefix": "sge",
+    "body": [
+      "sge"
+    ],
+    "description": null
+  },
+  "sgez": {
+    "prefix": "sgez",
+    "body": [
+      "sgez"
+    ],
+    "description": null
+  },
+  "sgt": {
+    "prefix": "sgt",
+    "body": [
+      "sgt"
+    ],
+    "description": null
+  },
+  "sgtz": {
+    "prefix": "sgtz",
+    "body": [
+      "sgtz"
+    ],
+    "description": null
+  },
+  "sin": {
+    "prefix": "sin",
+    "body": [
+      "sin"
+    ],
+    "description": null
+  },
+  "sle": {
+    "prefix": "sle",
+    "body": [
+      "sle"
+    ],
+    "description": null
+  },
+  "sleep": {
+    "prefix": "sleep",
+    "body": [
+      "sleep"
+    ],
+    "description": null
+  },
+  "slez": {
+    "prefix": "slez",
+    "body": [
+      "slez"
+    ],
+    "description": null
+  },
+  "slt": {
+    "prefix": "slt",
+    "body": [
+      "slt"
+    ],
+    "description": null
+  },
+  "sltz": {
+    "prefix": "sltz",
+    "body": [
+      "sltz"
+    ],
+    "description": null
+  },
+  "sna": {
+    "prefix": "sna",
+    "body": [
+      "sna"
+    ],
+    "description": null
+  },
+  "snaz": {
+    "prefix": "snaz",
+    "body": [
+      "snaz"
+    ],
+    "description": null
+  },
+  "sne": {
+    "prefix": "sne",
+    "body": [
+      "sne"
+    ],
+    "description": null
+  },
+  "snez": {
+    "prefix": "snez",
+    "body": [
+      "snez"
+    ],
+    "description": null
+  },
+  "sqrt": {
+    "prefix": "sqrt",
+    "body": [
+      "sqrt"
+    ],
+    "description": null
+  },
+  "sub": {
+    "prefix": "sub",
+    "body": [
+      "sub"
+    ],
+    "description": null
+  },
+  "tan": {
+    "prefix": "tan",
+    "body": [
+      "tan"
+    ],
+    "description": null
+  },
+  "trunc": {
+    "prefix": "trunc",
+    "body": [
+      "trunc"
+    ],
+    "description": null
+  },
+  "xor": {
+    "prefix": "xor",
+    "body": [
+      "xor"
+    ],
+    "description": null
+  },
+  "yield": {
+    "prefix": "yield",
+    "body": [
+      "yield"
+    ],
+    "description": null
+  },
+  "Activate": {
+    "prefix": "Activate",
+    "body": [
+      "Activate"
+    ],
+    "description": null
+  },
+  "Charge": {
+    "prefix": "Charge",
+    "body": [
+      "Charge"
+    ],
+    "description": null
+  },
+  "Class": {
+    "prefix": "Class",
+    "body": [
+      "Class"
+    ],
+    "description": null
+  },
+  "ClearMemory": {
+    "prefix": "ClearMemory",
+    "body": [
+      "ClearMemory"
+    ],
+    "description": null
+  },
+  "Color": {
+    "prefix": "Color",
+    "body": [
+      "Color"
+    ],
+    "description": null
+  },
+  "Combustion": {
+    "prefix": "Combustion",
+    "body": [
+      "Combustion"
+    ],
+    "description": null
+  },
+  "CompletionRatio": {
+    "prefix": "CompletionRatio",
+    "body": [
+      "CompletionRatio"
+    ],
+    "description": null
+  },
+  "Damage": {
+    "prefix": "Damage",
+    "body": [
+      "Damage"
+    ],
+    "description": null
+  },
+  "ElevatorLevel": {
+    "prefix": "ElevatorLevel",
+    "body": [
+      "ElevatorLevel"
+    ],
+    "description": null
+  },
+  "ElevatorSpeed": {
+    "prefix": "ElevatorSpeed",
+    "body": [
+      "ElevatorSpeed"
+    ],
+    "description": null
+  },
+  "Error": {
+    "prefix": "Error",
+    "body": [
+      "Error"
+    ],
+    "description": null
+  },
+  "ExportCount": {
+    "prefix": "ExportCount",
+    "body": [
+      "ExportCount"
+    ],
+    "description": null
+  },
+  "Filtration": {
+    "prefix": "Filtration",
+    "body": [
+      "Filtration"
+    ],
+    "description": null
+  },
+  "ForceWrite": {
+    "prefix": "ForceWrite",
+    "body": [
+      "ForceWrite"
+    ],
+    "description": null
+  },
+  "Harvest": {
+    "prefix": "Harvest",
+    "body": [
+      "Harvest"
+    ],
+    "description": null
+  },
+  "Horizontal": {
+    "prefix": "Horizontal",
+    "body": [
+      "Horizontal"
+    ],
+    "description": null
+  },
+  "Idle": {
+    "prefix": "Idle",
+    "body": [
+      "Idle"
+    ],
+    "description": null
+  },
+  "ImportCount": {
+    "prefix": "ImportCount",
+    "body": [
+      "ImportCount"
+    ],
+    "description": null
+  },
+  "Lock": {
+    "prefix": "Lock",
+    "body": [
+      "Lock"
+    ],
+    "description": null
+  },
+  "Maximum": {
+    "prefix": "Maximum",
+    "body": [
+      "Maximum"
+    ],
+    "description": null
+  },
+  "MaxQuantity": {
+    "prefix": "MaxQuantity",
+    "body": [
+      "MaxQuantity"
+    ],
+    "description": null
+  },
+  "Mode": {
+    "prefix": "Mode",
+    "body": [
+      "Mode"
+    ],
+    "description": null
+  },
+  "On": {
+    "prefix": "On",
+    "body": [
+      "On"
+    ],
+    "description": null
+  },
+  "Open": {
+    "prefix": "Open",
+    "body": [
+      "Open"
+    ],
+    "description": null
+  },
+  "Output": {
+    "prefix": "Output",
+    "body": [
+      "Output"
+    ],
+    "description": null
+  },
+  "Plant": {
+    "prefix": "Plant",
+    "body": [
+      "Plant"
+    ],
+    "description": null
+  },
+  "PositionX": {
+    "prefix": "PositionX",
+    "body": [
+      "PositionX"
+    ],
+    "description": null
+  },
+  "PositionY": {
+    "prefix": "PositionY",
+    "body": [
+      "PositionY"
+    ],
+    "description": null
+  },
+  "PositionZ": {
+    "prefix": "PositionZ",
+    "body": [
+      "PositionZ"
+    ],
+    "description": null
+  },
+  "Power": {
+    "prefix": "Power",
+    "body": [
+      "Power"
+    ],
+    "description": null
+  },
+  "PowerActual": {
+    "prefix": "PowerActual",
+    "body": [
+      "PowerActual"
+    ],
+    "description": null
+  },
+  "PowerGeneration": {
+    "prefix": "PowerGeneration",
+    "body": [
+      "PowerGeneration"
+    ],
+    "description": null
+  },
+  "PowerPotential": {
+    "prefix": "PowerPotential",
+    "body": [
+      "PowerPotential"
+    ],
+    "description": null
+  },
+  "PowerRequired": {
+    "prefix": "PowerRequired",
+    "body": [
+      "PowerRequired"
+    ],
+    "description": null
+  },
+  "PressureExternal": {
+    "prefix": "PressureExternal",
+    "body": [
+      "PressureExternal"
+    ],
+    "description": null
+  },
+  "PressureInternal": {
+    "prefix": "PressureInternal",
+    "body": [
+      "PressureInternal"
+    ],
+    "description": null
+  },
+  "Ratio": {
+    "prefix": "Ratio",
+    "body": [
+      "Ratio"
+    ],
+    "description": null
+  },
+  "RatioCarbonDioxide": {
+    "prefix": "RatioCarbonDioxide",
+    "body": [
+      "RatioCarbonDioxide"
+    ],
+    "description": null
+  },
+  "RatioNitrogen": {
+    "prefix": "RatioNitrogen",
+    "body": [
+      "RatioNitrogen"
+    ],
+    "description": null
+  },
+  "RatioNitrousOxide": {
+    "prefix": "RatioNitrousOxide",
+    "body": [
+      "RatioNitrousOxide"
+    ],
+    "description": null
+  },
+  "RatioOxygen": {
+    "prefix": "RatioOxygen",
+    "body": [
+      "RatioOxygen"
+    ],
+    "description": null
+  },
+  "RatioPollutant": {
+    "prefix": "RatioPollutant",
+    "body": [
+      "RatioPollutant"
+    ],
+    "description": null
+  },
+  "RatioVolatiles": {
+    "prefix": "RatioVolatiles",
+    "body": [
+      "RatioVolatiles"
+    ],
+    "description": null
+  },
+  "RatioWater": {
+    "prefix": "RatioWater",
+    "body": [
+      "RatioWater"
+    ],
+    "description": null
+  },
+  "Reagents": {
+    "prefix": "Reagents",
+    "body": [
+      "Reagents"
+    ],
+    "description": null
+  },
+  "RecipeHash": {
+    "prefix": "RecipeHash",
+    "body": [
+      "RecipeHash"
+    ],
+    "description": null
+  },
+  "RequiredPower": {
+    "prefix": "RequiredPower",
+    "body": [
+      "RequiredPower"
+    ],
+    "description": null
+  },
+  "Setting": {
+    "prefix": "Setting",
+    "body": [
+      "Setting"
+    ],
+    "description": null
+  },
+  "SolarAngle": {
+    "prefix": "SolarAngle",
+    "body": [
+      "SolarAngle"
+    ],
+    "description": null
+  },
+  "TargetX": {
+    "prefix": "TargetX",
+    "body": [
+      "TargetX"
+    ],
+    "description": null
+  },
+  "TargetY": {
+    "prefix": "TargetY",
+    "body": [
+      "TargetY"
+    ],
+    "description": null
+  },
+  "TargetZ": {
+    "prefix": "TargetZ",
+    "body": [
+      "TargetZ"
+    ],
+    "description": null
+  },
+  "TemperatureExternal": {
+    "prefix": "TemperatureExternal",
+    "body": [
+      "TemperatureExternal"
+    ],
+    "description": null
+  },
+  "TemperatureSetting": {
+    "prefix": "TemperatureSetting",
+    "body": [
+      "TemperatureSetting"
+    ],
+    "description": null
+  },
+  "TotalMoles": {
+    "prefix": "TotalMoles",
+    "body": [
+      "TotalMoles"
+    ],
+    "description": null
+  },
+  "VelocityMagnitude": {
+    "prefix": "VelocityMagnitude",
+    "body": [
+      "VelocityMagnitude"
+    ],
+    "description": null
+  },
+  "VelocityRelativeX": {
+    "prefix": "VelocityRelativeX",
+    "body": [
+      "VelocityRelativeX"
+    ],
+    "description": null
+  },
+  "VelocityRelativeY": {
+    "prefix": "VelocityRelativeY",
+    "body": [
+      "VelocityRelativeY"
+    ],
+    "description": null
+  },
+  "VelocityRelativeZ": {
+    "prefix": "VelocityRelativeZ",
+    "body": [
+      "VelocityRelativeZ"
+    ],
+    "description": null
+  },
+  "Vertical": {
+    "prefix": "Vertical",
+    "body": [
+      "Vertical"
+    ],
+    "description": null
+  },
+  "Volume": {
+    "prefix": "Volume",
+    "body": [
+      "Volume"
+    ],
+    "description": null
+  },
+  "ChargeRatio": {
+    "prefix": "ChargeRatio",
+    "body": [
+      "ChargeRatio"
+    ],
+    "description": null
+  },
+  "Efficiency": {
+    "prefix": "Efficiency",
+    "body": [
+      "Efficiency"
+    ],
+    "description": null
+  },
+  "Growth": {
+    "prefix": "Growth",
+    "body": [
+      "Growth"
+    ],
+    "description": null
+  },
+  "Health": {
+    "prefix": "Health",
+    "body": [
+      "Health"
+    ],
+    "description": null
+  },
+  "Mature": {
+    "prefix": "Mature",
+    "body": [
+      "Mature"
+    ],
+    "description": null
+  },
+  "OccupantHash": {
+    "prefix": "OccupantHash",
+    "body": [
+      "OccupantHash"
+    ],
+    "description": null
+  },
+  "Occupied": {
+    "prefix": "Occupied",
+    "body": [
+      "Occupied"
+    ],
+    "description": null
+  },
+  "PressureAir": {
+    "prefix": "PressureAir",
+    "body": [
+      "PressureAir"
+    ],
+    "description": null
+  },
+  "PressureWaste": {
+    "prefix": "PressureWaste",
+    "body": [
+      "PressureWaste"
+    ],
+    "description": null
+  },
+  "PrefabHash": {
+    "prefix": "PrefabHash",
+    "body": [
+      "PrefabHash"
+    ]
+  },
+  "Pressure": {
+    "prefix": "Pressure",
+    "body": [
+      "Pressure"
+    ]
+  },
+  "Quantity": {
+    "prefix": "Quantity",
+    "body": [
+      "Quantity"
+    ]
+  },
+  "Temperature": {
+    "prefix": "Temperature",
+    "body": [
+      "Temperature"
+    ]
+  },
+  "lb": {
+    "prefix": "lb",
+    "body": [
+      "lb"
+    ],
+    "description": null
+  },
+  "sb": {
+    "prefix": "sb",
+    "body": [
+      "sb"
+    ],
+    "description": null
+  },
+  "Bpm": {
+    "prefix": "Bpm",
+    "body": [
+      "Bpm"
+    ]
+  },
+  "CollectableGoods": {
+    "prefix": "CollectableGoods",
+    "body": [
+      "CollectableGoods"
+    ]
+  },
+  "CurrentResearchPodType": {
+    "prefix": "CurrentResearchPodType",
+    "body": [
+      "CurrentResearchPodType"
+    ]
+  },
+  "Fuel": {
+    "prefix": "Fuel",
+    "body": [
+      "Fuel"
+    ]
+  },
+  "ManualResearchRequiredPod": {
+    "prefix": "ManualResearchRequiredPod",
+    "body": [
+      "ManualResearchRequiredPod"
+    ]
+  },
+  "MineablesInQueue": {
+    "prefix": "MineablesInQueue",
+    "body": [
+      "MineablesInQueue"
+    ]
+  },
+  "MineablesInVicinity": {
+    "prefix": "MineablesInVicinity",
+    "body": [
+      "MineablesInVicinity"
+    ]
+  },
+  "NextWeatherEventTime": {
+    "prefix": "NextWeatherEventTime",
+    "body": [
+      "NextWeatherEventTime"
+    ]
+  },
+  "ReturnFuelCost": {
+    "prefix": "ReturnFuelCost",
+    "body": [
+      "ReturnFuelCost"
+    ]
+  },
+  "SettingInput": {
+    "prefix": "SettingInput",
+    "body": [
+      "SettingInput"
+    ]
+  },
+  "SettingOutput": {
+    "prefix": "SettingOutput",
+    "body": [
+      "SettingOutput"
+    ]
+  },
+  "SignalID": {
+    "prefix": "SignalID",
+    "body": [
+      "SignalID"
+    ]
+  },
+  "SignalStrength": {
+    "prefix": "SignalStrength",
+    "body": [
+      "SignalStrength"
+    ]
+  },
+  "Time": {
+    "prefix": "Time",
+    "body": [
+      "Time"
+    ]
+  },
+  "AirRelease": {
+    "prefix": "AirRelease",
+    "body": [
+      "AirRelease"
+    ]
+  },
+  "HorizontalRatio": {
+    "prefix": "HorizontalRatio",
+    "body": [
+      "HorizontalRatio"
+    ]
+  },
+  "PressureSetting": {
+    "prefix": "PressureSetting",
+    "body": [
+      "PressureSetting"
+    ]
+  },
+  "RequestHash": {
+    "prefix": "RequestHash",
+    "body": [
+      "RequestHash"
+    ]
+  },
+  "VerticalRatio": {
+    "prefix": "VerticalRatio",
+    "body": [
+      "VerticalRatio"
+    ]
+  },
+  "Average": {
+    "prefix": "Average",
+    "body": [
+      "Average"
+    ],
+    "description": null
+  },
+  "Sum": {
+    "prefix": "Sum",
+    "body": [
+      "Sum"
+    ],
+    "description": null
+  },
+  "Minimum": {
+    "prefix": "Minimum",
+    "body": [
+      "Minimum"
+    ],
+    "description": null
+  },
+  "stack": {
+    "prefix": "stack",
+    "body": [
+      "stack"
+    ],
+    "description": null
+  },
+  "Seeding": {
+    "prefix": "Seeding",
+    "body": [
+      "Seeding"
+    ]
+  },
+  "atan2": {
+    "prefix": "atan2",
+    "body": [
+      "atan2"
+    ],
+    "description": null
+  },
+  "CombustionInput": {
+    "prefix": "CombustionInput",
+    "body": [
+      "CombustionInput"
+    ]
+  },
+  "CombustionOutput": {
+    "prefix": "CombustionOutput",
+    "body": [
+      "CombustionOutput"
+    ]
+  },
+  "CombustionOutput2": {
+    "prefix": "CombustionOutput2",
+    "body": [
+      "CombustionOutput2"
+    ]
+  },
+  "TemperatureInput": {
+    "prefix": "TemperatureInput",
+    "body": [
+      "TemperatureInput"
+    ]
+  },
+  "TemperatureOutput": {
+    "prefix": "TemperatureOutput",
+    "body": [
+      "TemperatureOutput"
+    ]
+  },
+  "TemperatureOutput2": {
+    "prefix": "TemperatureOutput2",
+    "body": [
+      "TemperatureOutput2"
+    ]
+  },
+  "PressureInput": {
+    "prefix": "PressureInput",
+    "body": [
+      "PressureInput"
+    ]
+  },
+  "PressureOutput": {
+    "prefix": "PressureOutput",
+    "body": [
+      "PressureOutput"
+    ]
+  },
+  "PressureOutput2": {
+    "prefix": "PressureOutput2",
+    "body": [
+      "PressureOutput2"
+    ]
+  },
+  "TotalMolesInput": {
+    "prefix": "TotalMolesInput",
+    "body": [
+      "TotalMolesInput"
+    ]
+  },
+  "TotalMolesOutput": {
+    "prefix": "TotalMolesOutput",
+    "body": [
+      "TotalMolesOutput"
+    ]
+  },
+  "TotalMolesOutput2": {
+    "prefix": "TotalMolesOutput2",
+    "body": [
+      "TotalMolesOutput2"
+    ]
+  },
+  "RatioCarbonDioxideInput": {
+    "prefix": "RatioCarbonDioxideInput",
+    "body": [
+      "RatioCarbonDioxideInput"
+    ]
+  },
+  "RatioCarbonDioxideOutput": {
+    "prefix": "RatioCarbonDioxideOutput",
+    "body": [
+      "RatioCarbonDioxideOutput"
+    ]
+  },
+  "RatioCarbonDioxideOutput2": {
+    "prefix": "RatioCarbonDioxideOutput2",
+    "body": [
+      "RatioCarbonDioxideOutput2"
+    ]
+  },
+  "RatioNitrogenInput": {
+    "prefix": "RatioNitrogenInput",
+    "body": [
+      "RatioNitrogenInput"
+    ]
+  },
+  "RatioNitrogenOutput": {
+    "prefix": "RatioNitrogenOutput",
+    "body": [
+      "RatioNitrogenOutput"
+    ]
+  },
+  "RatioNitrogenOutput2": {
+    "prefix": "RatioNitrogenOutput2",
+    "body": [
+      "RatioNitrogenOutput2"
+    ]
+  },
+  "RatioNitrousOxideInput": {
+    "prefix": "RatioNitrousOxideInput",
+    "body": [
+      "RatioNitrousOxideInput"
+    ]
+  },
+  "RatioNitrousOxideOutput": {
+    "prefix": "RatioNitrousOxideOutput",
+    "body": [
+      "RatioNitrousOxideOutput"
+    ]
+  },
+  "RatioNitrousOxideOutput2": {
+    "prefix": "RatioNitrousOxideOutput2",
+    "body": [
+      "RatioNitrousOxideOutput2"
+    ]
+  },
+  "RatioOxygenInput": {
+    "prefix": "RatioOxygenInput",
+    "body": [
+      "RatioOxygenInput"
+    ]
+  },
+  "RatioOxygenOutput": {
+    "prefix": "RatioOxygenOutput",
+    "body": [
+      "RatioOxygenOutput"
+    ]
+  },
+  "RatioOxygenOutput2": {
+    "prefix": "RatioOxygenOutput2",
+    "body": [
+      "RatioOxygenOutput2"
+    ]
+  },
+  "RatioPollutantInput": {
+    "prefix": "RatioPollutantInput",
+    "body": [
+      "RatioPollutantInput"
+    ]
+  },
+  "RatioPollutantOutpu": {
+    "prefix": "RatioPollutantOutpu",
+    "body": [
+      "RatioPollutantOutpu"
+    ]
+  },
+  "RatioPollutantOutput2": {
+    "prefix": "RatioPollutantOutput2",
+    "body": [
+      "RatioPollutantOutput2"
+    ]
+  },
+  "RatioVolatilesInput": {
+    "prefix": "RatioVolatilesInput",
+    "body": [
+      "RatioVolatilesInput"
+    ]
+  },
+  "RatioVolatilesOutput": {
+    "prefix": "RatioVolatilesOutput",
+    "body": [
+      "RatioVolatilesOutput"
+    ]
+  },
+  "RatioVolatilesOutput2": {
+    "prefix": "RatioVolatilesOutput2",
+    "body": [
+      "RatioVolatilesOutput2"
+    ]
+  },
+  "RatioWaterInput": {
+    "prefix": "RatioWaterInput",
+    "body": [
+      "RatioWaterInput"
+    ]
+  },
+  "RatioWaterOutput": {
+    "prefix": "RatioWaterOutput",
+    "body": [
+      "RatioWaterOutput"
+    ]
+  },
+  "RatioWaterOutput2": {
+    "prefix": "RatioWaterOutput2",
+    "body": [
+      "RatioWaterOutput2"
+    ]
+  },
+  "PressureEfficiency": {
+    "prefix": "PressureEfficiency",
+    "body": [
+      "PressureEfficiency"
+    ]
+  },
+  "OperationalTemperatureEfficiency": {
+    "prefix": "OperationalTemperatureEfficiency",
+    "body": [
+      "OperationalTemperatureEfficiency"
+    ]
+  },
+  "TemperatureDifferentialEfficiency": {
+    "prefix": "TemperatureDifferentialEfficiency",
+    "body": [
+      "TemperatureDifferentialEfficiency"
+    ]
+  },
+  "Throttle": {
+    "prefix": "Throttle",
+    "body": [
+      "Throttle"
+    ],
+    "description": null
+  },
+  "CombustionLimiter": {
+    "prefix": "CombustionLimiter",
+    "body": [
+      "CombustionLimiter"
+    ],
+    "description": null
+  },
+  "debug": {
+    "prefix": "debug",
+    "body": [
+      "debug"
+    ],
+    "description": null
+  },
+  "Contents": {
+    "prefix": "Contents",
+    "body": [
+      "Contents"
+    ],
+    "description": null
+  },
+  "Required": {
+    "prefix": "Required",
+    "body": [
+      "Required"
+    ],
+    "description": null
+  },
+  "Recipe": {
+    "prefix": "Recipe",
+    "body": [
+      "Recipe"
+    ],
+    "description": null
+  },
+  "return": {
+    "prefix": "return",
+    "body": [
+      "return"
+    ],
+    "description": null
+  },
+  "HASH(\"name\")": {
+    "prefix": "HASH(\"name\")",
+    "body": [
+      "HASH(\"name\")"
+    ],
+    "description": null
+  },
+  "lbn": {
+    "prefix": "lbn",
+    "body": [
+      "lbn"
+    ],
+    "description": null
+  },
+  "lbns": {
+    "prefix": "lbns",
+    "body": [
+      "lbns"
+    ],
+    "description": null
+  },
+  "bnan": {
+    "prefix": "bnan",
+    "body": [
+      "bnan"
+    ],
+    "description": null
+  },
+  "brnan": {
+    "prefix": "brnan",
+    "body": [
+      "brnan"
+    ],
+    "description": null
+  },
+  "pi": {
+    "prefix": "pi",
+    "body": [
+      "pi"
+    ],
+    "description": null
+  },
+  "ninf": {
+    "prefix": "ninf",
+    "body": [
+      "ninf"
+    ],
+    "description": null
+  },
+  "pinf": {
+    "prefix": "pinf",
+    "body": [
+      "pinf"
+    ],
+    "description": null
+  },
+  "nan": {
+    "prefix": "nan",
+    "body": [
+      "nan"
+    ],
+    "description": null
+  },
+  "deg2rad": {
+    "prefix": "deg2rad",
+    "body": [
+      "deg2rad"
+    ],
+    "description": null
+  },
+  "rad2deg": {
+    "prefix": "rad2deg",
+    "body": [
+      "rad2deg"
+    ],
+    "description": null
+  },
+  "Channel0": {
+    "prefix": "Channel0",
+    "body": [
+      "Channel0"
+    ],
+    "description": null
+  },
+  "Channel1": {
+    "prefix": "Channel1",
+    "body": [
+      "Channel1"
+    ],
+    "description": null
+  },
+  "Channel2": {
+    "prefix": "Channel2",
+    "body": [
+      "Channel2"
+    ],
+    "description": null
+  },
+  "Channel3": {
+    "prefix": "Channel3",
+    "body": [
+      "Channel3"
+    ],
+    "description": null
+  },
+  "Channel4": {
+    "prefix": "Channel4",
+    "body": [
+      "Channel4"
+    ],
+    "description": null
+  },
+  "Channel5": {
+    "prefix": "Channel5",
+    "body": [
+      "Channel5"
+    ],
+    "description": null
+  },
+  "Channel6": {
+    "prefix": "Channel6",
+    "body": [
+      "Channel6"
+    ],
+    "description": null
+  },
+  "Channel7": {
+    "prefix": "Channel7",
+    "body": [
+      "Channel7"
+    ],
+    "description": null
+  },
+  "snan": {
+    "prefix": "snan",
+    "body": [
+      "snan"
+    ],
+    "description": null
+  },
+  "snanz": {
+    "prefix": "snanz",
+    "body": [
+      "snanz"
+    ],
+    "description": null
+  }
+}

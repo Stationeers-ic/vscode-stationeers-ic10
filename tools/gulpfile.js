@@ -30,18 +30,18 @@ gulp.task("generate-langs", async function () {
 
 	}
 
-	fs.writeFileSync(`..\\snippets\\ic10.json`, JSON.stringify(snippets))
-	var tmLanguage10                                   = JSON.parse(fs.readFileSync(`..\\syntaxes\\ic10.tmLanguage.json`))
+	fs.writeFileSync(`..\\snippets\\ic10.json`, JSON.stringify(snippets, null, 2))
+	const tmLanguage10                                 = JSON.parse(fs.readFileSync(`..\\syntaxes\\ic10.tmLanguage.json`));
 	tmLanguage10.repository.keywords.patterns[0].match = `\\b(${keyword.join("|")})\\b`
 	tmLanguage10.repository.entity.patterns[0].match   = `\\b(${functions.join("|")})\\b`
-	fs.writeFileSync(`..\\syntaxes\\ic10.tmLanguage.json`, JSON.stringify(tmLanguage10))
-	var tmLanguagex                                   = JSON.parse(fs.readFileSync(`..\\syntaxes\\icX.tmLanguage.json`))
+	fs.writeFileSync(`..\\syntaxes\\ic10.tmLanguage.json`, JSON.stringify(tmLanguage10, null, 2))
+	const tmLanguagex                                 = JSON.parse(fs.readFileSync(`..\\syntaxes\\icX.tmLanguage.json`));
 	tmLanguagex.repository.keywords.patterns[0].match = `\\b(${keyword.join("|")})\\b`
 	tmLanguagex.repository.entity.patterns[0].match   = `\\b(${functions.join("|")})\\b`
-	fs.writeFileSync(`..\\syntaxes\\icX.tmLanguage.json`, JSON.stringify(tmLanguagex))
+	fs.writeFileSync(`..\\syntaxes\\icX.tmLanguage.json`, JSON.stringify(tmLanguagex, null, 2))
 
-	fs.writeFileSync(`..\\media\\ic10.keyword.json`, JSON.stringify(keyword))
-	fs.writeFileSync(`..\\media\\ic10.functions.json`, JSON.stringify(functions))
+	fs.writeFileSync(`..\\media\\ic10.keyword.json`, JSON.stringify(keyword, null, 2))
+	fs.writeFileSync(`..\\media\\ic10.functions.json`, JSON.stringify(functions, null, 2))
 	return gulp;
 })
 
