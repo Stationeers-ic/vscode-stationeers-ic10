@@ -1949,5 +1949,12 @@
       "snanz"
     ],
     "description": null
+  },
+  "sbn": {
+    "prefix": "sbn",
+    "body": [
+      "sbn"
+    ],
+    "description": null
   }
 }
