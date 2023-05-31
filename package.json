@@ -1,37 +1,38 @@
 {
-  "name":                  "stationeers-ic10",
-  "displayName":           "Stationeers ic10",
-  "description":           "Ic10 & icX support",
-  "version":               "1.0.0-alfa",
-  "license":               "MIT",
-  "homepage":              "https://github.com/Stationeers-ic/vscode-stationeers-ic10",
-  "type":                  "commonjs",
-  "scripts":               {
-    "start":      "npm i && tsc -w",
-    "prepublish": "tsc",
-    "publish":    "npm i && tsc && vsce package"
+  "name": "stationeers-ic10",
+  "displayName": "Stationeers ic10",
+  "description": "Ic10 & icX support",
+  "version": "3.0.0",
+  "license": "MIT",
+  "homepage": "https://github.com/Stationeers-ic/vscode-stationeers-ic10",
+  "type": "commonjs",
+  "scripts": {
+    "vscode:prepublish": "tsc",
+    "start": "npm i && tsc -w",
+    "publish": "vsce package",
+    "package": "vsce package"
   },
-  "badges":                [],
-  "publisher":             "Traineratwot",
-  "repository":            "https://github.com/Stationeers-ic/vscode-stationeers-ic10/",
-  "author":                {
+  "badges": [],
+  "publisher": "Traineratwot",
+  "repository": "https://github.com/Stationeers-ic/vscode-stationeers-ic10/",
+  "author": {
     "name": "Traineratwot"
   },
-  "icon":                  "images/logo.png",
-  "bugs":                  {
-    "url":   "https://github.com/Stationeers-ic/vscode-stationeers-ic10/issues",
+  "icon": "images/logo.png",
+  "bugs": {
+    "url": "https://github.com/Stationeers-ic/vscode-stationeers-ic10/issues",
     "email": "Traineratwot@yandex.com"
   },
-  "engines":               {
+  "engines": {
     "vscode": "^1.68.1"
   },
-  "categories":            [
+  "categories": [
     "Programming Languages",
     "Debuggers",
     "Snippets",
     "Formatters"
   ],
-  "activationEvents":      [
+  "activationEvents": [
     "workspaceContains:**/*.ic10",
     "onLanguage:ic10",
     "onLanguage:icX",
@@ -40,230 +41,241 @@
     "onDebugDynamicConfigurations:ic10",
     "onWebviewPanel:icX.wiki"
   ],
-  "extensionKind":         [
+  "extensionKind": [
     "workspace"
   ],
-  "main":                  "./core/main.js",
-  "browser":               "./web/extension.js",
-  "contributes":           {
-    "languages":             [
+  "main": "./core/main.js",
+  "browser": "./web/extension.js",
+  "contributes": {
+    "files.associations": {
+      "*.ic10": "ic10",
+      "*.icX": "icX"
+    },
+    "iconThemes": [
       {
-        "id":            "ic10",
-        "aliases":       [
+        "id": "ic10IconTheme",
+        "label": "ic10 Icon Theme",
+        "path": "./images"
+      }
+    ],
+    "languages": [
+      {
+        "id": "ic10",
+        "aliases": [
           "ic10"
         ],
-        "extensions":    [
+        "extensions": [
           "ic10"
         ],
         "configuration": "./ic10.language-configuration.json"
       },
       {
-        "id":            "icX",
-        "aliases":       [
+        "id": "icX",
+        "aliases": [
           "icX"
         ],
-        "extensions":    [
+        "extensions": [
           "icX"
         ],
         "configuration": "./icX.language-configuration.json"
       }
     ],
-    "grammars":              [
+    "grammars": [
       {
-        "language":  "ic10",
+        "language": "ic10",
         "scopeName": "source.ic10",
-        "path":      "./syntaxes/ic10.tmLanguage.json"
+        "path": "./syntaxes/ic10.tmLanguage.json"
       },
       {
-        "language":  "icX",
+        "language": "icX",
         "scopeName": "source.icX",
-        "path":      "./syntaxes/icX.tmLanguage.json"
+        "path": "./syntaxes/icX.tmLanguage.json"
       }
     ],
-    "debuggers":             [
+    "debuggers": [
       {
-        "type":                    "ic10",
-        "label":                   "ic10 Debug",
-        "program":                 "./debugger/debugAdapter.js",
-        "runtime":                 "node",
-        "languages":               [
+        "type": "ic10",
+        "label": "ic10 Debug",
+        "program": "./debugger/debugAdapter.js",
+        "runtime": "node",
+        "languages": [
           "ic10"
         ],
         "configurationAttributes": {
           "launch": {
-            "required":              [
+            "required": [
               "program"
             ],
-            "properties":            {
-              "program":     {
-                "type":        "string",
+            "properties": {
+              "program": {
+                "type": "string",
                 "description": "Absolute path to a text file.",
-                "default":     "${file}"
+                "default": "${file}"
               },
               "stopOnEntry": {
-                "type":        "boolean",
+                "type": "boolean",
                 "description": "Automatically stop after launch.",
-                "default":     true
+                "default": true
               },
-              "trace":       {
-                "type":        "boolean",
+              "trace": {
+                "type": "boolean",
                 "description": "Enable logging of the Debug Adapter Protocol.",
-                "default":     true
+                "default": true
               }
             },
             "initialConfigurations": [
               {
-                "type":        "ic10",
-                "request":     "launch",
-                "name":        "Ask for file name",
-                "program":     "${workspaceFolder}/${command:AskForProgramName}",
+                "type": "ic10",
+                "request": "launch",
+                "name": "Ask for file name",
+                "program": "${workspaceFolder}/${command:AskForProgramName}",
                 "stopOnEntry": true
               }
             ]
           }
         },
-        "configurationSnippets":   [
+        "configurationSnippets": [
           {
-            "label":       "Ic10 Debug",
+            "label": "Ic10 Debug",
             "description": "Stationers ic10 debugger",
-            "body":        {
-              "type":        "ic10",
-              "request":     "launch",
-              "name":        "Debug ic10",
-              "program":     "${file}",
+            "body": {
+              "type": "ic10",
+              "request": "launch",
+              "name": "Debug ic10",
+              "program": "${file}",
               "stopOnEntry": true,
-              "trace":       false
+              "trace": false
             }
           }
         ],
-        "variables":               {
+        "variables": {
           "AskForProgramName": "extension.1c10-debug.getProgramName"
         }
       }
     ],
-    "snippets":              [
+    "snippets": [
       {
         "language": "ic10",
-        "path":     "./snippets/ic10.json"
+        "path": "./snippets/ic10.json"
       },
       {
         "language": "icX",
-        "path":     "./snippets/icX.json"
+        "path": "./snippets/icX.json"
       }
     ],
-    "breakpoints":           [
+    "breakpoints": [
       {
         "language": "ic10"
       }
     ],
-    "commands":              [
+    "commands": [
       {
-        "command":     "ic10.run",
-        "title":       "ic10: Run",
+        "command": "ic10.run",
+        "title": "ic10: Run",
         "description": "Run script",
-        "icon":        "$(play)"
+        "icon": "$(play)"
       },
       {
-        "command":     "ic10.test",
-        "title":       "ic10: test",
+        "command": "ic10.test",
+        "title": "ic10: test",
         "description": "test script",
-        "icon":        "$(play)"
+        "icon": "$(play)"
       },
       {
-        "command":     "ic10.stop",
-        "title":       "ic10: Stop",
+        "command": "ic10.stop",
+        "title": "ic10: Stop",
         "description": "Stop script",
-        "icon":        "$(stop)"
+        "icon": "$(stop)"
       },
       {
         "command": "ic10.debug.variables.write",
-        "title":   "Write value",
-        "icon":    "$(play)"
+        "title": "Write value",
+        "icon": "$(play)"
       },
       {
         "command": "ic10.debug.device.write",
-        "title":   "Write value",
-        "icon":    "$(stop)"
+        "title": "Write value",
+        "icon": "$(stop)"
       },
       {
         "command": "ic10.debug.device.slot.write",
-        "title":   "Write value",
-        "icon":    "$(stop)"
+        "title": "Write value",
+        "icon": "$(stop)"
       },
       {
         "command": "ic10.debug.stack.push",
-        "title":   "Write value",
-        "icon":    "$(stop)"
+        "title": "Write value",
+        "icon": "$(stop)"
       },
       {
         "command": "ic10.debug.remove.push",
-        "title":   "Write value",
-        "icon":    "$(stop)"
+        "title": "Write value",
+        "icon": "$(stop)"
       },
       {
         "command": "icX.compile",
-        "title":   "Compile",
-        "icon":    "$(play)"
+        "title": "Compile",
+        "icon": "$(play)"
       },
       {
         "command": "icX.open.wiki",
-        "title":   "Open wiki",
-        "icon":    "$(play)"
+        "title": "Open wiki",
+        "icon": "$(play)"
       }
     ],
-    "menus":                 {
-      "editor/context":          [
+    "menus": {
+      "editor/context": [
         {
           "command": "ic10.run",
-          "when":    "editorLangId == ic10"
+          "when": "editorLangId == ic10"
         },
         {
           "command": "icX.compile",
-          "when":    "editorLangId == icX"
+          "when": "editorLangId == icX"
         },
         {
           "command": "icX.open.wiki",
-          "when":    "editorLangId == icX"
+          "when": "editorLangId == icX"
         }
       ],
-      "commandPalette":          [
+      "commandPalette": [
         {
           "command": "ic10.run",
-          "when":    "editorLangId == ic10"
+          "when": "editorLangId == ic10"
         },
         {
           "command": "icX.compile",
-          "when":    "editorLangId == icX"
+          "when": "editorLangId == icX"
         }
       ],
-      "editor/title/run":        [
+      "editor/title/run": [
         {
           "command": "icX.compile",
-          "when":    "resourceLangId == icX"
+          "when": "resourceLangId == icX"
         },
         {
           "command": "icX.open.wiki",
-          "when":    "resourceLangId == icX"
+          "when": "resourceLangId == icX"
         },
         {
           "command": "ic10.run",
-          "when":    "resourceLangId == ic10"
+          "when": "resourceLangId == ic10"
         },
         {
           "command": "ic10.stop",
-          "when":    "resourceLangId == ic10"
+          "when": "resourceLangId == ic10"
         }
       ],
       "debug/variables/context": [
         {
           "command": "ic10.debug.variables.write",
-          "group":   "3_modifications",
-          "when":    "debugProtocolVariableMenuContext == String || debugProtocolVariableMenuContext == Number"
+          "group": "3_modifications",
+          "when": "debugProtocolVariableMenuContext == String || debugProtocolVariableMenuContext == Number"
         },
         {
           "command": "ic10.debug.device.write",
-          "group":   "3_modifications",
-          "when":    "debugProtocolVariableMenuContext == Device"
+          "group": "3_modifications",
+          "when": "debugProtocolVariableMenuContext == Device"
         }
       ]
     },
@@ -271,17 +283,17 @@
       "ic10": {
         "editor.semanticHighlighting.enabled": true
       },
-      "icX":  {
+      "icX": {
         "editor.semanticHighlighting.enabled": true
       }
     },
-    "views":                 {
+    "views": {
       "explorer": [
         {
-          "type":            "webview",
-          "id":              "Ic10ViewProvider",
-          "name":            "ic10",
-          "icon":            "images/logo.svg",
+          "type": "webview",
+          "id": "Ic10ViewProvider",
+          "name": "ic10",
+          "icon": "images/logo.svg",
           "contextualTitle": "ic10/icX"
         }
       ]
@@ -291,30 +303,30 @@
     "ic10": {
       "editor.semanticHighlighting.enabled": true
     },
-    "icX":  {
+    "icX": {
       "editor.semanticHighlighting.enabled": true
     }
   },
-  "dependencies":          {
-    "ic10":                 "^3.0.1-beta",
-    "icx-compiler":         "^2.1.6",
-    "vscode-debugadapter":  "1.51.0",
+  "dependencies": {
+    "ic10": "^3.0.1-beta",
+    "icx-compiler": "^2.1.6",
+    "vscode-debugadapter": "1.51.0",
     "vscode-debugprotocol": "1.51.0"
   },
-  "devDependencies":       {
+  "devDependencies": {
     "@types/fs-extra": "^8.1.2",
-    "@types/glob":     "^7.2.0",
-    "@types/mocha":    "^7.0.2",
-    "@types/node":     "^13.13.52",
-    "@types/semver":   "^7.3.12",
-    "@types/sinon":    "9.0.11",
-    "@types/vscode":   "1.68.1",
-    "typescript":      "4.9.3",
-    "vsce":            "1.103.1"
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^13.13.52",
+    "@types/semver": "^7.3.12",
+    "@types/sinon": "9.0.11",
+    "@types/vscode": "1.68.1",
+    "typescript": "4.9.3",
+    "vsce": "1.103.1"
   },
-  "__metadata":            {
-    "id":                   "e9ab14ed-1c65-4a3c-835b-f13c96f90ac7",
+  "__metadata": {
+    "id": "e9ab14ed-1c65-4a3c-835b-f13c96f90ac7",
     "publisherDisplayName": "Traineratwot",
-    "publisherId":          "380b2875-741d-4735-b93a-1850757c5e71"
+    "publisherId": "380b2875-741d-4735-b93a-1850757c5e71"
   }
 }

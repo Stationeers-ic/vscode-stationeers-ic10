@@ -1,12 +1,12 @@
 {
-  "version":        "0.2.0",
+  "version": "0.2.0",
   "configurations": [
     {
-      "name":        "Extension Ic10-vscode",
-      "type":        "extensionHost",
+      "name": "Extension Ic10-vscode",
+      "type": "extensionHost",
       "stopOnEntry": true,
-      "request":     "launch",
-      "args":        [
+      "request": "launch",
+      "args": [
         "--extensionDevelopmentPath=${workspaceFolder}",
         "${workspaceFolder}/sampleWorkspace"
       ]

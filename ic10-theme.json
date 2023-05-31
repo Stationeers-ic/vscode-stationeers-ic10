@@ -4,10 +4,10 @@
       "iconPath": "./images/logo.png"
     }
   },
-  "languageIds":     {
+  "languageIds": {
     "ic10": "_ic10"
   },
-  "fileExtensions":  {
+  "fileExtensions": {
     "ic10": "_ic10"
   }
 }
