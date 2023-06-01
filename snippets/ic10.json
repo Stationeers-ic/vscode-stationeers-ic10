@@ -1356,7 +1356,8 @@
     "prefix": "Pressure",
     "body": [
       "Pressure"
-    ]
+    ],
+    "description": null
   },
   "Quantity": {
     "prefix": "Quantity",
@@ -1390,7 +1391,8 @@
     "prefix": "Bpm",
     "body": [
       "Bpm"
-    ]
+    ],
+    "description": null
   },
   "CollectableGoods": {
     "prefix": "CollectableGoods",
@@ -1409,7 +1411,8 @@
     "prefix": "Fuel",
     "body": [
       "Fuel"
-    ]
+    ],
+    "description": null
   },
   "ManualResearchRequiredPod": {
     "prefix": "ManualResearchRequiredPod",
@@ -1421,25 +1424,29 @@
     "prefix": "MineablesInQueue",
     "body": [
       "MineablesInQueue"
-    ]
+    ],
+    "description": null
   },
   "MineablesInVicinity": {
     "prefix": "MineablesInVicinity",
     "body": [
       "MineablesInVicinity"
-    ]
+    ],
+    "description": null
   },
   "NextWeatherEventTime": {
     "prefix": "NextWeatherEventTime",
     "body": [
       "NextWeatherEventTime"
-    ]
+    ],
+    "description": null
   },
   "ReturnFuelCost": {
     "prefix": "ReturnFuelCost",
     "body": [
       "ReturnFuelCost"
-    ]
+    ],
+    "description": null
   },
   "SettingInput": {
     "prefix": "SettingInput",
@@ -1457,19 +1464,22 @@
     "prefix": "SignalID",
     "body": [
       "SignalID"
-    ]
+    ],
+    "description": null
   },
   "SignalStrength": {
     "prefix": "SignalStrength",
     "body": [
       "SignalStrength"
-    ]
+    ],
+    "description": null
   },
   "Time": {
     "prefix": "Time",
     "body": [
       "Time"
-    ]
+    ],
+    "description": null
   },
   "AirRelease": {
     "prefix": "AirRelease",
@@ -1547,151 +1557,176 @@
     "prefix": "CombustionInput",
     "body": [
       "CombustionInput"
-    ]
+    ],
+    "description": null
   },
   "CombustionOutput": {
     "prefix": "CombustionOutput",
     "body": [
       "CombustionOutput"
-    ]
+    ],
+    "description": null
   },
   "CombustionOutput2": {
     "prefix": "CombustionOutput2",
     "body": [
       "CombustionOutput2"
-    ]
+    ],
+    "description": null
   },
   "TemperatureInput": {
     "prefix": "TemperatureInput",
     "body": [
       "TemperatureInput"
-    ]
+    ],
+    "description": null
   },
   "TemperatureOutput": {
     "prefix": "TemperatureOutput",
     "body": [
       "TemperatureOutput"
-    ]
+    ],
+    "description": null
   },
   "TemperatureOutput2": {
     "prefix": "TemperatureOutput2",
     "body": [
       "TemperatureOutput2"
-    ]
+    ],
+    "description": null
   },
   "PressureInput": {
     "prefix": "PressureInput",
     "body": [
       "PressureInput"
-    ]
+    ],
+    "description": null
   },
   "PressureOutput": {
     "prefix": "PressureOutput",
     "body": [
       "PressureOutput"
-    ]
+    ],
+    "description": null
   },
   "PressureOutput2": {
     "prefix": "PressureOutput2",
     "body": [
       "PressureOutput2"
-    ]
+    ],
+    "description": null
   },
   "TotalMolesInput": {
     "prefix": "TotalMolesInput",
     "body": [
       "TotalMolesInput"
-    ]
+    ],
+    "description": null
   },
   "TotalMolesOutput": {
     "prefix": "TotalMolesOutput",
     "body": [
       "TotalMolesOutput"
-    ]
+    ],
+    "description": null
   },
   "TotalMolesOutput2": {
     "prefix": "TotalMolesOutput2",
     "body": [
       "TotalMolesOutput2"
-    ]
+    ],
+    "description": null
   },
   "RatioCarbonDioxideInput": {
     "prefix": "RatioCarbonDioxideInput",
     "body": [
       "RatioCarbonDioxideInput"
-    ]
+    ],
+    "description": null
   },
   "RatioCarbonDioxideOutput": {
     "prefix": "RatioCarbonDioxideOutput",
     "body": [
       "RatioCarbonDioxideOutput"
-    ]
+    ],
+    "description": null
   },
   "RatioCarbonDioxideOutput2": {
     "prefix": "RatioCarbonDioxideOutput2",
     "body": [
       "RatioCarbonDioxideOutput2"
-    ]
+    ],
+    "description": null
   },
   "RatioNitrogenInput": {
     "prefix": "RatioNitrogenInput",
     "body": [
       "RatioNitrogenInput"
-    ]
+    ],
+    "description": null
   },
   "RatioNitrogenOutput": {
     "prefix": "RatioNitrogenOutput",
     "body": [
       "RatioNitrogenOutput"
-    ]
+    ],
+    "description": null
   },
   "RatioNitrogenOutput2": {
     "prefix": "RatioNitrogenOutput2",
     "body": [
       "RatioNitrogenOutput2"
-    ]
+    ],
+    "description": null
   },
   "RatioNitrousOxideInput": {
     "prefix": "RatioNitrousOxideInput",
     "body": [
       "RatioNitrousOxideInput"
-    ]
+    ],
+    "description": null
   },
   "RatioNitrousOxideOutput": {
     "prefix": "RatioNitrousOxideOutput",
     "body": [
       "RatioNitrousOxideOutput"
-    ]
+    ],
+    "description": null
   },
   "RatioNitrousOxideOutput2": {
     "prefix": "RatioNitrousOxideOutput2",
     "body": [
       "RatioNitrousOxideOutput2"
-    ]
+    ],
+    "description": null
   },
   "RatioOxygenInput": {
     "prefix": "RatioOxygenInput",
     "body": [
       "RatioOxygenInput"
-    ]
+    ],
+    "description": null
   },
   "RatioOxygenOutput": {
     "prefix": "RatioOxygenOutput",
     "body": [
       "RatioOxygenOutput"
-    ]
+    ],
+    "description": null
   },
   "RatioOxygenOutput2": {
     "prefix": "RatioOxygenOutput2",
     "body": [
       "RatioOxygenOutput2"
-    ]
+    ],
+    "description": null
   },
   "RatioPollutantInput": {
     "prefix": "RatioPollutantInput",
     "body": [
       "RatioPollutantInput"
-    ]
+    ],
+    "description": null
   },
   "RatioPollutantOutpu": {
     "prefix": "RatioPollutantOutpu",
@@ -1703,43 +1738,50 @@
     "prefix": "RatioPollutantOutput2",
     "body": [
       "RatioPollutantOutput2"
-    ]
+    ],
+    "description": null
   },
   "RatioVolatilesInput": {
     "prefix": "RatioVolatilesInput",
     "body": [
       "RatioVolatilesInput"
-    ]
+    ],
+    "description": null
   },
   "RatioVolatilesOutput": {
     "prefix": "RatioVolatilesOutput",
     "body": [
       "RatioVolatilesOutput"
-    ]
+    ],
+    "description": null
   },
   "RatioVolatilesOutput2": {
     "prefix": "RatioVolatilesOutput2",
     "body": [
       "RatioVolatilesOutput2"
-    ]
+    ],
+    "description": null
   },
   "RatioWaterInput": {
     "prefix": "RatioWaterInput",
     "body": [
       "RatioWaterInput"
-    ]
+    ],
+    "description": null
   },
   "RatioWaterOutput": {
     "prefix": "RatioWaterOutput",
     "body": [
       "RatioWaterOutput"
-    ]
+    ],
+    "description": null
   },
   "RatioWaterOutput2": {
     "prefix": "RatioWaterOutput2",
     "body": [
       "RatioWaterOutput2"
-    ]
+    ],
+    "description": null
   },
   "PressureEfficiency": {
     "prefix": "PressureEfficiency",
@@ -1966,6 +2008,83 @@
     "prefix": "SortingClass",
     "body": [
       "SortingClass"
+    ],
+    "description": null
+  },
+  "RatioPollutantOutput": {
+    "prefix": "RatioPollutantOutput",
+    "body": [
+      "RatioPollutantOutput"
+    ],
+    "description": null
+  },
+  "SolarIrradiance": {
+    "prefix": "SolarIrradiance",
+    "body": [
+      "SolarIrradiance"
+    ],
+    "description": null
+  },
+  "Rpm": {
+    "prefix": "Rpm",
+    "body": [
+      "Rpm"
+    ],
+    "description": null
+  },
+  "Stress": {
+    "prefix": "Stress",
+    "body": [
+      "Stress"
+    ],
+    "description": null
+  },
+  "InterrogationProgress": {
+    "prefix": "InterrogationProgress",
+    "body": [
+      "InterrogationProgress"
+    ],
+    "description": null
+  },
+  "TargetPadIndex": {
+    "prefix": "TargetPadIndex",
+    "body": [
+      "TargetPadIndex"
+    ],
+    "description": null
+  },
+  "SizeX": {
+    "prefix": "SizeX",
+    "body": [
+      "SizeX"
+    ],
+    "description": null
+  },
+  "SizeZ": {
+    "prefix": "SizeZ",
+    "body": [
+      "SizeZ"
+    ],
+    "description": null
+  },
+  "MinimumWattsToContact": {
+    "prefix": "MinimumWattsToContact",
+    "body": [
+      "MinimumWattsToContact"
+    ],
+    "description": null
+  },
+  "WattsReachingContact": {
+    "prefix": "WattsReachingContact",
+    "body": [
+      "WattsReachingContact"
+    ],
+    "description": null
+  },
+  "ss": {
+    "prefix": "ss",
+    "body": [
+      "ss"
     ],
     "description": null
   }

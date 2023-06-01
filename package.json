@@ -2,12 +2,12 @@
   "name": "stationeers-ic10",
   "displayName": "Stationeers ic10",
   "description": "Ic10 & icX support",
-  "version": "2.0.2",
+  "version": "2.0.5",
   "license": "MIT",
   "homepage": "https://github.com/Stationeers-ic/vscode-stationeers-ic10",
   "type": "commonjs",
   "scripts": {
-    "vscode:prepublish": "tsc",
+    "vscode:prepublish": "cd ./tools && gulp generate-langs && cd ../ && tsc",
     "start": "npm i && tsc -w",
     "publish": "vsce package",
     "package": "vsce package"
