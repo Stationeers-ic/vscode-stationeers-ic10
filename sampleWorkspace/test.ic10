@@ -89,3 +89,9 @@ s Display Setting 444
 yield
 jal Depressurize
 j ra
+
+alias Robot d0
+
+ls r5 Robot 0 Charge
+define fg HASH("name")
+ls r1 d0 0 Quantity
