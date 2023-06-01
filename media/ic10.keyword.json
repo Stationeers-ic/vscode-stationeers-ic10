@@ -96,5 +96,6 @@
   "CollectableGoods",
   "Seeding",
   "SortingClass",
-  "PrefabHash"
+  "PrefabHash",
+  "Temperature"
 ]

@@ -969,8 +969,8 @@
     },
     "op1": "R/N",
     "op2": "N/D",
-    "op3": null,
-    "op4": null,
+    "op3": "RM",
+    "op4": "R/RC/H",
     "op5": null,
     "op6": null
   },
@@ -982,7 +982,7 @@
     },
     "op1": "R/N",
     "op2": "N/D",
-    "op3": "S",
+    "op3": "R/N/S",
     "op4": "P",
     "op5": null,
     "op6": null
@@ -1514,9 +1514,9 @@
       "text": null
     },
     "op1": "R/N",
-    "op2": "R/N/C/H",
-    "op3": null,
-    "op4": null,
+    "op2": "R/N/H",
+    "op3": "P",
+    "op4": "BM",
     "op5": null,
     "op6": null
   },
@@ -1526,9 +1526,9 @@
       "preview": null,
       "text": null
     },
-    "op1": "R/N/C/H",
-    "op2": null,
-    "op3": null,
+    "op1": "R/N/H",
+    "op2": "P",
+    "op3": "R/N/C",
     "op4": null,
     "op5": null,
     "op6": null
@@ -2607,9 +2607,9 @@
     },
     "op1": "R/N",
     "op2": "R/N/C/H",
-    "op3": "R/N/C",
+    "op3": "R/N/C/H",
     "op4": "P",
-    "op5": null,
+    "op5": "BM",
     "op6": null
   },
   "lbns": {
@@ -2620,10 +2620,10 @@
     },
     "op1": "R/N",
     "op2": "R/N/C/H",
-    "op3": "R/N/C",
-    "op4": "S",
-    "op5": null,
-    "op6": null
+    "op3": "R/N/C/H",
+    "op4": "R/N/S",
+    "op5": "P",
+    "op6": "BM"
   },
   "bnan": {
     "type": "Function",
@@ -2866,9 +2866,9 @@
       "text": null
     },
     "op1": "R/N/C/H",
-    "op2": "R/N/C",
+    "op2": "R/N/C/H",
     "op3": "P",
-    "op4": "R/N",
+    "op4": "R/N/C",
     "op5": null,
     "op6": null
   },
@@ -2925,6 +2925,19 @@
     "op6": null
   },
   "PrefabHash": {
+    "type": "Slot parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Temperature": {
     "type": "Slot parameter",
     "description": {
       "preview": null,

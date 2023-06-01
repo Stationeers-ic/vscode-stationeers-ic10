@@ -1369,7 +1369,8 @@
     "prefix": "Temperature",
     "body": [
       "Temperature"
-    ]
+    ],
+    "description": null
   },
   "lb": {
     "prefix": "lb",
