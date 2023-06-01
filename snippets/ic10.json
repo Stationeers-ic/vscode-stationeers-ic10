@@ -1349,7 +1349,8 @@
     "prefix": "PrefabHash",
     "body": [
       "PrefabHash"
-    ]
+    ],
+    "description": null
   },
   "Pressure": {
     "prefix": "Pressure",
@@ -1531,7 +1532,8 @@
     "prefix": "Seeding",
     "body": [
       "Seeding"
-    ]
+    ],
+    "description": null
   },
   "atan2": {
     "prefix": "atan2",
@@ -1956,6 +1958,13 @@
     "prefix": "sbn",
     "body": [
       "sbn"
+    ],
+    "description": null
+  },
+  "SortingClass": {
+    "prefix": "SortingClass",
+    "body": [
+      "SortingClass"
     ],
     "description": null
   }

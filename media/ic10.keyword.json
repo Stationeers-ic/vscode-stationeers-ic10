@@ -93,5 +93,8 @@
   "Channel6",
   "Channel7",
   "Quantity",
-  "CollectableGoods"
+  "CollectableGoods",
+  "Seeding",
+  "SortingClass",
+  "PrefabHash"
 ]
