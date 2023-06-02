@@ -1,4 +1,1694 @@
 {
+  "ChargeRatio": {
+    "type": "Slot parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Class": {
+    "type": "Slot parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Damage": {
+    "type": "Slot parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Efficiency": {
+    "type": "Slot parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Growth": {
+    "type": "Slot parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Health": {
+    "type": "Slot parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Mature": {
+    "type": "Slot parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "MaxQuantity": {
+    "type": "Slot parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "OccupantHash": {
+    "type": "Slot parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Occupied": {
+    "type": "Slot parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "PrefabHash": {
+    "type": "Slot parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Quantity": {
+    "type": "Slot parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Seeding": {
+    "type": "Slot parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "SortingClass": {
+    "type": "Slot parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Activate": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Bpm": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Charge": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "ClearMemory": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "CollectableGoods": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Color": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Combustion": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "CombustionInput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "CombustionLimiter": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "CombustionOutput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "CombustionOutput2": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "CompletionRatio": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "ElevatorLevel": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "ElevatorSpeed": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Error": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "ExportCount": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Filtration": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "ForceWrite": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Fuel": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Harvest": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "HASH(\"name\")": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Horizontal": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Idle": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "ImportCount": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "InterrogationProgress": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Lock": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "MineablesInQueue": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "MineablesInVicinity": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "MinimumWattsToContact": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Mode": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "NextWeatherEventTime": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "On": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Open": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Output": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Plant": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "PositionX": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "PositionY": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "PositionZ": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Power": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "PowerActual": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "PowerGeneration": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "PowerPotential": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "PowerRequired": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Pressure": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "PressureAir": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "PressureExternal": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "PressureInput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "PressureInternal": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "PressureOutput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "PressureOutput2": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "PressureWaste": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Ratio": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioCarbonDioxide": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioCarbonDioxideInput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioCarbonDioxideOutput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioCarbonDioxideOutput2": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioNitrogen": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioNitrogenInput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioNitrogenOutput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioNitrogenOutput2": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioNitrousOxide": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioNitrousOxideInput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioNitrousOxideOutput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioNitrousOxideOutput2": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioOxygen": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioOxygenInput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioOxygenOutput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioOxygenOutput2": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioPollutant": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioPollutantInput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioPollutantOutput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioPollutantOutput2": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioVolatiles": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioVolatilesInput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioVolatilesOutput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioVolatilesOutput2": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioWater": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioWaterInput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioWaterOutput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RatioWaterOutput2": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Reagents": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RecipeHash": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "RequiredPower": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "ReturnFuelCost": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Rpm": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Setting": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "SignalID": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "SignalStrength": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "SizeX": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "SizeZ": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "SolarAngle": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "SolarIrradiance": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Stress": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "TargetPadIndex": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "TargetX": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "TargetY": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "TargetZ": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Temperature": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "TemperatureExternal": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "TemperatureInput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "TemperatureOutput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "TemperatureOutput2": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "TemperatureSetting": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Throttle": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Time": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "TotalMoles": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "TotalMolesInput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "TotalMolesOutput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "TotalMolesOutput2": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "VelocityMagnitude": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "VelocityRelativeX": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "VelocityRelativeY": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "VelocityRelativeZ": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Vertical": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "Volume": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "WattsReachingContact": {
+    "type": "Device parameter",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
   "abs": {
     "type": "Function",
     "description": {
@@ -493,6 +2183,19 @@
     "op5": null,
     "op6": null
   },
+  "bnan": {
+    "type": "Function",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": "R/N",
+    "op2": "R/A/T",
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
   "bnaz": {
     "type": "Function",
     "description": {
@@ -766,6 +2469,19 @@
     "op5": null,
     "op6": null
   },
+  "brnan": {
+    "type": "Function",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": "R/N",
+    "op2": "R/N/C/O",
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
   "brnaz": {
     "type": "Function",
     "description": {
@@ -826,6 +2542,19 @@
     },
     "op1": "R/N",
     "op2": "R/N/C",
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "debug": {
+    "type": "Function",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": "R/N/C/Y",
+    "op2": null,
     "op3": null,
     "op4": null,
     "op5": null,
@@ -946,6 +2675,58 @@
     "op3": null,
     "op4": null,
     "op5": null,
+    "op6": null
+  },
+  "lb": {
+    "type": "Function",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": "R/N",
+    "op2": "R/N/H",
+    "op3": "P",
+    "op4": "BM",
+    "op5": null,
+    "op6": null
+  },
+  "lbn": {
+    "type": "Function",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": "R/N",
+    "op2": "R/N/C/H",
+    "op3": "R/N/C/H",
+    "op4": "P",
+    "op5": "BM",
+    "op6": null
+  },
+  "lbns": {
+    "type": "Function",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": "R/N",
+    "op2": "R/N/C/H",
+    "op3": "R/N/C/H",
+    "op4": "R/N/S",
+    "op5": "P",
+    "op6": "BM"
+  },
+  "lbs": {
+    "type": "Function",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": "R/N",
+    "op2": "R/N/H",
+    "op3": "R/N/S",
+    "op4": "P",
+    "op5": "BM",
     "op6": null
   },
   "log": {
@@ -1130,6 +2911,19 @@
     "op5": null,
     "op6": null
   },
+  "return": {
+    "type": "Function",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": "R/N/C",
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
   "round": {
     "type": "Function",
     "description": {
@@ -1179,6 +2973,32 @@
     "op2": "R/N/C",
     "op3": "R/N/C",
     "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "sb": {
+    "type": "Function",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": "R/N/H",
+    "op2": "P",
+    "op3": "R/N/C",
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "sbn": {
+    "type": "Function",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": "R/N/C/H",
+    "op2": "R/N/C/H",
+    "op3": "P",
+    "op4": "R/N/C",
     "op5": null,
     "op6": null
   },
@@ -1390,6 +3210,32 @@
     "op5": null,
     "op6": null
   },
+  "snan": {
+    "type": "Function",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": "R/N",
+    "op2": "R/N",
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "snanz": {
+    "type": "Function",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": "R/N",
+    "op2": "R/N",
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
   "snaz": {
     "type": "Function",
     "description": {
@@ -1437,6 +3283,32 @@
     },
     "op1": "R/N",
     "op2": "R/N/C",
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "ss": {
+    "type": "Function",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": "N/D",
+    "op2": "R/N/S",
+    "op3": "P",
+    "op4": "R/N/C",
+    "op5": null,
+    "op6": null
+  },
+  "stack": {
+    "type": "Function",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": "R/N/C",
+    "op2": null,
     "op3": null,
     "op4": null,
     "op5": null,
@@ -1507,1177 +3379,7 @@
     "op5": null,
     "op6": null
   },
-  "lb": {
-    "type": "Function",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": "R/N",
-    "op2": "R/N/H",
-    "op3": "P",
-    "op4": "BM",
-    "op5": null,
-    "op6": null
-  },
-  "sb": {
-    "type": "Function",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": "R/N/H",
-    "op2": "P",
-    "op3": "R/N/C",
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "stack": {
-    "type": "Function",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": "R/N/C",
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Activate": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Charge": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Class": {
-    "type": "Slot parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "ClearMemory": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Color": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Combustion": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "CompletionRatio": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Damage": {
-    "type": "Slot parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "ElevatorLevel": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "ElevatorSpeed": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Error": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "ExportCount": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Filtration": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "ForceWrite": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Harvest": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Horizontal": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Idle": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "ImportCount": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Lock": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Maximum": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "MaxQuantity": {
-    "type": "Slot parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Mode": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "On": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Open": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Output": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Plant": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "PositionX": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "PositionY": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "PositionZ": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Power": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "PowerActual": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "PowerGeneration": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "PowerPotential": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "PowerRequired": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "PressureExternal": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "PressureInternal": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Ratio": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioCarbonDioxide": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioNitrogen": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioNitrousOxide": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioOxygen": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioPollutant": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioVolatiles": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioWater": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Reagents": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RecipeHash": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RequiredPower": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Setting": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "SolarAngle": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "TargetX": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "TargetY": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "TargetZ": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "TemperatureExternal": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "TemperatureSetting": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "TotalMoles": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "VelocityMagnitude": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "VelocityRelativeX": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "VelocityRelativeY": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "VelocityRelativeZ": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Vertical": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Volume": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "ChargeRatio": {
-    "type": "Slot parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Efficiency": {
-    "type": "Slot parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Growth": {
-    "type": "Slot parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Health": {
-    "type": "Slot parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Mature": {
-    "type": "Slot parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "OccupantHash": {
-    "type": "Slot parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Occupied": {
-    "type": "Slot parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "PressureAir": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "PressureWaste": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Average": {
-    "type": "Const",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Sum": {
-    "type": "Const",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Minimum": {
-    "type": "Const",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Throttle": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "CombustionLimiter": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "debug": {
-    "type": "Function",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": "R/N/C/Y",
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Contents": {
-    "type": "Const",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Required": {
-    "type": "Const",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Recipe": {
-    "type": "Const",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "return": {
-    "type": "Function",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": "R/N/C",
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "HASH(\"name\")": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "lbn": {
-    "type": "Function",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": "R/N",
-    "op2": "R/N/C/H",
-    "op3": "R/N/C/H",
-    "op4": "P",
-    "op5": "BM",
-    "op6": null
-  },
-  "lbns": {
-    "type": "Function",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": "R/N",
-    "op2": "R/N/C/H",
-    "op3": "R/N/C/H",
-    "op4": "R/N/S",
-    "op5": "P",
-    "op6": "BM"
-  },
-  "bnan": {
-    "type": "Function",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": "R/N",
-    "op2": "R/A/T",
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "brnan": {
-    "type": "Function",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": "R/N",
-    "op2": "R/N/C/O",
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "pi": {
-    "type": "Const",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "ninf": {
-    "type": "Const",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "pinf": {
+  "deg2rad": {
     "type": "Const",
     "description": {
       "preview": null,
@@ -2703,7 +3405,33 @@
     "op5": null,
     "op6": null
   },
-  "deg2rad": {
+  "ninf": {
+    "type": "Const",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "pi": {
+    "type": "Const",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": null,
+    "op2": null,
+    "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "pinf": {
     "type": "Const",
     "description": {
       "preview": null,
@@ -2730,7 +3458,7 @@
     "op6": null
   },
   "Channel0": {
-    "type": "Const",
+    "type": "Channel",
     "description": {
       "preview": null,
       "text": null
@@ -2743,7 +3471,7 @@
     "op6": null
   },
   "Channel1": {
-    "type": "Const",
+    "type": "Channel",
     "description": {
       "preview": null,
       "text": null
@@ -2756,7 +3484,7 @@
     "op6": null
   },
   "Channel2": {
-    "type": "Const",
+    "type": "Channel",
     "description": {
       "preview": null,
       "text": null
@@ -2769,7 +3497,7 @@
     "op6": null
   },
   "Channel3": {
-    "type": "Const",
+    "type": "Channel",
     "description": {
       "preview": null,
       "text": null
@@ -2782,7 +3510,7 @@
     "op6": null
   },
   "Channel4": {
-    "type": "Const",
+    "type": "Channel",
     "description": {
       "preview": null,
       "text": null
@@ -2795,7 +3523,7 @@
     "op6": null
   },
   "Channel5": {
-    "type": "Const",
+    "type": "Channel",
     "description": {
       "preview": null,
       "text": null
@@ -2808,7 +3536,7 @@
     "op6": null
   },
   "Channel6": {
-    "type": "Const",
+    "type": "Channel",
     "description": {
       "preview": null,
       "text": null
@@ -2821,7 +3549,7 @@
     "op6": null
   },
   "Channel7": {
-    "type": "Const",
+    "type": "Channel",
     "description": {
       "preview": null,
       "text": null
@@ -2833,47 +3561,8 @@
     "op5": null,
     "op6": null
   },
-  "snan": {
-    "type": "Function",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": "R/N",
-    "op2": "R/N",
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "snanz": {
-    "type": "Function",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": "R/N",
-    "op2": "R/N",
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "sbn": {
-    "type": "Function",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": "R/N/C/H",
-    "op2": "R/N/C/H",
-    "op3": "P",
-    "op4": "R/N/C",
-    "op5": null,
-    "op6": null
-  },
-  "Quantity": {
-    "type": "Slot parameter",
+  "Average": {
+    "type": "BM",
     "description": {
       "preview": null,
       "text": null
@@ -2885,8 +3574,8 @@
     "op5": null,
     "op6": null
   },
-  "CollectableGoods": {
-    "type": "Device parameter",
+  "Maximum": {
+    "type": "BM",
     "description": {
       "preview": null,
       "text": null
@@ -2898,8 +3587,8 @@
     "op5": null,
     "op6": null
   },
-  "Seeding": {
-    "type": "Slot parameter",
+  "Minimum": {
+    "type": "BM",
     "description": {
       "preview": null,
       "text": null
@@ -2911,8 +3600,8 @@
     "op5": null,
     "op6": null
   },
-  "SortingClass": {
-    "type": "Slot parameter",
+  "Sum": {
+    "type": "BM",
     "description": {
       "preview": null,
       "text": null
@@ -2924,8 +3613,8 @@
     "op5": null,
     "op6": null
   },
-  "PrefabHash": {
-    "type": "Slot parameter",
+  "Contents": {
+    "type": "RM",
     "description": {
       "preview": null,
       "text": null
@@ -2937,8 +3626,8 @@
     "op5": null,
     "op6": null
   },
-  "Temperature": {
-    "type": "Device parameter",
+  "Recipe": {
+    "type": "RM",
     "description": {
       "preview": null,
       "text": null
@@ -2950,8 +3639,8 @@
     "op5": null,
     "op6": null
   },
-  "Fuel": {
-    "type": "Device parameter",
+  "Required": {
+    "type": "RM",
     "description": {
       "preview": null,
       "text": null
@@ -2961,695 +3650,6 @@
     "op3": null,
     "op4": null,
     "op5": null,
-    "op6": null
-  },
-  "Pressure": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "PressureInput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "PressureOutput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "PressureOutput2": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "TemperatureInput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "TemperatureOutput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "TemperatureOutput2": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioOxygenInput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioOxygenOutput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioOxygenOutput2": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioCarbonDioxideInput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioCarbonDioxideOutput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioCarbonDioxideOutput2": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioNitrogenInput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioNitrogenOutput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioNitrogenOutput2": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioPollutantInput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioPollutantOutput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioPollutantOutput2": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioVolatilesInput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioVolatilesOutput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioVolatilesOutput2": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioWaterInput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioWaterOutput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioWaterOutput2": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioNitrousOxideInput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioNitrousOxideOutput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "RatioNitrousOxideOutput2": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "TotalMolesInput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "TotalMolesOutput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "TotalMolesOutput2": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "CombustionInput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "CombustionOutput": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "CombustionOutput2": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "SolarIrradiance": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "ReturnFuelCost": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Rpm": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Stress": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Time": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Bpm": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "NextWeatherEventTime": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "SignalStrength": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "SignalID": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "InterrogationProgress": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "TargetPadIndex": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "SizeX": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "SizeZ": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "MinimumWattsToContact": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "WattsReachingContact": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "MineablesInVicinity": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "MineablesInQueue": {
-    "type": "Device parameter",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "ss": {
-    "type": "Function",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": "N/D",
-    "op2": "R/N/S",
-    "op3": "P",
-    "op4": "R/N/C",
-    "op5": null,
-    "op6": null
-  },
-  "lbs": {
-    "type": "Function",
-    "description": {
-      "preview": null,
-      "text": null
-    },
-    "op1": "R/N",
-    "op2": "R/N/H",
-    "op3": "R/N/S",
-    "op4": "P",
-    "op5": "BM",
     "op6": null
   }
 }

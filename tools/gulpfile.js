@@ -45,7 +45,7 @@ gulp.task("generate-langs", async function () {
     return gulp;
 })
 
-gulp.task("generate-aaa", function () {
+gulp.task("#generate-aaa", function () {
     var result = null
     var a = [
         "eq",
