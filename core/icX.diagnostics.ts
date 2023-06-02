@@ -4,7 +4,6 @@ import {icX} from "icx-compiler"
 import {icSidebar, icxOptions, LANG_KEY2} from "./main"
 import {Err, Errors} from "icx-compiler/src/err"
 import InterpreterIc10 from "ic10";
-import {Ic10DiagnosticError} from "ic10/src/Ic10Error";
 
 const manual: {
     "type": string,
@@ -49,13 +48,6 @@ class IcXDiagnostics extends Ic10Diagnostics {
                 }
             } catch (e) {
                 console.warn(e)
-            }
-            try {
-                interpreterIc10.prepareLine(lineIndex)
-            } catch (e) {
-                if(e instanceof Ic10DiagnosticError){
-                    this.errors.push(new DiagnosticsError(e.getMessage(), e.lvl, 0, 0, lineIndex))
-                }
             }
         }
         if (this.blockCount !== this.endCount) {

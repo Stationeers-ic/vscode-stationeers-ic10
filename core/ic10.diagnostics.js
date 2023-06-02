@@ -22,9 +22,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ic10Diagnostics = exports.Ic10Diagnostics = exports.DiagnosticsErrors = exports.DiagnosticsError = exports.regexes = exports.Ic10DiagnosticsName = void 0;
 const vscode = __importStar(require("vscode"));
+const Ic10Error_1 = require("ic10/src/Ic10Error");
+const ic10_1 = __importDefault(require("ic10"));
 exports.Ic10DiagnosticsName = "ic10_diagnostic";
 const manual = require("../languages/en.json");
 const functions = require("../media/ic10.functions.json");
@@ -100,6 +105,31 @@ class Ic10Diagnostics {
             }
             catch (e) {
                 console.warn(e);
+            }
+        }
+        const interpreterIc10 = new ic10_1.default(doc.getText());
+        for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
+            try {
+                interpreterIc10.settings.executionCallback = (e) => {
+                    if (e instanceof Ic10Error_1.Ic10DiagnosticError) {
+                        const lineOfText = doc.lineAt(lineIndex);
+                        let start = 0;
+                        let len = lineOfText.text.length;
+                        if (typeof e.obj === 'string') {
+                            start = lineOfText.text.indexOf(e.obj);
+                            if (start !== -1) {
+                                len = e.obj.length;
+                            }
+                            else {
+                                start = 0;
+                            }
+                        }
+                        this.errors.push(new DiagnosticsError(e.getMessage(), e.lvl, start, len, lineIndex));
+                    }
+                };
+                interpreterIc10.prepareLine(lineIndex, true);
+            }
+            catch (e) {
             }
         }
     }

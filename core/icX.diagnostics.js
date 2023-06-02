@@ -33,7 +33,6 @@ const icx_compiler_1 = require("icx-compiler");
 const main_1 = require("./main");
 const err_1 = require("icx-compiler/src/err");
 const ic10_1 = __importDefault(require("ic10"));
-const Ic10Error_1 = require("ic10/src/Ic10Error");
 const manual = require("../languages/en.json");
 const functions = require("../media/ic10.functions.json");
 require("../media/ic10.keyword.json");
@@ -63,14 +62,6 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
             }
             catch (e) {
                 console.warn(e);
-            }
-            try {
-                interpreterIc10.prepareLine(lineIndex);
-            }
-            catch (e) {
-                if (e instanceof Ic10Error_1.Ic10DiagnosticError) {
-                    this.errors.push(new ic10_diagnostics_1.DiagnosticsError(e.getMessage(), e.lvl, 0, 0, lineIndex));
-                }
             }
         }
         if (this.blockCount !== this.endCount) {

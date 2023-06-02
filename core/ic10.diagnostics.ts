@@ -1,4 +1,6 @@
 import * as vscode from "vscode"
+import {Ic10DiagnosticError} from "ic10/src/Ic10Error";
+import InterpreterIc10 from "ic10";
 
 export const Ic10DiagnosticsName = "ic10_diagnostic"
 const manual: {
@@ -93,6 +95,31 @@ export class Ic10Diagnostics {
                 console.warn(e)
             }
         }
+        const interpreterIc10 = new InterpreterIc10(doc.getText());
+        for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
+            try {
+                interpreterIc10.settings.executionCallback = (e) => {
+                    if (e instanceof Ic10DiagnosticError) {
+                        const lineOfText = doc.lineAt(lineIndex)
+
+                        let start = 0
+                        let len = lineOfText.text.length
+                        if (typeof e.obj === 'string') {
+                            start = lineOfText.text.indexOf(e.obj)
+                            if (start !== -1) {
+                                len = e.obj.length
+                            } else {
+                                start = 0
+                            }
+                        }
+                        this.errors.push(new DiagnosticsError(e.getMessage(), e.lvl, start, len, lineIndex))
+                    }
+                }
+                interpreterIc10.prepareLine(lineIndex, true)
+            } catch (e) {
+            }
+        }
+
     }
 
     run(doc: vscode.TextDocument, container: vscode.DiagnosticCollection): void {
