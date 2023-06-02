@@ -22,6 +22,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.icXDiagnostics = exports.IcXDiagnosticsName = void 0;
 const vscode = __importStar(require("vscode"));
@@ -29,6 +32,8 @@ const ic10_diagnostics_1 = require("./ic10.diagnostics");
 const icx_compiler_1 = require("icx-compiler");
 const main_1 = require("./main");
 const err_1 = require("icx-compiler/src/err");
+const ic10_1 = __importDefault(require("ic10"));
+const Ic10Error_1 = require("ic10/src/Ic10Error");
 const manual = require("../languages/en.json");
 const functions = require("../media/ic10.functions.json");
 require("../media/ic10.keyword.json");
@@ -47,6 +52,7 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
         this.blockCount = 0;
         this.endCount = 0;
         this.InFunction = false;
+        const interpreterIc10 = new ic10_1.default(doc.getText());
         for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
             try {
                 this.parseLine(doc, lineIndex);
@@ -57,6 +63,14 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
             }
             catch (e) {
                 console.warn(e);
+            }
+            try {
+                interpreterIc10.prepareLine(lineIndex);
+            }
+            catch (e) {
+                if (e instanceof Ic10Error_1.Ic10DiagnosticError) {
+                    this.errors.push(new ic10_diagnostics_1.DiagnosticsError(e.getMessage(), e.lvl, 0, 0, lineIndex));
+                }
             }
         }
         if (this.blockCount !== this.endCount) {
