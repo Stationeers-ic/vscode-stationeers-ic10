@@ -3638,5 +3638,18 @@
     "op4": "R/N/C",
     "op5": null,
     "op6": null
+  },
+  "lbs": {
+    "type": "Function",
+    "description": {
+      "preview": null,
+      "text": null
+    },
+    "op1": "R/N",
+    "op2": "R/N/H",
+    "op3": "R/N/S",
+    "op4": "P",
+    "op5": "BM",
+    "op6": null
   }
 }

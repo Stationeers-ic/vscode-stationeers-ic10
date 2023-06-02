@@ -2087,5 +2087,12 @@
       "ss"
     ],
     "description": null
+  },
+  "lbs": {
+    "prefix": "lbs",
+    "body": [
+      "lbs"
+    ],
+    "description": null
   }
 }
