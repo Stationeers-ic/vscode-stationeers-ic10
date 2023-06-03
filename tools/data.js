@@ -413,7 +413,7 @@ function getData() {
         .add("ru ", "RatioOxygenOutput", "Parameter ", "Float ", null)
         .add("ru ", "RatioOxygenOutput2", "Parameter ", "Float ", null)
         .add("ru ", "RatioPollutantInput", "Parameter ", "Float ", null)
-        .add("ru ", "RatioPollutantOutpu", "Parameter ", "Float ", null)
+        .add("ru ", "RatioPollutantOutput", "Parameter ", "Float ", null)
         .add("ru ", "RatioPollutantOutput2", "Parameter ", "Float ", null)
         .add("ru ", "RatioVolatilesInput", "Parameter ", "Float ", null)
         .add("ru ", "RatioVolatilesOutput", "Parameter ", "Float ", null)

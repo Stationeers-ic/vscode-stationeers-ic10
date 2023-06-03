@@ -1728,12 +1728,6 @@
     ],
     "description": ""
   },
-  "RatioPollutantOutpu": {
-    "prefix": "RatioPollutantOutpu",
-    "body": [
-      "RatioPollutantOutpu"
-    ]
-  },
   "RatioPollutantOutput2": {
     "prefix": "RatioPollutantOutput2",
     "body": [
