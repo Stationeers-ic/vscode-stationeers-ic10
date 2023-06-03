@@ -6,7 +6,7 @@ import { MemoryStack } from "ic10/src/MemoryStack";
 import { Slot } from "ic10/src/Slot";
 import { Device } from "../../ic10/src/Device";
 import { IcHousing } from "../../ic10/src/devices/IcHousing";
-import { DeviceOutput } from "../../ic10/src/DeviceOutput";
+import { DeviceOutput } from "ic10/src/DeviceOutput";
 interface ILaunchRequestArguments extends DebugProtocol.LaunchRequestArguments {
     program: string;
     stopOnEntry?: boolean;

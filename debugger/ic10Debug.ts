@@ -34,7 +34,7 @@ import {Device} from "../../ic10/src/Device";
 import {IcHousing} from "../../ic10/src/devices/IcHousing";
 import {isDevice, isDeviceOutput, isIcHousing, isSlot} from "../../ic10/src/types";
 import * as fs from "fs";
-import {DeviceOutput} from "../../ic10/src/DeviceOutput";
+import {DeviceOutput} from "ic10/src/DeviceOutput";
 
 function timeout(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms))
@@ -738,7 +738,7 @@ export class VariableMap {
                 })
                 this.var2variable('Slots', device.slots, id)
                 for (let i = 0; i < 7; i++) {
-                    const channel = device.getChannel(i)
+                    const channel:DeviceOutput = device.getChannel(i)
                     this.var2variable(`Output ${i}`, channel, id)
                 }
             } catch (e) {
