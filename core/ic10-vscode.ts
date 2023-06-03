@@ -36,6 +36,8 @@ export class Ic10Vscode {
             const op2 = data?.op2
             const op3 = data?.op3
             const op4 = data?.op4
+            const op5 = data?.op5
+            const op6 = data?.op6
             let preview = data?.description?.preview
             if (preview) {
                 preview = "*" + preview + "*"
@@ -61,6 +63,12 @@ export class Ic10Vscode {
             }
             if (op4) {
                 heading += `op4:[${op4}] `
+            }
+            if (op5) {
+                heading += `op5:[${op5}] `
+            }
+            if (op6) {
+                heading += `op6:[${op6}] `
             }
 
             return `

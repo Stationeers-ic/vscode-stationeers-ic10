@@ -4,1690 +4,942 @@
     "description": {
       "preview": "float",
       "text": "Уровень заряда аккумулятора в слоте."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Class": {
     "type": "Slot parameter",
     "description": {
       "preview": "",
       "text": "класс объекта в слоте"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Damage": {
     "type": "Slot parameter",
     "description": {
       "preview": "float",
       "text": "Повреждение растения."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Efficiency": {
     "type": "Slot parameter",
     "description": {
       "preview": "float",
       "text": "Эффективность роста растения в автоматической гидропонной станции. -1, если растения нет."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Growth": {
     "type": "Slot parameter",
     "description": {
       "preview": "float",
       "text": "Стадия роста растения в автоматической гидропонной станции. -1, если растения нет."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Health": {
     "type": "Slot parameter",
     "description": {
       "preview": "float",
       "text": "Здоровье растения в автоматической гидропонной станции. 0 - умершаа растение, 1 - полностью здоровое, -1 - растения нет."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Mature": {
     "type": "Slot parameter",
     "description": {
       "preview": "float",
       "text": "Стадия роста растения в автоматической гидропонной станции. -1 если растения нет."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "MaxQuantity": {
     "type": "Slot parameter",
     "description": {
       "preview": "float",
       "text": "Максимальное количество в слоте"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "OccupantHash": {
     "type": "Slot parameter",
     "description": {
       "preview": "Hash",
       "text": "хэш объекта в слоте"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Occupied": {
     "type": "Slot parameter",
     "description": {
       "preview": "Bool",
       "text": "0 - слот свободен, 1 - занят"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PrefabHash": {
     "type": "Slot parameter",
     "description": {
       "preview": "Hash",
       "text": "хэш объекта в слоте"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Quantity": {
-    "type": "Slot parameter",
-    "description": {
-      "preview": "float",
-      "text": "Количество в слоте"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Seeding": {
     "type": "Slot parameter",
     "description": {
       "preview": "bool",
       "text": "Наличие семени."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "SortingClass": {
     "type": "Slot parameter",
     "description": {
       "preview": "",
       "text": "класс объекта в слоте"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Activate": {
     "type": "Device parameter",
     "description": {
       "preview": "Trigger",
       "text": "-1 - остановить , 0 - не работает 1 - работает"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Bpm": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "ритм"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Charge": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Заряд батареи или аккумулятора, Дж. Уровень генерации электричества солнечной панелью, Вт."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "ClearMemory": {
     "type": "Device parameter",
     "description": {
       "preview": "Trigger",
       "text": ">=1 - сбрасывает счётчики"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "CollectableGoods": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": "Возможность добычи."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Color": {
     "type": "Device parameter",
     "description": {
       "preview": "0-синий , 1-серый , 2-зелёный , 3-оранжевый , 4-красный , 5-жёлтый, 6-белый, 7-чёрный, 8-коричневый, 9-хаки, 10-розовый, 11-фиолетовый",
       "text": "Цвет LED-лампы, стационарного маяка и светодиодного дисплея"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Combustion": {
     "type": "Device parameter",
     "description": {
       "preview": "Bool",
       "text": "1 - обнаружено воспламенение, 0 - во всех остальных случаях"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "CombustionInput": {
     "type": "Device parameter",
     "description": {
       "preview": "Bool",
       "text": "Труба вход: 1 - обнаружено воспламенение, 0 - во всех остальных случаях"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "CombustionLimiter": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "CombustionOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "Bool",
       "text": "Труба выход: 1 - обнаружено воспламенение, 0 - во всех остальных случаях"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "CombustionOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "Bool",
       "text": "Труба выход 2: 1 - обнаружено воспламенение, 0 - во всех остальных случаях"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "CompletionRatio": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "этап производства в %"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "ElevatorLevel": {
     "type": "Device parameter",
     "description": {
       "preview": "Int",
       "text": "На чтение - уровень, на котором находится кабинка лифта, или -1, если кабинки нет. На запись - отправляет лифт на указанный этаж."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "ElevatorSpeed": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Скорость движения кабинки лифта, м/тик. Отрицательное значение соответствуют движению вниз, 0 - неподвижной кабинке, положительное - движению вверх."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Error": {
     "type": "Device parameter",
     "description": {
       "preview": "Bool",
       "text": "0 - нормальная работа, 1 - ошибка"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "ExportCount": {
     "type": "Device parameter",
     "description": {
       "preview": "Int",
       "text": "счётчик объектов, прошедших через слот экспорта"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Filtration": {
     "type": "Device parameter",
     "description": {
       "preview": "Bool",
       "text": "Переключает фильтрацию отработанной смеси в прочном скафандре."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "ForceWrite": {
     "type": "Device parameter",
     "description": {
       "preview": "Trigger",
       "text": "Принудительно заставляет чипы записи и множественной записи передать текущее значение в оборудование."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Fuel": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Количества топлива в ракете."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Harvest": {
     "type": "Device parameter",
     "description": {
       "preview": "Trigger",
       "text": "Активирует сбор урожая в автоматической гидропонной станции."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "HASH(\"name\")": {
     "type": "Device parameter",
     "description": {
       "preview": "int",
       "text": "Переводит имя в числовое значение."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Horizontal": {
     "type": "Device parameter",
     "description": {
       "preview": "float[0 - 360]",
       "text": "угол по отношению к Солнцу в градусах в горизонтальной проекции Солнца на плоскость датчика"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Idle": {
     "type": "Device parameter",
     "description": {
       "preview": "Bool",
       "text": "Загрузка дуговой печи. 0 - руда не загружена, 1 - загружена."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "ImportCount": {
     "type": "Device parameter",
     "description": {
       "preview": "Int",
       "text": "счётчик объектов, прошедших через слот импорта"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "InterrogationProgress": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Установление связи"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Lock": {
     "type": "Device parameter",
     "description": {
       "preview": "Bool",
       "text": "0 - ручное управление разблокировано, 1 - заблокировано"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
+  "Maximum": [
+    {
+      "type": "Device parameter",
+      "description": {
+        "preview": "",
+        "text": ""
+      }
+    },
+    {
+      "type": "BM",
+      "description": {
+        "preview": "",
+        "text": ""
+      }
+    }
+  ],
   "MineablesInQueue": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "MineablesInVicinity": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
+  "Minimum": [
+    {
+      "type": "Device parameter",
+      "description": {
+        "preview": "",
+        "text": ""
+      }
+    },
+    {
+      "type": "BM",
+      "description": {
+        "preview": "",
+        "text": ""
+      }
+    }
+  ],
   "MinimumWattsToContact": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Минимум ватт для соединения"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Mode": {
     "type": "Device parameter",
     "description": {
       "preview": "Int",
       "text": "режим работы"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "NextWeatherEventTime": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Время до шторма"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "On": {
     "type": "Device parameter",
     "description": {
       "preview": "Bool",
       "text": "0 - выключен 1 - включен"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Open": {
     "type": "Device parameter",
     "description": {
       "preview": "Bool",
       "text": "0 - выброс закрыт, 1 - открыт"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Output": {
     "type": "Device parameter",
     "description": {
       "preview": "Int/Trigger",
       "text": "Для сортировщика - r/w , Int - следующий выход, на который будет выдан объект.<br>Для стакера - w, Trigger - выгружает накопленную упаковку объектов в слот экспорта."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Plant": {
     "type": "Device parameter",
     "description": {
       "preview": "Trigger",
       "text": "Запускает процесс посадки растения из слота импорта в автоматической гидропонной станции."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PositionX": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "координата X текущего положения"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PositionY": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "координата Y текущего положения"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PositionZ": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "координата Z текущего положения"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Power": {
     "type": "Device parameter",
     "description": {
       "preview": "Bool",
       "text": "0 - питание отсутствует или выключен, 1 - питание подано"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PowerActual": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Суммарное потребление электроэнергии всеми устройствами в сети, Вт."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PowerGeneration": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Текущее производство электроэнергии генератором, Вт."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PowerPotential": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Предельная доступная мощность сети, Вт."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PowerRequired": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Суммарная потребность в электроэнергии всех устройств в сети, Вт."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Pressure": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Давление в устройстве."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PressureAir": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Давление в устройстве."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PressureExternal": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "атмосферное давление во внешней среде, кПа"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PressureInput": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Давление в трубе вход."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PressureInternal": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Давление в трубопроводе, при котором останавливается работа активной вентиляции, кПа. Устанавливается, но не используется."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PressureOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Давление в трубе выход."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PressureOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Давление в трубе выход 2."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PressureWaste": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Давление в устройстве."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
+  },
+  "Quantity": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "",
+      "text": ""
+    }
   },
   "Ratio": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Для батарей - соотношение Charge/Maximum.<br>Для остальных устройств - соотношение Setting/Maximum."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioCarbonDioxide": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля углекислого газа"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioCarbonDioxideInput": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля углекислого газа в трубе вход"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioCarbonDioxideOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля углекислого газа в трубе выход"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioCarbonDioxideOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля углекислого газа в трубе выход 2"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioNitrogen": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля азота"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioNitrogenInput": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля азота в трубе вход"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioNitrogenOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля азота в трубе выход"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioNitrogenOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля азота в трубе выход 2"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioNitrousOxide": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля закиси азота"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioNitrousOxideInput": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля закиси азота в трубе вход"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioNitrousOxideOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля закиси азота в трубе выход"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioNitrousOxideOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля закиси азота в трубе выход 2"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioOxygen": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля кислорода"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioOxygenInput": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля кислорода в трубе вход."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioOxygenOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля кислорода в трубе выход."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioOxygenOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля кислорода в трубе выход 2."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioPollutant": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля токсинов"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioPollutantInput": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля токсинов в трубе вход"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioPollutantOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля токсинов в трубе выход"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioPollutantOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля токсинов в трубе выход 2"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioVolatiles": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля летучих газов"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioVolatilesInput": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля летучих газов в трубе вход"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioVolatilesOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля летучих газов в трубе выход"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioVolatilesOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля летучих газов в трубе выход 2"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioWater": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля водяных паров"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioWaterInput": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля водяных паров в трубе вход"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioWaterOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля водяных паров в трубе выход"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioWaterOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "доля водяных паров в трубе выход 2"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Reagents": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "общая масса ингредиентов в граммах"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RecipeHash": {
     "type": "Device parameter",
     "description": {
       "preview": "Int",
       "text": "хэш выбранного рецепта"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RequiredPower": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Энергия, требуемая для рабботы устройства, Вт."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "ReturnFuelCost": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Топливо для возврата"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Rpm": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "обороты"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Setting": {
     "type": "Device parameter",
     "description": {
       "preview": "Any",
       "text": "Текущее значение какого-то параметра оборудования. Тип и возможные значения зависят от оборудования."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "SignalID": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Ид сигнала"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "SignalStrength": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "SizeX": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "SizeZ": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "SolarAngle": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "угол по отношению к Солнцу в градусах"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "SolarIrradiance": {
     "type": "Device parameter",
     "description": {
       "preview": "bool",
       "text": "освещенность"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Stress": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Сбой центрифуги"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TargetPadIndex": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TargetX": {
     "type": "Device parameter",
     "description": {
       "preview": "Int",
       "text": "координата X цели"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TargetY": {
     "type": "Device parameter",
     "description": {
       "preview": "Int",
       "text": "координата Y цели"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TargetZ": {
     "type": "Device parameter",
     "description": {
       "preview": "Int",
       "text": "координата Z цели"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Temperature": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Температура в устройстве (баллоне)"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TemperatureExternal": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "температура внешней атмосферы, К"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TemperatureInput": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Температура в трубе вход."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TemperatureOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Температура в трубе выход."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TemperatureOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Температура в трубе выход 2."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TemperatureSetting": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Заданная температура внутри прочного скафандра, К."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Throttle": {
     "type": "Device parameter",
     "description": {
       "preview": "int[0,10,20,30,40,50,60,70,80,90,100]",
       "text": "Устанавливает дроссель центрифуги сгорания."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Time": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Время счетчика"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TotalMoles": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Общее количество газа внутри трубопровода, моль."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TotalMolesInput": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Общее количество газа внутри трубопровода вход, моль."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TotalMolesOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Общее количество газа внутри трубопровода выход, моль."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TotalMolesOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Общее количество газа внутри трубопровода выход 2, моль."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "VelocityMagnitude": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "модуль скорости движения бота"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "VelocityRelativeX": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "скорость движения по координате X"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "VelocityRelativeY": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "скорость движения по координате Y"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "VelocityRelativeZ": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "скорость движения по координате Z"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Vertical": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "угол по отношению к Солнцу в градусах"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Volume": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Громкость"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "WattsReachingContact": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Ватты при соединении"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "abs": {
     "type": "Function",
@@ -3384,272 +2636,132 @@
     "description": {
       "preview": "",
       "text": "0,017453292519943295769236907684\r\nКонстанта для перевода в радианы. 180 * deg2rad = pi"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "nan": {
     "type": "Const",
     "description": {
       "preview": "",
       "text": "Нет значения."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "ninf": {
     "type": "Const",
     "description": {
       "preview": "",
       "text": "-бесконечность"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "pi": {
     "type": "Const",
     "description": {
       "preview": "",
       "text": "3.14159265358979"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "pinf": {
     "type": "Const",
     "description": {
       "preview": "",
       "text": "+бесконечность"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "rad2deg": {
     "type": "Const",
     "description": {
       "preview": "",
       "text": "57,2957795130823208767981\r\nКонстанта для перевода в градусы. pi * rad2deg= 180"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Channel0": {
     "type": "Channel",
     "description": {
       "preview": "",
       "text": "Канал 0"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Channel1": {
     "type": "Channel",
     "description": {
       "preview": "",
       "text": "Канал 1"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Channel2": {
     "type": "Channel",
     "description": {
       "preview": "",
       "text": "Канал 2"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Channel3": {
     "type": "Channel",
     "description": {
       "preview": "",
       "text": "Канал 3"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Channel4": {
     "type": "Channel",
     "description": {
       "preview": "",
       "text": "Канал 4"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Channel5": {
     "type": "Channel",
     "description": {
       "preview": "",
       "text": "Канал 5"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Channel6": {
     "type": "Channel",
     "description": {
       "preview": "",
       "text": "Канал 6"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Channel7": {
     "type": "Channel",
     "description": {
       "preview": "",
       "text": "Канал 7"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Average": {
     "type": "BM",
     "description": {
       "preview": "string",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Maximum": {
-    "type": "BM",
-    "description": {
-      "preview": "",
-      "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Minimum": {
-    "type": "BM",
-    "description": {
-      "preview": "string",
-      "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Sum": {
     "type": "BM",
     "description": {
       "preview": "string",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Contents": {
     "type": "RM",
     "description": {
       "preview": "string",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Recipe": {
     "type": "RM",
     "description": {
       "preview": "string",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Required": {
     "type": "RM",
     "description": {
       "preview": "string",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   }
 }

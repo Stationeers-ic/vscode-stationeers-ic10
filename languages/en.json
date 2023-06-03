@@ -4,1690 +4,942 @@
     "description": {
       "preview": "float",
       "text": "The battery level in the slot."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Class": {
     "type": "Slot parameter",
     "description": {
       "preview": "",
       "text": "the class of the object in the slot"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Damage": {
     "type": "Slot parameter",
     "description": {
       "preview": "float",
       "text": "object damage level"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Efficiency": {
     "type": "Slot parameter",
     "description": {
       "preview": "float",
       "text": "Plant growth efficiency in an automatic hydroponic station. -1 if there is no plant."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Growth": {
     "type": "Slot parameter",
     "description": {
       "preview": "float",
       "text": "Plant growth stage in automatic hydroponic station. -1 if there is no plant."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Health": {
     "type": "Slot parameter",
     "description": {
       "preview": "float",
       "text": "Plant health in an automatic hydroponic station. 0 - dead plant, 1 - completely healthy, -1 - no plant."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Mature": {
     "type": "Slot parameter",
     "description": {
       "preview": "float",
       "text": "Readiness of the plant in the automatic hydroponic station for harvesting. -1 if there is no plant."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "MaxQuantity": {
     "type": "Slot parameter",
     "description": {
       "preview": "float",
       "text": "maximum number of items in a slot"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "OccupantHash": {
     "type": "Slot parameter",
     "description": {
       "preview": "Hash",
       "text": "hash of the object in the slot"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Occupied": {
     "type": "Slot parameter",
     "description": {
       "preview": "Bool",
       "text": "0 - slot free, 1 - occupied"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PrefabHash": {
     "type": "Slot parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Quantity": {
-    "type": "Slot parameter",
-    "description": {
-      "preview": "",
-      "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Seeding": {
     "type": "Slot parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "SortingClass": {
     "type": "Slot parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Activate": {
     "type": "Device parameter",
     "description": {
       "preview": "trigger",
       "text": "-1 - stop, 0 - not working 1 - working"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Bpm": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Charge": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Battery or accumulator charge, J. Level of electricity generation by a solar panel, W."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "ClearMemory": {
     "type": "Device parameter",
     "description": {
       "preview": "trigger",
       "text": ">=1 - reset counters"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "CollectableGoods": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Color": {
     "type": "Device parameter",
     "description": {
       "preview": "0-blue, 1-grey, 2-green, 3-orange, 4-red, 5-yellow, 6-white, 7-black, 8-brown, 9-khaki, 10-pink, 11-purple",
       "text": "Color of LED lamp, fixed beacon and LED display"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Combustion": {
     "type": "Device parameter",
     "description": {
       "preview": "Bool",
       "text": "1 - ignition detected, 0 - in all other cases"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "CombustionInput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "CombustionLimiter": {
     "type": "Device parameter",
     "description": {
       "preview": "int[0,10,20,30,40,50,60,70,80,90,100]",
       "text": "Sets the combustion limiter of Combustion Centrifuge."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "CombustionOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "CombustionOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "CompletionRatio": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "production stage in %"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "ElevatorLevel": {
     "type": "Device parameter",
     "description": {
       "preview": "int",
       "text": "For reading - the level at which the elevator cabin is located, or -1 if there is no cabin. On record - sends the elevator to the specified floor."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "ElevatorSpeed": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "The speed of the elevator cabin, m / tick. A negative value corresponds to downward movement, 0 to a stationary booth, a positive value to upward movement."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Error": {
     "type": "Device parameter",
     "description": {
       "preview": "Bool",
       "text": "0 - normal operation, 1 - error"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "ExportCount": {
     "type": "Device parameter",
     "description": {
       "preview": "int",
       "text": "counter of objects passed through the export slot"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Filtration": {
     "type": "Device parameter",
     "description": {
       "preview": "Bool",
       "text": "Switches the filtration of the spent mixture in a durable suit."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "ForceWrite": {
     "type": "Device parameter",
     "description": {
       "preview": "trigger",
       "text": "Forces the write and multiwrite chips to transfer the current value to the hardware."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Fuel": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Harvest": {
     "type": "Device parameter",
     "description": {
       "preview": "trigger",
       "text": "Activates harvesting in an automatic hydroponic station."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "HASH(\"name\")": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Horizontal": {
     "type": "Device parameter",
     "description": {
       "preview": "float[0 - 360]",
       "text": "angle with respect to the Sun in degrees in the horizontal projection of the Sun onto the sensor plane"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Idle": {
     "type": "Device parameter",
     "description": {
       "preview": "Bool",
       "text": "Loading the arc furnace. 0 - ore is not loaded, 1 - loaded."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "ImportCount": {
     "type": "Device parameter",
     "description": {
       "preview": "int",
       "text": "counter of objects passed through the import slot"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "InterrogationProgress": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Lock": {
     "type": "Device parameter",
     "description": {
       "preview": "Bool",
       "text": "0 - manual control unlocked, 1 - locked"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
+  "Maximum": [
+    {
+      "type": "Device parameter",
+      "description": {
+        "preview": "float",
+        "text": "The maximum value of some equipment parameter, such as battery charge or pressure at the inlet to the combustion chamber of a jet engine. Very often present but not used."
+      }
+    },
+    {
+      "type": "BM",
+      "description": {
+        "preview": "",
+        "text": ""
+      }
+    }
+  ],
   "MineablesInQueue": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "MineablesInVicinity": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
+  "Minimum": [
+    {
+      "type": "Device parameter",
+      "description": {
+        "preview": "string",
+        "text": ""
+      }
+    },
+    {
+      "type": "BM",
+      "description": {
+        "preview": "",
+        "text": ""
+      }
+    }
+  ],
   "MinimumWattsToContact": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Mode": {
     "type": "Device parameter",
     "description": {
       "preview": "int",
       "text": "working mode"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "NextWeatherEventTime": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "On": {
     "type": "Device parameter",
     "description": {
       "preview": "Bool",
       "text": "0 - disabled 1 - enabled"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Open": {
     "type": "Device parameter",
     "description": {
       "preview": "Bool",
       "text": "0 - release closed, 1 - open"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Output": {
     "type": "Device parameter",
     "description": {
       "preview": "Int/Trigger",
       "text": "For a sorter - r/w , Int - the next output to which the object will be issued.<br>For a stacker - w, Trigger - unloads the accumulated packing of objects into the export slot."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Plant": {
     "type": "Device parameter",
     "description": {
       "preview": "trigger",
       "text": "Starts the process of planting a plant from the import slot in an automatic hydroponic station."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PositionX": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "X coordinate of current position"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PositionY": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Y coordinate of the current position"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PositionZ": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Z coordinate of the current position"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Power": {
     "type": "Device parameter",
     "description": {
       "preview": "Bool",
       "text": "0 - no power or off, 1 - power on"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PowerActual": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Total electricity consumption by all devices in the network, W."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PowerGeneration": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Current generation of electricity by the generator, W."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PowerPotential": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Maximum available network power, W."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PowerRequired": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "The total electricity demand of all devices in the network, W."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Pressure": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PressureAir": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Pressure in the cylinder with the breathing mixture of the suit installed in the rack, kPa."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PressureExternal": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "atmospheric pressure in the environment, kPa"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PressureInput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PressureInternal": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "The pressure in the pipeline at which the operation of active ventilation stops, kPa. Installed but not used."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PressureOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PressureOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "PressureWaste": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Pressure in the cylinder with the spent mixture of the suit installed in the rack, kPa."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
+  },
+  "Quantity": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "",
+      "text": ""
+    }
   },
   "Ratio": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "For batteries - Charge/Maximum ratio.<br>For other devices - Setting/Maximum ratio."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioCarbonDioxide": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "share of carbon dioxide"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioCarbonDioxideInput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioCarbonDioxideOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioCarbonDioxideOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioNitrogen": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "proportion of nitrogen"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioNitrogenInput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioNitrogenOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioNitrogenOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioNitrousOxide": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "share of nitrous oxide"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioNitrousOxideInput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioNitrousOxideOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioNitrousOxideOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioOxygen": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "fraction of oxygen"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioOxygenInput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioOxygenOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioOxygenOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioPollutant": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "proportion of toxins"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioPollutantInput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioPollutantOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioPollutantOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioVolatiles": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "fraction of volatile gases"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioVolatilesInput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioVolatilesOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioVolatilesOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioWater": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "proportion of water vapor"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioWaterInput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioWaterOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RatioWaterOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Reagents": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "total weight of ingredients in grams"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RecipeHash": {
     "type": "Device parameter",
     "description": {
       "preview": "int",
       "text": "hash of the selected recipe"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "RequiredPower": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "The energy required for the operation of the device, W."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "ReturnFuelCost": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Rpm": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Setting": {
     "type": "Device parameter",
     "description": {
       "preview": "Any",
       "text": "The current value of some hardware parameter. The type and possible values ​​depend on the hardware."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "SignalID": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "SignalStrength": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "SizeX": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "SizeZ": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "SolarAngle": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "angle relative to the sun in degrees"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "SolarIrradiance": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Stress": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TargetPadIndex": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TargetX": {
     "type": "Device parameter",
     "description": {
       "preview": "int",
       "text": "target x-coordinate"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TargetY": {
     "type": "Device parameter",
     "description": {
       "preview": "int",
       "text": "target y-coordinate"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TargetZ": {
     "type": "Device parameter",
     "description": {
       "preview": "int",
       "text": "target's z-coordinate"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Temperature": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TemperatureExternal": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "temperature of the external atmosphere, K"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TemperatureInput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TemperatureOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TemperatureOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TemperatureSetting": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "The specified temperature inside the durable suit, K."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Throttle": {
     "type": "Device parameter",
     "description": {
       "preview": "int[0,10,20,30,40,50,60,70,80,90,100]",
       "text": "Sets the throttle of Combustion Centrifuge."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Time": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TotalMoles": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "The total amount of gas inside the pipeline, mol."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TotalMolesInput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TotalMolesOutput": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "TotalMolesOutput2": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "VelocityMagnitude": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "bot movement speed module"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "VelocityRelativeX": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "speed of movement along the X coordinate"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "VelocityRelativeY": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Y-axis movement speed"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "VelocityRelativeZ": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "movement speed along Z coordinate"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Vertical": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "angle relative to the sun in degrees"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Volume": {
     "type": "Device parameter",
     "description": {
       "preview": "float",
       "text": "Volume"
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "WattsReachingContact": {
     "type": "Device parameter",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "abs": {
     "type": "Function",
@@ -3384,272 +2636,132 @@
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "nan": {
     "type": "Const",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "ninf": {
     "type": "Const",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "pi": {
     "type": "Const",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "pinf": {
     "type": "Const",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "rad2deg": {
     "type": "Const",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Channel0": {
     "type": "Channel",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Channel1": {
     "type": "Channel",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Channel2": {
     "type": "Channel",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Channel3": {
     "type": "Channel",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Channel4": {
     "type": "Channel",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Channel5": {
     "type": "Channel",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Channel6": {
     "type": "Channel",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Channel7": {
     "type": "Channel",
     "description": {
       "preview": "",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Average": {
     "type": "BM",
     "description": {
       "preview": "string",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Maximum": {
-    "type": "BM",
-    "description": {
-      "preview": "float",
-      "text": "The maximum value of some equipment parameter, such as battery charge or pressure at the inlet to the combustion chamber of a jet engine. Very often present but not used."
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
-  },
-  "Minimum": {
-    "type": "BM",
-    "description": {
-      "preview": "string",
-      "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Sum": {
     "type": "BM",
     "description": {
       "preview": "string",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Contents": {
     "type": "RM",
     "description": {
       "preview": "string",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Recipe": {
     "type": "RM",
     "description": {
       "preview": "string",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   },
   "Required": {
     "type": "RM",
     "description": {
       "preview": "string",
       "text": ""
-    },
-    "op1": null,
-    "op2": null,
-    "op3": null,
-    "op4": null,
-    "op5": null,
-    "op6": null
+    }
   }
 }
