@@ -36,7 +36,7 @@ class ic10Runtime extends events_1.EventEmitter {
         }
     }
     continue(reverse = false) {
-        this.run(reverse, undefined);
+        this.run(reverse, 'stopOnBreakpoint');
     }
     step(reverse = false, event = "stopOnStep") {
         this.run(reverse, event);
@@ -178,7 +178,7 @@ class ic10Runtime extends events_1.EventEmitter {
             let why;
             let counter = 0;
             do {
-                why = this.ic10.prepareLine(-1, true);
+                why = this.ic10.prepareLine(ln, true);
                 if (this.ic10?.output?.debug && this.ic10.ignoreLine.indexOf(ln) < 0) {
                     this.ic10.output.debug = "";
                 }

@@ -3,6 +3,10 @@ import { DebugProtocol } from "vscode-debugprotocol";
 import { FileAccessor } from "./ic10Runtime";
 import { InterpreterIc10 } from "ic10";
 import { MemoryStack } from "ic10/src/MemoryStack";
+import { Slot } from "ic10/src/Slot";
+import { Device } from "../../ic10/src/Device";
+import { IcHousing } from "../../ic10/src/devices/IcHousing";
+import { DeviceOutput } from "../../ic10/src/DeviceOutput";
 interface ILaunchRequestArguments extends DebugProtocol.LaunchRequestArguments {
     program: string;
     stopOnEntry?: boolean;
@@ -50,13 +54,13 @@ export declare class ic10DebugSession extends LoggingDebugSession {
     private createSource;
     private getHover;
 }
-declare class VariableMap {
+export declare class VariableMap {
     scope: ic10DebugSession;
     private map;
     private ic10;
     constructor(scope: ic10DebugSession, ic10: InterpreterIc10);
     init(id: string): void;
     get(id: any): any;
-    var2variable(name: any, value: any | MemoryStack, id: any, mc?: any): any;
+    var2variable(name: string, value: string | number | Device | IcHousing | number[] | DeviceOutput | MemoryStack | Slot[] | Slot, id: string, mc?: string): string;
 }
 export {};

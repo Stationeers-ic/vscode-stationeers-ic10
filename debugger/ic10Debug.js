@@ -1,6 +1,29 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ic10DebugSession = void 0;
+exports.VariableMap = exports.ic10DebugSession = void 0;
 const vscode_debugadapter_1 = require("vscode-debugadapter");
 const path_1 = require("path");
 const ic10Runtime_1 = require("./ic10Runtime");
@@ -8,6 +31,8 @@ const ic10_1 = require("ic10");
 const MemoryStack_1 = require("ic10/src/MemoryStack");
 const ConstantCell_1 = require("ic10/src/ConstantCell");
 const Slot_1 = require("ic10/src/Slot");
+const types_1 = require("../../ic10/src/types");
+const fs = __importStar(require("fs"));
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -28,12 +53,6 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
         this.ic10 = new ic10_1.InterpreterIc10();
         this.variableMap = new VariableMap(this, this.ic10);
         this.ic10.setSettings({
-            debugCallback: function (a, b) {
-                this.output.debug = a + " " + JSON.stringify(b);
-            },
-            logCallback: function (a, b) {
-                this.output.log = a + " " + b.join("");
-            },
             executionCallback: function (e) {
                 this.output.error = `(${e.code}) - ${e.message}:`;
                 if (e.obj) {
@@ -246,8 +265,16 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
     scopesRequest(response, args) {
         response.body = {
             scopes: [
-                new vscode_debugadapter_1.Scope("Local", this._variableHandles.create("local"), false),
-                new vscode_debugadapter_1.Scope("Global", this._variableHandles.create("global"), true)
+                new vscode_debugadapter_1.Scope("Constants", this._variableHandles.create("Constants"), true),
+                new vscode_debugadapter_1.Scope("Registers", this._variableHandles.create("Registers"), true),
+                new vscode_debugadapter_1.Scope("Stack", this._variableHandles.create("Stack"), true),
+                new vscode_debugadapter_1.Scope("D0", this._variableHandles.create("d0"), true),
+                new vscode_debugadapter_1.Scope("D1", this._variableHandles.create("d1"), true),
+                new vscode_debugadapter_1.Scope("D2", this._variableHandles.create("d2"), true),
+                new vscode_debugadapter_1.Scope("D3", this._variableHandles.create("d3"), true),
+                new vscode_debugadapter_1.Scope("D4", this._variableHandles.create("d4"), true),
+                new vscode_debugadapter_1.Scope("D5", this._variableHandles.create("d5"), true),
+                new vscode_debugadapter_1.Scope("DB [socket]", this._variableHandles.create("db"), true),
             ]
         };
         this.sendResponse(response);
@@ -255,7 +282,7 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
     async variablesRequest(response, args, request) {
         const id = this._variableHandles.get(args.variablesReference);
         if (id) {
-            if (id == "local" || id == "global") {
+            if (["Constants", "Registers", "Devices", "Stack", "d0", "d1", "d2", "d3", "d4", "d5", "db"].includes(id)) {
                 this.variableMap.init(id);
             }
             response.body = {
@@ -360,7 +387,7 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
             if (id === "global") {
                 response.body.dataId = args.name;
                 response.body.description = args.name;
-                response.body.accessTypes = ["write"];
+                response.body.accessTypes = ["read", "write", "readWrite"];
                 response.body.canPersist = true;
             }
             else {
@@ -527,22 +554,14 @@ class VariableMap {
     }
     init(id) {
         this.map = {};
-        for (let cellsKey in this.ic10.memory.cells) {
-            try {
-            }
-            catch (e) {
-            }
-        }
-        const stack = this.ic10.memory.cells[16];
-        if (stack instanceof MemoryStack_1.MemoryStack) {
-            this.var2variable("Stack", stack.getStack(), id);
-        }
-        for (const environKey in this.ic10.memory.environ) {
-            if (this.ic10.memory.environ.hasOwnProperty(environKey)) {
+        if (id == 'Registers') {
+            for (let cellsKey in this.ic10.memory.cells) {
                 try {
-                    let val = this.ic10.memory.environ[environKey];
-                    let alias = val.alias;
-                    let name = val.name;
+                    cellsKey = String(cellsKey);
+                    const cell = this.ic10.memory.cells[cellsKey];
+                    let val = cell.value;
+                    let name = cell.name;
+                    let alias = this.ic10.memory.aliasesRevert[name] || '';
                     let _name = "";
                     if (alias) {
                         _name = name + `[${alias}]`;
@@ -556,20 +575,57 @@ class VariableMap {
                 }
             }
         }
-        for (const aliasesKey in this.ic10.memory.aliases) {
-            if (this.ic10.memory.aliases.hasOwnProperty(aliasesKey)) {
-                try {
-                    let val = this.ic10.memory.aliases[aliasesKey];
-                    if (val instanceof ConstantCell_1.ConstantCell) {
-                    }
+        if (id == 'Stack') {
+            const stack = this.ic10.memory.stack;
+            if (stack instanceof MemoryStack_1.MemoryStack) {
+                this.var2variable("Stack", stack, id);
+                fs.writeFileSync("C:\\projects\\vscode-stationeers-ic10\\test.d.json", JSON.stringify(this.map['Stack']));
+            }
+        }
+        if (["d0", "d1", "d2", "d3", "d4", "d5",].includes(id)) {
+            try {
+                const device = this.ic10.memory.getDevice(id);
+                Object.entries(device.properties).forEach(([name, value]) => {
+                    this.var2variable(name, value, id);
+                });
+                this.var2variable('Slots', device.slots, id);
+                for (let i = 0; i < 7; i++) {
+                    const channel = device.getChannel(i);
+                    this.var2variable(`Output ${i}`, channel, id);
                 }
-                catch (e) {
+            }
+            catch (e) {
+            }
+        }
+        if (id === 'Constants') {
+            for (const aliasesKey in this.ic10.memory.aliases) {
+                if (this.ic10.memory.aliases.hasOwnProperty(aliasesKey)) {
+                    try {
+                        let val = this.ic10.memory.aliases[aliasesKey];
+                        if (val instanceof ConstantCell_1.ConstantCell) {
+                            this.var2variable(val.name, val.value, id);
+                        }
+                    }
+                    catch (e) {
+                    }
                 }
             }
         }
     }
     get(id) {
-        return this.map[id];
+        try {
+            const device = this.ic10.memory.getDevice(id);
+            Object.entries(device.properties).forEach(([name, value]) => {
+                this.var2variable(name, value, id);
+            });
+            return this.map[id];
+        }
+        catch (e) {
+        }
+        if (id in this.map) {
+            return this.map[id];
+        }
+        return [];
     }
     var2variable(name, value, id, mc = null) {
         if (!(id in this.map)) {
@@ -579,91 +635,126 @@ class VariableMap {
             value = 0;
         }
         const type = value.constructor.name;
-        switch (type) {
-            case "String":
-                this.map[id][name] = {
-                    name: name,
-                    type: "string",
-                    value: String(value),
-                    variablesReference: 0,
-                    __vscodeVariableMenuContext: mc || "String",
-                };
-                return name;
-            case "Number":
-                this.map[id][name] = {
-                    name: name,
-                    type: "float",
-                    value: String(value),
-                    variablesReference: 0,
-                    __vscodeVariableMenuContext: mc || "Number",
-                };
-                return name;
-            case "Array":
-                if (value.length != 0) {
-                    this.map[id][name] = {
-                        name: name,
-                        type: "array",
-                        value: `Array (${value.length})`,
-                        __vscodeVariableMenuContext: "Array",
-                        variablesReference: this.scope._variableHandles.create(name),
-                    };
-                    for (const valueKey in value) {
-                        if (value.hasOwnProperty(valueKey)) {
-                            let index = `${valueKey}`;
-                            if (!(value[valueKey] instanceof Slot_1.Slot)) {
-                                index = `[${valueKey}]`;
-                                const stack = this.ic10.memory.cells[16];
-                                if (stack instanceof MemoryStack_1.MemoryStack) {
-                                }
-                            }
-                            this.var2variable(index, value[valueKey], name, mc);
-                        }
-                    }
-                }
-                else {
-                    this.map[id][name] = {
-                        name: name,
-                        type: "array",
-                        value: "Array (0)",
-                        variablesReference: 0,
-                        __vscodeVariableMenuContext: "Array",
-                    };
-                }
-                return name;
-            case "Device":
-            case "Chip":
-                this.map[id][name] = {
-                    name: name,
-                    type: "object",
-                    value: `Object`,
-                    __vscodeVariableMenuContext: "Object",
-                    variablesReference: this.scope._variableHandles.create(name),
-                };
-                let arr = Object.keys(value.properties).sort();
-                for (const valueKey of arr) {
-                    if (value.properties.hasOwnProperty(valueKey)) {
-                        this.var2variable(valueKey, value.properties[valueKey], name, "Device");
-                    }
-                }
-                return name;
-            case "Slot":
-                this.map[id][name] = {
-                    name: name,
-                    type: "object",
-                    value: `Object`,
-                    __vscodeVariableMenuContext: "Object",
-                    variablesReference: this.scope._variableHandles.create(name),
-                };
-                let _arr = Object.keys(value.properties).sort();
-                for (const valueKey of _arr) {
-                    if (value.properties.hasOwnProperty(valueKey)) {
-                        this.var2variable(valueKey, value.properties[valueKey], name, "Slot");
-                    }
-                }
-                return name;
-            default:
-                return name;
+        if (typeof value === 'number') {
+            this.map[id][name] = {
+                name: name,
+                type: "float",
+                value: String(value),
+                variablesReference: 0,
+                __vscodeVariableMenuContext: mc || "Number",
+            };
+            return name;
         }
+        if ((0, types_1.isDevice)(value) || (0, types_1.isIcHousing)(value)) {
+            this.map[id][name] = {
+                name: name,
+                type: "object",
+                value: `Object`,
+                __vscodeVariableMenuContext: "Object",
+                variablesReference: this.scope._variableHandles.create(name),
+            };
+            return name;
+        }
+        if (value instanceof MemoryStack_1.MemoryStack) {
+            const arr = value.getStack();
+            let b = 0;
+            for (const valueKey in arr) {
+                if (arr.hasOwnProperty(valueKey)) {
+                    let index = `${valueKey}`;
+                    if (arr[valueKey]) {
+                        this.var2variable(index, arr[valueKey], name);
+                    }
+                    else {
+                        b++;
+                        this.var2variable(index, arr[valueKey], 'zero');
+                    }
+                }
+            }
+            this.map[id]['zero'] = {
+                name: 'zero',
+                type: "array",
+                value: `Array (${b})`,
+                __vscodeVariableMenuContext: "Array",
+                variablesReference: this.scope._variableHandles.create('zero'),
+            };
+        }
+        if ((0, types_1.isDeviceOutput)(value)) {
+            if (!value.isEmpty()) {
+                const arr = value.toArray();
+                this.map[id][name] = {
+                    name: name,
+                    type: "array",
+                    value: `Array (${arr.length})`,
+                    __vscodeVariableMenuContext: "Array",
+                    variablesReference: this.scope._variableHandles.create(name),
+                };
+                arr.forEach((val, index) => {
+                    if (val)
+                        this.var2variable(`Channel ${index}`, val, name, mc);
+                });
+            }
+        }
+        if (Array.isArray(value)) {
+            if (value.length != 0) {
+                this.map[id][name] = {
+                    name: name,
+                    type: "array",
+                    value: `Array (${value.length})`,
+                    __vscodeVariableMenuContext: "Array",
+                    variablesReference: this.scope._variableHandles.create(name),
+                };
+                for (const valueKey in value) {
+                    if (value.hasOwnProperty(valueKey)) {
+                        let index = `${valueKey}`;
+                        if (!(value[valueKey] instanceof Slot_1.Slot)) {
+                            index = `[${valueKey}]`;
+                            const stack = this.ic10.memory.cells[16];
+                            if (stack instanceof MemoryStack_1.MemoryStack) {
+                            }
+                        }
+                        this.var2variable(index, value[valueKey], name, mc);
+                    }
+                }
+            }
+            else {
+                this.map[id][name] = {
+                    name: name,
+                    type: "array",
+                    value: "Array (0)",
+                    variablesReference: 0,
+                    __vscodeVariableMenuContext: "Array",
+                };
+            }
+            return name;
+        }
+        if ((0, types_1.isSlot)(value)) {
+            this.map[id][name] = {
+                name: name,
+                type: "object",
+                value: `Object`,
+                __vscodeVariableMenuContext: "Object",
+                variablesReference: this.scope._variableHandles.create(name),
+            };
+            let _arr = Object.keys(value.properties).sort();
+            for (const valueKey of _arr) {
+                if (value.properties.hasOwnProperty(valueKey)) {
+                    this.var2variable(valueKey, value.properties[valueKey], name, "Slot");
+                }
+            }
+            return name;
+        }
+        if (typeof value === 'string') {
+            this.map[id][name] = {
+                name: name,
+                type: "string",
+                value: String(value),
+                variablesReference: 0,
+                __vscodeVariableMenuContext: mc || "String",
+            };
+            return name;
+        }
+        return name;
     }
 }
+exports.VariableMap = VariableMap;
 //# sourceMappingURL=ic10Debug.js.map

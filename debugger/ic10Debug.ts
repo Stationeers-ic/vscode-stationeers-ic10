@@ -2,24 +2,24 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  *--------------------------------------------------------*/
 import {
-	Breakpoint,
-	BreakpointEvent,
-	Handles,
-	InitializedEvent,
-	InvalidatedEvent,
-	Logger,
-	logger,
-	LoggingDebugSession,
-	OutputEvent,
-	ProgressEndEvent,
-	ProgressStartEvent,
-	ProgressUpdateEvent,
-	Scope,
-	Source,
-	StackFrame,
-	StoppedEvent,
-	TerminatedEvent,
-	Thread
+    Breakpoint,
+    BreakpointEvent,
+    Handles,
+    InitializedEvent,
+    InvalidatedEvent,
+    Logger,
+    logger,
+    LoggingDebugSession,
+    OutputEvent,
+    ProgressEndEvent,
+    ProgressStartEvent,
+    ProgressUpdateEvent,
+    Scope,
+    Source,
+    StackFrame,
+    StoppedEvent,
+    TerminatedEvent,
+    Thread
 } from "vscode-debugadapter"
 import {DebugProtocol} from "vscode-debugprotocol"
 import {basename} from "path"
@@ -30,8 +30,11 @@ import {MemoryStack} from "ic10/src/MemoryStack"
 import {ConstantCell} from "ic10/src/ConstantCell"
 import {Slot} from "ic10/src/Slot"
 import {RegisterCell} from "ic10/src/RegisterCell"
-
-// import * as fs from "fs";
+import {Device} from "../../ic10/src/Device";
+import {IcHousing} from "../../ic10/src/devices/IcHousing";
+import {isDevice, isDeviceOutput, isIcHousing, isSlot} from "../../ic10/src/types";
+import * as fs from "fs";
+import {DeviceOutput} from "../../ic10/src/DeviceOutput";
 
 function timeout(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms))
@@ -79,12 +82,6 @@ export class ic10DebugSession extends LoggingDebugSession {
         this.ic10 = new InterpreterIc10()
         this.variableMap = new VariableMap(this, this.ic10)
         this.ic10.setSettings({
-            debugCallback: function (a, b) {
-                this.output.debug = a + " " + JSON.stringify(b)
-            },
-            logCallback: function (a, b: Array<string>) {
-                this.output.log = a + " " + b.join("")
-            },
             executionCallback: function (e: Ic10Error) {
                 // this.output.error = `[${e.functionName}:${e.line}] (${e.code}) - ${e.message}:`
                 this.output.error = `(${e.code}) - ${e.message}:`
@@ -379,8 +376,16 @@ export class ic10DebugSession extends LoggingDebugSession {
 
         response.body = {
             scopes: [
-                new Scope("Local", this._variableHandles.create("local"), false),
-                new Scope("Global", this._variableHandles.create("global"), true)
+                new Scope("Constants", this._variableHandles.create("Constants"), true),
+                new Scope("Registers", this._variableHandles.create("Registers"), true),
+                new Scope("Stack", this._variableHandles.create("Stack"), true),
+                new Scope("D0", this._variableHandles.create("d0"), true),
+                new Scope("D1", this._variableHandles.create("d1"), true),
+                new Scope("D2", this._variableHandles.create("d2"), true),
+                new Scope("D3", this._variableHandles.create("d3"), true),
+                new Scope("D4", this._variableHandles.create("d4"), true),
+                new Scope("D5", this._variableHandles.create("d5"), true),
+                new Scope("DB [socket]", this._variableHandles.create("db"), true),
             ]
         }
         this.sendResponse(response)
@@ -389,7 +394,7 @@ export class ic10DebugSession extends LoggingDebugSession {
     protected async variablesRequest(response: DebugProtocol.VariablesResponse, args: DebugProtocol.VariablesArguments, request?: DebugProtocol.Request) {
         const id = this._variableHandles.get(args.variablesReference)
         if (id) {
-            if (id == "local" || id == "global") {
+            if (["Constants", "Registers", "Devices", "Stack", "d0", "d1", "d2", "d3", "d4", "d5", "db"].includes(id)) {
                 this.variableMap.init(id)
             }
             response.body = {
@@ -506,7 +511,7 @@ export class ic10DebugSession extends LoggingDebugSession {
             if (id === "global") {
                 response.body.dataId = args.name
                 response.body.description = args.name
-                response.body.accessTypes = ["write"]
+                response.body.accessTypes = ["read", "write", "readWrite"]
                 response.body.canPersist = true
             } else {
                 response.body.dataId = args.name
@@ -584,7 +589,6 @@ export class ic10DebugSession extends LoggingDebugSession {
     protected customRequest(command: string, response: DebugProtocol.Response, args: any) {
         const regex = /(.+)\[.+]/gm
         command = command.trim()
-        // fs.writeFileSync("C:\\OSPanel\\domains\\vscode-stationeers-ic10\\logs\\" + command + '0.json', JSON.stringify(args))
 
         if (["ic10.debug.variables.write",
             "ic10.debug.device.write",
@@ -604,9 +608,7 @@ export class ic10DebugSession extends LoggingDebugSession {
                 } else {
                     args.containerName = args.variable.container.name
                 }
-                // fs.writeFileSync("C:\\OSPanel\\domains\\vscode-stationeers-ic10\\logs\\" + command + '1.json', JSON.stringify(args))
             } catch (e) {
-                // fs.writeFileSync("C:\\OSPanel\\domains\\vscode-stationeers-ic10\\logs\\" + command + '2.json', JSON.stringify(e))
             }
         }
         switch (command) {
@@ -687,7 +689,7 @@ export class ic10DebugSession extends LoggingDebugSession {
 
 }
 
-class VariableMap {
+export class VariableMap {
     scope: ic10DebugSession
     private map: object
     private ic10: InterpreterIc10
@@ -700,33 +702,14 @@ class VariableMap {
 
     init(id: string) {
         this.map = {}
-        for (let cellsKey in this.ic10.memory.cells) {
-            try {
-                // cellsKey = String(cellsKey)
-                // let val = this.ic10.memory.cells[cellsKey].get()
-                // let alias = this.ic10.memory.cells[cellsKey].alias
-                // let name = this.ic10.memory.cells[cellsKey].name
-                // let _name = ""
-                // if (alias) {
-                // 	_name = name + `[${alias}]`
-                // } else {
-                // 	_name = name
-                // }
-                // this.var2variable(_name, val, id)
-            } catch (e) {
-
-            }
-        }
-        const stack: RegisterCell | MemoryStack = this.ic10.memory.cells[16]
-        if (stack instanceof MemoryStack) {
-            this.var2variable("Stack", stack.getStack(), id)
-        }
-        for (const environKey in this.ic10.memory.environ) {
-            if (this.ic10.memory.environ.hasOwnProperty(environKey)) {
+        if (id == 'Registers') {
+            for (let cellsKey in this.ic10.memory.cells) {
                 try {
-                    let val = this.ic10.memory.environ[environKey]
-                    let alias = val.alias
-                    let name = val.name
+                    cellsKey = String(cellsKey)
+                    const cell = this.ic10.memory.cells[cellsKey]
+                    let val = cell.value
+                    let name = cell.name
+                    let alias = this.ic10.memory.aliasesRevert[name] || ''
                     let _name = ""
                     if (alias) {
                         _name = name + `[${alias}]`
@@ -739,27 +722,62 @@ class VariableMap {
                 }
             }
         }
-        for (const aliasesKey in this.ic10.memory.aliases) {
-            if (this.ic10.memory.aliases.hasOwnProperty(aliasesKey)) {
-                try {
-                    let val = this.ic10.memory.aliases[aliasesKey]
-                    // let name = String(val.name)
-                    if (val instanceof ConstantCell) {
-                        // this.var2variable(name, val.get(), id)
+        if (id == 'Stack') {
+            const stack: MemoryStack = this.ic10.memory.stack
+            if (stack instanceof MemoryStack) {
+                this.var2variable("Stack", stack, id)
+
+                fs.writeFileSync("C:\\projects\\vscode-stationeers-ic10\\test.d.json", JSON.stringify(this.map['Stack']))
+            }
+        }
+        if (["d0", "d1", "d2", "d3", "d4", "d5",].includes(id)) {
+            try {
+                const device = this.ic10.memory.getDevice(id)
+                Object.entries(device.properties).forEach(([name, value]) => {
+                    this.var2variable(name, value, id)
+                })
+                this.var2variable('Slots', device.slots, id)
+                for (let i = 0; i < 7; i++) {
+                    const channel = device.getChannel(i)
+                    this.var2variable(`Output ${i}`, channel, id)
+                }
+            } catch (e) {
+
+            }
+        }
+        if (id === 'Constants') {
+            for (const aliasesKey in this.ic10.memory.aliases) {
+                if (this.ic10.memory.aliases.hasOwnProperty(aliasesKey)) {
+                    try {
+                        let val = this.ic10.memory.aliases[aliasesKey]
+                        if (val instanceof ConstantCell) {
+                            this.var2variable(val.name, val.value, id)
+                        }
+                    } catch (e) {
+
                     }
-
-                } catch (e) {
-
                 }
             }
         }
     }
 
     get(id: any) {
-        return this.map[id]
+        try {
+            const device = this.ic10.memory.getDevice(id)
+            Object.entries(device.properties).forEach(([name, value]) => {
+                this.var2variable(name, value, id)
+            })
+            return this.map[id]
+        } catch (e) {
+
+        }
+        if (id in this.map) {
+            return this.map[id]
+        }
+        return []
     }
 
-    public var2variable(name, value: any | MemoryStack, id, mc = null) {
+    public var2variable(name: string, value: string | number | Device | IcHousing | number[] | DeviceOutput | MemoryStack | Slot[] | Slot, id: string, mc: string = null) {
         if (!(id in this.map)) {
             this.map[id] = {}
         }
@@ -767,96 +785,128 @@ class VariableMap {
             value = 0
         }
         const type = value.constructor.name
-        switch (type) {
-            case "String":
-                this.map[id][name] = {
-                    name: name,
-                    type: "string",
-                    value: String(value),
-                    variablesReference: 0,
-                    __vscodeVariableMenuContext: mc || "String",
 
-                } as DebugProtocol.Variable
-                return name
-            case "Number":
-                this.map[id][name] = {
-                    name: name,
-                    type: "float",
-                    value: String(value),
-                    variablesReference: 0,
-                    __vscodeVariableMenuContext: mc || "Number",
-                } as DebugProtocol.Variable
-                return name
-            case "Array":
-                if (value.length != 0) {
-                    this.map[id][name] = {
-                        name: name,
-                        type: "array",
-                        value: `Array (${value.length})`,
-                        __vscodeVariableMenuContext: "Array",
-                        variablesReference: this.scope._variableHandles.create(name),
-                    } as DebugProtocol.Variable
-                    for (const valueKey in value) {
-                        if (value.hasOwnProperty(valueKey)) {
-                            let index = `${valueKey}`
-                            if (!(value[valueKey] instanceof Slot)) {
-                                index = `[${valueKey}]`
-                                const stack: RegisterCell | MemoryStack = this.ic10.memory.cells[16]
-                                if (stack instanceof MemoryStack) {
-                                    // if (parseInt(valueKey) == parseInt(String(stack.get()))) {
-                                    // 	index = `(${valueKey})`
-                                    // }
-                                }
-                            }
-                            this.var2variable(index, value[valueKey], name, mc)
-                        }
-                    }
-
-                } else {
-                    this.map[id][name] = {
-                        name: name,
-                        type: "array",
-                        value: "Array (0)",
-                        variablesReference: 0,
-                        __vscodeVariableMenuContext: "Array",
-                    } as DebugProtocol.Variable
-                }
-
-                return name
-            case "Device":
-            case "Chip":
-                this.map[id][name] = {
-                    name: name,
-                    type: "object",
-                    value: `Object`,
-                    __vscodeVariableMenuContext: "Object",
-                    variablesReference: this.scope._variableHandles.create(name),
-                } as DebugProtocol.Variable
-                let arr = Object.keys(value.properties).sort()
-                for (const valueKey of arr) {
-                    if (value.properties.hasOwnProperty(valueKey)) {
-                        this.var2variable(valueKey, value.properties[valueKey], name, "Device")
-                    }
-                }
-                return name
-            case "Slot":
-                this.map[id][name] = {
-                    name: name,
-                    type: "object",
-                    value: `Object`,
-                    __vscodeVariableMenuContext: "Object",
-                    variablesReference: this.scope._variableHandles.create(name),
-                } as DebugProtocol.Variable
-                let _arr = Object.keys(value.properties).sort()
-                for (const valueKey of _arr) {
-                    if (value.properties.hasOwnProperty(valueKey)) {
-                        this.var2variable(valueKey, value.properties[valueKey], name, "Slot")
-                    }
-                }
-                return name
-            default:
-                return name
+        if (typeof value === 'number') {
+            this.map[id][name] = {
+                name: name,
+                type: "float",
+                value: String(value),
+                variablesReference: 0,
+                __vscodeVariableMenuContext: mc || "Number",
+            } as DebugProtocol.Variable
+            return name
         }
-    }
+        if (isDevice(value) || isIcHousing(value)) {
+            this.map[id][name] = {
+                name: name,
+                type: "object",
+                value: `Object`,
+                __vscodeVariableMenuContext: "Object",
+                variablesReference: this.scope._variableHandles.create(name),
+            } as DebugProtocol.Variable
+            return name
+        }
+        if (value instanceof MemoryStack) {
+            const arr = value.getStack()
+            let b = 0
+            for (const valueKey in arr) {
+                if (arr.hasOwnProperty(valueKey)) {
+                    let index = `${valueKey}`
+                    if (arr[valueKey]) {
+                        this.var2variable(index, arr[valueKey], name)
+                    } else {
+                        b++
+                        this.var2variable(index, arr[valueKey], 'zero')
+                    }
+                }
+            }
+            this.map[id]['zero'] = {
+                name: 'zero',
+                type: "array",
+                value: `Array (${b})`,
+                __vscodeVariableMenuContext: "Array",
+                variablesReference: this.scope._variableHandles.create('zero'),
+            } as DebugProtocol.Variable
+        }
+        if (isDeviceOutput(value)) {
+            if (!value.isEmpty()) {
+                const arr = value.toArray()
+                this.map[id][name] = {
+                    name: name,
+                    type: "array",
+                    value: `Array (${arr.length})`,
+                    __vscodeVariableMenuContext: "Array",
+                    variablesReference: this.scope._variableHandles.create(name),
+                } as DebugProtocol.Variable
+                arr.forEach((val, index) => {
+                    if (val) this.var2variable(`Channel ${index}`, val, name, mc)
+                })
+            }
+        }
+        if (Array.isArray(value)) {
+            if (value.length != 0) {
+                this.map[id][name] = {
+                    name: name,
+                    type: "array",
+                    value: `Array (${value.length})`,
+                    __vscodeVariableMenuContext: "Array",
+                    variablesReference: this.scope._variableHandles.create(name),
+                } as DebugProtocol.Variable
+                for (const valueKey in value) {
+                    if (value.hasOwnProperty(valueKey)) {
+                        let index = `${valueKey}`
+                        if (!(value[valueKey] instanceof Slot)) {
+                            index = `[${valueKey}]`
+                            const stack: RegisterCell | MemoryStack = this.ic10.memory.cells[16]
+                            if (stack instanceof MemoryStack) {
+                                // if (parseInt(valueKey) == parseInt(String(stack.get()))) {
+                                // 	index = `(${valueKey})`
+                                // }
+                            }
+                        }
+                        this.var2variable(index, value[valueKey], name, mc)
+                    }
+                }
 
+            } else {
+                this.map[id][name] = {
+                    name: name,
+                    type: "array",
+                    value: "Array (0)",
+                    variablesReference: 0,
+                    __vscodeVariableMenuContext: "Array",
+                } as DebugProtocol.Variable
+            }
+            return name
+        }
+        if (isSlot(value)) {
+            this.map[id][name] = {
+                name: name,
+                type: "object",
+                value: `Object`,
+                __vscodeVariableMenuContext: "Object",
+                variablesReference: this.scope._variableHandles.create(name),
+            } as DebugProtocol.Variable
+            let _arr = Object.keys(value.properties).sort()
+            for (const valueKey of _arr) {
+                if (value.properties.hasOwnProperty(valueKey)) {
+                    this.var2variable(valueKey, value.properties[valueKey], name, "Slot")
+                }
+            }
+            return name
+        }
+        if (typeof value === 'string') {
+            this.map[id][name] = {
+                name: name,
+                type: "string",
+                value: String(value),
+                variablesReference: 0,
+                __vscodeVariableMenuContext: mc || "String",
+
+            } as DebugProtocol.Variable
+            return name
+        }
+        return name
+    }
 }
+
