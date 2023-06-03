@@ -5,7 +5,7 @@ async function getData() {
 
     const Languages = {
         "en": await getLang("en"),
-        "ru": await getLang("eu"),
+        "ru": await getLang("ru"),
     }
 
     async function getLang(lang = "en") {
