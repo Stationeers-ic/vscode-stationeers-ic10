@@ -2,8 +2,8 @@
   "ChargeRatio": {
     "type": "Slot parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Уровень заряда аккумулятора в слоте."
     },
     "op1": null,
     "op2": null,
@@ -16,7 +16,7 @@
     "type": "Slot parameter",
     "description": {
       "preview": null,
-      "text": null
+      "text": "класс объекта в слоте"
     },
     "op1": null,
     "op2": null,
@@ -28,8 +28,8 @@
   "Damage": {
     "type": "Slot parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Повреждение растения."
     },
     "op1": null,
     "op2": null,
@@ -41,8 +41,8 @@
   "Efficiency": {
     "type": "Slot parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Эффективность роста растения в автоматической гидропонной станции. -1, если растения нет."
     },
     "op1": null,
     "op2": null,
@@ -54,8 +54,8 @@
   "Growth": {
     "type": "Slot parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Стадия роста растения в автоматической гидропонной станции. -1, если растения нет."
     },
     "op1": null,
     "op2": null,
@@ -67,8 +67,8 @@
   "Health": {
     "type": "Slot parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Здоровье растения в автоматической гидропонной станции. 0 - умершаа растение, 1 - полностью здоровое, -1 - растения нет."
     },
     "op1": null,
     "op2": null,
@@ -80,8 +80,8 @@
   "Mature": {
     "type": "Slot parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Стадия роста растения в автоматической гидропонной станции. -1 если растения нет."
     },
     "op1": null,
     "op2": null,
@@ -93,8 +93,8 @@
   "MaxQuantity": {
     "type": "Slot parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Максимальное количество в слоте"
     },
     "op1": null,
     "op2": null,
@@ -106,8 +106,8 @@
   "OccupantHash": {
     "type": "Slot parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Hash",
+      "text": "хэш объекта в слоте"
     },
     "op1": null,
     "op2": null,
@@ -119,8 +119,8 @@
   "Occupied": {
     "type": "Slot parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Bool",
+      "text": "0 - слот свободен, 1 - занят"
     },
     "op1": null,
     "op2": null,
@@ -132,8 +132,8 @@
   "PrefabHash": {
     "type": "Slot parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Hash",
+      "text": "хэш объекта в слоте"
     },
     "op1": null,
     "op2": null,
@@ -145,8 +145,8 @@
   "Quantity": {
     "type": "Slot parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Количество в слоте"
     },
     "op1": null,
     "op2": null,
@@ -158,8 +158,8 @@
   "Seeding": {
     "type": "Slot parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "bool",
+      "text": "Наличие семени."
     },
     "op1": null,
     "op2": null,
@@ -172,7 +172,7 @@
     "type": "Slot parameter",
     "description": {
       "preview": null,
-      "text": null
+      "text": "класс объекта в слоте"
     },
     "op1": null,
     "op2": null,
@@ -184,8 +184,8 @@
   "Activate": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Trigger",
+      "text": "-1 - остановить , 0 - не работает 1 - работает"
     },
     "op1": null,
     "op2": null,
@@ -197,8 +197,8 @@
   "Bpm": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "ритм"
     },
     "op1": null,
     "op2": null,
@@ -210,8 +210,8 @@
   "Charge": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Заряд батареи или аккумулятора, Дж. Уровень генерации электричества солнечной панелью, Вт."
     },
     "op1": null,
     "op2": null,
@@ -223,8 +223,8 @@
   "ClearMemory": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Trigger",
+      "text": ">=1 - сбрасывает счётчики"
     },
     "op1": null,
     "op2": null,
@@ -237,7 +237,7 @@
     "type": "Device parameter",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Возможность добычи."
     },
     "op1": null,
     "op2": null,
@@ -249,8 +249,8 @@
   "Color": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "0-синий , 1-серый , 2-зелёный , 3-оранжевый , 4-красный , 5-жёлтый, 6-белый, 7-чёрный, 8-коричневый, 9-хаки, 10-розовый, 11-фиолетовый",
+      "text": "Цвет LED-лампы, стационарного маяка и светодиодного дисплея"
     },
     "op1": null,
     "op2": null,
@@ -262,8 +262,8 @@
   "Combustion": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Bool",
+      "text": "1 - обнаружено воспламенение, 0 - во всех остальных случаях"
     },
     "op1": null,
     "op2": null,
@@ -275,8 +275,8 @@
   "CombustionInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Bool",
+      "text": "Труба вход: 1 - обнаружено воспламенение, 0 - во всех остальных случаях"
     },
     "op1": null,
     "op2": null,
@@ -301,8 +301,8 @@
   "CombustionOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Bool",
+      "text": "Труба выход: 1 - обнаружено воспламенение, 0 - во всех остальных случаях"
     },
     "op1": null,
     "op2": null,
@@ -314,8 +314,8 @@
   "CombustionOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Bool",
+      "text": "Труба выход 2: 1 - обнаружено воспламенение, 0 - во всех остальных случаях"
     },
     "op1": null,
     "op2": null,
@@ -327,8 +327,8 @@
   "CompletionRatio": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "этап производства в %"
     },
     "op1": null,
     "op2": null,
@@ -340,8 +340,8 @@
   "ElevatorLevel": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Int",
+      "text": "На чтение - уровень, на котором находится кабинка лифта, или -1, если кабинки нет. На запись - отправляет лифт на указанный этаж."
     },
     "op1": null,
     "op2": null,
@@ -353,8 +353,8 @@
   "ElevatorSpeed": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Скорость движения кабинки лифта, м/тик. Отрицательное значение соответствуют движению вниз, 0 - неподвижной кабинке, положительное - движению вверх."
     },
     "op1": null,
     "op2": null,
@@ -366,8 +366,8 @@
   "Error": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Bool",
+      "text": "0 - нормальная работа, 1 - ошибка"
     },
     "op1": null,
     "op2": null,
@@ -379,8 +379,8 @@
   "ExportCount": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Int",
+      "text": "счётчик объектов, прошедших через слот экспорта"
     },
     "op1": null,
     "op2": null,
@@ -392,8 +392,8 @@
   "Filtration": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Bool",
+      "text": "Переключает фильтрацию отработанной смеси в прочном скафандре."
     },
     "op1": null,
     "op2": null,
@@ -405,8 +405,8 @@
   "ForceWrite": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Trigger",
+      "text": "Принудительно заставляет чипы записи и множественной записи передать текущее значение в оборудование."
     },
     "op1": null,
     "op2": null,
@@ -418,8 +418,8 @@
   "Fuel": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Количества топлива в ракете."
     },
     "op1": null,
     "op2": null,
@@ -431,8 +431,8 @@
   "Harvest": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Trigger",
+      "text": "Активирует сбор урожая в автоматической гидропонной станции."
     },
     "op1": null,
     "op2": null,
@@ -444,8 +444,8 @@
   "HASH(\"name\")": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "int",
+      "text": "Переводит имя в числовое значение."
     },
     "op1": null,
     "op2": null,
@@ -457,8 +457,8 @@
   "Horizontal": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float[0 - 360]",
+      "text": "угол по отношению к Солнцу в градусах в горизонтальной проекции Солнца на плоскость датчика"
     },
     "op1": null,
     "op2": null,
@@ -470,8 +470,8 @@
   "Idle": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Bool",
+      "text": "Загрузка дуговой печи. 0 - руда не загружена, 1 - загружена."
     },
     "op1": null,
     "op2": null,
@@ -483,8 +483,8 @@
   "ImportCount": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Int",
+      "text": "счётчик объектов, прошедших через слот импорта"
     },
     "op1": null,
     "op2": null,
@@ -496,8 +496,8 @@
   "InterrogationProgress": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Установление связи"
     },
     "op1": null,
     "op2": null,
@@ -509,8 +509,8 @@
   "Lock": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Bool",
+      "text": "0 - ручное управление разблокировано, 1 - заблокировано"
     },
     "op1": null,
     "op2": null,
@@ -522,7 +522,7 @@
   "MineablesInQueue": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
+      "preview": "float",
       "text": null
     },
     "op1": null,
@@ -535,7 +535,7 @@
   "MineablesInVicinity": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
+      "preview": "float",
       "text": null
     },
     "op1": null,
@@ -548,8 +548,8 @@
   "MinimumWattsToContact": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Минимум ватт для соединения"
     },
     "op1": null,
     "op2": null,
@@ -561,8 +561,8 @@
   "Mode": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Int",
+      "text": "режим работы"
     },
     "op1": null,
     "op2": null,
@@ -574,8 +574,8 @@
   "NextWeatherEventTime": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Время до шторма"
     },
     "op1": null,
     "op2": null,
@@ -587,8 +587,8 @@
   "On": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Bool",
+      "text": "0 - выключен 1 - включен"
     },
     "op1": null,
     "op2": null,
@@ -600,8 +600,8 @@
   "Open": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Bool",
+      "text": "0 - выброс закрыт, 1 - открыт"
     },
     "op1": null,
     "op2": null,
@@ -613,8 +613,8 @@
   "Output": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Int/Trigger",
+      "text": "Для сортировщика - r/w , Int - следующий выход, на который будет выдан объект.<br>Для стакера - w, Trigger - выгружает накопленную упаковку объектов в слот экспорта."
     },
     "op1": null,
     "op2": null,
@@ -626,8 +626,8 @@
   "Plant": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Trigger",
+      "text": "Запускает процесс посадки растения из слота импорта в автоматической гидропонной станции."
     },
     "op1": null,
     "op2": null,
@@ -639,8 +639,8 @@
   "PositionX": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "координата X текущего положения"
     },
     "op1": null,
     "op2": null,
@@ -652,8 +652,8 @@
   "PositionY": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "координата Y текущего положения"
     },
     "op1": null,
     "op2": null,
@@ -665,8 +665,8 @@
   "PositionZ": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "координата Z текущего положения"
     },
     "op1": null,
     "op2": null,
@@ -678,8 +678,8 @@
   "Power": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Bool",
+      "text": "0 - питание отсутствует или выключен, 1 - питание подано"
     },
     "op1": null,
     "op2": null,
@@ -691,8 +691,8 @@
   "PowerActual": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Суммарное потребление электроэнергии всеми устройствами в сети, Вт."
     },
     "op1": null,
     "op2": null,
@@ -704,8 +704,8 @@
   "PowerGeneration": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Текущее производство электроэнергии генератором, Вт."
     },
     "op1": null,
     "op2": null,
@@ -717,8 +717,8 @@
   "PowerPotential": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Предельная доступная мощность сети, Вт."
     },
     "op1": null,
     "op2": null,
@@ -730,8 +730,8 @@
   "PowerRequired": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Суммарная потребность в электроэнергии всех устройств в сети, Вт."
     },
     "op1": null,
     "op2": null,
@@ -743,8 +743,8 @@
   "Pressure": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Давление в устройстве."
     },
     "op1": null,
     "op2": null,
@@ -756,8 +756,8 @@
   "PressureAir": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Давление в устройстве."
     },
     "op1": null,
     "op2": null,
@@ -769,8 +769,8 @@
   "PressureExternal": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "атмосферное давление во внешней среде, кПа"
     },
     "op1": null,
     "op2": null,
@@ -782,8 +782,8 @@
   "PressureInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Давление в трубе вход."
     },
     "op1": null,
     "op2": null,
@@ -795,8 +795,8 @@
   "PressureInternal": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Давление в трубопроводе, при котором останавливается работа активной вентиляции, кПа. Устанавливается, но не используется."
     },
     "op1": null,
     "op2": null,
@@ -808,8 +808,8 @@
   "PressureOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Давление в трубе выход."
     },
     "op1": null,
     "op2": null,
@@ -821,8 +821,8 @@
   "PressureOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Давление в трубе выход 2."
     },
     "op1": null,
     "op2": null,
@@ -834,8 +834,8 @@
   "PressureWaste": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Давление в устройстве."
     },
     "op1": null,
     "op2": null,
@@ -847,8 +847,8 @@
   "Ratio": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Для батарей - соотношение Charge/Maximum.<br>Для остальных устройств - соотношение Setting/Maximum."
     },
     "op1": null,
     "op2": null,
@@ -860,8 +860,8 @@
   "RatioCarbonDioxide": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля углекислого газа"
     },
     "op1": null,
     "op2": null,
@@ -873,8 +873,8 @@
   "RatioCarbonDioxideInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля углекислого газа в трубе вход"
     },
     "op1": null,
     "op2": null,
@@ -886,8 +886,8 @@
   "RatioCarbonDioxideOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля углекислого газа в трубе выход"
     },
     "op1": null,
     "op2": null,
@@ -899,8 +899,8 @@
   "RatioCarbonDioxideOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля углекислого газа в трубе выход 2"
     },
     "op1": null,
     "op2": null,
@@ -912,8 +912,8 @@
   "RatioNitrogen": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля азота"
     },
     "op1": null,
     "op2": null,
@@ -925,8 +925,8 @@
   "RatioNitrogenInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля азота в трубе вход"
     },
     "op1": null,
     "op2": null,
@@ -938,8 +938,8 @@
   "RatioNitrogenOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля азота в трубе выход"
     },
     "op1": null,
     "op2": null,
@@ -951,8 +951,8 @@
   "RatioNitrogenOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля азота в трубе выход 2"
     },
     "op1": null,
     "op2": null,
@@ -964,8 +964,8 @@
   "RatioNitrousOxide": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля закиси азота"
     },
     "op1": null,
     "op2": null,
@@ -977,8 +977,8 @@
   "RatioNitrousOxideInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля закиси азота в трубе вход"
     },
     "op1": null,
     "op2": null,
@@ -990,8 +990,8 @@
   "RatioNitrousOxideOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля закиси азота в трубе выход"
     },
     "op1": null,
     "op2": null,
@@ -1003,8 +1003,8 @@
   "RatioNitrousOxideOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля закиси азота в трубе выход 2"
     },
     "op1": null,
     "op2": null,
@@ -1016,8 +1016,8 @@
   "RatioOxygen": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля кислорода"
     },
     "op1": null,
     "op2": null,
@@ -1029,8 +1029,8 @@
   "RatioOxygenInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля кислорода в трубе вход."
     },
     "op1": null,
     "op2": null,
@@ -1042,8 +1042,8 @@
   "RatioOxygenOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля кислорода в трубе выход."
     },
     "op1": null,
     "op2": null,
@@ -1055,8 +1055,8 @@
   "RatioOxygenOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля кислорода в трубе выход 2."
     },
     "op1": null,
     "op2": null,
@@ -1068,8 +1068,8 @@
   "RatioPollutant": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля токсинов"
     },
     "op1": null,
     "op2": null,
@@ -1081,8 +1081,8 @@
   "RatioPollutantInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля токсинов в трубе вход"
     },
     "op1": null,
     "op2": null,
@@ -1094,8 +1094,8 @@
   "RatioPollutantOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля токсинов в трубе выход"
     },
     "op1": null,
     "op2": null,
@@ -1107,8 +1107,8 @@
   "RatioPollutantOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля токсинов в трубе выход 2"
     },
     "op1": null,
     "op2": null,
@@ -1120,8 +1120,8 @@
   "RatioVolatiles": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля летучих газов"
     },
     "op1": null,
     "op2": null,
@@ -1133,8 +1133,8 @@
   "RatioVolatilesInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля летучих газов в трубе вход"
     },
     "op1": null,
     "op2": null,
@@ -1146,8 +1146,8 @@
   "RatioVolatilesOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля летучих газов в трубе выход"
     },
     "op1": null,
     "op2": null,
@@ -1159,8 +1159,8 @@
   "RatioVolatilesOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля летучих газов в трубе выход 2"
     },
     "op1": null,
     "op2": null,
@@ -1172,8 +1172,8 @@
   "RatioWater": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля водяных паров"
     },
     "op1": null,
     "op2": null,
@@ -1185,8 +1185,8 @@
   "RatioWaterInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля водяных паров в трубе вход"
     },
     "op1": null,
     "op2": null,
@@ -1198,8 +1198,8 @@
   "RatioWaterOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля водяных паров в трубе выход"
     },
     "op1": null,
     "op2": null,
@@ -1211,8 +1211,8 @@
   "RatioWaterOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "доля водяных паров в трубе выход 2"
     },
     "op1": null,
     "op2": null,
@@ -1224,8 +1224,8 @@
   "Reagents": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "общая масса ингредиентов в граммах"
     },
     "op1": null,
     "op2": null,
@@ -1237,8 +1237,8 @@
   "RecipeHash": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Int",
+      "text": "хэш выбранного рецепта"
     },
     "op1": null,
     "op2": null,
@@ -1250,8 +1250,8 @@
   "RequiredPower": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Энергия, требуемая для рабботы устройства, Вт."
     },
     "op1": null,
     "op2": null,
@@ -1263,8 +1263,8 @@
   "ReturnFuelCost": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Топливо для возврата"
     },
     "op1": null,
     "op2": null,
@@ -1276,8 +1276,8 @@
   "Rpm": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "обороты"
     },
     "op1": null,
     "op2": null,
@@ -1289,8 +1289,8 @@
   "Setting": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Any",
+      "text": "Текущее значение какого-то параметра оборудования. Тип и возможные значения зависят от оборудования."
     },
     "op1": null,
     "op2": null,
@@ -1302,8 +1302,8 @@
   "SignalID": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Ид сигнала"
     },
     "op1": null,
     "op2": null,
@@ -1315,7 +1315,7 @@
   "SignalStrength": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
+      "preview": "float",
       "text": null
     },
     "op1": null,
@@ -1328,7 +1328,7 @@
   "SizeX": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
+      "preview": "float",
       "text": null
     },
     "op1": null,
@@ -1341,7 +1341,7 @@
   "SizeZ": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
+      "preview": "float",
       "text": null
     },
     "op1": null,
@@ -1354,8 +1354,8 @@
   "SolarAngle": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "угол по отношению к Солнцу в градусах"
     },
     "op1": null,
     "op2": null,
@@ -1367,8 +1367,8 @@
   "SolarIrradiance": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "bool",
+      "text": "освещенность"
     },
     "op1": null,
     "op2": null,
@@ -1380,8 +1380,8 @@
   "Stress": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Сбой центрифуги"
     },
     "op1": null,
     "op2": null,
@@ -1393,7 +1393,7 @@
   "TargetPadIndex": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
+      "preview": "float",
       "text": null
     },
     "op1": null,
@@ -1406,8 +1406,8 @@
   "TargetX": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Int",
+      "text": "координата X цели"
     },
     "op1": null,
     "op2": null,
@@ -1419,8 +1419,8 @@
   "TargetY": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Int",
+      "text": "координата Y цели"
     },
     "op1": null,
     "op2": null,
@@ -1432,8 +1432,8 @@
   "TargetZ": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "Int",
+      "text": "координата Z цели"
     },
     "op1": null,
     "op2": null,
@@ -1445,8 +1445,8 @@
   "Temperature": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Температура в устройстве (баллоне)"
     },
     "op1": null,
     "op2": null,
@@ -1458,8 +1458,8 @@
   "TemperatureExternal": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "температура внешней атмосферы, К"
     },
     "op1": null,
     "op2": null,
@@ -1471,8 +1471,8 @@
   "TemperatureInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Температура в трубе вход."
     },
     "op1": null,
     "op2": null,
@@ -1484,8 +1484,8 @@
   "TemperatureOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Температура в трубе выход."
     },
     "op1": null,
     "op2": null,
@@ -1497,8 +1497,8 @@
   "TemperatureOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Температура в трубе выход 2."
     },
     "op1": null,
     "op2": null,
@@ -1510,8 +1510,8 @@
   "TemperatureSetting": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Заданная температура внутри прочного скафандра, К."
     },
     "op1": null,
     "op2": null,
@@ -1523,8 +1523,8 @@
   "Throttle": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "int[0,10,20,30,40,50,60,70,80,90,100]",
+      "text": "Устанавливает дроссель центрифуги сгорания."
     },
     "op1": null,
     "op2": null,
@@ -1536,8 +1536,8 @@
   "Time": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Время счетчика"
     },
     "op1": null,
     "op2": null,
@@ -1549,8 +1549,8 @@
   "TotalMoles": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Общее количество газа внутри трубопровода, моль."
     },
     "op1": null,
     "op2": null,
@@ -1562,8 +1562,8 @@
   "TotalMolesInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Общее количество газа внутри трубопровода вход, моль."
     },
     "op1": null,
     "op2": null,
@@ -1575,8 +1575,8 @@
   "TotalMolesOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Общее количество газа внутри трубопровода выход, моль."
     },
     "op1": null,
     "op2": null,
@@ -1588,8 +1588,8 @@
   "TotalMolesOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Общее количество газа внутри трубопровода выход 2, моль."
     },
     "op1": null,
     "op2": null,
@@ -1601,8 +1601,8 @@
   "VelocityMagnitude": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "модуль скорости движения бота"
     },
     "op1": null,
     "op2": null,
@@ -1614,8 +1614,8 @@
   "VelocityRelativeX": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "скорость движения по координате X"
     },
     "op1": null,
     "op2": null,
@@ -1627,8 +1627,8 @@
   "VelocityRelativeY": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "скорость движения по координате Y"
     },
     "op1": null,
     "op2": null,
@@ -1640,8 +1640,8 @@
   "VelocityRelativeZ": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "скорость движения по координате Z"
     },
     "op1": null,
     "op2": null,
@@ -1653,8 +1653,8 @@
   "Vertical": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "угол по отношению к Солнцу в градусах"
     },
     "op1": null,
     "op2": null,
@@ -1666,8 +1666,8 @@
   "Volume": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Громкость"
     },
     "op1": null,
     "op2": null,
@@ -1679,8 +1679,8 @@
   "WattsReachingContact": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "float",
+      "text": "Ватты при соединении"
     },
     "op1": null,
     "op2": null,
@@ -1692,8 +1692,8 @@
   "abs": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := |op2|",
+      "text": "Абсолютная величина числа"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -1705,8 +1705,8 @@
   "acos": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := acos(op2)",
+      "text": "Арккосинус*"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -1718,8 +1718,8 @@
   "add": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := op2 + op3",
+      "text": "Сумма"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -1731,8 +1731,8 @@
   "alias": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op2 => op1",
+      "text": "Задат псевдоним для регистра или канала данных"
     },
     "op1": "N",
     "op2": "R/D",
@@ -1744,8 +1744,8 @@
   "and": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := op2 op3",
+      "text": "Логическое И, единица, если и op2 и op3 истинны, ноль в противном случае"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -1757,8 +1757,8 @@
   "asin": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := asin(op2)",
+      "text": "Арксинус*"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -1770,8 +1770,8 @@
   "atan": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := atan(op2)",
+      "text": "Арктангенс*"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -1783,8 +1783,8 @@
   "atan2": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := atan2(op2,op3)",
+      "text": "Арктангенс с 2 аргументами"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -1797,7 +1797,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op4, если op1 op2 с точностью op3"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -1810,7 +1810,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op4, если op1 op2 с точностью op3 с записью адреса следующей строки в ra"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -1823,7 +1823,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op3, если op1 0 с точностью op2"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -1836,7 +1836,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op3, если op1 0 с точностью op2 с записью адреса следующей строки в ra"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -1849,7 +1849,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op2, если канал op1 не настроен"
     },
     "op1": "N/D",
     "op2": "R/N/A/T",
@@ -1862,7 +1862,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op2, если канал op1 не настроен с записью адреса следующей строки в ra"
     },
     "op1": "N/D",
     "op2": "R/N/A/T",
@@ -1875,7 +1875,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op2, если канал op1 настроен"
     },
     "op1": "N/D",
     "op2": "R/N/A/T",
@@ -1888,7 +1888,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op2, если канал op1 настроен с записью адреса следующей строки в ra"
     },
     "op1": "N/D",
     "op2": "R/N/A/T",
@@ -1901,7 +1901,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op3, если op1 = op2"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -1914,7 +1914,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op3, если op1 = op2 с записью адреса следующей строки в ra"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -1927,7 +1927,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op2, если op1 = 0"
     },
     "op1": "R/N/C",
     "op2": "R/N/A/T",
@@ -1940,7 +1940,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op2, если op1 = 0 с записью адреса следующей строки в ra"
     },
     "op1": "R/N/C",
     "op2": "R/N/A/T",
@@ -1953,7 +1953,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op3, если op1 >= op2"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -1966,7 +1966,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op3, если op1 >= op2 с записью адреса следующей строки в ra"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -1979,7 +1979,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op2, если op1 >= 0"
     },
     "op1": "R/N/C",
     "op2": "R/N/A/T",
@@ -1992,7 +1992,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op2, если op1 >= 0 с записью адреса следующей строки в ra"
     },
     "op1": "R/N/C",
     "op2": "R/N/A/T",
@@ -2005,7 +2005,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op3, если op1 > op2"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2018,7 +2018,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op3, если op1 > op2 с записью адреса следующей строки в ra"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2031,7 +2031,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op2, если op1 > 0"
     },
     "op1": "R/N/C",
     "op2": "R/N/A/T",
@@ -2044,7 +2044,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op2, если op1 > 0 с записью адреса следующей строки в ra"
     },
     "op1": "R/N/C",
     "op2": "R/N/A/T",
@@ -2057,7 +2057,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op3, если op1 <= op2"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2070,7 +2070,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op3, если op1 <= op2 с записью адреса следующей строки в ra"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2083,7 +2083,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op2, если op1 <= 0"
     },
     "op1": "R/N/C",
     "op2": "R/N/A/T",
@@ -2096,7 +2096,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op2, если op1 <= 0 с записью адреса следующей строки в ra"
     },
     "op1": "R/N/C",
     "op2": "R/N/A/T",
@@ -2109,7 +2109,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op3, если op1 < op2"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2122,7 +2122,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op3, если op1 < op2 с записью адреса следующей строки в ra"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2135,7 +2135,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op2, если op1 < 0"
     },
     "op1": "R/N/C",
     "op2": "R/N/A/T",
@@ -2148,7 +2148,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op2, если op1 < 0 с записью адреса следующей строки в ra"
     },
     "op1": "R/N/C",
     "op2": "R/N/A/T",
@@ -2161,7 +2161,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op4, если op1 ~= op2 с точностью op3"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2174,7 +2174,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op4, если op1 ~= op2 с точностью op3 с записью адреса следующей строки в ra"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2187,7 +2187,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op2, если op1 = nan"
     },
     "op1": "R/N",
     "op2": "R/A/T",
@@ -2200,7 +2200,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op3, если op1 ~= 0 с точностью op2"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2213,7 +2213,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op3, если op1 ~= 0 с точностью op2 с записью адреса следующей строки в ra"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2226,7 +2226,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op3, если op1 != op2"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2239,7 +2239,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op3, если op1 != op2 с записью адреса следующей строки в ra"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2252,7 +2252,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op2, если op1 != 0"
     },
     "op1": "R/N/C",
     "op2": "R/N/A/T",
@@ -2265,7 +2265,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op2, если op1 != 0 с записью адреса следующей строки в ra"
     },
     "op1": "R/N/C",
     "op2": "R/N/A/T",
@@ -2278,7 +2278,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Относительный переход на +op4, если op1 op2 с точностью op3"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2291,7 +2291,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Относительный переход на +op3, если op1 0 с точностью op2"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2304,7 +2304,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Относительный переход на +op2, если канал op1 не настроен"
     },
     "op1": "N/D",
     "op2": "R/N/O",
@@ -2317,7 +2317,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Относительный переход на +op2, если канал op1 настроен"
     },
     "op1": "N/D",
     "op2": "R/N/O",
@@ -2330,7 +2330,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Относительный переход на +op3, если op1 = op2"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2343,7 +2343,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Относительный переход на +op2, если op1 = 0"
     },
     "op1": "R/N/C",
     "op2": "R/N/O",
@@ -2356,7 +2356,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Относительный переход на +op3, если op1 >= op2"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2369,7 +2369,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Относительный переход на +op2, если op1 >= 0"
     },
     "op1": "R/N/C",
     "op2": "R/N/O",
@@ -2382,7 +2382,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Относительный переход на +op3, если op1 > op2"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2395,7 +2395,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Относительный переход на +op2, если op1 > 0"
     },
     "op1": "R/N/C",
     "op2": "R/N/O",
@@ -2408,7 +2408,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Относительный переход на +op3, если op1 <= op2"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2421,7 +2421,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Относительный переход на +op2, если op1 <= 0"
     },
     "op1": "R/N/C",
     "op2": "R/N/O",
@@ -2434,7 +2434,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Относительный переход на +op3, если op1 < op2"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2447,7 +2447,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Относительный переход на +op2, если op1 < 0"
     },
     "op1": "R/N/C",
     "op2": "R/N/O",
@@ -2460,7 +2460,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Относительный переход на +op4, если op1 op2 с точностью op3"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2473,7 +2473,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Относительный переход на +op2, если op1 = nan"
     },
     "op1": "R/N",
     "op2": "R/N/C/O",
@@ -2486,7 +2486,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Относительный переход на +op3, если op1 0 с точностью op2"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2499,7 +2499,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Относительный переход на +op3, если op1 != op2"
     },
     "op1": "R/N/C",
     "op2": "R/N/C",
@@ -2512,7 +2512,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Относительный переход на +op2, если op1 != 0"
     },
     "op1": "R/N/C",
     "op2": "R/N/O",
@@ -2524,8 +2524,8 @@
   "ceil": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := op2",
+      "text": "Округление до ближайшего целого вверх"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -2537,8 +2537,8 @@
   "cos": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := cos(op2)",
+      "text": "Косинус*"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -2550,8 +2550,8 @@
   "debug": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "debug ...",
+      "text": "Логирует переданные значения"
     },
     "op1": "R/N/C/Y",
     "op2": null,
@@ -2563,8 +2563,8 @@
   "define": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op2 => op1",
+      "text": "Задать имя для константы\t\r\n"
     },
     "op1": "Y",
     "op2": "R/N/C/H",
@@ -2576,8 +2576,8 @@
   "div": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 :=op2 / op3",
+      "text": "Деление"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -2589,8 +2589,8 @@
   "exp": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := eop2",
+      "text": "Экспонента"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -2602,8 +2602,8 @@
   "floor": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := op2",
+      "text": "Округление до ближайшего целого вниз"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -2616,7 +2616,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Остановить работу и сжечь микропроцессор"
     },
     "op1": null,
     "op2": null,
@@ -2629,7 +2629,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на указанную строку"
     },
     "op1": "R/N/A/T",
     "op2": null,
@@ -2642,7 +2642,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Переход на op1 с записью адреса следующей строки в ra"
     },
     "op1": "R/N/A/T",
     "op2": null,
@@ -2655,7 +2655,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Относительный переход на +op1"
     },
     "op1": "R/N/O",
     "op2": null,
@@ -2667,8 +2667,8 @@
   "l": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := op2.op3",
+      "text": "Чтение значения параметра op3 из порта op2"
     },
     "op1": "R/N",
     "op2": "N/D",
@@ -2680,8 +2680,8 @@
   "lb": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := op2.op3.mode(op4)",
+      "text": "Пакетное чтение в op1 из всех устройств с хешем op2 параметра op3 в режиме op4"
     },
     "op1": "R/N",
     "op2": "R/N/H",
@@ -2693,8 +2693,8 @@
   "lbn": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := op2.op3.op4.mode(op5)",
+      "text": "Чтение c устройства по хеш op2 и HASH(\"name\") op3 параметра op4 режимом чтение op5 в регистр op1"
     },
     "op1": "R/N",
     "op2": "R/N/C/H",
@@ -2706,8 +2706,8 @@
   "lbns": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := op2.op3.op4.op5.mode(op6)",
+      "text": "Чтение из устройства хеш op2, имя устройства HASH(\"name\") op3, слота op4, параметра op5, способом op6 в регистр op1"
     },
     "op1": "R/N",
     "op2": "R/N/C/H",
@@ -2719,8 +2719,8 @@
   "lbs": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := op2.op3.op4.Mode(op5)",
+      "text": "Пакетное чтение слотов."
     },
     "op1": "R/N",
     "op2": "R/N/H",
@@ -2732,8 +2732,8 @@
   "log": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := ln(op2)",
+      "text": "Натуральный логарифм"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -2745,8 +2745,8 @@
   "lr": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := op2.mode(op3).op4",
+      "text": "Чтение значения реагента op4 в режиме op3 из порта op2"
     },
     "op1": "R/N",
     "op2": "N/D",
@@ -2758,8 +2758,8 @@
   "ls": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := op2.op3.op4",
+      "text": "Чтение из устройства op2, слота op3, параметра op4 в регистр op1\t\r\n"
     },
     "op1": "R/N",
     "op2": "N/D",
@@ -2771,8 +2771,8 @@
   "max": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := max(op2, op3)",
+      "text": "Максимальное из двух"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -2784,8 +2784,8 @@
   "min": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := min(op2, op3)",
+      "text": "Минимальное из двух"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -2797,8 +2797,8 @@
   "mod": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := op2 mod op3",
+      "text": "Остаток от целочисленного деления op2 на op3 (результат не эквивалентен оператору %, и будет положителен при любых знаках op2 и op3)"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -2810,8 +2810,8 @@
   "move": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := op2",
+      "text": "Присвоение значения"
     },
     "op1": "R/N",
     "op2": "R/N/C/H",
@@ -2823,8 +2823,8 @@
   "mul": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := op2 * op3",
+      "text": "Произведение"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -2836,8 +2836,8 @@
   "nor": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := ¬(op2 op3)",
+      "text": "Инверсное ИЛИ, единица, если и op2 и op3 ложны, ноль в противном случае"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -2849,8 +2849,8 @@
   "or": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := op2 op3",
+      "text": "Логическое ИЛИ, ноль, если и op2 и op3 ложны, единица в противном случае"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -2862,8 +2862,8 @@
   "peek": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := stack[sp-1]",
+      "text": "Записать в op1 верхнее значение со стека не двигая стек"
     },
     "op1": "R/N",
     "op2": null,
@@ -2875,8 +2875,8 @@
   "pop": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := stack[--sp]",
+      "text": "Снять значение со стека и записать в op1"
     },
     "op1": "R/N",
     "op2": null,
@@ -2888,8 +2888,8 @@
   "push": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "stack[sp++] := op1",
+      "text": "Положить op1 на стек"
     },
     "op1": "R/N/C/H",
     "op2": null,
@@ -2901,8 +2901,8 @@
   "rand": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := rand(0,1)",
+      "text": "Случайная величина от 0 до 1 включительно"
     },
     "op1": "R/N",
     "op2": null,
@@ -2914,8 +2914,8 @@
   "return": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "[icX] return х",
+      "text": "[icX] возвращает значение из функций"
     },
     "op1": "R/N/C",
     "op2": null,
@@ -2927,8 +2927,8 @@
   "round": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := [op2]",
+      "text": "Округление к ближайшему целому"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -2940,8 +2940,8 @@
   "s": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1.op2 := op3",
+      "text": "Запись значения в параметр op2 порта op1"
     },
     "op1": "N/D",
     "op2": null,
@@ -2953,8 +2953,8 @@
   "sap": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := (op2 op3)",
+      "text": "Если op2 op3 с точностью op4, то единица, иначе ноль"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -2966,8 +2966,8 @@
   "sapz": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := (op2 0)",
+      "text": "Если op2 0 с точностью op3, то единица, иначе ноль"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -2979,8 +2979,8 @@
   "sb": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1.op2 := op3",
+      "text": "Пакетная запись во все устройства с хешем op1 в параметр op2 значения op3"
     },
     "op1": "R/N/H",
     "op2": "P",
@@ -2992,8 +2992,8 @@
   "sbn": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1.op2.op3 := op4",
+      "text": "Записывает в устройство хеш op1, хеш имя HASH(\"name\") op2, параметр op3 значение op4\r\n"
     },
     "op1": "R/N/C/H",
     "op2": "R/N/C/H",
@@ -3005,8 +3005,8 @@
   "sdns": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := ¬isset(op2) ? 1 : 0",
+      "text": "Если канал op2 не настроен на то единица, иначе ноль"
     },
     "op1": "R/N",
     "op2": "N/D",
@@ -3018,8 +3018,8 @@
   "sdse": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := isset(op2) ? 1 : 0",
+      "text": "Если канал op2 настроен на то единица, иначе ноль"
     },
     "op1": "R/N",
     "op2": "N/D",
@@ -3031,8 +3031,8 @@
   "select": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := (op2 ? op3 : op4)",
+      "text": "Тернарный select. Если op2 истинно, то op1 := op3, иначе op1 := op4"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3044,8 +3044,8 @@
   "seq": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := (op2 = op3)",
+      "text": "Если op2 = op3, то единица, иначе ноль"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3057,8 +3057,8 @@
   "seqz": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := (op2 = 0)",
+      "text": "Если op2 = 0, то единица, иначе ноль"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3070,8 +3070,8 @@
   "sge": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := (op2 op3)",
+      "text": "Если op2 op3, то единица, иначе ноль"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3083,8 +3083,8 @@
   "sgez": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := (op2 0)",
+      "text": "Если op2 0, то единица, иначе ноль"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3096,8 +3096,8 @@
   "sgt": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := (op2 > op3)",
+      "text": "Если op2 > op3, то единица, иначе ноль"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3109,8 +3109,8 @@
   "sgtz": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := (op2 > 0)",
+      "text": "Если op2 > 0, то единица, иначе ноль"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3122,8 +3122,8 @@
   "sin": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := sin(op2)",
+      "text": "Синус*"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3135,8 +3135,8 @@
   "sle": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := (op2 op3)",
+      "text": "Если op2 op3, то единица, иначе ноль"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3148,8 +3148,8 @@
   "sleep": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "sleep",
+      "text": "Приостановка программы на op1 секунд"
     },
     "op1": "R/N/C",
     "op2": null,
@@ -3161,8 +3161,8 @@
   "slez": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := (op2 0)",
+      "text": "Если op2 0, то единица, иначе ноль"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3174,8 +3174,8 @@
   "slt": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := (op2 < op3)",
+      "text": "Если op2 < op3, то единица, иначе ноль"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3187,8 +3187,8 @@
   "sltz": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := (op2 < 0)",
+      "text": "Если op2 < 0, то единица, иначе ноль"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3200,8 +3200,8 @@
   "sna": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := (op2 op3)",
+      "text": "Если op2 op3 с точностью op4, то единица, иначе ноль"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3213,8 +3213,8 @@
   "snan": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := (op2 = nan)",
+      "text": "op1 равно 1, если op2 не имеет значения."
     },
     "op1": "R/N",
     "op2": "R/N",
@@ -3226,8 +3226,8 @@
   "snanz": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := !(op2 = nan)",
+      "text": "op1 равно 0, если op2 не имеет значения."
     },
     "op1": "R/N",
     "op2": "R/N",
@@ -3239,8 +3239,8 @@
   "snaz": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := (op2 0)",
+      "text": "Если op2 0 с точностью op3, то единица, иначе ноль"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3252,8 +3252,8 @@
   "sne": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := (op2 op3)",
+      "text": "Если op2 op3, то единица, иначе ноль"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3265,8 +3265,8 @@
   "snez": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := (op2 0)",
+      "text": "Если op2 0, то единица, иначе ноль"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3278,8 +3278,8 @@
   "sqrt": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := o̅p̅2̅",
+      "text": "Квадратный корень"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3291,8 +3291,8 @@
   "ss": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1.op2.op3 := op4",
+      "text": "Запись в слот в устройства потр ор1, слот ор2, параметр ор3, значения ор4"
     },
     "op1": "N/D",
     "op2": "R/N/S",
@@ -3304,8 +3304,8 @@
   "stack": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "[icX] stack 1 2 3 ...",
+      "text": "[icX] Заполняет стак значиниями аргументов"
     },
     "op1": "R/N/C",
     "op2": null,
@@ -3317,8 +3317,8 @@
   "sub": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := op2 - op3",
+      "text": "Разность"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3330,8 +3330,8 @@
   "tan": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := tan(op2)",
+      "text": "Тангенс*"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3343,8 +3343,8 @@
   "trunc": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := int(op2)",
+      "text": "Целая часть числа"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3356,8 +3356,8 @@
   "xor": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "op1 := op2 op3",
+      "text": "Исключающее ИЛИ, единица, если одно и только одно из op2 и op3 истинно, ноль в противном случае"
     },
     "op1": "R/N",
     "op2": "R/N/C",
@@ -3370,7 +3370,7 @@
     "type": "Function",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Приостановка программы до следующего тика"
     },
     "op1": null,
     "op2": null,
@@ -3383,7 +3383,7 @@
     "type": "Const",
     "description": {
       "preview": null,
-      "text": null
+      "text": "0,017453292519943295769236907684\r\nКонстанта для перевода в радианы. 180 * deg2rad = pi"
     },
     "op1": null,
     "op2": null,
@@ -3396,7 +3396,7 @@
     "type": "Const",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Нет значения."
     },
     "op1": null,
     "op2": null,
@@ -3409,7 +3409,7 @@
     "type": "Const",
     "description": {
       "preview": null,
-      "text": null
+      "text": "-бесконечность"
     },
     "op1": null,
     "op2": null,
@@ -3422,7 +3422,7 @@
     "type": "Const",
     "description": {
       "preview": null,
-      "text": null
+      "text": "3.14159265358979"
     },
     "op1": null,
     "op2": null,
@@ -3435,7 +3435,7 @@
     "type": "Const",
     "description": {
       "preview": null,
-      "text": null
+      "text": "+бесконечность"
     },
     "op1": null,
     "op2": null,
@@ -3448,7 +3448,7 @@
     "type": "Const",
     "description": {
       "preview": null,
-      "text": null
+      "text": "57,2957795130823208767981\r\nКонстанта для перевода в градусы. pi * rad2deg= 180"
     },
     "op1": null,
     "op2": null,
@@ -3461,7 +3461,7 @@
     "type": "Channel",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Канал 0"
     },
     "op1": null,
     "op2": null,
@@ -3474,7 +3474,7 @@
     "type": "Channel",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Канал 1"
     },
     "op1": null,
     "op2": null,
@@ -3487,7 +3487,7 @@
     "type": "Channel",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Канал 2"
     },
     "op1": null,
     "op2": null,
@@ -3500,7 +3500,7 @@
     "type": "Channel",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Канал 3"
     },
     "op1": null,
     "op2": null,
@@ -3513,7 +3513,7 @@
     "type": "Channel",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Канал 4"
     },
     "op1": null,
     "op2": null,
@@ -3526,7 +3526,7 @@
     "type": "Channel",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Канал 5"
     },
     "op1": null,
     "op2": null,
@@ -3539,7 +3539,7 @@
     "type": "Channel",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Канал 6"
     },
     "op1": null,
     "op2": null,
@@ -3552,7 +3552,7 @@
     "type": "Channel",
     "description": {
       "preview": null,
-      "text": null
+      "text": "Канал 7"
     },
     "op1": null,
     "op2": null,
@@ -3564,7 +3564,7 @@
   "Average": {
     "type": "BM",
     "description": {
-      "preview": null,
+      "preview": "string",
       "text": null
     },
     "op1": null,
@@ -3577,8 +3577,8 @@
   "Maximum": {
     "type": "BM",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -3590,7 +3590,7 @@
   "Minimum": {
     "type": "BM",
     "description": {
-      "preview": null,
+      "preview": "string",
       "text": null
     },
     "op1": null,
@@ -3603,7 +3603,7 @@
   "Sum": {
     "type": "BM",
     "description": {
-      "preview": null,
+      "preview": "string",
       "text": null
     },
     "op1": null,
@@ -3616,7 +3616,7 @@
   "Contents": {
     "type": "RM",
     "description": {
-      "preview": null,
+      "preview": "string",
       "text": null
     },
     "op1": null,
@@ -3629,7 +3629,7 @@
   "Recipe": {
     "type": "RM",
     "description": {
-      "preview": null,
+      "preview": "string",
       "text": null
     },
     "op1": null,
@@ -3642,7 +3642,7 @@
   "Required": {
     "type": "RM",
     "description": {
-      "preview": null,
+      "preview": "string",
       "text": null
     },
     "op1": null,
