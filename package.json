@@ -45,7 +45,6 @@
     "workspace"
   ],
   "main": "./core/main.js",
-  "browser": "./web/extension.js",
   "contributes": {
     "files.associations": {
       "*.ic10": "ic10",
