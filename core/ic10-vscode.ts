@@ -28,16 +28,18 @@ export class Ic10Vscode {
     }
 
     public getHover(name = "") {
-
         if (this.langPath.hasOwnProperty(name)) {
-            const data = this.langPath[name]
+            let data = this.langPath[name]
+            if(Array.isArray(data)){
+                data = data[0]
+            }
             const type = data?.type
-            const op1 = data?.op1
-            const op2 = data?.op2
-            const op3 = data?.op3
-            const op4 = data?.op4
-            const op5 = data?.op5
-            const op6 = data?.op6
+            const op1 = data?.op1 || null
+            const op2 = data?.op2 || null
+            const op3 = data?.op3 || null
+            const op4 = data?.op4 || null
+            const op5 = data?.op5 || null
+            const op6 = data?.op6 || null
             let preview = data?.description?.preview
             if (preview) {
                 preview = "*" + preview + "*"
