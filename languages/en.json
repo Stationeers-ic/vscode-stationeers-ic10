@@ -15,7 +15,7 @@
   "Class": {
     "type": "Slot parameter",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "the class of the object in the slot"
     },
     "op1": null,
@@ -132,8 +132,8 @@
   "PrefabHash": {
     "type": "Slot parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -145,8 +145,8 @@
   "Quantity": {
     "type": "Slot parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -158,8 +158,8 @@
   "Seeding": {
     "type": "Slot parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -171,8 +171,8 @@
   "SortingClass": {
     "type": "Slot parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -197,8 +197,8 @@
   "Bpm": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -236,8 +236,8 @@
   "CollectableGoods": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -275,8 +275,8 @@
   "CombustionInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -301,8 +301,8 @@
   "CombustionOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -314,8 +314,8 @@
   "CombustionOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -418,8 +418,8 @@
   "Fuel": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -444,8 +444,8 @@
   "HASH(\"name\")": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -496,8 +496,8 @@
   "InterrogationProgress": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -522,8 +522,8 @@
   "MineablesInQueue": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -535,8 +535,8 @@
   "MineablesInVicinity": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -548,8 +548,8 @@
   "MinimumWattsToContact": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -574,8 +574,8 @@
   "NextWeatherEventTime": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -743,8 +743,8 @@
   "Pressure": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -782,8 +782,8 @@
   "PressureInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -808,8 +808,8 @@
   "PressureOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -821,8 +821,8 @@
   "PressureOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -873,8 +873,8 @@
   "RatioCarbonDioxideInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -886,8 +886,8 @@
   "RatioCarbonDioxideOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -899,8 +899,8 @@
   "RatioCarbonDioxideOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -925,8 +925,8 @@
   "RatioNitrogenInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -938,8 +938,8 @@
   "RatioNitrogenOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -951,8 +951,8 @@
   "RatioNitrogenOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -977,8 +977,8 @@
   "RatioNitrousOxideInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -990,8 +990,8 @@
   "RatioNitrousOxideOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1003,8 +1003,8 @@
   "RatioNitrousOxideOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1029,8 +1029,8 @@
   "RatioOxygenInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1042,8 +1042,8 @@
   "RatioOxygenOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1055,8 +1055,8 @@
   "RatioOxygenOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1081,8 +1081,8 @@
   "RatioPollutantInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1094,8 +1094,8 @@
   "RatioPollutantOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1107,8 +1107,8 @@
   "RatioPollutantOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1133,8 +1133,8 @@
   "RatioVolatilesInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1146,8 +1146,8 @@
   "RatioVolatilesOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1159,8 +1159,8 @@
   "RatioVolatilesOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1185,8 +1185,8 @@
   "RatioWaterInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1198,8 +1198,8 @@
   "RatioWaterOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1211,8 +1211,8 @@
   "RatioWaterOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1263,8 +1263,8 @@
   "ReturnFuelCost": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1276,8 +1276,8 @@
   "Rpm": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1302,8 +1302,8 @@
   "SignalID": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1315,8 +1315,8 @@
   "SignalStrength": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1328,8 +1328,8 @@
   "SizeX": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1341,8 +1341,8 @@
   "SizeZ": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1367,8 +1367,8 @@
   "SolarIrradiance": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1380,8 +1380,8 @@
   "Stress": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1393,8 +1393,8 @@
   "TargetPadIndex": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1445,8 +1445,8 @@
   "Temperature": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1471,8 +1471,8 @@
   "TemperatureInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1484,8 +1484,8 @@
   "TemperatureOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1497,8 +1497,8 @@
   "TemperatureOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1536,8 +1536,8 @@
   "Time": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1562,8 +1562,8 @@
   "TotalMolesInput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1575,8 +1575,8 @@
   "TotalMolesOutput": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1588,8 +1588,8 @@
   "TotalMolesOutput2": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1679,8 +1679,8 @@
   "WattsReachingContact": {
     "type": "Device parameter",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -1796,7 +1796,7 @@
   "bap": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op4 if op1 op2 with precision op3"
     },
     "op1": "R/N/C",
@@ -1809,7 +1809,7 @@
   "bapal": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op4 if op1 op2 with precision op3, writing the address of the next line to ra"
     },
     "op1": "R/N/C",
@@ -1822,7 +1822,7 @@
   "bapz": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op3 if op1 0 with precision op2"
     },
     "op1": "R/N/C",
@@ -1835,7 +1835,7 @@
   "bapzal": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op3 if op1 0 with precision op2, writing the address of the next line to ra"
     },
     "op1": "R/N/C",
@@ -1848,7 +1848,7 @@
   "bdns": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op2 if op1 channel is not configured"
     },
     "op1": "N/D",
@@ -1861,7 +1861,7 @@
   "bdnsal": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op2 if channel op1 is not configured, writing next line address to ra"
     },
     "op1": "N/D",
@@ -1874,7 +1874,7 @@
   "bdse": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op2 if channel op1 is configured"
     },
     "op1": "N/D",
@@ -1887,7 +1887,7 @@
   "bdseal": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op2 if channel op1 is configured with next line address written to ra"
     },
     "op1": "N/D",
@@ -1900,7 +1900,7 @@
   "beq": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op3 if op1 = op2"
     },
     "op1": "R/N/C",
@@ -1913,7 +1913,7 @@
   "beqal": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op3 if op1 = op2, writing the address of the next line to ra"
     },
     "op1": "R/N/C",
@@ -1926,7 +1926,7 @@
   "beqz": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op2 if op1 = 0"
     },
     "op1": "R/N/C",
@@ -1939,7 +1939,7 @@
   "beqzal": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op2 if op1 = 0, writing the address of the next line to ra"
     },
     "op1": "R/N/C",
@@ -1952,7 +1952,7 @@
   "bge": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op3 if op1 >= op2"
     },
     "op1": "R/N/C",
@@ -1965,7 +1965,7 @@
   "bgeal": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op3 if op1 >= op2, writing next line address to ra"
     },
     "op1": "R/N/C",
@@ -1978,7 +1978,7 @@
   "bgez": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op2 if op1 >= 0"
     },
     "op1": "R/N/C",
@@ -1991,7 +1991,7 @@
   "bgezal": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op2 if op1 >= 0, writing next line address to ra"
     },
     "op1": "R/N/C",
@@ -2004,7 +2004,7 @@
   "bgt": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op3 if op1 > op2"
     },
     "op1": "R/N/C",
@@ -2017,7 +2017,7 @@
   "bgtal": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op3 if op1 > op2, writing next line address to ra"
     },
     "op1": "R/N/C",
@@ -2030,7 +2030,7 @@
   "bgtz": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op2 if op1 > 0"
     },
     "op1": "R/N/C",
@@ -2043,7 +2043,7 @@
   "bgtzal": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op2 if op1 > 0, writing the address of the next line to ra"
     },
     "op1": "R/N/C",
@@ -2056,7 +2056,7 @@
   "ble": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op3 if op1 <= op2"
     },
     "op1": "R/N/C",
@@ -2069,7 +2069,7 @@
   "bleal": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op3 if op1 <= op2, writing next line address to ra"
     },
     "op1": "R/N/C",
@@ -2082,7 +2082,7 @@
   "blez": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op2 if op1 <= 0"
     },
     "op1": "R/N/C",
@@ -2095,7 +2095,7 @@
   "blezal": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op2 if op1 <= 0, writing the address of the next line to ra"
     },
     "op1": "R/N/C",
@@ -2108,7 +2108,7 @@
   "blt": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op3 if op1 < op2"
     },
     "op1": "R/N/C",
@@ -2121,7 +2121,7 @@
   "bltal": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op3 if op1 < op2, writing the address of the next line to ra"
     },
     "op1": "R/N/C",
@@ -2134,7 +2134,7 @@
   "bltz": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op2 if op1 < 0"
     },
     "op1": "R/N/C",
@@ -2147,7 +2147,7 @@
   "bltzal": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op2 if op1 < 0, writing the address of the next line to ra"
     },
     "op1": "R/N/C",
@@ -2160,7 +2160,7 @@
   "bna": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op4 if op1 ~= op2 with precision op3"
     },
     "op1": "R/N/C",
@@ -2173,7 +2173,7 @@
   "bnaal": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op4 if op1 ~= op2 with precision op3, writing next line address to ra"
     },
     "op1": "R/N/C",
@@ -2186,8 +2186,8 @@
   "bnan": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": "R/N",
     "op2": "R/A/T",
@@ -2199,7 +2199,7 @@
   "bnaz": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op3 if op1 ~= 0 with precision op2"
     },
     "op1": "R/N/C",
@@ -2212,7 +2212,7 @@
   "bnazal": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op3 if op1 ~= 0 with precision op2, writing next line address to ra"
     },
     "op1": "R/N/C",
@@ -2225,7 +2225,7 @@
   "bne": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op3 if op1 != op2"
     },
     "op1": "R/N/C",
@@ -2238,7 +2238,7 @@
   "bneal": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op3 if op1 != op2, writing next line address to ra"
     },
     "op1": "R/N/C",
@@ -2251,7 +2251,7 @@
   "bnez": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op2 if op1 != 0"
     },
     "op1": "R/N/C",
@@ -2264,7 +2264,7 @@
   "bnezal": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op2 if op1 != 0, writing the address of the next line to ra"
     },
     "op1": "R/N/C",
@@ -2277,7 +2277,7 @@
   "brap": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Relative jump to +op4 if op1 op2 with precision op3"
     },
     "op1": "R/N/C",
@@ -2290,7 +2290,7 @@
   "brapz": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Relative jump to +op3 if op1 0 with precision op2"
     },
     "op1": "R/N/C",
@@ -2303,7 +2303,7 @@
   "brdns": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Relative jump to +op2 if channel op1 is not configured"
     },
     "op1": "N/D",
@@ -2316,7 +2316,7 @@
   "brdse": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Relative jump to +op2 if channel op1 is configured"
     },
     "op1": "N/D",
@@ -2329,7 +2329,7 @@
   "breq": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Relative jump to +op3 if op1 = op2"
     },
     "op1": "R/N/C",
@@ -2342,7 +2342,7 @@
   "breqz": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Relative jump to +op2 if op1 = 0"
     },
     "op1": "R/N/C",
@@ -2355,7 +2355,7 @@
   "brge": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Relative jump to +op3 if op1 >= op2"
     },
     "op1": "R/N/C",
@@ -2368,7 +2368,7 @@
   "brgez": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Relative jump to +op2 if op1 >= 0"
     },
     "op1": "R/N/C",
@@ -2381,7 +2381,7 @@
   "brgt": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Relative jump to +op3 if op1 > op2"
     },
     "op1": "R/N/C",
@@ -2394,7 +2394,7 @@
   "brgtz": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Relative jump to +op2 if op1 > 0"
     },
     "op1": "R/N/C",
@@ -2407,7 +2407,7 @@
   "brle": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Relative jump to +op3 if op1 <= op2"
     },
     "op1": "R/N/C",
@@ -2420,7 +2420,7 @@
   "brlez": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Relative jump to +op2 if op1 <= 0"
     },
     "op1": "R/N/C",
@@ -2433,7 +2433,7 @@
   "brlt": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Relative jump to +op3 if op1 < op2"
     },
     "op1": "R/N/C",
@@ -2446,7 +2446,7 @@
   "brltz": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Relative jump to +op2 if op1 < 0"
     },
     "op1": "R/N/C",
@@ -2459,7 +2459,7 @@
   "brna": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Relative jump to +op4 if op1 op2 with precision op3"
     },
     "op1": "R/N/C",
@@ -2472,8 +2472,8 @@
   "brnan": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": "R/N",
     "op2": "R/N/C/O",
@@ -2485,7 +2485,7 @@
   "brnaz": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Relative jump to +op3 if op1 0 with precision op2"
     },
     "op1": "R/N/C",
@@ -2498,7 +2498,7 @@
   "brne": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Relative jump to +op3 if op1 != op2"
     },
     "op1": "R/N/C",
@@ -2511,7 +2511,7 @@
   "brnez": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Relative jump to +op2 if op1 != 0"
     },
     "op1": "R/N/C",
@@ -2615,7 +2615,7 @@
   "hcf": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Stop work and burn the microprocessor"
     },
     "op1": null,
@@ -2628,7 +2628,7 @@
   "j": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to the specified line"
     },
     "op1": "R/N/A/T",
@@ -2641,7 +2641,7 @@
   "jal": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Jump to op1, writing the address of the next line to ra"
     },
     "op1": "R/N/A/T",
@@ -2654,7 +2654,7 @@
   "jr": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Relative jump to +op1"
     },
     "op1": "R/N/O",
@@ -2693,8 +2693,8 @@
   "lbn": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": "R/N",
     "op2": "R/N/C/H",
@@ -2706,8 +2706,8 @@
   "lbns": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": "R/N",
     "op2": "R/N/C/H",
@@ -2719,8 +2719,8 @@
   "lbs": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": "R/N",
     "op2": "R/N/H",
@@ -2992,8 +2992,8 @@
   "sbn": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": "R/N/C/H",
     "op2": "R/N/C/H",
@@ -3213,8 +3213,8 @@
   "snan": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": "R/N",
     "op2": "R/N",
@@ -3226,8 +3226,8 @@
   "snanz": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": "R/N",
     "op2": "R/N",
@@ -3291,8 +3291,8 @@
   "ss": {
     "type": "Function",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": "N/D",
     "op2": "R/N/S",
@@ -3369,7 +3369,7 @@
   "yield": {
     "type": "Function",
     "description": {
-      "preview": null,
+      "preview": "",
       "text": "Pausing the program until the next tick"
     },
     "op1": null,
@@ -3382,8 +3382,8 @@
   "deg2rad": {
     "type": "Const",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -3395,8 +3395,8 @@
   "nan": {
     "type": "Const",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -3408,8 +3408,8 @@
   "ninf": {
     "type": "Const",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -3421,8 +3421,8 @@
   "pi": {
     "type": "Const",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -3434,8 +3434,8 @@
   "pinf": {
     "type": "Const",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -3447,8 +3447,8 @@
   "rad2deg": {
     "type": "Const",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -3460,8 +3460,8 @@
   "Channel0": {
     "type": "Channel",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -3473,8 +3473,8 @@
   "Channel1": {
     "type": "Channel",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -3486,8 +3486,8 @@
   "Channel2": {
     "type": "Channel",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -3499,8 +3499,8 @@
   "Channel3": {
     "type": "Channel",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -3512,8 +3512,8 @@
   "Channel4": {
     "type": "Channel",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -3525,8 +3525,8 @@
   "Channel5": {
     "type": "Channel",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -3538,8 +3538,8 @@
   "Channel6": {
     "type": "Channel",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -3551,8 +3551,8 @@
   "Channel7": {
     "type": "Channel",
     "description": {
-      "preview": null,
-      "text": null
+      "preview": "",
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -3565,7 +3565,7 @@
     "type": "BM",
     "description": {
       "preview": "string",
-      "text": null
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -3591,7 +3591,7 @@
     "type": "BM",
     "description": {
       "preview": "string",
-      "text": null
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -3604,7 +3604,7 @@
     "type": "BM",
     "description": {
       "preview": "string",
-      "text": null
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -3617,7 +3617,7 @@
     "type": "RM",
     "description": {
       "preview": "string",
-      "text": null
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -3630,7 +3630,7 @@
     "type": "RM",
     "description": {
       "preview": "string",
-      "text": null
+      "text": ""
     },
     "op1": null,
     "op2": null,
@@ -3643,7 +3643,7 @@
     "type": "RM",
     "description": {
       "preview": "string",
-      "text": null
+      "text": ""
     },
     "op1": null,
     "op2": null,
