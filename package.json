@@ -2,7 +2,7 @@
   "name": "stationeers-ic10",
   "displayName": "Stationeers ic10",
   "description": "Ic10 & icX support",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "license": "MIT",
   "homepage": "https://github.com/Stationeers-ic/vscode-stationeers-ic10",
   "type": "commonjs",
@@ -300,7 +300,7 @@
     }
   },
   "dependencies": {
-    "ic10": "^3.1.0",
+    "ic10": "^3.2.0",
     "icx-compiler": "^2.1.6",
     "vscode-debugadapter": "1.51.0",
     "vscode-debugprotocol": "1.51.0"

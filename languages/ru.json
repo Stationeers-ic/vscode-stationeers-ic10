@@ -69,13 +69,6 @@
       "text": "0 - слот свободен, 1 - занят"
     }
   },
-  "PrefabHash": {
-    "type": "Slot parameter",
-    "description": {
-      "preview": "Hash",
-      "text": "хэш объекта в слоте"
-    }
-  },
   "Seeding": {
     "type": "Slot parameter",
     "description": {
@@ -421,6 +414,13 @@
     "description": {
       "preview": "float",
       "text": "Суммарная потребность в электроэнергии всех устройств в сети, Вт."
+    }
+  },
+  "PrefabHash": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "",
+      "text": "Хеш устройства."
     }
   },
   "Pressure": {
@@ -1924,7 +1924,7 @@
     },
     "op1": "R/N",
     "op2": "N/D",
-    "op3": null,
+    "op3": "P",
     "op4": null,
     "op5": null,
     "op6": null
@@ -2066,7 +2066,7 @@
       "text": "Присвоение значения"
     },
     "op1": "R/N",
-    "op2": "R/N/C/H",
+    "op2": "R/N/C/T/H",
     "op3": null,
     "op4": null,
     "op5": null,

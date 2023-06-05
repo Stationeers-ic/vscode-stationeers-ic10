@@ -1,6 +1,7 @@
 import * as vscode from "vscode"
 import {Ic10DiagnosticError} from "ic10/src/Ic10Error";
 import InterpreterIc10 from "ic10";
+import {patterns} from "ic10/src/Utils";
 
 export const Ic10DiagnosticsName = "ic10_diagnostic"
 const manual: {
@@ -138,7 +139,7 @@ export class Ic10Diagnostics {
     parseLine2(doc: vscode.TextDocument, lineIndex) {
         const lineOfText = doc.lineAt(lineIndex)
         if (lineOfText.text.trim().length > 0) {
-            var text = lineOfText.text.trim()
+            let text = lineOfText.text.trim()
             functions.some((substring) => {
                 if (text.startsWith("#")) {
                     if (text.startsWith("#log")) {
@@ -154,7 +155,7 @@ export class Ic10Diagnostics {
                 }
                 if (text.startsWith(substring)) {
                     // console.log(this.aliases)
-                    var words = text.split(/ +/)
+                    const words = (new InterpreterIc10).splitString(text)
                     this.analyzeFunctionInputs(words, text, lineIndex)
                     return true
                 } else {
@@ -204,11 +205,13 @@ export class Ic10Diagnostics {
     }
 
     analyzeFunctionInputs(words: string[], text: string, lineIndex: number): errorMsg | true {
-        var fn = words[0] ?? null
-        var op1 = words[1] ?? null
-        var op2 = words[2] ?? null
-        var op3 = words[3] ?? null
-        var op4 = words[4] ?? null
+        const fn = words[0] ?? null
+        const op1 = words[1] ?? null;
+        const op2 = words[2] ?? null
+        const op3 = words[3] ?? null
+        const op4 = words[4] ?? null
+        const op5 = words[5] ?? null
+        const op6 = words[6] ?? null
 
         if (!manual.hasOwnProperty(fn)) {
             this.errors.push(new DiagnosticsError(`Unknown function: "${text}"`, 0, 0, text.length, lineIndex))
