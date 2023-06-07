@@ -1,3 +1,5 @@
-define TEST 1
-alias reg r0
-move reg TES
+push HASH("test")
+push HASH("dick in you mom")
+push HASH("test")
+
+
