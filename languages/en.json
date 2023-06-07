@@ -90,6 +90,13 @@
       "text": "-1 - stop, 0 - not working 1 - working"
     }
   },
+  "AirRelease": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "",
+      "text": ""
+    }
+  },
   "Bpm": {
     "type": "Device parameter",
     "description": {
@@ -252,6 +259,13 @@
     }
   },
   "InterrogationProgress": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "",
+      "text": ""
+    }
+  },
+  "LineNumber": {
     "type": "Device parameter",
     "description": {
       "preview": "",
@@ -466,6 +480,13 @@
     }
   },
   "PressureOutput2": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "",
+      "text": ""
+    }
+  },
+  "PressureSetting": {
     "type": "Device parameter",
     "description": {
       "preview": "",
@@ -767,6 +788,13 @@
     }
   },
   "SolarIrradiance": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "",
+      "text": ""
+    }
+  },
+  "SoundAlert": {
     "type": "Device parameter",
     "description": {
       "preview": "",
@@ -2003,7 +2031,7 @@
     "op1": "R/N",
     "op2": "N/D",
     "op3": "RM",
-    "op4": "R/RC/H",
+    "op4": "R/N/RC/H",
     "op5": null,
     "op6": null
   },
@@ -2143,7 +2171,7 @@
       "preview": "stack[sp++] := op1",
       "text": "Push op1 onto the stack"
     },
-    "op1": "R/N/C/H",
+    "op1": "R/N/C/T/H",
     "op2": null,
     "op3": null,
     "op4": null,
