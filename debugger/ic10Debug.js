@@ -140,7 +140,7 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
     }
     async launchRequest(response, args) {
         vscode_debugadapter_1.logger.setup(args.trace ? vscode_debugadapter_1.Logger.LogLevel.Verbose : vscode_debugadapter_1.Logger.LogLevel.Stop, false);
-        (0, utils_1.parseEnv)(this.ic10, args.program);
+        (0, utils_1.parseEnvironment)(this.ic10, args.program);
         await this._runtime.start(args.program, !!args.stopOnEntry, !!args.noDebug);
         this.sendResponse(response);
     }
@@ -243,18 +243,30 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
     scopesRequest(response, args) {
         response.body = {
             scopes: [
-                new vscode_debugadapter_1.Scope("Constants", this._variableHandles.create("Constants"), true),
+                new vscode_debugadapter_1.Scope("Constants", this._variableHandles.create("Constants"), false),
                 new vscode_debugadapter_1.Scope("Registers", this._variableHandles.create("Registers"), true),
                 new vscode_debugadapter_1.Scope("Stack", this._variableHandles.create("Stack"), true),
-                new vscode_debugadapter_1.Scope("D0", this._variableHandles.create("d0"), true),
-                new vscode_debugadapter_1.Scope("D1", this._variableHandles.create("d1"), true),
-                new vscode_debugadapter_1.Scope("D2", this._variableHandles.create("d2"), true),
-                new vscode_debugadapter_1.Scope("D3", this._variableHandles.create("d3"), true),
-                new vscode_debugadapter_1.Scope("D4", this._variableHandles.create("d4"), true),
-                new vscode_debugadapter_1.Scope("D5", this._variableHandles.create("d5"), true),
                 new vscode_debugadapter_1.Scope("DB [socket]", this._variableHandles.create("db"), true),
             ]
         };
+        const dd = {
+            'd0': this.ic10.memory.environ.d0 || null,
+            'd1': this.ic10.memory.environ.d1 || null,
+            'd2': this.ic10.memory.environ.d2 || null,
+            'd3': this.ic10.memory.environ.d3 || null,
+            'd4': this.ic10.memory.environ.d4 || null,
+            'd5': this.ic10.memory.environ.d5 || null,
+        };
+        for (const ddKey in dd) {
+            let name = ddKey;
+            if (dd[ddKey]) {
+                name = '🟢 ' + ddKey;
+            }
+            else {
+                name = '🔴 ' + ddKey;
+            }
+            response.body.scopes.push(new vscode_debugadapter_1.Scope(name, this._variableHandles.create(ddKey), true));
+        }
         this.sendResponse(response);
     }
     async variablesRequest(response, args, request) {

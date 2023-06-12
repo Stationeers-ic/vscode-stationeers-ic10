@@ -26,51 +26,72 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.parseEnv = void 0;
+exports.parseEnvironment = void 0;
 const path_1 = __importDefault(require("path"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const fs = __importStar(require("fs"));
 const yaml_1 = __importDefault(require("yaml"));
 const toml_1 = __importDefault(require("toml"));
-function parseEnv(ic10, file) {
+function parseEnvironment(ic10, file) {
     let env;
-    env = path_1.default.join(path_1.default.dirname(file), 'env.toml');
+    env = `${file}.toml`;
     if (fs.existsSync(env)) {
-        const content = fs.readFileSync(env, { encoding: 'utf-8' });
-        const config = toml_1.default.parse(content);
-        Object.entries(config).forEach(([key, value]) => {
-            if (key) {
-            }
-        });
-        return ic10;
+        parseToml(ic10, env);
     }
-    env = path_1.default.join(path_1.default.dirname(file), 'env.yml');
+    env = `${file}.yml`;
     if (fs.existsSync(env)) {
-        const content = fs.readFileSync(env, { encoding: 'utf-8' });
-        const config = yaml_1.default.parse(content);
-        Object.entries(config).forEach(([key, value]) => {
-            if (key) {
-                const fields = {};
-                value.map((item) => {
-                    Object.entries(item).map(([k, v]) => {
-                        fields[k] = v;
-                    });
-                });
-                ic10.connectDevice(key, fields.PrefabHash, 2, fields);
-            }
-        });
-        return ic10;
+        parseYaml(ic10, env);
+    }
+    env = `${file}.env`;
+    if (fs.existsSync(env)) {
+        parseEnv(ic10, env);
+    }
+    env = path_1.default.join(path_1.default.dirname(file), '.toml');
+    if (fs.existsSync(env)) {
+        parseToml(ic10, env);
+    }
+    env = path_1.default.join(path_1.default.dirname(file), '.yml');
+    if (fs.existsSync(env)) {
+        parseYaml(ic10, env);
     }
     env = path_1.default.join(path_1.default.dirname(file), '.env');
     if (fs.existsSync(env)) {
-        const config = dotenv_1.default.config({ path: env }).parsed;
-        Object.entries(config).forEach(([key, value]) => {
-            if (key) {
-                ic10.connectDevice(key, value, 2, {});
-            }
-        });
-        return ic10;
+        parseEnv(ic10, env);
     }
 }
-exports.parseEnv = parseEnv;
+exports.parseEnvironment = parseEnvironment;
+function parseToml(ic10, env) {
+    const content = fs.readFileSync(env, { encoding: 'utf-8' });
+    const config = toml_1.default.parse(content);
+    Object.entries(config).forEach(([key, value]) => {
+        if (key) {
+        }
+    });
+    return ic10;
+}
+function parseYaml(ic10, env) {
+    const content = fs.readFileSync(env, { encoding: 'utf-8' });
+    const config = yaml_1.default.parse(content);
+    Object.entries(config).forEach(([key, value]) => {
+        if (key) {
+            const fields = {};
+            value.map((item) => {
+                Object.entries(item).map(([k, v]) => {
+                    fields[k] = v;
+                });
+            });
+            ic10.connectDevice(key, fields.PrefabHash, 2, fields);
+        }
+    });
+    return ic10;
+}
+function parseEnv(ic10, env) {
+    const config = dotenv_1.default.config({ path: env }).parsed;
+    Object.entries(config).forEach(([key, value]) => {
+        if (key) {
+            ic10.connectDevice(key, value, 2, {});
+        }
+    });
+    return ic10;
+}
 //# sourceMappingURL=utils.js.map

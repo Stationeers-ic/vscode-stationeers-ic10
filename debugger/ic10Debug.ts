@@ -32,10 +32,9 @@ import {Slot} from "ic10/src/Slot"
 import {RegisterCell} from "ic10/src/RegisterCell"
 import {IcHousing} from "../../ic10/src/devices/IcHousing";
 import {isDevice, isDeviceOutput, isIcHousing, isSlot} from "../../ic10/src/types";
-import * as fs from "fs";
 import {DeviceOutput} from "ic10/src/DeviceOutput";
 import {Device} from "../../ic10/src/devices/Device";
-import {parseEnv} from "./utils";
+import {parseEnvironment} from "./utils";
 
 function timeout(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms))
@@ -243,7 +242,7 @@ export class ic10DebugSession extends LoggingDebugSession {
 
         // make sure to 'Stop' the buffered logging if 'trace' is not set
         logger.setup(args.trace ? Logger.LogLevel.Verbose : Logger.LogLevel.Stop, false)
-        parseEnv(this.ic10,args.program)
+        parseEnvironment(this.ic10, args.program)
 
         await this._runtime.start(args.program, !!args.stopOnEntry, !!args.noDebug)
 
@@ -376,17 +375,28 @@ export class ic10DebugSession extends LoggingDebugSession {
 
         response.body = {
             scopes: [
-                new Scope("Constants", this._variableHandles.create("Constants"), true),
+                new Scope("Constants", this._variableHandles.create("Constants"), false),
                 new Scope("Registers", this._variableHandles.create("Registers"), true),
                 new Scope("Stack", this._variableHandles.create("Stack"), true),
-                new Scope("D0", this._variableHandles.create("d0"), true),
-                new Scope("D1", this._variableHandles.create("d1"), true),
-                new Scope("D2", this._variableHandles.create("d2"), true),
-                new Scope("D3", this._variableHandles.create("d3"), true),
-                new Scope("D4", this._variableHandles.create("d4"), true),
-                new Scope("D5", this._variableHandles.create("d5"), true),
                 new Scope("DB [socket]", this._variableHandles.create("db"), true),
             ]
+        }
+        const dd = {
+            'd0': this.ic10.memory.environ.d0 || null,
+            'd1': this.ic10.memory.environ.d1 || null,
+            'd2': this.ic10.memory.environ.d2 || null,
+            'd3': this.ic10.memory.environ.d3 || null,
+            'd4': this.ic10.memory.environ.d4 || null,
+            'd5': this.ic10.memory.environ.d5 || null,
+        }
+        for (const ddKey in dd) {
+            let name = ddKey
+            if (dd[ddKey]) {
+                name = '🟢 ' + ddKey
+            }else{
+                name = '🔴 ' + ddKey
+            }
+            response.body.scopes.push(new Scope(name, this._variableHandles.create(ddKey), true))
         }
         this.sendResponse(response)
     }

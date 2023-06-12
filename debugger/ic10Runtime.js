@@ -29,7 +29,7 @@ class ic10Runtime extends events_1.EventEmitter {
         await this.loadSource(program);
         this._currentLine = -1;
         await this.verifyBreakpoints(this._sourceFile);
-        (0, utils_1.parseEnv)(this.ic10, this._sourceFile);
+        (0, utils_1.parseEnvironment)(this.ic10, this._sourceFile);
         if (stopOnEntry) {
             this.step(false, "stopOnEntry");
         }

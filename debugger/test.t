@@ -1,1 +1,0 @@
-C:\projects\vscode-stationeers-ic10\sampleWorkspace\test\.env

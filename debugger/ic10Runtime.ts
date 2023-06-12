@@ -4,7 +4,7 @@
 
 import {EventEmitter} from "events"
 import {InterpreterIc10} from "ic10"
-import {parseEnv} from "./utils";
+import {parseEnvironment} from "./utils";
 
 export interface FileAccessor {
     readFile(path: string): Promise<string>;
@@ -79,7 +79,7 @@ export class ic10Runtime extends EventEmitter {
         this._currentLine = -1
 
         await this.verifyBreakpoints(this._sourceFile)
-        parseEnv(this.ic10, this._sourceFile)
+        parseEnvironment(this.ic10, this._sourceFile)
         if (stopOnEntry) {
             // we step once
             this.step(false, "stopOnEntry")
