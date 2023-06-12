@@ -22,6 +22,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.icXDiagnostics = exports.IcXDiagnosticsName = void 0;
 const vscode = __importStar(require("vscode"));
@@ -29,10 +32,11 @@ const ic10_diagnostics_1 = require("./ic10.diagnostics");
 const icx_compiler_1 = require("icx-compiler");
 const main_1 = require("./main");
 const err_1 = require("icx-compiler/src/err");
-const manual = require('../languages/en.json');
-const functions = require('../media/ic10.functions.json');
-require('../media/ic10.keyword.json');
-exports.IcXDiagnosticsName = 'icX_diagnostic';
+const ic10_1 = __importDefault(require("ic10"));
+const manual = require("../languages/en.json");
+const functions = require("../media/ic10.functions.json");
+require("../media/ic10.keyword.json");
+exports.IcXDiagnosticsName = "icX_diagnostic";
 class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
     InFunction = false;
     blockCount = 0;
@@ -47,6 +51,7 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
         this.blockCount = 0;
         this.endCount = 0;
         this.InFunction = false;
+        const interpreterIc10 = new ic10_1.default(doc.getText());
         for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
             try {
                 this.parseLine(doc, lineIndex);
@@ -81,9 +86,9 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
             }
         }
         try {
-            const linesCount = test.result.split('\n').length;
+            const linesCount = test.result.split("\n").length;
             if (linesCount > 128) {
-                diagnostics.push(this.createDiagnostic(new vscode.Range(0, 0, 0, 1), 'Max line', vscode.DiagnosticSeverity.Error));
+                diagnostics.push(this.createDiagnostic(new vscode.Range(0, 0, 0, 1), "Max line", vscode.DiagnosticSeverity.Error));
             }
             this.view(test, linesCount);
         }
@@ -99,7 +104,7 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
         const p = b / 15 * 100;
         const b2 = Math.abs(linesCount - 128);
         const p2 = linesCount / 128 * 100;
-        let errors = '<ul>';
+        let errors = "<ul>";
         this.errors.values.forEach((item) => {
             errors += "<ol style=\"color:var(--vscode-editorError-foreground) !important;\">[" + item.line + "]: " + item.message + "</ol>";
         });
@@ -144,40 +149,40 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
 	${errors}
 </fieldset>`;
         }
-        main_1.icSidebar.section('icxStats', content, main_1.LANG_KEY2);
-        let comments = test.use.has('comments');
-        let aliases = test.use.has('aliases');
-        let loop = test.use.has('loop');
-        let constants = test.use.has('constants');
+        main_1.icSidebar.section("icxStats", content, main_1.LANG_KEY2);
+        let comments = test.use.has("comments");
+        let aliases = test.use.has("aliases");
+        let loop = test.use.has("loop");
+        let constants = test.use.has("constants");
         comments = comments ? comments : main_1.icxOptions.comments;
         aliases = aliases ? aliases : main_1.icxOptions.aliases;
         loop = loop ? loop : main_1.icxOptions.loop;
         constants = constants ? constants : main_1.icxOptions.constants;
         if (comments) {
-            comments = 'checked';
+            comments = "checked";
         }
         else {
-            comments = '';
+            comments = "";
         }
         if (aliases) {
-            aliases = 'checked';
+            aliases = "checked";
         }
         else {
-            aliases = '';
+            aliases = "";
         }
         if (loop) {
-            loop = 'checked';
+            loop = "checked";
         }
         else {
-            loop = '';
+            loop = "";
         }
         if (constants) {
-            constants = 'checked';
+            constants = "checked";
         }
         else {
-            constants = '';
+            constants = "";
         }
-        main_1.icSidebar.section('settings', `
+        main_1.icSidebar.section("settings", `
 					<form name="settings" id="form-settings">
 						<fieldset title="Settings">
 							<ul>
@@ -207,30 +212,30 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
         if (lineOfText.text.trim().length > 0) {
             let text = lineOfText.text.trim();
             functions.some((substring) => {
-                if (text.startsWith('#')) {
-                    if (text.startsWith('#log') || text.startsWith('debug')) {
+                if (text.startsWith("#")) {
+                    if (text.startsWith("#log") || text.startsWith("debug")) {
                         this.errors.push(new ic10_diagnostics_1.DiagnosticsError(`Debug function: "${text}"`, 2, 0, text.length, lineIndex));
                         return true;
                     }
                     return true;
                 }
                 const words = text.split(/ +/);
-                text = text.replace(/#.+$/, '');
+                text = text.replace(/#.+$/, "");
                 text = text.trim();
-                if (text.endsWith(':')) {
+                if (text.endsWith(":")) {
                     this.jumps.push(text);
                     return true;
                 }
-                if (text.startsWith('alias')) {
+                if (text.startsWith("alias")) {
                     this.aliases.push(words[1]);
                 }
-                if (text.startsWith('var')) {
+                if (text.startsWith("var")) {
                     this.aliases.push(words[1]);
                 }
-                if (text.startsWith('define')) {
+                if (text.startsWith("define")) {
                     this.aliases.push(words[1]);
                 }
-                if (text.startsWith('const')) {
+                if (text.startsWith("const")) {
                     this.aliases.push(words[1]);
                 }
                 if (text.startsWith("if")) {
@@ -275,13 +280,13 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
         }
         else {
             const rule = manual[fn];
-            if (fn === 'return') {
+            if (fn === "return") {
                 if (!this.InFunction) {
                     this.errors.push(new ic10_diagnostics_1.DiagnosticsError(`"return" must be in function`, 0, 0, text.length, lineIndex));
                 }
                 return true;
             }
-            if (rule.type == 'Function') {
+            if (rule.type == "Function") {
                 if (op1 !== null && this.empty(rule.op1)) {
                     this.errors.push(new ic10_diagnostics_1.DiagnosticsError(`this function have\`t any Arguments: "${text}"`, 0, 0, text.length, lineIndex));
                     return true;

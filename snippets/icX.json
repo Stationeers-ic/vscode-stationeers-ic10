@@ -49,13 +49,13 @@
     "description": "alias {name} d5"
   },
   "loop": {
-    "prefix"     :"j l",
-    "body"       :[
+    "prefix": "j l",
+    "body": [
       "loop:",
       "$1",
       "j loop"
     ],
-    "description":"main loop"
+    "description": "main loop"
   },
   "abs": {
     "prefix": "abs",

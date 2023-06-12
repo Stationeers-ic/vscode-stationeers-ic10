@@ -1,1 +1,2018 @@
-{"abs":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"acos":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"add":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{}},"alias":{"type":"Function","op1":"N","op2":"R/D","op3":null,"op4":null,"description":{}},"and":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{}},"asin":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"atan":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"atan2":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{}},"bap":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/C","op4":"R/N/A/T","description":{}},"bapal":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/C","op4":"R/N/A/T","description":{}},"bapz":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{}},"bapzal":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{}},"bdns":{"type":"Function","op1":"D/N","op2":"R/N/A/T","op3":null,"op4":null,"description":{}},"bdnsal":{"type":"Function","op1":"D/N","op2":"R/N/A/T","op3":null,"op4":null,"description":{}},"bdse":{"type":"Function","op1":"D/N","op2":"R/N/A/T","op3":null,"op4":null,"description":{}},"bdseal":{"type":"Function","op1":"D/N","op2":"R/N/A/T","op3":null,"op4":null,"description":{}},"beq":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{}},"beqal":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{}},"beqz":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{}},"beqzal":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{}},"bge":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{}},"bgeal":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{}},"bgez":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{}},"bgezal":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{}},"bgt":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{}},"bgtal":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{}},"bgtz":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{}},"bgtzal":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{}},"ble":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{}},"bleal":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{}},"blez":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{}},"blezal":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{}},"blt":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{}},"bltal":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{}},"bltz":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{}},"bltzal":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{}},"bna":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/C","op4":"R/N/A/T","description":{}},"bnaal":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/C","op4":"R/N/A/T","description":{}},"bnaz":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{}},"bnazal":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{}},"bne":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{}},"bneal":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/A/T","op4":null,"description":{}},"bnez":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{}},"bnezal":{"type":"Function","op1":"R/N/C","op2":"R/N/A/T","op3":null,"op4":null,"description":{}},"brap":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/C","op4":"R/N/O","description":{}},"brapz":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/O","op4":null,"description":{}},"brdns":{"type":"Function","op1":"D/N","op2":"R/N/O","op3":null,"op4":null,"description":{}},"brdse":{"type":"Function","op1":"D/N","op2":"R/N/O","op3":null,"op4":null,"description":{}},"breq":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/O","op4":null,"description":{}},"breqz":{"type":"Function","op1":"R/N/C","op2":"R/N/O","op3":null,"op4":null,"description":{}},"brge":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/O","op4":null,"description":{}},"brgez":{"type":"Function","op1":"R/N/C","op2":"R/N/O","op3":null,"op4":null,"description":{}},"brgt":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/O","op4":null,"description":{}},"brgtz":{"type":"Function","op1":"R/N/C","op2":"R/N/O","op3":null,"op4":null,"description":{}},"brle":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/O","op4":null,"description":{}},"brlez":{"type":"Function","op1":"R/N/C","op2":"R/N/O","op3":null,"op4":null,"description":{}},"brlt":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/O","op4":null,"description":{}},"brltz":{"type":"Function","op1":"R/N/C","op2":"R/N/O","op3":null,"op4":null,"description":{}},"brna":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/C","op4":"R/N/O","description":{}},"brnaz":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":"R/N/O","op4":null,"description":{}},"brne":{"type":"Function","op1":"R/N/C","op2":"R/N/C","op3":null,"op4":null,"description":{}},"brnez":{"type":"Function","op1":"R/N/C","op2":"R/N/O","op3":null,"op4":null,"description":{}},"ceil":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"cos":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"define":{"type":"Function","op1":"Cn","op2":"C","op3":null,"op4":null,"description":{}},"div":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{}},"exp":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"floor":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"hcf":{"type":"Function","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"j":{"type":"Function","op1":"R/N/A/T","op2":null,"op3":null,"op4":null,"description":{}},"jal":{"type":"Function","op1":"R/N/A/T","op2":null,"op3":null,"op4":null,"description":{}},"jr":{"type":"Function","op1":"R/N/O","op2":null,"op3":null,"op4":null,"description":{}},"l":{"type":"Function","op1":"R/N","op2":"D/N","op3":"P","op4":null,"description":{}},"log":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"lr":{"type":"Function","op1":"R/N","op2":"D/N","op3":"R/N/RM","op4":"RC","description":{}},"ls":{"type":"Function","op1":"R/N","op2":"D/N","op3":"R/N/S","op4":"P","description":{}},"max":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{}},"min":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{}},"mod":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{}},"move":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"mul":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{}},"nor":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{}},"or":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{}},"peek":{"type":"Function","op1":"R/N","op2":null,"op3":null,"op4":null,"description":{}},"pop":{"type":"Function","op1":"R/N","op2":null,"op3":null,"op4":null,"description":{}},"push":{"type":"Function","op1":"R/N/C","op2":null,"op3":null,"op4":null,"description":{}},"rand":{"type":"Function","op1":"R/N","op2":null,"op3":null,"op4":null,"description":{}},"round":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"s":{"type":"Function","op1":"D/N","op2":"P","op3":"R/N/C","op4":null,"description":{}},"sap":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"R/N/C","description":{}},"sapz":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{}},"sdns":{"type":"Function","op1":"R/N","op2":"D/N","op3":null,"op4":null,"description":{}},"sdse":{"type":"Function","op1":"R/N","op2":"D/N","op3":null,"op4":null,"description":{}},"select":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"R/N/C","description":{}},"seq":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{}},"seqz":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"sge":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{}},"sgez":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"sgt":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{}},"sgtz":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"sin":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"sle":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{}},"sleep":{"type":"Function","op1":"R/N/C","op2":null,"op3":null,"op4":null,"description":{}},"slez":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"slt":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{}},"sltz":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"sna":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":"R/N/C","description":{}},"snaz":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{}},"sne":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{}},"snez":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"sqrt":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"sub":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{}},"tan":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"trunc":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":null,"op4":null,"description":{}},"xor":{"type":"Function","op1":"R/N","op2":"R/N/C","op3":"R/N/C","op4":null,"description":{}},"yield":{"type":"Function","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"lb":{"type":"Function","op1":"R/N","op2":"R/N/C/H","op3":"P","op4":"BM","description":{}},"sb":{"type":"Function","op1":"R/N/C/H","op2":"P","op3":"R/N/C","op4":null,"description":{}},"stack":{"type":"Function","op1":"R/N/C","op2":null,"op3":null,"op4":null,"description":{}},"Activate":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Charge":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Class":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"ClearMemory":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Color":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Combustion":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"CompletionRatio":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Damage":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"ElevatorLevel":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"ElevatorSpeed":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Error":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"ExportCount":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Filtration":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"ForceWrite":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Harvest":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Horizontal":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Idle":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"ImportCount":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Lock":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Maximum":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"MaxQuantity":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Mode":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"On":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Open":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Output":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Plant":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"PositionX":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"PositionY":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"PositionZ":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Power":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"PowerActual":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"PowerGeneration":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"PowerPotential":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"PowerRequired":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"PressureExternal":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"PressureInternal":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Ratio":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioCarbonDioxide":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioNitrogen":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioNitrousOxide":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioOxygen":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioPollutant":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioVolatiles":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioWater":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Reagents":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RecipeHash":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RequiredPower":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Setting":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"SolarAngle":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"TargetX":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"TargetY":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"TargetZ":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"TemperatureExternal":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"TemperatureSetting":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"TotalMoles":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"VelocityMagnitude":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"VelocityRelativeX":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"VelocityRelativeY":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"VelocityRelativeZ":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Vertical":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Volume":{"type":"Device parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"ChargeRatio":{"type":"Slot parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Efficiency":{"type":"Slot parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Growth":{"type":"Slot parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Health":{"type":"Slot parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Mature":{"type":"Slot parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"OccupantHash":{"type":"Slot parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Occupied":{"type":"Slot parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"PressureAir":{"type":"Slot parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"PressureWaste":{"type":"Slot parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"PrefabHash":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Pressure":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Quantity":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Temperature":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Bpm":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"CollectableGoods":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"CurrentResearchPodType":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Fuel":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"ManualResearchRequiredPod":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"MineablesInQueue":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"MineablesInVicinity":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"NextWeatherEventTime":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"ReturnFuelCost":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"SettingInput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"SettingOutput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"SignalID":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"SignalStrength":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Time":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"AirRelease":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"HorizontalRatio":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"PressureSetting":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RequestHash":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"VerticalRatio":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Seeding":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"CombustionInput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"CombustionOutput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"CombustionOutput2":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"TemperatureInput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"TemperatureOutput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"TemperatureOutput2":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"PressureInput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"PressureOutput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"PressureOutput2":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"TotalMolesInput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"TotalMolesOutput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"TotalMolesOutput2":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioCarbonDioxideInput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioCarbonDioxideOutput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioCarbonDioxideOutput2":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioNitrogenInput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioNitrogenOutput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioNitrogenOutput2":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioNitrousOxideInput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioNitrousOxideOutput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioNitrousOxideOutput2":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioOxygenInput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioOxygenOutput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioOxygenOutput2":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioPollutantInput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioPollutantOutpu":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioPollutantOutput2":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioVolatilesInput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioVolatilesOutput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioVolatilesOutput2":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioWaterInput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioWaterOutput":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"RatioWaterOutput2":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"PressureEfficiency":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"OperationalTemperatureEfficiency":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"TemperatureDifferentialEfficiency":{"type":"Parameter","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Average":{"type":"Const","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Sum":{"type":"Const","op1":null,"op2":null,"op3":null,"op4":null,"description":{}},"Minimum":{"type":"Const","op1":null,"op2":null,"op3":null,"op4":null,"description":{}}}
+{
+  "abs":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "acos":                              {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "add":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "alias":                             {
+    "type":        "Function",
+    "op1":         "N",
+    "op2":         "R/D",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "and":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "asin":                              {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "atan":                              {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "atan2":                             {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "bap":                               {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         "R/N/A/T",
+    "description": {}
+  },
+  "bapal":                             {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         "R/N/A/T",
+    "description": {}
+  },
+  "bapz":                              {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/A/T",
+    "op4":         null,
+    "description": {}
+  },
+  "bapzal":                            {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/A/T",
+    "op4":         null,
+    "description": {}
+  },
+  "bdns":                              {
+    "type":        "Function",
+    "op1":         "D/N",
+    "op2":         "R/N/A/T",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "bdnsal":                            {
+    "type":        "Function",
+    "op1":         "D/N",
+    "op2":         "R/N/A/T",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "bdse":                              {
+    "type":        "Function",
+    "op1":         "D/N",
+    "op2":         "R/N/A/T",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "bdseal":                            {
+    "type":        "Function",
+    "op1":         "D/N",
+    "op2":         "R/N/A/T",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "beq":                               {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/A/T",
+    "op4":         null,
+    "description": {}
+  },
+  "beqal":                             {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/A/T",
+    "op4":         null,
+    "description": {}
+  },
+  "beqz":                              {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/A/T",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "beqzal":                            {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/A/T",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "bge":                               {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/A/T",
+    "op4":         null,
+    "description": {}
+  },
+  "bgeal":                             {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/A/T",
+    "op4":         null,
+    "description": {}
+  },
+  "bgez":                              {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/A/T",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "bgezal":                            {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/A/T",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "bgt":                               {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/A/T",
+    "op4":         null,
+    "description": {}
+  },
+  "bgtal":                             {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/A/T",
+    "op4":         null,
+    "description": {}
+  },
+  "bgtz":                              {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/A/T",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "bgtzal":                            {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/A/T",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "ble":                               {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/A/T",
+    "op4":         null,
+    "description": {}
+  },
+  "bleal":                             {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/A/T",
+    "op4":         null,
+    "description": {}
+  },
+  "blez":                              {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/A/T",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "blezal":                            {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/A/T",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "blt":                               {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/A/T",
+    "op4":         null,
+    "description": {}
+  },
+  "bltal":                             {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/A/T",
+    "op4":         null,
+    "description": {}
+  },
+  "bltz":                              {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/A/T",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "bltzal":                            {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/A/T",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "bna":                               {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         "R/N/A/T",
+    "description": {}
+  },
+  "bnaal":                             {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         "R/N/A/T",
+    "description": {}
+  },
+  "bnaz":                              {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/A/T",
+    "op4":         null,
+    "description": {}
+  },
+  "bnazal":                            {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/A/T",
+    "op4":         null,
+    "description": {}
+  },
+  "bne":                               {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/A/T",
+    "op4":         null,
+    "description": {}
+  },
+  "bneal":                             {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/A/T",
+    "op4":         null,
+    "description": {}
+  },
+  "bnez":                              {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/A/T",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "bnezal":                            {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/A/T",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "brap":                              {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         "R/N/O",
+    "description": {}
+  },
+  "brapz":                             {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/O",
+    "op4":         null,
+    "description": {}
+  },
+  "brdns":                             {
+    "type":        "Function",
+    "op1":         "D/N",
+    "op2":         "R/N/O",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "brdse":                             {
+    "type":        "Function",
+    "op1":         "D/N",
+    "op2":         "R/N/O",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "breq":                              {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/O",
+    "op4":         null,
+    "description": {}
+  },
+  "breqz":                             {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/O",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "brge":                              {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/O",
+    "op4":         null,
+    "description": {}
+  },
+  "brgez":                             {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/O",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "brgt":                              {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/O",
+    "op4":         null,
+    "description": {}
+  },
+  "brgtz":                             {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/O",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "brle":                              {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/O",
+    "op4":         null,
+    "description": {}
+  },
+  "brlez":                             {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/O",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "brlt":                              {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/O",
+    "op4":         null,
+    "description": {}
+  },
+  "brltz":                             {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/O",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "brna":                              {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         "R/N/O",
+    "description": {}
+  },
+  "brnaz":                             {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         "R/N/O",
+    "op4":         null,
+    "description": {}
+  },
+  "brne":                              {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "brnez":                             {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         "R/N/O",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "ceil":                              {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "cos":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "define":                            {
+    "type":        "Function",
+    "op1":         "Cn",
+    "op2":         "C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "div":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "exp":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "floor":                             {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "hcf":                               {
+    "type":        "Function",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "j":                                 {
+    "type":        "Function",
+    "op1":         "R/N/A/T",
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "jal":                               {
+    "type":        "Function",
+    "op1":         "R/N/A/T",
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "jr":                                {
+    "type":        "Function",
+    "op1":         "R/N/O",
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "l":                                 {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "D/N",
+    "op3":         "P",
+    "op4":         null,
+    "description": {}
+  },
+  "log":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "lr":                                {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "D/N",
+    "op3":         "R/N/RM",
+    "op4":         "RC",
+    "description": {}
+  },
+  "ls":                                {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "D/N",
+    "op3":         "R/N/S",
+    "op4":         "P",
+    "description": {}
+  },
+  "max":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "min":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "mod":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "move":                              {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "mul":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "nor":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "or":                                {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "peek":                              {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "pop":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "push":                              {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "rand":                              {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "round":                             {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "s":                                 {
+    "type":        "Function",
+    "op1":         "D/N",
+    "op2":         "P",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "sap":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         "R/N/C",
+    "description": {}
+  },
+  "sapz":                              {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "sdns":                              {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "D/N",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "sdse":                              {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "D/N",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "select":                            {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         "R/N/C",
+    "description": {}
+  },
+  "seq":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "seqz":                              {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "sge":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "sgez":                              {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "sgt":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "sgtz":                              {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "sin":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "sle":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "sleep":                             {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "slez":                              {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "slt":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "sltz":                              {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "sna":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         "R/N/C",
+    "description": {}
+  },
+  "snaz":                              {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "sne":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "snez":                              {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "sqrt":                              {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "sub":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "tan":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "trunc":                             {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "xor":                               {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "yield":                             {
+    "type":        "Function",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "lb":                                {
+    "type":        "Function",
+    "op1":         "R/N",
+    "op2":         "R/N/C/H",
+    "op3":         "P",
+    "op4":         "BM",
+    "description": {}
+  },
+  "sb":                                {
+    "type":        "Function",
+    "op1":         "R/N/C/H",
+    "op2":         "P",
+    "op3":         "R/N/C",
+    "op4":         null,
+    "description": {}
+  },
+  "stack":                             {
+    "type":        "Function",
+    "op1":         "R/N/C",
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Activate":                          {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Charge":                            {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Class":                             {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "ClearMemory":                       {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Color":                             {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Combustion":                        {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "CompletionRatio":                   {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Damage":                            {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "ElevatorLevel":                     {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "ElevatorSpeed":                     {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Error":                             {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "ExportCount":                       {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Filtration":                        {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "ForceWrite":                        {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Harvest":                           {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Horizontal":                        {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Idle":                              {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "ImportCount":                       {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Lock":                              {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Maximum":                           {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "MaxQuantity":                       {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Mode":                              {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "On":                                {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Open":                              {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Output":                            {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Plant":                             {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "PositionX":                         {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "PositionY":                         {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "PositionZ":                         {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Power":                             {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "PowerActual":                       {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "PowerGeneration":                   {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "PowerPotential":                    {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "PowerRequired":                     {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "PressureExternal":                  {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "PressureInternal":                  {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Ratio":                             {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioCarbonDioxide":                {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioNitrogen":                     {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioNitrousOxide":                 {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioOxygen":                       {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioPollutant":                    {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioVolatiles":                    {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioWater":                        {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Reagents":                          {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RecipeHash":                        {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RequiredPower":                     {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Setting":                           {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "SolarAngle":                        {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "TargetX":                           {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "TargetY":                           {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "TargetZ":                           {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "TemperatureExternal":               {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "TemperatureSetting":                {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "TotalMoles":                        {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "VelocityMagnitude":                 {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "VelocityRelativeX":                 {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "VelocityRelativeY":                 {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "VelocityRelativeZ":                 {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Vertical":                          {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Volume":                            {
+    "type":        "Device parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "ChargeRatio":                       {
+    "type":        "Slot parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Efficiency":                        {
+    "type":        "Slot parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Growth":                            {
+    "type":        "Slot parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Health":                            {
+    "type":        "Slot parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Mature":                            {
+    "type":        "Slot parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "OccupantHash":                      {
+    "type":        "Slot parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Occupied":                          {
+    "type":        "Slot parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "PressureAir":                       {
+    "type":        "Slot parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "PressureWaste":                     {
+    "type":        "Slot parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "PrefabHash":                        {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Pressure":                          {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Quantity":                          {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Temperature":                       {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Bpm":                               {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "CollectableGoods":                  {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "CurrentResearchPodType":            {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Fuel":                              {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "ManualResearchRequiredPod":         {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "MineablesInQueue":                  {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "MineablesInVicinity":               {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "NextWeatherEventTime":              {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "ReturnFuelCost":                    {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "SettingInput":                      {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "SettingOutput":                     {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "SignalID":                          {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "SignalStrength":                    {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Time":                              {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "AirRelease":                        {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "HorizontalRatio":                   {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "PressureSetting":                   {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RequestHash":                       {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "VerticalRatio":                     {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Seeding":                           {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "CombustionInput":                   {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "CombustionOutput":                  {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "CombustionOutput2":                 {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "TemperatureInput":                  {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "TemperatureOutput":                 {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "TemperatureOutput2":                {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "PressureInput":                     {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "PressureOutput":                    {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "PressureOutput2":                   {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "TotalMolesInput":                   {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "TotalMolesOutput":                  {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "TotalMolesOutput2":                 {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioCarbonDioxideInput":           {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioCarbonDioxideOutput":          {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioCarbonDioxideOutput2":         {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioNitrogenInput":                {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioNitrogenOutput":               {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioNitrogenOutput2":              {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioNitrousOxideInput":            {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioNitrousOxideOutput":           {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioNitrousOxideOutput2":          {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioOxygenInput":                  {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioOxygenOutput":                 {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioOxygenOutput2":                {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioPollutantInput":               {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioPollutantOutpu":               {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioPollutantOutput2":             {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioVolatilesInput":               {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioVolatilesOutput":              {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioVolatilesOutput2":             {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioWaterInput":                   {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioWaterOutput":                  {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "RatioWaterOutput2":                 {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "PressureEfficiency":                {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "OperationalTemperatureEfficiency":  {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "TemperatureDifferentialEfficiency": {
+    "type":        "Parameter",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Average":                           {
+    "type":        "Const",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Sum":                               {
+    "type":        "Const",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  },
+  "Minimum":                           {
+    "type":        "Const",
+    "op1":         null,
+    "op2":         null,
+    "op3":         null,
+    "op4":         null,
+    "description": {}
+  }
+}

@@ -5,6 +5,8 @@ export declare const regexes: {
     dr1: RegExp;
     r1: RegExp;
     d1: RegExp;
+    hash: RegExp;
+    chanel: RegExp;
     rr: RegExp;
     rm: RegExp;
     oldSpace: RegExp;

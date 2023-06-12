@@ -4,23 +4,23 @@ exports.icXFormatter = void 0;
 const icx_compiler_1 = require("icx-compiler");
 const classes_1 = require("icx-compiler/src/classes");
 const regexes = {
-    'rr1': new RegExp("[rd]+(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
-    'r1': new RegExp("(^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)$)|(sp)"),
-    'd1': new RegExp("^d([012345b])$"),
-    'rr': new RegExp(`\\br(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|17|a)\\b`),
-    'rm': new RegExp(`(#-reset-vars-)[\\s\\S]*?(#-reset-vars-)`),
-    'oldSpace': new RegExp("^[\\t ]+", 'gmi'),
-    'strStart': new RegExp("^\".+$"),
-    'strEnd': new RegExp(".+\"$"),
+    "rr1": new RegExp("[rd]+(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
+    "r1": new RegExp("(^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)$)|(sp)"),
+    "d1": new RegExp("^d([012345b])$"),
+    "rr": new RegExp(`\\br(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|17|a)\\b`),
+    "rm": new RegExp(`(#-reset-vars-)[\\s\\S]*?(#-reset-vars-)`),
+    "oldSpace": new RegExp("^[\\t ]+", "gmi"),
+    "strStart": new RegExp("^\".+$"),
+    "strEnd": new RegExp(".+\"$"),
 };
 class icXFormatter {
+    resultText;
     text;
     labels;
     lines;
     commands;
     position;
     jumps;
-    resultText;
     document;
     vars;
     functions;
@@ -32,8 +32,8 @@ class icXFormatter {
         this.document = document;
         this.icxOptions = icxOptions;
         this.text = document.getText();
-        this.resultText = '';
-        this.text = this.text.replace(regexes.oldSpace, '');
+        this.resultText = "";
+        this.text = this.text.replace(regexes.oldSpace, "");
         this.lines = this.text.split(/\r?\n/);
         this.icX = new icx_compiler_1.icX(this.text, icxOptions);
         this.init();
@@ -80,7 +80,7 @@ class icXFormatter {
                             mode = 1;
                         }
                         if (argNumber in newArgs) {
-                            newArgs[argNumber] += ' ' + arg;
+                            newArgs[argNumber] += " " + arg;
                         }
                         else {
                             newArgs[argNumber] = arg;
@@ -93,7 +93,7 @@ class icXFormatter {
                 commands[commandsKey].args = Object.values(newArgs);
             }
             else {
-                commands.push({ command: '', args: [] });
+                commands.push({ command: "", args: [] });
             }
         }
         this.commands = commands;
@@ -104,11 +104,11 @@ class icXFormatter {
             if (command.match(/^\w+:$/)) {
                 this.labels[command.replace(":", "")] = this.position;
             }
-            if (command == 'j' && (args[0] == 'ra' || args[0] == 'r17')) {
+            if (command == "j" && (args[0] == "ra" || args[0] == "r17")) {
                 this.jumps.j.ra.push(this.position);
             }
             else {
-                if (command == 'j' || command == 'jr' || command == 'jal') {
+                if (command == "j" || command == "jr" || command == "jal") {
                     if (typeof this.jumps[command] == "undefined") {
                         this.jumps[command] = {};
                     }
@@ -123,10 +123,10 @@ class icXFormatter {
         this.findLoos();
         this.renderSpaces();
         this.recursiveSpace(this.icX.structure.content);
-        this.resultText = this.lines.join('\n');
+        this.resultText = this.lines.join("\n");
     }
     addSpace(text, count) {
-        return '\t'.repeat(count) + text;
+        return "\t".repeat(count) + text;
     }
     recursiveSpace(content, level = 0) {
         for (const contentKey in content) {

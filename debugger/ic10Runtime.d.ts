@@ -1,5 +1,5 @@
 /// <reference types="node" />
-import { EventEmitter } from 'events';
+import { EventEmitter } from "events";
 import { InterpreterIc10 } from "ic10";
 export interface FileAccessor {
     readFile(path: string): Promise<string>;
@@ -26,8 +26,6 @@ interface IStack {
 }
 export declare class ic10Runtime extends EventEmitter {
     private _fileAccessor;
-    private _sourceFile;
-    get sourceFile(): string;
     private _sourceLines;
     private _currentLine;
     private _currentColumn;
@@ -39,6 +37,8 @@ export declare class ic10Runtime extends EventEmitter {
     private _otherExceptions;
     private ic10;
     constructor(_fileAccessor: FileAccessor, ic10: InterpreterIc10);
+    private _sourceFile;
+    get sourceFile(): string;
     start(program: string, stopOnEntry: boolean, noDebug: boolean): Promise<void>;
     continue(reverse?: boolean): void;
     step(reverse?: boolean, event?: string): void;

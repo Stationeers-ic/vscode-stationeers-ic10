@@ -27,10 +27,10 @@ exports.Ic10SidebarViewProvider = void 0;
 const vscode = __importStar(require("vscode"));
 class Ic10SidebarViewProvider {
     _extensionUri;
-    static viewType = 'Ic10ViewProvider';
+    static viewType = "Ic10ViewProvider";
     view;
-    sectionsNamed = {};
     events = {};
+    sectionsNamed = {};
     sections = [];
     newContent;
     update;
@@ -41,8 +41,8 @@ class Ic10SidebarViewProvider {
     sendCommand(name, data) {
         this.view.webview.postMessage({ fn: name, data: data });
     }
-    refresh(newContent = '') {
-        this.sendCommand('update', newContent);
+    refresh(newContent = "") {
+        this.sendCommand("update", newContent);
     }
     start() {
         setInterval(() => {
@@ -53,7 +53,7 @@ class Ic10SidebarViewProvider {
             if (!this.isEvent) {
                 try {
                     this.view.webview.onDidReceiveMessage(message => {
-                        if (typeof this.events[message.fn] == 'function') {
+                        if (typeof this.events[message.fn] == "function") {
                             this.events[message.fn](message.data);
                         }
                     }, this);
@@ -86,7 +86,7 @@ class Ic10SidebarViewProvider {
         });
         for (const sectionsKey in this.sections) {
             const obj = this.sections[sectionsKey];
-            if (obj.lang == 'both' || obj.lang == languageId) {
+            if (obj.lang == "both" || obj.lang == languageId) {
                 newContent += `
 				<section id="${obj.name}">
 					${obj.content}
@@ -101,9 +101,30 @@ class Ic10SidebarViewProvider {
         this.sectionsNamed = new Set;
         this.sections = [];
     }
-    _getHtmlForWebview(content = '') {
-        const styleMainUri = this.view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'sidebar.css'));
-        const scriptMainUri = this.view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'sidebar.js'));
+    getNonce() {
+        let text = "";
+        const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        for (let i = 0; i < 32; i++) {
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+        return text;
+    }
+    resolveWebviewView(webviewView, context, token) {
+        this.view = webviewView;
+        webviewView.webview.options = {
+            enableScripts: true,
+            localResourceRoots: [
+                this._extensionUri
+            ]
+        };
+        webviewView.webview.html = this._getHtmlForWebview();
+        webviewView.webview.onDidReceiveMessage(data => {
+            console.log(data);
+        });
+    }
+    _getHtmlForWebview(content = "") {
+        const styleMainUri = this.view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "media", "sidebar.css"));
+        const scriptMainUri = this.view.webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "media", "sidebar.js"));
         const nonce = this.getNonce();
         return `<!DOCTYPE html>
 			<html lang="en">
@@ -126,27 +147,6 @@ class Ic10SidebarViewProvider {
 				<script src="${scriptMainUri}" nonce="${nonce}"></script>
 			</body>
 			</html>`;
-    }
-    getNonce() {
-        let text = '';
-        const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        for (let i = 0; i < 32; i++) {
-            text += possible.charAt(Math.floor(Math.random() * possible.length));
-        }
-        return text;
-    }
-    resolveWebviewView(webviewView, context, token) {
-        this.view = webviewView;
-        webviewView.webview.options = {
-            enableScripts: true,
-            localResourceRoots: [
-                this._extensionUri
-            ]
-        };
-        webviewView.webview.html = this._getHtmlForWebview();
-        webviewView.webview.onDidReceiveMessage(data => {
-            console.log(data);
-        });
     }
 }
 exports.Ic10SidebarViewProvider = Ic10SidebarViewProvider;

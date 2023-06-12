@@ -22,23 +22,30 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ic10Diagnostics = exports.Ic10Diagnostics = exports.DiagnosticsErrors = exports.DiagnosticsError = exports.regexes = exports.Ic10DiagnosticsName = void 0;
 const vscode = __importStar(require("vscode"));
-exports.Ic10DiagnosticsName = 'ic10_diagnostic';
-const manual = require('../languages/en.json');
-const functions = require('../media/ic10.functions.json');
-const keywords = require('../media/ic10.keyword.json');
+const Ic10Error_1 = require("ic10/src/Ic10Error");
+const ic10_1 = __importDefault(require("ic10"));
+exports.Ic10DiagnosticsName = "ic10_diagnostic";
+const manual = require("../languages/en.json");
+const functions = require("../media/ic10.functions.json");
+const keywords = require("../media/ic10.keyword.json");
 exports.regexes = {
-    'rr1': new RegExp("[r]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
-    'dr1': new RegExp("[d]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
-    'r1': new RegExp("(^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)$)|(^sp$)"),
-    'd1': new RegExp("^d(0|1|2|3|4|5|b)$"),
-    'rr': new RegExp(`\\br(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|17|a)\\b`),
-    'rm': new RegExp(`(#-reset-vars-)[\\s\\S]{0,}?(#-reset-vars-)`),
-    'oldSpace': new RegExp("^[\\t ]+", 'gmi'),
-    'strStart': new RegExp("^\".+$"),
-    'strEnd': new RegExp(".+\"$"),
+    "rr1": new RegExp("[r]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
+    "dr1": new RegExp("[d]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a))$"),
+    "r1": new RegExp("(^r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|a)$)|(^sp$)"),
+    "d1": new RegExp("^d(0|1|2|3|4|5|b)$"),
+    "hash": new RegExp("HASH\\(.+\\)"),
+    "chanel": new RegExp("d[0-5]:[0-7]"),
+    "rr": new RegExp(`\\br(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|17|a)\\b`),
+    "rm": new RegExp(`(#-reset-vars-)[\\s\\S]{0,}?(#-reset-vars-)`),
+    "oldSpace": new RegExp("^[\\t ]+", "gmi"),
+    "strStart": new RegExp("^\".+$"),
+    "strEnd": new RegExp(".+\"$"),
 };
 class DiagnosticsError {
     range;
@@ -51,7 +58,7 @@ class DiagnosticsError {
         this.message = message;
         this.lvl = lvl;
         this.range = new vscode.Range(line, start, line, start + length);
-        this.hash = this.message.replace(/\s+/, '') + line;
+        this.hash = this.message.replace(/\s+/, "") + line;
     }
 }
 exports.DiagnosticsError = DiagnosticsError;
@@ -100,6 +107,31 @@ class Ic10Diagnostics {
                 console.warn(e);
             }
         }
+        const interpreterIc10 = new ic10_1.default(doc.getText());
+        for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
+            try {
+                interpreterIc10.settings.executionCallback = (e) => {
+                    if (e instanceof Ic10Error_1.Ic10DiagnosticError) {
+                        const lineOfText = doc.lineAt(lineIndex);
+                        let start = 0;
+                        let len = lineOfText.text.length;
+                        if (typeof e.obj === 'string') {
+                            start = lineOfText.text.indexOf(e.obj);
+                            if (start !== -1) {
+                                len = e.obj.length;
+                            }
+                            else {
+                                start = 0;
+                            }
+                        }
+                        this.errors.push(new DiagnosticsError(e.getMessage(), e.lvl, start, len, lineIndex));
+                    }
+                };
+                interpreterIc10.prepareLine(lineIndex, true);
+            }
+            catch (e) {
+            }
+        }
     }
     run(doc, container) {
         const diagnostics = [];
@@ -108,29 +140,29 @@ class Ic10Diagnostics {
             diagnostics.push(this.createDiagnostic(de.range, de.message, de.lvl));
         }
         if (doc.lineCount > 128) {
-            diagnostics.push(this.createDiagnostic(new vscode.Range(128, 0, 128, 1), 'Max line', vscode.DiagnosticSeverity.Error));
+            diagnostics.push(this.createDiagnostic(new vscode.Range(128, 0, 128, 1), "Max line", vscode.DiagnosticSeverity.Error));
         }
         container.set(doc.uri, diagnostics);
     }
     parseLine2(doc, lineIndex) {
         const lineOfText = doc.lineAt(lineIndex);
         if (lineOfText.text.trim().length > 0) {
-            var text = lineOfText.text.trim();
+            let text = lineOfText.text.trim();
             functions.some((substring) => {
-                if (text.startsWith('#')) {
-                    if (text.startsWith('#log')) {
+                if (text.startsWith("#")) {
+                    if (text.startsWith("#log")) {
                         this.errors.push(new DiagnosticsError(`Debug function: "${text}"`, 2, 0, text.length, lineIndex));
                         return true;
                     }
                     return true;
                 }
-                text = text.replace(/#.+$/, '');
+                text = text.replace(/#.+$/, "");
                 text = text.trim();
-                if (text.endsWith(':')) {
+                if (text.endsWith(":")) {
                     return true;
                 }
                 if (text.startsWith(substring)) {
-                    var words = text.split(/ +/);
+                    const words = (new ic10_1.default).splitString(text);
                     this.analyzeFunctionInputs(words, text, lineIndex);
                     return true;
                 }
@@ -145,26 +177,26 @@ class Ic10Diagnostics {
         if (lineOfText.text.trim().length > 0) {
             var text = lineOfText.text.trim();
             var test = functions.some((substring) => {
-                if (text.startsWith('#')) {
-                    if (text.startsWith('#log')) {
+                if (text.startsWith("#")) {
+                    if (text.startsWith("#log")) {
                         this.errors.push(new DiagnosticsError(`Debug function: "${text}"`, 2, 0, text.length, lineIndex));
                         return true;
                     }
                     return true;
                 }
-                text = text.replace(/#.+$/, '');
+                text = text.replace(/#.+$/, "");
                 text = text.trim();
-                if (text.endsWith(':')) {
+                if (text.endsWith(":")) {
                     this.jumps.push(text);
-                    this.aliases.push(text.replace(':', ''));
+                    this.aliases.push(text.replace(":", ""));
                     return true;
                 }
                 if (text.startsWith(substring)) {
                     var words = text.split(/ +/);
-                    if (text.startsWith('alias')) {
+                    if (text.startsWith("alias")) {
                         this.aliases.push(words[1]);
                     }
-                    if (text.startsWith('define')) {
+                    if (text.startsWith("define")) {
                         this.aliases.push(words[1]);
                     }
                     return true;
@@ -178,17 +210,19 @@ class Ic10Diagnostics {
         }
     }
     analyzeFunctionInputs(words, text, lineIndex) {
-        var fn = words[0] ?? null;
-        var op1 = words[1] ?? null;
-        var op2 = words[2] ?? null;
-        var op3 = words[3] ?? null;
-        var op4 = words[4] ?? null;
+        const fn = words[0] ?? null;
+        const op1 = words[1] ?? null;
+        const op2 = words[2] ?? null;
+        const op3 = words[3] ?? null;
+        const op4 = words[4] ?? null;
+        const op5 = words[5] ?? null;
+        const op6 = words[6] ?? null;
         if (!manual.hasOwnProperty(fn)) {
             this.errors.push(new DiagnosticsError(`Unknown function: "${text}"`, 0, 0, text.length, lineIndex));
         }
         else {
             var rule = manual[fn];
-            if (rule.type == 'Function') {
+            if (rule.type == "Function") {
                 if (op1 !== null && this.empty(rule.op1)) {
                     this.errors.push(new DiagnosticsError(`this function have\`t any Arguments: "${text}"`, 0, 0, text.length, lineIndex));
                     return true;
@@ -241,15 +275,15 @@ class Ic10Diagnostics {
 		BM - режим пакетного чтения, одно из Average, Sum, Minimum или Maximum (можно 0, 1, 2 или 3, соотвественно)
 		Y - текст
 		`;
-        const ops = op.replace(/ */, '').split('/');
+        const ops = op.replace(/ */, "").split("/");
         let errors = 0;
         const maxErrors = ops.length;
         for (const o of ops) {
             switch (o.toUpperCase()) {
-                case 'T':
-                case 'RC':
+                case "T":
+                case "RC":
                     break;
-                case 'Y':
+                case "Y":
                     if (!isNaN(parseFloat(value))) {
                         errors++;
                     }
@@ -257,46 +291,50 @@ class Ic10Diagnostics {
                         errors++;
                     }
                     break;
-                case 'H':
-                case 'C':
-                case 'A':
-                case 'O':
+                case "H":
+                    if (isNaN(parseFloat(value)) && this.aliases.indexOf(value) < 0 && !exports.regexes.hash.test(value)) {
+                        errors++;
+                    }
+                    break;
+                case "C":
+                case "A":
+                case "O":
                     if (isNaN(parseFloat(value)) && this.aliases.indexOf(value) < 0) {
                         errors++;
                     }
                     break;
-                case 'R':
+                case "R":
                     if (!exports.regexes.rr1.test(value) && !exports.regexes.r1.test(value)) {
                         errors++;
                     }
                     break;
-                case 'N':
+                case "N":
                     if (this.aliases.indexOf(value) < 0) {
                         errors++;
                     }
                     break;
-                case 'D':
-                    if (!exports.regexes.dr1.test(value) && !exports.regexes.d1.test(value)) {
+                case "D":
+                    if (!exports.regexes.dr1.test(value) && !exports.regexes.d1.test(value) && !exports.regexes.chanel.test(value)) {
                         errors++;
                     }
                     break;
-                case 'S':
+                case "S":
                     if (isNaN(parseFloat(value))) {
                         errors++;
                     }
                     break;
-                case 'P':
+                case "P":
                     if (keywords.indexOf(value) < 0) {
                         errors++;
                     }
                     break;
-                case 'RM':
-                    if (['Contents', 'Required', 'Recipe', 0, 1, 2, "0", "1", "2"].indexOf(value) < 0) {
+                case "RM":
+                    if (["Contents", "Required", "Recipe", 0, 1, 2, "0", "1", "2"].indexOf(value) < 0) {
                         errors++;
                     }
                     break;
-                case 'BM':
-                    if (['Average', 'Sum', 'Minimum', 'Maximum', 0, 1, 2, 3, "0", "1", "2", "3"].indexOf(value) < 0) {
+                case "BM":
+                    if (["Average", "Sum", "Minimum", "Maximum", 0, 1, 2, 3, "0", "1", "2", "3"].indexOf(value) < 0) {
                         errors++;
                     }
                     break;
@@ -319,14 +357,14 @@ class Ic10Diagnostics {
             return true;
         }
         switch (typeof a) {
-            case 'string':
-                if (!a || a.trim() == '') {
+            case "string":
+                if (!a || a.trim() == "") {
                     return true;
                 }
                 else {
                     return false;
                 }
-            case 'number':
+            case "number":
                 return Boolean(a);
         }
         return false;

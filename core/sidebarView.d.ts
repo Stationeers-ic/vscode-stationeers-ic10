@@ -1,10 +1,9 @@
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
 import { CancellationToken, WebviewView, WebviewViewResolveContext } from "vscode";
 export declare class Ic10SidebarViewProvider implements vscode.WebviewViewProvider {
     private readonly _extensionUri;
     static readonly viewType = "Ic10ViewProvider";
     view?: vscode.WebviewView;
-    private sectionsNamed;
     events: {
         [name: string]: (data: {
             id: string;
@@ -13,6 +12,7 @@ export declare class Ic10SidebarViewProvider implements vscode.WebviewViewProvid
             name: string;
         }) => void;
     };
+    private sectionsNamed;
     private sections;
     private newContent;
     private update;
@@ -23,7 +23,7 @@ export declare class Ic10SidebarViewProvider implements vscode.WebviewViewProvid
     start(): void;
     section(name: any, content: any, lang: any, priority?: number): void;
     clear(): void;
-    private _getHtmlForWebview;
     getNonce(): string;
     resolveWebviewView(webviewView: WebviewView, context: WebviewViewResolveContext, token: CancellationToken): Thenable<void> | void;
+    private _getHtmlForWebview;
 }

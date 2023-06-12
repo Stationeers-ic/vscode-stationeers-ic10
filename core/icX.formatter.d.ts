@@ -1,12 +1,12 @@
 import * as vscode from "vscode";
 export declare class icXFormatter {
+    resultText: string;
     private readonly text;
     private labels;
     private readonly lines;
     private commands;
     private position;
     private jumps;
-    resultText: string;
     private document;
     private vars;
     private functions;

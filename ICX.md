@@ -21,7 +21,6 @@ NEW WIKI [http://traineratwot.aytour.ru/wiki/icx](http://traineratwot.aytour.ru/
 
 [<img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/99b0e6ee-dd62-4a57-8c7a-ddc38d46ace2/daup1ii-13f44bac-68c7-4bc9-88c6-8a01a440a8cf.png/v1/fill/w_50,h_50,strp/discord_icon_by_fzone96_daup1ii-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTAiLCJwYXRoIjoiXC9mXC85OWIwZTZlZS1kZDYyLTRhNTctOGM3YS1kZGMzOGQ0NmFjZTJcL2RhdXAxaWktMTNmNDRiYWMtNjhjNy00YmM5LTg4YzYtOGEwMWE0NDBhOGNmLnBuZyIsIndpZHRoIjoiPD01MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.WO5yROv2CoM3PH1GyatQY6rsYPhQa1YfMsdrMn1Q21U" width="20"> discord](https://discord.gg/KSVjXufkA9)
 
-
 Debugger launch
 
 ```json5
@@ -40,11 +39,14 @@ Debugger launch
 }
 
 ```
+
 # icX
 
 icX is a programming language translated to ic10 used to simplify the programming of ic10 microprocessors in
 the Stationeers game.
+
 # Quick start
+
 1. Install [plugin for VSC](https://marketplace.visualstudio.com/items?itemName=Traineratwot.stationeers-ic10)
 2. Create a file with **.icX** type
 3. Write a program. For example:
@@ -58,6 +60,7 @@ the Stationeers game.
 6. Paste code into microprocessor Ic10 in the game
 
 # Instructions
+
 ### Comments
 
   ```
@@ -67,6 +70,7 @@ the Stationeers game.
 ### Vars
 
 icX will automatically replace variable names with register names
+
 ```
 ---icX
    var a = 10
@@ -75,6 +79,7 @@ icX will automatically replace variable names with register names
 ```
 
 Using _alias_
+
 ```
 ---icX
    use aliases
@@ -85,6 +90,7 @@ Using _alias_
 ```
 
 Using _define_
+
 ```
 ---icX
    use constants
@@ -94,9 +100,11 @@ Using _define_
 ```
 
 ### Math
+
 #### Unary operations (++, --)
 
 inc
+
 ```
 ---icX
    var a = 0
@@ -107,6 +115,7 @@ inc
 ```
 
 dec
+
 ```
 ---icX
    var a = 0
@@ -119,12 +128,14 @@ dec
 #### Binary operations (+, -, *, /, %)
 
 Constants will be calculated automatically
+
 ```
 ---icX
    var x =  5 + 5 * 2 
 ---ic10
    move r0 15
 ```
+
 ```
 ---icX
    const x = 2 + 2
@@ -214,6 +225,7 @@ Binary logical operations used (<, >, ==, !=, <=, >=, &, |, ~=)
 ### Function
 
 To write a function, use the _function_ keyword
+
 ```
 {function name}()
 
@@ -243,9 +255,11 @@ end
  move r0 1
  j ra
 ```
+
 ### Stack
 
 To easily write in stack, use the _stack_ keyword
+
 ```
 ---icX
    stack 342423 432423 54534 6567
@@ -257,6 +271,7 @@ To easily write in stack, use the _stack_ keyword
 ```
 
 For each stack
+
 ```
 ---icX
    var YourVariabele = 0
@@ -285,6 +300,7 @@ For each stack
 In addition to _use aliases_ and _use constant_, the following constructs are supported:
 
 To loop the application, use _use loop_
+
 ```
 ---icX
  move r0 0
@@ -307,6 +323,7 @@ To loop the application, use _use loop_
 ```
 
 Use _use comments_ to transfer your comments to ic10 code
+
 ```
 ---icX
  use comments
@@ -363,8 +380,6 @@ function updateLED
 end
 ```
 
-
 ### debug
-
 
 ![debug](https://i.imgur.com/ZdWJkvf.jpeg)
