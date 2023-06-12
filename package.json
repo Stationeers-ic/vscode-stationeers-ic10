@@ -303,6 +303,7 @@
     "dotenv": "^16.1.4",
     "ic10": "file:../ic10",
     "icx-compiler": "^2.1.6",
+    "toml": "^3.0.0",
     "vscode-debugadapter": "1.51.0",
     "vscode-debugprotocol": "1.51.0",
     "yaml": "^2.3.1"

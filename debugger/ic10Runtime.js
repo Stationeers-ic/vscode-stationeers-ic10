@@ -182,7 +182,6 @@ class ic10Runtime extends events_1.EventEmitter {
             do {
                 why = this.ic10.prepareLine(ln, true);
                 if (this.ic10?.output?.debug && this.ic10.ignoreLine.indexOf(ln) < 0) {
-                    this.sendEvent('output', '[debug]: ' + this.ic10.output.debug, this._sourceFile, ln - 1);
                     this.ic10.output.debug = "";
                 }
                 if (this.ic10?.output?.log) {
@@ -191,7 +190,6 @@ class ic10Runtime extends events_1.EventEmitter {
                 }
                 if (this.ic10?.output?.error && this.ic10.ignoreLine.indexOf(ln) < 0) {
                     this.sendEvent("output", this.ic10.output.error, this._sourceFile, ln - 1);
-                    this.sendEvent("output", `TEST ${JSON.stringify(this.ic10.memory.aliases, null, 2)}`, this._sourceFile, ln - 1);
                     this.ic10.output.error = "";
                 }
                 if (this.fireEventsForLine(ln, stepEvent)) {

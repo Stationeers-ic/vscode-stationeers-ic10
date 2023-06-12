@@ -29,17 +29,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.parseEnv = void 0;
 const path_1 = __importDefault(require("path"));
 const dotenv_1 = __importDefault(require("dotenv"));
-const Device_1 = require("../../ic10/src/devices/Device");
 const fs = __importStar(require("fs"));
-const Utils_1 = require("../../ic10/src/Utils");
 const yaml_1 = __importDefault(require("yaml"));
+const toml_1 = __importDefault(require("toml"));
 function parseEnv(ic10, file) {
     let env;
+    env = path_1.default.join(path_1.default.dirname(file), 'env.toml');
+    if (fs.existsSync(env)) {
+        const content = fs.readFileSync(env, { encoding: 'utf-8' });
+        const config = toml_1.default.parse(content);
+        Object.entries(config).forEach(([key, value]) => {
+            if (key) {
+            }
+        });
+        return ic10;
+    }
     env = path_1.default.join(path_1.default.dirname(file), 'env.yml');
     if (fs.existsSync(env)) {
         const content = fs.readFileSync(env, { encoding: 'utf-8' });
         const config = yaml_1.default.parse(content);
-        fs.writeFileSync("C:\\projects\\vscode-stationeers-ic10\\test.d2.json", JSON.stringify(config, null, 2));
         Object.entries(config).forEach(([key, value]) => {
             if (key) {
                 const fields = {};
@@ -48,18 +56,7 @@ function parseEnv(ic10, file) {
                         fields[k] = v;
                     });
                 });
-                let hash;
-                if (fields.PrefabHash !== undefined) {
-                    if (typeof fields.PrefabHash === 'string') {
-                        hash = (0, Utils_1.hashStr)(fields.PrefabHash);
-                    }
-                    else {
-                        hash = fields.PrefabHash;
-                    }
-                    fields.PrefabHash = hash;
-                }
-                const d = new Device_1.DebugDevice(2, fields);
-                ic10.memory.environ.set(key, d);
+                ic10.connectDevice(key, fields.PrefabHash, 2, fields);
             }
         });
         return ic10;
@@ -69,15 +66,7 @@ function parseEnv(ic10, file) {
         const config = dotenv_1.default.config({ path: env }).parsed;
         Object.entries(config).forEach(([key, value]) => {
             if (key) {
-                let hash;
-                if (isNaN(parseInt(value))) {
-                    hash = (0, Utils_1.hashStr)(value);
-                }
-                else {
-                    hash = parseInt(value);
-                }
-                const d = new Device_1.DebugDevice(2, { Setting: 0, PrefabHash: hash });
-                ic10.memory.environ.set(key, d);
+                ic10.connectDevice(key, value, 2, {});
             }
         });
         return ic10;
