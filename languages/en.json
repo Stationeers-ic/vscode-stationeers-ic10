@@ -2446,6 +2446,19 @@
     "op5": null,
     "op6": null
   },
+  "sla": {
+    "type": "Function",
+    "description": {
+      "preview": "op1 := op2 <<$ op3",
+      "text": "Left arithmetic bitshift"
+    },
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
   "sle": {
     "type": "Function",
     "description": {
@@ -2481,6 +2494,19 @@
     "op1": "R/N",
     "op2": "R/N/C",
     "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "sll": {
+    "type": "Function",
+    "description": {
+      "preview": "op1 := op2 << op3",
+      "text": "Left bitshift"
+    },
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
     "op4": null,
     "op5": null,
     "op6": null
@@ -2598,6 +2624,32 @@
     "op1": "R/N",
     "op2": "R/N/C",
     "op3": null,
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "sra": {
+    "type": "Function",
+    "description": {
+      "preview": "op1 := op2 >>$ op3",
+      "text": "Right arithmetic bitshift"
+    },
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
+    "op4": null,
+    "op5": null,
+    "op6": null
+  },
+  "srl": {
+    "type": "Function",
+    "description": {
+      "preview": "op1 := op2 >> op3",
+      "text": "Right bitshift"
+    },
+    "op1": "R/N",
+    "op2": "R/N/C",
+    "op3": "R/N/C",
     "op4": null,
     "op5": null,
     "op6": null

@@ -1,3 +1,6 @@
 {
-  "debug.inlineValues": true
+  "debug.inlineValues": true,
+  "cSpell.words": [
+    "прилагаться"
+  ]
 }

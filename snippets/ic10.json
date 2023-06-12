@@ -2120,5 +2120,33 @@
       "sbs"
     ],
     "description": ""
+  },
+  "sla": {
+    "prefix": "sla",
+    "body": [
+      "sla"
+    ],
+    "description": "Left arithmetic bitshift"
+  },
+  "sll": {
+    "prefix": "sll",
+    "body": [
+      "sll"
+    ],
+    "description": "Left bitshift"
+  },
+  "sra": {
+    "prefix": "sra",
+    "body": [
+      "sra"
+    ],
+    "description": "Right arithmetic bitshift"
+  },
+  "srl": {
+    "prefix": "srl",
+    "body": [
+      "srl"
+    ],
+    "description": "Right bitshift"
   }
 }

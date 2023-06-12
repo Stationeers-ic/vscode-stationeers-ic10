@@ -157,7 +157,7 @@
       "patterns": [
         {
           "name": "entity.name.function.icX",
-          "match": "\\b(abs|acos|add|alias|and|asin|atan|atan2|bap|bapal|bapz|bapzal|bdns|bdnsal|bdse|bdseal|beq|beqal|beqz|beqzal|bge|bgeal|bgez|bgezal|bgt|bgtal|bgtz|bgtzal|ble|bleal|blez|blezal|blt|bltal|bltz|bltzal|bna|bnaal|bnan|bnaz|bnazal|bne|bneal|bnez|bnezal|brap|brapz|brdns|brdse|breq|breqz|brge|brgez|brgt|brgtz|brle|brlez|brlt|brltz|brna|brnan|brnaz|brne|brnez|ceil|cos|debug|define|div|exp|floor|hcf|j|jal|jr|l|lb|lbn|lbns|lbs|log|lr|ls|max|min|mod|move|mul|nor|or|peek|pop|push|rand|return|round|s|sap|sapz|sb|sbn|sbs|sdns|sdse|select|seq|seqz|sge|sgez|sgt|sgtz|sin|sle|sleep|slez|slt|sltz|sna|snan|snanz|snaz|sne|snez|sqrt|ss|stack|sub|tan|trunc|xor|yield)\\b"
+          "match": "\\b(abs|acos|add|alias|and|asin|atan|atan2|bap|bapal|bapz|bapzal|bdns|bdnsal|bdse|bdseal|beq|beqal|beqz|beqzal|bge|bgeal|bgez|bgezal|bgt|bgtal|bgtz|bgtzal|ble|bleal|blez|blezal|blt|bltal|bltz|bltzal|bna|bnaal|bnan|bnaz|bnazal|bne|bneal|bnez|bnezal|brap|brapz|brdns|brdse|breq|breqz|brge|brgez|brgt|brgtz|brle|brlez|brlt|brltz|brna|brnan|brnaz|brne|brnez|ceil|cos|debug|define|div|exp|floor|hcf|j|jal|jr|l|lb|lbn|lbns|lbs|log|lr|ls|max|min|mod|move|mul|nor|or|peek|pop|push|rand|return|round|s|sap|sapz|sb|sbn|sbs|sdns|sdse|select|seq|seqz|sge|sgez|sgt|sgtz|sin|sla|sle|sleep|slez|sll|slt|sltz|sna|snan|snanz|snaz|sne|snez|sqrt|sra|srl|ss|stack|sub|tan|trunc|xor|yield)\\b"
         },
         {
           "name": "entity.name.function.icX",
