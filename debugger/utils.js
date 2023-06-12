@@ -65,6 +65,11 @@ function parseToml(ic10, env) {
     const config = toml_1.default.parse(content);
     Object.entries(config).forEach(([key, value]) => {
         if (key) {
+            const fields = {};
+            for (const valueKey in value) {
+                fields[valueKey] = value[valueKey];
+            }
+            ic10.connectDevice(key, fields.PrefabHash, 2, fields);
         }
     });
     return ic10;

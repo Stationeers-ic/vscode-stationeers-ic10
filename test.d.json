@@ -1,11 +1,10 @@
 {
-  "value": [
-    {
-      "PrefabHash": 96222
-    },
-    {
-      "Setting": 5
-    }
-  ],
-  "hash": 1104745215
+  "d0": {
+    "PrefabHash": -463037670,
+    "Setting": 18
+  },
+  "d1": {
+    "PrefabHash": "StructureAdvancedPackagingMachine",
+    "Setting": 18
+  }
 }

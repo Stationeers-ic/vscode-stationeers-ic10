@@ -35,16 +35,17 @@ export function parseEnvironment(ic10: InterpreterIc10, file: string) {
 
 function parseToml(ic10: InterpreterIc10, env: string) {
     const content = fs.readFileSync(env, {encoding: 'utf-8'})
-    const config = toml.parse(content)
+    const config = toml.parse(content) as {
+        [key: `d${number}`]: { [key: string]: number }
+    }
+
     Object.entries(config).forEach(([key, value]) => {
         if (key) {
-            // const fields: { [key: string]: number } = {}
-            // value.map((item) => {
-            //     Object.entries(item).map(([k, v]) => {
-            //         fields[k] = v
-            //     })
-            // })
-            // ic10.connectDevice(key, fields.PrefabHash, 2, fields)
+            const fields: { [key: string]: number } = {}
+            for (const valueKey in value) {
+                fields[valueKey] = value[valueKey];
+            }
+            ic10.connectDevice(key, fields.PrefabHash, 2, fields)
         }
     })
     return ic10
