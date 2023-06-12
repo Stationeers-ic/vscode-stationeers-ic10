@@ -1,7 +1,7 @@
 import * as vscode from "vscode"
 import {DiagnosticsError, errorMsg, Ic10Diagnostics} from "./ic10.diagnostics"
 import {icX} from "icx-compiler"
-import {icSidebar, icxOptions, LANG_KEY2} from "./main"
+import {icSidebar, icxOptions, LANG_ICX} from "./main"
 import {Err, Errors} from "icx-compiler/src/err"
 import InterpreterIc10 from "ic10";
 
@@ -138,7 +138,7 @@ class IcXDiagnostics extends Ic10Diagnostics {
 	${errors}
 </fieldset>`
         }
-        icSidebar.section("icxStats", content, LANG_KEY2)
+        icSidebar.section("icxStats", content, LANG_ICX)
         let comments: any = test.use.has("comments")
         let aliases: any = test.use.has("aliases")
         let loop: any = test.use.has("loop")
@@ -190,7 +190,7 @@ class IcXDiagnostics extends Ic10Diagnostics {
 							 </ul>
 						</fieldset>
 					</form>
-				`, LANG_KEY2)
+				`, LANG_ICX)
     }
 
     parseLine(doc: vscode.TextDocument, lineIndex) {

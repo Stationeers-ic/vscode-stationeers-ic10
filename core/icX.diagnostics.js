@@ -149,7 +149,7 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
 	${errors}
 </fieldset>`;
         }
-        main_1.icSidebar.section("icxStats", content, main_1.LANG_KEY2);
+        main_1.icSidebar.section("icxStats", content, main_1.LANG_ICX);
         let comments = test.use.has("comments");
         let aliases = test.use.has("aliases");
         let loop = test.use.has("loop");
@@ -205,7 +205,7 @@ class IcXDiagnostics extends ic10_diagnostics_1.Ic10Diagnostics {
 							 </ul>
 						</fieldset>
 					</form>
-				`, main_1.LANG_KEY2);
+				`, main_1.LANG_ICX);
     }
     parseLine(doc, lineIndex) {
         const lineOfText = doc.lineAt(lineIndex);

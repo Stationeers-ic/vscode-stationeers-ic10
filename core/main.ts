@@ -19,8 +19,8 @@ import {Ic10Error} from "ic10/src/Ic10Error"
 const LOCALE_KEY: string = vscode.env.language
 const ic10_hover = new Ic10Vscode()
 const icX_hover = new IcXVscode()
-export const LANG_KEY = "ic10"
-export const LANG_KEY2 = "icX"
+export const lang_IC10 = "ic10"
+export const LANG_ICX = "icX"
 const interpreterIc10 = new InterpreterIc10(null)
 let interpreterIc10State = 0
 let leftCodeLength: vscode.StatusBarItem
@@ -64,8 +64,8 @@ export function activate(ctx: vscode.ExtensionContext) {
 function icxStart() {
     onChangeCallbacks.SaveTextDocument.push(() => {
         // console.log('onSaveTextDocument')
-        if (vscode.window.activeTextEditor.document.languageId == LANG_KEY2) {
-            vscode.commands.executeCommand(LANG_KEY2 + ".compile")
+        if (vscode.window.activeTextEditor.document.languageId == LANG_ICX) {
+            vscode.commands.executeCommand(LANG_ICX + ".compile")
         }
     })
 }
@@ -73,14 +73,14 @@ function icxStart() {
 function hover(ctx: vscode.ExtensionContext) {
     // console.time('hover')
     try {
-        ctx.subscriptions.push(vscode.languages.registerHoverProvider(LANG_KEY, {
+        ctx.subscriptions.push(vscode.languages.registerHoverProvider(lang_IC10, {
             provideHover(document, position) {
                 const word = document.getWordRangeAtPosition(position)
                 const text = document.getText(word)
                 return new Hover(ic10_hover.getHover(text))
             }
         }))
-        ctx.subscriptions.push(vscode.languages.registerHoverProvider(LANG_KEY2, {
+        ctx.subscriptions.push(vscode.languages.registerHoverProvider(LANG_ICX, {
             provideHover(document, position) {
                 const word = document.getWordRangeAtPosition(position)
                 const text = document.getText(word)
@@ -110,7 +110,7 @@ function formatter(ctx: vscode.ExtensionContext) {
 
         try {
 
-            vscode.languages.registerDocumentFormattingEditProvider(LANG_KEY, {
+            vscode.languages.registerDocumentFormattingEditProvider(lang_IC10, {
                 provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
                     try {
                         const formatter = new ic10Formatter(document)
@@ -124,7 +124,7 @@ function formatter(ctx: vscode.ExtensionContext) {
             // console.error(e)
         }
         try {
-            vscode.languages.registerDocumentFormattingEditProvider(LANG_KEY2, {
+            vscode.languages.registerDocumentFormattingEditProvider(LANG_ICX, {
                 provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
                     try {
                         const formatter = new icXFormatter(document, icxOptions)
@@ -146,7 +146,7 @@ function formatter(ctx: vscode.ExtensionContext) {
 function command(ctx: vscode.ExtensionContext) {
     // console.time('command')
     try {
-        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + ".run", () => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(lang_IC10 + ".run", () => {
             if (!interpreterIc10State) {
                 vscode.window.showInformationMessage("Running")
                 const code = vscode.window.activeTextEditor.document.getText()
@@ -173,13 +173,13 @@ function command(ctx: vscode.ExtensionContext) {
                 interpreterIc10.setSettings(settings).init(code).run()
             }
         }))
-        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + ".stop", () => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(lang_IC10 + ".stop", () => {
             if (interpreterIc10State) {
                 vscode.window.showInformationMessage("Stop")
                 interpreterIc10.stop()
             }
         }))
-        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + ".debug.variables.write", (variable) => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(lang_IC10 + ".debug.variables.write", (variable) => {
             const ds = vscode.debug.activeDebugSession
             const input = vscode.window.createInputBox()
             input.title = "set " + variable.variable.name
@@ -189,7 +189,7 @@ function command(ctx: vscode.ExtensionContext) {
                 input.hide()
             })
         }))
-        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + ".debug.device.write", (variable) => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(lang_IC10 + ".debug.device.write", (variable) => {
             const ds = vscode.debug.activeDebugSession
             const input = vscode.window.createInputBox()
             input.title = "set " + variable.variable.name
@@ -199,7 +199,7 @@ function command(ctx: vscode.ExtensionContext) {
                 input.hide()
             })
         }))
-        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + ".debug.device.slot.write", (variable) => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(lang_IC10 + ".debug.device.slot.write", (variable) => {
             const ds = vscode.debug.activeDebugSession
             const input = vscode.window.createInputBox()
             input.title = "set " + variable.variable.name
@@ -209,7 +209,7 @@ function command(ctx: vscode.ExtensionContext) {
                 input.hide()
             })
         }))
-        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + ".debug.stack.push", (variable) => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(lang_IC10 + ".debug.stack.push", (variable) => {
             const ds = vscode.debug.activeDebugSession
             const input = vscode.window.createInputBox()
             input.title = "set " + variable.variable.name
@@ -219,7 +219,7 @@ function command(ctx: vscode.ExtensionContext) {
                 input.hide()
             })
         }))
-        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY + ".debug.remove.push", (variable) => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(lang_IC10 + ".debug.remove.push", (variable) => {
             const ds = vscode.debug.activeDebugSession
             const input = vscode.window.createInputBox()
             input.title = "set " + variable.variable.name
@@ -229,12 +229,10 @@ function command(ctx: vscode.ExtensionContext) {
                 input.hide()
             })
         }))
-        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY2 + ".compile", () => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_ICX + ".compile", () => {
             try {
                 const code = vscode.window.activeTextEditor.document.getText()
-                const title = path.basename(vscode.window.activeTextEditor.document.fileName).split(".")[0]
                 // @ts-ignore
-                const dir = path.dirname(vscode.window.activeTextEditor.document.uri._formatted)
                 console.log(icxOptions)
                 const icx = new icX(code, icxOptions)
                 const compiled = icx.getCompiled()
@@ -242,7 +240,7 @@ function command(ctx: vscode.ExtensionContext) {
                 if (compiled) {
                     // console.log(compiled)
                     const content = Buffer.from(compiled)
-                    const file = dir + "/" + title + ".ic10"
+                    const file = vscode.window.activeTextEditor.document.uri + ".ic10"
                     vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content)// console.log('file', file)
                 }
             } catch (e) {
@@ -254,7 +252,30 @@ function command(ctx: vscode.ExtensionContext) {
                 console.error(e)
             }
         }))
-        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_KEY2 + ".open.wiki", () => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_ICX + ".compile", () => {
+            try {
+                const code = vscode.window.activeTextEditor.document.getText()
+                // @ts-ignore
+                console.log(icxOptions)
+                const icx = new icX(code, icxOptions)
+                const compiled = icx.getCompiled()
+                console.log(compiled)
+                if (compiled) {
+                    // console.log(compiled)
+                    const content = Buffer.from(compiled)
+                    const file = vscode.window.activeTextEditor.document.uri + ".ic10"
+                    vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content)// console.log('file', file)
+                }
+            } catch (e) {
+                if (e instanceof Errors || e instanceof Err) {
+                    vscode.window.showInformationMessage("compiling error: " + e.getUserMessage())
+                } else {
+                    vscode.window.showInformationMessage("compiling error", JSON.stringify(e))
+                }
+                console.error(e)
+            }
+        }))
+        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_ICX + ".open.wiki", () => {
             const panel = vscode.window.createWebviewPanel(
                 "icX.wiki", // Identifies the type of the webview. Used internally
                 `wiki`, // Title of the panel displayed to the user
@@ -302,13 +323,13 @@ function semantic(ctx: vscode.ExtensionContext) {
     // console.time('semantic')
     try {
         ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider(
-                {language: LANG_KEY, scheme: "file"},
+                {language: lang_IC10, scheme: "file"},
                 new IcxSemanticTokensProvider,
                 legend
             )
         )
         ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider(
-                {language: LANG_KEY2, scheme: "file"},
+                {language: LANG_ICX, scheme: "file"},
                 new IcxSemanticTokensProvider,
                 legend
             )
@@ -380,7 +401,7 @@ function statusBar(ctx: vscode.ExtensionContext) {
 }
 
 function ChangeActiveTextEditor(editor): void {
-    if (vscode.window.activeTextEditor.document.languageId == LANG_KEY || vscode.window.activeTextEditor.document.languageId == LANG_KEY2) {
+    if (vscode.window.activeTextEditor.document.languageId == lang_IC10 || vscode.window.activeTextEditor.document.languageId == LANG_ICX) {
         onChangeCallbacks.ChangeActiveTextEditor.forEach((e) => {
             e.call(null, editor)
         })
@@ -388,7 +409,7 @@ function ChangeActiveTextEditor(editor): void {
 }
 
 function ChangeTextEditorSelection(editor): void {
-    if (vscode.window.activeTextEditor.document.languageId == LANG_KEY || vscode.window.activeTextEditor.document.languageId == LANG_KEY2) {
+    if (vscode.window.activeTextEditor.document.languageId == lang_IC10 || vscode.window.activeTextEditor.document.languageId == LANG_ICX) {
 
         onChangeCallbacks.ChangeTextEditorSelection.forEach((e) => {
             e.call(null, editor)
@@ -397,7 +418,7 @@ function ChangeTextEditorSelection(editor): void {
 }
 
 function SaveTextDocument(): void {
-    if (vscode.window.activeTextEditor.document.languageId == LANG_KEY || vscode.window.activeTextEditor.document.languageId == LANG_KEY2) {
+    if (vscode.window.activeTextEditor.document.languageId == lang_IC10 || vscode.window.activeTextEditor.document.languageId == LANG_ICX) {
         onChangeCallbacks.SaveTextDocument.forEach((e) => {
             e.call(null)
         })
@@ -412,7 +433,7 @@ function onChange(ctx) {
 
 function getNumberLeftLines(): Array<any> | false {
     const text = vscode.window.activeTextEditor.document.getText()
-    if (vscode.window.activeTextEditor.document.languageId == LANG_KEY) {
+    if (vscode.window.activeTextEditor.document.languageId == lang_IC10) {
         let left = 128
         const a = " ▁▃▅▉"
         if (text) {
@@ -435,13 +456,13 @@ function diagnostic(context) {
         context.subscriptions.push(icXDiagnosticsCollection)
 
         onChangeCallbacks.ChangeTextEditorSelection.push(() => {
-            if (vscode.window.activeTextEditor.document.languageId == LANG_KEY) {
+            if (vscode.window.activeTextEditor.document.languageId == lang_IC10) {
                 ic10Diagnostics.run(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection)
                 icXDiagnostics.clear(vscode.window.activeTextEditor.document, icXDiagnosticsCollection)
             } else {
                 ic10Diagnostics.clear(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection)
             }
-            if (vscode.window.activeTextEditor.document.languageId == LANG_KEY2) {
+            if (vscode.window.activeTextEditor.document.languageId == LANG_ICX) {
                 icXDiagnostics.run(vscode.window.activeTextEditor.document, icXDiagnosticsCollection)
                 ic10Diagnostics.clear(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection)
             } else {
@@ -449,13 +470,13 @@ function diagnostic(context) {
             }
         })
         onChangeCallbacks.ChangeActiveTextEditor.push(() => {
-            if (vscode.window.activeTextEditor.document.languageId == LANG_KEY2) {
+            if (vscode.window.activeTextEditor.document.languageId == LANG_ICX) {
                 icXDiagnostics.run(vscode.window.activeTextEditor.document, icXDiagnosticsCollection)
                 ic10Diagnostics.clear(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection)
             } else {
                 icXDiagnostics.clear(vscode.window.activeTextEditor.document, icXDiagnosticsCollection)
             }
-            if (vscode.window.activeTextEditor.document.languageId == LANG_KEY) {
+            if (vscode.window.activeTextEditor.document.languageId == lang_IC10) {
                 ic10Diagnostics.run(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection)
                 icXDiagnostics.clear(vscode.window.activeTextEditor.document, icXDiagnosticsCollection)
             } else {
@@ -496,7 +517,7 @@ function renderIcX() {
 							 </ul>
 						</fieldset>
 					</form>
-				`, LANG_KEY2)
+				`, LANG_ICX)
 
     icSidebar.events.icxComments = (data) => {
         icxOptions.comments = Boolean(data.value)
@@ -522,7 +543,7 @@ function renderIc10() {
 					<div id="leftLineCounter" class="progress" data-percent="${p}" data-value="${b}"  data-max="128" data-min="0">
 					  <div></div>
 					</div>
-					`, LANG_KEY, -10)
+					`, lang_IC10, -10)
     } else {
         icSidebar.section("leftLineCounter", ``, -10)
     }
