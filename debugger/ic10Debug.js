@@ -33,6 +33,7 @@ const ConstantCell_1 = require("ic10/src/ConstantCell");
 const Slot_1 = require("ic10/src/Slot");
 const types_1 = require("../../ic10/src/types");
 const fs = __importStar(require("fs"));
+const utils_1 = require("./utils");
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -163,6 +164,7 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
     }
     async launchRequest(response, args) {
         vscode_debugadapter_1.logger.setup(args.trace ? vscode_debugadapter_1.Logger.LogLevel.Verbose : vscode_debugadapter_1.Logger.LogLevel.Stop, false);
+        (0, utils_1.parseEnv)(this.ic10, args.program);
         await this._runtime.start(args.program, !!args.stopOnEntry, !!args.noDebug);
         this.sendResponse(response);
     }
@@ -588,6 +590,7 @@ class VariableMap {
                 Object.entries(device.properties).forEach(([name, value]) => {
                     this.var2variable(name, value, id);
                 });
+                fs.writeFileSync("C:\\projects\\vscode-stationeers-ic10\\test.d.json", JSON.stringify(device));
                 this.var2variable('Slots', device.slots, id);
                 for (let i = 0; i < 7; i++) {
                     const channel = device.getChannel(i);

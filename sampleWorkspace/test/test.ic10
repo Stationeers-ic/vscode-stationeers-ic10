@@ -1,0 +1,15 @@
+define pia 3.14
+alias test d0
+alias test2 r0
+alias test3 r1
+move test3 5
+s test Setting 5
+push 1
+push 2
+push 3
+push 4
+push 5
+push 6
+push 7
+push 8
+push 9

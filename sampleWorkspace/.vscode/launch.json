@@ -5,7 +5,7 @@
       "type": "ic10",
       "request": "launch",
       "name": "Debug ic10",
-      "program": "${fileWorkspaceFolder}${pathSeparator}${fileBasenameNoExtension}.ic10",
+      "program": "${file}",
       "stopOnEntry": true,
       "trace": false
     }

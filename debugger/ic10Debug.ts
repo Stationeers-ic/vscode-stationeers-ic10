@@ -35,6 +35,7 @@ import {isDevice, isDeviceOutput, isIcHousing, isSlot} from "../../ic10/src/type
 import * as fs from "fs";
 import {DeviceOutput} from "ic10/src/DeviceOutput";
 import {Device} from "../../ic10/src/devices/Device";
+import {parseEnv} from "./utils";
 
 function timeout(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms))
@@ -242,9 +243,8 @@ export class ic10DebugSession extends LoggingDebugSession {
 
         // make sure to 'Stop' the buffered logging if 'trace' is not set
         logger.setup(args.trace ? Logger.LogLevel.Verbose : Logger.LogLevel.Stop, false)
+        parseEnv(this.ic10,args.program)
 
-        // wait until configuration has finished (and configurationDoneRequest has been called)
-        // start the program in the runtime
         await this._runtime.start(args.program, !!args.stopOnEntry, !!args.noDebug)
 
         this.sendResponse(response)
@@ -736,6 +736,8 @@ export class VariableMap {
                 Object.entries(device.properties).forEach(([name, value]) => {
                     this.var2variable(name, value, id)
                 })
+                fs.writeFileSync("C:\\projects\\vscode-stationeers-ic10\\test.d.json", JSON.stringify(device))
+
                 this.var2variable('Slots', device.slots, id)
                 for (let i = 0; i < 7; i++) {
                     const channel: DeviceOutput = device.getChannel(i)

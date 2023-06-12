@@ -1,3 +1,0 @@
-define TEST 1
-alias REG r0
-move TEST REG

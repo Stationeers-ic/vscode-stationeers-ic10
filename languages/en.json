@@ -69,6 +69,13 @@
       "text": "0 - slot free, 1 - occupied"
     }
   },
+  "Quantity": {
+    "type": "Slot parameter",
+    "description": {
+      "preview": "float",
+      "text": "Quantity of the iten in the slot"
+    }
+  },
   "Seeding": {
     "type": "Slot parameter",
     "description": {
@@ -207,6 +214,13 @@
     "description": {
       "preview": "Bool",
       "text": "Switches the filtration of the spent mixture in a durable suit."
+    }
+  },
+  "Flush": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "",
+      "text": ""
     }
   },
   "ForceWrite": {
@@ -500,13 +514,6 @@
       "text": "Pressure in the cylinder with the spent mixture of the suit installed in the rack, kPa."
     }
   },
-  "Quantity": {
-    "type": "Device parameter",
-    "description": {
-      "preview": "",
-      "text": ""
-    }
-  },
   "Ratio": {
     "type": "Device parameter",
     "description": {
@@ -724,6 +731,13 @@
       "text": "hash of the selected recipe"
     }
   },
+  "RequestHash": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "float",
+      "text": "hash of requested item"
+    }
+  },
   "RequiredPower": {
     "type": "Device parameter",
     "description": {
@@ -750,6 +764,13 @@
     "description": {
       "preview": "Any",
       "text": "The current value of some hardware parameter. The type and possible values ​​depend on the hardware."
+    }
+  },
+  "SettingOutput": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "float",
+      "text": "Secondary setting"
     }
   },
   "SignalID": {
@@ -2277,6 +2298,19 @@
     },
     "op1": "R/N/C/H",
     "op2": "R/N/C/H",
+    "op3": "P",
+    "op4": "R/N/C",
+    "op5": null,
+    "op6": null
+  },
+  "sbs": {
+    "type": "Function",
+    "description": {
+      "preview": "",
+      "text": ""
+    },
+    "op1": "R/N/H",
+    "op2": "R/N/S",
     "op3": "P",
     "op4": "R/N/C",
     "op5": null,

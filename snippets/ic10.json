@@ -1364,7 +1364,7 @@
     "body": [
       "Quantity"
     ],
-    "description": ""
+    "description": "Quantity of the iten in the slot"
   },
   "Temperature": {
     "prefix": "Temperature",
@@ -1458,7 +1458,8 @@
     "prefix": "SettingOutput",
     "body": [
       "SettingOutput"
-    ]
+    ],
+    "description": "Secondary setting"
   },
   "SignalID": {
     "prefix": "SignalID",
@@ -1505,7 +1506,8 @@
     "prefix": "RequestHash",
     "body": [
       "RequestHash"
-    ]
+    ],
+    "description": "hash of requested item"
   },
   "VerticalRatio": {
     "prefix": "VerticalRatio",
@@ -2102,6 +2104,20 @@
     "prefix": "SoundAlert",
     "body": [
       "SoundAlert"
+    ],
+    "description": ""
+  },
+  "Flush": {
+    "prefix": "Flush",
+    "body": [
+      "Flush"
+    ],
+    "description": ""
+  },
+  "sbs": {
+    "prefix": "sbs",
+    "body": [
+      "sbs"
     ],
     "description": ""
   }
