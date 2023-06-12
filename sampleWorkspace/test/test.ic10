@@ -3,6 +3,7 @@ alias device d0
 alias val r1
 move val 100
 s device Setting val
+l r0 device Setting
 push 1
 push 2
 push 3

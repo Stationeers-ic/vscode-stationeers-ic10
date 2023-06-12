@@ -29,6 +29,7 @@ class ic10Runtime extends events_1.EventEmitter {
         await this.loadSource(program);
         this._currentLine = -1;
         await this.verifyBreakpoints(this._sourceFile);
+        (0, utils_1.parseEnv)(this.ic10, this._sourceFile);
         if (stopOnEntry) {
             this.step(false, "stopOnEntry");
         }
@@ -174,7 +175,6 @@ class ic10Runtime extends events_1.EventEmitter {
         }
     }
     run(reverse = false, stepEvent) {
-        (0, utils_1.parseEnv)(this.ic10, this._sourceFile);
         if (!reverse) {
             const ln = this.ic10.position;
             let why;
@@ -191,6 +191,7 @@ class ic10Runtime extends events_1.EventEmitter {
                 }
                 if (this.ic10?.output?.error && this.ic10.ignoreLine.indexOf(ln) < 0) {
                     this.sendEvent("output", this.ic10.output.error, this._sourceFile, ln - 1);
+                    this.sendEvent("output", `TEST ${JSON.stringify(this.ic10.memory.aliases, null, 2)}`, this._sourceFile, ln - 1);
                     this.ic10.output.error = "";
                 }
                 if (this.fireEventsForLine(ln, stepEvent)) {

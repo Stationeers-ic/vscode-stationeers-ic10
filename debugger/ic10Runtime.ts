@@ -79,7 +79,7 @@ export class ic10Runtime extends EventEmitter {
         this._currentLine = -1
 
         await this.verifyBreakpoints(this._sourceFile)
-
+        parseEnv(this.ic10, this._sourceFile)
         if (stopOnEntry) {
             // we step once
             this.step(false, "stopOnEntry")
@@ -293,7 +293,6 @@ export class ic10Runtime extends EventEmitter {
      * If stepEvent is specified only run a single step and emit the stepEvent.
      */
     private run(reverse = false, stepEvent?: string) {
-        parseEnv(this.ic10, this._sourceFile)
         if (!reverse) {
             const ln = this.ic10.position
             let why
@@ -310,7 +309,7 @@ export class ic10Runtime extends EventEmitter {
                     }
                     if (this.ic10?.output?.error && this.ic10.ignoreLine.indexOf(ln) < 0) {
                         this.sendEvent("output", this.ic10.output.error, this._sourceFile, ln - 1)
-                        // this.sendEvent("output", `TEST ${JSON.stringify(0,null,2)}`, this._sourceFile, ln - 1)
+                        this.sendEvent("output", `TEST ${JSON.stringify(this.ic10.memory.aliases,null,2)}`, this._sourceFile, ln - 1)
                         this.ic10.output.error = ""
                     }
                     if (this.fireEventsForLine(ln, stepEvent)) {
