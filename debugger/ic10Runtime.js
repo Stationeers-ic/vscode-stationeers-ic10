@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ic10Runtime = void 0;
 const events_1 = require("events");
+const utils_1 = require("./utils");
 class ic10Runtime extends events_1.EventEmitter {
     _fileAccessor;
     _sourceLines = [];
@@ -173,6 +174,7 @@ class ic10Runtime extends events_1.EventEmitter {
         }
     }
     run(reverse = false, stepEvent) {
+        (0, utils_1.parseEnv)(this.ic10, this._sourceFile);
         if (!reverse) {
             const ln = this.ic10.position;
             let why;
@@ -180,6 +182,7 @@ class ic10Runtime extends events_1.EventEmitter {
             do {
                 why = this.ic10.prepareLine(ln, true);
                 if (this.ic10?.output?.debug && this.ic10.ignoreLine.indexOf(ln) < 0) {
+                    this.sendEvent('output', '[debug]: ' + this.ic10.output.debug, this._sourceFile, ln - 1);
                     this.ic10.output.debug = "";
                 }
                 if (this.ic10?.output?.log) {

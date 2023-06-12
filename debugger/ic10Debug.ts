@@ -726,8 +726,6 @@ export class VariableMap {
             const stack: MemoryStack = this.ic10.memory.stack
             if (stack instanceof MemoryStack) {
                 this.var2variable("Stack", stack, id)
-
-                fs.writeFileSync("C:\\projects\\vscode-stationeers-ic10\\test.d.json", JSON.stringify(this.map['Stack']))
             }
         }
         if (["d0", "d1", "d2", "d3", "d4", "d5",].includes(id)) {
@@ -736,8 +734,6 @@ export class VariableMap {
                 Object.entries(device.properties).forEach(([name, value]) => {
                     this.var2variable(name, value, id)
                 })
-                fs.writeFileSync("C:\\projects\\vscode-stationeers-ic10\\test.d.json", JSON.stringify(device))
-
                 this.var2variable('Slots', device.slots, id)
                 for (let i = 0; i < 7; i++) {
                     const channel: DeviceOutput = device.getChannel(i)
