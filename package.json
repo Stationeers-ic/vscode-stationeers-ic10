@@ -300,7 +300,7 @@
     }
   },
   "dependencies": {
-    "ic10": "^3.2.1",
+    "ic10": "file:../ic10",
     "icx-compiler": "^2.1.6",
     "vscode-debugadapter": "1.51.0",
     "vscode-debugprotocol": "1.51.0"

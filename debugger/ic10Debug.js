@@ -54,7 +54,7 @@ class ic10DebugSession extends vscode_debugadapter_1.LoggingDebugSession {
         this.variableMap = new VariableMap(this, this.ic10);
         this.ic10.setSettings({
             executionCallback: function (e) {
-                this.output.error = `(${e.code}) - ${e.message}:`;
+                this.output.error = `${e.message}:`;
                 if (e.obj) {
                     this.output.error += JSON.stringify(e.obj);
                 }

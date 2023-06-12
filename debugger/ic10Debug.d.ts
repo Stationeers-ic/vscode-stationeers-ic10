@@ -4,9 +4,9 @@ import { FileAccessor } from "./ic10Runtime";
 import { InterpreterIc10 } from "ic10";
 import { MemoryStack } from "ic10/src/MemoryStack";
 import { Slot } from "ic10/src/Slot";
-import { Device } from "../../ic10/src/Device";
 import { IcHousing } from "../../ic10/src/devices/IcHousing";
 import { DeviceOutput } from "ic10/src/DeviceOutput";
+import { Device } from "../../ic10/src/devices/Device";
 interface ILaunchRequestArguments extends DebugProtocol.LaunchRequestArguments {
     program: string;
     stopOnEntry?: boolean;

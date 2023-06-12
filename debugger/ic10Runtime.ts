@@ -4,7 +4,6 @@
 
 import {EventEmitter} from "events"
 import {InterpreterIc10} from "ic10"
-import * as fs from "fs";
 
 export interface FileAccessor {
     readFile(path: string): Promise<string>;

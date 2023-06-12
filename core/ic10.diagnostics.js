@@ -124,7 +124,7 @@ class Ic10Diagnostics {
                                 start = 0;
                             }
                         }
-                        this.errors.push(new DiagnosticsError(e.getMessage(), e.lvl, start, len, lineIndex));
+                        this.errors.push(new DiagnosticsError(e.message, e.lvl, start, len, lineIndex));
                     }
                 };
                 interpreterIc10.prepareLine(lineIndex, true);

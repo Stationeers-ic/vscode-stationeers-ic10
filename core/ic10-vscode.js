@@ -91,7 +91,7 @@ ${description}
     htmlLog(e = null) {
         const html = [];
         if (e instanceof Ic10Error_1.Ic10Error) {
-            const string = `[${this.var2str(e.functionName, 1)}:${this.var2str(e.line, 1)}] (${this.var2str(e.code, 1)}) - ${this.var2str(e.message, 1)}:`;
+            const string = `[${this.var2str(e.message, 1)}:${this.var2str(e.line, 1)}] (${this.var2str(e.lvl, 1)}) - ${this.var2str(e.message, 1)}:`;
             html.push(string);
         }
         else {

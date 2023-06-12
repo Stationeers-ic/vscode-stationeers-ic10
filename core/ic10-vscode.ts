@@ -30,7 +30,7 @@ export class Ic10Vscode {
     public getHover(name = "") {
         if (this.langPath.hasOwnProperty(name)) {
             let data = this.langPath[name]
-            if(Array.isArray(data)){
+            if (Array.isArray(data)) {
                 data = data[0]
             }
             const type = data?.type
@@ -94,7 +94,7 @@ ${description}
     public htmlLog(e = null) {
         const html = []
         if (e instanceof Ic10Error) {
-            const string = `[${this.var2str(e.functionName, 1)}:${this.var2str(e.line, 1)}] (${this.var2str(e.code, 1)}) - ${this.var2str(e.message, 1)}:`
+            const string = `[${this.var2str(e.message, 1)}:${this.var2str(e.line, 1)}] (${this.var2str(e.lvl, 1)}) - ${this.var2str(e.message, 1)}:`
             html.push(string)
         } else {
             for (const argumentsKey in arguments) {

@@ -15,7 +15,7 @@ gulp.task("generate-langs", async function () {
     const snippets = JSON.parse(fs.readFileSync(`..\\snippets\\ic10.json`))
     for (const languageKey in IC10Data.Languages["en"]) {
         let data = IC10Data.Languages["en"][languageKey]
-        if(Array.isArray(data)){
+        if (Array.isArray(data)) {
             data = data[0]
         }
         if (data.type === "Function") {

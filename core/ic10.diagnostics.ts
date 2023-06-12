@@ -1,7 +1,6 @@
 import * as vscode from "vscode"
 import {Ic10DiagnosticError} from "ic10/src/Ic10Error";
 import InterpreterIc10 from "ic10";
-import {patterns} from "ic10/src/Utils";
 
 export const Ic10DiagnosticsName = "ic10_diagnostic"
 const manual: {
@@ -113,7 +112,7 @@ export class Ic10Diagnostics {
                                 start = 0
                             }
                         }
-                        this.errors.push(new DiagnosticsError(e.getMessage(), e.lvl, start, len, lineIndex))
+                        this.errors.push(new DiagnosticsError(e.message, e.lvl, start, len, lineIndex))
                     }
                 }
                 interpreterIc10.prepareLine(lineIndex, true)

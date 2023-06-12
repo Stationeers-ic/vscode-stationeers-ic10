@@ -30,11 +30,11 @@ import {MemoryStack} from "ic10/src/MemoryStack"
 import {ConstantCell} from "ic10/src/ConstantCell"
 import {Slot} from "ic10/src/Slot"
 import {RegisterCell} from "ic10/src/RegisterCell"
-import {Device} from "../../ic10/src/Device";
 import {IcHousing} from "../../ic10/src/devices/IcHousing";
 import {isDevice, isDeviceOutput, isIcHousing, isSlot} from "../../ic10/src/types";
 import * as fs from "fs";
 import {DeviceOutput} from "ic10/src/DeviceOutput";
+import {Device} from "../../ic10/src/devices/Device";
 
 function timeout(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms))
@@ -84,7 +84,7 @@ export class ic10DebugSession extends LoggingDebugSession {
         this.ic10.setSettings({
             executionCallback: function (e: Ic10Error) {
                 // this.output.error = `[${e.functionName}:${e.line}] (${e.code}) - ${e.message}:`
-                this.output.error = `(${e.code}) - ${e.message}:`
+                this.output.error = `${e.message}:`
                 if (e.obj) {
                     this.output.error += JSON.stringify(e.obj)
                 }
@@ -738,7 +738,7 @@ export class VariableMap {
                 })
                 this.var2variable('Slots', device.slots, id)
                 for (let i = 0; i < 7; i++) {
-                    const channel:DeviceOutput = device.getChannel(i)
+                    const channel: DeviceOutput = device.getChannel(i)
                     this.var2variable(`Output ${i}`, channel, id)
                 }
             } catch (e) {
