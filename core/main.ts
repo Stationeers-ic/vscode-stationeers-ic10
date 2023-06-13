@@ -14,6 +14,7 @@ import {Err, Errors} from "icx-compiler/src/err"
 import {IcXVscode} from "./icX-vscode"
 import InterpreterIc10 from "ic10"
 import {Ic10Error} from "ic10/src/Ic10Error"
+import {parseEnvironment} from "../debugger/utils";
 
 
 const LOCALE_KEY: string = vscode.env.language
@@ -170,7 +171,9 @@ function command(ctx: vscode.ExtensionContext) {
                         panel.webview.html += ic10_hover.htmlLog(...arguments) + "<br>"
                     },
                 }
-                interpreterIc10.setSettings(settings).init(code).run()
+                const ic10 = interpreterIc10.setSettings(settings).init(code)
+                parseEnvironment(ic10,vscode.window.activeTextEditor.document.uri.fsPath)
+                ic10.run().then();
             }
         }))
         ctx.subscriptions.push(vscode.commands.registerCommand(lang_IC10 + ".stop", () => {

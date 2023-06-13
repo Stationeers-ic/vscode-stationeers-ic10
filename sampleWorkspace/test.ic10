@@ -1,9 +1,7 @@
-define pia 3.14
-alias device d0
-alias val r1
-move val 100
-s device Volume val
-l r0 device Setting
+alias rV2_gamma r11  
+define dhDish -2138748650
+lb r2 dhDish Horizontal 0
+mul r2 r0 deg2rad
 push 1
 push 2
 push 3

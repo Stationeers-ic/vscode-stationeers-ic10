@@ -41,6 +41,7 @@ const icX_formatter_1 = require("./icX.formatter");
 const err_1 = require("icx-compiler/src/err");
 const icX_vscode_1 = require("./icX-vscode");
 const ic10_1 = __importDefault(require("ic10"));
+const utils_1 = require("../debugger/utils");
 const LOCALE_KEY = vscode.env.language;
 const ic10_hover = new ic10_vscode_1.Ic10Vscode();
 const icX_hover = new icX_vscode_1.IcXVscode();
@@ -161,7 +162,9 @@ function command(ctx) {
                         panel.webview.html += ic10_hover.htmlLog(...arguments) + "<br>";
                     },
                 };
-                interpreterIc10.setSettings(settings).init(code).run();
+                const ic10 = interpreterIc10.setSettings(settings).init(code);
+                (0, utils_1.parseEnvironment)(ic10, vscode.window.activeTextEditor.document.uri.fsPath);
+                ic10.run().then();
             }
         }));
         ctx.subscriptions.push(vscode.commands.registerCommand(exports.lang_IC10 + ".stop", () => {

@@ -30,6 +30,7 @@ exports.ic10Diagnostics = exports.Ic10Diagnostics = exports.DiagnosticsErrors = 
 const vscode = __importStar(require("vscode"));
 const Ic10Error_1 = require("ic10/src/Ic10Error");
 const ic10_1 = __importDefault(require("ic10"));
+const utils_1 = require("../debugger/utils");
 exports.Ic10DiagnosticsName = "ic10_diagnostic";
 const manual = require("../languages/en.json");
 const functions = require("../media/ic10.functions.json");
@@ -108,6 +109,7 @@ class Ic10Diagnostics {
             }
         }
         const interpreterIc10 = new ic10_1.default(doc.getText());
+        (0, utils_1.parseEnvironment)(interpreterIc10, doc.uri.fsPath);
         for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
             try {
                 interpreterIc10.settings.executionCallback = (e) => {

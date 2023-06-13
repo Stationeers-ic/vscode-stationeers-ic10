@@ -1,6 +1,7 @@
 import * as vscode from "vscode"
 import {Ic10DiagnosticError} from "ic10/src/Ic10Error";
 import InterpreterIc10 from "ic10";
+import {parseEnvironment} from "../debugger/utils";
 
 export const Ic10DiagnosticsName = "ic10_diagnostic"
 const manual: {
@@ -9,6 +10,8 @@ const manual: {
     "op2": string | null,
     "op3": string | null,
     "op4": string | null,
+    "op5": string | null,
+    "op6": string | null,
     "description": {
         "preview": string | null,
         "text": string | null
@@ -96,6 +99,7 @@ export class Ic10Diagnostics {
             }
         }
         const interpreterIc10 = new InterpreterIc10(doc.getText());
+        parseEnvironment(interpreterIc10,doc.uri.fsPath)
         for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
             try {
                 interpreterIc10.settings.executionCallback = (e) => {
