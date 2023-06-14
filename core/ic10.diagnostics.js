@@ -31,6 +31,7 @@ const vscode = __importStar(require("vscode"));
 const Ic10Error_1 = require("ic10/src/Ic10Error");
 const ic10_1 = __importDefault(require("ic10"));
 const utils_1 = require("../debugger/utils");
+const icTypes_1 = require("../../ic10/src/icTypes");
 exports.Ic10DiagnosticsName = "ic10_diagnostic";
 const manual = require("../languages/en.json");
 const functions = require("../media/ic10.functions.json");
@@ -301,7 +302,7 @@ class Ic10Diagnostics {
                 case "C":
                 case "A":
                 case "O":
-                    if (isNaN(parseFloat(value)) && this.aliases.indexOf(value) < 0) {
+                    if (!(0, icTypes_1.isConst)(value) && isNaN(parseFloat(value)) && this.aliases.indexOf(value) < 0) {
                         errors++;
                     }
                     break;

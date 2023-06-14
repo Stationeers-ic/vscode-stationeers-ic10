@@ -1,4 +1,4 @@
-alias rV2_gamma r11  
+move r5 deg2rad
 define dhDish -2138748650
 lb r2 dhDish Horizontal 0
 mul r2 r0 deg2rad
@@ -6,8 +6,3 @@ push 1
 push 2
 push 3
 push 4
-push 5
-push 6
-push 7
-push 8
-push 9

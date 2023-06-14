@@ -1,8 +1,12 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ic10Runtime = void 0;
 const events_1 = require("events");
 const utils_1 = require("./utils");
+const path_1 = __importDefault(require("path"));
 class ic10Runtime extends events_1.EventEmitter {
     _fileAccessor;
     _sourceLines = [];
@@ -164,6 +168,9 @@ class ic10Runtime extends events_1.EventEmitter {
     }
     async loadSource(file) {
         if (this._sourceFile !== file) {
+            if (path_1.default.extname(file).toLowerCase() === '.icx') {
+                file += ".ic10";
+            }
             this._sourceFile = file;
             const contents = await this._fileAccessor.readFile(file);
             try {

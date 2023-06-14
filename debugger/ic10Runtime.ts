@@ -5,6 +5,7 @@
 import {EventEmitter} from "events"
 import {InterpreterIc10} from "ic10"
 import {parseEnvironment} from "./utils";
+import path from "path";
 
 export interface FileAccessor {
     readFile(path: string): Promise<string>;
@@ -277,6 +278,9 @@ export class ic10Runtime extends EventEmitter {
 
     private async loadSource(file: string): Promise<void> {
         if (this._sourceFile !== file) {
+            if(path.extname(file).toLowerCase() === '.icx'){
+                file+=".ic10"
+            }
             this._sourceFile = file
             const contents = await this._fileAccessor.readFile(file)
             try {

@@ -7,30 +7,42 @@ import toml from "toml";
 
 export function parseEnvironment(ic10: InterpreterIc10, file: string) {
     let env
-    env = `${file}.toml`;
+    const n = basename(file)
+    const f = path.join(path.dirname(file), n)
+    env = `${f}.toml`;
     if (fs.existsSync(env)) {
         parseToml(ic10, env);
     }
-    env = `${file}.yml`;
+    env = `${f}.yml`;
     if (fs.existsSync(env)) {
         parseYaml(ic10, env);
     }
-    env = `${file}.env`;
+    env = `${f}.env`;
     if (fs.existsSync(env)) {
         parseEnv(ic10, env);
     }
-    env = path.join(path.dirname(file), '.toml');
+
+    env = path.join(path.dirname(f), '.toml');
     if (fs.existsSync(env)) {
         parseToml(ic10, env);
     }
-    env = path.join(path.dirname(file), '.yml');
+    env = path.join(path.dirname(f), '.yml');
     if (fs.existsSync(env)) {
         parseYaml(ic10, env);
     }
-    env = path.join(path.dirname(file), '.env');
+    env = path.join(path.dirname(f), '.env');
     if (fs.existsSync(env)) {
         parseEnv(ic10, env);
     }
+}
+
+function basename(file: string): string {
+    const bName = path.basename(file)
+    const aName = bName.split(".").filter((ext) => {
+        let e = ext.toLowerCase()
+        return e !== 'ic10' && e !== 'icx'
+    })
+    return aName.join('.')
 }
 
 function parseToml(ic10: InterpreterIc10, env: string) {

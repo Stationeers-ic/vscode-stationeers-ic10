@@ -34,32 +34,42 @@ const yaml_1 = __importDefault(require("yaml"));
 const toml_1 = __importDefault(require("toml"));
 function parseEnvironment(ic10, file) {
     let env;
-    env = `${file}.toml`;
+    const n = basename(file);
+    const f = path_1.default.join(path_1.default.dirname(file), n);
+    env = `${f}.toml`;
     if (fs.existsSync(env)) {
         parseToml(ic10, env);
     }
-    env = `${file}.yml`;
+    env = `${f}.yml`;
     if (fs.existsSync(env)) {
         parseYaml(ic10, env);
     }
-    env = `${file}.env`;
+    env = `${f}.env`;
     if (fs.existsSync(env)) {
         parseEnv(ic10, env);
     }
-    env = path_1.default.join(path_1.default.dirname(file), '.toml');
+    env = path_1.default.join(path_1.default.dirname(f), '.toml');
     if (fs.existsSync(env)) {
         parseToml(ic10, env);
     }
-    env = path_1.default.join(path_1.default.dirname(file), '.yml');
+    env = path_1.default.join(path_1.default.dirname(f), '.yml');
     if (fs.existsSync(env)) {
         parseYaml(ic10, env);
     }
-    env = path_1.default.join(path_1.default.dirname(file), '.env');
+    env = path_1.default.join(path_1.default.dirname(f), '.env');
     if (fs.existsSync(env)) {
         parseEnv(ic10, env);
     }
 }
 exports.parseEnvironment = parseEnvironment;
+function basename(file) {
+    const bName = path_1.default.basename(file);
+    const aName = bName.split(".").filter((ext) => {
+        let e = ext.toLowerCase();
+        return e !== 'ic10' && e !== 'icx';
+    });
+    return aName.join('.');
+}
 function parseToml(ic10, env) {
     const content = fs.readFileSync(env, { encoding: 'utf-8' });
     const config = toml_1.default.parse(content);

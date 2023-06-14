@@ -2,6 +2,7 @@ import * as vscode from "vscode"
 import {Ic10DiagnosticError} from "ic10/src/Ic10Error";
 import InterpreterIc10 from "ic10";
 import {parseEnvironment} from "../debugger/utils";
+import {isConst} from "../../ic10/src/icTypes";
 
 export const Ic10DiagnosticsName = "ic10_diagnostic"
 const manual: {
@@ -99,7 +100,7 @@ export class Ic10Diagnostics {
             }
         }
         const interpreterIc10 = new InterpreterIc10(doc.getText());
-        parseEnvironment(interpreterIc10,doc.uri.fsPath)
+        parseEnvironment(interpreterIc10, doc.uri.fsPath)
         for (let lineIndex = 0; lineIndex < doc.lineCount; lineIndex++) {
             try {
                 interpreterIc10.settings.executionCallback = (e) => {
@@ -296,7 +297,7 @@ export class Ic10Diagnostics {
                 case "C":
                 case "A":
                 case "O":
-                    if (isNaN(parseFloat(value)) && this.aliases.indexOf(value) < 0) {
+                    if (!isConst(value) && isNaN(parseFloat(value)) && this.aliases.indexOf(value) < 0) {
                         errors++
                     }
                     break
