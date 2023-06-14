@@ -7,7 +7,7 @@
   "homepage": "https://github.com/Stationeers-ic/vscode-stationeers-ic10",
   "type": "commonjs",
   "scripts": {
-    "vscode:prepublish": "cd ./tools && npm i && gulp generate-langs && cd ../ && tsc",
+    "vscode:prepublish": "cd ./tools && npm i && npx gulp generate-langs && cd ../ && tsc",
     "start": "npm i && tsc -w",
     "publish": "vsce package",
     "package": "vsce package"
