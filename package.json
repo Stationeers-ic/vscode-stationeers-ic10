@@ -8,7 +8,7 @@
   "type": "commonjs",
   "scripts": {
     "generate": "cd ./tools && npm i && npx gulp generate-langs && cd ../",
-    "vscode:prepublish": "npm run generate && npx tsc",
+    "vscode:prepublish": "npx tsc",
     "start": "npm i && tsc -w",
     "publish": "vsce package",
     "package": "vsce package"
