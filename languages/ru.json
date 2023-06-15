@@ -2748,42 +2748,42 @@
   "deg2rad": {
     "type": "Const",
     "description": {
-      "preview": "",
+      "preview": "0,017453292519943295769236907684",
       "text": "0,017453292519943295769236907684\r\nКонстанта для перевода в радианы. 180 * deg2rad = pi"
     }
   },
   "nan": {
     "type": "Const",
     "description": {
-      "preview": "",
+      "preview": "NaN",
       "text": "Нет значения."
     }
   },
   "ninf": {
     "type": "Const",
     "description": {
-      "preview": "",
+      "preview": "-Infinity",
       "text": "-бесконечность"
     }
   },
   "pi": {
     "type": "Const",
     "description": {
-      "preview": "",
+      "preview": "3.14159265358979",
       "text": "3.14159265358979"
     }
   },
   "pinf": {
     "type": "Const",
     "description": {
-      "preview": "",
+      "preview": "Infinity",
       "text": "+бесконечность"
     }
   },
   "rad2deg": {
     "type": "Const",
     "description": {
-      "preview": "",
+      "preview": "57,2957795130823208767981",
       "text": "57,2957795130823208767981\r\nКонстанта для перевода в градусы. pi * rad2deg= 180"
     }
   },
