@@ -270,7 +270,16 @@ function command(ctx) {
                         return;
                 }
             }, null, _disposables);
-            panel.webview.html = "TEST";
+            panel.webview.html = `
+<style>
+html,body,iframe{
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+</style>
+<iframe style="width: calc(100vw - 20px);height: calc(100vh - 20px);" botder="0" src="https://icx.traineratwot.site/wiki/ic10"></iframe>
+`;
         }));
     }
     catch (e) {
