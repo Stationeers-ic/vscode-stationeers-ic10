@@ -226,51 +226,36 @@ function command(ctx) {
         ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_ICX + ".compile", () => {
             try {
                 const code = vscode.window.activeTextEditor.document.getText();
-                console.log(exports.icxOptions);
                 const icx = new icx_compiler_1.icX(code, exports.icxOptions);
                 const compiled = icx.getCompiled();
-                console.log(compiled);
                 if (compiled) {
                     const content = Buffer.from(compiled);
                     const file = vscode.window.activeTextEditor.document.uri + ".ic10";
+                    vscode.window.showInformationMessage("Compiling output: " + file);
                     vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content);
+                }
+                else {
+                    vscode.window.showErrorMessage("compiling error: " + compiled);
                 }
             }
             catch (e) {
                 if (e instanceof err_1.Errors || e instanceof err_1.Err) {
-                    vscode.window.showInformationMessage("compiling error: " + e.getUserMessage());
+                    vscode.window.showErrorMessage("compiling error: " + e.getUserMessage());
                 }
                 else {
-                    vscode.window.showInformationMessage("compiling error", JSON.stringify(e));
+                    vscode.window.showErrorMessage("compiling error", JSON.stringify(e));
                 }
                 console.error(e);
             }
         }));
-        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_ICX + ".compile", () => {
-            try {
-                const code = vscode.window.activeTextEditor.document.getText();
-                console.log(exports.icxOptions);
-                const icx = new icx_compiler_1.icX(code, exports.icxOptions);
-                const compiled = icx.getCompiled();
-                console.log(compiled);
-                if (compiled) {
-                    const content = Buffer.from(compiled);
-                    const file = vscode.window.activeTextEditor.document.uri + ".ic10";
-                    vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content);
-                }
-            }
-            catch (e) {
-                if (e instanceof err_1.Errors || e instanceof err_1.Err) {
-                    vscode.window.showInformationMessage("compiling error: " + e.getUserMessage());
-                }
-                else {
-                    vscode.window.showInformationMessage("compiling error", JSON.stringify(e));
-                }
-                console.error(e);
-            }
-        }));
-        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_ICX + ".open.wiki", () => {
-            const panel = vscode.window.createWebviewPanel("icX.wiki", `wiki`, vscode.ViewColumn.Beside);
+        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_ICX + ".open.wiki", async () => {
+            const panel = vscode.window.createWebviewPanel('icX.wiki', 'wiki', vscode.ViewColumn.Beside, {
+                enableScripts: true,
+                retainContextWhenHidden: true,
+                enableForms: true,
+                enableCommandUris: true,
+                enableFindWidget: true
+            });
             const _disposables = [];
             panel.onDidDispose(() => this.dispose(), null, _disposables);
             panel.onDidChangeViewState(e => {
@@ -289,6 +274,7 @@ function command(ctx) {
         }));
     }
     catch (e) {
+        vscode.window.showErrorMessage("Commands: " + e.toString());
         console.error(e);
     }
 }

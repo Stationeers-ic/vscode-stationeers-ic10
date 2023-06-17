@@ -172,7 +172,7 @@ function command(ctx: vscode.ExtensionContext) {
                     },
                 }
                 const ic10 = interpreterIc10.setSettings(settings).init(code)
-                parseEnvironment(ic10,vscode.window.activeTextEditor.document.uri.fsPath)
+                parseEnvironment(ic10, vscode.window.activeTextEditor.document.uri.fsPath)
                 ic10.run().then();
             }
         }))
@@ -236,54 +236,39 @@ function command(ctx: vscode.ExtensionContext) {
             try {
                 const code = vscode.window.activeTextEditor.document.getText()
                 // @ts-ignore
-                console.log(icxOptions)
                 const icx = new icX(code, icxOptions)
                 const compiled = icx.getCompiled()
-                console.log(compiled)
                 if (compiled) {
                     // console.log(compiled)
                     const content = Buffer.from(compiled)
                     const file = vscode.window.activeTextEditor.document.uri + ".ic10"
+                    vscode.window.showInformationMessage("Compiling output: " + file)
                     vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content)// console.log('file', file)
+                } else {
+                    vscode.window.showErrorMessage("compiling error: " + compiled)
                 }
             } catch (e) {
                 if (e instanceof Errors || e instanceof Err) {
-                    vscode.window.showInformationMessage("compiling error: " + e.getUserMessage())
+                    vscode.window.showErrorMessage("compiling error: " + e.getUserMessage())
                 } else {
-                    vscode.window.showInformationMessage("compiling error", JSON.stringify(e))
+                    vscode.window.showErrorMessage("compiling error", JSON.stringify(e))
                 }
                 console.error(e)
             }
         }))
-        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_ICX + ".compile", () => {
-            try {
-                const code = vscode.window.activeTextEditor.document.getText()
-                // @ts-ignore
-                console.log(icxOptions)
-                const icx = new icX(code, icxOptions)
-                const compiled = icx.getCompiled()
-                console.log(compiled)
-                if (compiled) {
-                    // console.log(compiled)
-                    const content = Buffer.from(compiled)
-                    const file = vscode.window.activeTextEditor.document.uri + ".ic10"
-                    vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content)// console.log('file', file)
-                }
-            } catch (e) {
-                if (e instanceof Errors || e instanceof Err) {
-                    vscode.window.showInformationMessage("compiling error: " + e.getUserMessage())
-                } else {
-                    vscode.window.showInformationMessage("compiling error", JSON.stringify(e))
-                }
-                console.error(e)
-            }
-        }))
-        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_ICX + ".open.wiki", () => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_ICX + ".open.wiki", async () => {
             const panel = vscode.window.createWebviewPanel(
-                "icX.wiki", // Identifies the type of the webview. Used internally
-                `wiki`, // Title of the panel displayed to the user
-                vscode.ViewColumn.Beside, // Editor column to show the new webview panel in.
-            )
+                'icX.wiki',
+                'wiki',
+                vscode.ViewColumn.Beside,
+                {
+                    enableScripts: true,
+                    retainContextWhenHidden: true,
+                    enableForms: true,
+                    enableCommandUris: true,
+                    enableFindWidget: true
+                }
+            );
             const _disposables: vscode.Disposable[] = []
             // Listen for when the panel is disposed
             // This happens when the user closes the panel or when the panel is closed programmatically
@@ -316,10 +301,9 @@ function command(ctx: vscode.ExtensionContext) {
             panel.webview.html = "TEST"
         }))
     } catch (e) {
+        vscode.window.showErrorMessage("Commands: " + e.toString())
         console.error(e)
     }
-    // console.timeEnd('command')
-
 }
 
 function semantic(ctx: vscode.ExtensionContext) {
