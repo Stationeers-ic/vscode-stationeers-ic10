@@ -20,7 +20,7 @@ import {parseEnvironment} from "../debugger/utils";
 const LOCALE_KEY: string = vscode.env.language
 const ic10_hover = new Ic10Vscode()
 const icX_hover = new IcXVscode()
-export const lang_IC10 = "ic10"
+export const LANG_IC10 = "ic10"
 export const LANG_ICX = "icX"
 const interpreterIc10 = new InterpreterIc10(null)
 let interpreterIc10State = 0
@@ -74,7 +74,7 @@ function icxStart() {
 function hover(ctx: vscode.ExtensionContext) {
     // console.time('hover')
     try {
-        ctx.subscriptions.push(vscode.languages.registerHoverProvider(lang_IC10, {
+        ctx.subscriptions.push(vscode.languages.registerHoverProvider(LANG_IC10, {
             provideHover(document, position) {
                 const word = document.getWordRangeAtPosition(position)
                 const text = document.getText(word)
@@ -111,7 +111,7 @@ function formatter(ctx: vscode.ExtensionContext) {
 
         try {
 
-            vscode.languages.registerDocumentFormattingEditProvider(lang_IC10, {
+            vscode.languages.registerDocumentFormattingEditProvider(LANG_IC10, {
                 provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
                     try {
                         const formatter = new ic10Formatter(document)
@@ -147,7 +147,7 @@ function formatter(ctx: vscode.ExtensionContext) {
 function command(ctx: vscode.ExtensionContext) {
     // console.time('command')
     try {
-        ctx.subscriptions.push(vscode.commands.registerCommand(lang_IC10 + ".run", () => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_IC10 + ".run", () => {
             if (!interpreterIc10State) {
                 vscode.window.showInformationMessage("Running")
                 const code = vscode.window.activeTextEditor.document.getText()
@@ -176,13 +176,13 @@ function command(ctx: vscode.ExtensionContext) {
                 ic10.run().then();
             }
         }))
-        ctx.subscriptions.push(vscode.commands.registerCommand(lang_IC10 + ".stop", () => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_IC10 + ".stop", () => {
             if (interpreterIc10State) {
                 vscode.window.showInformationMessage("Stop")
                 interpreterIc10.stop()
             }
         }))
-        ctx.subscriptions.push(vscode.commands.registerCommand(lang_IC10 + ".debug.variables.write", (variable) => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_IC10 + ".debug.variables.write", (variable) => {
             const ds = vscode.debug.activeDebugSession
             const input = vscode.window.createInputBox()
             input.title = "set " + variable.variable.name
@@ -192,7 +192,7 @@ function command(ctx: vscode.ExtensionContext) {
                 input.hide()
             })
         }))
-        ctx.subscriptions.push(vscode.commands.registerCommand(lang_IC10 + ".debug.device.write", (variable) => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_IC10 + ".debug.device.write", (variable) => {
             const ds = vscode.debug.activeDebugSession
             const input = vscode.window.createInputBox()
             input.title = "set " + variable.variable.name
@@ -202,7 +202,7 @@ function command(ctx: vscode.ExtensionContext) {
                 input.hide()
             })
         }))
-        ctx.subscriptions.push(vscode.commands.registerCommand(lang_IC10 + ".debug.device.slot.write", (variable) => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_IC10 + ".debug.device.slot.write", (variable) => {
             const ds = vscode.debug.activeDebugSession
             const input = vscode.window.createInputBox()
             input.title = "set " + variable.variable.name
@@ -212,7 +212,7 @@ function command(ctx: vscode.ExtensionContext) {
                 input.hide()
             })
         }))
-        ctx.subscriptions.push(vscode.commands.registerCommand(lang_IC10 + ".debug.stack.push", (variable) => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_IC10 + ".debug.stack.push", (variable) => {
             const ds = vscode.debug.activeDebugSession
             const input = vscode.window.createInputBox()
             input.title = "set " + variable.variable.name
@@ -222,7 +222,7 @@ function command(ctx: vscode.ExtensionContext) {
                 input.hide()
             })
         }))
-        ctx.subscriptions.push(vscode.commands.registerCommand(lang_IC10 + ".debug.remove.push", (variable) => {
+        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_IC10 + ".debug.remove.push", (variable) => {
             const ds = vscode.debug.activeDebugSession
             const input = vscode.window.createInputBox()
             input.title = "set " + variable.variable.name
@@ -310,7 +310,7 @@ function semantic(ctx: vscode.ExtensionContext) {
     // console.time('semantic')
     try {
         ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider(
-                {language: lang_IC10, scheme: "file"},
+                {language: LANG_IC10, scheme: "file"},
                 new IcxSemanticTokensProvider,
                 legend
             )
@@ -388,7 +388,7 @@ function statusBar(ctx: vscode.ExtensionContext) {
 }
 
 function ChangeActiveTextEditor(editor): void {
-    if (vscode.window.activeTextEditor.document.languageId == lang_IC10 || vscode.window.activeTextEditor.document.languageId == LANG_ICX) {
+    if (vscode.window.activeTextEditor.document.languageId == LANG_IC10 || vscode.window.activeTextEditor.document.languageId == LANG_ICX) {
         onChangeCallbacks.ChangeActiveTextEditor.forEach((e) => {
             e.call(null, editor)
         })
@@ -396,7 +396,7 @@ function ChangeActiveTextEditor(editor): void {
 }
 
 function ChangeTextEditorSelection(editor): void {
-    if (vscode.window.activeTextEditor.document.languageId == lang_IC10 || vscode.window.activeTextEditor.document.languageId == LANG_ICX) {
+    if (vscode.window.activeTextEditor.document.languageId == LANG_IC10 || vscode.window.activeTextEditor.document.languageId == LANG_ICX) {
 
         onChangeCallbacks.ChangeTextEditorSelection.forEach((e) => {
             e.call(null, editor)
@@ -405,7 +405,7 @@ function ChangeTextEditorSelection(editor): void {
 }
 
 function SaveTextDocument(): void {
-    if (vscode.window.activeTextEditor.document.languageId == lang_IC10 || vscode.window.activeTextEditor.document.languageId == LANG_ICX) {
+    if (vscode.window.activeTextEditor.document.languageId == LANG_IC10 || vscode.window.activeTextEditor.document.languageId == LANG_ICX) {
         onChangeCallbacks.SaveTextDocument.forEach((e) => {
             e.call(null)
         })
@@ -420,7 +420,7 @@ function onChange(ctx) {
 
 function getNumberLeftLines(): Array<any> | false {
     const text = vscode.window.activeTextEditor.document.getText()
-    if (vscode.window.activeTextEditor.document.languageId == lang_IC10) {
+    if (vscode.window.activeTextEditor.document.languageId == LANG_IC10) {
         let left = 128
         const a = " ▁▃▅▉"
         if (text) {
@@ -443,7 +443,7 @@ function diagnostic(context) {
         context.subscriptions.push(icXDiagnosticsCollection)
 
         onChangeCallbacks.ChangeTextEditorSelection.push(() => {
-            if (vscode.window.activeTextEditor.document.languageId == lang_IC10) {
+            if (vscode.window.activeTextEditor.document.languageId == LANG_IC10) {
                 ic10Diagnostics.run(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection)
                 icXDiagnostics.clear(vscode.window.activeTextEditor.document, icXDiagnosticsCollection)
             } else {
@@ -463,7 +463,7 @@ function diagnostic(context) {
             } else {
                 icXDiagnostics.clear(vscode.window.activeTextEditor.document, icXDiagnosticsCollection)
             }
-            if (vscode.window.activeTextEditor.document.languageId == lang_IC10) {
+            if (vscode.window.activeTextEditor.document.languageId == LANG_IC10) {
                 ic10Diagnostics.run(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection)
                 icXDiagnostics.clear(vscode.window.activeTextEditor.document, icXDiagnosticsCollection)
             } else {
@@ -530,7 +530,7 @@ function renderIc10() {
 					<div id="leftLineCounter" class="progress" data-percent="${p}" data-value="${b}"  data-max="128" data-min="0">
 					  <div></div>
 					</div>
-					`, lang_IC10, -10)
+					`, LANG_IC10, -10)
     } else {
         icSidebar.section("leftLineCounter", ``, -10)
     }
