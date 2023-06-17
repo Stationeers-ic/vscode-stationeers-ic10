@@ -1,9 +1,9 @@
 import path from "path";
 import dotenv from "dotenv";
-import InterpreterIc10 from "../../ic10";
 import * as fs from "fs";
 import YAML from 'yaml'
 import toml from "toml";
+import InterpreterIc10 from "ic10";
 
 export function parseEnvironment(ic10: InterpreterIc10, file: string) {
     let env

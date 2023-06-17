@@ -2,7 +2,7 @@ import * as vscode from "vscode"
 import {Ic10DiagnosticError} from "ic10/src/Ic10Error";
 import InterpreterIc10 from "ic10";
 import {parseEnvironment} from "../debugger/utils";
-import {isConst} from "../../ic10/src/icTypes";
+import {isConst} from "ic10/src/icTypes";
 
 export const Ic10DiagnosticsName = "ic10_diagnostic"
 const manual: {

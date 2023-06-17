@@ -20,8 +20,8 @@ import {
     StoppedEvent,
     TerminatedEvent,
     Thread
-} from "vscode-debugadapter"
-import {DebugProtocol} from "vscode-debugprotocol"
+} from "@vscode/debugadapter"
+import {DebugProtocol} from "@vscode/debugprotocol"
 import {basename} from "path"
 import {FileAccessor, ic10Runtime, Iic10Breakpoint} from "./ic10Runtime"
 import {Ic10Error} from "ic10/src/Ic10Error"
@@ -30,11 +30,11 @@ import {MemoryStack} from "ic10/src/MemoryStack"
 import {ConstantCell} from "ic10/src/ConstantCell"
 import {Slot} from "ic10/src/Slot"
 import {RegisterCell} from "ic10/src/RegisterCell"
-import {IcHousing} from "../../ic10/src/devices/IcHousing";
-import {isDevice, isDeviceOutput, isIcHousing, isSlot} from "../../ic10/src/types";
+import {isDevice, isDeviceOutput, isIcHousing, isSlot} from "ic10/src/types";
 import {DeviceOutput} from "ic10/src/DeviceOutput";
-import {Device} from "../../ic10/src/devices/Device";
+import {Device} from "ic10/src/devices/Device";
 import {parseEnvironment} from "./utils";
+import {IcHousing} from "ic10/src/devices/IcHousing";
 
 function timeout(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms))
