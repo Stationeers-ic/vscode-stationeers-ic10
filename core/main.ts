@@ -258,6 +258,8 @@ function command(ctx: vscode.ExtensionContext) {
                 _disposables
             )
 
+            const ext = path.extname(vscode.window.activeTextEditor.document.uri.path).replace(".","")
+
             panel.webview.html = `
 <style>
 html,body,iframe{
@@ -266,7 +268,7 @@ html,body,iframe{
     border: none;
 }
 </style>
-<iframe style="width: calc(100vw - 20px);height: calc(100vh - 20px);" botder="0" src="https://icx.traineratwot.site/wiki/ic10"></iframe>
+<iframe style="width: calc(100vw - 20px);height: calc(100vh - 20px);" botder="0" src="https://icx.traineratwot.site/wiki/${ext}"></iframe>
 `
         }))
     } catch (e) {

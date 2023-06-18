@@ -161,36 +161,36 @@
     "commands": [
       {
         "command": "ic10.run",
-        "title": "ic10: Run",
+        "title": "Run",
         "description": "Run script",
         "icon": "$(play)"
       },
       {
         "command": "ic10.test",
-        "title": "ic10: test",
+        "title": "test",
         "description": "test script",
         "icon": "$(play)"
       },
       {
         "command": "ic10.stop",
-        "title": "ic10: Stop",
+        "title": "Stop",
         "description": "Stop script",
         "icon": "$(stop)"
       },
       {
         "command": "ic10.debug.variables.write",
         "title": "Write value",
-        "icon": "$(play)"
+        "icon": "$(pencil)"
       },
       {
         "command": "icX.compile",
         "title": "Compile",
-        "icon": "$(play)"
+        "icon": "$(heart)"
       },
       {
         "command": "icX.open.wiki",
         "title": "Open wiki",
-        "icon": "$(play)"
+        "icon": "$(eye)"
       }
     ],
     "menus": {
@@ -206,6 +206,10 @@
         {
           "command": "icX.open.wiki",
           "when": "editorLangId == icX"
+        },        
+        {
+          "command": "icX.open.wiki",
+          "when": "editorLangId == ic10"
         }
       ],
       "commandPalette": [
@@ -226,6 +230,10 @@
         {
           "command": "icX.open.wiki",
           "when": "resourceLangId == icX"
+        },
+        {
+          "command": "icX.open.wiki",
+          "when": "resourceLangId == ic10"
         },
         {
           "command": "ic10.run",
