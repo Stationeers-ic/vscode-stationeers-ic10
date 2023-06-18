@@ -35,7 +35,6 @@ import {DeviceOutput} from "ic10/src/DeviceOutput";
 import {Device} from "ic10/src/devices/Device";
 import {parseEnvironment} from "./utils";
 import {IcHousing} from "ic10/src/devices/IcHousing";
-import * as fs from "fs";
 
 function timeout(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms))
@@ -625,7 +624,7 @@ export class ic10DebugSession extends LoggingDebugSession {
 
         const containerName = args.containerName.replace('🟢', '').replace('🔴', '').trim().toLowerCase()
         args.containerName = containerName
-        fs.writeFileSync(`C:\\projects\\vscode-stationeers-ic10\\${command}.json`, JSON.stringify(args))
+        // fs.writeFileSync(`C:\\projects\\vscode-stationeers-ic10\\${command}.json`, JSON.stringify(args))
         switch (command) {
             case "ic10.debug.variables.write":
                 try {
