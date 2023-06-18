@@ -31,18 +31,18 @@ class ic10Runtime extends events_1.EventEmitter {
     async start(program, stopOnEntry, noDebug) {
         this._noDebug = noDebug;
         await this.loadSource(program);
-        this._currentLine = -1;
+        this._currentLine = 0;
         await this.verifyBreakpoints(this._sourceFile);
         (0, utils_1.parseEnvironment)(this.ic10, this._sourceFile);
         if (stopOnEntry) {
             this.step(false, "stopOnEntry");
         }
         else {
-            this.continue();
+            this.step(false, "stopOnBreakpoint");
         }
     }
     continue(reverse = false) {
-        this.run(reverse, 'stopOnBreakpoint');
+        this.run(reverse, undefined);
     }
     step(reverse = false, event = "stopOnStep") {
         this.run(reverse, event);
@@ -183,7 +183,7 @@ class ic10Runtime extends events_1.EventEmitter {
     }
     run(reverse = false, stepEvent) {
         if (!reverse) {
-            const ln = this.ic10.position;
+            let ln = this.ic10.position;
             let why;
             let counter = 0;
             do {
@@ -201,9 +201,10 @@ class ic10Runtime extends events_1.EventEmitter {
                 }
                 if (this.fireEventsForLine(ln, stepEvent)) {
                     this._currentLine = ln;
-                    this._currentColumn = undefined;
+                    this._currentColumn = 0;
                     return true;
                 }
+                ln = this.ic10.position;
                 if (counter++ > 1000) {
                     why = "timeOut";
                 }

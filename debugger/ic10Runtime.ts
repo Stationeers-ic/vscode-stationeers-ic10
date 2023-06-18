@@ -77,7 +77,7 @@ export class ic10Runtime extends EventEmitter {
         this._noDebug = noDebug
 
         await this.loadSource(program)
-        this._currentLine = -1
+        this._currentLine = 0
 
         await this.verifyBreakpoints(this._sourceFile)
         parseEnvironment(this.ic10, this._sourceFile)
@@ -86,7 +86,7 @@ export class ic10Runtime extends EventEmitter {
             this.step(false, "stopOnEntry")
         } else {
             // we just start to run until we hit a breakpoint or an exception
-            this.continue()
+            this.step(false, "stopOnBreakpoint")
         }
     }
 
@@ -94,7 +94,7 @@ export class ic10Runtime extends EventEmitter {
      * Continue execution to the end/beginning.
      */
     public continue(reverse = false) {
-        this.run(reverse, 'stopOnBreakpoint')
+        this.run(reverse, undefined)
     }
 
     /**
@@ -298,7 +298,7 @@ export class ic10Runtime extends EventEmitter {
      */
     private run(reverse = false, stepEvent?: string) {
         if (!reverse) {
-            const ln = this.ic10.position
+            let ln = this.ic10.position
             let why
             let counter = 0
             do {
@@ -317,9 +317,10 @@ export class ic10Runtime extends EventEmitter {
                     }
                     if (this.fireEventsForLine(ln, stepEvent)) {
                         this._currentLine = ln
-                        this._currentColumn = undefined
+                        this._currentColumn = 0
                         return true
                     }
+                    ln = this.ic10.position
                     if (counter++ > 1000) {
                         why = "timeOut"
                     }
