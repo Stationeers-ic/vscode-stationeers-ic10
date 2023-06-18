@@ -23,11 +23,11 @@ project [https://github.com/Traineratwot/Ic10-and-Icx-Sample](https://github.com
 
 [![](https://i.imgur.com/cl0Xbq1.png)  Sponsor this project](https://www.patreon.com/traineratwot)
 
-[![](https://i.imgur.com/j50yyPG.jpeg) discord](https://discord.gg/KSVjXufkA9)
+[<img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0b52aa9e99b832574a53_full_logo_blurple_RGB.png" width="120"/>](https://discord.gg/KSVjXufkA9)
 
 Debugger launch
 
-```json5
+```json
 {
   "version": "0.2.0",
   "configurations": [
@@ -49,18 +49,46 @@ Debugger launch
 - snippets
 - Debugger
 
-## News
 
-- **add icX Formatter**
-- **Rework Stack**
-- new snippets
-- new description for variable
-- Write value in debugger
-- translate to english
-- Debugger
-- Formatter
-- Semantic code analize
-- counter left lines
+# BIG Update
+#### So the latest releases have fixed a lot of problems
+
+- all new ic10 command now supported `lr`,`sra`, `sds`, `ss` and more
+- new [debugger](#debugger) system - more convenient and understandable
+- environment system - now you can configure the hardware environment of your scripts [more](#Environment)
+- more information on [wiki](https://icx.traineratwot.site/wiki/ic10)
+- [We need you help](#help)
+
+# debugger
+![](https://i.imgur.com/kFweq9N.jpeg)
+
+# Environment
+you can configure the hardware environment of your scripts. for this you need
+1) create a file with name `.toml`
+2) if you want this file to refer to only one script and not to the entire folder, name it also as a script eg: `solat.icx.ic10` => `solar.toml`
+3) write in toml file with template : 
+```toml
+[d0]
+PrefabHash="StructureAdvancedPackagingMachine"
+Setting=18
+
+[d0.slot.0]
+Quantity=5
+
+[d0.Reagents.Contents]
+Iron=1
+Copper=3
+```
+
+# help
+![](https://hadtl54cswnmgshye9o3v63hrsaidvki.cdn-freehost.com.ua/wp-content/uploads/2014/10/We-Need-You.jpg)
+Add missing functions constants and parameters to the [wiki](https://icx.traineratwot.site/wiki/ic10) in your language
+
+If your language is not available, write Me `@Traineratwot` about it, in [discord server](https://discord.gg/KSVjXufkA9)
+
+Add missing devices and parametrs in [google spreadsheets](https://docs.google.com/spreadsheets/d/11a_KlDoNv-ZDTKXhhw206uO0xge3_6s2BrCYBfZh86w/edit?usp=sharing)
+This is necessary for the correct hints inside the extension
+
 
 ## icX - compiler
 
@@ -111,323 +139,4 @@ the Stationeers game.
 5. Copy a code from a new generated file with the same name and type **.ic10**
 6. Paste code into microprocessor Ic10 in the game
 
-# Instructions
-
-### Comments
-
-  ```
-  # Text after a # will be ignored to the end of the line
-  ```
-
-### Vars
-
-icX will automatically replace variable names with register names
-
-```
----icX
-   var a = 10
----ic10
-   move r0 10
-```
-
-Using _alias_
-
-```
----icX
-   use aliases
-   var a = 10
----ic10
-   alias a r0
-   move a 10
-```
-
-Using _define_
-
-```
----icX
-   use constants
-   const PI = 3.14
----ic10
-   define PI 3.14
-```
-
-### Math
-
-#### Unary operations (++, --)
-
-inc
-
-```
----icX
-   var a = 0
-   a++
----ic10
-   move r0 0
-   add r0 r0 1
-```
-
-dec
-
-```
----icX
-   var a = 0
-   a--
----ic10
-   move r0 0
-   sub r0 r0 1
-```
-
-#### Binary operations (+, -, *, /, %)
-
-Constants will be calculated automatically
-
-```
----icX
-   var x =  5 + 5 * 2 
----ic10
-   move r0 15
-```
-
-```
----icX
-   const x = 2 + 2
-   const y = x + 2
-   var z = y + 2
----ic10
-   move r0 8
-```
-
-Binary operations with variables
-
-```
----icX
-   var k = 2
-   var y = 5
-   var x =  y + y * k
----ic10
-   move r0 2
-   move r1 5
-   mul r15 r1 r0
-   add r2 r1 r15
-   add r2 r2 5
-```
-
-### IF - ELSE
-
-Binary logical operations used (<, >, ==, !=, <=, >=, &, |, ~=)
-
-```
----icX
-   var a = 0
-   var b = 0
-   if a >= 0
-     b = 1
-   else
-     b = 0
-   end
----ic10
-   move r0 0
-   move r1 0
-   sgez r15 r0
-   beqz r15 if0else
-   beq r15 1 if0
-   if0:
-      move r1 1
-      j if0exit
-   if0else:
-      move r1 0
-   if0exit:
-```
-
-### While
-
-```
----icX
- var a = 0
- while a >= 10
-    a++
- end
----ic10
- move r0 0
- while0:
-    sge r15 r0 10
-    beqz r15 while0exit
-    add r0 r0 1
-    j while0
- while0exit:
-```
-
-### Devices
-
-```
----icX
- d0.Setting = 1                  # Set device param
- var a = d0.Setting              # Load device param into a register 
- var b = d0.slot(a).PrefabHash   # Using a slot of the device
- a = d(5438547545).Setting(Sum)  # Batch load, where 5438547545 is hash of the device
- d(5438547545).Setting = b       # Batch configuration 
----ic10
- s d0 Setting 1
- l r0 d0 Setting
- ls r1 d0 r0 PrefabHash
- lb r0 5438547545 Setting Sum
- sb 5438547545 Setting r1
-```
-
-### Function
-
-To write a function, use the _function_ keyword
-
-```
-{function name}()
-
-function {function name}
-   {code}
-end
-```
-
-```
----icX
- use loop
- var a = 0 
- example()
- var on = d1.Open
- d0.On = on
- 
- function example
-     move a 1
- end
----ic10
- move r0 0
- jal example
- l r1 d1 Open
- s d0 On r1
- j 0
- example:
- move r0 1
- j ra
-```
-
-### Stack
-
-To easily write in stack, use the _stack_ keyword
-
-```
----icX
-   stack 342423 432423 54534 6567
----ic10
-   push 342423
-   push 432423
-   push 54534
-   push 6567
-```
-
-For each stack
-
-```
----icX
-   var YourVariabele = 0
-   foreach YourVariabele
-    if a == 6567
-       var b = 5
-    end
-   end
----ic10
-   move sp 0 # reset counter
-   while0:
-      peek r0 # get value to YourVariabele
-      #------- block code ---------
-      seq r15 r0 6567
-      beqz r15 if0exit
-      move r1 5
-      if0exit:
-      #------- block code ---------
-      breqz r0 2 # end of cycle
-      add sp sp 1 # increment counter
-   j while0
-```
-
-### Use
-
-In addition to _use aliases_ and _use constant_, the following constructs are supported:
-
-To loop the application, use _use loop_
-
-```
----icX
- move r0 0
- jal example
- l r1 d1 Open
- s d0 On r1
- j 0
- example:
- move r0 1
- j ra
----ic10
- move r0 0
- jal example
- l r1 d1 Open
- s d0 On r1
- j 0
- example:
- move r0 1
- j ra
-```
-
-Use _use comments_ to transfer your comments to ic10 code
-
-```
----icX
- use comments
- # Example
- var a = 0
- var on = d1.Open
- # Example
- d0.On = on
- test()
- function test
-  var c = 1
- end
----ic10
- # ---icX User code start---
- # Example
- move r0 0
- l r1 d1 Open
- # Example
- s d0 On r1
- jal test
- # ---icX User code end---
- jr 4
- test:
- move r2 1
- j ra
-```
-
-### Additional examples of icX code
-
-```
-alias SolarSensor d0
-alias SolarPanel d1
-alias LedVertical d2
-alias LedHorizontal d3
-var SOLAR_HASH = d1.PrefabHash
-
-var verical = 180
-var horizontal = 180
-
-main:
-    updateLED()
-    setSolarPanels()
-    yield
-j main
-
-function setSolarPanels
-    d(SOLAR_HASH).Vertical = verical
-    d(SOLAR_HASH).Horizontal = horizontal
-end
-
-function updateLED
-    d2.Setting = verical
-    d3.Setting = horizontal
-end
-```
+[icX wiki](https://icx.traineratwot.site/wiki/icx)
