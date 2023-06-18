@@ -392,21 +392,21 @@ export class ic10DebugSession extends LoggingDebugSession {
         response.body.scopes.push(new Scope(db, this._variableHandles.create('db'), true))
 
         const dd = {
-            'd0': this.ic10.memory.environ.d0 || null,
-            'd1': this.ic10.memory.environ.d1 || null,
-            'd2': this.ic10.memory.environ.d2 || null,
-            'd3': this.ic10.memory.environ.d3 || null,
-            'd4': this.ic10.memory.environ.d4 || null,
-            'd5': this.ic10.memory.environ.d5 || null,
+            'd0': this.ic10.memory.environ.d0 || undefined,
+            'd1': this.ic10.memory.environ.d1 || undefined,
+            'd2': this.ic10.memory.environ.d2 || undefined,
+            'd3': this.ic10.memory.environ.d3 || undefined,
+            'd4': this.ic10.memory.environ.d4 || undefined,
+            'd5': this.ic10.memory.environ.d5 || undefined,
         }
         for (const ddKey in dd) {
             let name = ddKey
             if (dd[ddKey]) {
-                name = '⚪ ' + ddKey
+                name = `⚪ ${ddKey.toUpperCase()} [${dd[ddKey].name}]`
             } else {
-                name = '⚫ ' + ddKey
+                name = `⚫ ${ddKey.toUpperCase()}`
             }
-            response.body.scopes.push(new Scope(name.toUpperCase(), this._variableHandles.create(ddKey), true))
+            response.body.scopes.push(new Scope(name, this._variableHandles.create(ddKey), true))
         }
         this.sendResponse(response)
 
