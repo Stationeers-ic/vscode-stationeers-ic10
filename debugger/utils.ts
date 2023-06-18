@@ -4,6 +4,8 @@ import * as fs from "fs";
 import YAML from 'yaml'
 import toml from "toml";
 import InterpreterIc10 from "ic10";
+import {TypeRM} from "ic10/src/icTypes";
+import {Reagent} from "ic10/src/data/reagents";
 
 export function parseEnvironment(ic10: InterpreterIc10, file: string) {
     let env
@@ -48,16 +50,21 @@ function basename(file: string): string {
 function parseToml(ic10: InterpreterIc10, env: string) {
     const content = fs.readFileSync(env, {encoding: 'utf-8'})
     const config = toml.parse(content) as {
-        [key: `d${number}`]: { [key: string]: number }
+        [key: `d${number}`]: { [key: string]: number } & { reagents: Partial<Record<TypeRM, Partial<Record<Reagent, number>>>> }
     }
-
     Object.entries(config).forEach(([key, value]) => {
         if (key) {
             const fields: { [key: string]: number } = {}
+            let reagents: Partial<Record<TypeRM, Partial<Record<Reagent, number>>>> = {}
             for (const valueKey in value) {
-                fields[valueKey] = value[valueKey];
+                if (valueKey.toLowerCase() !== 'reagents') {
+                    fields[valueKey] = value[valueKey];
+                } else {
+                    reagents = value[valueKey] as Partial<Record<TypeRM, Partial<Record<Reagent, number>>>>
+                }
             }
-            ic10.connectDevice(key, fields.PrefabHash, 2, fields)
+
+            ic10.connectDevice(key, fields.PrefabHash, 2, fields, {reagents:reagents})
         }
     })
     return ic10

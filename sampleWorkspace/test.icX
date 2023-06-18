@@ -1,8 +1,13 @@
-move r5 deg2rad
-define dhDish -2138748650
-lb r2 dhDish Horizontal 0
-mul r2 r0 deg2rad
+alias test r0
+lr r0 d0 Contents HASH("Copper")
+lr r1 d0 Required HASH("Iron")
+lr r2 d0 Recipe HASH("Electrum")
+alias test2 r0
 push 1
-push 2
-push 3
-push 5
+push 1
+push 1
+push 1
+push 1
+push 1
+push 1
+push 1

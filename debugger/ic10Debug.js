@@ -526,8 +526,19 @@ class ic10DebugSession extends debugadapter_1.LoggingDebugSession {
     getHover(args) {
         let response = args.expression;
         try {
+            response = String(this.ic10.memory.getValue(args.expression));
         }
         catch (e) {
+            try {
+                response = String(this.ic10.memory.getDevice(args.expression).properties.PrefabHash);
+            }
+            catch (e) {
+                try {
+                    response = String(this.ic10.memory.getRegister(args.expression).value);
+                }
+                catch (e) {
+                }
+            }
         }
         return response;
     }
@@ -571,12 +582,48 @@ class VariableMap {
                 this.var2variable("Stack", stack, id);
             }
         }
-        if (["d0", "d1", "d2", "d3", "d4", "d5",].includes(id)) {
+        if (["d0", "d1", "d2", "d3", "d4", "d5"].includes(id)) {
             try {
                 const device = this.ic10.memory.getDevice(id);
                 Object.entries(device.properties).forEach(([name, value]) => {
                     this.var2variable(name, value, id);
                 });
+                if (Object.keys(device.reagents.Contents).length) {
+                    this.map[id][`${id}.Contents`] = {
+                        name: `Reagents.Contents`,
+                        type: "object",
+                        value: `Object`,
+                        __vscodeVariableMenuContext: "Object",
+                        variablesReference: this.scope._variableHandles.create(`${id}.Contents`),
+                    };
+                    Object.entries(device.reagents.Contents).map(([key, val]) => {
+                        this.var2variable(key, val, `${id}.Contents`);
+                    });
+                }
+                if (Object.keys(device.reagents.Recipe).length) {
+                    this.map[id][`${id}.Recipe`] = {
+                        name: `Reagents.Recipes`,
+                        type: "object",
+                        value: `Object`,
+                        __vscodeVariableMenuContext: "Object",
+                        variablesReference: this.scope._variableHandles.create(`${id}.Recipe`),
+                    };
+                    Object.entries(device.reagents.Recipe).map(([key, val]) => {
+                        this.var2variable(key, val, `${id}.Recipe`);
+                    });
+                }
+                if (Object.keys(device.reagents.Required).length) {
+                    this.map[id][`${id}.Required`] = {
+                        name: `Reagents.Required`,
+                        type: "object",
+                        value: `Object`,
+                        __vscodeVariableMenuContext: "Object",
+                        variablesReference: this.scope._variableHandles.create(`${id}.Required`),
+                    };
+                    Object.entries(device.reagents.Required).map(([key, val]) => {
+                        this.var2variable(key, val, `${id}.Required`);
+                    });
+                }
                 this.var2variable('Slots', device.slots, id);
                 for (let i = 0; i < 7; i++) {
                     const channel = device.getChannel(i);

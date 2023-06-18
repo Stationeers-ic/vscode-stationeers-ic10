@@ -1,6 +1,9 @@
 [d0]
-PrefabHash=-463037670
-Setting=18
+PrefabHash = -463037670
+Setting = 18
+[d0.reagents]
+Iron = 1
+Copper = 3
 [d1]
-PrefabHash="StructureAdvancedPackagingMachine"
-Setting=18
+PrefabHash = "StructureAdvancedPackagingMachine"
+Setting = 18

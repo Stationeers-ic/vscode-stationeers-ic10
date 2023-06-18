@@ -251,6 +251,9 @@ class ic10Runtime extends events_1.EventEmitter {
         if (this._noDebug) {
             return false;
         }
+        if (!this._sourceLines[ln]) {
+            return false;
+        }
         const line = this._sourceLines[ln].trim();
         const words = line.split(" ");
         for (const word of words) {

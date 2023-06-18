@@ -380,7 +380,9 @@ export class ic10Runtime extends EventEmitter {
         if (this._noDebug) {
             return false
         }
-
+        if(!this._sourceLines[ln]){
+            return false
+        }
         const line = this._sourceLines[ln].trim()
 
         // if 'log(...)' found in source -> send argument to debug // console

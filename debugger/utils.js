@@ -76,10 +76,16 @@ function parseToml(ic10, env) {
     Object.entries(config).forEach(([key, value]) => {
         if (key) {
             const fields = {};
+            let reagents = {};
             for (const valueKey in value) {
-                fields[valueKey] = value[valueKey];
+                if (valueKey.toLowerCase() !== 'reagents') {
+                    fields[valueKey] = value[valueKey];
+                }
+                else {
+                    reagents = value[valueKey];
+                }
             }
-            ic10.connectDevice(key, fields.PrefabHash, 2, fields);
+            ic10.connectDevice(key, fields.PrefabHash, 2, fields, { reagents: reagents });
         }
     });
     return ic10;
