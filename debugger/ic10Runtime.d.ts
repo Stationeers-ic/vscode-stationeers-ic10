@@ -35,7 +35,7 @@ export declare class ic10Runtime extends EventEmitter {
     private _noDebug;
     private _namedException;
     private _otherExceptions;
-    private ic10;
+    private readonly ic10;
     constructor(_fileAccessor: FileAccessor, ic10: InterpreterIc10);
     private _sourceFile;
     get sourceFile(): string;

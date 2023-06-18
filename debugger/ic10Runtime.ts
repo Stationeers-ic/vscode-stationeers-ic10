@@ -55,7 +55,7 @@ export class ic10Runtime extends EventEmitter {
     private _noDebug = false
     private _namedException: string | undefined
     private _otherExceptions = false
-    private ic10: InterpreterIc10
+    private readonly ic10: InterpreterIc10
 
     constructor(private _fileAccessor: FileAccessor, ic10: InterpreterIc10) {
         super()
