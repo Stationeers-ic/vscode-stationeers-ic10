@@ -35,6 +35,7 @@ import {DeviceOutput} from "ic10/src/DeviceOutput";
 import {Device} from "ic10/src/devices/Device";
 import {parseEnvironment} from "./utils";
 import {IcHousing} from "ic10/src/devices/IcHousing";
+import * as fs from "fs";
 
 function timeout(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms))
@@ -405,7 +406,7 @@ export class ic10DebugSession extends LoggingDebugSession {
             } else {
                 name = '⚫ ' + ddKey
             }
-            response.body.scopes.push(new Scope(name, this._variableHandles.create(ddKey), true))
+            response.body.scopes.push(new Scope(name.toUpperCase(), this._variableHandles.create(ddKey), true))
         }
         this.sendResponse(response)
 
@@ -767,7 +768,7 @@ export class VariableMap {
                 this.var2variable("Stack", stack, id)
             }
         }
-        if (["db","d0", "d1", "d2", "d3", "d4", "d5"].includes(id)) {
+        if (["db", "d0", "d1", "d2", "d3", "d4", "d5"].includes(id)) {
             try {
                 const device = this.ic10.memory.getDevice(id)
                 Object.entries(device.properties).forEach(([name, value]) => {

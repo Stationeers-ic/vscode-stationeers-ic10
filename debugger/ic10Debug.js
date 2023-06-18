@@ -275,7 +275,7 @@ class ic10DebugSession extends debugadapter_1.LoggingDebugSession {
             else {
                 name = '⚫ ' + ddKey;
             }
-            response.body.scopes.push(new debugadapter_1.Scope(name, this._variableHandles.create(ddKey), true));
+            response.body.scopes.push(new debugadapter_1.Scope(name.toUpperCase(), this._variableHandles.create(ddKey), true));
         }
         this.sendResponse(response);
     }

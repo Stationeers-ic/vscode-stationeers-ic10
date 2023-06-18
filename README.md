@@ -2,6 +2,14 @@
 
 WIKI [https://icx.traineratwot.site/wiki/icx](https://icx.traineratwot.site/wiki/icx)
 
+# languages
+
+> <img alt="ru" src="https://raw.githubusercontent.com/hampusborgos/country-flags/main/png100px/ru.png" title="Ru" width="50"/>
+
+> <img alt="ru" src="https://raw.githubusercontent.com/hampusborgos/country-flags/main/png100px/us.png" title="En" width="50"/>
+
+
+
 VS code Sample
 project [https://github.com/Traineratwot/Ic10-and-Icx-Sample](https://github.com/Traineratwot/Ic10-and-Icx-Sample)
 
@@ -20,8 +28,6 @@ project [https://github.com/Traineratwot/Ic10-and-Icx-Sample](https://github.com
 ![npm](https://badgen.net/vs-marketplace/i/Traineratwot.stationeers-ic10)
 ![npm](https://badgen.net/vs-marketplace/rating/Traineratwot.stationeers-ic10)
 ![](https://stat.aytour.ru/stat/b4b55c18a3677f92ff2fe4c73d2e55d3.png)
-
-[![](https://i.imgur.com/cl0Xbq1.png)  Sponsor this project](https://www.patreon.com/traineratwot)
 
 [<img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0b52aa9e99b832574a53_full_logo_blurple_RGB.png" width="120"/>](https://discord.gg/KSVjXufkA9)
 
@@ -54,12 +60,12 @@ Debugger launch
 #### So the latest releases have fixed a lot of problems
 
 - all new ic10 command now supported `lr`,`sra`, `sds`, `ss` and more
-- new [debugger](#debugger) system - more convenient and understandable
+- new [debugger](#Debugger) system - more convenient and understandable
 - environment system - now you can configure the hardware environment of your scripts [more](#Environment)
 - more information on [wiki](https://icx.traineratwot.site/wiki/ic10)
 - [We need you help](#help)
 
-# debugger
+# Debugger
 ![](https://i.imgur.com/kFweq9N.jpeg)
 
 
@@ -92,6 +98,26 @@ If your language is not available, write Me `@Traineratwot` about it, in [discor
 Add missing devices and parametrs in [google spreadsheets](https://docs.google.com/spreadsheets/d/11a_KlDoNv-ZDTKXhhw206uO0xge3_6s2BrCYBfZh86w/edit?usp=sharing)
 This is necessary for the correct hints inside the extension
 
+# icX
+
+icX is a programming language translated to ic10 used to simplify the programming of ic10 microprocessors in
+the Stationeers game.
+
+# Quick start
+
+1. Install [plugin for VSC](https://marketplace.visualstudio.com/items?itemName=Traineratwot.stationeers-ic10)
+2. Create a file with **.icX** type
+3. Write a program. For example:
+    ```
+    use loop
+    var on = d1.Open
+    d0.On = on
+    ```
+4. Save the file (Ctrl+S)
+5. Copy a code from a new generated file with the same name and type **.ic10**
+6. Paste code into microprocessor Ic10 in the game
+
+[icX wiki](https://icx.traineratwot.site/wiki/icx)
 
 ## icX - compiler
 
@@ -122,24 +148,3 @@ new snippets
 ![img1](https://i.imgur.com/F1sGrVy.gif)
 
 ![img1](https://i.imgur.com/phOgb3n.jpeg)
-
-# icX
-
-icX is a programming language translated to ic10 used to simplify the programming of ic10 microprocessors in
-the Stationeers game.
-
-# Quick start
-
-1. Install [plugin for VSC](https://marketplace.visualstudio.com/items?itemName=Traineratwot.stationeers-ic10)
-2. Create a file with **.icX** type
-3. Write a program. For example:
-    ```
-    use loop
-    var on = d1.Open
-    d0.On = on
-    ```
-4. Save the file (Ctrl+S)
-5. Copy a code from a new generated file with the same name and type **.ic10**
-6. Paste code into microprocessor Ic10 in the game
-
-[icX wiki](https://icx.traineratwot.site/wiki/icx)
