@@ -183,46 +183,6 @@ function command(ctx) {
                 input.hide();
             });
         }));
-        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_IC10 + ".debug.device.write", (variable) => {
-            const ds = vscode.debug.activeDebugSession;
-            const input = vscode.window.createInputBox();
-            input.title = "set " + variable.variable.name;
-            input.show();
-            input.onDidAccept(function () {
-                ds.customRequest("ic10.debug.device.write", { variable: variable, value: input.value });
-                input.hide();
-            });
-        }));
-        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_IC10 + ".debug.device.slot.write", (variable) => {
-            const ds = vscode.debug.activeDebugSession;
-            const input = vscode.window.createInputBox();
-            input.title = "set " + variable.variable.name;
-            input.show();
-            input.onDidAccept(function () {
-                ds.customRequest("ic10.debug.device.slot.write", { variable: variable, value: input.value });
-                input.hide();
-            });
-        }));
-        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_IC10 + ".debug.stack.push", (variable) => {
-            const ds = vscode.debug.activeDebugSession;
-            const input = vscode.window.createInputBox();
-            input.title = "set " + variable.variable.name;
-            input.show();
-            input.onDidAccept(function () {
-                ds.customRequest("ic10.debug.stack.push", { variable: variable, value: input.value });
-                input.hide();
-            });
-        }));
-        ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_IC10 + ".debug.remove.push", (variable) => {
-            const ds = vscode.debug.activeDebugSession;
-            const input = vscode.window.createInputBox();
-            input.title = "set " + variable.variable.name;
-            input.show();
-            input.onDidAccept(function () {
-                ds.customRequest("ic10.debug.remove.push", { variable: variable, value: input.value });
-                input.hide();
-            });
-        }));
         ctx.subscriptions.push(vscode.commands.registerCommand(exports.LANG_ICX + ".compile", () => {
             try {
                 const code = vscode.window.activeTextEditor.document.getText();

@@ -1,4 +1,27 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VariableMap = exports.ic10DebugSession = void 0;
 const debugadapter_1 = require("@vscode/debugadapter");
@@ -10,6 +33,7 @@ const ConstantCell_1 = require("ic10/src/ConstantCell");
 const Slot_1 = require("ic10/src/Slot");
 const types_1 = require("ic10/src/types");
 const utils_1 = require("./utils");
+const fs = __importStar(require("fs"));
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -468,27 +492,36 @@ class ic10DebugSession extends debugadapter_1.LoggingDebugSession {
             catch (e) {
             }
         }
+        const containerName = args.containerName.replace('🟢', '').replace('🔴', '').trim().toLowerCase();
+        args.containerName = containerName;
+        fs.writeFileSync(`C:\\projects\\vscode-stationeers-ic10\\${command}.json`, JSON.stringify(args));
         switch (command) {
             case "ic10.debug.variables.write":
                 try {
+                    switch (containerName) {
+                        case 'registers':
+                            this.ic10.memory.getRegister(args.variableName).value = Number(args.value);
+                            break;
+                        case 'db':
+                        case 'd0':
+                        case 'd1':
+                        case 'd2':
+                        case 'd3':
+                        case 'd4':
+                        case 'd5':
+                            this.ic10.memory.environ.get(containerName).set(args.variableName, Number(args.value));
+                            break;
+                        case 'zero':
+                            this.ic10.memory.stack.getStack()[args.variableName] = Number(args.value);
+                            break;
+                        case 'constants':
+                            this.ic10.memory.define(args.variableName, Number(args.value));
+                            break;
+                    }
                 }
                 catch (e) {
                     this.sendEvent(new debugadapter_1.InvalidatedEvent(["variables"]));
                 }
-                break;
-            case "ic10.debug.device.write":
-                try {
-                    args.debug = regex.exec(args.variable.container.name);
-                }
-                catch (e) {
-                    this.sendEvent(new debugadapter_1.InvalidatedEvent(["variables"]));
-                }
-                break;
-            case "ic10.debug.device.slot.write":
-                break;
-            case "ic10.debug.stack.push":
-                break;
-            case "ic10.debug.remove.push":
                 break;
             default:
                 super.customRequest(command, response, args);

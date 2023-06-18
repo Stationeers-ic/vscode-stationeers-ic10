@@ -183,26 +183,6 @@
         "icon": "$(play)"
       },
       {
-        "command": "ic10.debug.device.write",
-        "title": "Write value",
-        "icon": "$(stop)"
-      },
-      {
-        "command": "ic10.debug.device.slot.write",
-        "title": "Write value",
-        "icon": "$(stop)"
-      },
-      {
-        "command": "ic10.debug.stack.push",
-        "title": "Write value",
-        "icon": "$(stop)"
-      },
-      {
-        "command": "ic10.debug.remove.push",
-        "title": "Write value",
-        "icon": "$(stop)"
-      },
-      {
         "command": "icX.compile",
         "title": "Compile",
         "icon": "$(play)"

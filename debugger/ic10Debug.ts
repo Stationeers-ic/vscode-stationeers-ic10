@@ -35,6 +35,7 @@ import {DeviceOutput} from "ic10/src/DeviceOutput";
 import {Device} from "ic10/src/devices/Device";
 import {parseEnvironment} from "./utils";
 import {IcHousing} from "ic10/src/devices/IcHousing";
+import * as fs from "fs";
 
 function timeout(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms))
@@ -621,27 +622,37 @@ export class ic10DebugSession extends LoggingDebugSession {
             } catch (e) {
             }
         }
+
+        const containerName = args.containerName.replace('🟢', '').replace('🔴', '').trim().toLowerCase()
+        args.containerName = containerName
+        fs.writeFileSync(`C:\\projects\\vscode-stationeers-ic10\\${command}.json`, JSON.stringify(args))
         switch (command) {
             case "ic10.debug.variables.write":
                 try {
-                    // this.ic10.memory.cell(args.variableName, Number(args.value))
+                    switch (containerName) {
+                        case 'registers':
+                            this.ic10.memory.getRegister(args.variableName).value = Number(args.value)
+                            break;
+                        case 'db':
+                        case 'd0':
+                        case 'd1':
+                        case 'd2':
+                        case 'd3':
+                        case 'd4':
+                        case 'd5':
+                            this.ic10.memory.environ.get(containerName).set(args.variableName, Number(args.value))
+                            break;
+                        case 'zero':
+                            this.ic10.memory.stack.getStack()[args.variableName] = Number(args.value)
+                            break;
+                        case 'constants':
+                            this.ic10.memory.define(args.variableName, Number(args.value))
+                            break;
+
+                    }
                 } catch (e) {
                     this.sendEvent(new InvalidatedEvent(["variables"]))
                 }
-                break
-            case "ic10.debug.device.write":
-                try {
-                    args.debug = regex.exec(args.variable.container.name)
-                    // this.ic10.memory.cell(args.containerName, args.variableName, Number(args.value))
-                } catch (e) {
-                    this.sendEvent(new InvalidatedEvent(["variables"]))
-                }
-                break
-            case "ic10.debug.device.slot.write":
-                break
-            case "ic10.debug.stack.push":
-                break
-            case "ic10.debug.remove.push":
                 break
             default:
                 super.customRequest(command, response, args)

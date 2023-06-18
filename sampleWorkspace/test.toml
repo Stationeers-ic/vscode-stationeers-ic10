@@ -2,6 +2,9 @@
 PrefabHash = -2138748650
 Setting = 18
 
+[d0.slot.0]
+Quantity=5
+
 [d0.Reagents.Contents]
 Iron= 1
 Copper = 3
