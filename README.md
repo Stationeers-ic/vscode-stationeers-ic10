@@ -62,6 +62,9 @@ Debugger launch
 # debugger
 ![](https://i.imgur.com/kFweq9N.jpeg)
 
+
+![](https://i.imgur.com/pQ1faV0.gif)
+
 # Environment
 you can configure the hardware environment of your scripts. for this you need
 1) create a file with name `.toml`
