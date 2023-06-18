@@ -246,9 +246,19 @@ class ic10DebugSession extends debugadapter_1.LoggingDebugSession {
                 new debugadapter_1.Scope("Constants", this._variableHandles.create("Constants"), false),
                 new debugadapter_1.Scope("Registers", this._variableHandles.create("Registers"), true),
                 new debugadapter_1.Scope("Stack", this._variableHandles.create("Stack"), true),
-                new debugadapter_1.Scope("DB [socket]", this._variableHandles.create("db"), true),
             ]
         };
+        let db = 'DB [Socket]';
+        if (!this.ic10?.memory.environ.get('db')) {
+            db = `🟡 ${db}`;
+        }
+        else if (this.ic10?.memory.environ.get('db').properties.Error > 0) {
+            db = `🔴 ${db}`;
+        }
+        else {
+            db = `🟢 ${db}`;
+        }
+        response.body.scopes.push(new debugadapter_1.Scope(db, this._variableHandles.create('db'), true));
         const dd = {
             'd0': this.ic10.memory.environ.d0 || null,
             'd1': this.ic10.memory.environ.d1 || null,
@@ -260,10 +270,10 @@ class ic10DebugSession extends debugadapter_1.LoggingDebugSession {
         for (const ddKey in dd) {
             let name = ddKey;
             if (dd[ddKey]) {
-                name = '🟢 ' + ddKey;
+                name = '⚪ ' + ddKey;
             }
             else {
-                name = '🔴 ' + ddKey;
+                name = '⚫ ' + ddKey;
             }
             response.body.scopes.push(new debugadapter_1.Scope(name, this._variableHandles.create(ddKey), true));
         }
@@ -468,7 +478,7 @@ class ic10DebugSession extends debugadapter_1.LoggingDebugSession {
             catch (e) {
             }
         }
-        const containerName = args.containerName.replace('🟢', '').replace('🔴', '').trim().toLowerCase();
+        const containerName = args.containerName.replace('🟢', '').replace('🔴', '').replace('🟡', '').replace('⚪', '').replace('⚫', '').trim().toLowerCase();
         args.containerName = containerName;
         switch (command) {
             case "ic10.debug.variables.write":
@@ -590,7 +600,7 @@ class VariableMap {
                 this.var2variable("Stack", stack, id);
             }
         }
-        if (["d0", "d1", "d2", "d3", "d4", "d5"].includes(id)) {
+        if (["db", "d0", "d1", "d2", "d3", "d4", "d5"].includes(id)) {
             try {
                 const device = this.ic10.memory.getDevice(id);
                 Object.entries(device.properties).forEach(([name, value]) => {

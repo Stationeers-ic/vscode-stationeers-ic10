@@ -1,29 +1,5 @@
-define pia 3.14
-alias device d0
-alias val r1
-move val 100
-s device Volume val
-l r0 device Setting
-push 1
-push 2
-push 3
-push 4
-push 5
-push 6
-push 7
-push 8
-push 9
-alias test r0
-lr r0 d0 Contents HASH("Copper")
-lr r1 d0 Required HASH("Iron")
-lr r2 d0 Recipe HASH("Electrum")
-alias test2 r0
 push 1
 push 1
+define pi 3.14
 push 1
 push 1
-push 1
-push 1
-push 1
-push 1
-j 0

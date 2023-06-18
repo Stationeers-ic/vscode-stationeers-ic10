@@ -378,9 +378,18 @@ export class ic10DebugSession extends LoggingDebugSession {
                 new Scope("Constants", this._variableHandles.create("Constants"), false),
                 new Scope("Registers", this._variableHandles.create("Registers"), true),
                 new Scope("Stack", this._variableHandles.create("Stack"), true),
-                new Scope("DB [socket]", this._variableHandles.create("db"), true),
             ]
         }
+        let db = 'DB [Socket]'
+        if (!this.ic10?.memory.environ.get('db')) {
+            db = `🟡 ${db}`
+        } else if (this.ic10?.memory.environ.get('db').properties.Error > 0) {
+            db = `🔴 ${db}`
+        } else {
+            db = `🟢 ${db}`
+        }
+        response.body.scopes.push(new Scope(db, this._variableHandles.create('db'), true))
+
         const dd = {
             'd0': this.ic10.memory.environ.d0 || null,
             'd1': this.ic10.memory.environ.d1 || null,
@@ -392,13 +401,14 @@ export class ic10DebugSession extends LoggingDebugSession {
         for (const ddKey in dd) {
             let name = ddKey
             if (dd[ddKey]) {
-                name = '🟢 ' + ddKey
+                name = '⚪ ' + ddKey
             } else {
-                name = '🔴 ' + ddKey
+                name = '⚫ ' + ddKey
             }
             response.body.scopes.push(new Scope(name, this._variableHandles.create(ddKey), true))
         }
         this.sendResponse(response)
+
     }
 
     protected async variablesRequest(response: DebugProtocol.VariablesResponse, args: DebugProtocol.VariablesArguments, request?: DebugProtocol.Request) {
@@ -622,7 +632,7 @@ export class ic10DebugSession extends LoggingDebugSession {
             }
         }
 
-        const containerName = args.containerName.replace('🟢', '').replace('🔴', '').trim().toLowerCase()
+        const containerName = args.containerName.replace('🟢', '').replace('🔴', '').replace('🟡', '').replace('⚪', '').replace('⚫', '').trim().toLowerCase()
         args.containerName = containerName
         // fs.writeFileSync(`C:\\projects\\vscode-stationeers-ic10\\${command}.json`, JSON.stringify(args))
         switch (command) {
@@ -757,7 +767,7 @@ export class VariableMap {
                 this.var2variable("Stack", stack, id)
             }
         }
-        if (["d0", "d1", "d2", "d3", "d4", "d5"].includes(id)) {
+        if (["db","d0", "d1", "d2", "d3", "d4", "d5"].includes(id)) {
             try {
                 const device = this.ic10.memory.getDevice(id)
                 Object.entries(device.properties).forEach(([name, value]) => {
