@@ -2,7 +2,7 @@
   "name": "stationeers-ic10",
   "displayName": "Stationeers ic10",
   "description": "Ic10 & icX support",
-  "version": "2.4.4",
+  "version": "2.4.5",
   "license": "MIT",
   "homepage": "https://github.com/Stationeers-ic/vscode-stationeers-ic10",
   "type": "commonjs",
