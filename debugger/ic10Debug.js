@@ -1,27 +1,4 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VariableMap = exports.ic10DebugSession = void 0;
 const debugadapter_1 = require("@vscode/debugadapter");
@@ -33,7 +10,6 @@ const ConstantCell_1 = require("ic10/src/ConstantCell");
 const Slot_1 = require("ic10/src/Slot");
 const types_1 = require("ic10/src/types");
 const utils_1 = require("./utils");
-const fs = __importStar(require("fs"));
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -268,6 +244,11 @@ class ic10DebugSession extends debugadapter_1.LoggingDebugSession {
         this.sendResponse(response);
     }
     scopesRequest(response, args) {
+        try {
+            this.env = (0, utils_1.parseEnvironment)(this.ic10, this.file);
+        }
+        catch (e) {
+        }
         response.body = {
             scopes: [
                 new debugadapter_1.Scope("Constants", this._variableHandles.create("Constants"), false),
@@ -304,7 +285,6 @@ class ic10DebugSession extends debugadapter_1.LoggingDebugSession {
             }
             response.body.scopes.push(new debugadapter_1.Scope(name, this._variableHandles.create(ddKey.toLowerCase()), false));
         }
-        fs.writeFileSync("C:\\projects\\vscode-stationeers-ic10\\test.json", JSON.stringify(response));
         this.sendResponse(response);
     }
     async variablesRequest(response, args, request) {
@@ -680,7 +660,6 @@ class VariableMap {
                 }
             }
             catch (e) {
-                fs.writeFileSync("C:\\projects\\vscode-stationeers-ic10\\test3.json", JSON.stringify(this.ic10.memory.environ), { flag: 'a' });
             }
         }
         if (id === 'Constants') {

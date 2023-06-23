@@ -376,6 +376,12 @@ export class ic10DebugSession extends LoggingDebugSession {
     }
 
     protected scopesRequest(response: DebugProtocol.ScopesResponse, args: DebugProtocol.ScopesArguments): void {
+        try {
+            this.env = parseEnvironment(this.ic10,  this.file)
+        }catch (e) {
+
+        }
+
         response.body = {
             scopes: [
                 new Scope("Constants", this._variableHandles.create("Constants"), false),
@@ -410,7 +416,6 @@ export class ic10DebugSession extends LoggingDebugSession {
             }
             response.body.scopes.push(new Scope(name, this._variableHandles.create(ddKey.toLowerCase()), false))
         }
-        fs.writeFileSync("C:\\projects\\vscode-stationeers-ic10\\test.json", JSON.stringify(response))
         this.sendResponse(response)
 
     }
@@ -824,7 +829,6 @@ export class VariableMap {
                 }
 
             } catch (e) {
-                fs.writeFileSync("C:\\projects\\vscode-stationeers-ic10\\test3.json", JSON.stringify(this.ic10.memory.environ), {flag: 'a'})
 
             }
         }
