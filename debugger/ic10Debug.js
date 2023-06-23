@@ -143,7 +143,11 @@ class ic10DebugSession extends debugadapter_1.LoggingDebugSession {
     async launchRequest(response, args) {
         debugadapter_1.logger.setup(args.trace ? debugadapter_1.Logger.LogLevel.Verbose : debugadapter_1.Logger.LogLevel.Stop, false);
         this.file = args.program;
-        this.env = (0, utils_1.parseEnvironment)(this.ic10, this.file);
+        try {
+            this.env = (0, utils_1.parseEnvironment)(this.ic10, this.file);
+        }
+        catch (e) {
+        }
         await this._runtime.start(args.program, !!args.stopOnEntry, !!args.noDebug);
         this.sendResponse(response);
     }

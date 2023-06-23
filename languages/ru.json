@@ -2745,6 +2745,13 @@
     "op5": null,
     "op6": null
   },
+  "Contents": {
+    "type": "Const",
+    "description": {
+      "preview": "string",
+      "text": ""
+    }
+  },
   "deg2rad": {
     "type": "Const",
     "description": {
@@ -2785,6 +2792,20 @@
     "description": {
       "preview": "57,2957795130823208767981",
       "text": "57,2957795130823208767981\r\nКонстанта для перевода в градусы. pi * rad2deg= 180"
+    }
+  },
+  "Recipe": {
+    "type": "Const",
+    "description": {
+      "preview": "string",
+      "text": ""
+    }
+  },
+  "Required": {
+    "type": "Const",
+    "description": {
+      "preview": "string",
+      "text": ""
     }
   },
   "Channel0": {
@@ -2852,27 +2873,6 @@
   },
   "Sum": {
     "type": "BM",
-    "description": {
-      "preview": "string",
-      "text": ""
-    }
-  },
-  "Contents": {
-    "type": "RM",
-    "description": {
-      "preview": "string",
-      "text": ""
-    }
-  },
-  "Recipe": {
-    "type": "RM",
-    "description": {
-      "preview": "string",
-      "text": ""
-    }
-  },
-  "Required": {
-    "type": "RM",
     "description": {
       "preview": "string",
       "text": ""

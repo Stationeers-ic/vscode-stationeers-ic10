@@ -35,7 +35,6 @@ import {DeviceOutput} from "ic10/src/DeviceOutput";
 import {Device} from "ic10/src/devices/Device";
 import {parseEnvironment} from "./utils";
 import {IcHousing} from "ic10/src/devices/IcHousing";
-import * as fs from "fs";
 
 function timeout(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms))
@@ -246,7 +245,10 @@ export class ic10DebugSession extends LoggingDebugSession {
         // make sure to 'Stop' the buffered logging if 'trace' is not set
         logger.setup(args.trace ? Logger.LogLevel.Verbose : Logger.LogLevel.Stop, false)
         this.file = args.program
-        this.env = parseEnvironment(this.ic10,  this.file)
+        try {
+            this.env = parseEnvironment(this.ic10, this.file)
+        } catch (e) {
+        }
 
         await this._runtime.start(args.program, !!args.stopOnEntry, !!args.noDebug)
 
@@ -377,8 +379,8 @@ export class ic10DebugSession extends LoggingDebugSession {
 
     protected scopesRequest(response: DebugProtocol.ScopesResponse, args: DebugProtocol.ScopesArguments): void {
         try {
-            this.env = parseEnvironment(this.ic10,  this.file)
-        }catch (e) {
+            this.env = parseEnvironment(this.ic10, this.file)
+        } catch (e) {
 
         }
 
@@ -643,7 +645,6 @@ export class ic10DebugSession extends LoggingDebugSession {
 
         const containerName = args.containerName.replace('🟢', '').replace('🔴', '').replace('🟡', '').replace('⚪', '').replace('⚫', '').trim().toLowerCase()
         args.containerName = containerName
-        // fs.writeFileSync(`C:\\projects\\vscode-stationeers-ic10\\${command}.json`, JSON.stringify(args))
         switch (command) {
             case "ic10.debug.variables.write":
                 try {

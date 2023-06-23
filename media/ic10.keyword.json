@@ -138,12 +138,15 @@
   "Vertical",
   "Volume",
   "WattsReachingContact",
+  "Contents",
   "deg2rad",
   "nan",
   "ninf",
   "pi",
   "pinf",
   "rad2deg",
+  "Recipe",
+  "Required",
   "Channel0",
   "Channel1",
   "Channel2",
@@ -153,8 +156,5 @@
   "Channel6",
   "Channel7",
   "Average",
-  "Sum",
-  "Contents",
-  "Recipe",
-  "Required"
+  "Sum"
 ]

@@ -2745,6 +2745,13 @@
     "op5": null,
     "op6": null
   },
+  "Contents": {
+    "type": "Const",
+    "description": {
+      "preview": "",
+      "text": ""
+    }
+  },
   "deg2rad": {
     "type": "Const",
     "description": {
@@ -2784,6 +2791,20 @@
     "type": "Const",
     "description": {
       "preview": "57.2957795130823208767981",
+      "text": ""
+    }
+  },
+  "Recipe": {
+    "type": "Const",
+    "description": {
+      "preview": "2",
+      "text": ""
+    }
+  },
+  "Required": {
+    "type": "Const",
+    "description": {
+      "preview": "1",
       "text": ""
     }
   },
@@ -2852,27 +2873,6 @@
   },
   "Sum": {
     "type": "BM",
-    "description": {
-      "preview": "string",
-      "text": ""
-    }
-  },
-  "Contents": {
-    "type": "RM",
-    "description": {
-      "preview": "string",
-      "text": ""
-    }
-  },
-  "Recipe": {
-    "type": "RM",
-    "description": {
-      "preview": "string",
-      "text": ""
-    }
-  },
-  "Required": {
-    "type": "RM",
     "description": {
       "preview": "string",
       "text": ""
