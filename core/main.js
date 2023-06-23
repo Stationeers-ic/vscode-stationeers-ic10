@@ -163,7 +163,8 @@ function command(ctx) {
                     },
                 };
                 const ic10 = interpreterIc10.setSettings(settings).init(code);
-                (0, utils_1.parseEnvironment)(ic10, vscode.window.activeTextEditor.document.uri.fsPath);
+                const env = (0, utils_1.parseEnvironment)(ic10, vscode.window.activeTextEditor.document.uri.fsPath);
+                vscode.window.showInformationMessage(`Окружения: ${env}`);
                 ic10.run().then();
             }
         }));

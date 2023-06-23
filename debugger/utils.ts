@@ -6,36 +6,44 @@ import toml from "toml";
 import InterpreterIc10 from "ic10";
 import {TypeRM} from "ic10/src/icTypes";
 import {Reagent} from "ic10/src/data/reagents";
+import vscode from "vscode";
 
-export function parseEnvironment(ic10: InterpreterIc10, file: string) {
+export function parseEnvironment(ic10: InterpreterIc10, file: string):string {
     let env
     const n = basename(file)
     const f = path.join(path.dirname(file), n)
     env = `${f}.toml`;
     if (fs.existsSync(env)) {
         parseToml(ic10, env);
+        return env;
     }
     env = `${f}.yml`;
     if (fs.existsSync(env)) {
         parseYaml(ic10, env);
+        return env;
     }
     env = `${f}.env`;
     if (fs.existsSync(env)) {
         parseEnv(ic10, env);
+        return env;
     }
 
     env = path.join(path.dirname(f), '.toml');
     if (fs.existsSync(env)) {
         parseToml(ic10, env);
+        return env;
     }
     env = path.join(path.dirname(f), '.yml');
     if (fs.existsSync(env)) {
         parseYaml(ic10, env);
+        return env;
     }
     env = path.join(path.dirname(f), '.env');
     if (fs.existsSync(env)) {
         parseEnv(ic10, env);
+        return env;
     }
+    return "Не найден файл окружения"
 }
 
 function basename(file: string): string {

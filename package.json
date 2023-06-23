@@ -249,11 +249,6 @@
           "command": "ic10.debug.variables.write",
           "group": "3_modifications",
           "when": "debugProtocolVariableMenuContext == String || debugProtocolVariableMenuContext == Number"
-        },
-        {
-          "command": "ic10.debug.device.write",
-          "group": "3_modifications",
-          "when": "debugProtocolVariableMenuContext == Device"
         }
       ]
     },

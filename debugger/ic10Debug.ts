@@ -73,6 +73,8 @@ export class ic10DebugSession extends LoggingDebugSession {
     private _isProgressCancellable = true
     private _useInvalidatedEvent = false
     private readonly ic10: InterpreterIc10
+    public env: string
+    public file: string;
 
     /**
      * Creates a new debug adapter that is used for one debug session.
@@ -243,7 +245,8 @@ export class ic10DebugSession extends LoggingDebugSession {
 
         // make sure to 'Stop' the buffered logging if 'trace' is not set
         logger.setup(args.trace ? Logger.LogLevel.Verbose : Logger.LogLevel.Stop, false)
-        parseEnvironment(this.ic10, args.program)
+        this.file = args.program
+        this.env = parseEnvironment(this.ic10,  this.file)
 
         await this._runtime.start(args.program, !!args.stopOnEntry, !!args.noDebug)
 
@@ -373,12 +376,11 @@ export class ic10DebugSession extends LoggingDebugSession {
     }
 
     protected scopesRequest(response: DebugProtocol.ScopesResponse, args: DebugProtocol.ScopesArguments): void {
-
         response.body = {
             scopes: [
                 new Scope("Constants", this._variableHandles.create("Constants"), false),
-                new Scope("Registers", this._variableHandles.create("Registers"), true),
-                new Scope("Stack", this._variableHandles.create("Stack"), true),
+                new Scope("Registers", this._variableHandles.create("Registers"), false),
+                new Scope("Stack", this._variableHandles.create("Stack"), false),
             ]
         }
         let db = 'DB [Socket]'
@@ -389,15 +391,15 @@ export class ic10DebugSession extends LoggingDebugSession {
         } else {
             db = `🟢 ${db}`
         }
-        response.body.scopes.push(new Scope(db, this._variableHandles.create('db'), true))
+        response.body.scopes.push(new Scope(db, this._variableHandles.create('db'), false))
 
         const dd = {
-            'd0': this.ic10.memory.environ.d0 || undefined,
-            'd1': this.ic10.memory.environ.d1 || undefined,
-            'd2': this.ic10.memory.environ.d2 || undefined,
-            'd3': this.ic10.memory.environ.d3 || undefined,
-            'd4': this.ic10.memory.environ.d4 || undefined,
-            'd5': this.ic10.memory.environ.d5 || undefined,
+            'D0': this.ic10.memory.environ.d0 || undefined,
+            'D1': this.ic10.memory.environ.d1 || undefined,
+            'D2': this.ic10.memory.environ.d2 || undefined,
+            'D3': this.ic10.memory.environ.d3 || undefined,
+            'D4': this.ic10.memory.environ.d4 || undefined,
+            'D5': this.ic10.memory.environ.d5 || undefined,
         }
         for (const ddKey in dd) {
             let name = ddKey
@@ -406,8 +408,9 @@ export class ic10DebugSession extends LoggingDebugSession {
             } else {
                 name = `⚫ ${ddKey.toUpperCase()}`
             }
-            response.body.scopes.push(new Scope(name, this._variableHandles.create(ddKey), true))
+            response.body.scopes.push(new Scope(name, this._variableHandles.create(ddKey.toLowerCase()), false))
         }
+        fs.writeFileSync("C:\\projects\\vscode-stationeers-ic10\\test.json", JSON.stringify(response))
         this.sendResponse(response)
 
     }
@@ -710,7 +713,9 @@ export class ic10DebugSession extends LoggingDebugSession {
 
     private getHover(args: DebugProtocol.EvaluateArguments) {
         let response = args.expression
-
+        if (args.expression.includes('env')) {
+            return this.env
+        }
         try {
             response = String(this.ic10.memory.getValue(args.expression))
         } catch (e) {
@@ -768,9 +773,9 @@ export class VariableMap {
                 this.var2variable("Stack", stack, id)
             }
         }
-        if (["db", "d0", "d1", "d2", "d3", "d4", "d5"].includes(id)) {
+        if (["d0", "d1", "d2", "d3", "d4", "d5"].includes(id)) {
             try {
-                const device = this.ic10.memory.getDevice(id)
+                const device = this.ic10.memory.environ.get(id)
                 Object.entries(device.properties).forEach(([name, value]) => {
                     this.var2variable(name, value, id)
                 })
@@ -812,13 +817,14 @@ export class VariableMap {
                     })
                 }
 
-
                 this.var2variable('Slots', device.slots, id)
                 for (let i = 0; i < 7; i++) {
                     const channel: DeviceOutput = device.getChannel(i)
                     this.var2variable(`Output ${i}`, channel, id)
                 }
+
             } catch (e) {
+                fs.writeFileSync("C:\\projects\\vscode-stationeers-ic10\\test3.json", JSON.stringify(this.ic10.memory.environ), {flag: 'a'})
 
             }
         }

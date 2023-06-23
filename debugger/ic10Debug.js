@@ -1,4 +1,27 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VariableMap = exports.ic10DebugSession = void 0;
 const debugadapter_1 = require("@vscode/debugadapter");
@@ -10,6 +33,7 @@ const ConstantCell_1 = require("ic10/src/ConstantCell");
 const Slot_1 = require("ic10/src/Slot");
 const types_1 = require("ic10/src/types");
 const utils_1 = require("./utils");
+const fs = __importStar(require("fs"));
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -25,6 +49,8 @@ class ic10DebugSession extends debugadapter_1.LoggingDebugSession {
     _isProgressCancellable = true;
     _useInvalidatedEvent = false;
     ic10;
+    env;
+    file;
     constructor(fileAccessor) {
         super("ic10-debug.txt");
         this.ic10 = new ic10_1.InterpreterIc10();
@@ -140,7 +166,8 @@ class ic10DebugSession extends debugadapter_1.LoggingDebugSession {
     }
     async launchRequest(response, args) {
         debugadapter_1.logger.setup(args.trace ? debugadapter_1.Logger.LogLevel.Verbose : debugadapter_1.Logger.LogLevel.Stop, false);
-        (0, utils_1.parseEnvironment)(this.ic10, args.program);
+        this.file = args.program;
+        this.env = (0, utils_1.parseEnvironment)(this.ic10, this.file);
         await this._runtime.start(args.program, !!args.stopOnEntry, !!args.noDebug);
         this.sendResponse(response);
     }
@@ -244,8 +271,8 @@ class ic10DebugSession extends debugadapter_1.LoggingDebugSession {
         response.body = {
             scopes: [
                 new debugadapter_1.Scope("Constants", this._variableHandles.create("Constants"), false),
-                new debugadapter_1.Scope("Registers", this._variableHandles.create("Registers"), true),
-                new debugadapter_1.Scope("Stack", this._variableHandles.create("Stack"), true),
+                new debugadapter_1.Scope("Registers", this._variableHandles.create("Registers"), false),
+                new debugadapter_1.Scope("Stack", this._variableHandles.create("Stack"), false),
             ]
         };
         let db = 'DB [Socket]';
@@ -258,14 +285,14 @@ class ic10DebugSession extends debugadapter_1.LoggingDebugSession {
         else {
             db = `🟢 ${db}`;
         }
-        response.body.scopes.push(new debugadapter_1.Scope(db, this._variableHandles.create('db'), true));
+        response.body.scopes.push(new debugadapter_1.Scope(db, this._variableHandles.create('db'), false));
         const dd = {
-            'd0': this.ic10.memory.environ.d0 || undefined,
-            'd1': this.ic10.memory.environ.d1 || undefined,
-            'd2': this.ic10.memory.environ.d2 || undefined,
-            'd3': this.ic10.memory.environ.d3 || undefined,
-            'd4': this.ic10.memory.environ.d4 || undefined,
-            'd5': this.ic10.memory.environ.d5 || undefined,
+            'D0': this.ic10.memory.environ.d0 || undefined,
+            'D1': this.ic10.memory.environ.d1 || undefined,
+            'D2': this.ic10.memory.environ.d2 || undefined,
+            'D3': this.ic10.memory.environ.d3 || undefined,
+            'D4': this.ic10.memory.environ.d4 || undefined,
+            'D5': this.ic10.memory.environ.d5 || undefined,
         };
         for (const ddKey in dd) {
             let name = ddKey;
@@ -275,8 +302,9 @@ class ic10DebugSession extends debugadapter_1.LoggingDebugSession {
             else {
                 name = `⚫ ${ddKey.toUpperCase()}`;
             }
-            response.body.scopes.push(new debugadapter_1.Scope(name, this._variableHandles.create(ddKey), true));
+            response.body.scopes.push(new debugadapter_1.Scope(name, this._variableHandles.create(ddKey.toLowerCase()), false));
         }
+        fs.writeFileSync("C:\\projects\\vscode-stationeers-ic10\\test.json", JSON.stringify(response));
         this.sendResponse(response);
     }
     async variablesRequest(response, args, request) {
@@ -543,6 +571,9 @@ class ic10DebugSession extends debugadapter_1.LoggingDebugSession {
     }
     getHover(args) {
         let response = args.expression;
+        if (args.expression.includes('env')) {
+            return this.env;
+        }
         try {
             response = String(this.ic10.memory.getValue(args.expression));
         }
@@ -600,9 +631,9 @@ class VariableMap {
                 this.var2variable("Stack", stack, id);
             }
         }
-        if (["db", "d0", "d1", "d2", "d3", "d4", "d5"].includes(id)) {
+        if (["d0", "d1", "d2", "d3", "d4", "d5"].includes(id)) {
             try {
-                const device = this.ic10.memory.getDevice(id);
+                const device = this.ic10.memory.environ.get(id);
                 Object.entries(device.properties).forEach(([name, value]) => {
                     this.var2variable(name, value, id);
                 });
@@ -649,6 +680,7 @@ class VariableMap {
                 }
             }
             catch (e) {
+                fs.writeFileSync("C:\\projects\\vscode-stationeers-ic10\\test3.json", JSON.stringify(this.ic10.memory.environ), { flag: 'a' });
             }
         }
         if (id === 'Constants') {

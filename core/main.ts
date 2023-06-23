@@ -172,7 +172,8 @@ function command(ctx: vscode.ExtensionContext) {
                     },
                 }
                 const ic10 = interpreterIc10.setSettings(settings).init(code)
-                parseEnvironment(ic10, vscode.window.activeTextEditor.document.uri.fsPath)
+                const env =  parseEnvironment(ic10, vscode.window.activeTextEditor.document.uri.fsPath)
+                vscode.window.showInformationMessage(`Окружения: ${env}`)
                 ic10.run().then();
             }
         }))

@@ -39,27 +39,34 @@ function parseEnvironment(ic10, file) {
     env = `${f}.toml`;
     if (fs.existsSync(env)) {
         parseToml(ic10, env);
+        return env;
     }
     env = `${f}.yml`;
     if (fs.existsSync(env)) {
         parseYaml(ic10, env);
+        return env;
     }
     env = `${f}.env`;
     if (fs.existsSync(env)) {
         parseEnv(ic10, env);
+        return env;
     }
     env = path_1.default.join(path_1.default.dirname(f), '.toml');
     if (fs.existsSync(env)) {
         parseToml(ic10, env);
+        return env;
     }
     env = path_1.default.join(path_1.default.dirname(f), '.yml');
     if (fs.existsSync(env)) {
         parseYaml(ic10, env);
+        return env;
     }
     env = path_1.default.join(path_1.default.dirname(f), '.env');
     if (fs.existsSync(env)) {
         parseEnv(ic10, env);
+        return env;
     }
+    return "Не найден файл окружения";
 }
 exports.parseEnvironment = parseEnvironment;
 function basename(file) {
