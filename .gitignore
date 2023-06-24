@@ -9,5 +9,12 @@ tools/interpreter/interpreter.js
 tools/fn.js
 logs
 tools/cache/*
-
 .project-manager/
+
+
+core/*.js
+core/*.js.map
+core/*.d.ts
+debugger/*.js
+debugger/*.js.map
+debugger/.d.ts
