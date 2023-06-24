@@ -17,4 +17,4 @@ core/*.js.map
 core/*.d.ts
 debugger/*.js
 debugger/*.js.map
-debugger/.d.ts
+debugger/*.d.ts
