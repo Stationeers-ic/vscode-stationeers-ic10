@@ -2148,5 +2148,61 @@
       "srl"
     ],
     "description": "Right bitshift"
+  },
+  "RatioLiquidCarbonDioxide": {
+    "prefix": "RatioLiquidCarbonDioxide",
+    "body": [
+      "RatioLiquidCarbonDioxide"
+    ],
+    "description": ""
+  },
+  "RatioLiquidNitrogen": {
+    "prefix": "RatioLiquidNitrogen",
+    "body": [
+      "RatioLiquidNitrogen"
+    ],
+    "description": ""
+  },
+  "RatioLiquidNitrousOxide": {
+    "prefix": "RatioLiquidNitrousOxide",
+    "body": [
+      "RatioLiquidNitrousOxide"
+    ],
+    "description": ""
+  },
+  "RatioLiquidOxygen": {
+    "prefix": "RatioLiquidOxygen",
+    "body": [
+      "RatioLiquidOxygen"
+    ],
+    "description": ""
+  },
+  "RatioLiquidPollutant": {
+    "prefix": "RatioLiquidPollutant",
+    "body": [
+      "RatioLiquidPollutant"
+    ],
+    "description": ""
+  },
+  "RatioLiquidVolatiles": {
+    "prefix": "RatioLiquidVolatiles",
+    "body": [
+      "RatioLiquidVolatiles"
+    ],
+    "description": ""
+  },
+  "RatioSteam": {
+    "prefix": "RatioSteam",
+    "body": [
+      "RatioSteam"
+    ],
+    "description": ""
+  },
+  "VolumeOfLiquid": {
+    "prefix": "VolumeOfLiquid",
+    "body": [
+      "VolumeOfLiquid"
+    ],
+    "description": ""
   }
 }

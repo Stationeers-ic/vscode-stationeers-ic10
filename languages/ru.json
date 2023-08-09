@@ -549,6 +549,48 @@
       "text": "доля углекислого газа в трубе выход 2"
     }
   },
+  "RatioLiquidCarbonDioxide": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "float",
+      "text": "доля жидкого углекислого газа"
+    }
+  },
+  "RatioLiquidNitrogen": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "float",
+      "text": "доля жидкого азота"
+    }
+  },
+  "RatioLiquidNitrousOxide": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "float",
+      "text": "доля жидкого закиси азота"
+    }
+  },
+  "RatioLiquidOxygen": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "float",
+      "text": "доля жидкого кислорода"
+    }
+  },
+  "RatioLiquidPollutant": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "float",
+      "text": "доля жидких токсинов"
+    }
+  },
+  "RatioLiquidVolatiles": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "float",
+      "text": "доля Жидких летучих газов"
+    }
+  },
   "RatioNitrogen": {
     "type": "Device parameter",
     "description": {
@@ -659,6 +701,13 @@
     "description": {
       "preview": "float",
       "text": "доля токсинов в трубе выход 2"
+    }
+  },
+  "RatioSteam": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "float",
+      "text": ""
     }
   },
   "RatioVolatiles": {
@@ -981,6 +1030,13 @@
     "description": {
       "preview": "float",
       "text": "Громкость"
+    }
+  },
+  "VolumeOfLiquid": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "float",
+      "text": "Количество жидкости, литры"
     }
   },
   "WattsReachingContact": {
@@ -1985,7 +2041,7 @@
       "text": "Пакетное чтение в op1 из всех устройств с хешем op2 параметра op3 в режиме op4"
     },
     "op1": "R/N",
-    "op2": "R/N/H",
+    "op2": "R/N/C/H",
     "op3": "P",
     "op4": "BM",
     "op5": null,
@@ -2283,7 +2339,7 @@
       "preview": "op1.op2 := op3",
       "text": "Пакетная запись во все устройства с хешем op1 в параметр op2 значения op3"
     },
-    "op1": "R/N/H",
+    "op1": "R/N/C/H",
     "op2": "P",
     "op3": "R/N/C",
     "op4": null,

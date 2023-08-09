@@ -549,6 +549,48 @@
       "text": ""
     }
   },
+  "RatioLiquidCarbonDioxide": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "",
+      "text": ""
+    }
+  },
+  "RatioLiquidNitrogen": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "",
+      "text": ""
+    }
+  },
+  "RatioLiquidNitrousOxide": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "",
+      "text": ""
+    }
+  },
+  "RatioLiquidOxygen": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "",
+      "text": ""
+    }
+  },
+  "RatioLiquidPollutant": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "",
+      "text": ""
+    }
+  },
+  "RatioLiquidVolatiles": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "",
+      "text": ""
+    }
+  },
   "RatioNitrogen": {
     "type": "Device parameter",
     "description": {
@@ -655,6 +697,13 @@
     }
   },
   "RatioPollutantOutput2": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "",
+      "text": ""
+    }
+  },
+  "RatioSteam": {
     "type": "Device parameter",
     "description": {
       "preview": "",
@@ -981,6 +1030,13 @@
     "description": {
       "preview": "float",
       "text": "Volume"
+    }
+  },
+  "VolumeOfLiquid": {
+    "type": "Device parameter",
+    "description": {
+      "preview": "",
+      "text": ""
     }
   },
   "WattsReachingContact": {
@@ -1985,7 +2041,7 @@
       "text": "Batch read in op1 from all devices with hash op2 of parameter op3 in op4 mode"
     },
     "op1": "R/N",
-    "op2": "R/N/H",
+    "op2": "R/N/C/H",
     "op3": "P",
     "op4": "BM",
     "op5": null,
@@ -2283,7 +2339,7 @@
       "preview": "op1.op2 := op3",
       "text": "Batch write to all devices with hash op1 to parameter op2 of value op3"
     },
-    "op1": "R/N/H",
+    "op1": "R/N/C/H",
     "op2": "P",
     "op3": "R/N/C",
     "op4": null,
