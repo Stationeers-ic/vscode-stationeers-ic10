@@ -225,7 +225,6 @@ function command(ctx: vscode.ExtensionContext) {
                 {
                     enableScripts: true,
                     retainContextWhenHidden: true,
-                    enableForms: true,
                     enableCommandUris: true,
                     enableFindWidget: true
                 }

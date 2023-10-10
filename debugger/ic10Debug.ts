@@ -785,6 +785,7 @@ export class VariableMap {
                 Object.entries(device.properties).forEach(([name, value]) => {
                     this.var2variable(name, value, id)
                 })
+                // @ts-ignore
                 if (Object.keys(device.reagents.Contents).length) {
                     this.map[id][`${id}.Contents`] = {
                         name: `Reagents.Contents`,
@@ -793,10 +794,13 @@ export class VariableMap {
                         __vscodeVariableMenuContext: "Object",
                         variablesReference: this.scope._variableHandles.create(`${id}.Contents`),
                     } as DebugProtocol.Variable
+                    // @ts-ignore
                     Object.entries(device.reagents.Contents).map(([key, val]) => {
+                        // @ts-ignore
                         this.var2variable(key, val, `${id}.Contents`)
                     })
                 }
+                // @ts-ignore
                 if (Object.keys(device.reagents.Recipe).length) {
                     this.map[id][`${id}.Recipe`] = {
                         name: `Reagents.Recipes`,
@@ -805,11 +809,14 @@ export class VariableMap {
                         __vscodeVariableMenuContext: "Object",
                         variablesReference: this.scope._variableHandles.create(`${id}.Recipe`),
                     } as DebugProtocol.Variable
+                    // @ts-ignore
                     Object.entries(device.reagents.Recipe).map(([key, val]) => {
+                        // @ts-ignore
                         this.var2variable(key, val, `${id}.Recipe`)
                     })
 
                 }
+                // @ts-ignore
                 if (Object.keys(device.reagents.Required).length) {
                     this.map[id][`${id}.Required`] = {
                         name: `Reagents.Required`,
@@ -818,7 +825,9 @@ export class VariableMap {
                         __vscodeVariableMenuContext: "Object",
                         variablesReference: this.scope._variableHandles.create(`${id}.Required`),
                     } as DebugProtocol.Variable
+                    // @ts-ignore
                     Object.entries(device.reagents.Required).map(([key, val]) => {
+                        // @ts-ignore
                         this.var2variable(key, val, `${id}.Required`)
                     })
                 }

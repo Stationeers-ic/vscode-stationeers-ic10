@@ -1,8 +1,14 @@
 # Stationeers ic10
+## Change log
+  - [10.10.29] BIG Debubget FIX
+
+
+---
+
 
 WIKI [https://icx.traineratwot.site/wiki/icx](https://icx.traineratwot.site/wiki/icx)
 
-# languages
+## languages
 
 > <img alt="ru" src="https://raw.githubusercontent.com/hampusborgos/country-flags/main/png100px/ru.png" title="Ru" width="50"/>
 
@@ -56,7 +62,7 @@ Debugger launch
 - Debugger
 
 
-# BIG Update
+## BIG Update
 #### So the latest releases have fixed a lot of problems
 
 - all new ic10 command now supported `lr`,`sra`, `sds`, `ss` and more
@@ -65,13 +71,13 @@ Debugger launch
 - more information on [wiki](https://icx.traineratwot.site/wiki/ic10)
 - [We need you help](#help)
 
-# Debugger
+## Debugger
 ![](https://i.imgur.com/kFweq9N.jpeg)
 
 
 ![](https://i.imgur.com/pQ1faV0.gif)
 
-# Environment
+## Environment
 you can configure the hardware environment of your scripts. for this you need
 1) create a file with name `.toml`
 2) if you want this file to refer to only one script and not to the entire folder, name it also as a script eg: `solat.icx.ic10` => `solar.toml`
@@ -89,7 +95,7 @@ Iron=1
 Copper=3
 ```
 
-# help
+## help
 ![](https://hadtl54cswnmgshye9o3v63hrsaidvki.cdn-freehost.com.ua/wp-content/uploads/2014/10/We-Need-You.jpg)
 Add missing functions constants and parameters to the [wiki](https://icx.traineratwot.site/wiki/ic10) in your language
 
@@ -98,12 +104,12 @@ If your language is not available, write Me `@Traineratwot` about it, in [discor
 Add missing devices and parametrs in [google spreadsheets](https://docs.google.com/spreadsheets/d/11a_KlDoNv-ZDTKXhhw206uO0xge3_6s2BrCYBfZh86w/edit?usp=sharing)
 This is necessary for the correct hints inside the extension
 
-# icX
+## icX
 
 icX is a programming language translated to ic10 used to simplify the programming of ic10 microprocessors in
 the Stationeers game.
 
-# Quick start
+## Quick start
 
 1. Install [plugin for VSC](https://marketplace.visualstudio.com/items?itemName=Traineratwot.stationeers-ic10)
 2. Create a file with **.icX** type

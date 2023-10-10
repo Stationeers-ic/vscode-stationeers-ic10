@@ -80,10 +80,18 @@
     // "emitDecoratorMetadata": true,               /* Enables experimental support for emitting type metadata for decorators. */
 
     /* Advanced Options */
-    "skipLibCheck": true
+    "skipLibCheck": true,
     /* Skip type checking of declaration files. */
+    "noImplicitAny": false,
+    "strictPropertyInitialization": false,
+    "types": []
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "./node_modules",
+    "../node_modules",
+    "./node_modules/*",
+    "../node_modules/*",
+    "../node_modules/ic10/src/devices/Device.ts",
   ]
 }

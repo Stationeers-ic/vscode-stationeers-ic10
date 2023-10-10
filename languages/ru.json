@@ -707,7 +707,7 @@
     "type": "Device parameter",
     "description": {
       "preview": "float",
-      "text": ""
+      "text": "Доля пара(вода) в трубе."
     }
   },
   "RatioVolatiles": {
