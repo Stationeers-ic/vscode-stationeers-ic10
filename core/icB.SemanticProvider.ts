@@ -1,5 +1,5 @@
 import vscode, {CancellationToken, ProviderResult, SemanticTokens, TextDocument} from "vscode"
-import fs from "fs";
+import * as fs from "fs";
 
 // import * as fs from "fs";
 
@@ -11,9 +11,9 @@ interface IParsedToken {
     tokenModifier?: number
 }
 
-export const tokenTypes = new Map<string, number>()
-export const tokenModifiers = new Map<string, number>()
-export const legend = (function () {
+const tokenTypes = new Map<string, number>()
+const tokenModifiers = new Map<string, number>()
+export const legendIcB = (function () {
     const tokenTypesLegend = [
         "parameter", "keyword", "enumMember",
         "property", "function",
@@ -29,11 +29,11 @@ export const legend = (function () {
     return new vscode.SemanticTokensLegend(tokenTypesLegend, tokenModifiersLegend)
 })()
 
-export class IcxSemanticTokensProvider implements vscode.DocumentSemanticTokensProvider {
+export class IcBSemanticTokensProvider implements vscode.DocumentSemanticTokensProvider {
 
     provideDocumentSemanticTokens(document: TextDocument, token: CancellationToken): ProviderResult<SemanticTokens> {
         const allTokens = this._parseText(document.getText())
-        const builder = new vscode.SemanticTokensBuilder(legend)
+        const builder = new vscode.SemanticTokensBuilder(legendIcB)
         allTokens.forEach((token) => {
             builder.push(
                 token.line, token.startCharacter, token.length,
@@ -72,6 +72,8 @@ export class IcxSemanticTokensProvider implements vscode.DocumentSemanticTokensP
                 } catch (e) {
                 }
             })
+            console.table(vars)
+            fs.writeFileSync('C:\\Projects\\IC\\vscode-stationeers-ic10\\core\\Test.json',JSON.stringify(vars))
 
             lines.forEach((line, index) => {
                 try {
@@ -94,7 +96,6 @@ export class IcxSemanticTokensProvider implements vscode.DocumentSemanticTokensP
     }
 
     pushToken(search, line, index, tokenType, tokenModifier, out: IParsedToken[]) {
-
         const find = new RegExp("\\b" + search + "\\b", "y")
         try {
             for (let i = 0; i < line.length; i++) {

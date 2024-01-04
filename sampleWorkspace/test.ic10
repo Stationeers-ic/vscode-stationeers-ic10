@@ -1,5 +1,0 @@
-#env
-s d0:0 Channel0 
-l r1 d0:0 Channel0
-push 1
-push 2

@@ -5,6 +5,7 @@ import {Ic10Vscode} from "./ic10-vscode"
 import path from "path"
 import {ic10Formatter} from "./ic10.formatter"
 import {IcxSemanticTokensProvider, legend} from "./icX.SemanticProvider"
+import {IcBSemanticTokensProvider, legendIcB} from "./icB.SemanticProvider"
 import {Ic10SidebarViewProvider} from "./sidebarView"
 import {ic10Diagnostics} from "./ic10.diagnostics"
 import {icX} from "icx-compiler"
@@ -15,6 +16,7 @@ import {IcXVscode} from "./icX-vscode"
 import InterpreterIc10 from "ic10"
 import {Ic10Error} from "ic10/src/Ic10Error"
 import {parseEnvironment} from "../debugger/utils";
+import fs from "fs";
 
 
 const LOCALE_KEY: string = vscode.env.language
@@ -22,6 +24,7 @@ const ic10_hover = new Ic10Vscode()
 const icX_hover = new IcXVscode()
 export const LANG_IC10 = "ic10"
 export const LANG_ICX = "icX"
+export const LANG_ICB = "icB"
 const interpreterIc10 = new InterpreterIc10(null)
 let interpreterIc10State = 0
 let leftCodeLength: vscode.StatusBarItem
@@ -278,12 +281,12 @@ html,body,iframe{
 }
 
 function semantic(ctx: vscode.ExtensionContext) {
-    // console.time('semantic')
+    console.time('semantic')
     try {
         ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider(
-                {language: LANG_IC10, scheme: "file"},
-                new IcxSemanticTokensProvider,
-                legend
+                {language: LANG_ICB, scheme: "file"},
+                new IcBSemanticTokensProvider,
+                legendIcB
             )
         )
         ctx.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider(
@@ -293,9 +296,9 @@ function semantic(ctx: vscode.ExtensionContext) {
             )
         )
     } catch (e) {
-        // console.error(e)
+        console.error(e)
     }
-    // console.timeEnd('semantic')
+    console.timeEnd('semantic')
 }
 
 function view(ctx: vscode.ExtensionContext) {
@@ -358,7 +361,7 @@ function statusBar(ctx: vscode.ExtensionContext) {
     // console.timeEnd('statusBar')
 }
 
-function ChangeActiveTextEditor(editor): void {
+function ChangeActiveTextEditor(editor:vscode.TextEditor): void {
     if (vscode.window.activeTextEditor.document.languageId == LANG_IC10 || vscode.window.activeTextEditor.document.languageId == LANG_ICX) {
         onChangeCallbacks.ChangeActiveTextEditor.forEach((e) => {
             e.call(null, editor)
@@ -366,7 +369,7 @@ function ChangeActiveTextEditor(editor): void {
     }
 }
 
-function ChangeTextEditorSelection(editor): void {
+function ChangeTextEditorSelection(editor:vscode.TextEditorSelectionChangeEvent): void {
     if (vscode.window.activeTextEditor.document.languageId == LANG_IC10 || vscode.window.activeTextEditor.document.languageId == LANG_ICX) {
 
         onChangeCallbacks.ChangeTextEditorSelection.forEach((e) => {
@@ -383,7 +386,7 @@ function SaveTextDocument(): void {
     }
 }
 
-function onChange(ctx) {
+function onChange(ctx:vscode.ExtensionContext) {
     ctx.subscriptions.push(vscode.window.onDidChangeActiveTextEditor(ChangeActiveTextEditor))
     ctx.subscriptions.push(vscode.workspace.onDidSaveTextDocument(SaveTextDocument))
     ctx.subscriptions.push(vscode.window.onDidChangeTextEditorSelection(ChangeTextEditorSelection))
@@ -404,7 +407,7 @@ function getNumberLeftLines(): Array<any> | false {
     }
 }
 
-function diagnostic(context) {
+function diagnostic(context:vscode.ExtensionContext) {
     // console.time('diagnostic')
 
     try {

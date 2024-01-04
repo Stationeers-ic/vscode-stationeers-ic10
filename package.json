@@ -46,7 +46,9 @@
   "contributes": {
     "files.associations": {
       "*.ic10": "ic10",
-      "*.icX": "icX"
+      "*.icX": "icX",
+      "*.icb": "icB",
+      "*.icB": "icB"
     },
     "languages": [
       {
@@ -68,6 +70,16 @@
           "icX"
         ],
         "configuration": "./icX.language-configuration.json"
+      },
+      {
+        "id": "icB",
+        "aliases": [
+          "icB"
+        ],
+        "extensions": [
+          "icb"
+        ],
+        "configuration": "./icB.language-configuration.json"
       }
     ],
     "grammars": [
@@ -80,6 +92,11 @@
         "language": "icX",
         "scopeName": "source.icX",
         "path": "./syntaxes/icX.tmLanguage.json"
+      },
+      {
+        "language": "icB",
+        "scopeName": "source.icB",
+        "path": "./syntaxes/icB.tmLanguage.json"
       }
     ],
     "debuggers": [
@@ -252,14 +269,6 @@
         }
       ]
     },
-    "configurationDefaults": {
-      "ic10": {
-        "editor.semanticHighlighting.enabled": true
-      },
-      "icX": {
-        "editor.semanticHighlighting.enabled": true
-      }
-    },
     "views": {
       "explorer": [
         {
@@ -277,6 +286,9 @@
       "editor.semanticHighlighting.enabled": true
     },
     "icX": {
+      "editor.semanticHighlighting.enabled": true
+    },
+    "icB": {
       "editor.semanticHighlighting.enabled": true
     }
   },
