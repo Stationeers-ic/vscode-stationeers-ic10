@@ -608,7 +608,7 @@
     "body": [
       "mul"
     ],
-    "description": "Work"
+    "description": "Multiplication"
   },
   "nor": {
     "prefix": "nor",
@@ -2204,5 +2204,12 @@
       "VolumeOfLiquid"
     ],
     "description": ""
+  },
+  "x": {
+    "prefix": "x",
+    "body": [
+      "x"
+    ],
+    "description": "x"
   }
 }

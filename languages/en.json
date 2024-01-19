@@ -90,6 +90,13 @@
       "text": ""
     }
   },
+  "x": {
+    "type": "Slot parameter",
+    "description": {
+      "preview": "x",
+      "text": "x"
+    }
+  },
   "Activate": {
     "type": "Device parameter",
     "description": {
@@ -2181,7 +2188,7 @@
     "type": "Function",
     "description": {
       "preview": "op1 := op2 * op3",
-      "text": "Work"
+      "text": "Multiplication"
     },
     "op1": "R/N",
     "op2": "R/N/C",

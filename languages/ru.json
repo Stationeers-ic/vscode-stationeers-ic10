@@ -90,6 +90,13 @@
       "text": "класс объекта в слоте"
     }
   },
+  "x": {
+    "type": "Slot parameter",
+    "description": {
+      "preview": "",
+      "text": ""
+    }
+  },
   "Activate": {
     "type": "Device parameter",
     "description": {
