@@ -1,8 +1,7 @@
 "use strict"
 import * as vscode from "vscode"
-import {Hover} from "vscode"
+import {FileDeleteEvent, Hover} from "vscode"
 import {Ic10Vscode} from "./ic10-vscode"
-import path from "path"
 import {ic10Formatter} from "./ic10.formatter"
 import {IcxSemanticTokensProvider, legend} from "./icX.SemanticProvider"
 import {IcBSemanticTokensProvider, legendIcB} from "./icB.SemanticProvider"
@@ -16,7 +15,11 @@ import {IcXVscode} from "./icX-vscode"
 import InterpreterIc10 from "ic10"
 import {Ic10Error} from "ic10/src/Ic10Error"
 import {parseEnvironment} from "../debugger/utils";
-import fs from "fs";
+import {BasicCompiler} from "../Compiler/BasicCompiler";
+import {hashStr} from "ic10/src/Utils";
+import {checkFileExists} from "./helpers";
+import fs from "fs/promises";
+import path from "path";
 
 
 const LOCALE_KEY: string = vscode.env.language
@@ -33,10 +36,12 @@ const onChangeCallbacks: {
     ChangeActiveTextEditor: Array<Function>
     ChangeTextEditorSelection: Array<Function>
     SaveTextDocument: Array<Function>
+    DeleteFiles: Array<(e: FileDeleteEvent) => void>
 } = {
     ChangeActiveTextEditor: [],
     ChangeTextEditorSelection: [],
-    SaveTextDocument: []
+    SaveTextDocument: [],
+    DeleteFiles: []
 }
 export const icxOptions: {
     comments: boolean
@@ -71,6 +76,31 @@ function icxStart() {
         if (vscode.window.activeTextEditor.document.languageId == LANG_ICX) {
             vscode.commands.executeCommand(LANG_ICX + ".compile")
         }
+    })
+    onChangeCallbacks.SaveTextDocument.push(() => {
+        // console.log('onSaveTextDocument')
+        if (vscode.window.activeTextEditor.document.languageId == LANG_ICB) {
+            vscode.commands.executeCommand(LANG_ICB + ".compile")
+        }
+    })
+    onChangeCallbacks.DeleteFiles.push(async (e) => {
+        //Удаляем мусор от ICB
+        console.log(e)
+        e.files.map(async (file) => {
+            try {
+                const hash = hashStr(path.relative(vscode.workspace.workspaceFolders[0].uri.fsPath, file.fsPath))
+                const vscodeFolder = path.join(vscode.workspace.workspaceFolders[0].uri.fsPath, '.vscode', 'tmp', String(hash));
+                if (await checkFileExists(vscodeFolder)) {
+                    await fs.rm(vscodeFolder, {recursive: true})
+                }
+                const compiledFile = path.join(path.dirname(file.fsPath), path.basename(file.fsPath) + '.ic10');
+                if (await checkFileExists(compiledFile)) {
+                    await fs.rm(compiledFile, {recursive: true})
+                }
+            } catch (e) {
+                console.error(e)
+            }
+        })
     })
 }
 
@@ -274,6 +304,33 @@ html,body,iframe{
 <iframe style="width: calc(100vw - 20px);height: calc(100vh - 20px);" botder="0" src="https://icx.traineratwot.site/wiki/${ext}"></iframe>
 `
         }))
+        ctx.subscriptions.push(vscode.commands.registerCommand(LANG_ICB + ".compile", async () => {
+            try {
+                const code = vscode.window.activeTextEditor.document.getText()
+                const hash = hashStr(path.relative(vscode.workspace.workspaceFolders[0].uri.fsPath, vscode.window.activeTextEditor.document.uri.fsPath))
+                const compiled = await (new BasicCompiler(code, String(hash))).compile()
+                if (compiled) {
+                    // console.log(compiled)
+                    const content = Buffer.from(compiled.output)
+                    const file = vscode.window.activeTextEditor.document.uri + ".ic10"
+                    vscode.window.showInformationMessage("Compiling output: " + file)
+                    vscode.workspace.fs.writeFile(vscode.Uri.parse(file), content)// console.log('file', file)
+                    compiled.errors.forEach((e) => {
+                        console.error(e)
+                    })
+                } else {
+                    vscode.window.showErrorMessage("compiling error: " + compiled)
+                }
+            } catch (e) {
+                if (e instanceof Errors || e instanceof Err) {
+                    vscode.window.showErrorMessage("compiling error: " + e.getUserMessage())
+                } else {
+                    vscode.window.showErrorMessage("compiling error", JSON.stringify(e))
+                }
+                console.error(e)
+            }
+        }))
+
     } catch (e) {
         vscode.window.showErrorMessage("Commands: " + e.toString())
         console.error(e)
@@ -306,19 +363,17 @@ function view(ctx: vscode.ExtensionContext) {
     try {
         icSidebar = new Ic10SidebarViewProvider(ctx.extensionUri)
         ctx.subscriptions.push(vscode.window.registerWebviewViewProvider(Ic10SidebarViewProvider.viewType, icSidebar))
-        onChangeCallbacks.ChangeTextEditorSelection.push(() => {
-            renderIc10()
-        })
-        onChangeCallbacks.ChangeTextEditorSelection.push(() => {
-            renderIcX()
-        })
         onChangeCallbacks.ChangeActiveTextEditor.push(() => {
             icSidebar.clear()
-            renderIcX()
-            renderIc10()
+            if (vscode.window.activeTextEditor.document.languageId == LANG_IC10) {
+                renderIc10()
+            }
+            if (vscode.window.activeTextEditor.document.languageId == LANG_ICX) {
+                renderIcX()
+            }
+            if (vscode.window.activeTextEditor.document.languageId == LANG_ICB) {
+            }
         })
-        renderIcX()
-        renderIc10()
         icSidebar.start()
     } catch (e) {
         console.error(e)
@@ -362,11 +417,9 @@ function statusBar(ctx: vscode.ExtensionContext) {
 }
 
 function ChangeActiveTextEditor(editor:vscode.TextEditor): void {
-    if (vscode.window.activeTextEditor.document.languageId == LANG_IC10 || vscode.window.activeTextEditor.document.languageId == LANG_ICX) {
         onChangeCallbacks.ChangeActiveTextEditor.forEach((e) => {
             e.call(null, editor)
         })
-    }
 }
 
 function ChangeTextEditorSelection(editor:vscode.TextEditorSelectionChangeEvent): void {
@@ -379,17 +432,21 @@ function ChangeTextEditorSelection(editor:vscode.TextEditorSelectionChangeEvent)
 }
 
 function SaveTextDocument(): void {
-    if (vscode.window.activeTextEditor.document.languageId == LANG_IC10 || vscode.window.activeTextEditor.document.languageId == LANG_ICX) {
         onChangeCallbacks.SaveTextDocument.forEach((e) => {
             e.call(null)
         })
-    }
+}
+
+function DeleteFiles(event: FileDeleteEvent): void {
+    onChangeCallbacks.DeleteFiles.forEach((e) => {
+        e.call(null, event)
+    })
 }
 
 function onChange(ctx:vscode.ExtensionContext) {
     ctx.subscriptions.push(vscode.window.onDidChangeActiveTextEditor(ChangeActiveTextEditor))
     ctx.subscriptions.push(vscode.workspace.onDidSaveTextDocument(SaveTextDocument))
-    ctx.subscriptions.push(vscode.window.onDidChangeTextEditorSelection(ChangeTextEditorSelection))
+    ctx.subscriptions.push(vscode.workspace.onDidDeleteFiles(DeleteFiles))
 }
 
 function getNumberLeftLines(): Array<any> | false {
@@ -413,8 +470,10 @@ function diagnostic(context:vscode.ExtensionContext) {
     try {
         const ic10DiagnosticsCollection = vscode.languages.createDiagnosticCollection("ic10")
         const icXDiagnosticsCollection = vscode.languages.createDiagnosticCollection("icX")
+        // const icBDiagnosticsCollection = vscode.languages.createDiagnosticCollection("icB")
         context.subscriptions.push(ic10DiagnosticsCollection)
         context.subscriptions.push(icXDiagnosticsCollection)
+        // context.subscriptions.push(icBDiagnosticsCollection)
 
         onChangeCallbacks.ChangeTextEditorSelection.push(() => {
             if (vscode.window.activeTextEditor.document.languageId == LANG_IC10) {
@@ -443,6 +502,12 @@ function diagnostic(context:vscode.ExtensionContext) {
             } else {
                 ic10Diagnostics.clear(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection)
             }
+            // if (vscode.window.activeTextEditor.document.languageId == LANG_ICB) {
+            //     icBDiagnostics.run(vscode.window.activeTextEditor.document, ic10DiagnosticsCollection)
+            //     icXDiagnostics.clear(vscode.window.activeTextEditor.document, icXDiagnosticsCollection)
+            // }else{
+            //
+            // }
         })
     } catch (e) {
         // console.error(e)

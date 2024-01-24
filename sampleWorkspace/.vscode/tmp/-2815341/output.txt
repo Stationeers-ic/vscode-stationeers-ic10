@@ -1,0 +1,31 @@
+﻿alias sensor d0
+alias freezevent d1
+alias freezepump d4
+alias inputvent d2
+alias tank d3
+yield # Switch on-off and see the pin's names
+define heater -287495560
+s d4 Setting 1
+sb heater On 0
+yield
+l r0 d3 VolumeOfLiquid
+l r1 d0 Temperature
+bge r0 5 15
+s d2 On 1
+j 16
+s d2 On 0
+sub r0 r1 273.15
+s db Setting r0
+ble r1 318.15 20
+sb heater On 0
+ble r1 323.15 24
+sb heater On 0
+s d1 On 1
+s d4 On 1
+bge r1 323.15 27
+s d1 On 0
+s d4 On 0
+bge r1 318.15 29
+sb heater On 1
+j 9
+# Compiled at 2024-01-24 09:41 by Exca's Basic10.

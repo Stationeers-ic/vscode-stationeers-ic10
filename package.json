@@ -1,8 +1,8 @@
 {
   "name": "stationeers-ic10",
   "displayName": "Stationeers ic10",
-  "description": "Ic10 & icX support",
-  "version": "2.4.9",
+  "description": "Ic10 & icB support",
+  "version": "2.5.0",
   "license": "MIT",
   "homepage": "https://github.com/Stationeers-ic/vscode-stationeers-ic10",
   "type": "commonjs",
@@ -46,6 +46,7 @@
   "contributes": {
     "files.associations": {
       "*.ic10": "ic10",
+      "*.ic": "ic10",
       "*.icX": "icX",
       "*.icb": "icB",
       "*.icB": "icB"
@@ -57,7 +58,8 @@
           "ic10"
         ],
         "extensions": [
-          "ic10"
+          "ic10",
+          "ic"
         ],
         "configuration": "./ic10.language-configuration.json"
       },
@@ -77,7 +79,8 @@
           "icB"
         ],
         "extensions": [
-          "icb"
+          "icb",
+          "icB"
         ],
         "configuration": "./icB.language-configuration.json"
       }
@@ -205,6 +208,11 @@
         "icon": "$(heart)"
       },
       {
+        "command": "icB.compile",
+        "title": "Basic compile",
+        "icon": "$(heart)"
+      },
+      {
         "command": "icX.open.wiki",
         "title": "Open wiki",
         "icon": "$(eye)"
@@ -296,7 +304,7 @@
     "@vscode/debugadapter": "1.61.0",
     "@vscode/debugprotocol": "1.61.0",
     "dotenv": "16.3.1",
-    "ic10": "^3.4.11",
+    "ic10": "^3.4.12",
     "icx-compiler": "^2.1.6",
     "toml": "^3.0.0",
     "yaml": "^2.3.1"
