@@ -1,1 +1,1 @@
-﻿WARNING : Parser: Unable to parse code 'jghkjhjkhj' into a STRUCTURE at line 1 !
+﻿WARNING : Optimizer: No yield or wait command found in code. It will be automatically added to the main loop.

@@ -1,13 +1,9 @@
-jghkjhjkhj
-dsfdsfds
-
 const @heater = -287495560
 alias sensor = d0
 alias freezeVent = d1
 alias freezePump = d4
 alias inputVent = d2
 alias tank = d3
-
 
 freezePump.Setting = 1
 IC.device[@heater].On = 0
