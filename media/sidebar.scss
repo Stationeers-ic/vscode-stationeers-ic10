@@ -1,0 +1,38 @@
+section {
+  margin-bottom: 10px
+}
+
+.disabledSelect {
+  user-select: none
+}
+
+#settings, #icxStats {
+  ul, ol {
+    padding: 0 0 0 5px
+  }
+}
+
+#leftLineCounter {
+}
+
+.progress {
+  background-color: lightslategrey;
+  border-radius: 10px;
+  padding: 3px;
+
+  & > div {
+    background-color: var(--vscode-inputValidation-infoForeground);
+    height: 12px;
+    border-radius: 10px;
+    background: var(--vscode-list-errorForeground);
+  }
+
+  &.geMax > div {
+    background-color: red !important;
+    color: red !important;
+  }
+
+  &.geMin {
+
+  }
+}

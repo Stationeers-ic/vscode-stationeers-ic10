@@ -1,0 +1,14 @@
+{
+  "iconDefinitions": {
+    "_ic10": {
+      "iconPath": "./images/"
+    }
+  },
+  "languageIds": {
+    "ic10": "_ic10"
+  },
+  "fileExtensions": {
+    "ic10": "_ic10"
+  }
+}
+

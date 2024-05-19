@@ -1,0 +1,44 @@
+const @heater = -287495560
+alias sensor = d0
+alias freezeVent = d1
+alias freezePump = d4
+alias inputVent = d2
+alias tank = d3
+
+freezePump.Setting = 1
+IC.device[@heater].On = 0
+const target = 40c 
+
+start:
+
+var volume = tank.VolumeOfLiquid
+var temp = sensor.Temperature 
+
+if volume < 5 then
+    inputVent.ON = 1
+else
+    inputVent.ON = 0
+endif 
+
+Ic.Setting = temp - 0C 
+
+if temp > target + 5 then
+    IC.device[@heater].On = 0
+endif
+
+if temp > target + 10 then
+    IC.device[@heater].On = 0
+    freezeVent.On = 1
+    freezePump.On = 1
+endif
+
+if temp < target + 10 then
+    freezeVent.On = 0
+    freezePump.On = 0
+endif
+
+if temp < target + 5 then
+    IC.device[@heater].On = 1
+endif
+
+goto start

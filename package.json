@@ -1,0 +1,327 @@
+{
+  "name": "stationeers-ic10",
+  "displayName": "Stationeers ic10",
+  "description": "Ic10 & icB support",
+  "version": "2.5.0",
+  "license": "MIT",
+  "homepage": "https://github.com/Stationeers-ic/vscode-stationeers-ic10",
+  "type": "commonjs",
+  "scripts": {
+    "generate": "cd ./tools && npm i && npx gulp generate-langs && cd ../",
+    "vscode:prepublish": "npx tsc",
+    "start": "npm i && tsc -w",
+    "publish": "vsce package",
+    "package": "vsce package"
+  },
+  "badges": [],
+  "publisher": "Traineratwot",
+  "repository": "https://github.com/Stationeers-ic/vscode-stationeers-ic10/",
+  "author": {
+    "name": "Traineratwot"
+  },
+  "icon": "images/logo.png",
+  "bugs": {
+    "url": "https://github.com/Stationeers-ic/vscode-stationeers-ic10/issues",
+    "email": "Traineratwot@yandex.com"
+  },
+  "engines": {
+    "vscode": "^1.52.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Debuggers",
+    "Snippets",
+    "Formatters"
+  ],
+  "activationEvents": [
+    "workspaceContains:**/*.ic10",
+    "onDebugResolve:ic10",
+    "onDebugDynamicConfigurations:ic10",
+    "onWebviewPanel:icX.wiki"
+  ],
+  "extensionKind": [
+    "workspace"
+  ],
+  "main": "./core/main.js",
+  "contributes": {
+    "files.associations": {
+      "*.ic10": "ic10",
+      "*.ic": "ic10",
+      "*.icX": "icX",
+      "*.icb": "icB",
+      "*.icB": "icB"
+    },
+    "languages": [
+      {
+        "id": "ic10",
+        "aliases": [
+          "ic10"
+        ],
+        "extensions": [
+          "ic10",
+          "ic"
+        ],
+        "configuration": "./ic10.language-configuration.json"
+      },
+      {
+        "id": "icX",
+        "aliases": [
+          "icX"
+        ],
+        "extensions": [
+          "icX"
+        ],
+        "configuration": "./icX.language-configuration.json"
+      },
+      {
+        "id": "icB",
+        "aliases": [
+          "icB"
+        ],
+        "extensions": [
+          "icb",
+          "icB"
+        ],
+        "configuration": "./icB.language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "ic10",
+        "scopeName": "source.ic10",
+        "path": "./syntaxes/ic10.tmLanguage.json"
+      },
+      {
+        "language": "icX",
+        "scopeName": "source.icX",
+        "path": "./syntaxes/icX.tmLanguage.json"
+      },
+      {
+        "language": "icB",
+        "scopeName": "source.icB",
+        "path": "./syntaxes/icB.tmLanguage.json"
+      }
+    ],
+    "debuggers": [
+      {
+        "type": "ic10",
+        "label": "ic10 Debug",
+        "program": "./debugger/debugAdapter.js",
+        "runtime": "node",
+        "languages": [
+          "ic10"
+        ],
+        "configurationAttributes": {
+          "launch": {
+            "required": [
+              "program"
+            ],
+            "properties": {
+              "program": {
+                "type": "string",
+                "description": "Absolute path to a text file.",
+                "default": "${file}"
+              },
+              "stopOnEntry": {
+                "type": "boolean",
+                "description": "Automatically stop after launch.",
+                "default": true
+              },
+              "trace": {
+                "type": "boolean",
+                "description": "Enable logging of the Debug Adapter Protocol.",
+                "default": true
+              }
+            },
+            "initialConfigurations": [
+              {
+                "type": "ic10",
+                "request": "launch",
+                "name": "Ask for file name",
+                "program": "${workspaceFolder}/${command:AskForProgramName}",
+                "stopOnEntry": true
+              }
+            ]
+          }
+        },
+        "configurationSnippets": [
+          {
+            "label": "Ic10 Debug",
+            "description": "Stationers ic10 debugger",
+            "body": {
+              "type": "ic10",
+              "request": "launch",
+              "name": "Debug ic10",
+              "program": "${file}",
+              "stopOnEntry": true,
+              "trace": false
+            }
+          }
+        ],
+        "variables": {
+          "AskForProgramName": "extension.1c10-debug.getProgramName"
+        }
+      }
+    ],
+    "snippets": [
+      {
+        "language": "ic10",
+        "path": "./snippets/ic10.json"
+      },
+      {
+        "language": "icX",
+        "path": "./snippets/icX.json"
+      }
+    ],
+    "breakpoints": [
+      {
+        "language": "ic10"
+      }
+    ],
+    "commands": [
+      {
+        "command": "ic10.run",
+        "title": "Run",
+        "description": "Run script",
+        "icon": "$(play)"
+      },
+      {
+        "command": "ic10.test",
+        "title": "test",
+        "description": "test script",
+        "icon": "$(play)"
+      },
+      {
+        "command": "ic10.stop",
+        "title": "Stop",
+        "description": "Stop script",
+        "icon": "$(stop)"
+      },
+      {
+        "command": "ic10.debug.variables.write",
+        "title": "Write value",
+        "icon": "$(pencil)"
+      },
+      {
+        "command": "icX.compile",
+        "title": "Compile",
+        "icon": "$(heart)"
+      },
+      {
+        "command": "icB.compile",
+        "title": "Basic compile",
+        "icon": "$(heart)"
+      },
+      {
+        "command": "icX.open.wiki",
+        "title": "Open wiki",
+        "icon": "$(eye)"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "ic10.run",
+          "when": "editorLangId == ic10"
+        },
+        {
+          "command": "icX.compile",
+          "when": "editorLangId == icX"
+        },
+        {
+          "command": "icX.open.wiki",
+          "when": "editorLangId == icX"
+        },
+        {
+          "command": "icX.open.wiki",
+          "when": "editorLangId == ic10"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "ic10.run",
+          "when": "editorLangId == ic10"
+        },
+        {
+          "command": "icX.compile",
+          "when": "editorLangId == icX"
+        }
+      ],
+      "editor/title/run": [
+        {
+          "command": "icX.compile",
+          "when": "resourceLangId == icX"
+        },
+        {
+          "command": "icX.open.wiki",
+          "when": "resourceLangId == icX"
+        },
+        {
+          "command": "icX.open.wiki",
+          "when": "resourceLangId == ic10"
+        },
+        {
+          "command": "ic10.run",
+          "when": "resourceLangId == ic10"
+        },
+        {
+          "command": "ic10.stop",
+          "when": "resourceLangId == ic10"
+        }
+      ],
+      "debug/variables/context": [
+        {
+          "command": "ic10.debug.variables.write",
+          "group": "3_modifications",
+          "when": "debugProtocolVariableMenuContext == String || debugProtocolVariableMenuContext == Number"
+        }
+      ]
+    },
+    "views": {
+      "explorer": [
+        {
+          "type": "webview",
+          "id": "Ic10ViewProvider",
+          "name": "ic10",
+          "icon": "images/logo.svg",
+          "contextualTitle": "ic10/icX"
+        }
+      ]
+    }
+  },
+  "configurationDefaults": {
+    "ic10": {
+      "editor.semanticHighlighting.enabled": true
+    },
+    "icX": {
+      "editor.semanticHighlighting.enabled": true
+    },
+    "icB": {
+      "editor.semanticHighlighting.enabled": true
+    }
+  },
+  "dependencies": {
+    "@vscode/debugadapter": "1.61.0",
+    "@vscode/debugprotocol": "1.61.0",
+    "dotenv": "16.3.1",
+    "ic10": "^3.4.12",
+    "icx-compiler": "^2.1.6",
+    "toml": "^3.0.0",
+    "yaml": "^2.3.1"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^20.3.0",
+    "@types/semver": "^7.3.12",
+    "@types/sinon": "9.0.11",
+    "@types/vscode": "1.52.0",
+    "typescript": "4.9.3",
+    "vsce": "^2.15.0"
+  },
+  "__metadata": {
+    "id": "e9ab14ed-1c65-4a3c-835b-f13c96f90ac7",
+    "publisherDisplayName": "Traineratwot",
+    "publisherId": "380b2875-741d-4735-b93a-1850757c5e71"
+  }
+}
