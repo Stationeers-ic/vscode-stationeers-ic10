@@ -1,0 +1,35 @@
+{
+  "name": "env-editor",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build --emptyOutDir",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@types/vscode": "^1.89.0",
+    "@types/vscode-webview": "^1.57.5",
+    "@vscode/codicons": "^0.0.36",
+    "@vue-flow/background": "^1.3.0",
+    "@vue-flow/controls": "^1.1.1",
+    "@vue-flow/core": "^1.33.8",
+    "@vue-flow/minimap": "^1.4.0",
+    "@vue-flow/node-resizer": "^1.3.6",
+    "@vue-flow/node-toolbar": "^1.1.0",
+    "primeicons": "^7.0.0",
+    "primevue": "^3.52.0",
+    "sass": "^1.77.2",
+    "vite-plugin-integrated": "^1.1.6",
+    "vue": "^3.4.21",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "typescript": "^5.2.2",
+    "unplugin-vue-components": "^0.27.0",
+    "vite": "^5.2.0",
+    "vue-tsc": "^2.0.6"
+  }
+}

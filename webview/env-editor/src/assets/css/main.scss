@@ -1,0 +1,97 @@
+.ic10Editor {
+	flex-direction: column;
+	display: flex;
+	height: 100vh;
+	width: 100vw;
+
+	aside {
+		width: 25%;
+		color: white;
+		font-weight: 700;
+		border-right: 1px solid var(--vscode-sideBar-border);
+		padding: 15px 10px;
+		font-size: 12px;
+		background: var(--vscode-sideBar-background);
+
+		.nodes {
+			> * {
+				margin-bottom: 10px;
+				cursor: grab;
+				font-weight: 500;
+				-webkit-box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.25);
+				box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.25);
+			}
+		}
+
+		.description {
+			margin-bottom: 10px;
+		}
+	}
+
+	.vue-flow-wrapper {
+		flex-grow: 1;
+		height: 100%;
+	}
+
+	&__dropzone {
+		transition: background-color 0.2s ease;
+		background-color: transparent;
+
+		&.active {
+			background-color: var(--vscode-editorGroup-dropBackground) !important;
+		}
+	}
+}
+
+@media screen and (min-width: 640px) {
+	.ic10Editor {
+		flex-direction: row;
+
+		aside {
+			width: 25%;
+		}
+	}
+}
+
+@media screen and (max-width: 639px) {
+	.ic10Editor {
+		aside {
+			width: 100%;
+			max-height: 40%;
+
+			.nodes {
+				display: flex;
+				flex-direction: row;
+				gap: 5px;
+			}
+		}
+	}
+}
+
+.deviceCard {
+	&.minimum {
+		height: 50px !important;
+
+		* {
+			.p-card-body {
+				padding: 0 !important;
+			}
+		}
+	}
+
+	&.normal {
+
+
+	}
+
+	.image {
+		width: 100%;
+		height: 64px;
+
+		img {
+			height: 100%;
+			width: 100%;
+			object-fit: contain;
+		}
+	}
+}

@@ -1,0 +1,6687 @@
+{
+  "l": {
+    "prefix": "l",
+    "body": [
+      "l"
+    ],
+    "description": "Loads device LogicType to register by housing index value."
+  },
+  "s": {
+    "prefix": "s",
+    "body": [
+      "s"
+    ],
+    "description": "Stores register value to LogicType on device by housing index value."
+  },
+  "ls": {
+    "prefix": "ls",
+    "body": [
+      "ls"
+    ],
+    "description": "Loads slot LogicSlotType on device to register."
+  },
+  "lr": {
+    "prefix": "lr",
+    "body": [
+      "lr"
+    ],
+    "description": "Loads reagent of device's ReagentMode where a hash of the reagent type to check for. ReagentMode can be either Contents (0), Required (1), Recipe (2). Can use either the word, or the number."
+  },
+  "sb": {
+    "prefix": "sb",
+    "body": [
+      "sb"
+    ],
+    "description": "Stores register value to LogicType on all output network devices with provided type hash."
+  },
+  "lb": {
+    "prefix": "lb",
+    "body": [
+      "lb"
+    ],
+    "description": "Loads LogicType from all output network devices with provided type hash using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number."
+  },
+  "alias": {
+    "prefix": "alias",
+    "body": [
+      "alias"
+    ],
+    "description": "Labels register or device reference with name, device references also affect what shows on the screws on the IC base."
+  },
+  "move": {
+    "prefix": "move",
+    "body": [
+      "move"
+    ],
+    "description": "Register = provided num or register value."
+  },
+  "add": {
+    "prefix": "add",
+    "body": [
+      "add"
+    ],
+    "description": "Register = a + b."
+  },
+  "sub": {
+    "prefix": "sub",
+    "body": [
+      "sub"
+    ],
+    "description": "Register = a - b."
+  },
+  "sdse": {
+    "prefix": "sdse",
+    "body": [
+      "sdse"
+    ],
+    "description": "Register = 1 if device is set, otherwise 0."
+  },
+  "sdns": {
+    "prefix": "sdns",
+    "body": [
+      "sdns"
+    ],
+    "description": "Register = 1 if device is not set, otherwise 0"
+  },
+  "slt": {
+    "prefix": "slt",
+    "body": [
+      "slt"
+    ],
+    "description": "Register = 1 if a < b, otherwise 0"
+  },
+  "sgt": {
+    "prefix": "sgt",
+    "body": [
+      "sgt"
+    ],
+    "description": "Register = 1 if a > b, otherwise 0"
+  },
+  "sle": {
+    "prefix": "sle",
+    "body": [
+      "sle"
+    ],
+    "description": "Register = 1 if a <= b, otherwise 0"
+  },
+  "sge": {
+    "prefix": "sge",
+    "body": [
+      "sge"
+    ],
+    "description": "Register = 1 if a >= b, otherwise 0"
+  },
+  "seq": {
+    "prefix": "seq",
+    "body": [
+      "seq"
+    ],
+    "description": "Register = 1 if a == b, otherwise 0"
+  },
+  "sne": {
+    "prefix": "sne",
+    "body": [
+      "sne"
+    ],
+    "description": "Register = 1 if a != b, otherwise 0"
+  },
+  "sap": {
+    "prefix": "sap",
+    "body": [
+      "sap"
+    ],
+    "description": "Register = 1 if abs(a - b) <= max(c \\* max(abs(a), abs(b)), float.epsilon \\* 8), otherwise 0"
+  },
+  "sna": {
+    "prefix": "sna",
+    "body": [
+      "sna"
+    ],
+    "description": "Register = 1 if abs(a - b) > max(c \\* max(abs(a), abs(b)), float.epsilon \\* 8), otherwise 0"
+  },
+  "and": {
+    "prefix": "and",
+    "body": [
+      "and"
+    ],
+    "description": "Performs a bitwise logical AND operation on the binary representation of two values. Each bit of the result is determined by evaluating the corresponding bits of the input values. If both bits are 1, the resulting bit is set to 1. Otherwise the resulting bit is set to 0."
+  },
+  "or": {
+    "prefix": "or",
+    "body": [
+      "or"
+    ],
+    "description": "Performs a bitwise logical OR operation on the binary representation of two values. Each bit of the result is determined by evaluating the corresponding bits of the input values. If either bit is 1, the resulting bit is set to 1. If both bits are 0, the resulting bit is set to 0."
+  },
+  "xor": {
+    "prefix": "xor",
+    "body": [
+      "xor"
+    ],
+    "description": "Performs a bitwise logical XOR (exclusive OR) operation on the binary representation of two values. Each bit of the result is determined by evaluating the corresponding bits of the input values. If the bits are different (one bit is 0 and the other is 1), the resulting bit is set to 1. If the bits are the same (both 0 or both 1), the resulting bit is set to 0."
+  },
+  "nor": {
+    "prefix": "nor",
+    "body": [
+      "nor"
+    ],
+    "description": "Performs a bitwise logical NOR (NOT OR) operation on the binary representation of two values. Each bit of the result is determined by evaluating the corresponding bits of the input values. If both bits are 0, the resulting bit is set to 1. Otherwise, if at least one bit is 1, the resulting bit is set to 0."
+  },
+  "mul": {
+    "prefix": "mul",
+    "body": [
+      "mul"
+    ],
+    "description": "Register = a \\* b"
+  },
+  "div": {
+    "prefix": "div",
+    "body": [
+      "div"
+    ],
+    "description": "Register = a / b"
+  },
+  "mod": {
+    "prefix": "mod",
+    "body": [
+      "mod"
+    ],
+    "description": "Register = a mod b (note: NOT a % b)"
+  },
+  "j": {
+    "prefix": "j",
+    "body": [
+      "j"
+    ],
+    "description": "Jump execution to line a"
+  },
+  "bltz": {
+    "prefix": "bltz",
+    "body": [
+      "bltz"
+    ],
+    "description": "Branch to line b if a < 0"
+  },
+  "bgez": {
+    "prefix": "bgez",
+    "body": [
+      "bgez"
+    ],
+    "description": "Branch to line b if a >= 0"
+  },
+  "blez": {
+    "prefix": "blez",
+    "body": [
+      "blez"
+    ],
+    "description": "Branch to line b if a <= 0"
+  },
+  "bgtz": {
+    "prefix": "bgtz",
+    "body": [
+      "bgtz"
+    ],
+    "description": "Branch to line b if a > 0"
+  },
+  "bdse": {
+    "prefix": "bdse",
+    "body": [
+      "bdse"
+    ],
+    "description": "Branch to line a if device d is set"
+  },
+  "bdns": {
+    "prefix": "bdns",
+    "body": [
+      "bdns"
+    ],
+    "description": "Branch to line a if device d isn't set"
+  },
+  "beq": {
+    "prefix": "beq",
+    "body": [
+      "beq"
+    ],
+    "description": "Branch to line c if a == b"
+  },
+  "bne": {
+    "prefix": "bne",
+    "body": [
+      "bne"
+    ],
+    "description": "Branch to line c if a != b"
+  },
+  "bap": {
+    "prefix": "bap",
+    "body": [
+      "bap"
+    ],
+    "description": "Branch to line d if abs(a - b) <= max(c \\* max(abs(a), abs(b)), float.epsilon \\* 8)"
+  },
+  "bna": {
+    "prefix": "bna",
+    "body": [
+      "bna"
+    ],
+    "description": "Branch to line d if abs(a - b) > max(c \\* max(abs(a), abs(b)), float.epsilon \\* 8)"
+  },
+  "jal": {
+    "prefix": "jal",
+    "body": [
+      "jal"
+    ],
+    "description": "Jump execution to line a and store next line number in ra"
+  },
+  "brdse": {
+    "prefix": "brdse",
+    "body": [
+      "brdse"
+    ],
+    "description": "Relative jump to line a if device is set"
+  },
+  "brdns": {
+    "prefix": "brdns",
+    "body": [
+      "brdns"
+    ],
+    "description": "Relative jump to line a if device is not set"
+  },
+  "bltzal": {
+    "prefix": "bltzal",
+    "body": [
+      "bltzal"
+    ],
+    "description": "Branch to line b if a < 0 and store next line number in ra"
+  },
+  "bgezal": {
+    "prefix": "bgezal",
+    "body": [
+      "bgezal"
+    ],
+    "description": "Branch to line b if a >= 0 and store next line number in ra"
+  },
+  "blezal": {
+    "prefix": "blezal",
+    "body": [
+      "blezal"
+    ],
+    "description": "Branch to line b if a <= 0 and store next line number in ra"
+  },
+  "bgtzal": {
+    "prefix": "bgtzal",
+    "body": [
+      "bgtzal"
+    ],
+    "description": "Branch to line b if a > 0 and store next line number in ra"
+  },
+  "beqal": {
+    "prefix": "beqal",
+    "body": [
+      "beqal"
+    ],
+    "description": "Branch to line c if a == b and store next line number in ra"
+  },
+  "bneal": {
+    "prefix": "bneal",
+    "body": [
+      "bneal"
+    ],
+    "description": "Branch to line c if a != b and store next line number in ra"
+  },
+  "jr": {
+    "prefix": "jr",
+    "body": [
+      "jr"
+    ],
+    "description": "Relative jump to line a"
+  },
+  "bdseal": {
+    "prefix": "bdseal",
+    "body": [
+      "bdseal"
+    ],
+    "description": "Jump execution to line a and store next line number if device is set"
+  },
+  "bdnsal": {
+    "prefix": "bdnsal",
+    "body": [
+      "bdnsal"
+    ],
+    "description": "Jump execution to line a and store next line number if device is not set"
+  },
+  "brltz": {
+    "prefix": "brltz",
+    "body": [
+      "brltz"
+    ],
+    "description": "Relative branch to line b if a < 0"
+  },
+  "brgez": {
+    "prefix": "brgez",
+    "body": [
+      "brgez"
+    ],
+    "description": "Relative branch to line b if a >= 0"
+  },
+  "brlez": {
+    "prefix": "brlez",
+    "body": [
+      "brlez"
+    ],
+    "description": "Relative branch to line b if a <= 0"
+  },
+  "brgtz": {
+    "prefix": "brgtz",
+    "body": [
+      "brgtz"
+    ],
+    "description": "Relative branch to line b if a > 0"
+  },
+  "breq": {
+    "prefix": "breq",
+    "body": [
+      "breq"
+    ],
+    "description": "Relative branch to line c if a == b"
+  },
+  "brne": {
+    "prefix": "brne",
+    "body": [
+      "brne"
+    ],
+    "description": "Relative branch to line c if a != b"
+  },
+  "brap": {
+    "prefix": "brap",
+    "body": [
+      "brap"
+    ],
+    "description": "Relative branch to line d if abs(a - b) <= max(c \\* max(abs(a), abs(b)), float.epsilon \\* 8)"
+  },
+  "brna": {
+    "prefix": "brna",
+    "body": [
+      "brna"
+    ],
+    "description": "Relative branch to line d if abs(a - b) > max(c \\* max(abs(a), abs(b)), float.epsilon \\* 8)"
+  },
+  "sqrt": {
+    "prefix": "sqrt",
+    "body": [
+      "sqrt"
+    ],
+    "description": "Register = square root of a"
+  },
+  "round": {
+    "prefix": "round",
+    "body": [
+      "round"
+    ],
+    "description": "Register = a rounded to nearest integer"
+  },
+  "trunc": {
+    "prefix": "trunc",
+    "body": [
+      "trunc"
+    ],
+    "description": "Register = a with fractional part removed"
+  },
+  "ceil": {
+    "prefix": "ceil",
+    "body": [
+      "ceil"
+    ],
+    "description": "Register = smallest integer greater than a"
+  },
+  "floor": {
+    "prefix": "floor",
+    "body": [
+      "floor"
+    ],
+    "description": "Register = largest integer less than a"
+  },
+  "max": {
+    "prefix": "max",
+    "body": [
+      "max"
+    ],
+    "description": "Register = max of a or b"
+  },
+  "min": {
+    "prefix": "min",
+    "body": [
+      "min"
+    ],
+    "description": "Register = min of a or b"
+  },
+  "abs": {
+    "prefix": "abs",
+    "body": [
+      "abs"
+    ],
+    "description": "Register = the absolute value of a"
+  },
+  "log": {
+    "prefix": "log",
+    "body": [
+      "log"
+    ],
+    "description": "Register = log(a)"
+  },
+  "exp": {
+    "prefix": "exp",
+    "body": [
+      "exp"
+    ],
+    "description": "Register = exp(a)"
+  },
+  "rand": {
+    "prefix": "rand",
+    "body": [
+      "rand"
+    ],
+    "description": "Register = a random value x with 0 <= x < 1"
+  },
+  "yield": {
+    "prefix": "yield",
+    "body": [
+      "yield"
+    ],
+    "description": "Pauses execution for 1 tick"
+  },
+  "label": {
+    "prefix": "label",
+    "body": [
+      "label"
+    ],
+    "description": "DEPRECATED"
+  },
+  "peek": {
+    "prefix": "peek",
+    "body": [
+      "peek"
+    ],
+    "description": "Register = the value at the top of the stack"
+  },
+  "push": {
+    "prefix": "push",
+    "body": [
+      "push"
+    ],
+    "description": "Pushes the value of a to the stack at sp and increments sp"
+  },
+  "pop": {
+    "prefix": "pop",
+    "body": [
+      "pop"
+    ],
+    "description": "Register = the value at the top of the stack and decrements sp"
+  },
+  "hcf": {
+    "prefix": "hcf",
+    "body": [
+      "hcf"
+    ],
+    "description": "Halt and catch fire"
+  },
+  "select": {
+    "prefix": "select",
+    "body": [
+      "select"
+    ],
+    "description": "Register = b if a is non-zero, otherwise c"
+  },
+  "blt": {
+    "prefix": "blt",
+    "body": [
+      "blt"
+    ],
+    "description": "Branch to line c if a < b"
+  },
+  "bgt": {
+    "prefix": "bgt",
+    "body": [
+      "bgt"
+    ],
+    "description": "Branch to line c if a > b"
+  },
+  "ble": {
+    "prefix": "ble",
+    "body": [
+      "ble"
+    ],
+    "description": "Branch to line c if a <= b"
+  },
+  "bge": {
+    "prefix": "bge",
+    "body": [
+      "bge"
+    ],
+    "description": "Branch to line c if a >= b"
+  },
+  "brlt": {
+    "prefix": "brlt",
+    "body": [
+      "brlt"
+    ],
+    "description": "Relative jump to line c if a < b"
+  },
+  "brgt": {
+    "prefix": "brgt",
+    "body": [
+      "brgt"
+    ],
+    "description": "relative jump to line c if a > b"
+  },
+  "brle": {
+    "prefix": "brle",
+    "body": [
+      "brle"
+    ],
+    "description": "Relative jump to line c if a <= b"
+  },
+  "brge": {
+    "prefix": "brge",
+    "body": [
+      "brge"
+    ],
+    "description": "Relative jump to line c if a >= b"
+  },
+  "bltal": {
+    "prefix": "bltal",
+    "body": [
+      "bltal"
+    ],
+    "description": "Branch to line c if a < b and store next line number in ra"
+  },
+  "bgtal": {
+    "prefix": "bgtal",
+    "body": [
+      "bgtal"
+    ],
+    "description": "Branch to line c if a > b and store next line number in ra"
+  },
+  "bleal": {
+    "prefix": "bleal",
+    "body": [
+      "bleal"
+    ],
+    "description": "Branch to line c if a <= b and store next line number in ra"
+  },
+  "bgeal": {
+    "prefix": "bgeal",
+    "body": [
+      "bgeal"
+    ],
+    "description": "Branch to line c if a >= b and store next line number in ra"
+  },
+  "bapal": {
+    "prefix": "bapal",
+    "body": [
+      "bapal"
+    ],
+    "description": "Branch to line c if a != b and store next line number in ra"
+  },
+  "bnaal": {
+    "prefix": "bnaal",
+    "body": [
+      "bnaal"
+    ],
+    "description": "Branch to line d if abs(a - b) <= max(c \\* max(abs(a), abs(b)), float.epsilon \\* 8) and store next line number in ra"
+  },
+  "beqz": {
+    "prefix": "beqz",
+    "body": [
+      "beqz"
+    ],
+    "description": "Branch to line b if a == 0"
+  },
+  "bnez": {
+    "prefix": "bnez",
+    "body": [
+      "bnez"
+    ],
+    "description": "branch to line b if a != 0"
+  },
+  "bapz": {
+    "prefix": "bapz",
+    "body": [
+      "bapz"
+    ],
+    "description": "Branch to line c if abs(a) <= float.epsilon \\* 8"
+  },
+  "bnaz": {
+    "prefix": "bnaz",
+    "body": [
+      "bnaz"
+    ],
+    "description": "Branch to line c if abs(a) > float.epsilon \\* 8"
+  },
+  "breqz": {
+    "prefix": "breqz",
+    "body": [
+      "breqz"
+    ],
+    "description": "Relative branch to line b if a == 0"
+  },
+  "brnez": {
+    "prefix": "brnez",
+    "body": [
+      "brnez"
+    ],
+    "description": "Relative branch to line b if a != 0"
+  },
+  "brapz": {
+    "prefix": "brapz",
+    "body": [
+      "brapz"
+    ],
+    "description": "Relative branch to line c if abs(a) <= float.epsilon \\* 8"
+  },
+  "brnaz": {
+    "prefix": "brnaz",
+    "body": [
+      "brnaz"
+    ],
+    "description": "Relative branch to line c if abs(a) > float.epsilon \\* 8"
+  },
+  "beqzal": {
+    "prefix": "beqzal",
+    "body": [
+      "beqzal"
+    ],
+    "description": "Branch to line b if a == 0 and store next line number in ra"
+  },
+  "bnezal": {
+    "prefix": "bnezal",
+    "body": [
+      "bnezal"
+    ],
+    "description": "Branch to line b if a != 0 and store next line number in ra"
+  },
+  "bapzal": {
+    "prefix": "bapzal",
+    "body": [
+      "bapzal"
+    ],
+    "description": "Branch to line c if abs(a) <= float.epsilon \\* 8"
+  },
+  "bnazal": {
+    "prefix": "bnazal",
+    "body": [
+      "bnazal"
+    ],
+    "description": "Branch to line c if abs(a) > float.epsilon \\* 8"
+  },
+  "sltz": {
+    "prefix": "sltz",
+    "body": [
+      "sltz"
+    ],
+    "description": "Register = 1 if a < 0, otherwise 0"
+  },
+  "sgtz": {
+    "prefix": "sgtz",
+    "body": [
+      "sgtz"
+    ],
+    "description": "Register = 1 if a > 0, otherwise 0"
+  },
+  "slez": {
+    "prefix": "slez",
+    "body": [
+      "slez"
+    ],
+    "description": "Register = 1 if a <= 0, otherwise 0"
+  },
+  "sgez": {
+    "prefix": "sgez",
+    "body": [
+      "sgez"
+    ],
+    "description": "Register = 1 if a >= 0, otherwise 0"
+  },
+  "seqz": {
+    "prefix": "seqz",
+    "body": [
+      "seqz"
+    ],
+    "description": "Register = 1 if a == 0, otherwise 0"
+  },
+  "snez": {
+    "prefix": "snez",
+    "body": [
+      "snez"
+    ],
+    "description": "Register = 1 if a != 0, otherwise 0"
+  },
+  "sapz": {
+    "prefix": "sapz",
+    "body": [
+      "sapz"
+    ],
+    "description": "Register = 1 if |a| <= float.epsilon \\* 8, otherwise 0"
+  },
+  "snaz": {
+    "prefix": "snaz",
+    "body": [
+      "snaz"
+    ],
+    "description": "Register = 1 if |a| > float.epsilon, otherwise 0"
+  },
+  "define": {
+    "prefix": "define",
+    "body": [
+      "define"
+    ],
+    "description": "Creates a label that will be replaced throughout the program with the provided value."
+  },
+  "sleep": {
+    "prefix": "sleep",
+    "body": [
+      "sleep"
+    ],
+    "description": "Pauses execution on the IC for a seconds"
+  },
+  "sin": {
+    "prefix": "sin",
+    "body": [
+      "sin"
+    ],
+    "description": "Returns the sine of the specified angle (radians)"
+  },
+  "asin": {
+    "prefix": "asin",
+    "body": [
+      "asin"
+    ],
+    "description": "Returns the angle (radians) whos sine is the specified value"
+  },
+  "tan": {
+    "prefix": "tan",
+    "body": [
+      "tan"
+    ],
+    "description": "Returns the tan of the specified angle (radians)"
+  },
+  "atan": {
+    "prefix": "atan",
+    "body": [
+      "atan"
+    ],
+    "description": "Returns the angle (radians) whos tan is the specified value"
+  },
+  "cos": {
+    "prefix": "cos",
+    "body": [
+      "cos"
+    ],
+    "description": "Returns the cosine of the specified angle (radians)"
+  },
+  "acos": {
+    "prefix": "acos",
+    "body": [
+      "acos"
+    ],
+    "description": "Returns the cosine of the specified angle (radians)"
+  },
+  "atan2": {
+    "prefix": "atan2",
+    "body": [
+      "atan2"
+    ],
+    "description": "Returns the angle (radians) whose tangent is the quotient of two specified values: a (y) and b (x)"
+  },
+  "brnan": {
+    "prefix": "brnan",
+    "body": [
+      "brnan"
+    ],
+    "description": "Relative branch to line b if a is not a number (NaN)"
+  },
+  "bnan": {
+    "prefix": "bnan",
+    "body": [
+      "bnan"
+    ],
+    "description": "Branch to line b if a is not a number (NaN)"
+  },
+  "snan": {
+    "prefix": "snan",
+    "body": [
+      "snan"
+    ],
+    "description": "Register = 1 if a is NaN, otherwise 0"
+  },
+  "snanz": {
+    "prefix": "snanz",
+    "body": [
+      "snanz"
+    ],
+    "description": "Register = 0 if a is NaN, otherwise 1"
+  },
+  "lbs": {
+    "prefix": "lbs",
+    "body": [
+      "lbs"
+    ],
+    "description": "Loads LogicSlotType from slotIndex from all output network devices with provided type hash using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number."
+  },
+  "lbn": {
+    "prefix": "lbn",
+    "body": [
+      "lbn"
+    ],
+    "description": "Loads LogicType from all output network devices with provided type and name hashes using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number."
+  },
+  "sbn": {
+    "prefix": "sbn",
+    "body": [
+      "sbn"
+    ],
+    "description": "Stores register value to LogicType on all output network devices with provided type hash and name."
+  },
+  "lbns": {
+    "prefix": "lbns",
+    "body": [
+      "lbns"
+    ],
+    "description": "Loads LogicSlotType from slotIndex from all output network devices with provided type and name hashes using the provide batch mode. Average (0), Sum (1), Minimum (2), Maximum (3). Can use either the word, or the number."
+  },
+  "ss": {
+    "prefix": "ss",
+    "body": [
+      "ss"
+    ],
+    "description": "Stores register value to device stored in a slot LogicSlotType on device."
+  },
+  "sbs": {
+    "prefix": "sbs",
+    "body": [
+      "sbs"
+    ],
+    "description": "Stores register value to LogicSlotType on all output network devices with provided type hash in the provided slot."
+  },
+  "srl": {
+    "prefix": "srl",
+    "body": [
+      "srl"
+    ],
+    "description": "Performs a bitwise logical right shift operation on the binary representation of a value. It shifts the bits to the right and fills the vacated leftmost bits with zeros"
+  },
+  "sra": {
+    "prefix": "sra",
+    "body": [
+      "sra"
+    ],
+    "description": "Performs a bitwise arithmetic right shift operation on the binary representation of a value. It shifts the bits to the right and fills the vacated leftmost bits with a copy of the sign bit (the most significant bit)."
+  },
+  "sll": {
+    "prefix": "sll",
+    "body": [
+      "sll"
+    ],
+    "description": "Performs a bitwise logical left shift operation on the binary representation of a value. It shifts the bits to the left and fills the vacated rightmost bits with zeros."
+  },
+  "sla": {
+    "prefix": "sla",
+    "body": [
+      "sla"
+    ],
+    "description": "Performs a bitwise arithmetic left shift operation on the binary representation of a value. It shifts the bits to the left and fills the vacated rightmost bits with a copy of the sign bit (the most significant bit)."
+  },
+  "not": {
+    "prefix": "not",
+    "body": [
+      "not"
+    ],
+    "description": "Performs a bitwise logical NOT operation flipping each bit of the input value, resulting in a binary complement. If a bit is 1, it becomes 0, and if a bit is 0, it becomes 1."
+  },
+  "ld": {
+    "prefix": "ld",
+    "body": [
+      "ld"
+    ],
+    "description": "Loads device LogicType to register by direct ID reference."
+  },
+  "sd": {
+    "prefix": "sd",
+    "body": [
+      "sd"
+    ],
+    "description": "Stores register value to LogicType on device by direct ID reference."
+  },
+  "poke": {
+    "prefix": "poke",
+    "body": [
+      "poke"
+    ],
+    "description": "Stores the provided value at the provided address in the stack."
+  },
+  "getd": {
+    "prefix": "getd",
+    "body": [
+      "getd"
+    ],
+    "description": "Seeks directly for the provided device id, attempts to read the stack value at the provided address, and places it in the register."
+  },
+  "putd": {
+    "prefix": "putd",
+    "body": [
+      "putd"
+    ],
+    "description": "Seeks directly for the provided device id, attempts to write the provided value to the stack at the provided address."
+  },
+  "get": {
+    "prefix": "get",
+    "body": [
+      "get"
+    ],
+    "description": "Using the provided device, attempts to read the stack value at the provided address, and places it in the register."
+  },
+  "put": {
+    "prefix": "put",
+    "body": [
+      "put"
+    ],
+    "description": "Using the provided device, attempts to write the provided value to the stack at the provided address."
+  },
+  "clr": {
+    "prefix": "clr",
+    "body": [
+      "clr"
+    ],
+    "description": "Clears the stack memory for the provided device."
+  },
+  "clrd": {
+    "prefix": "clrd",
+    "body": [
+      "clrd"
+    ],
+    "description": "Seeks directly for the provided device id and clears the stack memory of that device"
+  },
+  "null": {
+    "prefix": null,
+    "body": [
+      null
+    ],
+    "description": "{0}"
+  },
+  "Acceleration": {
+    "prefix": "Acceleration",
+    "body": [
+      "Acceleration"
+    ],
+    "description": "Change in velocity. Rockets that are deccelerating when landing will show this as negative value."
+  },
+  "Activate": {
+    "prefix": "Activate",
+    "body": [
+      "Activate"
+    ],
+    "description": "1 if device is activated (usually means running), otherwise 0"
+  },
+  "AirRelease": {
+    "prefix": "AirRelease",
+    "body": [
+      "AirRelease"
+    ],
+    "description": "The current state of the air release system, for example AirRelease = 1 for a Hardsuit sets Air Release to On"
+  },
+  "AlignmentError": {
+    "prefix": "AlignmentError",
+    "body": [
+      "AlignmentError"
+    ],
+    "description": "The angular discrepancy between the telescope's current orientation and the target. Indicates how 'off target' the telescope is. Returns NaN when no target."
+  },
+  "Apex": {
+    "prefix": "Apex",
+    "body": [
+      "Apex"
+    ],
+    "description": "The lowest altitude that the rocket will reach before it starts travelling upwards again."
+  },
+  "AutoLand": {
+    "prefix": "AutoLand",
+    "body": [
+      "AutoLand"
+    ],
+    "description": "Engages the automatic landing algorithm. The rocket will automatically throttle and turn on and off its engines to achieve a smooth landing."
+  },
+  "AutoShutOff": {
+    "prefix": "AutoShutOff",
+    "body": [
+      "AutoShutOff"
+    ],
+    "description": "Turns off all devices in the rocket upon reaching destination"
+  },
+  "BestContactFilter": {
+    "prefix": "BestContactFilter",
+    "body": [
+      "BestContactFilter"
+    ],
+    "description": "Filters the satellite's auto selection of targets to a single reference ID."
+  },
+  "Bpm": {
+    "prefix": "Bpm",
+    "body": [
+      "Bpm"
+    ],
+    "description": "Bpm"
+  },
+  "BurnTimeRemaining": {
+    "prefix": "BurnTimeRemaining",
+    "body": [
+      "BurnTimeRemaining"
+    ],
+    "description": "Estimated time in seconds until fuel is depleted. Calculated based on current fuel usage."
+  },
+  "CelestialHash": {
+    "prefix": "CelestialHash",
+    "body": [
+      "CelestialHash"
+    ],
+    "description": "The current hash of the targeted celestial object."
+  },
+  "CelestialParentHash": {
+    "prefix": "CelestialParentHash",
+    "body": [
+      "CelestialParentHash"
+    ],
+    "description": "The hash for the name of the parent the celestial is orbiting, 0 if there is no parent celestial."
+  },
+  "Channel0": {
+    "prefix": "Channel0",
+    "body": [
+      "Channel0"
+    ],
+    "description": "Channel on a cable network which should be considered volatile"
+  },
+  "Channel1": {
+    "prefix": "Channel1",
+    "body": [
+      "Channel1"
+    ],
+    "description": "Channel on a cable network which should be considered volatile"
+  },
+  "Channel2": {
+    "prefix": "Channel2",
+    "body": [
+      "Channel2"
+    ],
+    "description": "Channel on a cable network which should be considered volatile"
+  },
+  "Channel3": {
+    "prefix": "Channel3",
+    "body": [
+      "Channel3"
+    ],
+    "description": "Channel on a cable network which should be considered volatile"
+  },
+  "Channel4": {
+    "prefix": "Channel4",
+    "body": [
+      "Channel4"
+    ],
+    "description": "Channel on a cable network which should be considered volatile"
+  },
+  "Channel5": {
+    "prefix": "Channel5",
+    "body": [
+      "Channel5"
+    ],
+    "description": "Channel on a cable network which should be considered volatile"
+  },
+  "Channel6": {
+    "prefix": "Channel6",
+    "body": [
+      "Channel6"
+    ],
+    "description": "Channel on a cable network which should be considered volatile"
+  },
+  "Channel7": {
+    "prefix": "Channel7",
+    "body": [
+      "Channel7"
+    ],
+    "description": "Channel on a cable network which should be considered volatile"
+  },
+  "Charge": {
+    "prefix": "Charge",
+    "body": [
+      "Charge"
+    ],
+    "description": "The current charge the device has"
+  },
+  "Chart": {
+    "prefix": "Chart",
+    "body": [
+      "Chart"
+    ],
+    "description": "Progress status of Chart scan at the rocket's target Space Map Location. Returns a clamped normalised value. If Chart scan is not available returns -1."
+  },
+  "ChartedNavPoints": {
+    "prefix": "ChartedNavPoints",
+    "body": [
+      "ChartedNavPoints"
+    ],
+    "description": "The number of charted NavPoints at the rocket's target Space Map Location."
+  },
+  "ClearMemory": {
+    "prefix": "ClearMemory",
+    "body": [
+      "ClearMemory"
+    ],
+    "description": "When set to 1, clears the counter memory (e.g. ExportCount). Will set itself back to 0 when actioned"
+  },
+  "CollectableGoods": {
+    "prefix": "CollectableGoods",
+    "body": [
+      "CollectableGoods"
+    ],
+    "description": "Gets the cost of fuel to return the rocket to your current world."
+  },
+  "Color": {
+    "prefix": "Color",
+    "body": [
+      "Color"
+    ],
+    "description": "\n        Whether driven by concerns for clarity, safety or simple aesthetics, <a data-href=\"Stationeers\"><span style=\"color: #0080FFFF\">Stationeers</span></a> have access to a small rainbow of colors for their constructions. These are the color setting for devices, represented as an integer.\n\n0: Blue\n1: Grey\n2: Green\n3: Orange\n4: Red\n5: Yellow\n6: White\n7: Black\n8: Brown\n9: Khaki\n10: Pink\n11: Purple\n\n        It is an unwavering universal law that anything higher than 11 will be purple. The <a data-href=\"ODA\"><span style=\"color: #0080FFFF\">ODA</span></a> is powerless to change this. Similarly, anything lower than 0 will be Blue.\n      "
+  },
+  "Combustion": {
+    "prefix": "Combustion",
+    "body": [
+      "Combustion"
+    ],
+    "description": "The assess atmosphere is on fire. Returns 1 if atmosphere is on fire, 0 if not."
+  },
+  "CombustionInput": {
+    "prefix": "CombustionInput",
+    "body": [
+      "CombustionInput"
+    ],
+    "description": "The assess atmosphere is on fire. Returns 1 if device's input network is on fire, 0 if not."
+  },
+  "CombustionInput2": {
+    "prefix": "CombustionInput2",
+    "body": [
+      "CombustionInput2"
+    ],
+    "description": "The assess atmosphere is on fire. Returns 1 if device's Input2 network is on fire, 0 if not."
+  },
+  "CombustionLimiter": {
+    "prefix": "CombustionLimiter",
+    "body": [
+      "CombustionLimiter"
+    ],
+    "description": "Retards the rate of combustion inside the machine (range: 0-100), with 0 being the slowest rate of combustion and 100 being the fastest"
+  },
+  "CombustionOutput": {
+    "prefix": "CombustionOutput",
+    "body": [
+      "CombustionOutput"
+    ],
+    "description": "The assess atmosphere is on fire. Returns 1 if device's Output network is on fire, 0 if not."
+  },
+  "CombustionOutput2": {
+    "prefix": "CombustionOutput2",
+    "body": [
+      "CombustionOutput2"
+    ],
+    "description": "The assess atmosphere is on fire. Returns 1 if device's Output2 network is on fire, 0 if not."
+  },
+  "CompletionRatio": {
+    "prefix": "CompletionRatio",
+    "body": [
+      "CompletionRatio"
+    ],
+    "description": "How complete the current production is for this device, between 0 and 1"
+  },
+  "ContactTypeId": {
+    "prefix": "ContactTypeId",
+    "body": [
+      "ContactTypeId"
+    ],
+    "description": "The type id of the contact."
+  },
+  "CurrentCode": {
+    "prefix": "CurrentCode",
+    "body": [
+      "CurrentCode"
+    ],
+    "description": "The Space Map Address of the rockets current Space Map Location"
+  },
+  "CurrentResearchPodType": {
+    "prefix": "CurrentResearchPodType",
+    "body": [
+      "CurrentResearchPodType"
+    ],
+    "description": "<A:EN:1890273128>"
+  },
+  "Density": {
+    "prefix": "Density",
+    "body": [
+      "Density"
+    ],
+    "description": "The density of the rocket's target site's mine-able deposit."
+  },
+  "DestinationCode": {
+    "prefix": "DestinationCode",
+    "body": [
+      "DestinationCode"
+    ],
+    "description": "The Space Map Address of the rockets target Space Map Location"
+  },
+  "Discover": {
+    "prefix": "Discover",
+    "body": [
+      "Discover"
+    ],
+    "description": "Progress status of Discovery scan at the rocket's target Space Map Location. Returns a clamped normalised value. If Discovery scan is not available returns -1."
+  },
+  "DistanceAu": {
+    "prefix": "DistanceAu",
+    "body": [
+      "DistanceAu"
+    ],
+    "description": "The current distance to the celestial object, measured in astronomical units."
+  },
+  "DistanceKm": {
+    "prefix": "DistanceKm",
+    "body": [
+      "DistanceKm"
+    ],
+    "description": "The current distance to the celestial object, measured in kilometers."
+  },
+  "DrillCondition": {
+    "prefix": "DrillCondition",
+    "body": [
+      "DrillCondition"
+    ],
+    "description": "The current condition of the drill head in this devices drill slot. Expressed as a ratio between 0 and 1."
+  },
+  "DryMass": {
+    "prefix": "DryMass",
+    "body": [
+      "DryMass"
+    ],
+    "description": "The Mass in kilograms of the rocket excluding fuel. The more massive the rocket the more fuel will be required to move to a new location in space."
+  },
+  "Eccentricity": {
+    "prefix": "Eccentricity",
+    "body": [
+      "Eccentricity"
+    ],
+    "description": "A measure of how elliptical (oval) an orbit is. Ranges from 0 (a perfect circle) to 1 (a parabolic trajectory)."
+  },
+  "ElevatorLevel": {
+    "prefix": "ElevatorLevel",
+    "body": [
+      "ElevatorLevel"
+    ],
+    "description": "Level the elevator is currently at"
+  },
+  "ElevatorSpeed": {
+    "prefix": "ElevatorSpeed",
+    "body": [
+      "ElevatorSpeed"
+    ],
+    "description": "Current speed of the elevator"
+  },
+  "EntityState": {
+    "prefix": "EntityState",
+    "body": [
+      "EntityState"
+    ],
+    "description": "The current entity state, such as whether it is dead, unconscious or alive, expressed as a state integer."
+  },
+  "EnvironmentEfficiency": {
+    "prefix": "EnvironmentEfficiency",
+    "body": [
+      "EnvironmentEfficiency"
+    ],
+    "description": "The Environment Efficiency reported by the machine, as a float between 0 and 1"
+  },
+  "Error": {
+    "prefix": "Error",
+    "body": [
+      "Error"
+    ],
+    "description": "1 if device is in error state, otherwise 0"
+  },
+  "ExhaustVelocity": {
+    "prefix": "ExhaustVelocity",
+    "body": [
+      "ExhaustVelocity"
+    ],
+    "description": "The velocity of the exhaust gas in m/s"
+  },
+  "ExportCount": {
+    "prefix": "ExportCount",
+    "body": [
+      "ExportCount"
+    ],
+    "description": "How many items exported since last ClearMemory"
+  },
+  "Filtration": {
+    "prefix": "Filtration",
+    "body": [
+      "Filtration"
+    ],
+    "description": "The current state of the filtration system, for example Filtration = 1 for a Hardsuit sets filtration to On"
+  },
+  "FlightControlRule": {
+    "prefix": "FlightControlRule",
+    "body": [
+      "FlightControlRule"
+    ],
+    "description": "Flight control rule of rocket. None = 0, No AutoPilot. Normal = 1, Target Decent Apex of 60m. Alternate = 2, Velocity to High - Full throttle. Alternate2 = 3, Target an appropriate decent velocity as velocity is too low. FinalApproach = 4, Descend towards launch mount in a controlled manner."
+  },
+  "Flush": {
+    "prefix": "Flush",
+    "body": [
+      "Flush"
+    ],
+    "description": "Set to 1 to activate the flush function on the device"
+  },
+  "ForceWrite": {
+    "prefix": "ForceWrite",
+    "body": [
+      "ForceWrite"
+    ],
+    "description": "Forces Logic Writer devices to rewrite value"
+  },
+  "ForwardX": {
+    "prefix": "ForwardX",
+    "body": [
+      "ForwardX"
+    ],
+    "description": "The direction the entity is facing expressed as a normalized vector"
+  },
+  "ForwardY": {
+    "prefix": "ForwardY",
+    "body": [
+      "ForwardY"
+    ],
+    "description": "The direction the entity is facing expressed as a normalized vector"
+  },
+  "ForwardZ": {
+    "prefix": "ForwardZ",
+    "body": [
+      "ForwardZ"
+    ],
+    "description": "The direction the entity is facing expressed as a normalized vector"
+  },
+  "Fuel": {
+    "prefix": "Fuel",
+    "body": [
+      "Fuel"
+    ],
+    "description": "Gets the cost of fuel to return the rocket to your current world."
+  },
+  "Harvest": {
+    "prefix": "Harvest",
+    "body": [
+      "Harvest"
+    ],
+    "description": "Performs the harvesting action for any plant based machinery"
+  },
+  "Horizontal": {
+    "prefix": "Horizontal",
+    "body": [
+      "Horizontal"
+    ],
+    "description": "Horizontal setting of the device"
+  },
+  "HorizontalRatio": {
+    "prefix": "HorizontalRatio",
+    "body": [
+      "HorizontalRatio"
+    ],
+    "description": "Radio of horizontal setting for device"
+  },
+  "Idle": {
+    "prefix": "Idle",
+    "body": [
+      "Idle"
+    ],
+    "description": "Returns 1 if the device is currently idle, otherwise 0"
+  },
+  "ImportCount": {
+    "prefix": "ImportCount",
+    "body": [
+      "ImportCount"
+    ],
+    "description": "How many items imported since last ClearMemory"
+  },
+  "Inclination": {
+    "prefix": "Inclination",
+    "body": [
+      "Inclination"
+    ],
+    "description": "The tilt of an orbit's plane relative to the equatorial plane, measured in degrees. Defines the orbital plane's angle."
+  },
+  "Index": {
+    "prefix": "Index",
+    "body": [
+      "Index"
+    ],
+    "description": "The current index for the device."
+  },
+  "InterrogationProgress": {
+    "prefix": "InterrogationProgress",
+    "body": [
+      "InterrogationProgress"
+    ],
+    "description": "Progress of this sattellite dish's interrogation of its current target, as a ratio from 0-1"
+  },
+  "LineNumber": {
+    "prefix": "LineNumber",
+    "body": [
+      "LineNumber"
+    ],
+    "description": "The line number of current execution for an integrated circuit running on this device. While this number can be written, use with caution"
+  },
+  "Lock": {
+    "prefix": "Lock",
+    "body": [
+      "Lock"
+    ],
+    "description": "1 if device is locked, otherwise 0, can be set in most devices and prevents the user from access the values"
+  },
+  "ManualResearchRequiredPod": {
+    "prefix": "ManualResearchRequiredPod",
+    "body": [
+      "ManualResearchRequiredPod"
+    ],
+    "description": "Sets the pod type to search for a certain pod when breaking down a pods."
+  },
+  "Mass": {
+    "prefix": "Mass",
+    "body": [
+      "Mass"
+    ],
+    "description": "The total Mass of the rocket in kilograms including fuel and cargo. The more massive the rocket the more fuel will be required to move to a new location in space."
+  },
+  "Maximum": {
+    "prefix": "Maximum",
+    "body": [
+      "Maximum"
+    ],
+    "description": "3"
+  },
+  "MineablesInQueue": {
+    "prefix": "MineablesInQueue",
+    "body": [
+      "MineablesInQueue"
+    ],
+    "description": "Returns the amount of mineables AIMEe has queued up to mine."
+  },
+  "MineablesInVicinity": {
+    "prefix": "MineablesInVicinity",
+    "body": [
+      "MineablesInVicinity"
+    ],
+    "description": "Returns the amount of potential mineables within an extended area around AIMEe."
+  },
+  "MinedQuantity": {
+    "prefix": "MinedQuantity",
+    "body": [
+      "MinedQuantity"
+    ],
+    "description": "The total number of resources that have been mined at the rocket's target Space Map Site."
+  },
+  "MinimumWattsToContact": {
+    "prefix": "MinimumWattsToContact",
+    "body": [
+      "MinimumWattsToContact"
+    ],
+    "description": "Minimum required amount of watts from the dish hitting the target trader contact to start interrogating the contact"
+  },
+  "Mode": {
+    "prefix": "Mode",
+    "body": [
+      "Mode"
+    ],
+    "description": "Integer for mode state, different devices will have different mode states available to them"
+  },
+  "NameHash": {
+    "prefix": "NameHash",
+    "body": [
+      "NameHash"
+    ],
+    "description": "Provides the hash value for the name of the object as a 32 bit integer."
+  },
+  "NavPoints": {
+    "prefix": "NavPoints",
+    "body": [
+      "NavPoints"
+    ],
+    "description": "The number of NavPoints at the rocket's target Space Map Location."
+  },
+  "NextWeatherEventTime": {
+    "prefix": "NextWeatherEventTime",
+    "body": [
+      "NextWeatherEventTime"
+    ],
+    "description": "Returns in seconds when the next weather event is inbound."
+  },
+  "On": {
+    "prefix": "On",
+    "body": [
+      "On"
+    ],
+    "description": "The current state of the device, 0 for off, 1 for on"
+  },
+  "Open": {
+    "prefix": "Open",
+    "body": [
+      "Open"
+    ],
+    "description": "1 if device is open, otherwise 0"
+  },
+  "OperationalTemperatureEfficiency": {
+    "prefix": "OperationalTemperatureEfficiency",
+    "body": [
+      "OperationalTemperatureEfficiency"
+    ],
+    "description": "How the input pipe's temperature effects the machines efficiency"
+  },
+  "OrbitPeriod": {
+    "prefix": "OrbitPeriod",
+    "body": [
+      "OrbitPeriod"
+    ],
+    "description": "The time it takes for an object to complete one full orbit around another object, measured in days. Indicates the duration of the orbital cycle."
+  },
+  "Orientation": {
+    "prefix": "Orientation",
+    "body": [
+      "Orientation"
+    ],
+    "description": "The orientation of the entity in degrees in a plane relative towards the north origin"
+  },
+  "Output": {
+    "prefix": "Output",
+    "body": [
+      "Output"
+    ],
+    "description": "The output operation for a sort handling device, such as a stacker or sorter, when in logic mode the device will only action one repetition when set zero or above and then back to -1 and await further instructions"
+  },
+  "PassedMoles": {
+    "prefix": "PassedMoles",
+    "body": [
+      "PassedMoles"
+    ],
+    "description": "The number of moles that passed through this device on the previous simulation tick"
+  },
+  "Plant": {
+    "prefix": "Plant",
+    "body": [
+      "Plant"
+    ],
+    "description": "Performs the planting action for any plant based machinery"
+  },
+  "PositionX": {
+    "prefix": "PositionX",
+    "body": [
+      "PositionX"
+    ],
+    "description": "The current position in X dimension in world coordinates"
+  },
+  "PositionY": {
+    "prefix": "PositionY",
+    "body": [
+      "PositionY"
+    ],
+    "description": "The current position in Y dimension in world coordinates"
+  },
+  "PositionZ": {
+    "prefix": "PositionZ",
+    "body": [
+      "PositionZ"
+    ],
+    "description": "The current position in Z dimension in world coordinates"
+  },
+  "Power": {
+    "prefix": "Power",
+    "body": [
+      "Power"
+    ],
+    "description": "Can be read to return if the device is correctly powered or not, set via the power system, return 1 if powered and 0 if not"
+  },
+  "PowerActual": {
+    "prefix": "PowerActual",
+    "body": [
+      "PowerActual"
+    ],
+    "description": "How much energy the device or network is actually using"
+  },
+  "PowerGeneration": {
+    "prefix": "PowerGeneration",
+    "body": [
+      "PowerGeneration"
+    ],
+    "description": "Returns how much power is being generated"
+  },
+  "PowerPotential": {
+    "prefix": "PowerPotential",
+    "body": [
+      "PowerPotential"
+    ],
+    "description": "How much energy the device or network potentially provides"
+  },
+  "PowerRequired": {
+    "prefix": "PowerRequired",
+    "body": [
+      "PowerRequired"
+    ],
+    "description": "Power requested from the device and/or network"
+  },
+  "PrefabHash": {
+    "prefix": "PrefabHash",
+    "body": [
+      "PrefabHash"
+    ],
+    "description": "The hash of the structure"
+  },
+  "Pressure": {
+    "prefix": "Pressure",
+    "body": [
+      "Pressure"
+    ],
+    "description": "The current pressure reading of the device"
+  },
+  "PressureEfficiency": {
+    "prefix": "PressureEfficiency",
+    "body": [
+      "PressureEfficiency"
+    ],
+    "description": "How the pressure of the input pipe and waste pipe effect the machines efficiency"
+  },
+  "PressureExternal": {
+    "prefix": "PressureExternal",
+    "body": [
+      "PressureExternal"
+    ],
+    "description": "Setting for external pressure safety, in KPa"
+  },
+  "PressureInput": {
+    "prefix": "PressureInput",
+    "body": [
+      "PressureInput"
+    ],
+    "description": "The current pressure reading of the device's Input Network"
+  },
+  "PressureInput2": {
+    "prefix": "PressureInput2",
+    "body": [
+      "PressureInput2"
+    ],
+    "description": "The current pressure reading of the device's Input2 Network"
+  },
+  "PressureInternal": {
+    "prefix": "PressureInternal",
+    "body": [
+      "PressureInternal"
+    ],
+    "description": "Setting for internal pressure safety, in KPa"
+  },
+  "PressureOutput": {
+    "prefix": "PressureOutput",
+    "body": [
+      "PressureOutput"
+    ],
+    "description": "The current pressure reading of the device's Output Network"
+  },
+  "PressureOutput2": {
+    "prefix": "PressureOutput2",
+    "body": [
+      "PressureOutput2"
+    ],
+    "description": "The current pressure reading of the device's Output2 Network"
+  },
+  "PressureSetting": {
+    "prefix": "PressureSetting",
+    "body": [
+      "PressureSetting"
+    ],
+    "description": "The current setting for the internal pressure of the object (e.g. the Hardsuit Air release), in KPa"
+  },
+  "Progress": {
+    "prefix": "Progress",
+    "body": [
+      "Progress"
+    ],
+    "description": "Progress of the rocket to the next node on the map expressed as a value between 0-1."
+  },
+  "Quantity": {
+    "prefix": "Quantity",
+    "body": [
+      "Quantity"
+    ],
+    "description": "Total quantity on the device"
+  },
+  "Ratio": {
+    "prefix": "Ratio",
+    "body": [
+      "Ratio"
+    ],
+    "description": "Context specific value depending on device, 0 to 1 based ratio"
+  },
+  "RatioCarbonDioxide": {
+    "prefix": "RatioCarbonDioxide",
+    "body": [
+      "RatioCarbonDioxide"
+    ],
+    "description": "The ratio of <a data-href=\"GasCarbonDioxide\"><span style=\"color: #44AD83\">Carbon Dioxide</span></a> in device atmosphere"
+  },
+  "RatioCarbonDioxideInput": {
+    "prefix": "RatioCarbonDioxideInput",
+    "body": [
+      "RatioCarbonDioxideInput"
+    ],
+    "description": "The ratio of <a data-href=\"GasCarbonDioxide\"><span style=\"color: #44AD83\">Carbon Dioxide</span></a> in device's input network"
+  },
+  "RatioCarbonDioxideInput2": {
+    "prefix": "RatioCarbonDioxideInput2",
+    "body": [
+      "RatioCarbonDioxideInput2"
+    ],
+    "description": "The ratio of <a data-href=\"GasCarbonDioxide\"><span style=\"color: #44AD83\">Carbon Dioxide</span></a> in device's Input2 network"
+  },
+  "RatioCarbonDioxideOutput": {
+    "prefix": "RatioCarbonDioxideOutput",
+    "body": [
+      "RatioCarbonDioxideOutput"
+    ],
+    "description": "The ratio of <a data-href=\"GasCarbonDioxide\"><span style=\"color: #44AD83\">Carbon Dioxide</span></a> in device's Output network"
+  },
+  "RatioCarbonDioxideOutput2": {
+    "prefix": "RatioCarbonDioxideOutput2",
+    "body": [
+      "RatioCarbonDioxideOutput2"
+    ],
+    "description": "The ratio of <a data-href=\"GasCarbonDioxide\"><span style=\"color: #44AD83\">Carbon Dioxide</span></a> in device's Output2 network"
+  },
+  "RatioHydrogen": {
+    "prefix": "RatioHydrogen",
+    "body": [
+      "RatioHydrogen"
+    ],
+    "description": "The ratio of <a data-href=\"GasHydrogen\"><span style=\"color: #44AD83\">Hydrogen</span></a> in device's Atmopshere"
+  },
+  "RatioLiquidCarbonDioxide": {
+    "prefix": "RatioLiquidCarbonDioxide",
+    "body": [
+      "RatioLiquidCarbonDioxide"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidCarbonDioxide\"><span style=\"color: #44AD83\">Liquid Carbon Dioxide</span></a> in device's Atmosphere"
+  },
+  "RatioLiquidCarbonDioxideInput": {
+    "prefix": "RatioLiquidCarbonDioxideInput",
+    "body": [
+      "RatioLiquidCarbonDioxideInput"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidCarbonDioxide\"><span style=\"color: #44AD83\">Liquid Carbon Dioxide</span></a> in device's Input Atmosphere"
+  },
+  "RatioLiquidCarbonDioxideInput2": {
+    "prefix": "RatioLiquidCarbonDioxideInput2",
+    "body": [
+      "RatioLiquidCarbonDioxideInput2"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidCarbonDioxide\"><span style=\"color: #44AD83\">Liquid Carbon Dioxide</span></a> in device's Input2 Atmosphere"
+  },
+  "RatioLiquidCarbonDioxideOutput": {
+    "prefix": "RatioLiquidCarbonDioxideOutput",
+    "body": [
+      "RatioLiquidCarbonDioxideOutput"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidCarbonDioxide\"><span style=\"color: #44AD83\">Liquid Carbon Dioxide</span></a> in device's device's Output Atmosphere"
+  },
+  "RatioLiquidCarbonDioxideOutput2": {
+    "prefix": "RatioLiquidCarbonDioxideOutput2",
+    "body": [
+      "RatioLiquidCarbonDioxideOutput2"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidCarbonDioxide\"><span style=\"color: #44AD83\">Liquid Carbon Dioxide</span></a> in device's Output2 Atmopshere"
+  },
+  "RatioLiquidHydrogen": {
+    "prefix": "RatioLiquidHydrogen",
+    "body": [
+      "RatioLiquidHydrogen"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidHydrogen\"><span style=\"color: #44AD83\">Liquid Hydrogen</span></a> in device's Atmopshere"
+  },
+  "RatioLiquidNitrogen": {
+    "prefix": "RatioLiquidNitrogen",
+    "body": [
+      "RatioLiquidNitrogen"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidNitrogen\"><span style=\"color: #44AD83\">Liquid Nitrogen</span></a> in device atmosphere"
+  },
+  "RatioLiquidNitrogenInput": {
+    "prefix": "RatioLiquidNitrogenInput",
+    "body": [
+      "RatioLiquidNitrogenInput"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidNitrogen\"><span style=\"color: #44AD83\">Liquid Nitrogen</span></a> in device's input network"
+  },
+  "RatioLiquidNitrogenInput2": {
+    "prefix": "RatioLiquidNitrogenInput2",
+    "body": [
+      "RatioLiquidNitrogenInput2"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidNitrogen\"><span style=\"color: #44AD83\">Liquid Nitrogen</span></a> in device's Input2 network"
+  },
+  "RatioLiquidNitrogenOutput": {
+    "prefix": "RatioLiquidNitrogenOutput",
+    "body": [
+      "RatioLiquidNitrogenOutput"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidNitrogen\"><span style=\"color: #44AD83\">Liquid Nitrogen</span></a> in device's Output network"
+  },
+  "RatioLiquidNitrogenOutput2": {
+    "prefix": "RatioLiquidNitrogenOutput2",
+    "body": [
+      "RatioLiquidNitrogenOutput2"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidNitrogen\"><span style=\"color: #44AD83\">Liquid Nitrogen</span></a> in device's Output2 network"
+  },
+  "RatioLiquidNitrousOxide": {
+    "prefix": "RatioLiquidNitrousOxide",
+    "body": [
+      "RatioLiquidNitrousOxide"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidNitrousOxide\"><span style=\"color: #44AD83\">Liquid Nitrous Oxide</span></a> in device's Atmosphere"
+  },
+  "RatioLiquidNitrousOxideInput": {
+    "prefix": "RatioLiquidNitrousOxideInput",
+    "body": [
+      "RatioLiquidNitrousOxideInput"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidNitrousOxide\"><span style=\"color: #44AD83\">Liquid Nitrous Oxide</span></a> in device's Input Atmosphere"
+  },
+  "RatioLiquidNitrousOxideInput2": {
+    "prefix": "RatioLiquidNitrousOxideInput2",
+    "body": [
+      "RatioLiquidNitrousOxideInput2"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidNitrousOxide\"><span style=\"color: #44AD83\">Liquid Nitrous Oxide</span></a> in device's Input2 Atmosphere"
+  },
+  "RatioLiquidNitrousOxideOutput": {
+    "prefix": "RatioLiquidNitrousOxideOutput",
+    "body": [
+      "RatioLiquidNitrousOxideOutput"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidNitrousOxide\"><span style=\"color: #44AD83\">Liquid Nitrous Oxide</span></a> in device's device's Output Atmosphere"
+  },
+  "RatioLiquidNitrousOxideOutput2": {
+    "prefix": "RatioLiquidNitrousOxideOutput2",
+    "body": [
+      "RatioLiquidNitrousOxideOutput2"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidNitrousOxide\"><span style=\"color: #44AD83\">Liquid Nitrous Oxide</span></a> in device's Output2 Atmopshere"
+  },
+  "RatioLiquidOxygen": {
+    "prefix": "RatioLiquidOxygen",
+    "body": [
+      "RatioLiquidOxygen"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidOxygen\"><span style=\"color: #44AD83\">Liquid Oxygen</span></a> in device's Atmosphere"
+  },
+  "RatioLiquidOxygenInput": {
+    "prefix": "RatioLiquidOxygenInput",
+    "body": [
+      "RatioLiquidOxygenInput"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidOxygen\"><span style=\"color: #44AD83\">Liquid Oxygen</span></a> in device's Input Atmosphere"
+  },
+  "RatioLiquidOxygenInput2": {
+    "prefix": "RatioLiquidOxygenInput2",
+    "body": [
+      "RatioLiquidOxygenInput2"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidOxygen\"><span style=\"color: #44AD83\">Liquid Oxygen</span></a> in device's Input2 Atmosphere"
+  },
+  "RatioLiquidOxygenOutput": {
+    "prefix": "RatioLiquidOxygenOutput",
+    "body": [
+      "RatioLiquidOxygenOutput"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidOxygen\"><span style=\"color: #44AD83\">Liquid Oxygen</span></a> in device's device's Output Atmosphere"
+  },
+  "RatioLiquidOxygenOutput2": {
+    "prefix": "RatioLiquidOxygenOutput2",
+    "body": [
+      "RatioLiquidOxygenOutput2"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidOxygen\"><span style=\"color: #44AD83\">Liquid Oxygen</span></a> in device's Output2 Atmopshere"
+  },
+  "RatioLiquidPollutant": {
+    "prefix": "RatioLiquidPollutant",
+    "body": [
+      "RatioLiquidPollutant"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidPollutant\"><span style=\"color: #44AD83\">Liquid Pollutant</span></a> in device's Atmosphere"
+  },
+  "RatioLiquidPollutantInput": {
+    "prefix": "RatioLiquidPollutantInput",
+    "body": [
+      "RatioLiquidPollutantInput"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidPollutant\"><span style=\"color: #44AD83\">Liquid Pollutant</span></a> in device's Input Atmosphere"
+  },
+  "RatioLiquidPollutantInput2": {
+    "prefix": "RatioLiquidPollutantInput2",
+    "body": [
+      "RatioLiquidPollutantInput2"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidPollutant\"><span style=\"color: #44AD83\">Liquid Pollutant</span></a> in device's Input2 Atmosphere"
+  },
+  "RatioLiquidPollutantOutput": {
+    "prefix": "RatioLiquidPollutantOutput",
+    "body": [
+      "RatioLiquidPollutantOutput"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidPollutant\"><span style=\"color: #44AD83\">Liquid Pollutant</span></a> in device's device's Output Atmosphere"
+  },
+  "RatioLiquidPollutantOutput2": {
+    "prefix": "RatioLiquidPollutantOutput2",
+    "body": [
+      "RatioLiquidPollutantOutput2"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidPollutant\"><span style=\"color: #44AD83\">Liquid Pollutant</span></a> in device's Output2 Atmopshere"
+  },
+  "RatioLiquidVolatiles": {
+    "prefix": "RatioLiquidVolatiles",
+    "body": [
+      "RatioLiquidVolatiles"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidVolatiles\"><span style=\"color: #44AD83\">Liquid Volatiles</span></a> in device's Atmosphere"
+  },
+  "RatioLiquidVolatilesInput": {
+    "prefix": "RatioLiquidVolatilesInput",
+    "body": [
+      "RatioLiquidVolatilesInput"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidVolatiles\"><span style=\"color: #44AD83\">Liquid Volatiles</span></a> in device's Input Atmosphere"
+  },
+  "RatioLiquidVolatilesInput2": {
+    "prefix": "RatioLiquidVolatilesInput2",
+    "body": [
+      "RatioLiquidVolatilesInput2"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidVolatiles\"><span style=\"color: #44AD83\">Liquid Volatiles</span></a> in device's Input2 Atmosphere"
+  },
+  "RatioLiquidVolatilesOutput": {
+    "prefix": "RatioLiquidVolatilesOutput",
+    "body": [
+      "RatioLiquidVolatilesOutput"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidVolatiles\"><span style=\"color: #44AD83\">Liquid Volatiles</span></a> in device's device's Output Atmosphere"
+  },
+  "RatioLiquidVolatilesOutput2": {
+    "prefix": "RatioLiquidVolatilesOutput2",
+    "body": [
+      "RatioLiquidVolatilesOutput2"
+    ],
+    "description": "The ratio of <a data-href=\"GasLiquidVolatiles\"><span style=\"color: #44AD83\">Liquid Volatiles</span></a> in device's Output2 Atmopshere"
+  },
+  "RatioNitrogen": {
+    "prefix": "RatioNitrogen",
+    "body": [
+      "RatioNitrogen"
+    ],
+    "description": "The ratio of nitrogen in device atmosphere"
+  },
+  "RatioNitrogenInput": {
+    "prefix": "RatioNitrogenInput",
+    "body": [
+      "RatioNitrogenInput"
+    ],
+    "description": "The ratio of nitrogen in device's input network"
+  },
+  "RatioNitrogenInput2": {
+    "prefix": "RatioNitrogenInput2",
+    "body": [
+      "RatioNitrogenInput2"
+    ],
+    "description": "The ratio of nitrogen in device's Input2 network"
+  },
+  "RatioNitrogenOutput": {
+    "prefix": "RatioNitrogenOutput",
+    "body": [
+      "RatioNitrogenOutput"
+    ],
+    "description": "The ratio of nitrogen in device's Output network"
+  },
+  "RatioNitrogenOutput2": {
+    "prefix": "RatioNitrogenOutput2",
+    "body": [
+      "RatioNitrogenOutput2"
+    ],
+    "description": "The ratio of nitrogen in device's Output2 network"
+  },
+  "RatioNitrousOxide": {
+    "prefix": "RatioNitrousOxide",
+    "body": [
+      "RatioNitrousOxide"
+    ],
+    "description": "The ratio of <a data-href=\"GasNitrousOxide\"><span style=\"color: #44AD83\">Nitrous Oxide</span></a> in device atmosphere"
+  },
+  "RatioNitrousOxideInput": {
+    "prefix": "RatioNitrousOxideInput",
+    "body": [
+      "RatioNitrousOxideInput"
+    ],
+    "description": "The ratio of <a data-href=\"GasNitrousOxide\"><span style=\"color: #44AD83\">Nitrous Oxide</span></a> in device's input network"
+  },
+  "RatioNitrousOxideInput2": {
+    "prefix": "RatioNitrousOxideInput2",
+    "body": [
+      "RatioNitrousOxideInput2"
+    ],
+    "description": "The ratio of <a data-href=\"GasNitrousOxide\"><span style=\"color: #44AD83\">Nitrous Oxide</span></a> in device's Input2 network"
+  },
+  "RatioNitrousOxideOutput": {
+    "prefix": "RatioNitrousOxideOutput",
+    "body": [
+      "RatioNitrousOxideOutput"
+    ],
+    "description": "The ratio of <a data-href=\"GasNitrousOxide\"><span style=\"color: #44AD83\">Nitrous Oxide</span></a> in device's Output network"
+  },
+  "RatioNitrousOxideOutput2": {
+    "prefix": "RatioNitrousOxideOutput2",
+    "body": [
+      "RatioNitrousOxideOutput2"
+    ],
+    "description": "The ratio of <a data-href=\"GasNitrousOxide\"><span style=\"color: #44AD83\">Nitrous Oxide</span></a> in device's Output2 network"
+  },
+  "RatioOxygen": {
+    "prefix": "RatioOxygen",
+    "body": [
+      "RatioOxygen"
+    ],
+    "description": "The ratio of oxygen in device atmosphere"
+  },
+  "RatioOxygenInput": {
+    "prefix": "RatioOxygenInput",
+    "body": [
+      "RatioOxygenInput"
+    ],
+    "description": "The ratio of oxygen in device's input network"
+  },
+  "RatioOxygenInput2": {
+    "prefix": "RatioOxygenInput2",
+    "body": [
+      "RatioOxygenInput2"
+    ],
+    "description": "The ratio of oxygen in device's Input2 network"
+  },
+  "RatioOxygenOutput": {
+    "prefix": "RatioOxygenOutput",
+    "body": [
+      "RatioOxygenOutput"
+    ],
+    "description": "The ratio of oxygen in device's Output network"
+  },
+  "RatioOxygenOutput2": {
+    "prefix": "RatioOxygenOutput2",
+    "body": [
+      "RatioOxygenOutput2"
+    ],
+    "description": "The ratio of oxygen in device's Output2 network"
+  },
+  "RatioPollutant": {
+    "prefix": "RatioPollutant",
+    "body": [
+      "RatioPollutant"
+    ],
+    "description": "The ratio of pollutant in device atmosphere"
+  },
+  "RatioPollutantInput": {
+    "prefix": "RatioPollutantInput",
+    "body": [
+      "RatioPollutantInput"
+    ],
+    "description": "The ratio of pollutant in device's input network"
+  },
+  "RatioPollutantInput2": {
+    "prefix": "RatioPollutantInput2",
+    "body": [
+      "RatioPollutantInput2"
+    ],
+    "description": "The ratio of pollutant in device's Input2 network"
+  },
+  "RatioPollutantOutput": {
+    "prefix": "RatioPollutantOutput",
+    "body": [
+      "RatioPollutantOutput"
+    ],
+    "description": "The ratio of pollutant in device's Output network"
+  },
+  "RatioPollutantOutput2": {
+    "prefix": "RatioPollutantOutput2",
+    "body": [
+      "RatioPollutantOutput2"
+    ],
+    "description": "The ratio of pollutant in device's Output2 network"
+  },
+  "RatioPollutedWater": {
+    "prefix": "RatioPollutedWater",
+    "body": [
+      "RatioPollutedWater"
+    ],
+    "description": "The ratio of polluted water in device atmosphere"
+  },
+  "RatioSteam": {
+    "prefix": "RatioSteam",
+    "body": [
+      "RatioSteam"
+    ],
+    "description": "The ratio of <a data-href=\"GasSteam\"><span style=\"color: #44AD83\">Steam</span></a> in device's Atmosphere"
+  },
+  "RatioSteamInput": {
+    "prefix": "RatioSteamInput",
+    "body": [
+      "RatioSteamInput"
+    ],
+    "description": "The ratio of <a data-href=\"GasSteam\"><span style=\"color: #44AD83\">Steam</span></a> in device's Input Atmosphere"
+  },
+  "RatioSteamInput2": {
+    "prefix": "RatioSteamInput2",
+    "body": [
+      "RatioSteamInput2"
+    ],
+    "description": "The ratio of <a data-href=\"GasSteam\"><span style=\"color: #44AD83\">Steam</span></a> in device's Input2 Atmosphere"
+  },
+  "RatioSteamOutput": {
+    "prefix": "RatioSteamOutput",
+    "body": [
+      "RatioSteamOutput"
+    ],
+    "description": "The ratio of <a data-href=\"GasSteam\"><span style=\"color: #44AD83\">Steam</span></a> in device's device's Output Atmosphere"
+  },
+  "RatioSteamOutput2": {
+    "prefix": "RatioSteamOutput2",
+    "body": [
+      "RatioSteamOutput2"
+    ],
+    "description": "The ratio of <a data-href=\"GasSteam\"><span style=\"color: #44AD83\">Steam</span></a> in device's Output2 Atmopshere"
+  },
+  "RatioVolatiles": {
+    "prefix": "RatioVolatiles",
+    "body": [
+      "RatioVolatiles"
+    ],
+    "description": "The ratio of volatiles in device atmosphere"
+  },
+  "RatioVolatilesInput": {
+    "prefix": "RatioVolatilesInput",
+    "body": [
+      "RatioVolatilesInput"
+    ],
+    "description": "The ratio of volatiles in device's input network"
+  },
+  "RatioVolatilesInput2": {
+    "prefix": "RatioVolatilesInput2",
+    "body": [
+      "RatioVolatilesInput2"
+    ],
+    "description": "The ratio of volatiles in device's Input2 network"
+  },
+  "RatioVolatilesOutput": {
+    "prefix": "RatioVolatilesOutput",
+    "body": [
+      "RatioVolatilesOutput"
+    ],
+    "description": "The ratio of volatiles in device's Output network"
+  },
+  "RatioVolatilesOutput2": {
+    "prefix": "RatioVolatilesOutput2",
+    "body": [
+      "RatioVolatilesOutput2"
+    ],
+    "description": "The ratio of volatiles in device's Output2 network"
+  },
+  "RatioWater": {
+    "prefix": "RatioWater",
+    "body": [
+      "RatioWater"
+    ],
+    "description": "The ratio of water in device atmosphere"
+  },
+  "RatioWaterInput": {
+    "prefix": "RatioWaterInput",
+    "body": [
+      "RatioWaterInput"
+    ],
+    "description": "The ratio of water in device's input network"
+  },
+  "RatioWaterInput2": {
+    "prefix": "RatioWaterInput2",
+    "body": [
+      "RatioWaterInput2"
+    ],
+    "description": "The ratio of water in device's Input2 network"
+  },
+  "RatioWaterOutput": {
+    "prefix": "RatioWaterOutput",
+    "body": [
+      "RatioWaterOutput"
+    ],
+    "description": "The ratio of water in device's Output network"
+  },
+  "RatioWaterOutput2": {
+    "prefix": "RatioWaterOutput2",
+    "body": [
+      "RatioWaterOutput2"
+    ],
+    "description": "The ratio of water in device's Output2 network"
+  },
+  "ReEntryAltitude": {
+    "prefix": "ReEntryAltitude",
+    "body": [
+      "ReEntryAltitude"
+    ],
+    "description": "The altitude that the rocket will begin its decent to the pad. Must be between 25km and 120km"
+  },
+  "Reagents": {
+    "prefix": "Reagents",
+    "body": [
+      "Reagents"
+    ],
+    "description": "Total number of reagents recorded by the device"
+  },
+  "RecipeHash": {
+    "prefix": "RecipeHash",
+    "body": [
+      "RecipeHash"
+    ],
+    "description": "Current hash of the recipe the device is set to produce"
+  },
+  "ReferenceId": {
+    "prefix": "ReferenceId",
+    "body": [
+      "ReferenceId"
+    ],
+    "description": "Unique Reference Identifier for this object"
+  },
+  "RequestHash": {
+    "prefix": "RequestHash",
+    "body": [
+      "RequestHash"
+    ],
+    "description": "When set to the unique identifier, requests an item of the provided type from the device"
+  },
+  "RequiredPower": {
+    "prefix": "RequiredPower",
+    "body": [
+      "RequiredPower"
+    ],
+    "description": "Idle operating power quantity, does not necessarily include extra demand power"
+  },
+  "ReturnFuelCost": {
+    "prefix": "ReturnFuelCost",
+    "body": [
+      "ReturnFuelCost"
+    ],
+    "description": "Gets the fuel remaining in your rocket's fuel tank."
+  },
+  "Richness": {
+    "prefix": "Richness",
+    "body": [
+      "Richness"
+    ],
+    "description": "The richness of the rocket's target site's mine-able deposit."
+  },
+  "Rpm": {
+    "prefix": "Rpm",
+    "body": [
+      "Rpm"
+    ],
+    "description": "The number of revolutions per minute that the device's spinning mechanism is doing"
+  },
+  "SemiMajorAxis": {
+    "prefix": "SemiMajorAxis",
+    "body": [
+      "SemiMajorAxis"
+    ],
+    "description": "The longest radius of an elliptical orbit in astronomical units, measuring half the major axis. Determines the size of the orbit."
+  },
+  "Setting": {
+    "prefix": "Setting",
+    "body": [
+      "Setting"
+    ],
+    "description": "A variable setting that can be read or written, depending on the device"
+  },
+  "SettingInput": {
+    "prefix": "SettingInput",
+    "body": [
+      "SettingInput"
+    ],
+    "description": "<A:EN:-1139210406>"
+  },
+  "SettingOutput": {
+    "prefix": "SettingOutput",
+    "body": [
+      "SettingOutput"
+    ],
+    "description": "<A:EN:1605622326>"
+  },
+  "SignalID": {
+    "prefix": "SignalID",
+    "body": [
+      "SignalID"
+    ],
+    "description": "Returns the contact ID of the strongest signal from this Satellite"
+  },
+  "SignalStrength": {
+    "prefix": "SignalStrength",
+    "body": [
+      "SignalStrength"
+    ],
+    "description": "Returns the degree offset of the strongest contact"
+  },
+  "Sites": {
+    "prefix": "Sites",
+    "body": [
+      "Sites"
+    ],
+    "description": "The number of Sites that have been discovered at the rockets target Space Map location."
+  },
+  "Size": {
+    "prefix": "Size",
+    "body": [
+      "Size"
+    ],
+    "description": "The size of the rocket's target site's mine-able deposit."
+  },
+  "SizeX": {
+    "prefix": "SizeX",
+    "body": [
+      "SizeX"
+    ],
+    "description": "Size on the X (right) axis of the object in largeGrids (a largeGrid is 2meters)"
+  },
+  "SizeY": {
+    "prefix": "SizeY",
+    "body": [
+      "SizeY"
+    ],
+    "description": "Size on the Y(Up) axis of the object in largeGrids (a largeGrid is 2meters)"
+  },
+  "SizeZ": {
+    "prefix": "SizeZ",
+    "body": [
+      "SizeZ"
+    ],
+    "description": "Size on the Z(Forward) axis of the object in largeGrids (a largeGrid is 2meters)"
+  },
+  "SolarAngle": {
+    "prefix": "SolarAngle",
+    "body": [
+      "SolarAngle"
+    ],
+    "description": "Solar angle of the device"
+  },
+  "SolarIrradiance": {
+    "prefix": "SolarIrradiance",
+    "body": [
+      "SolarIrradiance"
+    ],
+    "description": "<A:EN:-1627927313>"
+  },
+  "SoundAlert": {
+    "prefix": "SoundAlert",
+    "body": [
+      "SoundAlert"
+    ],
+    "description": "Plays a sound alert on the devices speaker"
+  },
+  "Stress": {
+    "prefix": "Stress",
+    "body": [
+      "Stress"
+    ],
+    "description": "Machines get stressed when working hard. When Stress reaches 100 the machine will automatically shut down"
+  },
+  "Survey": {
+    "prefix": "Survey",
+    "body": [
+      "Survey"
+    ],
+    "description": "Progress status of Survey scan at the rocket's target Space Map Location. Returns a normalised value where 100% surveyed is equal to 1. If Survey scan is not available returns -1."
+  },
+  "TargetPadIndex": {
+    "prefix": "TargetPadIndex",
+    "body": [
+      "TargetPadIndex"
+    ],
+    "description": "The index of the trader landing pad on this devices data network that it will try to call a trader in to land"
+  },
+  "TargetX": {
+    "prefix": "TargetX",
+    "body": [
+      "TargetX"
+    ],
+    "description": "The target position in X dimension in world coordinates"
+  },
+  "TargetY": {
+    "prefix": "TargetY",
+    "body": [
+      "TargetY"
+    ],
+    "description": "The target position in Y dimension in world coordinates"
+  },
+  "TargetZ": {
+    "prefix": "TargetZ",
+    "body": [
+      "TargetZ"
+    ],
+    "description": "The target position in Z dimension in world coordinates"
+  },
+  "Temperature": {
+    "prefix": "Temperature",
+    "body": [
+      "Temperature"
+    ],
+    "description": "The current temperature reading of the device"
+  },
+  "TemperatureDifferentialEfficiency": {
+    "prefix": "TemperatureDifferentialEfficiency",
+    "body": [
+      "TemperatureDifferentialEfficiency"
+    ],
+    "description": "How the difference between the input pipe and waste pipe temperatures effect the machines efficiency"
+  },
+  "TemperatureExternal": {
+    "prefix": "TemperatureExternal",
+    "body": [
+      "TemperatureExternal"
+    ],
+    "description": "The temperature of the outside of the device, usually the world atmosphere surrounding it"
+  },
+  "TemperatureInput": {
+    "prefix": "TemperatureInput",
+    "body": [
+      "TemperatureInput"
+    ],
+    "description": "The current temperature reading of the device's Input Network"
+  },
+  "TemperatureInput2": {
+    "prefix": "TemperatureInput2",
+    "body": [
+      "TemperatureInput2"
+    ],
+    "description": "The current temperature reading of the device's Input2 Network"
+  },
+  "TemperatureOutput": {
+    "prefix": "TemperatureOutput",
+    "body": [
+      "TemperatureOutput"
+    ],
+    "description": "The current temperature reading of the device's Output Network"
+  },
+  "TemperatureOutput2": {
+    "prefix": "TemperatureOutput2",
+    "body": [
+      "TemperatureOutput2"
+    ],
+    "description": "The current temperature reading of the device's Output2 Network"
+  },
+  "TemperatureSetting": {
+    "prefix": "TemperatureSetting",
+    "body": [
+      "TemperatureSetting"
+    ],
+    "description": "The current setting for the internal temperature of the object (e.g. the Hardsuit A/C)"
+  },
+  "Throttle": {
+    "prefix": "Throttle",
+    "body": [
+      "Throttle"
+    ],
+    "description": "Increases the rate at which the machine works (range: 0-100)"
+  },
+  "Thrust": {
+    "prefix": "Thrust",
+    "body": [
+      "Thrust"
+    ],
+    "description": "Total current thrust of all rocket engines on the rocket in Newtons."
+  },
+  "ThrustToWeight": {
+    "prefix": "ThrustToWeight",
+    "body": [
+      "ThrustToWeight"
+    ],
+    "description": "Ratio of thrust to weight of rocket. Weight is effected by local body gravity. A rocket with a low thrust to weight will expend more fuel during launch and landing."
+  },
+  "Time": {
+    "prefix": "Time",
+    "body": [
+      "Time"
+    ],
+    "description": "Time"
+  },
+  "TimeToDestination": {
+    "prefix": "TimeToDestination",
+    "body": [
+      "TimeToDestination"
+    ],
+    "description": "Estimated time in seconds until rocket arrives at target destination."
+  },
+  "TotalMoles": {
+    "prefix": "TotalMoles",
+    "body": [
+      "TotalMoles"
+    ],
+    "description": "Returns the total moles of the device"
+  },
+  "TotalMolesInput": {
+    "prefix": "TotalMolesInput",
+    "body": [
+      "TotalMolesInput"
+    ],
+    "description": "Returns the total moles of the device's Input Network"
+  },
+  "TotalMolesInput2": {
+    "prefix": "TotalMolesInput2",
+    "body": [
+      "TotalMolesInput2"
+    ],
+    "description": "Returns the total moles of the device's Input2 Network"
+  },
+  "TotalMolesOutput": {
+    "prefix": "TotalMolesOutput",
+    "body": [
+      "TotalMolesOutput"
+    ],
+    "description": "Returns the total moles of the device's Output Network"
+  },
+  "TotalMolesOutput2": {
+    "prefix": "TotalMolesOutput2",
+    "body": [
+      "TotalMolesOutput2"
+    ],
+    "description": "Returns the total moles of the device's Output2 Network"
+  },
+  "TotalQuantity": {
+    "prefix": "TotalQuantity",
+    "body": [
+      "TotalQuantity"
+    ],
+    "description": "The estimated total quantity of resources available to mine at the rocket's target Space Map Site."
+  },
+  "TrueAnomaly": {
+    "prefix": "TrueAnomaly",
+    "body": [
+      "TrueAnomaly"
+    ],
+    "description": "An angular parameter that defines the position of a body moving along a Keplerian orbit. It is the angle between the direction of periapsis and the current position of the body, as seen from the main focus of the ellipse (the point around which the object orbits)."
+  },
+  "VelocityMagnitude": {
+    "prefix": "VelocityMagnitude",
+    "body": [
+      "VelocityMagnitude"
+    ],
+    "description": "The current magnitude of the velocity vector"
+  },
+  "VelocityRelativeX": {
+    "prefix": "VelocityRelativeX",
+    "body": [
+      "VelocityRelativeX"
+    ],
+    "description": "The current velocity X relative to the forward vector of this"
+  },
+  "VelocityRelativeY": {
+    "prefix": "VelocityRelativeY",
+    "body": [
+      "VelocityRelativeY"
+    ],
+    "description": "The current velocity Y relative to the forward vector of this"
+  },
+  "VelocityRelativeZ": {
+    "prefix": "VelocityRelativeZ",
+    "body": [
+      "VelocityRelativeZ"
+    ],
+    "description": "The current velocity Z relative to the forward vector of this"
+  },
+  "VelocityX": {
+    "prefix": "VelocityX",
+    "body": [
+      "VelocityX"
+    ],
+    "description": "The world velocity of the entity in the X axis"
+  },
+  "VelocityY": {
+    "prefix": "VelocityY",
+    "body": [
+      "VelocityY"
+    ],
+    "description": "The world velocity of the entity in the Y axis"
+  },
+  "VelocityZ": {
+    "prefix": "VelocityZ",
+    "body": [
+      "VelocityZ"
+    ],
+    "description": "The world velocity of the entity in the Z axis"
+  },
+  "Vertical": {
+    "prefix": "Vertical",
+    "body": [
+      "Vertical"
+    ],
+    "description": "Vertical setting of the device"
+  },
+  "VerticalRatio": {
+    "prefix": "VerticalRatio",
+    "body": [
+      "VerticalRatio"
+    ],
+    "description": "Radio of vertical setting for device"
+  },
+  "Volume": {
+    "prefix": "Volume",
+    "body": [
+      "Volume"
+    ],
+    "description": "Returns the device atmosphere volume"
+  },
+  "VolumeOfLiquid": {
+    "prefix": "VolumeOfLiquid",
+    "body": [
+      "VolumeOfLiquid"
+    ],
+    "description": "The total volume of all liquids in Liters in the atmosphere"
+  },
+  "WattsReachingContact": {
+    "prefix": "WattsReachingContact",
+    "body": [
+      "WattsReachingContact"
+    ],
+    "description": "The amount of watts actually hitting the contact. This is effected by the power of the dish and how far off-axis the dish is from the contact vector"
+  },
+  "Weight": {
+    "prefix": "Weight",
+    "body": [
+      "Weight"
+    ],
+    "description": "Weight of Rocket in Newtons (Including fuel and cargo). Weight is effected by local body gravity."
+  },
+  "WorkingGasEfficiency": {
+    "prefix": "WorkingGasEfficiency",
+    "body": [
+      "WorkingGasEfficiency"
+    ],
+    "description": "The Working Gas Efficiency reported by the machine, as a float between 0 and 1"
+  },
+  "nan": {
+    "prefix": "nan",
+    "body": [
+      "nan"
+    ],
+    "description": "NaN"
+  },
+  "pinf": {
+    "prefix": "pinf",
+    "body": [
+      "pinf"
+    ],
+    "description": "Infinity"
+  },
+  "ninf": {
+    "prefix": "ninf",
+    "body": [
+      "ninf"
+    ],
+    "description": "-Infinity"
+  },
+  "pi": {
+    "prefix": "pi",
+    "body": [
+      "pi"
+    ],
+    "description": "3.141592653589793"
+  },
+  "deg2rad": {
+    "prefix": "deg2rad",
+    "body": [
+      "deg2rad"
+    ],
+    "description": "0.01745329238474369"
+  },
+  "rad2deg": {
+    "prefix": "rad2deg",
+    "body": [
+      "rad2deg"
+    ],
+    "description": "57.295780181884766"
+  },
+  "epsilon": {
+    "prefix": "epsilon",
+    "body": [
+      "epsilon"
+    ],
+    "description": "5e-324"
+  },
+  "Contents": {
+    "prefix": "Contents",
+    "body": [
+      "Contents"
+    ],
+    "description": "0"
+  },
+  "Required": {
+    "prefix": "Required",
+    "body": [
+      "Required"
+    ],
+    "description": "1"
+  },
+  "Recipe": {
+    "prefix": "Recipe",
+    "body": [
+      "Recipe"
+    ],
+    "description": "2"
+  },
+  "TotalContents": {
+    "prefix": "TotalContents",
+    "body": [
+      "TotalContents"
+    ],
+    "description": "3"
+  },
+  "Average": {
+    "prefix": "Average",
+    "body": [
+      "Average"
+    ],
+    "description": "0"
+  },
+  "Sum": {
+    "prefix": "Sum",
+    "body": [
+      "Sum"
+    ],
+    "description": "1"
+  },
+  "Minimum": {
+    "prefix": "Minimum",
+    "body": [
+      "Minimum"
+    ],
+    "description": "2"
+  },
+  "Sound.None": {
+    "prefix": "Sound.None",
+    "body": [
+      "Sound.None"
+    ],
+    "description": "0"
+  },
+  "Sound.Alarm2": {
+    "prefix": "Sound.Alarm2",
+    "body": [
+      "Sound.Alarm2"
+    ],
+    "description": "1"
+  },
+  "Sound.Alarm3": {
+    "prefix": "Sound.Alarm3",
+    "body": [
+      "Sound.Alarm3"
+    ],
+    "description": "2"
+  },
+  "Sound.Alarm4": {
+    "prefix": "Sound.Alarm4",
+    "body": [
+      "Sound.Alarm4"
+    ],
+    "description": "3"
+  },
+  "Sound.Alarm5": {
+    "prefix": "Sound.Alarm5",
+    "body": [
+      "Sound.Alarm5"
+    ],
+    "description": "4"
+  },
+  "Sound.Alarm6": {
+    "prefix": "Sound.Alarm6",
+    "body": [
+      "Sound.Alarm6"
+    ],
+    "description": "5"
+  },
+  "Sound.Alarm7": {
+    "prefix": "Sound.Alarm7",
+    "body": [
+      "Sound.Alarm7"
+    ],
+    "description": "6"
+  },
+  "Sound.Music1": {
+    "prefix": "Sound.Music1",
+    "body": [
+      "Sound.Music1"
+    ],
+    "description": "7"
+  },
+  "Sound.Music2": {
+    "prefix": "Sound.Music2",
+    "body": [
+      "Sound.Music2"
+    ],
+    "description": "8"
+  },
+  "Sound.Music3": {
+    "prefix": "Sound.Music3",
+    "body": [
+      "Sound.Music3"
+    ],
+    "description": "9"
+  },
+  "Sound.Alarm8": {
+    "prefix": "Sound.Alarm8",
+    "body": [
+      "Sound.Alarm8"
+    ],
+    "description": "10"
+  },
+  "Sound.Alarm9": {
+    "prefix": "Sound.Alarm9",
+    "body": [
+      "Sound.Alarm9"
+    ],
+    "description": "11"
+  },
+  "Sound.Alarm10": {
+    "prefix": "Sound.Alarm10",
+    "body": [
+      "Sound.Alarm10"
+    ],
+    "description": "12"
+  },
+  "Sound.Alarm11": {
+    "prefix": "Sound.Alarm11",
+    "body": [
+      "Sound.Alarm11"
+    ],
+    "description": "13"
+  },
+  "Sound.Alarm12": {
+    "prefix": "Sound.Alarm12",
+    "body": [
+      "Sound.Alarm12"
+    ],
+    "description": "14"
+  },
+  "Sound.Danger": {
+    "prefix": "Sound.Danger",
+    "body": [
+      "Sound.Danger"
+    ],
+    "description": "15"
+  },
+  "Sound.Warning": {
+    "prefix": "Sound.Warning",
+    "body": [
+      "Sound.Warning"
+    ],
+    "description": "16"
+  },
+  "Sound.Alert": {
+    "prefix": "Sound.Alert",
+    "body": [
+      "Sound.Alert"
+    ],
+    "description": "17"
+  },
+  "Sound.StormIncoming": {
+    "prefix": "Sound.StormIncoming",
+    "body": [
+      "Sound.StormIncoming"
+    ],
+    "description": "18"
+  },
+  "Sound.IntruderAlert": {
+    "prefix": "Sound.IntruderAlert",
+    "body": [
+      "Sound.IntruderAlert"
+    ],
+    "description": "19"
+  },
+  "Sound.Depressurising": {
+    "prefix": "Sound.Depressurising",
+    "body": [
+      "Sound.Depressurising"
+    ],
+    "description": "20"
+  },
+  "Sound.Pressurising": {
+    "prefix": "Sound.Pressurising",
+    "body": [
+      "Sound.Pressurising"
+    ],
+    "description": "21"
+  },
+  "Sound.AirlockCycling": {
+    "prefix": "Sound.AirlockCycling",
+    "body": [
+      "Sound.AirlockCycling"
+    ],
+    "description": "22"
+  },
+  "Sound.PowerLow": {
+    "prefix": "Sound.PowerLow",
+    "body": [
+      "Sound.PowerLow"
+    ],
+    "description": "23"
+  },
+  "Sound.SystemFailure": {
+    "prefix": "Sound.SystemFailure",
+    "body": [
+      "Sound.SystemFailure"
+    ],
+    "description": "24"
+  },
+  "Sound.Welcome": {
+    "prefix": "Sound.Welcome",
+    "body": [
+      "Sound.Welcome"
+    ],
+    "description": "25"
+  },
+  "Sound.MalfunctionDetected": {
+    "prefix": "Sound.MalfunctionDetected",
+    "body": [
+      "Sound.MalfunctionDetected"
+    ],
+    "description": "26"
+  },
+  "Sound.HaltWhoGoesThere": {
+    "prefix": "Sound.HaltWhoGoesThere",
+    "body": [
+      "Sound.HaltWhoGoesThere"
+    ],
+    "description": "27"
+  },
+  "Sound.FireFireFire": {
+    "prefix": "Sound.FireFireFire",
+    "body": [
+      "Sound.FireFireFire"
+    ],
+    "description": "28"
+  },
+  "Sound.One": {
+    "prefix": "Sound.One",
+    "body": [
+      "Sound.One"
+    ],
+    "description": "29"
+  },
+  "Sound.Two": {
+    "prefix": "Sound.Two",
+    "body": [
+      "Sound.Two"
+    ],
+    "description": "30"
+  },
+  "Sound.Three": {
+    "prefix": "Sound.Three",
+    "body": [
+      "Sound.Three"
+    ],
+    "description": "31"
+  },
+  "Sound.Four": {
+    "prefix": "Sound.Four",
+    "body": [
+      "Sound.Four"
+    ],
+    "description": "32"
+  },
+  "Sound.Five": {
+    "prefix": "Sound.Five",
+    "body": [
+      "Sound.Five"
+    ],
+    "description": "33"
+  },
+  "Sound.Floor": {
+    "prefix": "Sound.Floor",
+    "body": [
+      "Sound.Floor"
+    ],
+    "description": "34"
+  },
+  "Sound.RocketLaunching": {
+    "prefix": "Sound.RocketLaunching",
+    "body": [
+      "Sound.RocketLaunching"
+    ],
+    "description": "35"
+  },
+  "Sound.LiftOff": {
+    "prefix": "Sound.LiftOff",
+    "body": [
+      "Sound.LiftOff"
+    ],
+    "description": "36"
+  },
+  "Sound.TraderIncoming": {
+    "prefix": "Sound.TraderIncoming",
+    "body": [
+      "Sound.TraderIncoming"
+    ],
+    "description": "37"
+  },
+  "Sound.TraderLanded": {
+    "prefix": "Sound.TraderLanded",
+    "body": [
+      "Sound.TraderLanded"
+    ],
+    "description": "38"
+  },
+  "Sound.PressureHigh": {
+    "prefix": "Sound.PressureHigh",
+    "body": [
+      "Sound.PressureHigh"
+    ],
+    "description": "39"
+  },
+  "Sound.PressureLow": {
+    "prefix": "Sound.PressureLow",
+    "body": [
+      "Sound.PressureLow"
+    ],
+    "description": "40"
+  },
+  "Sound.TemperatureHigh": {
+    "prefix": "Sound.TemperatureHigh",
+    "body": [
+      "Sound.TemperatureHigh"
+    ],
+    "description": "41"
+  },
+  "Sound.TemperatureLow": {
+    "prefix": "Sound.TemperatureLow",
+    "body": [
+      "Sound.TemperatureLow"
+    ],
+    "description": "42"
+  },
+  "Sound.PollutantsDetected": {
+    "prefix": "Sound.PollutantsDetected",
+    "body": [
+      "Sound.PollutantsDetected"
+    ],
+    "description": "43"
+  },
+  "Sound.HighCarbonDioxide": {
+    "prefix": "Sound.HighCarbonDioxide",
+    "body": [
+      "Sound.HighCarbonDioxide"
+    ],
+    "description": "44"
+  },
+  "Sound.Alarm1": {
+    "prefix": "Sound.Alarm1",
+    "body": [
+      "Sound.Alarm1"
+    ],
+    "description": "45"
+  },
+  "TransmitterMode.Passive": {
+    "prefix": "TransmitterMode.Passive",
+    "body": [
+      "TransmitterMode.Passive"
+    ],
+    "description": "0"
+  },
+  "TransmitterMode.Active": {
+    "prefix": "TransmitterMode.Active",
+    "body": [
+      "TransmitterMode.Active"
+    ],
+    "description": "1"
+  },
+  "ElevatorMode.Stationary": {
+    "prefix": "ElevatorMode.Stationary",
+    "body": [
+      "ElevatorMode.Stationary"
+    ],
+    "description": "0"
+  },
+  "ElevatorMode.Upward": {
+    "prefix": "ElevatorMode.Upward",
+    "body": [
+      "ElevatorMode.Upward"
+    ],
+    "description": "1"
+  },
+  "ElevatorMode.Downward": {
+    "prefix": "ElevatorMode.Downward",
+    "body": [
+      "ElevatorMode.Downward"
+    ],
+    "description": "2"
+  },
+  "Color.Blue": {
+    "prefix": "Color.Blue",
+    "body": [
+      "Color.Blue"
+    ],
+    "description": "0"
+  },
+  "Color.Gray": {
+    "prefix": "Color.Gray",
+    "body": [
+      "Color.Gray"
+    ],
+    "description": "1"
+  },
+  "Color.Green": {
+    "prefix": "Color.Green",
+    "body": [
+      "Color.Green"
+    ],
+    "description": "2"
+  },
+  "Color.Orange": {
+    "prefix": "Color.Orange",
+    "body": [
+      "Color.Orange"
+    ],
+    "description": "3"
+  },
+  "Color.Red": {
+    "prefix": "Color.Red",
+    "body": [
+      "Color.Red"
+    ],
+    "description": "4"
+  },
+  "Color.Yellow": {
+    "prefix": "Color.Yellow",
+    "body": [
+      "Color.Yellow"
+    ],
+    "description": "5"
+  },
+  "Color.White": {
+    "prefix": "Color.White",
+    "body": [
+      "Color.White"
+    ],
+    "description": "6"
+  },
+  "Color.Black": {
+    "prefix": "Color.Black",
+    "body": [
+      "Color.Black"
+    ],
+    "description": "7"
+  },
+  "Color.Brown": {
+    "prefix": "Color.Brown",
+    "body": [
+      "Color.Brown"
+    ],
+    "description": "8"
+  },
+  "Color.Khaki": {
+    "prefix": "Color.Khaki",
+    "body": [
+      "Color.Khaki"
+    ],
+    "description": "9"
+  },
+  "Color.Pink": {
+    "prefix": "Color.Pink",
+    "body": [
+      "Color.Pink"
+    ],
+    "description": "10"
+  },
+  "Color.Purple": {
+    "prefix": "Color.Purple",
+    "body": [
+      "Color.Purple"
+    ],
+    "description": "11"
+  },
+  "EntityState.Alive": {
+    "prefix": "EntityState.Alive",
+    "body": [
+      "EntityState.Alive"
+    ],
+    "description": "0"
+  },
+  "EntityState.Dead": {
+    "prefix": "EntityState.Dead",
+    "body": [
+      "EntityState.Dead"
+    ],
+    "description": "1"
+  },
+  "EntityState.Unconscious": {
+    "prefix": "EntityState.Unconscious",
+    "body": [
+      "EntityState.Unconscious"
+    ],
+    "description": "2"
+  },
+  "EntityState.Decay": {
+    "prefix": "EntityState.Decay",
+    "body": [
+      "EntityState.Decay"
+    ],
+    "description": "3"
+  },
+  "AirControl.None": {
+    "prefix": "AirControl.None",
+    "body": [
+      "AirControl.None"
+    ],
+    "description": "0"
+  },
+  "AirControl.Offline": {
+    "prefix": "AirControl.Offline",
+    "body": [
+      "AirControl.Offline"
+    ],
+    "description": "1"
+  },
+  "AirControl.Pressure": {
+    "prefix": "AirControl.Pressure",
+    "body": [
+      "AirControl.Pressure"
+    ],
+    "description": "2"
+  },
+  "AirControl.Draught": {
+    "prefix": "AirControl.Draught",
+    "body": [
+      "AirControl.Draught"
+    ],
+    "description": "4"
+  },
+  "DaylightSensorMode.Default": {
+    "prefix": "DaylightSensorMode.Default",
+    "body": [
+      "DaylightSensorMode.Default"
+    ],
+    "description": "0"
+  },
+  "DaylightSensorMode.Horizontal": {
+    "prefix": "DaylightSensorMode.Horizontal",
+    "body": [
+      "DaylightSensorMode.Horizontal"
+    ],
+    "description": "1"
+  },
+  "DaylightSensorMode.Vertical": {
+    "prefix": "DaylightSensorMode.Vertical",
+    "body": [
+      "DaylightSensorMode.Vertical"
+    ],
+    "description": "2"
+  },
+  "Equals": {
+    "prefix": "Equals",
+    "body": [
+      "Equals"
+    ],
+    "description": "0"
+  },
+  "Greater": {
+    "prefix": "Greater",
+    "body": [
+      "Greater"
+    ],
+    "description": "1"
+  },
+  "Less": {
+    "prefix": "Less",
+    "body": [
+      "Less"
+    ],
+    "description": "2"
+  },
+  "NotEquals": {
+    "prefix": "NotEquals",
+    "body": [
+      "NotEquals"
+    ],
+    "description": "3"
+  },
+  "AirCon.Cold": {
+    "prefix": "AirCon.Cold",
+    "body": [
+      "AirCon.Cold"
+    ],
+    "description": "0"
+  },
+  "AirCon.Hot": {
+    "prefix": "AirCon.Hot",
+    "body": [
+      "AirCon.Hot"
+    ],
+    "description": "1"
+  },
+  "Vent.Outward": {
+    "prefix": "Vent.Outward",
+    "body": [
+      "Vent.Outward"
+    ],
+    "description": "0"
+  },
+  "Vent.Inward": {
+    "prefix": "Vent.Inward",
+    "body": [
+      "Vent.Inward"
+    ],
+    "description": "1"
+  },
+  "PowerMode.Idle": {
+    "prefix": "PowerMode.Idle",
+    "body": [
+      "PowerMode.Idle"
+    ],
+    "description": "0"
+  },
+  "PowerMode.Discharged": {
+    "prefix": "PowerMode.Discharged",
+    "body": [
+      "PowerMode.Discharged"
+    ],
+    "description": "1"
+  },
+  "PowerMode.Discharging": {
+    "prefix": "PowerMode.Discharging",
+    "body": [
+      "PowerMode.Discharging"
+    ],
+    "description": "2"
+  },
+  "PowerMode.Charging": {
+    "prefix": "PowerMode.Charging",
+    "body": [
+      "PowerMode.Charging"
+    ],
+    "description": "3"
+  },
+  "PowerMode.Charged": {
+    "prefix": "PowerMode.Charged",
+    "body": [
+      "PowerMode.Charged"
+    ],
+    "description": "4"
+  },
+  "RobotMode.None": {
+    "prefix": "RobotMode.None",
+    "body": [
+      "RobotMode.None"
+    ],
+    "description": "0"
+  },
+  "RobotMode.Follow": {
+    "prefix": "RobotMode.Follow",
+    "body": [
+      "RobotMode.Follow"
+    ],
+    "description": "1"
+  },
+  "RobotMode.MoveToTarget": {
+    "prefix": "RobotMode.MoveToTarget",
+    "body": [
+      "RobotMode.MoveToTarget"
+    ],
+    "description": "2"
+  },
+  "RobotMode.Roam": {
+    "prefix": "RobotMode.Roam",
+    "body": [
+      "RobotMode.Roam"
+    ],
+    "description": "3"
+  },
+  "RobotMode.Unload": {
+    "prefix": "RobotMode.Unload",
+    "body": [
+      "RobotMode.Unload"
+    ],
+    "description": "4"
+  },
+  "RobotMode.PathToTarget": {
+    "prefix": "RobotMode.PathToTarget",
+    "body": [
+      "RobotMode.PathToTarget"
+    ],
+    "description": "5"
+  },
+  "RobotMode.StorageFull": {
+    "prefix": "RobotMode.StorageFull",
+    "body": [
+      "RobotMode.StorageFull"
+    ],
+    "description": "6"
+  },
+  "SortingClass.Default": {
+    "prefix": "SortingClass.Default",
+    "body": [
+      "SortingClass.Default"
+    ],
+    "description": "0"
+  },
+  "SortingClass.Kits": {
+    "prefix": "SortingClass.Kits",
+    "body": [
+      "SortingClass.Kits"
+    ],
+    "description": "1"
+  },
+  "SortingClass.Tools": {
+    "prefix": "SortingClass.Tools",
+    "body": [
+      "SortingClass.Tools"
+    ],
+    "description": "2"
+  },
+  "SortingClass.Resources": {
+    "prefix": "SortingClass.Resources",
+    "body": [
+      "SortingClass.Resources"
+    ],
+    "description": "3"
+  },
+  "SortingClass.Food": {
+    "prefix": "SortingClass.Food",
+    "body": [
+      "SortingClass.Food"
+    ],
+    "description": "4"
+  },
+  "SortingClass.Clothing": {
+    "prefix": "SortingClass.Clothing",
+    "body": [
+      "SortingClass.Clothing"
+    ],
+    "description": "5"
+  },
+  "SortingClass.Appliances": {
+    "prefix": "SortingClass.Appliances",
+    "body": [
+      "SortingClass.Appliances"
+    ],
+    "description": "6"
+  },
+  "SortingClass.Atmospherics": {
+    "prefix": "SortingClass.Atmospherics",
+    "body": [
+      "SortingClass.Atmospherics"
+    ],
+    "description": "7"
+  },
+  "SortingClass.Storage": {
+    "prefix": "SortingClass.Storage",
+    "body": [
+      "SortingClass.Storage"
+    ],
+    "description": "8"
+  },
+  "SortingClass.Ores": {
+    "prefix": "SortingClass.Ores",
+    "body": [
+      "SortingClass.Ores"
+    ],
+    "description": "9"
+  },
+  "SortingClass.Ices": {
+    "prefix": "SortingClass.Ices",
+    "body": [
+      "SortingClass.Ices"
+    ],
+    "description": "10"
+  },
+  "SlotClass.None": {
+    "prefix": "SlotClass.None",
+    "body": [
+      "SlotClass.None"
+    ],
+    "description": "0"
+  },
+  "SlotClass.Helmet": {
+    "prefix": "SlotClass.Helmet",
+    "body": [
+      "SlotClass.Helmet"
+    ],
+    "description": "1"
+  },
+  "SlotClass.Suit": {
+    "prefix": "SlotClass.Suit",
+    "body": [
+      "SlotClass.Suit"
+    ],
+    "description": "2"
+  },
+  "SlotClass.Back": {
+    "prefix": "SlotClass.Back",
+    "body": [
+      "SlotClass.Back"
+    ],
+    "description": "3"
+  },
+  "SlotClass.GasFilter": {
+    "prefix": "SlotClass.GasFilter",
+    "body": [
+      "SlotClass.GasFilter"
+    ],
+    "description": "4"
+  },
+  "SlotClass.GasCanister": {
+    "prefix": "SlotClass.GasCanister",
+    "body": [
+      "SlotClass.GasCanister"
+    ],
+    "description": "5"
+  },
+  "SlotClass.Motherboard": {
+    "prefix": "SlotClass.Motherboard",
+    "body": [
+      "SlotClass.Motherboard"
+    ],
+    "description": "6"
+  },
+  "SlotClass.Circuitboard": {
+    "prefix": "SlotClass.Circuitboard",
+    "body": [
+      "SlotClass.Circuitboard"
+    ],
+    "description": "7"
+  },
+  "SlotClass.DataDisk": {
+    "prefix": "SlotClass.DataDisk",
+    "body": [
+      "SlotClass.DataDisk"
+    ],
+    "description": "8"
+  },
+  "SlotClass.Organ": {
+    "prefix": "SlotClass.Organ",
+    "body": [
+      "SlotClass.Organ"
+    ],
+    "description": "9"
+  },
+  "SlotClass.Ore": {
+    "prefix": "SlotClass.Ore",
+    "body": [
+      "SlotClass.Ore"
+    ],
+    "description": "10"
+  },
+  "SlotClass.Plant": {
+    "prefix": "SlotClass.Plant",
+    "body": [
+      "SlotClass.Plant"
+    ],
+    "description": "11"
+  },
+  "SlotClass.Uniform": {
+    "prefix": "SlotClass.Uniform",
+    "body": [
+      "SlotClass.Uniform"
+    ],
+    "description": "12"
+  },
+  "SlotClass.Entity": {
+    "prefix": "SlotClass.Entity",
+    "body": [
+      "SlotClass.Entity"
+    ],
+    "description": "13"
+  },
+  "SlotClass.Battery": {
+    "prefix": "SlotClass.Battery",
+    "body": [
+      "SlotClass.Battery"
+    ],
+    "description": "14"
+  },
+  "SlotClass.Egg": {
+    "prefix": "SlotClass.Egg",
+    "body": [
+      "SlotClass.Egg"
+    ],
+    "description": "15"
+  },
+  "SlotClass.Belt": {
+    "prefix": "SlotClass.Belt",
+    "body": [
+      "SlotClass.Belt"
+    ],
+    "description": "16"
+  },
+  "SlotClass.Tool": {
+    "prefix": "SlotClass.Tool",
+    "body": [
+      "SlotClass.Tool"
+    ],
+    "description": "17"
+  },
+  "SlotClass.Appliance": {
+    "prefix": "SlotClass.Appliance",
+    "body": [
+      "SlotClass.Appliance"
+    ],
+    "description": "18"
+  },
+  "SlotClass.Ingot": {
+    "prefix": "SlotClass.Ingot",
+    "body": [
+      "SlotClass.Ingot"
+    ],
+    "description": "19"
+  },
+  "SlotClass.Torpedo": {
+    "prefix": "SlotClass.Torpedo",
+    "body": [
+      "SlotClass.Torpedo"
+    ],
+    "description": "20"
+  },
+  "SlotClass.Cartridge": {
+    "prefix": "SlotClass.Cartridge",
+    "body": [
+      "SlotClass.Cartridge"
+    ],
+    "description": "21"
+  },
+  "SlotClass.AccessCard": {
+    "prefix": "SlotClass.AccessCard",
+    "body": [
+      "SlotClass.AccessCard"
+    ],
+    "description": "22"
+  },
+  "SlotClass.Magazine": {
+    "prefix": "SlotClass.Magazine",
+    "body": [
+      "SlotClass.Magazine"
+    ],
+    "description": "23"
+  },
+  "SlotClass.Circuit": {
+    "prefix": "SlotClass.Circuit",
+    "body": [
+      "SlotClass.Circuit"
+    ],
+    "description": "24"
+  },
+  "SlotClass.Bottle": {
+    "prefix": "SlotClass.Bottle",
+    "body": [
+      "SlotClass.Bottle"
+    ],
+    "description": "25"
+  },
+  "SlotClass.ProgrammableChip": {
+    "prefix": "SlotClass.ProgrammableChip",
+    "body": [
+      "SlotClass.ProgrammableChip"
+    ],
+    "description": "26"
+  },
+  "SlotClass.Glasses": {
+    "prefix": "SlotClass.Glasses",
+    "body": [
+      "SlotClass.Glasses"
+    ],
+    "description": "27"
+  },
+  "SlotClass.CreditCard": {
+    "prefix": "SlotClass.CreditCard",
+    "body": [
+      "SlotClass.CreditCard"
+    ],
+    "description": "28"
+  },
+  "SlotClass.DirtCanister": {
+    "prefix": "SlotClass.DirtCanister",
+    "body": [
+      "SlotClass.DirtCanister"
+    ],
+    "description": "29"
+  },
+  "SlotClass.SensorProcessingUnit": {
+    "prefix": "SlotClass.SensorProcessingUnit",
+    "body": [
+      "SlotClass.SensorProcessingUnit"
+    ],
+    "description": "30"
+  },
+  "SlotClass.LiquidCanister": {
+    "prefix": "SlotClass.LiquidCanister",
+    "body": [
+      "SlotClass.LiquidCanister"
+    ],
+    "description": "31"
+  },
+  "SlotClass.LiquidBottle": {
+    "prefix": "SlotClass.LiquidBottle",
+    "body": [
+      "SlotClass.LiquidBottle"
+    ],
+    "description": "32"
+  },
+  "SlotClass.Wreckage": {
+    "prefix": "SlotClass.Wreckage",
+    "body": [
+      "SlotClass.Wreckage"
+    ],
+    "description": "33"
+  },
+  "SlotClass.SoundCartridge": {
+    "prefix": "SlotClass.SoundCartridge",
+    "body": [
+      "SlotClass.SoundCartridge"
+    ],
+    "description": "34"
+  },
+  "SlotClass.DrillHead": {
+    "prefix": "SlotClass.DrillHead",
+    "body": [
+      "SlotClass.DrillHead"
+    ],
+    "description": "35"
+  },
+  "SlotClass.ScanningHead": {
+    "prefix": "SlotClass.ScanningHead",
+    "body": [
+      "SlotClass.ScanningHead"
+    ],
+    "description": "36"
+  },
+  "SlotClass.Flare": {
+    "prefix": "SlotClass.Flare",
+    "body": [
+      "SlotClass.Flare"
+    ],
+    "description": "37"
+  },
+  "SlotClass.Blocked": {
+    "prefix": "SlotClass.Blocked",
+    "body": [
+      "SlotClass.Blocked"
+    ],
+    "description": "38"
+  },
+  "SlotClass.SuitMod": {
+    "prefix": "SlotClass.SuitMod",
+    "body": [
+      "SlotClass.SuitMod"
+    ],
+    "description": "39"
+  },
+  "GasType.Undefined": {
+    "prefix": "GasType.Undefined",
+    "body": [
+      "GasType.Undefined"
+    ],
+    "description": "0"
+  },
+  "GasType.Oxygen": {
+    "prefix": "GasType.Oxygen",
+    "body": [
+      "GasType.Oxygen"
+    ],
+    "description": "1"
+  },
+  "GasType.Nitrogen": {
+    "prefix": "GasType.Nitrogen",
+    "body": [
+      "GasType.Nitrogen"
+    ],
+    "description": "2"
+  },
+  "GasType.CarbonDioxide": {
+    "prefix": "GasType.CarbonDioxide",
+    "body": [
+      "GasType.CarbonDioxide"
+    ],
+    "description": "4"
+  },
+  "GasType.Volatiles": {
+    "prefix": "GasType.Volatiles",
+    "body": [
+      "GasType.Volatiles"
+    ],
+    "description": "8"
+  },
+  "GasType.Pollutant": {
+    "prefix": "GasType.Pollutant",
+    "body": [
+      "GasType.Pollutant"
+    ],
+    "description": "16"
+  },
+  "GasType.Water": {
+    "prefix": "GasType.Water",
+    "body": [
+      "GasType.Water"
+    ],
+    "description": "32"
+  },
+  "GasType.NitrousOxide": {
+    "prefix": "GasType.NitrousOxide",
+    "body": [
+      "GasType.NitrousOxide"
+    ],
+    "description": "64"
+  },
+  "GasType.LiquidNitrogen": {
+    "prefix": "GasType.LiquidNitrogen",
+    "body": [
+      "GasType.LiquidNitrogen"
+    ],
+    "description": "128"
+  },
+  "GasType.LiquidOxygen": {
+    "prefix": "GasType.LiquidOxygen",
+    "body": [
+      "GasType.LiquidOxygen"
+    ],
+    "description": "256"
+  },
+  "GasType.LiquidVolatiles": {
+    "prefix": "GasType.LiquidVolatiles",
+    "body": [
+      "GasType.LiquidVolatiles"
+    ],
+    "description": "512"
+  },
+  "GasType.Steam": {
+    "prefix": "GasType.Steam",
+    "body": [
+      "GasType.Steam"
+    ],
+    "description": "1024"
+  },
+  "GasType.LiquidCarbonDioxide": {
+    "prefix": "GasType.LiquidCarbonDioxide",
+    "body": [
+      "GasType.LiquidCarbonDioxide"
+    ],
+    "description": "2048"
+  },
+  "GasType.LiquidPollutant": {
+    "prefix": "GasType.LiquidPollutant",
+    "body": [
+      "GasType.LiquidPollutant"
+    ],
+    "description": "4096"
+  },
+  "GasType.LiquidNitrousOxide": {
+    "prefix": "GasType.LiquidNitrousOxide",
+    "body": [
+      "GasType.LiquidNitrousOxide"
+    ],
+    "description": "8192"
+  },
+  "GasType.Hydrogen": {
+    "prefix": "GasType.Hydrogen",
+    "body": [
+      "GasType.Hydrogen"
+    ],
+    "description": "16384"
+  },
+  "GasType.LiquidHydrogen": {
+    "prefix": "GasType.LiquidHydrogen",
+    "body": [
+      "GasType.LiquidHydrogen"
+    ],
+    "description": "32768"
+  },
+  "GasType.PollutedWater": {
+    "prefix": "GasType.PollutedWater",
+    "body": [
+      "GasType.PollutedWater"
+    ],
+    "description": "65536"
+  },
+  "GasType.Invalid": {
+    "prefix": "GasType.Invalid",
+    "body": [
+      "GasType.Invalid"
+    ],
+    "description": "0"
+  },
+  "GasType.None": {
+    "prefix": "GasType.None",
+    "body": [
+      "GasType.None"
+    ],
+    "description": "1"
+  },
+  "GasType.Mine": {
+    "prefix": "GasType.Mine",
+    "body": [
+      "GasType.Mine"
+    ],
+    "description": "2"
+  },
+  "GasType.Survey": {
+    "prefix": "GasType.Survey",
+    "body": [
+      "GasType.Survey"
+    ],
+    "description": "3"
+  },
+  "GasType.Discover": {
+    "prefix": "GasType.Discover",
+    "body": [
+      "GasType.Discover"
+    ],
+    "description": "4"
+  },
+  "GasType.Chart": {
+    "prefix": "GasType.Chart",
+    "body": [
+      "GasType.Chart"
+    ],
+    "description": "5"
+  },
+  "ReEntryProfile.None": {
+    "prefix": "ReEntryProfile.None",
+    "body": [
+      "ReEntryProfile.None"
+    ],
+    "description": "0"
+  },
+  "ReEntryProfile.Optimal": {
+    "prefix": "ReEntryProfile.Optimal",
+    "body": [
+      "ReEntryProfile.Optimal"
+    ],
+    "description": "1"
+  },
+  "ReEntryProfile.Medium": {
+    "prefix": "ReEntryProfile.Medium",
+    "body": [
+      "ReEntryProfile.Medium"
+    ],
+    "description": "2"
+  },
+  "ReEntryProfile.High": {
+    "prefix": "ReEntryProfile.High",
+    "body": [
+      "ReEntryProfile.High"
+    ],
+    "description": "3"
+  },
+  "ReEntryProfile.Max": {
+    "prefix": "ReEntryProfile.Max",
+    "body": [
+      "ReEntryProfile.Max"
+    ],
+    "description": "4"
+  },
+  "SorterInstruction.None": {
+    "prefix": "SorterInstruction.None",
+    "body": [
+      "SorterInstruction.None"
+    ],
+    "description": "0"
+  },
+  "SorterInstruction.FilterPrefabHashEquals": {
+    "prefix": "SorterInstruction.FilterPrefabHashEquals",
+    "body": [
+      "SorterInstruction.FilterPrefabHashEquals"
+    ],
+    "description": "1"
+  },
+  "SorterInstruction.FilterPrefabHashNotEquals": {
+    "prefix": "SorterInstruction.FilterPrefabHashNotEquals",
+    "body": [
+      "SorterInstruction.FilterPrefabHashNotEquals"
+    ],
+    "description": "2"
+  },
+  "SorterInstruction.FilterSortingClassCompare": {
+    "prefix": "SorterInstruction.FilterSortingClassCompare",
+    "body": [
+      "SorterInstruction.FilterSortingClassCompare"
+    ],
+    "description": "3"
+  },
+  "SorterInstruction.FilterSlotTypeCompare": {
+    "prefix": "SorterInstruction.FilterSlotTypeCompare",
+    "body": [
+      "SorterInstruction.FilterSlotTypeCompare"
+    ],
+    "description": "4"
+  },
+  "SorterInstruction.FilterQuantityCompare": {
+    "prefix": "SorterInstruction.FilterQuantityCompare",
+    "body": [
+      "SorterInstruction.FilterQuantityCompare"
+    ],
+    "description": "5"
+  },
+  "SorterInstruction.LimitNextExecutionByCount": {
+    "prefix": "SorterInstruction.LimitNextExecutionByCount",
+    "body": [
+      "SorterInstruction.LimitNextExecutionByCount"
+    ],
+    "description": "6"
+  },
+  "Battery_Wireless_cell": {
+    "prefix": "Battery_Wireless_cell",
+    "body": [
+      "HASH(\"Battery_Wireless_cell\")"
+    ],
+    "description": "Device: Battery_Wireless_cell"
+  },
+  "Battery_Wireless_cell_Big": {
+    "prefix": "Battery_Wireless_cell_Big",
+    "body": [
+      "HASH(\"Battery_Wireless_cell_Big\")"
+    ],
+    "description": "Device: Battery_Wireless_cell_Big"
+  },
+  "CompositeRollCover": {
+    "prefix": "CompositeRollCover",
+    "body": [
+      "HASH(\"CompositeRollCover\")"
+    ],
+    "description": "Device: CompositeRollCover"
+  },
+  "DeviceLfoVolume": {
+    "prefix": "DeviceLfoVolume",
+    "body": [
+      "HASH(\"DeviceLfoVolume\")"
+    ],
+    "description": "Device: DeviceLfoVolume"
+  },
+  "DeviceStepUnit": {
+    "prefix": "DeviceStepUnit",
+    "body": [
+      "HASH(\"DeviceStepUnit\")"
+    ],
+    "description": "Device: DeviceStepUnit"
+  },
+  "DynamicGPR": {
+    "prefix": "DynamicGPR",
+    "body": [
+      "HASH(\"DynamicGPR\")"
+    ],
+    "description": "Device: DynamicGPR"
+  },
+  "DynamicLight": {
+    "prefix": "DynamicLight",
+    "body": [
+      "HASH(\"DynamicLight\")"
+    ],
+    "description": "Device: DynamicLight"
+  },
+  "H2Combustor": {
+    "prefix": "H2Combustor",
+    "body": [
+      "HASH(\"H2Combustor\")"
+    ],
+    "description": "Device: H2Combustor"
+  },
+  "ItemAdvancedTablet": {
+    "prefix": "ItemAdvancedTablet",
+    "body": [
+      "HASH(\"ItemAdvancedTablet\")"
+    ],
+    "description": "Device: ItemAdvancedTablet"
+  },
+  "ItemAngleGrinder": {
+    "prefix": "ItemAngleGrinder",
+    "body": [
+      "HASH(\"ItemAngleGrinder\")"
+    ],
+    "description": "Device: ItemAngleGrinder"
+  },
+  "ItemArcWelder": {
+    "prefix": "ItemArcWelder",
+    "body": [
+      "HASH(\"ItemArcWelder\")"
+    ],
+    "description": "Device: ItemArcWelder"
+  },
+  "ItemBatteryCell": {
+    "prefix": "ItemBatteryCell",
+    "body": [
+      "HASH(\"ItemBatteryCell\")"
+    ],
+    "description": "Device: ItemBatteryCell"
+  },
+  "ItemBatteryCellLarge": {
+    "prefix": "ItemBatteryCellLarge",
+    "body": [
+      "HASH(\"ItemBatteryCellLarge\")"
+    ],
+    "description": "Device: ItemBatteryCellLarge"
+  },
+  "ItemBatteryCellNuclear": {
+    "prefix": "ItemBatteryCellNuclear",
+    "body": [
+      "HASH(\"ItemBatteryCellNuclear\")"
+    ],
+    "description": "Device: ItemBatteryCellNuclear"
+  },
+  "ItemBeacon": {
+    "prefix": "ItemBeacon",
+    "body": [
+      "HASH(\"ItemBeacon\")"
+    ],
+    "description": "Device: ItemBeacon"
+  },
+  "ItemDrill": {
+    "prefix": "ItemDrill",
+    "body": [
+      "HASH(\"ItemDrill\")"
+    ],
+    "description": "Device: ItemDrill"
+  },
+  "ItemEmergencyAngleGrinder": {
+    "prefix": "ItemEmergencyAngleGrinder",
+    "body": [
+      "HASH(\"ItemEmergencyAngleGrinder\")"
+    ],
+    "description": "Device: ItemEmergencyAngleGrinder"
+  },
+  "ItemEmergencyArcWelder": {
+    "prefix": "ItemEmergencyArcWelder",
+    "body": [
+      "HASH(\"ItemEmergencyArcWelder\")"
+    ],
+    "description": "Device: ItemEmergencyArcWelder"
+  },
+  "ItemEmergencyDrill": {
+    "prefix": "ItemEmergencyDrill",
+    "body": [
+      "HASH(\"ItemEmergencyDrill\")"
+    ],
+    "description": "Device: ItemEmergencyDrill"
+  },
+  "ItemEmergencySpaceHelmet": {
+    "prefix": "ItemEmergencySpaceHelmet",
+    "body": [
+      "HASH(\"ItemEmergencySpaceHelmet\")"
+    ],
+    "description": "Device: ItemEmergencySpaceHelmet"
+  },
+  "ItemFlashlight": {
+    "prefix": "ItemFlashlight",
+    "body": [
+      "HASH(\"ItemFlashlight\")"
+    ],
+    "description": "Device: ItemFlashlight"
+  },
+  "ItemHardBackpack": {
+    "prefix": "ItemHardBackpack",
+    "body": [
+      "HASH(\"ItemHardBackpack\")"
+    ],
+    "description": "Device: ItemHardBackpack"
+  },
+  "ItemHardJetpack": {
+    "prefix": "ItemHardJetpack",
+    "body": [
+      "HASH(\"ItemHardJetpack\")"
+    ],
+    "description": "Device: ItemHardJetpack"
+  },
+  "ItemHardSuit": {
+    "prefix": "ItemHardSuit",
+    "body": [
+      "HASH(\"ItemHardSuit\")"
+    ],
+    "description": "Device: ItemHardSuit"
+  },
+  "ItemHardsuitHelmet": {
+    "prefix": "ItemHardsuitHelmet",
+    "body": [
+      "HASH(\"ItemHardsuitHelmet\")"
+    ],
+    "description": "Device: ItemHardsuitHelmet"
+  },
+  "ItemIntegratedCircuit10": {
+    "prefix": "ItemIntegratedCircuit10",
+    "body": [
+      "HASH(\"ItemIntegratedCircuit10\")"
+    ],
+    "description": "Device: ItemIntegratedCircuit10"
+  },
+  "ItemJetpackBasic": {
+    "prefix": "ItemJetpackBasic",
+    "body": [
+      "HASH(\"ItemJetpackBasic\")"
+    ],
+    "description": "Device: ItemJetpackBasic"
+  },
+  "ItemLabeller": {
+    "prefix": "ItemLabeller",
+    "body": [
+      "HASH(\"ItemLabeller\")"
+    ],
+    "description": "Device: ItemLabeller"
+  },
+  "ItemLaptop": {
+    "prefix": "ItemLaptop",
+    "body": [
+      "HASH(\"ItemLaptop\")"
+    ],
+    "description": "Device: ItemLaptop"
+  },
+  "ItemMiningBeltMKII": {
+    "prefix": "ItemMiningBeltMKII",
+    "body": [
+      "HASH(\"ItemMiningBeltMKII\")"
+    ],
+    "description": "Device: ItemMiningBeltMKII"
+  },
+  "ItemMiningDrill": {
+    "prefix": "ItemMiningDrill",
+    "body": [
+      "HASH(\"ItemMiningDrill\")"
+    ],
+    "description": "Device: ItemMiningDrill"
+  },
+  "ItemMiningDrillHeavy": {
+    "prefix": "ItemMiningDrillHeavy",
+    "body": [
+      "HASH(\"ItemMiningDrillHeavy\")"
+    ],
+    "description": "Device: ItemMiningDrillHeavy"
+  },
+  "ItemMKIIAngleGrinder": {
+    "prefix": "ItemMKIIAngleGrinder",
+    "body": [
+      "HASH(\"ItemMKIIAngleGrinder\")"
+    ],
+    "description": "Device: ItemMKIIAngleGrinder"
+  },
+  "ItemMKIIArcWelder": {
+    "prefix": "ItemMKIIArcWelder",
+    "body": [
+      "HASH(\"ItemMKIIArcWelder\")"
+    ],
+    "description": "Device: ItemMKIIArcWelder"
+  },
+  "ItemMKIIDrill": {
+    "prefix": "ItemMKIIDrill",
+    "body": [
+      "HASH(\"ItemMKIIDrill\")"
+    ],
+    "description": "Device: ItemMKIIDrill"
+  },
+  "ItemMKIIMiningDrill": {
+    "prefix": "ItemMKIIMiningDrill",
+    "body": [
+      "HASH(\"ItemMKIIMiningDrill\")"
+    ],
+    "description": "Device: ItemMKIIMiningDrill"
+  },
+  "ItemMkIIToolbelt": {
+    "prefix": "ItemMkIIToolbelt",
+    "body": [
+      "HASH(\"ItemMkIIToolbelt\")"
+    ],
+    "description": "Device: ItemMkIIToolbelt"
+  },
+  "ItemNVG": {
+    "prefix": "ItemNVG",
+    "body": [
+      "HASH(\"ItemNVG\")"
+    ],
+    "description": "Device: ItemNVG"
+  },
+  "ItemPlantSampler": {
+    "prefix": "ItemPlantSampler",
+    "body": [
+      "HASH(\"ItemPlantSampler\")"
+    ],
+    "description": "Device: ItemPlantSampler"
+  },
+  "ItemRemoteDetonator": {
+    "prefix": "ItemRemoteDetonator",
+    "body": [
+      "HASH(\"ItemRemoteDetonator\")"
+    ],
+    "description": "Device: ItemRemoteDetonator"
+  },
+  "ItemSensorLenses": {
+    "prefix": "ItemSensorLenses",
+    "body": [
+      "HASH(\"ItemSensorLenses\")"
+    ],
+    "description": "Device: ItemSensorLenses"
+  },
+  "ItemSpaceHelmet": {
+    "prefix": "ItemSpaceHelmet",
+    "body": [
+      "HASH(\"ItemSpaceHelmet\")"
+    ],
+    "description": "Device: ItemSpaceHelmet"
+  },
+  "ItemSpacepack": {
+    "prefix": "ItemSpacepack",
+    "body": [
+      "HASH(\"ItemSpacepack\")"
+    ],
+    "description": "Device: ItemSpacepack"
+  },
+  "ItemTablet": {
+    "prefix": "ItemTablet",
+    "body": [
+      "HASH(\"ItemTablet\")"
+    ],
+    "description": "Device: ItemTablet"
+  },
+  "ItemTerrainManipulator": {
+    "prefix": "ItemTerrainManipulator",
+    "body": [
+      "HASH(\"ItemTerrainManipulator\")"
+    ],
+    "description": "Device: ItemTerrainManipulator"
+  },
+  "ItemWearLamp": {
+    "prefix": "ItemWearLamp",
+    "body": [
+      "HASH(\"ItemWearLamp\")"
+    ],
+    "description": "Device: ItemWearLamp"
+  },
+  "ItemWirelessBatteryCellExtraLarge": {
+    "prefix": "ItemWirelessBatteryCellExtraLarge",
+    "body": [
+      "HASH(\"ItemWirelessBatteryCellExtraLarge\")"
+    ],
+    "description": "Device: ItemWirelessBatteryCellExtraLarge"
+  },
+  "Landingpad_DataConnectionPiece": {
+    "prefix": "Landingpad_DataConnectionPiece",
+    "body": [
+      "HASH(\"Landingpad_DataConnectionPiece\")"
+    ],
+    "description": "Device: Landingpad_DataConnectionPiece"
+  },
+  "Landingpad_GasConnectorInwardPiece": {
+    "prefix": "Landingpad_GasConnectorInwardPiece",
+    "body": [
+      "HASH(\"Landingpad_GasConnectorInwardPiece\")"
+    ],
+    "description": "Device: Landingpad_GasConnectorInwardPiece"
+  },
+  "Landingpad_GasConnectorOutwardPiece": {
+    "prefix": "Landingpad_GasConnectorOutwardPiece",
+    "body": [
+      "HASH(\"Landingpad_GasConnectorOutwardPiece\")"
+    ],
+    "description": "Device: Landingpad_GasConnectorOutwardPiece"
+  },
+  "Landingpad_LiquidConnectorInwardPiece": {
+    "prefix": "Landingpad_LiquidConnectorInwardPiece",
+    "body": [
+      "HASH(\"Landingpad_LiquidConnectorInwardPiece\")"
+    ],
+    "description": "Device: Landingpad_LiquidConnectorInwardPiece"
+  },
+  "Landingpad_LiquidConnectorOutwardPiece": {
+    "prefix": "Landingpad_LiquidConnectorOutwardPiece",
+    "body": [
+      "HASH(\"Landingpad_LiquidConnectorOutwardPiece\")"
+    ],
+    "description": "Device: Landingpad_LiquidConnectorOutwardPiece"
+  },
+  "Landingpad_ThreshholdPiece": {
+    "prefix": "Landingpad_ThreshholdPiece",
+    "body": [
+      "HASH(\"Landingpad_ThreshholdPiece\")"
+    ],
+    "description": "Device: Landingpad_ThreshholdPiece"
+  },
+  "LogicStepSequencer8": {
+    "prefix": "LogicStepSequencer8",
+    "body": [
+      "HASH(\"LogicStepSequencer8\")"
+    ],
+    "description": "Device: LogicStepSequencer8"
+  },
+  "PassiveSpeaker": {
+    "prefix": "PassiveSpeaker",
+    "body": [
+      "HASH(\"PassiveSpeaker\")"
+    ],
+    "description": "Device: PassiveSpeaker"
+  },
+  "PortableSolarPanel": {
+    "prefix": "PortableSolarPanel",
+    "body": [
+      "HASH(\"PortableSolarPanel\")"
+    ],
+    "description": "Device: PortableSolarPanel"
+  },
+  "Robot": {
+    "prefix": "Robot",
+    "body": [
+      "HASH(\"Robot\")"
+    ],
+    "description": "Device: Robot"
+  },
+  "RoverCargo": {
+    "prefix": "RoverCargo",
+    "body": [
+      "HASH(\"RoverCargo\")"
+    ],
+    "description": "Device: RoverCargo"
+  },
+  "StopWatch": {
+    "prefix": "StopWatch",
+    "body": [
+      "HASH(\"StopWatch\")"
+    ],
+    "description": "Device: StopWatch"
+  },
+  "StructureAccessBridge": {
+    "prefix": "StructureAccessBridge",
+    "body": [
+      "HASH(\"StructureAccessBridge\")"
+    ],
+    "description": "Device: StructureAccessBridge"
+  },
+  "StructureActiveVent": {
+    "prefix": "StructureActiveVent",
+    "body": [
+      "HASH(\"StructureActiveVent\")"
+    ],
+    "description": "Device: StructureActiveVent"
+  },
+  "StructureAdvancedComposter": {
+    "prefix": "StructureAdvancedComposter",
+    "body": [
+      "HASH(\"StructureAdvancedComposter\")"
+    ],
+    "description": "Device: StructureAdvancedComposter"
+  },
+  "StructureAdvancedFurnace": {
+    "prefix": "StructureAdvancedFurnace",
+    "body": [
+      "HASH(\"StructureAdvancedFurnace\")"
+    ],
+    "description": "Device: StructureAdvancedFurnace"
+  },
+  "StructureAdvancedPackagingMachine": {
+    "prefix": "StructureAdvancedPackagingMachine",
+    "body": [
+      "HASH(\"StructureAdvancedPackagingMachine\")"
+    ],
+    "description": "Device: StructureAdvancedPackagingMachine"
+  },
+  "StructureAirConditioner": {
+    "prefix": "StructureAirConditioner",
+    "body": [
+      "HASH(\"StructureAirConditioner\")"
+    ],
+    "description": "Device: StructureAirConditioner"
+  },
+  "StructureAirlock": {
+    "prefix": "StructureAirlock",
+    "body": [
+      "HASH(\"StructureAirlock\")"
+    ],
+    "description": "Device: StructureAirlock"
+  },
+  "StructureAirlockGate": {
+    "prefix": "StructureAirlockGate",
+    "body": [
+      "HASH(\"StructureAirlockGate\")"
+    ],
+    "description": "Device: StructureAirlockGate"
+  },
+  "StructureAngledBench": {
+    "prefix": "StructureAngledBench",
+    "body": [
+      "HASH(\"StructureAngledBench\")"
+    ],
+    "description": "Device: StructureAngledBench"
+  },
+  "StructureArcFurnace": {
+    "prefix": "StructureArcFurnace",
+    "body": [
+      "HASH(\"StructureArcFurnace\")"
+    ],
+    "description": "Device: StructureArcFurnace"
+  },
+  "StructureAreaPowerControl": {
+    "prefix": "StructureAreaPowerControl",
+    "body": [
+      "HASH(\"StructureAreaPowerControl\")"
+    ],
+    "description": "Device: StructureAreaPowerControl"
+  },
+  "StructureAreaPowerControlReversed": {
+    "prefix": "StructureAreaPowerControlReversed",
+    "body": [
+      "HASH(\"StructureAreaPowerControlReversed\")"
+    ],
+    "description": "Device: StructureAreaPowerControlReversed"
+  },
+  "StructureAutolathe": {
+    "prefix": "StructureAutolathe",
+    "body": [
+      "HASH(\"StructureAutolathe\")"
+    ],
+    "description": "Device: StructureAutolathe"
+  },
+  "StructureAutomatedOven": {
+    "prefix": "StructureAutomatedOven",
+    "body": [
+      "HASH(\"StructureAutomatedOven\")"
+    ],
+    "description": "Device: StructureAutomatedOven"
+  },
+  "StructureAutoMinerSmall": {
+    "prefix": "StructureAutoMinerSmall",
+    "body": [
+      "HASH(\"StructureAutoMinerSmall\")"
+    ],
+    "description": "Device: StructureAutoMinerSmall"
+  },
+  "StructureBackLiquidPressureRegulator": {
+    "prefix": "StructureBackLiquidPressureRegulator",
+    "body": [
+      "HASH(\"StructureBackLiquidPressureRegulator\")"
+    ],
+    "description": "Device: StructureBackLiquidPressureRegulator"
+  },
+  "StructureBackPressureRegulator": {
+    "prefix": "StructureBackPressureRegulator",
+    "body": [
+      "HASH(\"StructureBackPressureRegulator\")"
+    ],
+    "description": "Device: StructureBackPressureRegulator"
+  },
+  "StructureBasketHoop": {
+    "prefix": "StructureBasketHoop",
+    "body": [
+      "HASH(\"StructureBasketHoop\")"
+    ],
+    "description": "Device: StructureBasketHoop"
+  },
+  "StructureBattery": {
+    "prefix": "StructureBattery",
+    "body": [
+      "HASH(\"StructureBattery\")"
+    ],
+    "description": "Device: StructureBattery"
+  },
+  "StructureBatteryCharger": {
+    "prefix": "StructureBatteryCharger",
+    "body": [
+      "HASH(\"StructureBatteryCharger\")"
+    ],
+    "description": "Device: StructureBatteryCharger"
+  },
+  "StructureBatteryChargerSmall": {
+    "prefix": "StructureBatteryChargerSmall",
+    "body": [
+      "HASH(\"StructureBatteryChargerSmall\")"
+    ],
+    "description": "Device: StructureBatteryChargerSmall"
+  },
+  "StructureBatteryLarge": {
+    "prefix": "StructureBatteryLarge",
+    "body": [
+      "HASH(\"StructureBatteryLarge\")"
+    ],
+    "description": "Device: StructureBatteryLarge"
+  },
+  "StructureBatteryMedium": {
+    "prefix": "StructureBatteryMedium",
+    "body": [
+      "HASH(\"StructureBatteryMedium\")"
+    ],
+    "description": "Device: StructureBatteryMedium"
+  },
+  "StructureBatterySmall": {
+    "prefix": "StructureBatterySmall",
+    "body": [
+      "HASH(\"StructureBatterySmall\")"
+    ],
+    "description": "Device: StructureBatterySmall"
+  },
+  "StructureBeacon": {
+    "prefix": "StructureBeacon",
+    "body": [
+      "HASH(\"StructureBeacon\")"
+    ],
+    "description": "Device: StructureBeacon"
+  },
+  "StructureBench": {
+    "prefix": "StructureBench",
+    "body": [
+      "HASH(\"StructureBench\")"
+    ],
+    "description": "Device: StructureBench"
+  },
+  "StructureBench1": {
+    "prefix": "StructureBench1",
+    "body": [
+      "HASH(\"StructureBench1\")"
+    ],
+    "description": "Device: StructureBench1"
+  },
+  "StructureBench2": {
+    "prefix": "StructureBench2",
+    "body": [
+      "HASH(\"StructureBench2\")"
+    ],
+    "description": "Device: StructureBench2"
+  },
+  "StructureBench3": {
+    "prefix": "StructureBench3",
+    "body": [
+      "HASH(\"StructureBench3\")"
+    ],
+    "description": "Device: StructureBench3"
+  },
+  "StructureBench4": {
+    "prefix": "StructureBench4",
+    "body": [
+      "HASH(\"StructureBench4\")"
+    ],
+    "description": "Device: StructureBench4"
+  },
+  "StructureBlastDoor": {
+    "prefix": "StructureBlastDoor",
+    "body": [
+      "HASH(\"StructureBlastDoor\")"
+    ],
+    "description": "Device: StructureBlastDoor"
+  },
+  "StructureBlockBed": {
+    "prefix": "StructureBlockBed",
+    "body": [
+      "HASH(\"StructureBlockBed\")"
+    ],
+    "description": "Device: StructureBlockBed"
+  },
+  "StructureCableAnalysizer": {
+    "prefix": "StructureCableAnalysizer",
+    "body": [
+      "HASH(\"StructureCableAnalysizer\")"
+    ],
+    "description": "Device: StructureCableAnalysizer"
+  },
+  "StructureCableFuse100k": {
+    "prefix": "StructureCableFuse100k",
+    "body": [
+      "HASH(\"StructureCableFuse100k\")"
+    ],
+    "description": "Device: StructureCableFuse100k"
+  },
+  "StructureCableFuse1k": {
+    "prefix": "StructureCableFuse1k",
+    "body": [
+      "HASH(\"StructureCableFuse1k\")"
+    ],
+    "description": "Device: StructureCableFuse1k"
+  },
+  "StructureCableFuse50k": {
+    "prefix": "StructureCableFuse50k",
+    "body": [
+      "HASH(\"StructureCableFuse50k\")"
+    ],
+    "description": "Device: StructureCableFuse50k"
+  },
+  "StructureCableFuse5k": {
+    "prefix": "StructureCableFuse5k",
+    "body": [
+      "HASH(\"StructureCableFuse5k\")"
+    ],
+    "description": "Device: StructureCableFuse5k"
+  },
+  "StructureCamera": {
+    "prefix": "StructureCamera",
+    "body": [
+      "HASH(\"StructureCamera\")"
+    ],
+    "description": "Device: StructureCamera"
+  },
+  "StructureCapsuleTankGas": {
+    "prefix": "StructureCapsuleTankGas",
+    "body": [
+      "HASH(\"StructureCapsuleTankGas\")"
+    ],
+    "description": "Device: StructureCapsuleTankGas"
+  },
+  "StructureCapsuleTankLiquid": {
+    "prefix": "StructureCapsuleTankLiquid",
+    "body": [
+      "HASH(\"StructureCapsuleTankLiquid\")"
+    ],
+    "description": "Device: StructureCapsuleTankLiquid"
+  },
+  "StructureCargoStorageMedium": {
+    "prefix": "StructureCargoStorageMedium",
+    "body": [
+      "HASH(\"StructureCargoStorageMedium\")"
+    ],
+    "description": "Device: StructureCargoStorageMedium"
+  },
+  "StructureCargoStorageSmall": {
+    "prefix": "StructureCargoStorageSmall",
+    "body": [
+      "HASH(\"StructureCargoStorageSmall\")"
+    ],
+    "description": "Device: StructureCargoStorageSmall"
+  },
+  "StructureCentrifuge": {
+    "prefix": "StructureCentrifuge",
+    "body": [
+      "HASH(\"StructureCentrifuge\")"
+    ],
+    "description": "Device: StructureCentrifuge"
+  },
+  "StructureChair": {
+    "prefix": "StructureChair",
+    "body": [
+      "HASH(\"StructureChair\")"
+    ],
+    "description": "Device: StructureChair"
+  },
+  "StructureChairBacklessDouble": {
+    "prefix": "StructureChairBacklessDouble",
+    "body": [
+      "HASH(\"StructureChairBacklessDouble\")"
+    ],
+    "description": "Device: StructureChairBacklessDouble"
+  },
+  "StructureChairBacklessSingle": {
+    "prefix": "StructureChairBacklessSingle",
+    "body": [
+      "HASH(\"StructureChairBacklessSingle\")"
+    ],
+    "description": "Device: StructureChairBacklessSingle"
+  },
+  "StructureChairBoothCornerLeft": {
+    "prefix": "StructureChairBoothCornerLeft",
+    "body": [
+      "HASH(\"StructureChairBoothCornerLeft\")"
+    ],
+    "description": "Device: StructureChairBoothCornerLeft"
+  },
+  "StructureChairBoothMiddle": {
+    "prefix": "StructureChairBoothMiddle",
+    "body": [
+      "HASH(\"StructureChairBoothMiddle\")"
+    ],
+    "description": "Device: StructureChairBoothMiddle"
+  },
+  "StructureChairRectangleDouble": {
+    "prefix": "StructureChairRectangleDouble",
+    "body": [
+      "HASH(\"StructureChairRectangleDouble\")"
+    ],
+    "description": "Device: StructureChairRectangleDouble"
+  },
+  "StructureChairRectangleSingle": {
+    "prefix": "StructureChairRectangleSingle",
+    "body": [
+      "HASH(\"StructureChairRectangleSingle\")"
+    ],
+    "description": "Device: StructureChairRectangleSingle"
+  },
+  "StructureChairThickDouble": {
+    "prefix": "StructureChairThickDouble",
+    "body": [
+      "HASH(\"StructureChairThickDouble\")"
+    ],
+    "description": "Device: StructureChairThickDouble"
+  },
+  "StructureChairThickSingle": {
+    "prefix": "StructureChairThickSingle",
+    "body": [
+      "HASH(\"StructureChairThickSingle\")"
+    ],
+    "description": "Device: StructureChairThickSingle"
+  },
+  "StructureChuteBin": {
+    "prefix": "StructureChuteBin",
+    "body": [
+      "HASH(\"StructureChuteBin\")"
+    ],
+    "description": "Device: StructureChuteBin"
+  },
+  "StructureChuteDigitalFlipFlopSplitterLeft": {
+    "prefix": "StructureChuteDigitalFlipFlopSplitterLeft",
+    "body": [
+      "HASH(\"StructureChuteDigitalFlipFlopSplitterLeft\")"
+    ],
+    "description": "Device: StructureChuteDigitalFlipFlopSplitterLeft"
+  },
+  "StructureChuteDigitalFlipFlopSplitterRight": {
+    "prefix": "StructureChuteDigitalFlipFlopSplitterRight",
+    "body": [
+      "HASH(\"StructureChuteDigitalFlipFlopSplitterRight\")"
+    ],
+    "description": "Device: StructureChuteDigitalFlipFlopSplitterRight"
+  },
+  "StructureChuteDigitalValveLeft": {
+    "prefix": "StructureChuteDigitalValveLeft",
+    "body": [
+      "HASH(\"StructureChuteDigitalValveLeft\")"
+    ],
+    "description": "Device: StructureChuteDigitalValveLeft"
+  },
+  "StructureChuteDigitalValveRight": {
+    "prefix": "StructureChuteDigitalValveRight",
+    "body": [
+      "HASH(\"StructureChuteDigitalValveRight\")"
+    ],
+    "description": "Device: StructureChuteDigitalValveRight"
+  },
+  "StructureChuteInlet": {
+    "prefix": "StructureChuteInlet",
+    "body": [
+      "HASH(\"StructureChuteInlet\")"
+    ],
+    "description": "Device: StructureChuteInlet"
+  },
+  "StructureChuteOutlet": {
+    "prefix": "StructureChuteOutlet",
+    "body": [
+      "HASH(\"StructureChuteOutlet\")"
+    ],
+    "description": "Device: StructureChuteOutlet"
+  },
+  "StructureChuteUmbilicalFemale": {
+    "prefix": "StructureChuteUmbilicalFemale",
+    "body": [
+      "HASH(\"StructureChuteUmbilicalFemale\")"
+    ],
+    "description": "Device: StructureChuteUmbilicalFemale"
+  },
+  "StructureChuteUmbilicalFemaleSide": {
+    "prefix": "StructureChuteUmbilicalFemaleSide",
+    "body": [
+      "HASH(\"StructureChuteUmbilicalFemaleSide\")"
+    ],
+    "description": "Device: StructureChuteUmbilicalFemaleSide"
+  },
+  "StructureChuteUmbilicalMale": {
+    "prefix": "StructureChuteUmbilicalMale",
+    "body": [
+      "HASH(\"StructureChuteUmbilicalMale\")"
+    ],
+    "description": "Device: StructureChuteUmbilicalMale"
+  },
+  "StructureCircuitHousing": {
+    "prefix": "StructureCircuitHousing",
+    "body": [
+      "HASH(\"StructureCircuitHousing\")"
+    ],
+    "description": "Device: StructureCircuitHousing"
+  },
+  "StructureCombustionCentrifuge": {
+    "prefix": "StructureCombustionCentrifuge",
+    "body": [
+      "HASH(\"StructureCombustionCentrifuge\")"
+    ],
+    "description": "Device: StructureCombustionCentrifuge"
+  },
+  "StructureCompositeDoor": {
+    "prefix": "StructureCompositeDoor",
+    "body": [
+      "HASH(\"StructureCompositeDoor\")"
+    ],
+    "description": "Device: StructureCompositeDoor"
+  },
+  "StructureComputer": {
+    "prefix": "StructureComputer",
+    "body": [
+      "HASH(\"StructureComputer\")"
+    ],
+    "description": "Device: StructureComputer"
+  },
+  "StructureCondensationChamber": {
+    "prefix": "StructureCondensationChamber",
+    "body": [
+      "HASH(\"StructureCondensationChamber\")"
+    ],
+    "description": "Device: StructureCondensationChamber"
+  },
+  "StructureCondensationValve": {
+    "prefix": "StructureCondensationValve",
+    "body": [
+      "HASH(\"StructureCondensationValve\")"
+    ],
+    "description": "Device: StructureCondensationValve"
+  },
+  "StructureConsole": {
+    "prefix": "StructureConsole",
+    "body": [
+      "HASH(\"StructureConsole\")"
+    ],
+    "description": "Device: StructureConsole"
+  },
+  "StructureConsoleDual": {
+    "prefix": "StructureConsoleDual",
+    "body": [
+      "HASH(\"StructureConsoleDual\")"
+    ],
+    "description": "Device: StructureConsoleDual"
+  },
+  "StructureConsoleLED1x2": {
+    "prefix": "StructureConsoleLED1x2",
+    "body": [
+      "HASH(\"StructureConsoleLED1x2\")"
+    ],
+    "description": "Device: StructureConsoleLED1x2"
+  },
+  "StructureConsoleLED1x3": {
+    "prefix": "StructureConsoleLED1x3",
+    "body": [
+      "HASH(\"StructureConsoleLED1x3\")"
+    ],
+    "description": "Device: StructureConsoleLED1x3"
+  },
+  "StructureConsoleLED5": {
+    "prefix": "StructureConsoleLED5",
+    "body": [
+      "HASH(\"StructureConsoleLED5\")"
+    ],
+    "description": "Device: StructureConsoleLED5"
+  },
+  "StructureConsoleMonitor": {
+    "prefix": "StructureConsoleMonitor",
+    "body": [
+      "HASH(\"StructureConsoleMonitor\")"
+    ],
+    "description": "Device: StructureConsoleMonitor"
+  },
+  "StructureControlChair": {
+    "prefix": "StructureControlChair",
+    "body": [
+      "HASH(\"StructureControlChair\")"
+    ],
+    "description": "Device: StructureControlChair"
+  },
+  "StructureCornerLocker": {
+    "prefix": "StructureCornerLocker",
+    "body": [
+      "HASH(\"StructureCornerLocker\")"
+    ],
+    "description": "Device: StructureCornerLocker"
+  },
+  "StructureCryoTube": {
+    "prefix": "StructureCryoTube",
+    "body": [
+      "HASH(\"StructureCryoTube\")"
+    ],
+    "description": "Device: StructureCryoTube"
+  },
+  "StructureCryoTubeHorizontal": {
+    "prefix": "StructureCryoTubeHorizontal",
+    "body": [
+      "HASH(\"StructureCryoTubeHorizontal\")"
+    ],
+    "description": "Device: StructureCryoTubeHorizontal"
+  },
+  "StructureCryoTubeVertical": {
+    "prefix": "StructureCryoTubeVertical",
+    "body": [
+      "HASH(\"StructureCryoTubeVertical\")"
+    ],
+    "description": "Device: StructureCryoTubeVertical"
+  },
+  "StructureDaylightSensor": {
+    "prefix": "StructureDaylightSensor",
+    "body": [
+      "HASH(\"StructureDaylightSensor\")"
+    ],
+    "description": "Device: StructureDaylightSensor"
+  },
+  "StructureDeepMiner": {
+    "prefix": "StructureDeepMiner",
+    "body": [
+      "HASH(\"StructureDeepMiner\")"
+    ],
+    "description": "Device: StructureDeepMiner"
+  },
+  "StructureDigitalValve": {
+    "prefix": "StructureDigitalValve",
+    "body": [
+      "HASH(\"StructureDigitalValve\")"
+    ],
+    "description": "Device: StructureDigitalValve"
+  },
+  "StructureDiode": {
+    "prefix": "StructureDiode",
+    "body": [
+      "HASH(\"StructureDiode\")"
+    ],
+    "description": "Device: StructureDiode"
+  },
+  "StructureDiodeSlide": {
+    "prefix": "StructureDiodeSlide",
+    "body": [
+      "HASH(\"StructureDiodeSlide\")"
+    ],
+    "description": "Device: StructureDiodeSlide"
+  },
+  "StructureDockPortSide": {
+    "prefix": "StructureDockPortSide",
+    "body": [
+      "HASH(\"StructureDockPortSide\")"
+    ],
+    "description": "Device: StructureDockPortSide"
+  },
+  "StructureDrinkingFountain": {
+    "prefix": "StructureDrinkingFountain",
+    "body": [
+      "HASH(\"StructureDrinkingFountain\")"
+    ],
+    "description": "Device: StructureDrinkingFountain"
+  },
+  "StructureElectrolyzer": {
+    "prefix": "StructureElectrolyzer",
+    "body": [
+      "HASH(\"StructureElectrolyzer\")"
+    ],
+    "description": "Device: StructureElectrolyzer"
+  },
+  "StructureElectronicsPrinter": {
+    "prefix": "StructureElectronicsPrinter",
+    "body": [
+      "HASH(\"StructureElectronicsPrinter\")"
+    ],
+    "description": "Device: StructureElectronicsPrinter"
+  },
+  "StructureElevatorLevelFront": {
+    "prefix": "StructureElevatorLevelFront",
+    "body": [
+      "HASH(\"StructureElevatorLevelFront\")"
+    ],
+    "description": "Device: StructureElevatorLevelFront"
+  },
+  "StructureElevatorLevelIndustrial": {
+    "prefix": "StructureElevatorLevelIndustrial",
+    "body": [
+      "HASH(\"StructureElevatorLevelIndustrial\")"
+    ],
+    "description": "Device: StructureElevatorLevelIndustrial"
+  },
+  "StructureElevatorShaft": {
+    "prefix": "StructureElevatorShaft",
+    "body": [
+      "HASH(\"StructureElevatorShaft\")"
+    ],
+    "description": "Device: StructureElevatorShaft"
+  },
+  "StructureElevatorShaftIndustrial": {
+    "prefix": "StructureElevatorShaftIndustrial",
+    "body": [
+      "HASH(\"StructureElevatorShaftIndustrial\")"
+    ],
+    "description": "Device: StructureElevatorShaftIndustrial"
+  },
+  "StructureEmergencyButton": {
+    "prefix": "StructureEmergencyButton",
+    "body": [
+      "HASH(\"StructureEmergencyButton\")"
+    ],
+    "description": "Device: StructureEmergencyButton"
+  },
+  "StructureEvaporationChamber": {
+    "prefix": "StructureEvaporationChamber",
+    "body": [
+      "HASH(\"StructureEvaporationChamber\")"
+    ],
+    "description": "Device: StructureEvaporationChamber"
+  },
+  "StructureExpansionValve": {
+    "prefix": "StructureExpansionValve",
+    "body": [
+      "HASH(\"StructureExpansionValve\")"
+    ],
+    "description": "Device: StructureExpansionValve"
+  },
+  "StructureFiltration": {
+    "prefix": "StructureFiltration",
+    "body": [
+      "HASH(\"StructureFiltration\")"
+    ],
+    "description": "Device: StructureFiltration"
+  },
+  "StructureFlashingLight": {
+    "prefix": "StructureFlashingLight",
+    "body": [
+      "HASH(\"StructureFlashingLight\")"
+    ],
+    "description": "Device: StructureFlashingLight"
+  },
+  "StructureFlatBench": {
+    "prefix": "StructureFlatBench",
+    "body": [
+      "HASH(\"StructureFlatBench\")"
+    ],
+    "description": "Device: StructureFlatBench"
+  },
+  "StructureFridgeBig": {
+    "prefix": "StructureFridgeBig",
+    "body": [
+      "HASH(\"StructureFridgeBig\")"
+    ],
+    "description": "Device: StructureFridgeBig"
+  },
+  "StructureFridgeSmall": {
+    "prefix": "StructureFridgeSmall",
+    "body": [
+      "HASH(\"StructureFridgeSmall\")"
+    ],
+    "description": "Device: StructureFridgeSmall"
+  },
+  "StructureFurnace": {
+    "prefix": "StructureFurnace",
+    "body": [
+      "HASH(\"StructureFurnace\")"
+    ],
+    "description": "Device: StructureFurnace"
+  },
+  "StructureGasGenerator": {
+    "prefix": "StructureGasGenerator",
+    "body": [
+      "HASH(\"StructureGasGenerator\")"
+    ],
+    "description": "Device: StructureGasGenerator"
+  },
+  "StructureGasMixer": {
+    "prefix": "StructureGasMixer",
+    "body": [
+      "HASH(\"StructureGasMixer\")"
+    ],
+    "description": "Device: StructureGasMixer"
+  },
+  "StructureGasSensor": {
+    "prefix": "StructureGasSensor",
+    "body": [
+      "HASH(\"StructureGasSensor\")"
+    ],
+    "description": "Device: StructureGasSensor"
+  },
+  "StructureGasTankStorage": {
+    "prefix": "StructureGasTankStorage",
+    "body": [
+      "HASH(\"StructureGasTankStorage\")"
+    ],
+    "description": "Device: StructureGasTankStorage"
+  },
+  "StructureGasUmbilicalFemale": {
+    "prefix": "StructureGasUmbilicalFemale",
+    "body": [
+      "HASH(\"StructureGasUmbilicalFemale\")"
+    ],
+    "description": "Device: StructureGasUmbilicalFemale"
+  },
+  "StructureGasUmbilicalFemaleSide": {
+    "prefix": "StructureGasUmbilicalFemaleSide",
+    "body": [
+      "HASH(\"StructureGasUmbilicalFemaleSide\")"
+    ],
+    "description": "Device: StructureGasUmbilicalFemaleSide"
+  },
+  "StructureGasUmbilicalMale": {
+    "prefix": "StructureGasUmbilicalMale",
+    "body": [
+      "HASH(\"StructureGasUmbilicalMale\")"
+    ],
+    "description": "Device: StructureGasUmbilicalMale"
+  },
+  "StructureGlassDoor": {
+    "prefix": "StructureGlassDoor",
+    "body": [
+      "HASH(\"StructureGlassDoor\")"
+    ],
+    "description": "Device: StructureGlassDoor"
+  },
+  "StructureGovernedGasEngine": {
+    "prefix": "StructureGovernedGasEngine",
+    "body": [
+      "HASH(\"StructureGovernedGasEngine\")"
+    ],
+    "description": "Device: StructureGovernedGasEngine"
+  },
+  "StructureGroundBasedTelescope": {
+    "prefix": "StructureGroundBasedTelescope",
+    "body": [
+      "HASH(\"StructureGroundBasedTelescope\")"
+    ],
+    "description": "Device: StructureGroundBasedTelescope"
+  },
+  "StructureGrowLight": {
+    "prefix": "StructureGrowLight",
+    "body": [
+      "HASH(\"StructureGrowLight\")"
+    ],
+    "description": "Device: StructureGrowLight"
+  },
+  "StructureHarvie": {
+    "prefix": "StructureHarvie",
+    "body": [
+      "HASH(\"StructureHarvie\")"
+    ],
+    "description": "Device: StructureHarvie"
+  },
+  "StructureHeatExchangeLiquidtoGas": {
+    "prefix": "StructureHeatExchangeLiquidtoGas",
+    "body": [
+      "HASH(\"StructureHeatExchangeLiquidtoGas\")"
+    ],
+    "description": "Device: StructureHeatExchangeLiquidtoGas"
+  },
+  "StructureHeatExchangerGastoGas": {
+    "prefix": "StructureHeatExchangerGastoGas",
+    "body": [
+      "HASH(\"StructureHeatExchangerGastoGas\")"
+    ],
+    "description": "Device: StructureHeatExchangerGastoGas"
+  },
+  "StructureHeatExchangerLiquidtoLiquid": {
+    "prefix": "StructureHeatExchangerLiquidtoLiquid",
+    "body": [
+      "HASH(\"StructureHeatExchangerLiquidtoLiquid\")"
+    ],
+    "description": "Device: StructureHeatExchangerLiquidtoLiquid"
+  },
+  "StructureHorizontalAutoMiner": {
+    "prefix": "StructureHorizontalAutoMiner",
+    "body": [
+      "HASH(\"StructureHorizontalAutoMiner\")"
+    ],
+    "description": "Device: StructureHorizontalAutoMiner"
+  },
+  "StructureHydraulicPipeBender": {
+    "prefix": "StructureHydraulicPipeBender",
+    "body": [
+      "HASH(\"StructureHydraulicPipeBender\")"
+    ],
+    "description": "Device: StructureHydraulicPipeBender"
+  },
+  "StructureHydroponicsStation": {
+    "prefix": "StructureHydroponicsStation",
+    "body": [
+      "HASH(\"StructureHydroponicsStation\")"
+    ],
+    "description": "Device: StructureHydroponicsStation"
+  },
+  "StructureHydroponicsTrayData": {
+    "prefix": "StructureHydroponicsTrayData",
+    "body": [
+      "HASH(\"StructureHydroponicsTrayData\")"
+    ],
+    "description": "Device: StructureHydroponicsTrayData"
+  },
+  "StructureIceCrusher": {
+    "prefix": "StructureIceCrusher",
+    "body": [
+      "HASH(\"StructureIceCrusher\")"
+    ],
+    "description": "Device: StructureIceCrusher"
+  },
+  "StructureIgniter": {
+    "prefix": "StructureIgniter",
+    "body": [
+      "HASH(\"StructureIgniter\")"
+    ],
+    "description": "Device: StructureIgniter"
+  },
+  "StructureInteriorDoorGlass": {
+    "prefix": "StructureInteriorDoorGlass",
+    "body": [
+      "HASH(\"StructureInteriorDoorGlass\")"
+    ],
+    "description": "Device: StructureInteriorDoorGlass"
+  },
+  "StructureInteriorDoorPadded": {
+    "prefix": "StructureInteriorDoorPadded",
+    "body": [
+      "HASH(\"StructureInteriorDoorPadded\")"
+    ],
+    "description": "Device: StructureInteriorDoorPadded"
+  },
+  "StructureInteriorDoorPaddedThin": {
+    "prefix": "StructureInteriorDoorPaddedThin",
+    "body": [
+      "HASH(\"StructureInteriorDoorPaddedThin\")"
+    ],
+    "description": "Device: StructureInteriorDoorPaddedThin"
+  },
+  "StructureInteriorDoorTriangle": {
+    "prefix": "StructureInteriorDoorTriangle",
+    "body": [
+      "HASH(\"StructureInteriorDoorTriangle\")"
+    ],
+    "description": "Device: StructureInteriorDoorTriangle"
+  },
+  "StructureKlaxon": {
+    "prefix": "StructureKlaxon",
+    "body": [
+      "HASH(\"StructureKlaxon\")"
+    ],
+    "description": "Device: StructureKlaxon"
+  },
+  "StructureLargeDirectHeatExchangeGastoGas": {
+    "prefix": "StructureLargeDirectHeatExchangeGastoGas",
+    "body": [
+      "HASH(\"StructureLargeDirectHeatExchangeGastoGas\")"
+    ],
+    "description": "Device: StructureLargeDirectHeatExchangeGastoGas"
+  },
+  "StructureLargeDirectHeatExchangeGastoLiquid": {
+    "prefix": "StructureLargeDirectHeatExchangeGastoLiquid",
+    "body": [
+      "HASH(\"StructureLargeDirectHeatExchangeGastoLiquid\")"
+    ],
+    "description": "Device: StructureLargeDirectHeatExchangeGastoLiquid"
+  },
+  "StructureLargeDirectHeatExchangeLiquidtoLiquid": {
+    "prefix": "StructureLargeDirectHeatExchangeLiquidtoLiquid",
+    "body": [
+      "HASH(\"StructureLargeDirectHeatExchangeLiquidtoLiquid\")"
+    ],
+    "description": "Device: StructureLargeDirectHeatExchangeLiquidtoLiquid"
+  },
+  "StructureLargeExtendableRadiator": {
+    "prefix": "StructureLargeExtendableRadiator",
+    "body": [
+      "HASH(\"StructureLargeExtendableRadiator\")"
+    ],
+    "description": "Device: StructureLargeExtendableRadiator"
+  },
+  "StructureLargeHangerDoor": {
+    "prefix": "StructureLargeHangerDoor",
+    "body": [
+      "HASH(\"StructureLargeHangerDoor\")"
+    ],
+    "description": "Device: StructureLargeHangerDoor"
+  },
+  "StructureLargeSatelliteDish": {
+    "prefix": "StructureLargeSatelliteDish",
+    "body": [
+      "HASH(\"StructureLargeSatelliteDish\")"
+    ],
+    "description": "Device: StructureLargeSatelliteDish"
+  },
+  "StructureLightLong": {
+    "prefix": "StructureLightLong",
+    "body": [
+      "HASH(\"StructureLightLong\")"
+    ],
+    "description": "Device: StructureLightLong"
+  },
+  "StructureLightLongAngled": {
+    "prefix": "StructureLightLongAngled",
+    "body": [
+      "HASH(\"StructureLightLongAngled\")"
+    ],
+    "description": "Device: StructureLightLongAngled"
+  },
+  "StructureLightLongWide": {
+    "prefix": "StructureLightLongWide",
+    "body": [
+      "HASH(\"StructureLightLongWide\")"
+    ],
+    "description": "Device: StructureLightLongWide"
+  },
+  "StructureLightRound": {
+    "prefix": "StructureLightRound",
+    "body": [
+      "HASH(\"StructureLightRound\")"
+    ],
+    "description": "Device: StructureLightRound"
+  },
+  "StructureLightRoundAngled": {
+    "prefix": "StructureLightRoundAngled",
+    "body": [
+      "HASH(\"StructureLightRoundAngled\")"
+    ],
+    "description": "Device: StructureLightRoundAngled"
+  },
+  "StructureLightRoundSmall": {
+    "prefix": "StructureLightRoundSmall",
+    "body": [
+      "HASH(\"StructureLightRoundSmall\")"
+    ],
+    "description": "Device: StructureLightRoundSmall"
+  },
+  "StructureLiquidDrain": {
+    "prefix": "StructureLiquidDrain",
+    "body": [
+      "HASH(\"StructureLiquidDrain\")"
+    ],
+    "description": "Device: StructureLiquidDrain"
+  },
+  "StructureLiquidPipeAnalyzer": {
+    "prefix": "StructureLiquidPipeAnalyzer",
+    "body": [
+      "HASH(\"StructureLiquidPipeAnalyzer\")"
+    ],
+    "description": "Device: StructureLiquidPipeAnalyzer"
+  },
+  "StructureLiquidPipeHeater": {
+    "prefix": "StructureLiquidPipeHeater",
+    "body": [
+      "HASH(\"StructureLiquidPipeHeater\")"
+    ],
+    "description": "Device: StructureLiquidPipeHeater"
+  },
+  "StructureLiquidPipeOneWayValve": {
+    "prefix": "StructureLiquidPipeOneWayValve",
+    "body": [
+      "HASH(\"StructureLiquidPipeOneWayValve\")"
+    ],
+    "description": "Device: StructureLiquidPipeOneWayValve"
+  },
+  "StructureLiquidPipeRadiator": {
+    "prefix": "StructureLiquidPipeRadiator",
+    "body": [
+      "HASH(\"StructureLiquidPipeRadiator\")"
+    ],
+    "description": "Device: StructureLiquidPipeRadiator"
+  },
+  "StructureLiquidPressureRegulator": {
+    "prefix": "StructureLiquidPressureRegulator",
+    "body": [
+      "HASH(\"StructureLiquidPressureRegulator\")"
+    ],
+    "description": "Device: StructureLiquidPressureRegulator"
+  },
+  "StructureLiquidTankBig": {
+    "prefix": "StructureLiquidTankBig",
+    "body": [
+      "HASH(\"StructureLiquidTankBig\")"
+    ],
+    "description": "Device: StructureLiquidTankBig"
+  },
+  "StructureLiquidTankBigInsulated": {
+    "prefix": "StructureLiquidTankBigInsulated",
+    "body": [
+      "HASH(\"StructureLiquidTankBigInsulated\")"
+    ],
+    "description": "Device: StructureLiquidTankBigInsulated"
+  },
+  "StructureLiquidTankSmall": {
+    "prefix": "StructureLiquidTankSmall",
+    "body": [
+      "HASH(\"StructureLiquidTankSmall\")"
+    ],
+    "description": "Device: StructureLiquidTankSmall"
+  },
+  "StructureLiquidTankSmallInsulated": {
+    "prefix": "StructureLiquidTankSmallInsulated",
+    "body": [
+      "HASH(\"StructureLiquidTankSmallInsulated\")"
+    ],
+    "description": "Device: StructureLiquidTankSmallInsulated"
+  },
+  "StructureLiquidTankStorage": {
+    "prefix": "StructureLiquidTankStorage",
+    "body": [
+      "HASH(\"StructureLiquidTankStorage\")"
+    ],
+    "description": "Device: StructureLiquidTankStorage"
+  },
+  "StructureLiquidTurboVolumePump": {
+    "prefix": "StructureLiquidTurboVolumePump",
+    "body": [
+      "HASH(\"StructureLiquidTurboVolumePump\")"
+    ],
+    "description": "Device: StructureLiquidTurboVolumePump"
+  },
+  "StructureLiquidUmbilicalFemale": {
+    "prefix": "StructureLiquidUmbilicalFemale",
+    "body": [
+      "HASH(\"StructureLiquidUmbilicalFemale\")"
+    ],
+    "description": "Device: StructureLiquidUmbilicalFemale"
+  },
+  "StructureLiquidUmbilicalFemaleSide": {
+    "prefix": "StructureLiquidUmbilicalFemaleSide",
+    "body": [
+      "HASH(\"StructureLiquidUmbilicalFemaleSide\")"
+    ],
+    "description": "Device: StructureLiquidUmbilicalFemaleSide"
+  },
+  "StructureLiquidUmbilicalMale": {
+    "prefix": "StructureLiquidUmbilicalMale",
+    "body": [
+      "HASH(\"StructureLiquidUmbilicalMale\")"
+    ],
+    "description": "Device: StructureLiquidUmbilicalMale"
+  },
+  "StructureLiquidValve": {
+    "prefix": "StructureLiquidValve",
+    "body": [
+      "HASH(\"StructureLiquidValve\")"
+    ],
+    "description": "Device: StructureLiquidValve"
+  },
+  "StructureLiquidVolumePump": {
+    "prefix": "StructureLiquidVolumePump",
+    "body": [
+      "HASH(\"StructureLiquidVolumePump\")"
+    ],
+    "description": "Device: StructureLiquidVolumePump"
+  },
+  "StructureLockerSmall": {
+    "prefix": "StructureLockerSmall",
+    "body": [
+      "HASH(\"StructureLockerSmall\")"
+    ],
+    "description": "Device: StructureLockerSmall"
+  },
+  "StructureLogicBatchReader": {
+    "prefix": "StructureLogicBatchReader",
+    "body": [
+      "HASH(\"StructureLogicBatchReader\")"
+    ],
+    "description": "Device: StructureLogicBatchReader"
+  },
+  "StructureLogicBatchSlotReader": {
+    "prefix": "StructureLogicBatchSlotReader",
+    "body": [
+      "HASH(\"StructureLogicBatchSlotReader\")"
+    ],
+    "description": "Device: StructureLogicBatchSlotReader"
+  },
+  "StructureLogicBatchWriter": {
+    "prefix": "StructureLogicBatchWriter",
+    "body": [
+      "HASH(\"StructureLogicBatchWriter\")"
+    ],
+    "description": "Device: StructureLogicBatchWriter"
+  },
+  "StructureLogicButton": {
+    "prefix": "StructureLogicButton",
+    "body": [
+      "HASH(\"StructureLogicButton\")"
+    ],
+    "description": "Device: StructureLogicButton"
+  },
+  "StructureLogicCompare": {
+    "prefix": "StructureLogicCompare",
+    "body": [
+      "HASH(\"StructureLogicCompare\")"
+    ],
+    "description": "Device: StructureLogicCompare"
+  },
+  "StructureLogicDial": {
+    "prefix": "StructureLogicDial",
+    "body": [
+      "HASH(\"StructureLogicDial\")"
+    ],
+    "description": "Device: StructureLogicDial"
+  },
+  "StructureLogicGate": {
+    "prefix": "StructureLogicGate",
+    "body": [
+      "HASH(\"StructureLogicGate\")"
+    ],
+    "description": "Device: StructureLogicGate"
+  },
+  "StructureLogicHashGen": {
+    "prefix": "StructureLogicHashGen",
+    "body": [
+      "HASH(\"StructureLogicHashGen\")"
+    ],
+    "description": "Device: StructureLogicHashGen"
+  },
+  "StructureLogicMath": {
+    "prefix": "StructureLogicMath",
+    "body": [
+      "HASH(\"StructureLogicMath\")"
+    ],
+    "description": "Device: StructureLogicMath"
+  },
+  "StructureLogicMathUnary": {
+    "prefix": "StructureLogicMathUnary",
+    "body": [
+      "HASH(\"StructureLogicMathUnary\")"
+    ],
+    "description": "Device: StructureLogicMathUnary"
+  },
+  "StructureLogicMemory": {
+    "prefix": "StructureLogicMemory",
+    "body": [
+      "HASH(\"StructureLogicMemory\")"
+    ],
+    "description": "Device: StructureLogicMemory"
+  },
+  "StructureLogicMinMax": {
+    "prefix": "StructureLogicMinMax",
+    "body": [
+      "HASH(\"StructureLogicMinMax\")"
+    ],
+    "description": "Device: StructureLogicMinMax"
+  },
+  "StructureLogicReader": {
+    "prefix": "StructureLogicReader",
+    "body": [
+      "HASH(\"StructureLogicReader\")"
+    ],
+    "description": "Device: StructureLogicReader"
+  },
+  "StructureLogicReagentReader": {
+    "prefix": "StructureLogicReagentReader",
+    "body": [
+      "HASH(\"StructureLogicReagentReader\")"
+    ],
+    "description": "Device: StructureLogicReagentReader"
+  },
+  "StructureLogicRocketDownlink": {
+    "prefix": "StructureLogicRocketDownlink",
+    "body": [
+      "HASH(\"StructureLogicRocketDownlink\")"
+    ],
+    "description": "Device: StructureLogicRocketDownlink"
+  },
+  "StructureLogicRocketUplink": {
+    "prefix": "StructureLogicRocketUplink",
+    "body": [
+      "HASH(\"StructureLogicRocketUplink\")"
+    ],
+    "description": "Device: StructureLogicRocketUplink"
+  },
+  "StructureLogicSelect": {
+    "prefix": "StructureLogicSelect",
+    "body": [
+      "HASH(\"StructureLogicSelect\")"
+    ],
+    "description": "Device: StructureLogicSelect"
+  },
+  "StructureLogicSlotReader": {
+    "prefix": "StructureLogicSlotReader",
+    "body": [
+      "HASH(\"StructureLogicSlotReader\")"
+    ],
+    "description": "Device: StructureLogicSlotReader"
+  },
+  "StructureLogicSorter": {
+    "prefix": "StructureLogicSorter",
+    "body": [
+      "HASH(\"StructureLogicSorter\")"
+    ],
+    "description": "Device: StructureLogicSorter"
+  },
+  "StructureLogicSwitch": {
+    "prefix": "StructureLogicSwitch",
+    "body": [
+      "HASH(\"StructureLogicSwitch\")"
+    ],
+    "description": "Device: StructureLogicSwitch"
+  },
+  "StructureLogicSwitch2": {
+    "prefix": "StructureLogicSwitch2",
+    "body": [
+      "HASH(\"StructureLogicSwitch2\")"
+    ],
+    "description": "Device: StructureLogicSwitch2"
+  },
+  "StructureLogicWriter": {
+    "prefix": "StructureLogicWriter",
+    "body": [
+      "HASH(\"StructureLogicWriter\")"
+    ],
+    "description": "Device: StructureLogicWriter"
+  },
+  "StructureLogicWriterSwitch": {
+    "prefix": "StructureLogicWriterSwitch",
+    "body": [
+      "HASH(\"StructureLogicWriterSwitch\")"
+    ],
+    "description": "Device: StructureLogicWriterSwitch"
+  },
+  "StructureManualHatch": {
+    "prefix": "StructureManualHatch",
+    "body": [
+      "HASH(\"StructureManualHatch\")"
+    ],
+    "description": "Device: StructureManualHatch"
+  },
+  "StructureMediumConvectionRadiator": {
+    "prefix": "StructureMediumConvectionRadiator",
+    "body": [
+      "HASH(\"StructureMediumConvectionRadiator\")"
+    ],
+    "description": "Device: StructureMediumConvectionRadiator"
+  },
+  "StructureMediumConvectionRadiatorLiquid": {
+    "prefix": "StructureMediumConvectionRadiatorLiquid",
+    "body": [
+      "HASH(\"StructureMediumConvectionRadiatorLiquid\")"
+    ],
+    "description": "Device: StructureMediumConvectionRadiatorLiquid"
+  },
+  "StructureMediumHangerDoor": {
+    "prefix": "StructureMediumHangerDoor",
+    "body": [
+      "HASH(\"StructureMediumHangerDoor\")"
+    ],
+    "description": "Device: StructureMediumHangerDoor"
+  },
+  "StructureMediumRadiator": {
+    "prefix": "StructureMediumRadiator",
+    "body": [
+      "HASH(\"StructureMediumRadiator\")"
+    ],
+    "description": "Device: StructureMediumRadiator"
+  },
+  "StructureMediumRadiatorLiquid": {
+    "prefix": "StructureMediumRadiatorLiquid",
+    "body": [
+      "HASH(\"StructureMediumRadiatorLiquid\")"
+    ],
+    "description": "Device: StructureMediumRadiatorLiquid"
+  },
+  "StructureMediumRocketGasFuelTank": {
+    "prefix": "StructureMediumRocketGasFuelTank",
+    "body": [
+      "HASH(\"StructureMediumRocketGasFuelTank\")"
+    ],
+    "description": "Device: StructureMediumRocketGasFuelTank"
+  },
+  "StructureMediumRocketLiquidFuelTank": {
+    "prefix": "StructureMediumRocketLiquidFuelTank",
+    "body": [
+      "HASH(\"StructureMediumRocketLiquidFuelTank\")"
+    ],
+    "description": "Device: StructureMediumRocketLiquidFuelTank"
+  },
+  "StructureMotionSensor": {
+    "prefix": "StructureMotionSensor",
+    "body": [
+      "HASH(\"StructureMotionSensor\")"
+    ],
+    "description": "Device: StructureMotionSensor"
+  },
+  "StructureNitrolyzer": {
+    "prefix": "StructureNitrolyzer",
+    "body": [
+      "HASH(\"StructureNitrolyzer\")"
+    ],
+    "description": "Device: StructureNitrolyzer"
+  },
+  "StructureOccupancySensor": {
+    "prefix": "StructureOccupancySensor",
+    "body": [
+      "HASH(\"StructureOccupancySensor\")"
+    ],
+    "description": "Device: StructureOccupancySensor"
+  },
+  "StructureOverheadShortCornerLocker": {
+    "prefix": "StructureOverheadShortCornerLocker",
+    "body": [
+      "HASH(\"StructureOverheadShortCornerLocker\")"
+    ],
+    "description": "Device: StructureOverheadShortCornerLocker"
+  },
+  "StructureOverheadShortLocker": {
+    "prefix": "StructureOverheadShortLocker",
+    "body": [
+      "HASH(\"StructureOverheadShortLocker\")"
+    ],
+    "description": "Device: StructureOverheadShortLocker"
+  },
+  "StructurePassiveLargeRadiatorGas": {
+    "prefix": "StructurePassiveLargeRadiatorGas",
+    "body": [
+      "HASH(\"StructurePassiveLargeRadiatorGas\")"
+    ],
+    "description": "Device: StructurePassiveLargeRadiatorGas"
+  },
+  "StructurePassiveLargeRadiatorLiquid": {
+    "prefix": "StructurePassiveLargeRadiatorLiquid",
+    "body": [
+      "HASH(\"StructurePassiveLargeRadiatorLiquid\")"
+    ],
+    "description": "Device: StructurePassiveLargeRadiatorLiquid"
+  },
+  "StructurePassiveLiquidDrain": {
+    "prefix": "StructurePassiveLiquidDrain",
+    "body": [
+      "HASH(\"StructurePassiveLiquidDrain\")"
+    ],
+    "description": "Device: StructurePassiveLiquidDrain"
+  },
+  "StructurePassthroughHeatExchangerGasToGas": {
+    "prefix": "StructurePassthroughHeatExchangerGasToGas",
+    "body": [
+      "HASH(\"StructurePassthroughHeatExchangerGasToGas\")"
+    ],
+    "description": "Device: StructurePassthroughHeatExchangerGasToGas"
+  },
+  "StructurePassthroughHeatExchangerGasToLiquid": {
+    "prefix": "StructurePassthroughHeatExchangerGasToLiquid",
+    "body": [
+      "HASH(\"StructurePassthroughHeatExchangerGasToLiquid\")"
+    ],
+    "description": "Device: StructurePassthroughHeatExchangerGasToLiquid"
+  },
+  "StructurePassthroughHeatExchangerLiquidToLiquid": {
+    "prefix": "StructurePassthroughHeatExchangerLiquidToLiquid",
+    "body": [
+      "HASH(\"StructurePassthroughHeatExchangerLiquidToLiquid\")"
+    ],
+    "description": "Device: StructurePassthroughHeatExchangerLiquidToLiquid"
+  },
+  "StructurePipeAnalysizer": {
+    "prefix": "StructurePipeAnalysizer",
+    "body": [
+      "HASH(\"StructurePipeAnalysizer\")"
+    ],
+    "description": "Device: StructurePipeAnalysizer"
+  },
+  "StructurePipeHeater": {
+    "prefix": "StructurePipeHeater",
+    "body": [
+      "HASH(\"StructurePipeHeater\")"
+    ],
+    "description": "Device: StructurePipeHeater"
+  },
+  "StructurePipeIgniter": {
+    "prefix": "StructurePipeIgniter",
+    "body": [
+      "HASH(\"StructurePipeIgniter\")"
+    ],
+    "description": "Device: StructurePipeIgniter"
+  },
+  "StructurePipeLabel": {
+    "prefix": "StructurePipeLabel",
+    "body": [
+      "HASH(\"StructurePipeLabel\")"
+    ],
+    "description": "Device: StructurePipeLabel"
+  },
+  "StructurePipeMeter": {
+    "prefix": "StructurePipeMeter",
+    "body": [
+      "HASH(\"StructurePipeMeter\")"
+    ],
+    "description": "Device: StructurePipeMeter"
+  },
+  "StructurePipeOneWayValve": {
+    "prefix": "StructurePipeOneWayValve",
+    "body": [
+      "HASH(\"StructurePipeOneWayValve\")"
+    ],
+    "description": "Device: StructurePipeOneWayValve"
+  },
+  "StructurePipeRadiator": {
+    "prefix": "StructurePipeRadiator",
+    "body": [
+      "HASH(\"StructurePipeRadiator\")"
+    ],
+    "description": "Device: StructurePipeRadiator"
+  },
+  "StructurePipeRadiatorFlat": {
+    "prefix": "StructurePipeRadiatorFlat",
+    "body": [
+      "HASH(\"StructurePipeRadiatorFlat\")"
+    ],
+    "description": "Device: StructurePipeRadiatorFlat"
+  },
+  "StructurePipeRadiatorFlatLiquid": {
+    "prefix": "StructurePipeRadiatorFlatLiquid",
+    "body": [
+      "HASH(\"StructurePipeRadiatorFlatLiquid\")"
+    ],
+    "description": "Device: StructurePipeRadiatorFlatLiquid"
+  },
+  "StructurePortablesConnector": {
+    "prefix": "StructurePortablesConnector",
+    "body": [
+      "HASH(\"StructurePortablesConnector\")"
+    ],
+    "description": "Device: StructurePortablesConnector"
+  },
+  "StructurePowerConnector": {
+    "prefix": "StructurePowerConnector",
+    "body": [
+      "HASH(\"StructurePowerConnector\")"
+    ],
+    "description": "Device: StructurePowerConnector"
+  },
+  "StructurePoweredVent": {
+    "prefix": "StructurePoweredVent",
+    "body": [
+      "HASH(\"StructurePoweredVent\")"
+    ],
+    "description": "Device: StructurePoweredVent"
+  },
+  "StructurePoweredVentLarge": {
+    "prefix": "StructurePoweredVentLarge",
+    "body": [
+      "HASH(\"StructurePoweredVentLarge\")"
+    ],
+    "description": "Device: StructurePoweredVentLarge"
+  },
+  "StructurePowerTransmitter": {
+    "prefix": "StructurePowerTransmitter",
+    "body": [
+      "HASH(\"StructurePowerTransmitter\")"
+    ],
+    "description": "Device: StructurePowerTransmitter"
+  },
+  "StructurePowerTransmitterReceiver": {
+    "prefix": "StructurePowerTransmitterReceiver",
+    "body": [
+      "HASH(\"StructurePowerTransmitterReceiver\")"
+    ],
+    "description": "Device: StructurePowerTransmitterReceiver"
+  },
+  "StructurePowerUmbilicalFemale": {
+    "prefix": "StructurePowerUmbilicalFemale",
+    "body": [
+      "HASH(\"StructurePowerUmbilicalFemale\")"
+    ],
+    "description": "Device: StructurePowerUmbilicalFemale"
+  },
+  "StructurePowerUmbilicalFemaleSide": {
+    "prefix": "StructurePowerUmbilicalFemaleSide",
+    "body": [
+      "HASH(\"StructurePowerUmbilicalFemaleSide\")"
+    ],
+    "description": "Device: StructurePowerUmbilicalFemaleSide"
+  },
+  "StructurePowerUmbilicalMale": {
+    "prefix": "StructurePowerUmbilicalMale",
+    "body": [
+      "HASH(\"StructurePowerUmbilicalMale\")"
+    ],
+    "description": "Device: StructurePowerUmbilicalMale"
+  },
+  "StructurePressurantValve": {
+    "prefix": "StructurePressurantValve",
+    "body": [
+      "HASH(\"StructurePressurantValve\")"
+    ],
+    "description": "Device: StructurePressurantValve"
+  },
+  "StructurePressureFedGasEngine": {
+    "prefix": "StructurePressureFedGasEngine",
+    "body": [
+      "HASH(\"StructurePressureFedGasEngine\")"
+    ],
+    "description": "Device: StructurePressureFedGasEngine"
+  },
+  "StructurePressureFedLiquidEngine": {
+    "prefix": "StructurePressureFedLiquidEngine",
+    "body": [
+      "HASH(\"StructurePressureFedLiquidEngine\")"
+    ],
+    "description": "Device: StructurePressureFedLiquidEngine"
+  },
+  "StructurePressurePlateLarge": {
+    "prefix": "StructurePressurePlateLarge",
+    "body": [
+      "HASH(\"StructurePressurePlateLarge\")"
+    ],
+    "description": "Device: StructurePressurePlateLarge"
+  },
+  "StructurePressurePlateMedium": {
+    "prefix": "StructurePressurePlateMedium",
+    "body": [
+      "HASH(\"StructurePressurePlateMedium\")"
+    ],
+    "description": "Device: StructurePressurePlateMedium"
+  },
+  "StructurePressurePlateSmall": {
+    "prefix": "StructurePressurePlateSmall",
+    "body": [
+      "HASH(\"StructurePressurePlateSmall\")"
+    ],
+    "description": "Device: StructurePressurePlateSmall"
+  },
+  "StructurePressureRegulator": {
+    "prefix": "StructurePressureRegulator",
+    "body": [
+      "HASH(\"StructurePressureRegulator\")"
+    ],
+    "description": "Device: StructurePressureRegulator"
+  },
+  "StructureProximitySensor": {
+    "prefix": "StructureProximitySensor",
+    "body": [
+      "HASH(\"StructureProximitySensor\")"
+    ],
+    "description": "Device: StructureProximitySensor"
+  },
+  "StructurePumpedLiquidEngine": {
+    "prefix": "StructurePumpedLiquidEngine",
+    "body": [
+      "HASH(\"StructurePumpedLiquidEngine\")"
+    ],
+    "description": "Device: StructurePumpedLiquidEngine"
+  },
+  "StructurePurgeValve": {
+    "prefix": "StructurePurgeValve",
+    "body": [
+      "HASH(\"StructurePurgeValve\")"
+    ],
+    "description": "Device: StructurePurgeValve"
+  },
+  "StructureRecycler": {
+    "prefix": "StructureRecycler",
+    "body": [
+      "HASH(\"StructureRecycler\")"
+    ],
+    "description": "Device: StructureRecycler"
+  },
+  "StructureRefrigeratedVendingMachine": {
+    "prefix": "StructureRefrigeratedVendingMachine",
+    "body": [
+      "HASH(\"StructureRefrigeratedVendingMachine\")"
+    ],
+    "description": "Device: StructureRefrigeratedVendingMachine"
+  },
+  "StructureRocketAvionics": {
+    "prefix": "StructureRocketAvionics",
+    "body": [
+      "HASH(\"StructureRocketAvionics\")"
+    ],
+    "description": "Device: StructureRocketAvionics"
+  },
+  "StructureRocketCelestialTracker": {
+    "prefix": "StructureRocketCelestialTracker",
+    "body": [
+      "HASH(\"StructureRocketCelestialTracker\")"
+    ],
+    "description": "Device: StructureRocketCelestialTracker"
+  },
+  "StructureRocketCircuitHousing": {
+    "prefix": "StructureRocketCircuitHousing",
+    "body": [
+      "HASH(\"StructureRocketCircuitHousing\")"
+    ],
+    "description": "Device: StructureRocketCircuitHousing"
+  },
+  "StructureRocketEngineTiny": {
+    "prefix": "StructureRocketEngineTiny",
+    "body": [
+      "HASH(\"StructureRocketEngineTiny\")"
+    ],
+    "description": "Device: StructureRocketEngineTiny"
+  },
+  "StructureRocketManufactory": {
+    "prefix": "StructureRocketManufactory",
+    "body": [
+      "HASH(\"StructureRocketManufactory\")"
+    ],
+    "description": "Device: StructureRocketManufactory"
+  },
+  "StructureRocketMiner": {
+    "prefix": "StructureRocketMiner",
+    "body": [
+      "HASH(\"StructureRocketMiner\")"
+    ],
+    "description": "Device: StructureRocketMiner"
+  },
+  "StructureRocketScanner": {
+    "prefix": "StructureRocketScanner",
+    "body": [
+      "HASH(\"StructureRocketScanner\")"
+    ],
+    "description": "Device: StructureRocketScanner"
+  },
+  "StructureRocketTransformerSmall": {
+    "prefix": "StructureRocketTransformerSmall",
+    "body": [
+      "HASH(\"StructureRocketTransformerSmall\")"
+    ],
+    "description": "Device: StructureRocketTransformerSmall"
+  },
+  "StructureSatelliteDish": {
+    "prefix": "StructureSatelliteDish",
+    "body": [
+      "HASH(\"StructureSatelliteDish\")"
+    ],
+    "description": "Device: StructureSatelliteDish"
+  },
+  "StructureSDBHopper": {
+    "prefix": "StructureSDBHopper",
+    "body": [
+      "HASH(\"StructureSDBHopper\")"
+    ],
+    "description": "Device: StructureSDBHopper"
+  },
+  "StructureSDBHopperAdvanced": {
+    "prefix": "StructureSDBHopperAdvanced",
+    "body": [
+      "HASH(\"StructureSDBHopperAdvanced\")"
+    ],
+    "description": "Device: StructureSDBHopperAdvanced"
+  },
+  "StructureSDBSilo": {
+    "prefix": "StructureSDBSilo",
+    "body": [
+      "HASH(\"StructureSDBSilo\")"
+    ],
+    "description": "Device: StructureSDBSilo"
+  },
+  "StructureSecurityPrinter": {
+    "prefix": "StructureSecurityPrinter",
+    "body": [
+      "HASH(\"StructureSecurityPrinter\")"
+    ],
+    "description": "Device: StructureSecurityPrinter"
+  },
+  "StructureShelfMedium": {
+    "prefix": "StructureShelfMedium",
+    "body": [
+      "HASH(\"StructureShelfMedium\")"
+    ],
+    "description": "Device: StructureShelfMedium"
+  },
+  "StructureShortCornerLocker": {
+    "prefix": "StructureShortCornerLocker",
+    "body": [
+      "HASH(\"StructureShortCornerLocker\")"
+    ],
+    "description": "Device: StructureShortCornerLocker"
+  },
+  "StructureShortLocker": {
+    "prefix": "StructureShortLocker",
+    "body": [
+      "HASH(\"StructureShortLocker\")"
+    ],
+    "description": "Device: StructureShortLocker"
+  },
+  "StructureShower": {
+    "prefix": "StructureShower",
+    "body": [
+      "HASH(\"StructureShower\")"
+    ],
+    "description": "Device: StructureShower"
+  },
+  "StructureShowerPowered": {
+    "prefix": "StructureShowerPowered",
+    "body": [
+      "HASH(\"StructureShowerPowered\")"
+    ],
+    "description": "Device: StructureShowerPowered"
+  },
+  "StructureSign1x1": {
+    "prefix": "StructureSign1x1",
+    "body": [
+      "HASH(\"StructureSign1x1\")"
+    ],
+    "description": "Device: StructureSign1x1"
+  },
+  "StructureSign2x1": {
+    "prefix": "StructureSign2x1",
+    "body": [
+      "HASH(\"StructureSign2x1\")"
+    ],
+    "description": "Device: StructureSign2x1"
+  },
+  "StructureSingleBed": {
+    "prefix": "StructureSingleBed",
+    "body": [
+      "HASH(\"StructureSingleBed\")"
+    ],
+    "description": "Device: StructureSingleBed"
+  },
+  "StructureSleeper": {
+    "prefix": "StructureSleeper",
+    "body": [
+      "HASH(\"StructureSleeper\")"
+    ],
+    "description": "Device: StructureSleeper"
+  },
+  "StructureSleeperLeft": {
+    "prefix": "StructureSleeperLeft",
+    "body": [
+      "HASH(\"StructureSleeperLeft\")"
+    ],
+    "description": "Device: StructureSleeperLeft"
+  },
+  "StructureSleeperRight": {
+    "prefix": "StructureSleeperRight",
+    "body": [
+      "HASH(\"StructureSleeperRight\")"
+    ],
+    "description": "Device: StructureSleeperRight"
+  },
+  "StructureSleeperVertical": {
+    "prefix": "StructureSleeperVertical",
+    "body": [
+      "HASH(\"StructureSleeperVertical\")"
+    ],
+    "description": "Device: StructureSleeperVertical"
+  },
+  "StructureSleeperVerticalDroid": {
+    "prefix": "StructureSleeperVerticalDroid",
+    "body": [
+      "HASH(\"StructureSleeperVerticalDroid\")"
+    ],
+    "description": "Device: StructureSleeperVerticalDroid"
+  },
+  "StructureSmallDirectHeatExchangeGastoGas": {
+    "prefix": "StructureSmallDirectHeatExchangeGastoGas",
+    "body": [
+      "HASH(\"StructureSmallDirectHeatExchangeGastoGas\")"
+    ],
+    "description": "Device: StructureSmallDirectHeatExchangeGastoGas"
+  },
+  "StructureSmallDirectHeatExchangeLiquidtoGas": {
+    "prefix": "StructureSmallDirectHeatExchangeLiquidtoGas",
+    "body": [
+      "HASH(\"StructureSmallDirectHeatExchangeLiquidtoGas\")"
+    ],
+    "description": "Device: StructureSmallDirectHeatExchangeLiquidtoGas"
+  },
+  "StructureSmallDirectHeatExchangeLiquidtoLiquid": {
+    "prefix": "StructureSmallDirectHeatExchangeLiquidtoLiquid",
+    "body": [
+      "HASH(\"StructureSmallDirectHeatExchangeLiquidtoLiquid\")"
+    ],
+    "description": "Device: StructureSmallDirectHeatExchangeLiquidtoLiquid"
+  },
+  "StructureSmallSatelliteDish": {
+    "prefix": "StructureSmallSatelliteDish",
+    "body": [
+      "HASH(\"StructureSmallSatelliteDish\")"
+    ],
+    "description": "Device: StructureSmallSatelliteDish"
+  },
+  "StructureSolarPanel": {
+    "prefix": "StructureSolarPanel",
+    "body": [
+      "HASH(\"StructureSolarPanel\")"
+    ],
+    "description": "Device: StructureSolarPanel"
+  },
+  "StructureSolarPanel45": {
+    "prefix": "StructureSolarPanel45",
+    "body": [
+      "HASH(\"StructureSolarPanel45\")"
+    ],
+    "description": "Device: StructureSolarPanel45"
+  },
+  "StructureSolarPanel45Reinforced": {
+    "prefix": "StructureSolarPanel45Reinforced",
+    "body": [
+      "HASH(\"StructureSolarPanel45Reinforced\")"
+    ],
+    "description": "Device: StructureSolarPanel45Reinforced"
+  },
+  "StructureSolarPanelDual": {
+    "prefix": "StructureSolarPanelDual",
+    "body": [
+      "HASH(\"StructureSolarPanelDual\")"
+    ],
+    "description": "Device: StructureSolarPanelDual"
+  },
+  "StructureSolarPanelDualReinforced": {
+    "prefix": "StructureSolarPanelDualReinforced",
+    "body": [
+      "HASH(\"StructureSolarPanelDualReinforced\")"
+    ],
+    "description": "Device: StructureSolarPanelDualReinforced"
+  },
+  "StructureSolarPanelFlat": {
+    "prefix": "StructureSolarPanelFlat",
+    "body": [
+      "HASH(\"StructureSolarPanelFlat\")"
+    ],
+    "description": "Device: StructureSolarPanelFlat"
+  },
+  "StructureSolarPanelFlatReinforced": {
+    "prefix": "StructureSolarPanelFlatReinforced",
+    "body": [
+      "HASH(\"StructureSolarPanelFlatReinforced\")"
+    ],
+    "description": "Device: StructureSolarPanelFlatReinforced"
+  },
+  "StructureSolarPanelReinforced": {
+    "prefix": "StructureSolarPanelReinforced",
+    "body": [
+      "HASH(\"StructureSolarPanelReinforced\")"
+    ],
+    "description": "Device: StructureSolarPanelReinforced"
+  },
+  "StructureSolidFuelGenerator": {
+    "prefix": "StructureSolidFuelGenerator",
+    "body": [
+      "HASH(\"StructureSolidFuelGenerator\")"
+    ],
+    "description": "Device: StructureSolidFuelGenerator"
+  },
+  "StructureSorter": {
+    "prefix": "StructureSorter",
+    "body": [
+      "HASH(\"StructureSorter\")"
+    ],
+    "description": "Device: StructureSorter"
+  },
+  "StructureStacker": {
+    "prefix": "StructureStacker",
+    "body": [
+      "HASH(\"StructureStacker\")"
+    ],
+    "description": "Device: StructureStacker"
+  },
+  "StructureStackerReverse": {
+    "prefix": "StructureStackerReverse",
+    "body": [
+      "HASH(\"StructureStackerReverse\")"
+    ],
+    "description": "Device: StructureStackerReverse"
+  },
+  "StructureStirlingEngine": {
+    "prefix": "StructureStirlingEngine",
+    "body": [
+      "HASH(\"StructureStirlingEngine\")"
+    ],
+    "description": "Device: StructureStirlingEngine"
+  },
+  "StructureStorageLocker": {
+    "prefix": "StructureStorageLocker",
+    "body": [
+      "HASH(\"StructureStorageLocker\")"
+    ],
+    "description": "Device: StructureStorageLocker"
+  },
+  "StructureSuitStorage": {
+    "prefix": "StructureSuitStorage",
+    "body": [
+      "HASH(\"StructureSuitStorage\")"
+    ],
+    "description": "Device: StructureSuitStorage"
+  },
+  "StructureTankBig": {
+    "prefix": "StructureTankBig",
+    "body": [
+      "HASH(\"StructureTankBig\")"
+    ],
+    "description": "Device: StructureTankBig"
+  },
+  "StructureTankBigInsulated": {
+    "prefix": "StructureTankBigInsulated",
+    "body": [
+      "HASH(\"StructureTankBigInsulated\")"
+    ],
+    "description": "Device: StructureTankBigInsulated"
+  },
+  "StructureTankSmall": {
+    "prefix": "StructureTankSmall",
+    "body": [
+      "HASH(\"StructureTankSmall\")"
+    ],
+    "description": "Device: StructureTankSmall"
+  },
+  "StructureTankSmallAir": {
+    "prefix": "StructureTankSmallAir",
+    "body": [
+      "HASH(\"StructureTankSmallAir\")"
+    ],
+    "description": "Device: StructureTankSmallAir"
+  },
+  "StructureTankSmallFuel": {
+    "prefix": "StructureTankSmallFuel",
+    "body": [
+      "HASH(\"StructureTankSmallFuel\")"
+    ],
+    "description": "Device: StructureTankSmallFuel"
+  },
+  "StructureTankSmallInsulated": {
+    "prefix": "StructureTankSmallInsulated",
+    "body": [
+      "HASH(\"StructureTankSmallInsulated\")"
+    ],
+    "description": "Device: StructureTankSmallInsulated"
+  },
+  "StructureToolManufactory": {
+    "prefix": "StructureToolManufactory",
+    "body": [
+      "HASH(\"StructureToolManufactory\")"
+    ],
+    "description": "Device: StructureToolManufactory"
+  },
+  "StructureTraderWaypoint": {
+    "prefix": "StructureTraderWaypoint",
+    "body": [
+      "HASH(\"StructureTraderWaypoint\")"
+    ],
+    "description": "Device: StructureTraderWaypoint"
+  },
+  "StructureTransformer": {
+    "prefix": "StructureTransformer",
+    "body": [
+      "HASH(\"StructureTransformer\")"
+    ],
+    "description": "Device: StructureTransformer"
+  },
+  "StructureTransformerMedium": {
+    "prefix": "StructureTransformerMedium",
+    "body": [
+      "HASH(\"StructureTransformerMedium\")"
+    ],
+    "description": "Device: StructureTransformerMedium"
+  },
+  "StructureTransformerMediumReversed": {
+    "prefix": "StructureTransformerMediumReversed",
+    "body": [
+      "HASH(\"StructureTransformerMediumReversed\")"
+    ],
+    "description": "Device: StructureTransformerMediumReversed"
+  },
+  "StructureTransformerSmall": {
+    "prefix": "StructureTransformerSmall",
+    "body": [
+      "HASH(\"StructureTransformerSmall\")"
+    ],
+    "description": "Device: StructureTransformerSmall"
+  },
+  "StructureTransformerSmallReversed": {
+    "prefix": "StructureTransformerSmallReversed",
+    "body": [
+      "HASH(\"StructureTransformerSmallReversed\")"
+    ],
+    "description": "Device: StructureTransformerSmallReversed"
+  },
+  "StructureTurbineGenerator": {
+    "prefix": "StructureTurbineGenerator",
+    "body": [
+      "HASH(\"StructureTurbineGenerator\")"
+    ],
+    "description": "Device: StructureTurbineGenerator"
+  },
+  "StructureTurboVolumePump": {
+    "prefix": "StructureTurboVolumePump",
+    "body": [
+      "HASH(\"StructureTurboVolumePump\")"
+    ],
+    "description": "Device: StructureTurboVolumePump"
+  },
+  "StructureUnloader": {
+    "prefix": "StructureUnloader",
+    "body": [
+      "HASH(\"StructureUnloader\")"
+    ],
+    "description": "Device: StructureUnloader"
+  },
+  "StructureUprightWindTurbine": {
+    "prefix": "StructureUprightWindTurbine",
+    "body": [
+      "HASH(\"StructureUprightWindTurbine\")"
+    ],
+    "description": "Device: StructureUprightWindTurbine"
+  },
+  "StructureValve": {
+    "prefix": "StructureValve",
+    "body": [
+      "HASH(\"StructureValve\")"
+    ],
+    "description": "Device: StructureValve"
+  },
+  "StructureVendingMachine": {
+    "prefix": "StructureVendingMachine",
+    "body": [
+      "HASH(\"StructureVendingMachine\")"
+    ],
+    "description": "Device: StructureVendingMachine"
+  },
+  "StructureVolumePump": {
+    "prefix": "StructureVolumePump",
+    "body": [
+      "HASH(\"StructureVolumePump\")"
+    ],
+    "description": "Device: StructureVolumePump"
+  },
+  "StructureWallCooler": {
+    "prefix": "StructureWallCooler",
+    "body": [
+      "HASH(\"StructureWallCooler\")"
+    ],
+    "description": "Device: StructureWallCooler"
+  },
+  "StructureWallHeater": {
+    "prefix": "StructureWallHeater",
+    "body": [
+      "HASH(\"StructureWallHeater\")"
+    ],
+    "description": "Device: StructureWallHeater"
+  },
+  "StructureWallLight": {
+    "prefix": "StructureWallLight",
+    "body": [
+      "HASH(\"StructureWallLight\")"
+    ],
+    "description": "Device: StructureWallLight"
+  },
+  "StructureWallLightBattery": {
+    "prefix": "StructureWallLightBattery",
+    "body": [
+      "HASH(\"StructureWallLightBattery\")"
+    ],
+    "description": "Device: StructureWallLightBattery"
+  },
+  "StructureWaterBottleFiller": {
+    "prefix": "StructureWaterBottleFiller",
+    "body": [
+      "HASH(\"StructureWaterBottleFiller\")"
+    ],
+    "description": "Device: StructureWaterBottleFiller"
+  },
+  "StructureWaterBottleFillerBottom": {
+    "prefix": "StructureWaterBottleFillerBottom",
+    "body": [
+      "HASH(\"StructureWaterBottleFillerBottom\")"
+    ],
+    "description": "Device: StructureWaterBottleFillerBottom"
+  },
+  "StructureWaterBottleFillerPowered": {
+    "prefix": "StructureWaterBottleFillerPowered",
+    "body": [
+      "HASH(\"StructureWaterBottleFillerPowered\")"
+    ],
+    "description": "Device: StructureWaterBottleFillerPowered"
+  },
+  "StructureWaterBottleFillerPoweredBottom": {
+    "prefix": "StructureWaterBottleFillerPoweredBottom",
+    "body": [
+      "HASH(\"StructureWaterBottleFillerPoweredBottom\")"
+    ],
+    "description": "Device: StructureWaterBottleFillerPoweredBottom"
+  },
+  "StructureWaterDigitalValve": {
+    "prefix": "StructureWaterDigitalValve",
+    "body": [
+      "HASH(\"StructureWaterDigitalValve\")"
+    ],
+    "description": "Device: StructureWaterDigitalValve"
+  },
+  "StructureWaterPipeMeter": {
+    "prefix": "StructureWaterPipeMeter",
+    "body": [
+      "HASH(\"StructureWaterPipeMeter\")"
+    ],
+    "description": "Device: StructureWaterPipeMeter"
+  },
+  "StructureWaterPurifier": {
+    "prefix": "StructureWaterPurifier",
+    "body": [
+      "HASH(\"StructureWaterPurifier\")"
+    ],
+    "description": "Device: StructureWaterPurifier"
+  },
+  "StructureWaterWallCooler": {
+    "prefix": "StructureWaterWallCooler",
+    "body": [
+      "HASH(\"StructureWaterWallCooler\")"
+    ],
+    "description": "Device: StructureWaterWallCooler"
+  },
+  "StructureWeatherStation": {
+    "prefix": "StructureWeatherStation",
+    "body": [
+      "HASH(\"StructureWeatherStation\")"
+    ],
+    "description": "Device: StructureWeatherStation"
+  },
+  "StructureWindowShutter": {
+    "prefix": "StructureWindowShutter",
+    "body": [
+      "HASH(\"StructureWindowShutter\")"
+    ],
+    "description": "Device: StructureWindowShutter"
+  },
+  "StructureWindTurbine": {
+    "prefix": "StructureWindTurbine",
+    "body": [
+      "HASH(\"StructureWindTurbine\")"
+    ],
+    "description": "Device: StructureWindTurbine"
+  },
+  "WeaponEnergy": {
+    "prefix": "WeaponEnergy",
+    "body": [
+      "HASH(\"WeaponEnergy\")"
+    ],
+    "description": "Device: WeaponEnergy"
+  },
+  "WeaponPistolEnergy": {
+    "prefix": "WeaponPistolEnergy",
+    "body": [
+      "HASH(\"WeaponPistolEnergy\")"
+    ],
+    "description": "Device: WeaponPistolEnergy"
+  },
+  "WeaponRifleEnergy": {
+    "prefix": "WeaponRifleEnergy",
+    "body": [
+      "HASH(\"WeaponRifleEnergy\")"
+    ],
+    "description": "Device: WeaponRifleEnergy"
+  }
+}

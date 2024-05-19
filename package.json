@@ -1,0 +1,252 @@
+{
+  "name": "ic10",
+  "displayName": "ic10",
+  "description": "ic10",
+  "version": "0.0.1",
+  "main": "dist/client/extension.js",
+  "engines": {
+    "vscode": "^1.89.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Debuggers",
+    "Snippets",
+    "Formatters"
+  ],
+  "activationEvents": [
+    "onDebugResolve:ic10",
+    "workspaceContains:filePattern:.ic10"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Stationeers-ic/vscode-syntax"
+  },
+  "scripts": {
+    "vscode:prepublish": "bun run build",
+    "build:grammar": "bun tools/index.ts",
+    "format": "prettier --write .",
+    "build:ts": "tsc -p .",
+    "build": "bun scripts/build.ts",
+    "watch": "tsc -watch -p .",
+    "clear:log": "echo \"\" > ./src/devtools/log.txt"
+  },
+  "extensionKind": [
+    "workspace",
+    "ui"
+  ],
+  "contributes": {
+    "breakpoints": [
+      {
+        "language": "ic10"
+      }
+    ],
+    "languages": [
+      {
+        "id": "ic10",
+        "aliases": [
+          "IC10",
+          "ic10"
+        ],
+        "extensions": [
+          "ic10",
+          "ic"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./resources/icons/ic10.png",
+          "dark": "./resources/icons/ic10.png"
+        }
+      },
+      {
+        "id": "icEnv",
+        "aliases": [
+          "Ic10 Environment",
+          "icEnv",
+          "ice"
+        ],
+        "extensions": [
+          "icEnv",
+          "icenv",
+          "ice"
+        ],
+        "icon": {
+          "light": "./resources/icons/icEnv.png",
+          "dark": "./resources/icons/icEnv.png"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "ic10",
+        "scopeName": "source.ic10",
+        "path": "./syntaxes/ic10.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "ic10",
+        "path": "./snippets/ic10.json"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Ic10 configuration",
+      "properties": {}
+    },
+    "debuggers": [
+      {
+        "type": "ic10",
+        "label": "ic10 Debug",
+        "program": "dist/ic10-server/debugger/extension.js",
+        "runtime": "node",
+        "languages": [
+          "ic10",
+          "icX"
+        ],
+        "configurationAttributes": {
+          "launch": {
+            "required": [
+              "program"
+            ],
+            "properties": {
+              "program": {
+                "type": "string",
+                "description": "Absolute path to a text file.",
+                "default": "${file}"
+              },
+              "stopOnEntry": {
+                "type": "boolean",
+                "description": "Automatically stop after launch.",
+                "default": true
+              },
+              "trace": {
+                "type": "boolean",
+                "description": "Enable logging of the Debug Adapter Protocol.",
+                "default": true
+              }
+            },
+            "initialConfigurations": [
+              {
+                "type": "ic10",
+                "request": "launch",
+                "name": "Ask for file name",
+                "program": "${workspaceFolder}/${command:AskForProgramName}",
+                "stopOnEntry": true
+              }
+            ]
+          }
+        },
+        "configurationSnippets": [
+          {
+            "label": "Ic10 Debug",
+            "description": "Stationers ic10 debugger",
+            "body": {
+              "type": "ic10",
+              "request": "launch",
+              "name": "Debug ic10",
+              "program": "${file}",
+              "stopOnEntry": true,
+              "trace": false
+            }
+          },
+          {
+            "label": "IcX Debug (required workspace)",
+            "description": "Stationers ic10 debugger",
+            "body": {
+              "type": "ic10",
+              "request": "launch",
+              "name": "Debug icX",
+              "program": "${fileWorkspaceFolder}${pathSeparator}${fileBasenameNoExtension}.ic10",
+              "stopOnEntry": true,
+              "trace": false
+            }
+          }
+        ],
+        "variables": {
+          "AskForProgramName": "extension.1c10-debug.getProgramName"
+        }
+      }
+    ],
+    "commands": [
+      {
+        "command": "ic10.minify",
+        "title": "Minify code",
+        "description": "remove all comments and spaces from code",
+        "icon": "$(gather)"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "ic10.minify",
+          "when": "editorLangId == ic10"
+        }
+      ],
+      "editor/title/run": [
+        {
+          "command": "ic10.minify",
+          "when": "editorLangId == ic10"
+        }
+      ]
+    },
+    "configurationDefaults": {
+      "[ic10]": {
+        "editor.semanticHighlighting.enabled": true
+      }
+    },
+    "walkthroughs": [
+      {
+        "id": "ic10Welcome",
+        "title": "Welcome to ic10",
+        "description": "Learn how to use ic10",
+        "steps": [
+          {
+            "id": "welcome",
+            "title": "Welcome",
+            "description": "Welcome to ic10",
+            "media": {
+              "markdown": "walkthrough/welcome.md"
+            }
+          }
+        ]
+      }
+    ],
+    "customEditors": [
+      {
+        "viewType": "ic10.envEditor",
+        "displayName": "Ic10 Env Editor",
+        "selector": [
+          {
+						"filenamePattern": "*.icEnv"
+					},
+					{
+						"filenamePattern": "*.icenv"
+					},
+					{
+						"filenamePattern": "*.ice"
+					}
+        ]
+      }
+    ]
+  },
+  "iconDefinitions": {
+    "_folder_dark": {
+      "iconPath": "./images/Folder_16x_inverse.svg"
+    }
+  },
+  "devDependencies": {
+    "@types/bun": "^1.1.1",
+    "@types/vscode": "^1.89.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@vscode/codicons": "^0.0.36",
+    "@vscode/debugadapter": "^1.65.0",
+    "@vscode/debugprotocol": "^1.65.0",
+    "ic10": "^4.3.1",
+    "vscode-languageclient": "^9.0.1",
+    "vscode-languageserver": "^9.0.1",
+    "vscode-languageserver-textdocument": "^1.0.11",
+    "zod": "^3.23.8"
+  }
+}

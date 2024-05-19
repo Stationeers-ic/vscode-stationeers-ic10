@@ -1,0 +1,3 @@
+move r0 10
+define test 10
+s d0 Setting test

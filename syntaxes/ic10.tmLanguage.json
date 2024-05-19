@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "ic10",
+  "patterns": [
+    {
+      "include": "#label"
+    },
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#instructions"
+    },
+    {
+      "include": "#variable"
+    },
+    {
+      "include": "#device"
+    },
+    {
+      "include": "#constant"
+    },
+    {
+      "include": "#logic"
+    },
+    {
+      "include": "#HASH"
+    },
+    {
+      "include": "#number"
+    }
+  ],
+  "repository": {
+    "HASH": {
+      "name": "constant.language.ic10",
+      "match": "\\bHASH\\(\"\\w+\"\\)"
+    },
+    "number": {
+      "name": "constant.numeric.ic10",
+      "match": "\\b-?(?:\\d*(?:\\.\\d+)|\\d+(?:\\.\\d+)?)+"
+    },
+    "label": {
+      "name": "entity.name.type",
+      "match": "\\b(?:[a-zA-Z_][a-zA-Z0-9_]*):"
+    },
+    "comments": {
+      "patterns": [
+        {
+          "begin": "#",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.ic10"
+            }
+          },
+          "end": "$",
+          "name": "comment.line.number-sign.ic10"
+        }
+      ]
+    },
+    "instructions": {
+      "name": "entity.name.tag",
+      "match": "\\b(?:l|s|ls|lr|sb|lb|alias|move|add|sub|sdse|sdns|slt|sgt|sle|sge|seq|sne|sap|sna|and|or|xor|nor|mul|div|mod|j|bltz|bgez|blez|bgtz|bdse|bdns|beq|bne|bap|bna|jal|brdse|brdns|bltzal|bgezal|blezal|bgtzal|beqal|bneal|jr|bdseal|bdnsal|brltz|brgez|brlez|brgtz|breq|brne|brap|brna|sqrt|round|trunc|ceil|floor|max|min|abs|log|exp|rand|yield|label|peek|push|pop|hcf|select|blt|bgt|ble|bge|brlt|brgt|brle|brge|bltal|bgtal|bleal|bgeal|bapal|bnaal|beqz|bnez|bapz|bnaz|breqz|brnez|brapz|brnaz|beqzal|bnezal|bapzal|bnazal|sltz|sgtz|slez|sgez|seqz|snez|sapz|snaz|define|sleep|sin|asin|tan|atan|cos|acos|atan2|brnan|bnan|snan|snanz|lbs|lbn|sbn|lbns|ss|sbs|srl|sra|sll|sla|not|ld|sd|poke|getd|putd|get|put|clr|clrd)\\b"
+    },
+    "variable": {
+      "patterns": [
+        {
+          "name": "variable.parameter.ic10",
+          "match": "\\b(([r]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17)))|(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17)))\\b"
+        },
+        {
+          "name": "variable.parameter.ic10",
+          "match": "\\b(ra|sp)\\b"
+        }
+      ]
+    },
+    "device": {
+      "patterns": [
+        {
+          "name": "variable.parameter.ic10",
+          "match": "\\b(([rd]{1,}(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17)))|(r(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17)))\\b"
+        },
+        {
+          "name": "variable.parameter.ic10",
+          "match": "\\bd(0|1|2|3|4|5)\\b"
+        },
+        {
+          "name": "variable.parameter.ic10",
+          "match": "\\bdb\\b"
+        }
+      ]
+    },
+    "logic": {
+      "name": "entity.name.type",
+      "match": "\\b(?:|||Acceleration|Activate|AirRelease|AlignmentError|Apex|AutoLand|AutoShutOff|BestContactFilter|Bpm|BurnTimeRemaining|CelestialHash|CelestialParentHash|Channel0|Channel1|Channel2|Channel3|Channel4|Channel5|Channel6|Channel7|Charge|Chart|ChartedNavPoints|ClearMemory|CollectableGoods|Color|Combustion|CombustionInput|CombustionInput2|CombustionLimiter|CombustionOutput|CombustionOutput2|CompletionRatio|ContactTypeId|CurrentCode|CurrentResearchPodType|Density|DestinationCode|Discover|DistanceAu|DistanceKm|DrillCondition|DryMass|Eccentricity|ElevatorLevel|ElevatorSpeed|EntityState|EnvironmentEfficiency|Error|ExhaustVelocity|ExportCount|Filtration|FlightControlRule|Flush|ForceWrite|ForwardX|ForwardY|ForwardZ|Fuel|Harvest|Horizontal|HorizontalRatio|Idle|ImportCount|Inclination|Index|InterrogationProgress|LineNumber|Lock|ManualResearchRequiredPod|Mass|Maximum|MineablesInQueue|MineablesInVicinity|MinedQuantity|MinimumWattsToContact|Mode|NameHash|NavPoints|NextWeatherEventTime|On|Open|OperationalTemperatureEfficiency|OrbitPeriod|Orientation|Output|PassedMoles|Plant|PositionX|PositionY|PositionZ|Power|PowerActual|PowerGeneration|PowerPotential|PowerRequired|PrefabHash|Pressure|PressureEfficiency|PressureExternal|PressureInput|PressureInput2|PressureInternal|PressureOutput|PressureOutput2|PressureSetting|Progress|Quantity|Ratio|RatioCarbonDioxide|RatioCarbonDioxideInput|RatioCarbonDioxideInput2|RatioCarbonDioxideOutput|RatioCarbonDioxideOutput2|RatioHydrogen|RatioLiquidCarbonDioxide|RatioLiquidCarbonDioxideInput|RatioLiquidCarbonDioxideInput2|RatioLiquidCarbonDioxideOutput|RatioLiquidCarbonDioxideOutput2|RatioLiquidHydrogen|RatioLiquidNitrogen|RatioLiquidNitrogenInput|RatioLiquidNitrogenInput2|RatioLiquidNitrogenOutput|RatioLiquidNitrogenOutput2|RatioLiquidNitrousOxide|RatioLiquidNitrousOxideInput|RatioLiquidNitrousOxideInput2|RatioLiquidNitrousOxideOutput|RatioLiquidNitrousOxideOutput2|RatioLiquidOxygen|RatioLiquidOxygenInput|RatioLiquidOxygenInput2|RatioLiquidOxygenOutput|RatioLiquidOxygenOutput2|RatioLiquidPollutant|RatioLiquidPollutantInput|RatioLiquidPollutantInput2|RatioLiquidPollutantOutput|RatioLiquidPollutantOutput2|RatioLiquidVolatiles|RatioLiquidVolatilesInput|RatioLiquidVolatilesInput2|RatioLiquidVolatilesOutput|RatioLiquidVolatilesOutput2|RatioNitrogen|RatioNitrogenInput|RatioNitrogenInput2|RatioNitrogenOutput|RatioNitrogenOutput2|RatioNitrousOxide|RatioNitrousOxideInput|RatioNitrousOxideInput2|RatioNitrousOxideOutput|RatioNitrousOxideOutput2|RatioOxygen|RatioOxygenInput|RatioOxygenInput2|RatioOxygenOutput|RatioOxygenOutput2|RatioPollutant|RatioPollutantInput|RatioPollutantInput2|RatioPollutantOutput|RatioPollutantOutput2|RatioPollutedWater|RatioSteam|RatioSteamInput|RatioSteamInput2|RatioSteamOutput|RatioSteamOutput2|RatioVolatiles|RatioVolatilesInput|RatioVolatilesInput2|RatioVolatilesOutput|RatioVolatilesOutput2|RatioWater|RatioWaterInput|RatioWaterInput2|RatioWaterOutput|RatioWaterOutput2|ReEntryAltitude|Reagents|RecipeHash|ReferenceId|RequestHash|RequiredPower|ReturnFuelCost|Richness|Rpm|SemiMajorAxis|Setting|SettingInput|SettingOutput|SignalID|SignalStrength|Sites|Size|SizeX|SizeY|SizeZ|SolarAngle|SolarIrradiance|SoundAlert|Stress|Survey|TargetPadIndex|TargetX|TargetY|TargetZ|Temperature|TemperatureDifferentialEfficiency|TemperatureExternal|TemperatureInput|TemperatureInput2|TemperatureOutput|TemperatureOutput2|TemperatureSetting|Throttle|Thrust|ThrustToWeight|Time|TimeToDestination|TotalMoles|TotalMolesInput|TotalMolesInput2|TotalMolesOutput|TotalMolesOutput2|TotalQuantity|TrueAnomaly|VelocityMagnitude|VelocityRelativeX|VelocityRelativeY|VelocityRelativeZ|VelocityX|VelocityY|VelocityZ|Vertical|VerticalRatio|Volume|VolumeOfLiquid|WattsReachingContact|Weight|WorkingGasEfficiency)\\b"
+    },
+    "constant": {
+      "name": "constant.language.ic10",
+      "match": "\\b(?:nan|pinf|ninf|pi|deg2rad|rad2deg|epsilon|Contents|Required|Recipe|TotalContents|Average|Sum|Minimum|Maximum|Sound.None|Sound.Alarm2|Sound.Alarm3|Sound.Alarm4|Sound.Alarm5|Sound.Alarm6|Sound.Alarm7|Sound.Music1|Sound.Music2|Sound.Music3|Sound.Alarm8|Sound.Alarm9|Sound.Alarm10|Sound.Alarm11|Sound.Alarm12|Sound.Danger|Sound.Warning|Sound.Alert|Sound.StormIncoming|Sound.IntruderAlert|Sound.Depressurising|Sound.Pressurising|Sound.AirlockCycling|Sound.PowerLow|Sound.SystemFailure|Sound.Welcome|Sound.MalfunctionDetected|Sound.HaltWhoGoesThere|Sound.FireFireFire|Sound.One|Sound.Two|Sound.Three|Sound.Four|Sound.Five|Sound.Floor|Sound.RocketLaunching|Sound.LiftOff|Sound.TraderIncoming|Sound.TraderLanded|Sound.PressureHigh|Sound.PressureLow|Sound.TemperatureHigh|Sound.TemperatureLow|Sound.PollutantsDetected|Sound.HighCarbonDioxide|Sound.Alarm1|TransmitterMode.Passive|TransmitterMode.Active|ElevatorMode.Stationary|ElevatorMode.Upward|ElevatorMode.Downward|Color.Blue|Color.Gray|Color.Green|Color.Orange|Color.Red|Color.Yellow|Color.White|Color.Black|Color.Brown|Color.Khaki|Color.Pink|Color.Purple|EntityState.Alive|EntityState.Dead|EntityState.Unconscious|EntityState.Decay|AirControl.None|AirControl.Offline|AirControl.Pressure|AirControl.Draught|DaylightSensorMode.Default|DaylightSensorMode.Horizontal|DaylightSensorMode.Vertical|Equals|Greater|Less|NotEquals|AirCon.Cold|AirCon.Hot|Vent.Outward|Vent.Inward|PowerMode.Idle|PowerMode.Discharged|PowerMode.Discharging|PowerMode.Charging|PowerMode.Charged|RobotMode.None|RobotMode.Follow|RobotMode.MoveToTarget|RobotMode.Roam|RobotMode.Unload|RobotMode.PathToTarget|RobotMode.StorageFull|SortingClass.Default|SortingClass.Kits|SortingClass.Tools|SortingClass.Resources|SortingClass.Food|SortingClass.Clothing|SortingClass.Appliances|SortingClass.Atmospherics|SortingClass.Storage|SortingClass.Ores|SortingClass.Ices|SlotClass.None|SlotClass.Helmet|SlotClass.Suit|SlotClass.Back|SlotClass.GasFilter|SlotClass.GasCanister|SlotClass.Motherboard|SlotClass.Circuitboard|SlotClass.DataDisk|SlotClass.Organ|SlotClass.Ore|SlotClass.Plant|SlotClass.Uniform|SlotClass.Entity|SlotClass.Battery|SlotClass.Egg|SlotClass.Belt|SlotClass.Tool|SlotClass.Appliance|SlotClass.Ingot|SlotClass.Torpedo|SlotClass.Cartridge|SlotClass.AccessCard|SlotClass.Magazine|SlotClass.Circuit|SlotClass.Bottle|SlotClass.ProgrammableChip|SlotClass.Glasses|SlotClass.CreditCard|SlotClass.DirtCanister|SlotClass.SensorProcessingUnit|SlotClass.LiquidCanister|SlotClass.LiquidBottle|SlotClass.Wreckage|SlotClass.SoundCartridge|SlotClass.DrillHead|SlotClass.ScanningHead|SlotClass.Flare|SlotClass.Blocked|SlotClass.SuitMod|GasType.Undefined|GasType.Oxygen|GasType.Nitrogen|GasType.CarbonDioxide|GasType.Volatiles|GasType.Pollutant|GasType.Water|GasType.NitrousOxide|GasType.LiquidNitrogen|GasType.LiquidOxygen|GasType.LiquidVolatiles|GasType.Steam|GasType.LiquidCarbonDioxide|GasType.LiquidPollutant|GasType.LiquidNitrousOxide|GasType.Hydrogen|GasType.LiquidHydrogen|GasType.PollutedWater|GasType.Invalid|GasType.None|GasType.Mine|GasType.Survey|GasType.Discover|GasType.Chart|ReEntryProfile.None|ReEntryProfile.Optimal|ReEntryProfile.Medium|ReEntryProfile.High|ReEntryProfile.Max|SorterInstruction.None|SorterInstruction.FilterPrefabHashEquals|SorterInstruction.FilterPrefabHashNotEquals|SorterInstruction.FilterSortingClassCompare|SorterInstruction.FilterSlotTypeCompare|SorterInstruction.FilterQuantityCompare|SorterInstruction.LimitNextExecutionByCount)\\b"
+    }
+  },
+  "scopeName": "source.ic10"
+}

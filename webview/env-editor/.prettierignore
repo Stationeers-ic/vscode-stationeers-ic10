@@ -1,0 +1,10 @@
+.git
+.github
+.vscode
+.svn
+.hg
+node_modules
+dist/
+build/
+out/
+package-lock.json

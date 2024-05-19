@@ -1,0 +1,28 @@
+alias test34324 r0
+alias test r0
+alias test4 r5
+
+define test test
+define test2 
+
+move test test2 move
+move test 22
+move test 1
+
+move r9 Color.Brown
+move r9 Color.Purple
+
+GasType.Invalid
+SorterInstruction.FilterPrefabHashEquals
+
+GasType.LiquidHydrogen
+
+move r5 HASH("StructureActiveVent")
+
+main:
+
+    move test 22
+    move test 1
+
+j main
+
