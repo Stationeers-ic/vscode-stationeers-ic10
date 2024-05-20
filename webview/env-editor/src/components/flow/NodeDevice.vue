@@ -9,7 +9,7 @@ const props = defineProps<{
 	id: string,
 }>()
 const node = useNodesData<Node<Datum>>(props.id)
-const connections = ref<H[]>([])
+// const connections = ref<H[]>([])
 const ports = ref<H[]>([])
 onMounted(() => {
 	if (node.value?.data) {
@@ -22,7 +22,7 @@ onMounted(() => {
 						title: `d${i}`,
 						position: Position.Left,
 						type: "target",
-						icon:"ic-icon ic-icon-data_connection"
+						icon:"ic-icon-power_connection"
 					})
 				}else{
 					__ports.push({
@@ -36,7 +36,7 @@ onMounted(() => {
 			ports.value = __ports
 
 		}
-		connections.value = node.value.data.connections
+		// connections.value = node.value.data.connections
 	}
 })
 

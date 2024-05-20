@@ -1,13 +1,8 @@
 <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-	<!-- Верхний зеленый квадрат -->
-	<rect x="35" y="10" width="30" height="30" fill="green" />
-
-	<!-- Линии соединения -->
-	<line x1="50" y1="40" x2="50" y2="50" stroke="green" stroke-width="2"/>
-	<line x1="50" y1="50" x2="20" y2="62" stroke="green" stroke-width="2"/>
-	<line x1="50" y1="50" x2="80" y2="62" stroke="green" stroke-width="2"/>
-
-	<!-- Левые и правые зеленые квадраты -->
-	<rect x="5" y="60" width="30" height="30" fill="green" />
-	<rect x="65" y="60" width="30" height="30" fill="green" />
+	<path d="M35 10 h30 v30 h-30 z
+           M50 40 v10
+           M50 50 l-30 12
+           M50 50 l30 12
+           M5 60 h30 v30 h-30 z
+           M65 60 h30 v30 h-30 z" fill="green" stroke="green" stroke-width="2"/>
 </svg>
