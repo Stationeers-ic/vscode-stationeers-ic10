@@ -58,6 +58,8 @@ const validate: ValidConnectionFunc = (connection, elements) => {
 	}
 
 	.content {
+		width: 20em;
+		pointer-events: none;
 		font-family: var(--monaco-monospace-font), serif !important;
 		font-size: 0.5rem;
 		color: var(--vscode-activityBarTop-inactiveForeground);

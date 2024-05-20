@@ -45,7 +45,7 @@ export class EnvEditor implements vscode.CustomTextEditorProvider {
 		webviewPanel.webview.onDidReceiveMessage((e) => {
 			switch (e.type) {
 				case "update":
-					if(e.text === document.getText()) return
+					if (e.text === document.getText()) return
 					this.updateTextDocument(document, e.text)
 					break
 			}
@@ -63,7 +63,7 @@ export class EnvEditor implements vscode.CustomTextEditorProvider {
 		const nonce = getNonce()
 
 		const isDev = assets.scripts.find((script) => script.includes("@vite")) !== undefined
-		if(isDev){
+		if (isDev) {
 			return "<H1> Требуется сбилдить  </H1>"
 		}
 		const footer = assets.scripts.map((script) => {
@@ -76,6 +76,7 @@ export class EnvEditor implements vscode.CustomTextEditorProvider {
 			const path = webview.asWebviewUri(vscode.Uri.joinPath(this.context.extensionUri, "dist", "webview", "env-editor", ...style.split("/")))
 			return /* html */ `<link nonce="${nonce}" rel="stylesheet" href="${path}" />`
 		})
+		const font = webview.asWebviewUri(vscode.Uri.joinPath(this.context.extensionUri, "dist", "webview", "env-editor", "assets", "icomoon-D5Wt02Km.ttf"))
 		//подключаем иконки
 		const doc = /* html */ `
 		<!DOCTYPE html>
@@ -90,6 +91,16 @@ export class EnvEditor implements vscode.CustomTextEditorProvider {
 			<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval';">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			${header.join("\n")}
+			<style>
+			@font-face {
+				font-family: 'icomoon';
+				src: url('${font}') format('truetype');
+				font-weight: normal;
+				font-style: normal;
+				font-display: block;
+			}
+
+			</style>
 			<title>ic10 Env</title>
 		</head>
 		<body class="ic10-editor">

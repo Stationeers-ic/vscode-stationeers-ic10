@@ -10,14 +10,12 @@ const props = defineProps<{
 }>()
 const node = useNodesData<Node<Datum>>(props.id)
 const connections = ref<H[]>([])
-const ports = ref<H[]>([])
 onMounted(() => {
 	if (node.value?.data) {
 		if (node.value.data.deviceConnectCount) {
-			const __ports: H[] = []
 			for (let i = 0; i < node.value.data.deviceConnectCount; i++) {
 				if (i < node.value.data.deviceConnectCount / 2) {
-					__ports.push({
+					connections.value.push({
 						id: `d${i}`,
 						title: `d${i}`,
 						position: Position.Left,
@@ -25,7 +23,7 @@ onMounted(() => {
 						icon: "ic-icon-port_connection"
 					})
 				} else {
-					__ports.push({
+					connections.value.push({
 						id: `d${i}`,
 						title: `d${i}`,
 						position: Position.Right,
@@ -34,11 +32,9 @@ onMounted(() => {
 					})
 				}
 			}
-			ports.value = __ports
-
 		}
 		console.log("connections", node.value.data.connections)
-		connections.value = node.value.data.connections.map((c: Connection) => {
+		node.value.data.connections.map((c: Connection) => {
 			let pos = Position.Bottom
 			let icon = undefined
 			switch (c) {
@@ -51,26 +47,50 @@ onMounted(() => {
 					icon = "ic-icon-data_connection"
 					break
 				case "Power Input":
-					pos = Position.Bottom
+					pos = Position.Left
 					icon = "ic-icon-power_connection"
 					break
 				case "Power Output":
-					pos = Position.Bottom
+					pos = Position.Right
 					icon = "ic-icon-power_connection"
 					break
 				case "Connection":
 					pos = Position.Bottom
-					icon = "ic-icon-connection"
 					break
-
+				case "Chute Input":
+				case "Pipe Input":
+				case "Pipe Input2":
+				case "Pipe Liquid Input":
+				case "Pipe Liquid Input2":
+					pos = Position.Left
+					break
+				case "Chute Output":
+				case "Chute Output2":
+				case "Pipe Output":
+				case "Pipe Output2":
+				case "Pipe Liquid Output":
+				case "Pipe Liquid Output2":
+				case "Pipe Waste":
+					pos = Position.Right
+					break;
+				case "Power And Data Input":
+					pos = Position.Top
+					icon = "ic-icon-power_data_connection"
+					break;
+				case "Power And Data Output":
+					pos = Position.Bottom
+					icon = "ic-icon-power_data_connection"
+					break;
+				case "Landing Pad Input":
+					return
 			}
-			return {
-				id: `d${c}`,
-				title: `d${c}`,
+			connections.value.push({
+				id: c,
+				title: c,
 				position: pos,
 				type: "target",
 				icon: icon
-			}
+			})
 		})
 	}
 })
@@ -79,7 +99,6 @@ onMounted(() => {
 
 <template>
 	<DeviceCard v-if="node?.data" :device="node.data"/>
-	<HandleList :list="ports"/>
 	<HandleList :list="connections"/>
 </template>
 

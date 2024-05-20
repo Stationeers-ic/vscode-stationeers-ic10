@@ -82,6 +82,9 @@
 	&.normal {
 		width: 200px;
 		min-height: 200px;
+		.image{
+			margin-top: 10px;
+		}
 	}
 
 	.image {

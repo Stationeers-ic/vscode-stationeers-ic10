@@ -1,45 +1,56 @@
 {
   "nodes": [
     {
-      "id": "6e66c9",
+      "id": "86e675",
       "type": "device",
       "position": {
-        "x": 100,
-        "y": 80
+        "x": 240,
+        "y": -40
       },
       "data": {
-        "id": 1840108251,
-        "Title": "H2 Combustor",
-        "Key": "H2Combustor",
-        "PrefabName": "H2Combustor",
-        "PrefabHash": 1840108251,
+        "id": 1238905683,
+        "Title": "Combustion Centrifuge",
+        "Key": "StructureCombustionCentrifuge",
+        "PrefabName": "StructureCombustionCentrifuge",
+        "PrefabHash": 1238905683,
         "hasChip": true,
-        "deviceConnectCount": 2,
-        "image": "images/3/e/3e6dcb3cc6a3bc67cb9518778a9ccd74.png",
-        "mods": [
-          "Idle",
-          "Active"
-        ],
+        "deviceConnectCount": 0,
+        "image": "images/a/9/a9d51cc390e85c40a14eb24a3269b39a.png",
+        "mods": [],
         "connections": [
+          "Chute Input",
+          "Chute Output",
+          "Connection",
           "Connection",
           "Pipe Input",
-          "Pipe Output",
-          "Connection"
+          "Pipe Output"
         ],
         "slots": [
           {
+            "SlotName": "Import",
+            "SlotType": "None",
+            "SlotIndex": 0,
+            "logic": []
+          },
+          {
+            "SlotName": "Export",
+            "SlotType": "None",
+            "SlotIndex": 1,
+            "logic": []
+          },
+          {
             "SlotName": "Programmable Chip",
             "SlotType": "ProgrammableChip",
-            "SlotIndex": 0,
+            "SlotIndex": 2,
             "logic": []
           }
         ],
         "tags": [
+          "structure",
           "hasLogic",
           "hasSlot",
           "hasChip",
           "buildable",
-          "hasMode",
           "paintable",
           "hasPrefab",
           "hasImage"
@@ -53,13 +64,6 @@
           },
           {
             "name": "Open",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "Mode",
             "permissions": [
               "Read",
               "Write"
@@ -84,13 +88,6 @@
             ]
           },
           {
-            "name": "Activate",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
             "name": "Lock",
             "permissions": [
               "Read",
@@ -98,10 +95,9 @@
             ]
           },
           {
-            "name": "Setting",
+            "name": "Reagents",
             "permissions": [
-              "Read",
-              "Write"
+              "Read"
             ]
           },
           {
@@ -141,18 +137,6 @@
             ]
           },
           {
-            "name": "Maximum",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Ratio",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
             "name": "On",
             "permissions": [
               "Read",
@@ -161,6 +145,24 @@
           },
           {
             "name": "RequiredPower",
+            "permissions": [
+              "Read"
+            ]
+          },
+          {
+            "name": "ClearMemory",
+            "permissions": [
+              "Write"
+            ]
+          },
+          {
+            "name": "ExportCount",
+            "permissions": [
+              "Read"
+            ]
+          },
+          {
+            "name": "ImportCount",
             "permissions": [
               "Read"
             ]
@@ -317,6 +319,32 @@
           },
           {
             "name": "CombustionOutput",
+            "permissions": [
+              "Read"
+            ]
+          },
+          {
+            "name": "CombustionLimiter",
+            "permissions": [
+              "Read",
+              "Write"
+            ]
+          },
+          {
+            "name": "Throttle",
+            "permissions": [
+              "Read",
+              "Write"
+            ]
+          },
+          {
+            "name": "Rpm",
+            "permissions": [
+              "Read"
+            ]
+          },
+          {
+            "name": "Stress",
             "permissions": [
               "Read"
             ]
@@ -479,9 +507,9 @@
           }
         ]
       },
-      "label": "[6e66c9]",
+      "label": "[86e675]",
       "ic10": {
-        "PrefabHash": 1840108251,
+        "PrefabHash": 1238905683,
         "props": {
           "Test": 1
         },
@@ -489,152 +517,52 @@
       }
     },
     {
-      "id": "23436f",
+      "id": "7ea53e",
       "type": "device",
       "position": {
-        "x": 380,
-        "y": 80
+        "x": -40,
+        "y": 240
       },
       "data": {
-        "id": -1758310454,
-        "Title": "Hardsuit",
-        "Key": "ItemHardSuit",
-        "PrefabName": "ItemHardSuit",
-        "PrefabHash": -1758310454,
+        "id": -128473777,
+        "Title": "IC Housing",
+        "Key": "StructureCircuitHousing",
+        "PrefabName": "StructureCircuitHousing",
+        "PrefabHash": -128473777,
         "hasChip": true,
-        "deviceConnectCount": 0,
-        "image": "images/6/b/6ba3dbc8930c507843befcb534fbc54e.png",
+        "deviceConnectCount": 6,
+        "image": "images/b/7/b746a2fcc95bb672febc5bdb97e88fc6.png",
         "mods": [],
-        "connections": [],
+        "connections": [
+          "Data Input",
+          "Connection"
+        ],
         "slots": [
           {
-            "SlotName": "Air Tank",
-            "SlotType": "GasCanister",
+            "SlotName": "Programmable Chip",
+            "SlotType": "ProgrammableChip",
             "SlotIndex": 0,
             "logic": [
               "Occupied",
               "OccupantHash",
               "Quantity",
               "Damage",
-              "Pressure",
-              "Temperature",
               "Class",
               "MaxQuantity",
-              "ReferenceId"
-            ]
-          },
-          {
-            "SlotName": "Waste Tank",
-            "SlotType": "GasCanister",
-            "SlotIndex": 1,
-            "logic": [
-              "Occupied",
-              "OccupantHash",
-              "Quantity",
-              "Damage",
-              "Pressure",
-              "Temperature",
-              "Class",
-              "MaxQuantity",
-              "ReferenceId"
-            ]
-          },
-          {
-            "SlotName": "Life Support",
-            "SlotType": "Battery",
-            "SlotIndex": 2,
-            "logic": [
-              "Occupied",
-              "OccupantHash",
-              "Quantity",
-              "Damage",
-              "Charge",
-              "ChargeRatio",
-              "Class",
-              "MaxQuantity",
-              "ReferenceId"
-            ]
-          },
-          {
-            "SlotName": "Programmable Chip",
-            "SlotType": "ProgrammableChip",
-            "SlotIndex": 3,
-            "logic": [
-              "Occupied",
-              "OccupantHash",
-              "Quantity",
-              "Damage",
-              "Class",
-              "MaxQuantity",
-              "ReferenceId"
-            ]
-          },
-          {
-            "SlotName": "Filter",
-            "SlotType": "GasFilter",
-            "SlotIndex": 4,
-            "logic": [
-              "Occupied",
-              "OccupantHash",
-              "Quantity",
-              "Damage",
-              "Class",
-              "MaxQuantity",
-              "FilterType",
-              "ReferenceId"
-            ]
-          },
-          {
-            "SlotName": "Filter",
-            "SlotType": "GasFilter",
-            "SlotIndex": 5,
-            "logic": [
-              "Occupied",
-              "OccupantHash",
-              "Quantity",
-              "Damage",
-              "Class",
-              "MaxQuantity",
-              "FilterType",
-              "ReferenceId"
-            ]
-          },
-          {
-            "SlotName": "Filter",
-            "SlotType": "GasFilter",
-            "SlotIndex": 6,
-            "logic": [
-              "Occupied",
-              "OccupantHash",
-              "Quantity",
-              "Damage",
-              "Class",
-              "MaxQuantity",
-              "FilterType",
-              "ReferenceId"
-            ]
-          },
-          {
-            "SlotName": "Filter",
-            "SlotType": "GasFilter",
-            "SlotIndex": 7,
-            "logic": [
-              "Occupied",
-              "OccupantHash",
-              "Quantity",
-              "Damage",
-              "Class",
-              "MaxQuantity",
-              "FilterType",
+              "PrefabHash",
+              "LineNumber",
+              "SortingClass",
               "ReferenceId"
             ]
           }
         ],
         "tags": [
-          "item",
+          "structure",
           "hasLogic",
           "hasSlot",
           "hasChip",
+          "buildable",
+          "paintable",
           "hasPrefab",
           "hasImage"
         ],
@@ -648,40 +576,7 @@
           {
             "name": "Error",
             "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "Pressure",
-            "permissions": [
               "Read"
-            ]
-          },
-          {
-            "name": "Temperature",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "PressureExternal",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Activate",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "Lock",
-            "permissions": [
-              "Read",
-              "Write"
             ]
           },
           {
@@ -692,42 +587,6 @@
             ]
           },
           {
-            "name": "RatioOxygen",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioCarbonDioxide",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioNitrogen",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioPollutant",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioVolatiles",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioWater",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
             "name": "On",
             "permissions": [
               "Read",
@@ -735,153 +594,22 @@
             ]
           },
           {
-            "name": "TotalMoles",
+            "name": "RequiredPower",
             "permissions": [
               "Read"
             ]
           },
           {
-            "name": "Volume",
+            "name": "PrefabHash",
+            "permissions": [
+              "Read"
+            ]
+          },
+          {
+            "name": "LineNumber",
             "permissions": [
               "Read",
               "Write"
-            ]
-          },
-          {
-            "name": "PressureSetting",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "TemperatureSetting",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "TemperatureExternal",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Filtration",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "AirRelease",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "PositionX",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "PositionY",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "PositionZ",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "VelocityMagnitude",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "VelocityRelativeX",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "VelocityRelativeY",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "VelocityRelativeZ",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioNitrousOxide",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Combustion",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "SoundAlert",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "RatioLiquidNitrogen",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioLiquidOxygen",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioLiquidVolatiles",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioSteam",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioLiquidCarbonDioxide",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioLiquidPollutant",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioLiquidNitrousOxide",
-            "permissions": [
-              "Read"
             ]
           },
           {
@@ -891,76 +619,16 @@
             ]
           },
           {
-            "name": "ForwardX",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "ForwardY",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "ForwardZ",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Orientation",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "VelocityX",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "VelocityY",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "VelocityZ",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "EntityState",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioHydrogen",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioLiquidHydrogen",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioPollutedWater",
+            "name": "NameHash",
             "permissions": [
               "Read"
             ]
           }
         ]
       },
-      "label": "[23436f]",
+      "label": "[7ea53e]",
       "ic10": {
-        "PrefabHash": -1758310454,
+        "PrefabHash": -128473777,
         "props": {
           "Test": 1
         },
@@ -968,15 +636,30 @@
       }
     }
   ],
-  "edges": [],
-  "position": [
-    0,
-    0
+  "edges": [
+    {
+      "id": "vueflow__edge-7ea53ed3-86e675Connection",
+      "type": "default",
+      "source": "7ea53e",
+      "target": "86e675",
+      "sourceHandle": "d3",
+      "targetHandle": "Connection",
+      "data": {},
+      "label": "",
+      "sourceX": 169.99938148834104,
+      "sourceY": 273.32802615639685,
+      "targetX": 289.99982757361397,
+      "targetY": 169.99941844529963
+    }
   ],
-  "zoom": 2,
+  "position": [
+    388.1818181818182,
+    -3.1212121212121247
+  ],
+  "zoom": 1.8484848484848484,
   "viewport": {
-    "x": 0,
-    "y": 0,
-    "zoom": 2
+    "x": 388.1818181818182,
+    "y": -3.1212121212121247,
+    "zoom": 1.8484848484848484
   }
 }
