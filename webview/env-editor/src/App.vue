@@ -25,7 +25,6 @@ watch(data, (newVal) => {
 		console.log("DataProviderUpdate", DataProvider.data)
 	}
 });
-
 </script>
 
 <template>

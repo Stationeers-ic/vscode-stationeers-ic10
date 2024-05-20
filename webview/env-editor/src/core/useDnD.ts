@@ -1,5 +1,6 @@
 import {useVueFlow} from "@vue-flow/core"
 import {ref, watch} from "vue"
+import {Datum} from "../types/devices";
 
 const state = {
 	/**
@@ -7,11 +8,12 @@ const state = {
 	 */
 	draggedType: ref<string | null>(null),
 	isDragOver: ref(false),
+	dragDevice: ref<Datum | null>(null),
 	isDragging: ref(false),
 } as const
 
 export default function useDragAndDrop() {
-	const {draggedType, isDragOver, isDragging} = state
+	const {draggedType, isDragOver, isDragging, dragDevice} = state
 
 	const {addNodes, screenToFlowCoordinate, onNodesInitialized, updateNode} = useVueFlow()
 
@@ -19,14 +21,15 @@ export default function useDragAndDrop() {
 		document.body.style.userSelect = dragging ? "none" : ""
 	})
 
-	function onDragStart(event: DragEvent, type: string) {
+	function onDragStart(event: DragEvent, device: Datum) {
 		if (event.dataTransfer) {
-			event.dataTransfer.setData("application/vueflow", type)
+			// event.dataTransfer.setData("application/vueflow", 'input')
 			event.dataTransfer.effectAllowed = "move"
 		}
 
-		draggedType.value = type
+		draggedType.value = 'default'
 		isDragging.value = true
+		dragDevice.value = device
 
 		document.addEventListener("drop", onDragEnd)
 	}
@@ -77,7 +80,7 @@ export default function useDragAndDrop() {
 			position,
 			label: `[${nodeId}]`,
 			ic10: {
-				type: "device",
+				PrefabHash: dragDevice.value?.PrefabHash,
 				props: {
 					"Test": 1
 				},

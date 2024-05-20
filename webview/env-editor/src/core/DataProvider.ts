@@ -1,4 +1,3 @@
-import {BuilderResult, validateBuilderResult} from "../types/BuilderResult.ts";
 import {Api, getVscodeApi} from "../api_vscode.ts";
 import {emit} from "./events.ts";
 import {FlowExportObject} from "@vue-flow/core";
@@ -58,7 +57,7 @@ export class DataProvider {
 		return this.deserialize(text)
 	}
 
-	public toString(data: BuilderResult): string {
+	public toString(data: FlowExportObject): string {
 		return this.serialize(data)
 	}
 
@@ -69,35 +68,10 @@ export class DataProvider {
 
 	// Для того чтобы потом заменить на TOML или еще на что-то
 	public serialize(data: any): string {
-		return JSON.stringify(this.clearData(data), null, 2)
+		return JSON.stringify(data, null, 2)
 	}
 
 	// Очищает данные от служебных полей
-	public clearData(data: any): any {
-		if (validateBuilderResult(data)) {
-			//Тупое копирование чтобы не менять оригинальные данные
-			const copy = JSON.parse(JSON.stringify(data))
-			return copy.map((item: any) => {
-				delete item?.events
-				delete item?.data
-				delete item?.selected
-				delete item?.dragging
-				delete item?.resizing
-				delete item?.initialized
-				delete item?.handleBounds
-				delete item?.dimensions
-				delete item?.computedPosition
-				delete item?.sourceNode
-				delete item?.targetNode
-				if (item?.label?.trim() === '') {
-					delete item?.label
-				}
-				return item
-			})
-		}
-		return data
-	}
-
 	public deserialize(text: string): any {
 		return JSON.parse(text)
 	}

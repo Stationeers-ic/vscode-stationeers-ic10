@@ -11,7 +11,14 @@ export function getVscodeApi(): Api {
 		console.debug("## acquireVsCodeApi is not available")
 		// Эмитируем интерфейс чтобы на момент разработки не было ошибок
 		return {
-			postMessage: () => {
+			//{
+			// 					type: 'update',
+			// 					text: text
+			// 				}
+			postMessage: (data:any) => {
+				if(data.type == "update"){
+					window.localStorage.setItem('data',data.text)
+				}
 			},
 			getState: () => {
 				return {

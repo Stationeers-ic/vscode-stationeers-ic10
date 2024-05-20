@@ -12,7 +12,7 @@ const {device} = defineProps<{
 
 <template>
 	<DeviceCard :device="device" :draggable="true" minimum
-				@dragstart="onDragStart($event, device.PrefabHash.toString())"></DeviceCard>
+				@dragstart="onDragStart($event, device)"></DeviceCard>
 </template>
 
 <style scoped>
