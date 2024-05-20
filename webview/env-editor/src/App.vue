@@ -1,27 +1,29 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {onMounted, onUnmounted, ref, watch} from "vue";
 import Builder from "./components/Builder.vue";
 import DataProvider from "./core/DataProvider.ts";
 import {off, on} from "./core/events.ts";
-import type {BuilderResult} from "./types/BuilderResult.ts";
-const data = ref<BuilderResult>(DataProvider.data);
+import {FlowExportObject} from "@vue-flow/core";
+
+const data = ref<FlowExportObject | null>(DataProvider.data);
 
 const update = () => {
-	console.log("DataProviderUpdate",DataProvider.data)
+	console.log("DataProviderUpdate", DataProvider.data)
 	data.value = DataProvider.data;
-
 };
 
 onMounted(() => {
-	on("DataProviderUpdate",update)
+	on("DataProviderUpdate", update)
 });
 onUnmounted(() => {
-	off("DataProviderUpdate",update)
+	off("DataProviderUpdate", update)
 });
 
 watch(data, (newVal) => {
-	DataProvider.data = newVal;
-	console.log("DataProviderUpdate",DataProvider.data)
+	if (newVal) {
+		DataProvider.data = newVal;
+		console.log("DataProviderUpdate", DataProvider.data)
+	}
 });
 
 </script>

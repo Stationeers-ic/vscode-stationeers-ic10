@@ -10,7 +10,6 @@ declare module 'vue' {
     Avatar: typeof import('primevue/avatar')['default']
     Builder: typeof import('./src/components/Builder.vue')['default']
     Card: typeof import('primevue/card')['default']
-    Dev: typeof import('./src/components/flow/nodes/Dev.vue')['default']
     Device: typeof import('./src/components/flow/nodes/Device.vue')['default']
     DeviceCard: typeof import('./src/components/DeviceCard.vue')['default']
     DeviceList: typeof import('./src/components/DeviceList.vue')['default']

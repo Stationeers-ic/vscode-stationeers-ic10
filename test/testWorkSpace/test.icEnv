@@ -1,1 +1,64 @@
-[]
+{
+  "nodes": [
+    {
+      "id": "860a3a10-ee02-4740-a7fc-75dd9f117669",
+      "type": "1840108251",
+      "position": {
+        "x": 260,
+        "y": 160
+      },
+      "data": {},
+      "label": "[860a3a10-ee02-4740-a7fc-75dd9f117669]",
+      "ic10": {
+        "type": "device",
+        "props": {
+          "Test": 1
+        },
+        "slots": {}
+      }
+    },
+    {
+      "id": "a561bc1e-fd56-4649-82b0-c29d7386d82f",
+      "type": "-1758310454",
+      "position": {
+        "x": 260,
+        "y": 280
+      },
+      "data": {},
+      "label": "[a561bc1e-fd56-4649-82b0-c29d7386d82f]",
+      "ic10": {
+        "type": "device",
+        "props": {
+          "Test": 1
+        },
+        "slots": {}
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "vueflow__edge-860a3a10-ee02-4740-a7fc-75dd9f117669860a3a10-ee02-4740-a7fc-75dd9f117669__handle-bottom-a561bc1e-fd56-4649-82b0-c29d7386d82fa561bc1e-fd56-4649-82b0-c29d7386d82f__handle-top",
+      "type": "default",
+      "source": "860a3a10-ee02-4740-a7fc-75dd9f117669",
+      "target": "a561bc1e-fd56-4649-82b0-c29d7386d82f",
+      "sourceHandle": "860a3a10-ee02-4740-a7fc-75dd9f117669__handle-bottom",
+      "targetHandle": "a561bc1e-fd56-4649-82b0-c29d7386d82f__handle-top",
+      "data": {},
+      "label": "",
+      "sourceX": 335,
+      "sourceY": 218,
+      "targetX": 335,
+      "targetY": 278
+    }
+  ],
+  "position": [
+    0,
+    0
+  ],
+  "zoom": 1,
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 1
+  }
+}

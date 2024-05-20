@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 
 import DeviceCard from "./DeviceCard.vue";
 import useDragAndDrop from "../core/useDnD.ts";
@@ -6,12 +6,13 @@ import {Datum} from "../types/devices";
 
 const {onDragStart} = useDragAndDrop()
 const {device} = defineProps<{
-	device:Datum
+	device: Datum
 }>()
 </script>
 
 <template>
-	<DeviceCard minimum :device="device" :draggable="true" @dragstart="onDragStart($event, device.PrefabHash.toString())"></DeviceCard>
+	<DeviceCard :device="device" :draggable="true" minimum
+				@dragstart="onDragStart($event, device.PrefabHash.toString())"></DeviceCard>
 </template>
 
 <style scoped>

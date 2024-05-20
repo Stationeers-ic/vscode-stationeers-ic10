@@ -3,11 +3,12 @@
 @import "@vue-flow/controls/dist/style.css" layer(vendor);
 @import "@vue-flow/minimap/dist/style.css" layer(vendor);
 @import "@vue-flow/node-resizer/dist/style.css" layer(vendor);
-@import "assets/css/vscode.css" layer(theme);
-@import "assets/css/main.scss" layer(main);
-@import "assets/css/reset.css" layer(reset);
 @import 'primevue/resources/themes/aura-dark-noir/theme.css' layer(vendor);
-@import 'primeicons/primeicons.css'  layer(vendor);
+/*@import 'primeicons/primeicons.css' layer(icons);*/
+@import '@vscode/codicons/dist/codicon.css' layer(icons);
+@import "vscode.css" layer(theme);
+@import "main.scss" layer(main);
+@import "reset.css" layer(reset);
 
-@layer reset, vendor, main, theme;
+@layer reset, icons, vendor, main, theme;
 

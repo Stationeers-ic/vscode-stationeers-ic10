@@ -11,9 +11,9 @@ const state = {
 } as const
 
 export default function useDragAndDrop() {
-	const { draggedType, isDragOver, isDragging } = state
+	const {draggedType, isDragOver, isDragging} = state
 
-	const { addNodes, screenToFlowCoordinate, onNodesInitialized, updateNode } = useVueFlow()
+	const {addNodes, screenToFlowCoordinate, onNodesInitialized, updateNode} = useVueFlow()
 
 	watch(isDragging, (dragging) => {
 		document.body.style.userSelect = dragging ? "none" : ""
@@ -76,12 +76,12 @@ export default function useDragAndDrop() {
 			type: `${draggedType.value}`,
 			position,
 			label: `[${nodeId}]`,
-			ic10:{
-				type:"device",
-				props:{
-					"Test":1
+			ic10: {
+				type: "device",
+				props: {
+					"Test": 1
 				},
-				slots:{}
+				slots: {}
 			}
 		}
 		/**
@@ -89,7 +89,7 @@ export default function useDragAndDrop() {
 		 *
 		 * We can hook into events even in a callback, and we can remove the event listener after it's been called.
 		 */
-		const { off } = onNodesInitialized(() => {
+		const {off} = onNodesInitialized(() => {
 			updateNode(nodeId, (node) => ({
 				position: {
 					x: node.position.x - node.dimensions.width / 2,
@@ -113,8 +113,9 @@ export default function useDragAndDrop() {
 		onDrop,
 	}
 }
+
 function uuid() {
-	return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+	return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
 		const r = (Math.random() * 16) | 0,
 			v = c === "x" ? r : (r & 0x3) | 0x8;
 		return v.toString(16);

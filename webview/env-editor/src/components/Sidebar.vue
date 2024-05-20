@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {ref} from "vue";
 import {Datum} from "../types/devices";
 import DeviceList from "./DeviceList.vue";
@@ -7,7 +7,6 @@ import DeviceList from "./DeviceList.vue";
 const housings = ref<Datum[]>([])
 const structures = ref<Datum[]>([])
 const items = ref<Datum[]>([])
-const a = __devices__.data
 __devices__.data.forEach((device: Datum) => {
 	if (device.tags.includes('hasChip')) {
 		housings.value.push(device)
@@ -24,11 +23,11 @@ __devices__.data.forEach((device: Datum) => {
 
 <template>
 	<aside>
-		<TabView lazy style="height:100%" scrollable>
-			<TabPanel header="all" style="height:100%">
-				<DeviceList :data="a"/>
-			</TabPanel>
-			<TabPanel header="Chip housing" style="height:100%">
+		<TabView lazy scrollable>
+			<!--			<TabPanel header="all">-->
+			<!--				<DeviceList :data="a"/>-->
+			<!--			</TabPanel>-->
+			<TabPanel header="Chip housing">
 				<DeviceList :data="housings"/>
 			</TabPanel>
 			<TabPanel header="Structures">

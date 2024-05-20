@@ -89,7 +89,7 @@ export const BuilderResultElementSchema = z.object({
 	"targetX": z.number().optional(),
 	"targetY": z.number().optional(),
 });
-export type BuilderResultElement =  Element & z.infer<typeof BuilderResultElementSchema>;
+export type BuilderResultElement = Element & z.infer<typeof BuilderResultElementSchema>;
 
 export const BuilderResult = z.array(BuilderResultElementSchema);
 export type BuilderResult = Elements & z.infer<typeof BuilderResult>;

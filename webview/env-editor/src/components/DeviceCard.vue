@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {Datum} from "../types/devices";
 
 const props = defineProps<{
@@ -10,20 +10,20 @@ const image = `https://assets.ic10.dev/${props.device.image}`
 
 <template>
 	<Card :class="[{minimum:props.minimum},{normal:!props.minimum}, 'deviceCard']">
-		<template #header v-if="!props.minimum">
+		<template v-if="!props.minimum" #header>
 			<div class="image">
 				<img :alt="device.Title" :src="image"/>
 			</div>
 		</template>
-		<template #title v-if="!props.minimum">
+		<template v-if="!props.minimum" #title>
 			{{ props.device.Title }}
 		</template>
-		<template #content v-if="!props.minimum">
+		<template v-if="!props.minimum" #content>
 			<p class="m-0">
 			</p>
 		</template>
-		<template #content v-else>
-			<Avatar :pt="{image:{loading: 'lazy'}}" loading="lazy" :image="image"/>
+		<template v-else #content>
+			<Avatar :image="image" :pt="{image:{loading: 'lazy'}}" loading="lazy"/>
 			{{ props.device.Title }}
 		</template>
 	</Card>

@@ -7,7 +7,7 @@
 	border: unset;
 }
 
-.vue-flow__viewport,.vue-flow__background {
+.vue-flow__viewport, .vue-flow__background {
 	background-color: transparent;
 }
 

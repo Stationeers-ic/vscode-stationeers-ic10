@@ -8,7 +8,7 @@ export function getVscodeApi(): Api {
 		return window.api
 	}
 	if (typeof acquireVsCodeApi === "undefined") {
-		console.warn("## acquireVsCodeApi is not available")
+		console.debug("## acquireVsCodeApi is not available")
 		// Эмитируем интерфейс чтобы на момент разработки не было ошибок
 		return {
 			postMessage: () => {

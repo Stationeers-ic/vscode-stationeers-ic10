@@ -1,29 +1,22 @@
 import {BuilderResult, validateBuilderResult} from "../types/BuilderResult.ts";
 import {Api, getVscodeApi} from "../api_vscode.ts";
 import {emit} from "./events.ts";
+import {FlowExportObject} from "@vue-flow/core";
 
 export class DataProvider {
 	private static instance: DataProvider;
 
-	#data: BuilderResult = []
+	#data?: FlowExportObject
 	private vscode: Api;
-
-	static getInstance() {
-		if (!this.instance) {
-			this.instance = new DataProvider();
-		}
-		return this.instance
-	}
 
 	private constructor() {
 		this.vscode = getVscodeApi()
 		const state = this.vscode.getState();
-		console.info('state', state)
 		const text = state?.text
-		if (text === undefined) {
+		if (!text) {
 			this.receiveData(window.localStorage.getItem('data') ?? '')
-		} else if (validateBuilderResult(text)) {
-			this.#data = text
+		} else {
+			this.#data = JSON.parse(text) as FlowExportObject
 		}
 		window.addEventListener("message", (event) => {
 			console.log('receive message', event)
@@ -37,46 +30,12 @@ export class DataProvider {
 		})
 	}
 
-	public emitMessage(text: string) {
-		this.receiveData(text)
-	}
-
-	//Загружает данные из внешних источников (vscode)
-	private receiveData(text: string) {
-		try {
-			const code = this.fromString(text)
-			if (this.hasChangesData(this.#data, code)) {
-				this.#data = code
-				window.localStorage.setItem('data', this.serialize(this.data))
-				emit('DataProviderUpdate', this.#data)
-			}
-		} catch (e) {
-			console.error(e)
-		}
-	}
-
-	public fromString(text: string): BuilderResult {
-		const data = this.deserialize(text)
-		if (validateBuilderResult(data)) {
-			return data
-		}
-		BuilderResult.parse(data)
-		throw new Error("Data is not valid")
-	}
-
-	public toString(data: BuilderResult): string {
-		return this.serialize(data)
-	}
-
-	public get data() {
-		return this.#data
+	public get data(): FlowExportObject | null {
+		return this.#data ?? null
 	}
 
 	//Загружает данные из Внутренних источников (vscode)
-	public set data(data: any | BuilderResult) {
-		if (!validateBuilderResult(data)) {
-			throw new Error("Data is not valid")
-		}
+	public set data(data: FlowExportObject) {
 		if (this.hasChangesData(this.#data, data)) {
 			this.#data = this.copy(data)
 			window.localStorage.setItem('data', this.serialize(this.data))
@@ -84,13 +43,23 @@ export class DataProvider {
 		}
 	}
 
-	private sendUpdate() {
-		const text = this.serialize(this.#data)
-		console.log('send update', text)
-		this.vscode.postMessage({
-			type: 'update',
-			text: text
-		});
+	static getInstance() {
+		if (!this.instance) {
+			this.instance = new DataProvider();
+		}
+		return this.instance
+	}
+
+	public emitMessage(text: string) {
+		this.receiveData(text)
+	}
+
+	public fromString(text: string): FlowExportObject {
+		return this.deserialize(text)
+	}
+
+	public toString(data: BuilderResult): string {
+		return this.serialize(data)
 	}
 
 	public hasChangesData<T>(oldData: T, newData: T): boolean {
@@ -120,7 +89,7 @@ export class DataProvider {
 				delete item?.computedPosition
 				delete item?.sourceNode
 				delete item?.targetNode
-				if(item?.label?.trim() === '') {
+				if (item?.label?.trim() === '') {
 					delete item?.label
 				}
 				return item
@@ -135,6 +104,29 @@ export class DataProvider {
 
 	public copy<T>(data: T): T {
 		return this.deserialize(this.serialize(data))
+	}
+
+	//Загружает данные из внешних источников (vscode)
+	private receiveData(text: string) {
+		try {
+			const code = this.fromString(text)
+			if (this.hasChangesData(this.#data, code)) {
+				this.#data = code
+				window.localStorage.setItem('data', this.serialize(this.data))
+				emit('DataProviderUpdate', this.#data)
+			}
+		} catch (e) {
+			console.error(e)
+		}
+	}
+
+	private sendUpdate() {
+		const text = this.serialize(this.#data)
+		console.log('send update', text)
+		this.vscode.postMessage({
+			type: 'update',
+			text: text
+		});
 	}
 }
 

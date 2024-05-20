@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 
 import {aside_node_height} from "../consts.ts";
 import DnDnode from "./DnDnode.vue";
@@ -25,12 +25,12 @@ function filter(data: Datum) {
 	<div class="content">
 		<div class="search">
 			<IconField iconPosition="left">
-				<InputIcon class="pi pi-search"></InputIcon>
+				<InputIcon class="codicon codicon-search"></InputIcon>
 				<InputText v-model="search" placeholder="Search"/>
 			</IconField>
 		</div>
 		<div class="list">
-			<VirtualScroller showSpacer :items="data.filter(filter)" :itemSize="aside_node_height">
+			<VirtualScroller :itemSize="aside_node_height" :items="data.filter(filter)" showSpacer>
 				<template v-slot:item="{ item }">
 					<DnDnode :key="item.PrefabHash" :device="item"/>
 				</template>
@@ -52,6 +52,7 @@ function filter(data: Datum) {
 
 	.search {
 		grid-area: search;
+		margin: 0 auto;
 	}
 
 	.list {

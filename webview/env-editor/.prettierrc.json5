@@ -3,15 +3,12 @@
 	tabWidth: 4,
 	useTabs: true,
 	semi: false,
-
 	singleQuote: false,
 	quoteProps: "as-needed",
 	jsxSingleQuote: true,
-
 	trailingComma: "all",
 	bracketSpacing: true,
 	arrowParens: "always",
-
 	overrides: [
 		{
 			files: "tsconfig.json",
