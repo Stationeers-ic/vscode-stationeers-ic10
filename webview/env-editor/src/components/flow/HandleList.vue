@@ -68,7 +68,7 @@ watch(props, separate)
 	background-color: transparent;
 	position: absolute;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 }
 
 .bottom {

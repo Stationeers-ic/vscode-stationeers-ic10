@@ -26,4 +26,5 @@
 <glyph unicode="&#xe900;" glyph-name="data_connection" data-tags="data_connection" d="M358.4 857.6h307.2v-307.2h-307.2zM512 550.4v-102.4M512 448l-307.2-122.88M512 448l307.2-122.88M51.2 345.6h307.2v-307.2h-307.2zM665.6 345.6h307.2v-307.2h-307.2z" />
 <glyph unicode="&#xe901;" glyph-name="port_connection" data-tags="port_connection" d="M512 857.6l409.6-204.8v-409.6l-409.6-204.8-409.6 204.8v409.6zM512 857.6v-819.2" />
 <glyph unicode="&#xe902;" glyph-name="power_connection" data-tags="power_connection" d="M512 960l-204.8-614.4 307.2 102.4-204.8-512z" />
+<glyph unicode="&#xe903;" glyph-name="power_data_connection" data-tags="power_data_connection" horiz-adv-x="2048" d="M512 960l-204.8-614.4 307.2 102.4-204.8-512zM972.8 857.6h307.2v-307.2h-307.2zM1126.4 550.4v-102.4M1126.4 448l-307.2-122.88M1126.4 448l307.2-122.88M665.6 345.6h307.2v-307.2h-307.2zM1280 345.6h307.2v-307.2h-307.2z" />
 </font></defs></svg>
