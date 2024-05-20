@@ -7,7 +7,7 @@ import {Background} from '@vue-flow/background'
 import Sidebar from "./Sidebar.vue"
 import {MiniMap} from "@vue-flow/minimap";
 import {ControlButton, Controls} from "@vue-flow/controls";
-import NodeDevice from "./flow/nodes/NodeDevice.vue";
+import NodeDevice from "./flow/NodeDevice.vue";
 
 const model = defineModel<FlowExportObject | null>()
 const {onConnect, addEdges, toObject, fromObject, updateEdge} = useVueFlow()

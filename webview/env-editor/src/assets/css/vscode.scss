@@ -77,10 +77,12 @@
 			background-color: var(--vscode-button-background);
 		}
 		&-connecting {
-			background-color: var(--vscode-button-hoverBackground);
+			background-color: var(--vscode-notebookStatusErrorIcon-foreground);
+			color: var(--vscode-notebookStatusErrorIcon-foreground);
 		}
 		&-valid {
-			background-color: var(--vscode-button-foreground);
+			background-color: var(--vscode-notebookStatusSuccessIcon-foreground);
+			color: var(--vscode-notebookStatusSuccessIcon-foreground);
 		}
 	}
 }
