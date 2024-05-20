@@ -8,11 +8,19 @@ const {onDragStart} = useDragAndDrop()
 const {device} = defineProps<{
 	device: Datum
 }>()
+
+function _onDragStart(event: DragEvent) {
+	onDragStart(event, device)
+}
 </script>
 
 <template>
-	<DeviceCard :device="device" :draggable="true" minimum
-				@dragstart="onDragStart($event, device)"></DeviceCard>
+	<div
+		:draggable="true"
+		@dragstart="_onDragStart"
+	>
+		<DeviceCard minimum :device="device"></DeviceCard>
+	</div>
 </template>
 
 <style scoped>

@@ -1,0 +1,91 @@
+.vue-flow {
+	background-color: var(--vscode-editor-background);
+	color: var(--vscode-editor-foreground);
+	&__container {
+		border: unset;
+	}
+	&__viewport, &__background {
+		background-color: transparent;
+	}
+	&__minimap {
+		background-color: var(--vscode-editor-background);
+	}
+	&__controls {
+		background-color: var(--vscode-button-background);
+		color: var(--vscode-button-foreground);
+	}
+	&__edges {
+		stroke: var(--vscode-editorLineNumber-foreground);
+	}
+	&__edge {
+		stroke: var(--vscode-editorLineNumber-foreground);
+		&.selected {
+			stroke: var(--vscode-editor-selectionBackground);
+		}
+		&.animated {
+			stroke-dasharray: 5, 5;
+			animation: dash 1s linear infinite;
+		}
+		&-path {
+			stroke: var(--vscode-editorLineNumber-foreground);
+		}
+		&-text {
+			fill: var(--vscode-editor-foreground);
+		}
+		&-textbg {
+			fill: var(--vscode-editor-background);
+		}
+	}
+	&__selectionpane {
+		background-color: var(--vscode-editor-selectionBackground);
+	}
+	&__selection {
+		border: 1px solid var(--vscode-editor-selectionHighlightBorder);
+	}
+	&__connectionline {
+		stroke: var(--vscode-editorLineNumber-foreground);
+	}
+	&__connection {
+		stroke: var(--vscode-editorLineNumber-foreground);
+		&-path {
+			stroke: var(--vscode-editorLineNumber-foreground);
+		}
+	}
+	&__nodes {
+		background-color: transparent;
+	}
+	&__node {
+		//border: 1px solid var(--vscode-editorGroup-border);
+		//background-color: var(--vscode-editor-background);
+		//color: var(--vscode-editor-foreground);
+		&.selected {
+			//border: 1px solid var(--vscode-editor-selectionBackground);
+		}
+	}
+	&__handle {
+		background-color: var(--vscode-button-background);
+		&-bottom {
+			background-color: var(--vscode-button-background);
+		}
+		&-top {
+			background-color: var(--vscode-button-background);
+		}
+		&-left {
+			background-color: var(--vscode-button-background);
+		}
+		&-right {
+			background-color: var(--vscode-button-background);
+		}
+		&-connecting {
+			background-color: var(--vscode-button-hoverBackground);
+		}
+		&-valid {
+			background-color: var(--vscode-button-foreground);
+		}
+	}
+}
+@keyframes dash {
+	to {
+		stroke-dashoffset: 1000;
+	}
+}

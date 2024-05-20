@@ -22,14 +22,15 @@
     "primevue": "^3.52.0",
     "sass": "^1.77.2",
     "vite-plugin-integrated": "^1.1.6",
-    "vue": "^3.4.21",
+    "vue": "^3.4.27",
+    "vue-draggable-plus": "^0.4.1",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
-    "typescript": "^5.2.2",
+    "typescript": "^5.4.5",
     "unplugin-vue-components": "^0.27.0",
-    "vite": "^5.2.0",
-    "vue-tsc": "^2.0.6"
+    "vite": "^5.2.11",
+    "vue-tsc": "^2.0.19"
   }
 }

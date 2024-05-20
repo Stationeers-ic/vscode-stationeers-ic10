@@ -23,11 +23,11 @@ export default function useDragAndDrop() {
 
 	function onDragStart(event: DragEvent, device: Datum) {
 		if (event.dataTransfer) {
-			// event.dataTransfer.setData("application/vueflow", 'input')
+			event.dataTransfer.setData("application/vueflow", 'device')
 			event.dataTransfer.effectAllowed = "move"
 		}
 
-		draggedType.value = 'default'
+		draggedType.value = 'device'
 		isDragging.value = true
 		dragDevice.value = device
 
@@ -79,6 +79,7 @@ export default function useDragAndDrop() {
 			type: `${draggedType.value}`,
 			position,
 			label: `[${nodeId}]`,
+			data: dragDevice.value,
 			ic10: {
 				PrefabHash: dragDevice.value?.PrefabHash,
 				props: {

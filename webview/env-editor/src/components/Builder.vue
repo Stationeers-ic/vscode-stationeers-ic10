@@ -7,6 +7,7 @@ import {Background} from '@vue-flow/background'
 import Sidebar from "./Sidebar.vue"
 import {MiniMap} from "@vue-flow/minimap";
 import {ControlButton, Controls} from "@vue-flow/controls";
+import NodeDevice from "./flow/nodes/NodeDevice.vue";
 
 const model = defineModel<FlowExportObject | null>()
 const {onConnect, addEdges, toObject, fromObject, updateEdge} = useVueFlow()
@@ -76,6 +77,9 @@ function onEdgeUpdate({edge, connection}: EdgeUpdateEvent) {
 						<i class="codicon codicon-flame"/>
 					</ControlButton>
 				</Controls>
+				<template #node-device="{ id }">
+					<NodeDevice :id="id"/>
+				</template>
 			</VueFlow>
 		</div>
 	</div>

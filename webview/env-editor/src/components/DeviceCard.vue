@@ -20,6 +20,7 @@ const image = `https://assets.ic10.dev/${props.device.image}`
 		</template>
 		<template v-if="!props.minimum" #content>
 			<p class="m-0">
+
 			</p>
 		</template>
 		<template v-else #content>

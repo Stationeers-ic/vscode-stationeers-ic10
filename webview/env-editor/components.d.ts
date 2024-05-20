@@ -15,6 +15,7 @@ declare module 'vue' {
     DeviceList: typeof import('./src/components/DeviceList.vue')['default']
     DnDnode: typeof import('./src/components/DnDnode.vue')['default']
     InputText: typeof import('primevue/inputtext')['default']
+    NodeDevice: typeof import('./src/components/flow/nodes/NodeDevice.vue')['default']
     Sidebar: typeof import('./src/components/Sidebar.vue')['default']
     TabPanel: typeof import('primevue/tabpanel')['default']
     TabView: typeof import('primevue/tabview')['default']

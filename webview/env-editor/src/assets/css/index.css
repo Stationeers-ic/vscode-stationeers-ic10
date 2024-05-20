@@ -4,9 +4,8 @@
 @import "@vue-flow/minimap/dist/style.css" layer(vendor);
 @import "@vue-flow/node-resizer/dist/style.css" layer(vendor);
 @import 'primevue/resources/themes/aura-dark-noir/theme.css' layer(vendor);
-/*@import 'primeicons/primeicons.css' layer(icons);*/
 @import '@vscode/codicons/dist/codicon.css' layer(icons);
-@import "vscode.css" layer(theme);
+@import "vscode.scss" layer(theme);
 @import "main.scss" layer(main);
 @import "reset.css" layer(reset);
 
