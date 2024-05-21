@@ -2,9 +2,10 @@
 import {type HandleType, Position} from "@vue-flow/core";
 import {onMounted, ref, watch} from "vue";
 import MyHandle from "./MyHandle.vue";
+import {type Connection} from "../../types/devices";
 
 export type H = {
-	id: string,
+	id: Connection,
 	title: string,
 	type: HandleType
 	position: Position

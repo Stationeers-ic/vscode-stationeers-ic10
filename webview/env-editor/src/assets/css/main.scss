@@ -71,10 +71,18 @@
 .deviceCard {
 	&.minimum {
 		height: 50px !important;
-
+		margin-bottom: 10px;
+		background-color: var(--vscode-editorWidget-background) !important;
+		color: var(--vscode-editorWidget-foreground) !important;
+		border: 1px solid var(--vscode-editorWidget-border) !important;
 		* {
-			.p-card-body {
-				padding: 0 !important;
+			&.p-card-body {
+				padding: 8px !important;
+			}
+			&.p-card-content {
+				display: flex;
+				align-content: center;
+				align-items: center;
 			}
 		}
 	}

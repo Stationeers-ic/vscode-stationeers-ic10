@@ -39,7 +39,9 @@ export type Connection =
 	| "Pipe Liquid Input2"
 	| "Data Output"
 	| "Pipe Output2"
-	| "Power And Data Output";
+	| "Power And Data Output"
+	| `port d${number}`
+	;
 
 export type LogicClass = {
 	readonly name: string;

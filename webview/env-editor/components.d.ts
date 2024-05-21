@@ -13,6 +13,7 @@ declare module 'vue' {
     DeviceCard: typeof import('./src/components/DeviceCard.vue')['default']
     DeviceList: typeof import('./src/components/DeviceList.vue')['default']
     DnDnode: typeof import('./src/components/DnDnode.vue')['default']
+    EdgeWithButton: typeof import('./src/components/flow/EdgeWithButton.vue')['default']
     HandleList: typeof import('./src/components/flow/HandleList.vue')['default']
     InputText: typeof import('primevue/inputtext')['default']
     MyHandle: typeof import('./src/components/flow/MyHandle.vue')['default']

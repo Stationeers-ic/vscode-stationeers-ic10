@@ -2,19 +2,60 @@
 
 import {Handle, ValidConnectionFunc} from "@vue-flow/core";
 import {H} from "./HandleList.vue";
+import {type Connection} from "../../types/devices";
 
 const props = defineProps<{
 	handle: H
 }>()
-
 const validate: ValidConnectionFunc = (connection, elements) => {
-	const s = connection.source
-	const t = connection.target
+	const conn = connection as {
+		/** Source node id */
+		source: string
+		/** Target node id */
+		target: string
+		/** Source handle id */
+		sourceHandle?: Connection | null
+		/** Target handle id */
+		targetHandle?: Connection | null
+	}
+	const s = conn.source
+	const t = conn.target
 	if (s === t) {
 		return false
 	}
-	const dublicate = elements.edges.find((e) => (e.source === s && e.target === t) || (e.source === t && e.target === s))
-	return !dublicate;
+	// console.log("connect:", conn, elements)
+	const duplicate = elements.edges.find((e) => (e.source === s && e.target === t) || (e.source === t && e.target === s))
+	if (duplicate) {
+		return false
+	}
+	if (conn.sourceHandle?.startsWith("port") || conn.targetHandle?.startsWith("port")) {
+		if (conn.sourceHandle?.startsWith("port") && conn.targetHandle == "Connection") {
+			return true
+		}
+		return conn.targetHandle?.startsWith("port") && conn.sourceHandle == "Connection";
+	}
+
+	const rules: Record<Connection, Connection[]> = {
+		"Chute Output": ["Chute Input"],
+		"Chute Input": ["Chute Output", "Chute Output2"],
+		"Connection": ["Connection", "Power And Data Input", "Power And Data Output", "Power Input", "Power Output"],
+		"Power And Data Input": ["Connection", "Power And Data Input", "Power And Data Output", "Power Input", "Power Output"],
+		"Power And Data Output": ["Connection", "Power And Data Input", "Power And Data Output", "Power Input", "Power Output"],
+		"Power Input": ["Connection", "Power And Data Input", "Power And Data Output", "Power Input", "Power Output"],
+		"Power Output": ["Connection", "Power And Data Input", "Power And Data Output", "Power Input", "Power Output"],
+		"Landing Pad Input": ["Landing Pad Input"],
+		"Pipe Input": ["Pipe Output", "Pipe Output2"],
+		"Pipe Input2": ["Pipe Output", "Pipe Output2"],
+		"Pipe Output": ["Pipe Input", "Pipe Input2"],
+		"Pipe Output2": ["Pipe Input", "Pipe Input2"],
+		"Pipe Waste": ["Pipe Liquid Input", "Pipe Liquid Input2"],
+		"Pipe Liquid Output": ["Pipe Liquid Input", "Pipe Liquid Input2"],
+		"Pipe Liquid Output2": ["Pipe Liquid Input", "Pipe Liquid Input2"],
+		"Pipe Liquid Input": ["Pipe Waste", "Pipe Liquid Output", "Pipe Liquid Output2"]
+
+
+	} as const
+	return !(conn?.sourceHandle && conn?.targetHandle && !rules[conn?.sourceHandle].includes(conn?.targetHandle));
 }
 
 </script>
@@ -43,6 +84,7 @@ const validate: ValidConnectionFunc = (connection, elements) => {
 	&.icon {
 		background: transparent !important;
 		border: none !important;
+		font-size: 12px !important;
 
 		&:before {
 			width: 32px !important;
@@ -58,6 +100,7 @@ const validate: ValidConnectionFunc = (connection, elements) => {
 	}
 
 	.content {
+		text-align: left;
 		width: 20em;
 		pointer-events: none;
 		font-family: var(--monaco-monospace-font), serif !important;
