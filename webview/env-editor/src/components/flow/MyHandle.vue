@@ -23,26 +23,35 @@ const validate: ValidConnectionFunc = (connection, elements) => {
 	if (s === t) {
 		return false
 	}
+	if (!conn?.targetHandle) {
+		return false
+	}
+	if (!conn?.sourceHandle) {
+		return false
+	}
 	// console.log("connect:", conn, elements)
 	const duplicate = elements.edges.find((e) => (e.source === s && e.target === t) || (e.source === t && e.target === s))
 	if (duplicate) {
 		return false
 	}
-	if (conn.sourceHandle?.startsWith("port") || conn.targetHandle?.startsWith("port")) {
-		if (conn.sourceHandle?.startsWith("port") && conn.targetHandle == "Connection") {
+	if (conn.sourceHandle.startsWith("port") || conn.targetHandle.startsWith("port")) {
+		if (conn.sourceHandle.startsWith("port") && ["Data Output", "Data Input", "Connection"].includes(conn.targetHandle)) {
 			return true
 		}
-		return conn.targetHandle?.startsWith("port") && conn.sourceHandle == "Connection";
+		return conn.targetHandle.startsWith("port") && ["Data Output", "Data Input", "Connection"].includes(conn.sourceHandle)
 	}
 
 	const rules: Record<Connection, Connection[]> = {
 		"Chute Output": ["Chute Input"],
+		"Chute Output2": ["Chute Input"],
 		"Chute Input": ["Chute Output", "Chute Output2"],
-		"Connection": ["Connection", "Power And Data Input", "Power And Data Output", "Power Input", "Power Output"],
-		"Power And Data Input": ["Connection", "Power And Data Input", "Power And Data Output", "Power Input", "Power Output"],
-		"Power And Data Output": ["Connection", "Power And Data Input", "Power And Data Output", "Power Input", "Power Output"],
-		"Power Input": ["Connection", "Power And Data Input", "Power And Data Output", "Power Input", "Power Output"],
-		"Power Output": ["Connection", "Power And Data Input", "Power And Data Output", "Power Input", "Power Output"],
+		"Connection": ["Connection", "Power And Data Input", "Power And Data Output", "Power Input", "Power Output", "Data Output", "Data Input"],
+		"Power And Data Input": ["Connection", "Power And Data Input", "Power And Data Output", "Power Input", "Power Output", "Data Output", "Data Input"],
+		"Power And Data Output": ["Connection", "Power And Data Input", "Power And Data Output", "Power Input", "Power Output", "Data Output", "Data Input"],
+		"Power Output": ["Connection", "Power And Data Input", "Power And Data Output", "Power Input", "Power Output",],
+		"Power Input": ["Connection", "Power And Data Input", "Power And Data Output", "Power Input", "Power Output",],
+		"Data Output": ["Connection", "Power And Data Input", "Power And Data Output", "Data Output", "Data Input"],
+		"Data Input": ["Connection", "Power And Data Input", "Power And Data Output", "Data Output", "Data Input"],
 		"Landing Pad Input": ["Landing Pad Input"],
 		"Pipe Input": ["Pipe Output", "Pipe Output2"],
 		"Pipe Input2": ["Pipe Output", "Pipe Output2"],
@@ -51,10 +60,10 @@ const validate: ValidConnectionFunc = (connection, elements) => {
 		"Pipe Waste": ["Pipe Liquid Input", "Pipe Liquid Input2"],
 		"Pipe Liquid Output": ["Pipe Liquid Input", "Pipe Liquid Input2"],
 		"Pipe Liquid Output2": ["Pipe Liquid Input", "Pipe Liquid Input2"],
-		"Pipe Liquid Input": ["Pipe Waste", "Pipe Liquid Output", "Pipe Liquid Output2"]
+		"Pipe Liquid Input": ["Pipe Waste", "Pipe Liquid Output", "Pipe Liquid Output2"],
+		"Pipe Liquid Input2": ["Pipe Waste", "Pipe Liquid Output", "Pipe Liquid Output2"]
 
-
-	} as const
+	}
 	return !(conn?.sourceHandle && conn?.targetHandle && !rules[conn?.sourceHandle].includes(conn?.targetHandle));
 }
 
