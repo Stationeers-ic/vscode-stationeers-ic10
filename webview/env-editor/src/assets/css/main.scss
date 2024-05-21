@@ -52,7 +52,9 @@
 		}
 	}
 }
-
+*[data-handleid]{
+	cursor: cell;
+}
 @media screen and (max-width: 639px) {
 	.ic10Editor {
 		aside {
@@ -67,15 +69,19 @@
 		}
 	}
 }
-
+.p-card{
+	border-radius: 0 !important;
+}
 .deviceCard {
 	&.minimum {
+		cursor: grab;
 		height: 50px !important;
 		margin-bottom: 10px;
 		background-color: var(--vscode-editorWidget-background) !important;
 		color: var(--vscode-editorWidget-foreground) !important;
 		border: 1px solid var(--vscode-editorWidget-border) !important;
 		* {
+
 			&.p-card-body {
 				padding: 8px !important;
 			}

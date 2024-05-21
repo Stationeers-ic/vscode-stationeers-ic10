@@ -79,10 +79,12 @@
 		&-connecting {
 			background-color: var(--vscode-notebookStatusErrorIcon-foreground);
 			color: var(--vscode-notebookStatusErrorIcon-foreground);
+			cursor: no-drop	!important;
 		}
 		&-valid {
 			background-color: var(--vscode-notebookStatusSuccessIcon-foreground);
 			color: var(--vscode-notebookStatusSuccessIcon-foreground);
+			cursor: pointer	!important;
 		}
 	}
 }

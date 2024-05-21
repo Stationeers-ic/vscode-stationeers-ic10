@@ -4,8 +4,8 @@
       "id": "c1e8c7",
       "type": "device",
       "position": {
-        "x": 160,
-        "y": 140
+        "x": -40,
+        "y": -200
       },
       "data": {
         "id": -128473777,
@@ -118,17 +118,178 @@
         },
         "slots": {}
       }
+    },
+    {
+      "id": "fd0b94",
+      "type": "device",
+      "position": {
+        "x": 440,
+        "y": -200
+      },
+      "data": {
+        "id": -1672404896,
+        "Title": "Automated Oven",
+        "Key": "StructureAutomatedOven",
+        "PrefabName": "StructureAutomatedOven",
+        "PrefabHash": -1672404896,
+        "hasChip": false,
+        "deviceConnectCount": 0,
+        "image": "images/d/0/d0d3dce05ebb050a6f00c6403c1e4744.png",
+        "mods": [],
+        "connections": [
+          "Chute Input",
+          "Chute Output",
+          "Connection",
+          "Connection"
+        ],
+        "slots": [
+          {
+            "SlotName": "Import",
+            "SlotType": "None",
+            "SlotIndex": 0,
+            "logic": []
+          },
+          {
+            "SlotName": "Export",
+            "SlotType": "None",
+            "SlotIndex": 1,
+            "logic": []
+          }
+        ],
+        "tags": [
+          "structure",
+          "hasLogic",
+          "hasLogicInstructions",
+          "hasSlot",
+          "buildable",
+          "paintable",
+          "hasReciepe",
+          "hasPrefab",
+          "hasImage"
+        ],
+        "logics": [
+          {
+            "name": "Power",
+            "permissions": [
+              "Read"
+            ]
+          },
+          {
+            "name": "Open",
+            "permissions": [
+              "Read",
+              "Write"
+            ]
+          },
+          {
+            "name": "Error",
+            "permissions": [
+              "Read"
+            ]
+          },
+          {
+            "name": "Activate",
+            "permissions": [
+              "Read",
+              "Write"
+            ]
+          },
+          {
+            "name": "Lock",
+            "permissions": [
+              "Read",
+              "Write"
+            ]
+          },
+          {
+            "name": "Reagents",
+            "permissions": [
+              "Read"
+            ]
+          },
+          {
+            "name": "On",
+            "permissions": [
+              "Read",
+              "Write"
+            ]
+          },
+          {
+            "name": "RequiredPower",
+            "permissions": [
+              "Read"
+            ]
+          },
+          {
+            "name": "RecipeHash",
+            "permissions": [
+              "Read",
+              "Write"
+            ]
+          },
+          {
+            "name": "CompletionRatio",
+            "permissions": [
+              "Read"
+            ]
+          },
+          {
+            "name": "ClearMemory",
+            "permissions": [
+              "Write"
+            ]
+          },
+          {
+            "name": "ExportCount",
+            "permissions": [
+              "Read"
+            ]
+          },
+          {
+            "name": "ImportCount",
+            "permissions": [
+              "Read"
+            ]
+          },
+          {
+            "name": "PrefabHash",
+            "permissions": [
+              "Read"
+            ]
+          },
+          {
+            "name": "ReferenceId",
+            "permissions": [
+              "Read"
+            ]
+          },
+          {
+            "name": "NameHash",
+            "permissions": [
+              "Read"
+            ]
+          }
+        ]
+      },
+      "label": "[fd0b94]",
+      "ic10": {
+        "PrefabHash": -1672404896,
+        "props": {
+          "Test": 1
+        },
+        "slots": {}
+      }
     }
   ],
   "edges": [],
   "position": [
-    0,
-    0
+    239.4710601582862,
+    402.84342661465575
   ],
-  "zoom": 2,
+  "zoom": 0.8626364672661591,
   "viewport": {
-    "x": 0,
-    "y": 0,
-    "zoom": 2
+    "x": 239.4710601582862,
+    "y": 402.84342661465575,
+    "zoom": 0.8626364672661591
   }
 }

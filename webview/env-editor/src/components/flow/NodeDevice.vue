@@ -56,6 +56,7 @@ onMounted(() => {
 					break
 				case "Connection":
 					pos = Position.Bottom
+					icon = "codicon codicon-circle-large-filled"
 					break
 				case "Pipe Input":
 				case "Pipe Input2":
