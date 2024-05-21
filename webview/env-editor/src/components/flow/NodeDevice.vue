@@ -98,7 +98,6 @@ onMounted(() => {
 				position: pos,
 				type: "target",
 				icon: icon,
-				connectionType: connection
 			})
 		})
 	}
