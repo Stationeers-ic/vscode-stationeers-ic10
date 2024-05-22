@@ -11,11 +11,12 @@ const props = defineProps<{
 const node = useNodesData<Node<Datum>>(props.id)
 const connections = ref<H[]>([])
 onMounted(() => {
+	const data = new Map<string, H>()
 	if (node.value?.data) {
 		if (node.value.data.deviceConnectCount) {
 			for (let i = 0; i < node.value.data.deviceConnectCount; i++) {
 				if (i < node.value.data.deviceConnectCount / 2) {
-					connections.value.push({
+					data.set(`port d${i}`, {
 						id: `port d${i}`,
 						title: `d${i}`,
 						position: Position.Left,
@@ -23,7 +24,7 @@ onMounted(() => {
 						icon: "ic-icon-port_connection",
 					})
 				} else {
-					connections.value.push({
+					data.set(`port d${i}`, {
 						id: `port d${i}`,
 						title: `d${i}`,
 						position: Position.Right,
@@ -93,7 +94,10 @@ onMounted(() => {
 				case "Landing Pad Input":
 					return
 			}
-			connections.value.push({
+			if (data.has(connection)) {
+				return
+			}
+			data.set(connection, {
 				id: connection,
 				title: connection,
 				position: pos,
@@ -101,6 +105,7 @@ onMounted(() => {
 				icon: icon,
 			})
 		})
+		connections.value = Array.from(data.values())
 	}
 })
 
