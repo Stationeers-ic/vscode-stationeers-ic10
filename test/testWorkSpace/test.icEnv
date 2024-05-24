@@ -1,1136 +1,226 @@
 {
   "nodes": [
     {
-      "id": "6db4f6",
-      "type": "device",
-      "position": {
-        "x": -40,
-        "y": 160
-      },
-      "data": {
-        "id": -247344692,
-        "Title": "Arc Furnace",
-        "Key": "StructureArcFurnace",
-        "PrefabName": "StructureArcFurnace",
-        "PrefabHash": -247344692,
-        "hasChip": false,
-        "deviceConnectCount": 0,
-        "image": "images/f/3/f3e6e6509704603ab585721cad58d8be.png",
-        "mods": [],
-        "connections": [
-          "Chute Input",
-          "Chute Output",
-          "Connection",
-          "Connection"
-        ],
-        "slots": [
-          {
-            "SlotName": "Import",
-            "SlotType": "Ore",
-            "SlotIndex": 0,
-            "logic": [
-              "Occupied",
-              "OccupantHash",
-              "Quantity",
-              "Damage",
-              "Class",
-              "MaxQuantity",
-              "PrefabHash",
-              "SortingClass",
-              "ReferenceId"
-            ]
-          },
-          {
-            "SlotName": "Export",
-            "SlotType": "Ingot",
-            "SlotIndex": 1,
-            "logic": [
-              "Occupied",
-              "OccupantHash",
-              "Quantity",
-              "Damage",
-              "Class",
-              "MaxQuantity",
-              "PrefabHash",
-              "SortingClass",
-              "ReferenceId"
-            ]
-          }
-        ],
-        "tags": [
-          "structure",
-          "hasLogic",
-          "hasSlot",
-          "buildable",
-          "paintable",
-          "hasReciepe",
-          "hasPrefab",
-          "hasImage"
-        ],
-        "logics": [
-          {
-            "name": "Power",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Error",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Activate",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "Lock",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "Reagents",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "On",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "RequiredPower",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Idle",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RecipeHash",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "ClearMemory",
-            "permissions": [
-              "Write"
-            ]
-          },
-          {
-            "name": "ExportCount",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "ImportCount",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "PrefabHash",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "ReferenceId",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "NameHash",
-            "permissions": [
-              "Read"
-            ]
-          }
-        ]
-      },
-      "label": "[6db4f6]",
-      "ic10": {
-        "PrefabHash": -247344692,
-        "props": {
-          "Test": 1
-        },
-        "slots": {}
-      }
-    },
-    {
-      "id": "627071",
-      "type": "device",
-      "position": {
-        "x": 340,
-        "y": 200
-      },
-      "data": {
-        "id": 1947944864,
-        "Title": "Furnace",
-        "Key": "StructureFurnace",
-        "PrefabName": "StructureFurnace",
-        "PrefabHash": 1947944864,
-        "hasChip": false,
-        "deviceConnectCount": 0,
-        "image": "images/1/b/1b2194535587e7147e3c4bbf29359c8d.png",
-        "mods": [
-          "Mode0",
-          "Mode1"
-        ],
-        "connections": [
-          "Chute Input",
-          "Chute Output",
-          "Pipe Input",
-          "Pipe Output",
-          "Pipe Liquid Output2",
-          "Connection"
-        ],
-        "slots": [
-          {
-            "SlotName": "Import",
-            "SlotType": "None",
-            "SlotIndex": 0,
-            "logic": []
-          },
-          {
-            "SlotName": "Export",
-            "SlotType": "None",
-            "SlotIndex": 1,
-            "logic": []
-          }
-        ],
-        "tags": [
-          "structure",
-          "hasLogic",
-          "hasSlot",
-          "buildable",
-          "hasMode",
-          "paintable",
-          "hasReciepe",
-          "hasPrefab",
-          "hasImage"
-        ],
-        "logics": [
-          {
-            "name": "Open",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "Mode",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "Pressure",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Temperature",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Activate",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "Lock",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "Setting",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "Reagents",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioOxygen",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioCarbonDioxide",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioNitrogen",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioPollutant",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioVolatiles",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioWater",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Maximum",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Ratio",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RecipeHash",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "ClearMemory",
-            "permissions": [
-              "Write"
-            ]
-          },
-          {
-            "name": "ExportCount",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "ImportCount",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "TotalMoles",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioNitrousOxide",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "PrefabHash",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Combustion",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioLiquidNitrogen",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioLiquidOxygen",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioLiquidVolatiles",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioSteam",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioLiquidCarbonDioxide",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioLiquidPollutant",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioLiquidNitrousOxide",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "ReferenceId",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioHydrogen",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioLiquidHydrogen",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioPollutedWater",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "NameHash",
-            "permissions": [
-              "Read"
-            ]
-          }
-        ]
-      },
-      "label": "[627071]",
-      "ic10": {
-        "PrefabHash": 1947944864,
-        "props": {
-          "Test": 1
-        },
-        "slots": {}
-      }
-    },
-    {
-      "id": "b4c7a0",
-      "type": "device",
-      "position": {
-        "x": 740,
-        "y": 160
-      },
-      "data": {
-        "id": 545937711,
-        "Title": "Advanced Furnace",
-        "Key": "StructureAdvancedFurnace",
-        "PrefabName": "StructureAdvancedFurnace",
-        "PrefabHash": 545937711,
-        "hasChip": false,
-        "deviceConnectCount": 0,
-        "image": "images/4/2/425b3411dea26d5175bcc49cfb0f694a.png",
-        "mods": [
-          "Mode0",
-          "Mode1"
-        ],
-        "connections": [
-          "Chute Input",
-          "Chute Output",
-          "Connection",
-          "Connection",
-          "Pipe Input",
-          "Pipe Output",
-          "Pipe Liquid Output2"
-        ],
-        "slots": [
-          {
-            "SlotName": "Import",
-            "SlotType": "None",
-            "SlotIndex": 0,
-            "logic": []
-          },
-          {
-            "SlotName": "Export",
-            "SlotType": "None",
-            "SlotIndex": 1,
-            "logic": []
-          }
-        ],
-        "tags": [
-          "structure",
-          "hasLogic",
-          "hasSlot",
-          "buildable",
-          "hasMode",
-          "paintable",
-          "hasReciepe",
-          "hasPrefab",
-          "hasImage"
-        ],
-        "logics": [
-          {
-            "name": "Power",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Open",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "Mode",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "Error",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Pressure",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Temperature",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Activate",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "Lock",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "Setting",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "Reagents",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioOxygen",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioCarbonDioxide",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioNitrogen",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioPollutant",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioVolatiles",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioWater",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Maximum",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Ratio",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "On",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "RequiredPower",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RecipeHash",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "ClearMemory",
-            "permissions": [
-              "Write"
-            ]
-          },
-          {
-            "name": "ExportCount",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "ImportCount",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "TotalMoles",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioNitrousOxide",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "PrefabHash",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "SettingInput",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "SettingOutput",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "Combustion",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioLiquidNitrogen",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioLiquidOxygen",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioLiquidVolatiles",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioSteam",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioLiquidCarbonDioxide",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioLiquidPollutant",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioLiquidNitrousOxide",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "ReferenceId",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioHydrogen",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioLiquidHydrogen",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RatioPollutedWater",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "NameHash",
-            "permissions": [
-              "Read"
-            ]
-          }
-        ]
-      },
-      "label": "[b4c7a0]",
-      "ic10": {
-        "PrefabHash": 545937711,
-        "props": {
-          "Test": 1
-        },
-        "slots": {}
-      }
-    },
-    {
-      "id": "b5b3bd",
-      "type": "device",
-      "position": {
-        "x": 1140,
-        "y": 200
-      },
-      "data": {
-        "id": 336213101,
-        "Title": "Autolathe",
-        "Key": "StructureAutolathe",
-        "PrefabName": "StructureAutolathe",
-        "PrefabHash": 336213101,
-        "hasChip": false,
-        "deviceConnectCount": 0,
-        "image": "images/c/d/cd8f263d9ae6e73ea01a4c51185374e9.png",
-        "mods": [],
-        "connections": [
-          "Chute Input",
-          "Chute Output",
-          "Connection",
-          "Connection"
-        ],
-        "slots": [
-          {
-            "SlotName": "Import",
-            "SlotType": "Ingot",
-            "SlotIndex": 0,
-            "logic": []
-          },
-          {
-            "SlotName": "Export",
-            "SlotType": "None",
-            "SlotIndex": 1,
-            "logic": []
-          }
-        ],
-        "tags": [
-          "structure",
-          "hasLogic",
-          "hasLogicInstructions",
-          "hasSlot",
-          "buildable",
-          "paintable",
-          "hasReciepe",
-          "hasPrefab",
-          "hasImage"
-        ],
-        "logics": [
-          {
-            "name": "Power",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Open",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "Error",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Activate",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "Lock",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "Reagents",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "On",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "RequiredPower",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "RecipeHash",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "CompletionRatio",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "ClearMemory",
-            "permissions": [
-              "Write"
-            ]
-          },
-          {
-            "name": "ExportCount",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "ImportCount",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "PrefabHash",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "ReferenceId",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "NameHash",
-            "permissions": [
-              "Read"
-            ]
-          }
-        ]
-      },
-      "label": "[b5b3bd]",
-      "ic10": {
-        "PrefabHash": 336213101,
-        "props": {
-          "Test": 1
-        },
-        "slots": {}
-      }
-    },
-    {
-      "id": "05784e",
+      "id": "403ce8",
       "type": "device",
       "position": {
         "x": 500,
-        "y": 560
+        "y": 240
       },
       "data": {
-        "id": -128473777,
-        "Title": "IC Housing",
-        "Key": "StructureCircuitHousing",
         "PrefabName": "StructureCircuitHousing",
         "PrefabHash": -128473777,
-        "hasChip": true,
-        "deviceConnectCount": 6,
-        "image": "images/b/7/b746a2fcc95bb672febc5bdb97e88fc6.png",
-        "mods": [],
-        "connections": [
-          "Data Input",
-          "Connection"
-        ],
-        "slots": [
-          {
-            "SlotName": "Programmable Chip",
-            "SlotType": "ProgrammableChip",
-            "SlotIndex": 0,
-            "logic": [
-              "Occupied",
-              "OccupantHash",
-              "Quantity",
-              "Damage",
-              "Class",
-              "MaxQuantity",
-              "PrefabHash",
-              "LineNumber",
-              "SortingClass",
-              "ReferenceId"
-            ]
-          }
-        ],
-        "tags": [
-          "structure",
-          "hasLogic",
-          "hasSlot",
-          "hasChip",
-          "buildable",
-          "paintable",
-          "hasPrefab",
-          "hasImage"
-        ],
-        "logics": [
-          {
-            "name": "Power",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Error",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "Setting",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "On",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "RequiredPower",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "PrefabHash",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "LineNumber",
-            "permissions": [
-              "Read",
-              "Write"
-            ]
-          },
-          {
-            "name": "ReferenceId",
-            "permissions": [
-              "Read"
-            ]
-          },
-          {
-            "name": "NameHash",
-            "permissions": [
-              "Read"
-            ]
-          }
-        ]
+        "ic10": {}
       },
-      "label": "[05784e]",
-      "ic10": {
-        "PrefabHash": -128473777,
-        "props": {
-          "Test": 1
-        },
-        "slots": {}
-      }
+      "label": "[403ce8]"
+    },
+    {
+      "id": "ce42a3",
+      "type": "device",
+      "position": {
+        "x": 20,
+        "y": 240
+      },
+      "data": {
+        "PrefabName": "StructureSolarPanelDual",
+        "PrefabHash": -539224550,
+        "ic10": {}
+      },
+      "label": "[ce42a3]"
+    },
+    {
+      "id": "23b45f",
+      "type": "device",
+      "position": {
+        "x": -300,
+        "y": 240
+      },
+      "data": {
+        "PrefabName": "StructureSolarPanelDual",
+        "PrefabHash": -539224550,
+        "ic10": {}
+      },
+      "label": "[23b45f]"
+    },
+    {
+      "id": "cea7ff",
+      "type": "device",
+      "position": {
+        "x": -620,
+        "y": 240
+      },
+      "data": {
+        "PrefabName": "StructureSolarPanelDual",
+        "PrefabHash": -539224550,
+        "ic10": {}
+      },
+      "label": "[cea7ff]"
+    },
+    {
+      "id": "d1045f",
+      "type": "device",
+      "position": {
+        "x": 440,
+        "y": 600
+      },
+      "data": {
+        "PrefabName": "StructureBatteryLarge",
+        "PrefabHash": -1388288459,
+        "ic10": {}
+      },
+      "label": "[d1045f]"
+    },
+    {
+      "id": "471148",
+      "type": "device",
+      "position": {
+        "x": 960,
+        "y": 500
+      },
+      "data": {
+        "PrefabName": "StructureDaylightSensor",
+        "PrefabHash": 1076425094,
+        "ic10": {}
+      },
+      "label": "[471148]"
     }
   ],
   "edges": [
     {
-      "id": "vueflow__edge-627071Connection-b4c7a0Connection",
+      "id": "vueflow__edge-cea7ff0-power_data-Connection-23b45f0-power_data-Connection",
       "type": "default",
-      "source": "627071",
-      "target": "b4c7a0",
-      "sourceHandle": "Connection",
-      "targetHandle": "Connection",
+      "source": "cea7ff",
+      "target": "23b45f",
+      "sourceHandle": "0-power_data-Connection",
+      "targetHandle": "0-power_data-Connection",
       "data": {},
       "label": "",
-      "sourceX": 439.99997587665473,
-      "sourceY": 409.99990738972156,
-      "targetX": 840.0000188313294,
-      "targetY": 369.9998966510529
+      "sourceX": -520.0000287791004,
+      "sourceY": 230.00000559074516,
+      "targetX": -200.00002877910038,
+      "targetY": 230.00000559074516
     },
     {
-      "id": "vueflow__edge-627071Chute Input-6db4f6Chute Output",
+      "id": "vueflow__edge-23b45f0-power_data-Connection-ce42a30-power_data-Connection",
       "type": "default",
-      "source": "627071",
-      "target": "6db4f6",
-      "sourceHandle": "Chute Input",
-      "targetHandle": "Chute Output",
+      "source": "23b45f",
+      "target": "ce42a3",
+      "sourceHandle": "0-power_data-Connection",
+      "targetHandle": "0-power_data-Connection",
       "data": {},
       "label": "",
-      "sourceX": 330.00002288625063,
-      "sourceY": 249.99996144388408,
-      "targetX": 169.99992886705886,
-      "targetY": 259.9999436606488
+      "sourceX": -200.00002877910038,
+      "sourceY": 230.00000559074516,
+      "targetX": 119.99997122089964,
+      "targetY": 230.00000559074516
     },
     {
-      "id": "vueflow__edge-b4c7a0Connection-b5b3bdConnection",
+      "id": "vueflow__edge-ce42a30-power_data-Connection-403ce80-data-Connection",
       "type": "default",
-      "source": "b4c7a0",
-      "target": "b5b3bd",
-      "sourceHandle": "Connection",
-      "targetHandle": "Connection",
+      "source": "ce42a3",
+      "target": "403ce8",
+      "sourceHandle": "0-power_data-Connection",
+      "targetHandle": "0-data-Connection",
       "data": {},
       "label": "",
-      "sourceX": 840.0000188313294,
-      "sourceY": 369.9998966510529,
-      "targetX": 1239.9999329219802,
-      "targetY": 409.99990738972156
+      "sourceX": 119.99997122089964,
+      "sourceY": 230.00000559074516,
+      "targetX": 599.9999712208996,
+      "targetY": 230.00000559074516
     },
     {
-      "id": "vueflow__edge-05784eport d0-627071Connection",
+      "id": "vueflow__edge-d1045f0-power-Power Output-403ce80-power-Connection",
       "type": "default",
-      "source": "05784e",
-      "target": "627071",
-      "sourceHandle": "port d0",
-      "targetHandle": "Connection",
+      "source": "d1045f",
+      "target": "403ce8",
+      "sourceHandle": "0-power-Power Output",
+      "targetHandle": "0-power-Connection",
       "data": {},
       "label": "",
-      "sourceX": 490.0000440827007,
-      "sourceY": 593.3281445845674,
-      "targetX": 439.99997587665473,
-      "targetY": 409.99990738972156
+      "sourceX": 649.9999530730398,
+      "sourceY": 700.0000361088423,
+      "targetX": 599.9999712208996,
+      "targetY": 449.9999692950255
+    },
+    {
+      "id": "vueflow__edge-23b45f0-power-Connection-cea7ff0-power-Connection",
+      "type": "default",
+      "source": "23b45f",
+      "target": "cea7ff",
+      "sourceHandle": "0-power-Connection",
+      "targetHandle": "0-power-Connection",
+      "data": {},
+      "label": "",
+      "sourceX": -200.00002877910038,
+      "sourceY": 449.9999692950255,
+      "targetX": -520.0000287791004,
+      "targetY": 449.9999692950255
+    },
+    {
+      "id": "vueflow__edge-ce42a30-power-Connection-23b45f0-power-Connection",
+      "type": "default",
+      "source": "ce42a3",
+      "target": "23b45f",
+      "sourceHandle": "0-power-Connection",
+      "targetHandle": "0-power-Connection",
+      "data": {},
+      "label": "",
+      "sourceX": 119.99997122089964,
+      "sourceY": 449.9999692950255,
+      "targetX": -200.00002877910038,
+      "targetY": 449.9999692950255
+    },
+    {
+      "id": "vueflow__edge-d1045f0-power-Power Input-ce42a30-power-Connection",
+      "type": "default",
+      "source": "d1045f",
+      "target": "ce42a3",
+      "sourceHandle": "0-power-Power Input",
+      "targetHandle": "0-power-Connection",
+      "data": {},
+      "label": "",
+      "sourceX": 489.99991806469694,
+      "sourceY": 810.0000179609825,
+      "targetX": 119.99997122089964,
+      "targetY": 449.9999692950255
+    },
+    {
+      "id": "vueflow__edge-4711480-power_data-Connection-403ce83-port-Connection",
+      "type": "default",
+      "source": "471148",
+      "target": "403ce8",
+      "sourceHandle": "0-power_data-Connection",
+      "targetHandle": "3-port-Connection",
+      "data": {},
+      "label": "",
+      "sourceX": 1060.0002972969983,
+      "sourceY": 489.99996095227056,
+      "targetX": 709.9999530730398,
+      "targetY": 273.328129161134
+    },
+    {
+      "id": "vueflow__edge-d1045f0-power-Power Output-4711480-power_data-Connection",
+      "type": "default",
+      "source": "d1045f",
+      "target": "471148",
+      "sourceHandle": "0-power-Power Output",
+      "targetHandle": "0-power_data-Connection",
+      "data": {},
+      "label": "",
+      "sourceX": 649.9999530730398,
+      "sourceY": 700.0000361088423,
+      "targetX": 1060.0002972969983,
+      "targetY": 489.99996095227056
     }
   ],
   "position": [
-    -276.69540862424833,
-    -175.08822968017046
+    -415.8934027518635,
+    -31.43245611586417
   ],
-  "zoom": 1.3238221884933323,
+  "zoom": 1.2429740387447827,
   "viewport": {
-    "x": -276.69540862424833,
-    "y": -175.08822968017046,
-    "zoom": 1.3238221884933323
+    "x": -415.8934027518635,
+    "y": -31.43245611586417,
+    "zoom": 1.2429740387447827
   }
 }

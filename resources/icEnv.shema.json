@@ -1,0 +1,158 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/ICEnv",
+    "definitions": {
+        "ICEnv": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Node"
+                    }
+                },
+                "edges": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Edge"
+                    }
+                },
+                "position": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "zoom": {
+                    "type": "number"
+                },
+                "viewport": {
+                    "$ref": "#/definitions/Viewport"
+                }
+            },
+            "required": [],
+            "title": "ICEnv"
+        },
+        "Edge": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "source": {
+                    "type": "string"
+                },
+                "target": {
+                    "type": "string"
+                },
+                "sourceHandle": {
+                    "type": "string"
+                },
+                "targetHandle": {
+                    "type": "string"
+                },
+                "data": {
+                    "$ref": "#/definitions/Ic10Class"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "sourceX": {
+                    "type": "number"
+                },
+                "sourceY": {
+                    "type": "number"
+                },
+                "targetX": {
+                    "type": "number"
+                },
+                "targetY": {
+                    "type": "number"
+                }
+            },
+            "required": [],
+            "title": "Edge"
+        },
+        "Ic10Class": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "Ic10Class"
+        },
+        "Node": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "position": {
+                    "$ref": "#/definitions/Position"
+                },
+                "data": {
+                    "$ref": "#/definitions/NodeData"
+                },
+                "label": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "title": "Node"
+        },
+        "NodeData": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "PrefabName": {
+                    "type": "string"
+                },
+                "PrefabHash": {
+                    "type": "integer"
+                },
+                "ic10": {
+                    "$ref": "#/definitions/Ic10Class"
+                }
+            },
+            "required": [],
+            "title": "NodeData"
+        },
+        "Position": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "x": {
+                    "type": "integer"
+                },
+                "y": {
+                    "type": "integer"
+                }
+            },
+            "required": [],
+            "title": "Position"
+        },
+        "Viewport": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "x": {
+                    "type": "number"
+                },
+                "y": {
+                    "type": "number"
+                },
+                "zoom": {
+                    "type": "number"
+                }
+            },
+            "required": [],
+            "title": "Viewport"
+        }
+    }
+}
