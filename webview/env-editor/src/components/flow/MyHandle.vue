@@ -2,7 +2,7 @@
 
 import {Handle, ValidConnectionFunc} from "@vue-flow/core";
 import {H} from "./HandleList.vue";
-import {type Connection} from "../../types/devices";
+import {HandleId, NormalConnection, parseHandleId} from "../../helpers.ts";
 
 const props = defineProps<{
 	handle: H
@@ -14,9 +14,9 @@ const validate: ValidConnectionFunc = (connection, elements) => {
 		/** Target node id */
 		target: string
 		/** Source handle id */
-		sourceHandle?: Connection | null
+		sourceHandle?: HandleId | null
 		/** Target handle id */
-		targetHandle?: Connection | null
+		targetHandle?: HandleId | null
 	}
 	const s = conn.source
 	const t = conn.target
@@ -30,41 +30,32 @@ const validate: ValidConnectionFunc = (connection, elements) => {
 		return false
 	}
 	// console.log("connect:", conn, elements)
-	const duplicate = elements.edges.find((e) => (e.source === s && e.target === t) || (e.source === t && e.target === s))
-	if (duplicate) {
-		return false
-	}
-	if (conn.sourceHandle.startsWith("port") || conn.targetHandle.startsWith("port")) {
-		if (conn.sourceHandle.startsWith("port") && ["Data Output", "Data Input", "Connection"].includes(conn.targetHandle)) {
-			return true
+	const duplicate = elements.edges.filter((e) => (e.source === s && e.target === t) || (e.source === t && e.target === s))
+	if (duplicate.length > 0) {
+		const dub = duplicate.find((d) => d.sourceHandle === conn.sourceHandle && d.targetHandle === conn.targetHandle)
+		if (dub) {
+			return false
 		}
-		return conn.targetHandle.startsWith("port") && ["Data Output", "Data Input", "Connection"].includes(conn.sourceHandle)
 	}
 
-	const rules: Record<Connection, Connection[]> = {
-		"Chute Output": ["Chute Input"],
-		"Chute Output2": ["Chute Input"],
-		"Chute Input": ["Chute Output", "Chute Output2"],
-		"Connection": ["Connection", "Power And Data Input", "Power And Data Output", "Power Input", "Power Output", "Data Output", "Data Input"],
-		"Power And Data Input": ["Connection", "Power And Data Input", "Power And Data Output", "Power Input", "Power Output", "Data Output", "Data Input"],
-		"Power And Data Output": ["Connection", "Power And Data Input", "Power And Data Output", "Power Input", "Power Output", "Data Output", "Data Input"],
-		"Power Output": ["Connection", "Power And Data Input", "Power And Data Output", "Power Input", "Power Output",],
-		"Power Input": ["Connection", "Power And Data Input", "Power And Data Output", "Power Input", "Power Output",],
-		"Data Output": ["Connection", "Power And Data Input", "Power And Data Output", "Data Output", "Data Input"],
-		"Data Input": ["Connection", "Power And Data Input", "Power And Data Output", "Data Output", "Data Input"],
-		"Landing Pad Input": ["Landing Pad Input"],
-		"Pipe Input": ["Pipe Output", "Pipe Output2"],
-		"Pipe Input2": ["Pipe Output", "Pipe Output2"],
-		"Pipe Output": ["Pipe Input", "Pipe Input2"],
-		"Pipe Output2": ["Pipe Input", "Pipe Input2"],
-		"Pipe Waste": ["Pipe Liquid Input", "Pipe Liquid Input2"],
-		"Pipe Liquid Output": ["Pipe Liquid Input", "Pipe Liquid Input2"],
-		"Pipe Liquid Output2": ["Pipe Liquid Input", "Pipe Liquid Input2"],
-		"Pipe Liquid Input": ["Pipe Waste", "Pipe Liquid Output", "Pipe Liquid Output2"],
-		"Pipe Liquid Input2": ["Pipe Waste", "Pipe Liquid Output", "Pipe Liquid Output2"]
-
+	if (conn.sourceHandle && conn.targetHandle) {
+		const sourceHandle = parseHandleId(conn.sourceHandle)
+		const targetHandle = parseHandleId(conn.targetHandle)
+		const rules: Record<NormalConnection, NormalConnection[]> = {
+			port: ["data", "power_data"],
+			data: ["data", "power_data", "port"],
+			power: ["power", "power_data"],
+			power_data: ["power", "data","power_data","port"],
+			gas: ["gas"],
+			item: ["item"],
+			liquid: ["liquid"],
+			waste: ["waste"],
+			Landing: ["Landing"],
+			unknown: []
+		}
+		return !(conn?.sourceHandle && conn?.targetHandle && !rules[sourceHandle.normal].includes(targetHandle.normal));
 	}
-	return !(conn?.sourceHandle && conn?.targetHandle && !rules[conn?.sourceHandle].includes(conn?.targetHandle));
+	return false
 }
 
 </script>

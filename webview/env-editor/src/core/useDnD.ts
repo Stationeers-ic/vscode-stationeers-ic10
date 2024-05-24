@@ -1,6 +1,7 @@
 import {useVueFlow} from "@vue-flow/core"
 import {ref, watch} from "vue"
 import {Datum, DeviceNodeData} from "../types/devices";
+import {uuid} from "../helpers.ts";
 
 const state = {
 	/**
@@ -128,11 +129,4 @@ export default function useDragAndDrop() {
 	}
 }
 
-function uuid() {
-	return "xxxxxx".replace(/[xy]/g, function (c) {
-		const r = (Math.random() * 16) | 0,
-			v = c === "x" ? r : (r & 0x3) | 0x8;
-		return v.toString(16);
-	});
-}
 

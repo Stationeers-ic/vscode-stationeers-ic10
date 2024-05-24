@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import {BaseEdge, EdgeLabelRenderer, getBezierPath, getSmoothStepPath, type Position, useVueFlow} from '@vue-flow/core'
+import {BaseEdge, EdgeLabelRenderer, getSmoothStepPath, type Position, useVueFlow} from '@vue-flow/core'
 import {computed, CSSProperties} from 'vue'
 import {emit} from "../../core/events.ts";
+import type {Connection} from "../../types/devices";
+import {matchColor, parseHandleId} from "../../helpers.ts";
 
 const props = defineProps<{
 	id: string,
@@ -14,22 +16,27 @@ const props = defineProps<{
 	targetY: number
 	targetPosition?: Position
 	curvature?: number
+	sourceHandle?: string
 }>();
-const {removeEdges} = useVueFlow()
-
+const {removeEdges, edges} = useVueFlow()
 const path = computed(() => getSmoothStepPath(props))
 
 function remove() {
 	removeEdges(props.id)
 	emit('update')
 }
-
+const edge = edges.value.find((e) => e.id === props.id)
+let source = parseHandleId(edge?.sourceHandle)
+if (source.normal === "power_data") {
+	source = parseHandleId(edge?.targetHandle)
+}
+const color = matchColor(source.normal)
 </script>
 
 
 <template>
 	<!-- You can use the `BaseEdge` component to create your own custom edge more easily -->
-	<BaseEdge :id="props.id" :style="props.style" :path="path[0]" :marker-end="markerEnd"/>
+	<BaseEdge :style="{'stroke':color}" :id="props.id" :path="path[0]" :marker-end="markerEnd"/>
 
 	<!-- Use the `EdgeLabelRenderer` to escape the SVG world of edges and render your own custom label in a `<div>` ctx -->
 	<EdgeLabelRenderer>
@@ -41,7 +48,7 @@ function remove() {
      		}"
 			class="nodrag nopan"
 		>
-			<button class="edgebutton" @click="remove">×</button>
+			<button class="edgebutton" :style="{'color':color}" @click="remove">×</button>
 		</div>
 	</EdgeLabelRenderer>
 </template>

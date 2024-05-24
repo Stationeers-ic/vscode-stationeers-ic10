@@ -8,7 +8,7 @@ import {
 	VueFlow
 } from "@vue-flow/core"
 import {onMounted, onUnmounted, watch} from "vue"
-import {grid} from "../consts.ts"
+import {grid} from "../helpers.ts"
 import useDragAndDrop from "./../core/useDnD"
 import {Background} from '@vue-flow/background'
 import Sidebar from "./Sidebar.vue"
@@ -145,6 +145,8 @@ const pos = PanelPosition.TopRight
 						:target-position="buttonEdgeProps.targetPosition"
 						:marker-end="buttonEdgeProps.markerEnd"
 						:style="buttonEdgeProps.style"
+						:sourceHandle="buttonEdgeProps.source"
+
 					/>
 				</template>
 				<template
@@ -162,8 +164,6 @@ const pos = PanelPosition.TopRight
 										  :targetPosition="targetPosition"
 										  :markerStart="markerStart"
 										  :markerEnd="markerEnd"
-
-
 					/>
 				</template>
 			</VueFlow>

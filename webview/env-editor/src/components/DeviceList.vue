@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 
-import {aside_node_height} from "../consts.ts";
+import {aside_node_height} from "../helpers.ts";
 import DnDnode from "./DnDnode.vue";
 import {Datum} from "../types/devices";
 import IconField from 'primevue/iconfield';
