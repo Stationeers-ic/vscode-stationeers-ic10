@@ -223,14 +223,14 @@
         "displayName": "Ic10 Env Editor",
         "selector": [
           {
-						"filenamePattern": "*.icEnv"
-					},
-					{
-						"filenamePattern": "*.icenv"
-					},
-					{
-						"filenamePattern": "*.ice"
-					}
+            "filenamePattern": "*.icEnv"
+          },
+          {
+            "filenamePattern": "*.icenv"
+          },
+          {
+            "filenamePattern": "*.ice"
+          }
         ]
       }
     ]
@@ -245,6 +245,7 @@
     "@vscode/debugadapter": "^1.65.0",
     "@vscode/debugprotocol": "^1.65.0",
     "ic10": "^4.3.1",
+    "json5": "^2.2.3",
     "vscode-languageclient": "^9.0.1",
     "vscode-languageserver": "^9.0.1",
     "vscode-languageserver-textdocument": "^1.0.11",

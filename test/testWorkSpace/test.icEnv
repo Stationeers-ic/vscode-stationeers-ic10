@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/Stationeers-ic/vscode-stationeers-ic10/v4/resources/icEnv.shema.json",
   "nodes": [
     {
       "id": "403ce8",
@@ -18,7 +19,7 @@
       "id": "ce42a3",
       "type": "device",
       "position": {
-        "x": 20,
+        "x": 40,
         "y": 240
       },
       "data": {
@@ -60,8 +61,8 @@
       "id": "d1045f",
       "type": "device",
       "position": {
-        "x": 440,
-        "y": 600
+        "x": 500,
+        "y": 560
       },
       "data": {
         "PrefabName": "StructureBatteryLarge",
@@ -95,10 +96,10 @@
       "targetHandle": "0-power_data-Connection",
       "data": {},
       "label": "",
-      "sourceX": -520.0000287791004,
-      "sourceY": 230.00000559074516,
-      "targetX": -200.00002877910038,
-      "targetY": 230.00000559074516
+      "sourceX": -519.999943611945,
+      "sourceY": 229.99997705171663,
+      "targetX": -199.999943611945,
+      "targetY": 229.99997705171663
     },
     {
       "id": "vueflow__edge-23b45f0-power_data-Connection-ce42a30-power_data-Connection",
@@ -109,10 +110,10 @@
       "targetHandle": "0-power_data-Connection",
       "data": {},
       "label": "",
-      "sourceX": -200.00002877910038,
-      "sourceY": 230.00000559074516,
-      "targetX": 119.99997122089964,
-      "targetY": 230.00000559074516
+      "sourceX": -199.999943611945,
+      "sourceY": 229.99997705171663,
+      "targetX": 140.000056388055,
+      "targetY": 229.99997705171663
     },
     {
       "id": "vueflow__edge-ce42a30-power_data-Connection-403ce80-data-Connection",
@@ -123,10 +124,10 @@
       "targetHandle": "0-data-Connection",
       "data": {},
       "label": "",
-      "sourceX": 119.99997122089964,
-      "sourceY": 230.00000559074516,
-      "targetX": 599.9999712208996,
-      "targetY": 230.00000559074516
+      "sourceX": 140.000056388055,
+      "sourceY": 229.99997705171663,
+      "targetX": 600.000056388055,
+      "targetY": 229.99997705171663
     },
     {
       "id": "vueflow__edge-d1045f0-power-Power Output-403ce80-power-Connection",
@@ -137,10 +138,10 @@
       "targetHandle": "0-power-Connection",
       "data": {},
       "label": "",
-      "sourceX": 649.9999530730398,
-      "sourceY": 700.0000361088423,
-      "targetX": 599.9999712208996,
-      "targetY": 449.9999692950255
+      "sourceX": 710.0000895470685,
+      "sourceY": 660.000056388055,
+      "targetX": 600.000056388055,
+      "targetY": 450.0001357243933
     },
     {
       "id": "vueflow__edge-23b45f0-power-Connection-cea7ff0-power-Connection",
@@ -151,10 +152,10 @@
       "targetHandle": "0-power-Connection",
       "data": {},
       "label": "",
-      "sourceX": -200.00002877910038,
-      "sourceY": 449.9999692950255,
-      "targetX": -520.0000287791004,
-      "targetY": 449.9999692950255
+      "sourceX": -199.999943611945,
+      "sourceY": 450.0001357243933,
+      "targetX": -519.999943611945,
+      "targetY": 450.0001357243933
     },
     {
       "id": "vueflow__edge-ce42a30-power-Connection-23b45f0-power-Connection",
@@ -165,10 +166,10 @@
       "targetHandle": "0-power-Connection",
       "data": {},
       "label": "",
-      "sourceX": 119.99997122089964,
-      "sourceY": 449.9999692950255,
-      "targetX": -200.00002877910038,
-      "targetY": 449.9999692950255
+      "sourceX": 140.000056388055,
+      "sourceY": 450.0001357243933,
+      "targetX": -199.999943611945,
+      "targetY": 450.0001357243933
     },
     {
       "id": "vueflow__edge-d1045f0-power-Power Input-ce42a30-power-Connection",
@@ -179,10 +180,10 @@
       "targetHandle": "0-power-Connection",
       "data": {},
       "label": "",
-      "sourceX": 489.99991806469694,
-      "sourceY": 810.0000179609825,
-      "targetX": 119.99997122089964,
-      "targetY": 449.9999692950255
+      "sourceX": 549.999987823963,
+      "sourceY": 770.0000895470685,
+      "targetX": 140.000056388055,
+      "targetY": 450.0001357243933
     },
     {
       "id": "vueflow__edge-4711480-power_data-Connection-403ce83-port-Connection",
@@ -193,10 +194,10 @@
       "targetHandle": "3-port-Connection",
       "data": {},
       "label": "",
-      "sourceX": 1060.0002972969983,
-      "sourceY": 489.99996095227056,
-      "targetX": 709.9999530730398,
-      "targetY": 273.328129161134
+      "sourceX": 1060.0000563880549,
+      "sourceY": 489.9999770517166,
+      "targetX": 710.000274256368,
+      "targetY": 273.3281264422102
     },
     {
       "id": "vueflow__edge-d1045f0-power-Power Output-4711480-power_data-Connection",
@@ -207,20 +208,20 @@
       "targetHandle": "0-power_data-Connection",
       "data": {},
       "label": "",
-      "sourceX": 649.9999530730398,
-      "sourceY": 700.0000361088423,
-      "targetX": 1060.0002972969983,
-      "targetY": 489.99996095227056
+      "sourceX": 710.0000895470685,
+      "sourceY": 660.000056388055,
+      "targetX": 1060.0000563880549,
+      "targetY": 489.9999770517166
     }
   ],
   "position": [
-    -415.8934027518635,
-    -31.43245611586417
+    468.56281920326865,
+    121.95199182839639
   ],
-  "zoom": 1.2429740387447827,
+  "zoom": 0.6608784473953012,
   "viewport": {
-    "x": -415.8934027518635,
-    "y": -31.43245611586417,
-    "zoom": 1.2429740387447827
+    "x": 468.56281920326865,
+    "y": 121.95199182839639,
+    "zoom": 0.6608784473953012
   }
 }

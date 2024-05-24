@@ -1,3 +1,4 @@
+import JSON5 from "json5"
 import { dirname, join } from "path"
 import * as vscode from "vscode"
 import { log } from "../../devtools/log"
@@ -114,10 +115,13 @@ export class EnvEditor implements vscode.CustomTextEditorProvider {
 
 	private updateTextDocument(document: vscode.TextDocument, text: string) {
 		const edit = new vscode.WorkspaceEdit()
-
+		const data = {
+			"$schema":"https://raw.githubusercontent.com/Stationeers-ic/vscode-stationeers-ic10/v4/resources/icEnv.shema.json",
+			...JSON5.parse(text)
+		}
 		// Just replace the entire document every time for this example extension.
 		// A more complete extension should compute minimal edits instead.
-		edit.replace(document.uri, new vscode.Range(0, 0, document.lineCount, 0), text)
+		edit.replace(document.uri, new vscode.Range(0, 0, document.lineCount, 0), JSON.stringify(data, null, 2))
 
 		return vscode.workspace.applyEdit(edit)
 	}
