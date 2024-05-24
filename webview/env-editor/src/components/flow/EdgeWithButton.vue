@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import {BaseEdge, EdgeLabelRenderer, getBezierPath, type Position, useVueFlow} from '@vue-flow/core'
+import {BaseEdge, EdgeLabelRenderer, getBezierPath, getSmoothStepPath, type Position, useVueFlow} from '@vue-flow/core'
 import {computed, CSSProperties} from 'vue'
+import {emit} from "../../core/events.ts";
 
 const props = defineProps<{
 	id: string,
@@ -16,7 +17,13 @@ const props = defineProps<{
 }>();
 const {removeEdges} = useVueFlow()
 
-const path = computed(() => getBezierPath(props))
+const path = computed(() => getSmoothStepPath(props))
+
+function remove() {
+	removeEdges(props.id)
+	emit('update')
+}
+
 </script>
 
 
@@ -34,7 +41,7 @@ const path = computed(() => getBezierPath(props))
      		}"
 			class="nodrag nopan"
 		>
-			<button class="edgebutton" @click="removeEdges(id)">×</button>
+			<button class="edgebutton" @click="remove">×</button>
 		</div>
 	</EdgeLabelRenderer>
 </template>

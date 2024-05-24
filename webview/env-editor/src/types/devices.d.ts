@@ -1,3 +1,5 @@
+import type {Node} from "@vue-flow/core";
+
 export type Devices = {
 	readonly data: Datum[];
 	readonly images: Images;
@@ -137,3 +139,11 @@ export type Images = {
 	readonly "SlotType.Suit": string;
 	readonly "SlotType.Back": string;
 }
+
+
+export type DeviceNodeData = {
+	PrefabName: string;
+	PrefabHash: number;
+	ic10: any;
+}
+export type DeviceNode = Node<DeviceNodeData>

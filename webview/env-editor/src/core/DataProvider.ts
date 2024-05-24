@@ -96,7 +96,7 @@ export class DataProvider {
 
 	private sendUpdate() {
 		const text = this.serialize(this.#data)
-		console.log('send update', text)
+		console.log('send update')
 		this.vscode.postMessage({
 			type: 'update',
 			text: text

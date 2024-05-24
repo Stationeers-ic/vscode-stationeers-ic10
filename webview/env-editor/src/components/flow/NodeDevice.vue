@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import {Node, Position, useNodesData} from '@vue-flow/core'
-import {Connection, Datum} from "../../types/devices";
+import {Position, useNodesData} from '@vue-flow/core'
+import {Connection, Datum, DeviceNode} from "../../types/devices";
 import DeviceCard from "../DeviceCard.vue";
 import {onMounted, ref} from "vue";
 import HandleList, {H} from "./HandleList.vue";
@@ -8,14 +8,17 @@ import HandleList, {H} from "./HandleList.vue";
 const props = defineProps<{
 	id: string,
 }>()
-const node = useNodesData<Node<Datum>>(props.id)
+const node = useNodesData<DeviceNode>(props.id)
 const connections = ref<H[]>([])
+const device = ref<Datum>()
 onMounted(() => {
 	const data = new Map<string, H>()
-	if (node.value?.data) {
-		if (node.value.data.deviceConnectCount) {
-			for (let i = 0; i < node.value.data.deviceConnectCount; i++) {
-				if (i < node.value.data.deviceConnectCount / 2) {
+	device.value = __devices__.data.find((d) => d.PrefabHash === node.value?.data?.PrefabHash)
+	console.log("device", device.value,node.value)
+	if (device.value) {
+		if (device.value.deviceConnectCount) {
+			for (let i = 0; i < device.value.deviceConnectCount; i++) {
+				if (i < device.value.deviceConnectCount / 2) {
 					data.set(`port d${i}`, {
 						id: `port d${i}`,
 						title: `d${i}`,
@@ -34,8 +37,8 @@ onMounted(() => {
 				}
 			}
 		}
-		console.log("connections", node.value.data.connections)
-		node.value.data.connections.map((connection: Connection) => {
+		console.log("connections", device.value.connections)
+		device.value.connections.map((connection: Connection) => {
 			let pos = Position.Bottom
 			let icon = undefined
 			switch (connection) {
@@ -112,7 +115,7 @@ onMounted(() => {
 </script>
 
 <template>
-	<DeviceCard v-if="node?.data" :device="node.data"/>
+	<DeviceCard v-if="device" :device="device"/>
 	<HandleList :list="connections"/>
 </template>
 

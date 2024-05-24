@@ -1,6 +1,13 @@
 <script lang="ts" setup>
-import {type EdgeUpdateEvent, type FlowExportObject,PanelPosition,type EdgeMouseEvent, useVueFlow, VueFlow} from "@vue-flow/core"
-import {onMounted, watch} from "vue"
+import {
+	type EdgeMouseEvent,
+	type EdgeUpdateEvent,
+	type FlowExportObject,
+	PanelPosition,
+	useVueFlow,
+	VueFlow
+} from "@vue-flow/core"
+import {onMounted, onUnmounted, watch} from "vue"
 import {grid} from "../consts.ts"
 import useDragAndDrop from "./../core/useDnD"
 import {Background} from '@vue-flow/background'
@@ -9,6 +16,8 @@ import {MiniMap} from "@vue-flow/minimap";
 import {ControlButton, Controls} from "@vue-flow/controls";
 import NodeDevice from "./flow/NodeDevice.vue";
 import EdgeWithButton from "./flow/EdgeWithButton.vue";
+import {emit, off, on} from "../core/events.ts";
+import CustomConnectionLine from "./flow/CustomConnectionLine.vue";
 
 const model = defineModel<FlowExportObject | null>()
 const {onConnect, addEdges, toObject, fromObject, updateEdge} = useVueFlow()
@@ -19,10 +28,20 @@ onMounted(async () => {
 	if (model.value) {
 		await fromObject(model.value)
 	}
+	on('update', save)
 })
 
-function update() {
+onUnmounted(() => {
+	off('update', save)
+})
+
+function save() {
+	console.log('save')
 	model.value = toObject()
+}
+
+function update() {
+	emit('update')
 }
 
 async function clear() {
@@ -60,12 +79,19 @@ function onEdgeDbClick(edge: EdgeMouseEvent) {
 }
 
 function onEdgeUpdate({edge, connection}: EdgeUpdateEvent) {
+	console.log('onEdgeUpdate', edge, connection)
 	updateEdge(edge, connection)
 }
 
-function onConnect2(params:any) {
-	addEdges([params])
+function connectStart(params: any) {
+	console.log("connectStart", params)
+
 }
+
+function connectEnd() {
+	setTimeout(update, 200)
+}
+
 const pos = PanelPosition.TopRight
 </script>
 
@@ -87,8 +113,10 @@ const pos = PanelPosition.TopRight
 				@update:edges="update"
 				@node-drag-stop="update"
 
+				@connectStart="connectStart"
+				@connectEnd="connectEnd"
+
 				@edgeUpdate="onEdgeUpdate"
-				@connect="onConnect2"
 				@edgeUpdateStart="onEdgeUpdateStart"
 				@edgeUpdateEnd="onEdgeUpdateEnd"
 				@edgeDoubleClick="onEdgeDbClick"
@@ -117,6 +145,25 @@ const pos = PanelPosition.TopRight
 						:target-position="buttonEdgeProps.targetPosition"
 						:marker-end="buttonEdgeProps.markerEnd"
 						:style="buttonEdgeProps.style"
+					/>
+				</template>
+				<template
+					#connection-line="{ sourceX, sourceY, targetX, targetY, sourceHandle, sourceNode, targetNode, targetHandle, connectionStatus, sourcePosition, targetPosition,markerStart,markerEnd}">
+					<CustomConnectionLine :source-x="sourceX"
+										  :source-y="sourceY"
+										  :target-x="targetX"
+										  :target-y="targetY"
+										  :sourceHandle="sourceHandle"
+										  :sourceNode="sourceNode"
+										  :targetNode="targetNode"
+										  :targetHandle="targetHandle"
+										  :connectionStatus="connectionStatus"
+										  :sourcePosition="sourcePosition"
+										  :targetPosition="targetPosition"
+										  :markerStart="markerStart"
+										  :markerEnd="markerEnd"
+
+
 					/>
 				</template>
 			</VueFlow>

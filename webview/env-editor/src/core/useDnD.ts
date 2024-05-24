@@ -1,6 +1,6 @@
 import {useVueFlow} from "@vue-flow/core"
 import {ref, watch} from "vue"
-import {Datum} from "../types/devices";
+import {Datum, DeviceNodeData} from "../types/devices";
 
 const state = {
 	/**
@@ -73,20 +73,30 @@ export default function useDragAndDrop() {
 			y: event.clientY,
 		})
 		const nodeId = uuid()
+		if (!dragDevice.value?.PrefabName) {
+			return
+		}
+		if (!dragDevice.value?.PrefabHash) {
+			return
+		}
+		const newNode:{
+			id: string;
+			type: string;
+			position: { x: number; y: number; };
+			label: string;
+			data: DeviceNodeData;
 
-		const newNode = {
+		} = {
 			id: nodeId,
 			type: `${draggedType.value}`,
 			position,
 			label: `[${nodeId}]`,
-			data: dragDevice.value,
-			ic10: {
+			data: {
+				PrefabName: dragDevice.value?.PrefabName,
 				PrefabHash: dragDevice.value?.PrefabHash,
-				props: {
-					"Test": 1
-				},
-				slots: {}
-			}
+				ic10: {}
+			},
+
 		}
 		/**
 		 * Align node position after drop, so it's centered to the mouse
