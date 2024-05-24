@@ -6,6 +6,17 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
+                "$schema": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https",
+                        "http"
+                    ],
+                    "qt-uri-extensions": [
+                        ".json"
+                    ]
+                },
                 "nodes": {
                     "type": "array",
                     "items": {
