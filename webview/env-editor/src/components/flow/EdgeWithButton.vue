@@ -2,7 +2,6 @@
 import {BaseEdge, EdgeLabelRenderer, getSmoothStepPath, type Position, useVueFlow} from '@vue-flow/core'
 import {computed, CSSProperties} from 'vue'
 import {emit} from "../../core/events.ts";
-import type {Connection} from "../../types/devices";
 import {matchColor, parseHandleId} from "../../helpers.ts";
 
 const props = defineProps<{

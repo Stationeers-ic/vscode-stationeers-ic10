@@ -1,12 +1,10 @@
 <script setup lang="ts">
 
-import {ConnectionLineProps, getSmoothStepPath} from "@vue-flow/core";
-import {computed} from "vue";
+import {ConnectionLineProps} from "@vue-flow/core";
 import {matchColor, parseHandleId} from "../../helpers.ts";
 
 const props = defineProps<ConnectionLineProps>()
 console.log("LINE 0", props)
-const path = computed(() => getSmoothStepPath(props))
 const {normal} = parseHandleId(props.sourceHandle?.id)
 const color = matchColor(normal)
 </script>
