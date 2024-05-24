@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 
-import DeviceCard from "./DeviceCard.vue";
 import useDragAndDrop from "../core/useDnD.ts";
 import {Datum} from "../types/devices";
 
@@ -8,7 +7,7 @@ const {onDragStart} = useDragAndDrop()
 const {device} = defineProps<{
 	device: Datum
 }>()
-
+const image = `https://assets.ic10.dev/${device.image}`
 function _onDragStart(event: DragEvent) {
 	onDragStart(event, device)
 }
@@ -19,7 +18,12 @@ function _onDragStart(event: DragEvent) {
 		:draggable="true"
 		@dragstart="_onDragStart"
 	>
-		<DeviceCard minimum :device="device"></DeviceCard>
+		<Card class="minimum deviceCard">
+			<template #content>
+				<Avatar :image="image" :pt="{image:{loading: 'lazy'}}" loading="lazy"/>
+				{{ device.Title }}
+			</template>
+		</Card>
 	</div>
 </template>
 

@@ -30,7 +30,7 @@ export const matchColor = (type?: Connection | NormalConnection | null | undefin
 	return "var(--vscode-editorLineNumber-foreground)"
 }
 
-export type HandleId = `${string}-${NormalConnection}-${Connection}`
+export type HandleId = `${number}-${NormalConnection}-${Connection}`
 
 export type NormalConnection =
 	"port"
@@ -91,19 +91,19 @@ export const normalizeConnection = (type: string): NormalConnection => {
 
 export const getHandleId = (type: Connection, normal?: NormalConnection, portId?: number): HandleId => {
 	const n = normal ?? normalizeConnection(type)
-	return `${portId ?? uuid()}-${n}-${type}` as HandleId
+	return `${portId ?? 0}-${n}-${type}` as HandleId
 }
 export const parseHandleId = (id: any): {
-	uuid: string;
+	port: number;
 	type: Connection;
 	normal: NormalConnection;
 } => {
 	if (!id) {
 		throw new Error("Invalid id")
 	}
-	const [uuid, normal, type] = id.split("-") as [string, NormalConnection, Connection]
+	const [port, normal, type] = id.split("-") as [string, NormalConnection, Connection]
 	return {
-		uuid,
+		port:parseInt(port),
 		type,
 		normal
 	}

@@ -7,7 +7,9 @@ import DeviceList from "./DeviceList.vue";
 const housings = ref<Datum[]>([])
 const structures = ref<Datum[]>([])
 const items = ref<Datum[]>([])
+const all = ref<Datum[]>([])
 __devices__.data.forEach((device: Datum) => {
+	all.value.push(device)
 	if (device.tags.includes('hasChip')) {
 		housings.value.push(device)
 		return;
@@ -24,9 +26,9 @@ __devices__.data.forEach((device: Datum) => {
 <template>
 	<aside>
 		<TabView lazy scrollable>
-			<!--			<TabPanel header="all">-->
-			<!--				<DeviceList :data="a"/>-->
-			<!--			</TabPanel>-->
+			<TabPanel header="all">
+				<DeviceList :data="all"/>
+			</TabPanel>
 			<TabPanel header="Chip housing">
 				<DeviceList :data="housings"/>
 			</TabPanel>

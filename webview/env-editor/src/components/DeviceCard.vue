@@ -9,23 +9,19 @@ const image = `https://assets.ic10.dev/${props.device.image}`
 </script>
 
 <template>
-	<Card :class="[{minimum:props.minimum},{normal:!props.minimum}, 'deviceCard']">
-		<template v-if="!props.minimum" #header>
+	<Card class="normal deviceCard">
+		<template  #header>
 			<div class="image">
-				<img :alt="device.Title" :src="image"/>
+				<img loading="lazy" :alt="device.Title" :src="image"/>
 			</div>
 		</template>
-		<template v-if="!props.minimum" #title>
+		<template #title>
 			{{ props.device.Title }}
 		</template>
-		<template v-if="!props.minimum" #content>
+		<template #content>
 			<p class="m-0">
 
 			</p>
-		</template>
-		<template v-else #content>
-			<Avatar :image="image" :pt="{image:{loading: 'lazy'}}" loading="lazy"/>
-			{{ props.device.Title }}
 		</template>
 	</Card>
 </template>
