@@ -23,7 +23,18 @@ const image = `https://assets.ic10.dev/${props.device.image}`
 		</template>
 		<template #content>
 			<InputText placeholder="Name (Labeller)" style="width:100%" type="text" v-model="name"/>
-			<InputText placeholder="Id (ReferenceID)" style="width:100%" type="text" v-model.number="id"/>
+			<InputNumber
+				:pt="{
+					input:{
+						style: {width: '100%'}
+					}
+				}"
+				:step="0.5"
+				:minFractionDigits="0"
+				:maxFractionDigits="20"
+				:useGrouping="false"
+				v-model="id"
+			/>
 		</template>
 	</Card>
 </template>
