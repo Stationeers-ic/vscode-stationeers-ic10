@@ -35,6 +35,11 @@ onUnmounted(() => {
 	off('update', save)
 })
 
+watch(model, async (newVal) => {
+	if (newVal) {
+		await fromObject(newVal)
+	}
+})
 function save() {
 	console.log('save')
 	model.value = toObject()
@@ -58,13 +63,6 @@ async function clear() {
 	})
 	update()
 }
-
-watch(model, async (newVal) => {
-	if (newVal) {
-		await fromObject(newVal)
-	}
-})
-
 
 function onEdgeUpdateStart(edge: EdgeMouseEvent) {
 	console.log('start update', edge)

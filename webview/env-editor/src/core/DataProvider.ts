@@ -1,7 +1,7 @@
 import {Api, getVscodeApi} from "../api_vscode.ts";
 import {emit} from "./events.ts";
 import {FlowExportObject} from "@vue-flow/core";
-
+import JSON5 from 'json5'
 export class DataProvider {
 	private static instance: DataProvider;
 
@@ -68,12 +68,12 @@ export class DataProvider {
 
 	// Для того чтобы потом заменить на TOML или еще на что-то
 	public serialize(data: any): string {
-		return JSON.stringify(data, null, 2)
+		return JSON.stringify(data)
 	}
 
 	// Очищает данные от служебных полей
 	public deserialize(text: string): any {
-		return JSON.parse(text)
+		return JSON5.parse(text)
 	}
 
 	public copy<T>(data: T): T {

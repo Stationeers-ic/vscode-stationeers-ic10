@@ -2,6 +2,7 @@ import {useVueFlow} from "@vue-flow/core"
 import {ref, watch} from "vue"
 import {Datum, DeviceNodeData} from "../types/devices";
 import {uuid} from "../helpers.ts";
+import { hash } from "ic10";
 
 const state = {
 	/**
@@ -11,11 +12,14 @@ const state = {
 	isDragOver: ref(false),
 	dragDevice: ref<Datum | null>(null),
 	isDragging: ref(false),
+	id: ref<number>(0),
 } as const
 
-export default function useDragAndDrop() {
-	const {draggedType, isDragOver, isDragging, dragDevice} = state
-
+export default function useDragAndDrop(lastId?: number) {
+	const {draggedType, isDragOver, isDragging, dragDevice, id} = state
+	if (lastId) {
+		id.value = lastId;
+	}
 	const {addNodes, screenToFlowCoordinate, onNodesInitialized, updateNode} = useVueFlow()
 
 	watch(isDragging, (dragging) => {
@@ -80,7 +84,7 @@ export default function useDragAndDrop() {
 		if (!dragDevice.value?.PrefabHash) {
 			return
 		}
-		const newNode:{
+		const newNode: {
 			id: string;
 			type: string;
 			position: { x: number; y: number; };
@@ -94,8 +98,12 @@ export default function useDragAndDrop() {
 			label: `[${nodeId}]`,
 			data: {
 				PrefabName: dragDevice.value?.PrefabName,
-				PrefabHash: dragDevice.value?.PrefabHash,
-				ic10: {}
+				ic10: {
+					PrefabHash:dragDevice.value?.PrefabName,
+					PrefabName: hash(dragDevice.value?.PrefabName),
+					ReferenceId :id.value,
+					Name: ""
+				}
 			},
 
 		}

@@ -143,7 +143,10 @@ export type Images = {
 
 export type DeviceNodeData = {
 	PrefabName: string;
-	PrefabHash: number;
-	ic10: any;
+	Name: string;
+	ic10: Record<string, any> & {
+		ReferenceId:number
+		Name:number
+	};
 }
 export type DeviceNode = Node<DeviceNodeData>

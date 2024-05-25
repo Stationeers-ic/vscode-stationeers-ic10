@@ -61,8 +61,8 @@
       "id": "d1045f",
       "type": "device",
       "position": {
-        "x": 500,
-        "y": 560
+        "x": 520,
+        "y": 580
       },
       "data": {
         "PrefabName": "StructureBatteryLarge",
@@ -138,8 +138,8 @@
       "targetHandle": "0-power-Connection",
       "data": {},
       "label": "",
-      "sourceX": 710.0000895470685,
-      "sourceY": 660.000056388055,
+      "sourceX": 730.0000895470685,
+      "sourceY": 680.000056388055,
       "targetX": 600.000056388055,
       "targetY": 450.0001357243933
     },
@@ -180,8 +180,8 @@
       "targetHandle": "0-power-Connection",
       "data": {},
       "label": "",
-      "sourceX": 549.999987823963,
-      "sourceY": 770.0000895470685,
+      "sourceX": 569.999987823963,
+      "sourceY": 790.0000895470685,
       "targetX": 140.000056388055,
       "targetY": 450.0001357243933
     },
@@ -208,8 +208,8 @@
       "targetHandle": "0-power_data-Connection",
       "data": {},
       "label": "",
-      "sourceX": 710.0000895470685,
-      "sourceY": 660.000056388055,
+      "sourceX": 730.0000895470685,
+      "sourceY": 680.000056388055,
       "targetX": 1060.0000563880549,
       "targetY": 489.9999770517166
     }

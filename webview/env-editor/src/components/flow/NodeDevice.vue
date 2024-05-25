@@ -2,9 +2,10 @@
 import {Position, useNodesData} from '@vue-flow/core'
 import {Connection, Datum, DeviceNode} from "../../types/devices";
 import DeviceCard from "../DeviceCard.vue";
-import {onMounted, ref} from "vue";
+import {onMounted, ref, watch} from "vue";
 import HandleList, {H} from "./HandleList.vue";
 import {getHandleId} from "../../helpers.ts";
+import {emit} from "../../core/events.ts";
 
 const props = defineProps<{
 	id: string,
@@ -14,7 +15,7 @@ const connections = ref<H[]>([])
 const device = ref<Datum>()
 onMounted(() => {
 	const data = new Map<Connection, H>()
-	device.value = __devices__.data.find((d) => d.PrefabHash === node.value?.data?.PrefabHash)
+	device.value = __devices__.data.find((d) => d.PrefabName === node.value?.data?.PrefabName)
 	console.log("device", device.value, node.value)
 	if (device.value) {
 		if (device.value.deviceConnectCount) {
@@ -195,10 +196,34 @@ onMounted(() => {
 	}
 })
 
+const nodeId = ref<number>(node.value?.data?.ic10.ReferenceId ?? 0)
+const nodeName = ref<string>(node.value?.data?.Name ?? "")
+watch(nodeId, (newVal, oldValue) => {
+	if (node.value?.data && newVal !== oldValue) {
+		node.value.data.ic10.ReferenceId = nodeId.value
+	}
+	emit('update')
+})
+watch(nodeName, (newVal, oldValue) => {
+	if (node.value?.data && newVal !== oldValue) {
+		node.value.data.Name = nodeName.value
+	}
+	emit('update')
+})
+watch(() => node.value?.data?.ic10.ReferenceId, (newVal, oldValue) => {
+	if (newVal !== oldValue) {
+		nodeId.value = node.value?.data?.ic10.ReferenceId ?? 0
+	}
+})
+watch(() => node.value?.data?.Name, (newVal, oldValue) => {
+	if (newVal !== oldValue) {
+		nodeName.value = node.value?.data?.Name ?? ""
+	}
+})
 </script>
 
 <template>
-	<DeviceCard v-if="device" :device="device"/>
+	<DeviceCard v-if="device" :device="device" v-model:id="nodeId" v-model:name="nodeName"/>
 	<HandleList :list="connections"/>
 </template>
 
