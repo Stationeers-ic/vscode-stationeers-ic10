@@ -15,7 +15,6 @@ declare module 'vue' {
     DeviceList: typeof import('./src/components/DeviceList.vue')['default']
     DnDnode: typeof import('./src/components/DnDnode.vue')['default']
     EdgeWithButton: typeof import('./src/components/flow/EdgeWithButton.vue')['default']
-    Fieldset: typeof import('primevue/fieldset')['default']
     HandleList: typeof import('./src/components/flow/HandleList.vue')['default']
     InputNumber: typeof import('primevue/inputnumber')['default']
     InputText: typeof import('primevue/inputtext')['default']

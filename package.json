@@ -33,6 +33,7 @@
     "format": "prettier --write .",
     "build:ts": "tsc -p .",
     "build": "bun scripts/build.ts",
+    "i": "bun i && cd ./webview/env-editor && bun i",
     "watch": "tsc -watch -p .",
     "clear:log": "echo \"\" > ./src/devtools/log.txt"
   },
