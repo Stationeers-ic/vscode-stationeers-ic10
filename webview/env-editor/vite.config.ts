@@ -1,10 +1,10 @@
 import vue from "@vitejs/plugin-vue"
-import { defineConfig } from "vite"
-import viteIntegratedPlugin from "vite-plugin-integrated"
 import * as fs from "fs"
 import * as path from "path"
-import Components from "unplugin-vue-components/vite"
 import { PrimeVueResolver } from "unplugin-vue-components/resolvers"
+import Components from "unplugin-vue-components/vite"
+import { defineConfig } from "vite"
+import viteIntegratedPlugin from "vite-plugin-integrated"
 // https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [
@@ -13,6 +13,7 @@ export default defineConfig({
 			resolvers: [PrimeVueResolver()],
 		}),
 		viteIntegratedPlugin({
+			outDir: path.dirname(path.dirname(__dirname))+"/dist/webview/env-editor",
 			templatePath: "include.ejs",
 			name: "include.json",
 		}),
@@ -33,7 +34,7 @@ export default defineConfig({
 				},
 			},
 		},
-		outDir: "../../dist/webview/env-editor",
+		outDir: path.dirname(path.dirname(__dirname))+"/dist/webview/env-editor",
 	},
 	define: {
 		__logics__: JSON.parse(
