@@ -1,11 +1,10 @@
 <script setup lang="ts">
-
-import {ConnectionLineProps} from "@vue-flow/core";
-import {matchColor, parseHandleId} from "../../helpers.ts";
+import { ConnectionLineProps } from "@vue-flow/core"
+import { matchColor, parseHandleId } from "../../helpers.ts"
 
 const props = defineProps<ConnectionLineProps>()
 console.log("LINE 0", props)
-const {normal} = parseHandleId(props.sourceHandle?.id)
+const { normal } = parseHandleId(props.sourceHandle?.id)
 const color = matchColor(normal)
 </script>
 
@@ -21,7 +20,4 @@ const color = matchColor(normal)
 	</g>
 </template>
 
-
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -52,7 +52,7 @@
 		}
 	}
 }
-*[data-handleid]{
+*[data-handleid] {
 	cursor: cell;
 }
 @media screen and (max-width: 639px) {
@@ -69,7 +69,7 @@
 		}
 	}
 }
-.p-card{
+.p-card {
 	border-radius: 0 !important;
 }
 .deviceCard {
@@ -81,7 +81,6 @@
 		color: var(--vscode-editorWidget-foreground) !important;
 		border: 1px solid var(--vscode-editorWidget-border) !important;
 		* {
-
 			&.p-card-body {
 				padding: 8px !important;
 			}
@@ -96,7 +95,7 @@
 	&.normal {
 		width: 200px;
 		min-height: 200px;
-		.image{
+		.image {
 			margin-top: 10px;
 		}
 	}
@@ -118,5 +117,5 @@
 	}
 }
 .p-inputnumber-input {
-	width: 100%
+	width: 100%;
 }

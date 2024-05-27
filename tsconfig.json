@@ -17,5 +17,5 @@
 		"resolveJsonModule": true,
 	},
 	"include": ["src"],
-	"exclude": ["tools","webview"],
+	"exclude": ["tools", "webview"],
 }

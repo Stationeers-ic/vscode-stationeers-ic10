@@ -5,9 +5,11 @@ type Settings = {
 	enableTelemetry?: boolean
 	enableCrashReporter?: boolean
 }
-let telemetryEnabled:boolean|undefined
+let telemetryEnabled: boolean | undefined
 export async function sendTelemetry(eventName: string, url: string = "client", enableTelemetry?: boolean) {
-	if(enableTelemetry === undefined) {if (!(await isTelemetryEnabled())) return}else{
+	if (enableTelemetry === undefined) {
+		if (!(await isTelemetryEnabled())) return
+	} else {
 		if (!enableTelemetry) return
 	}
 	const controller = new AbortController()
@@ -31,7 +33,7 @@ export async function sendTelemetry(eventName: string, url: string = "client", e
 
 export async function isTelemetryEnabled() {
 	try {
-		if(telemetryEnabled !== undefined) return telemetryEnabled
+		if (telemetryEnabled !== undefined) return telemetryEnabled
 		//динамический импорт чтобы предотвратить возможный краш из-за отсутствия vscode
 		const vscode = await import("vscode")
 		const settings = vscode?.workspace?.getConfiguration("telemetry") as unknown as Settings
@@ -41,7 +43,7 @@ export async function isTelemetryEnabled() {
 		return telemetryEnabled
 	} catch (e) {
 		telemetryEnabled = false
-		telemetry('error isTelemetryEnabled',e)
+		telemetry("error isTelemetryEnabled", e)
 		return false
 	}
 }

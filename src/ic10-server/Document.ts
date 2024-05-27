@@ -21,7 +21,7 @@ import {
 	SemanticTokens,
 	SemanticTokensBuilder,
 	TextEdit,
-	WorkspaceEdit
+	WorkspaceEdit,
 } from "vscode-languageserver/node"
 import { log } from "../devtools/log"
 
@@ -207,31 +207,13 @@ export class Document {
 				if (define) {
 					switch (define.type) {
 						case "const":
-							this.pushToken(
-								index,
-								word.start,
-								define.name.length,
-								TokenTypes.keyword,
-								TokenModifiers.declaration,
-							)
+							this.pushToken(index, word.start, define.name.length, TokenTypes.keyword, TokenModifiers.declaration)
 							break
 						case "var":
-							this.pushToken(
-								index,
-								word.start,
-								define.name.length,
-								TokenTypes.variable,
-								TokenModifiers.declaration,
-							)
+							this.pushToken(index, word.start, define.name.length, TokenTypes.variable, TokenModifiers.declaration)
 							break
 						case "label":
-							this.pushToken(
-								index,
-								word.start,
-								define.name.length,
-								TokenTypes.type,
-								TokenModifiers.declaration,
-							)
+							this.pushToken(index, word.start, define.name.length, TokenTypes.type, TokenModifiers.declaration)
 							break
 					}
 				}
@@ -259,21 +241,9 @@ export class Document {
 					const ccc = c.split(".")
 					if (ccc.length === 2) {
 						this.pushToken(index, word.start, ccc[0].length, TokenTypes.enum, TokenModifiers.declaration)
-						this.pushToken(
-							index,
-							word.start + ccc[0].length + 1,
-							ccc[1].length,
-							TokenTypes.enumMember,
-							TokenModifiers.declaration,
-						)
+						this.pushToken(index, word.start + ccc[0].length + 1, ccc[1].length, TokenTypes.enumMember, TokenModifiers.declaration)
 					} else {
-						this.pushToken(
-							index,
-							word.start,
-							word.word.length,
-							TokenTypes.keyword,
-							TokenModifiers.declaration,
-						)
+						this.pushToken(index, word.start, word.word.length, TokenTypes.keyword, TokenModifiers.declaration)
 					}
 				}
 			})
@@ -288,20 +258,8 @@ export class Document {
 		return this.tokensBuilder.build()
 	}
 
-	pushToken(
-		line: number,
-		char: number,
-		length: number,
-		tokenType: TokenTypes,
-		tokenModifiers: TokenModifiers = TokenModifiers.declaration,
-	) {
-		this.tokensBuilder.push(
-			line,
-			char,
-			length,
-			Object.values(TokenTypes).indexOf(tokenType),
-			Object.values(TokenModifiers).indexOf(tokenModifiers),
-		)
+	pushToken(line: number, char: number, length: number, tokenType: TokenTypes, tokenModifiers: TokenModifiers = TokenModifiers.declaration) {
+		this.tokensBuilder.push(line, char, length, Object.values(TokenTypes).indexOf(tokenType), Object.values(TokenModifiers).indexOf(tokenModifiers))
 	}
 
 	async onCompletion(params: CompletionParams) {

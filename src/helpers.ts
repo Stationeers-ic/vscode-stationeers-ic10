@@ -1,4 +1,4 @@
-import type { Color, Position, Range } from "vscode-languageserver/node";
+import type { Color, Position, Range } from "vscode-languageserver/node"
 
 export function format(text: string): string {
 	return text
@@ -31,8 +31,7 @@ export function findSimilarColor(color: Color, colors: Record<string, Color>): s
 	let min = Infinity
 	let minColor = ""
 	Object.entries(colors).forEach(([key, value]) => {
-		const diff =
-			Math.abs(color.red - value.red) + Math.abs(color.green - value.green) + Math.abs(color.blue - value.blue)
+		const diff = Math.abs(color.red - value.red) + Math.abs(color.green - value.green) + Math.abs(color.blue - value.blue)
 		if (diff < min) {
 			min = diff
 			minColor = key
@@ -79,10 +78,10 @@ export function isIn<T extends Record<string, any>>(str: any, obj: T): str is ke
 	return str in obj
 }
 export function getNonce() {
-	let text = '';
-	const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+	let text = ""
+	const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 	for (let i = 0; i < 32; i++) {
-		text += possible.charAt(Math.floor(Math.random() * possible.length));
+		text += possible.charAt(Math.floor(Math.random() * possible.length))
 	}
-	return text;
+	return text
 }

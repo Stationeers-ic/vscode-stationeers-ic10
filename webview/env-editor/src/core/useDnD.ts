@@ -1,8 +1,8 @@
-import { useVueFlow } from "@vue-flow/core";
-import { hash } from "ic10";
-import { ref, watch } from "vue";
-import { uuid } from "../helpers.ts";
-import { Datum, DeviceNodeData } from "../types/devices";
+import { useVueFlow } from "@vue-flow/core"
+import { hash } from "ic10"
+import { ref, watch } from "vue"
+import { uuid } from "../helpers.ts"
+import { Datum, DeviceNodeData } from "../types/devices"
 
 const state = {
 	/**
@@ -16,11 +16,11 @@ const state = {
 } as const
 
 export default function useDragAndDrop(lastId?: number) {
-	const {draggedType, isDragOver, isDragging, dragDevice, id} = state
+	const { draggedType, isDragOver, isDragging, dragDevice, id } = state
 	if (lastId) {
-		id.value = lastId;
+		id.value = lastId
 	}
-	const {addNodes, screenToFlowCoordinate, onNodesInitialized, updateNode} = useVueFlow()
+	const { addNodes, screenToFlowCoordinate, onNodesInitialized, updateNode } = useVueFlow()
 
 	watch(isDragging, (dragging) => {
 		document.body.style.userSelect = dragging ? "none" : ""
@@ -28,11 +28,11 @@ export default function useDragAndDrop(lastId?: number) {
 
 	function onDragStart(event: DragEvent, device: Datum) {
 		if (event.dataTransfer) {
-			event.dataTransfer.setData("application/vueflow", 'device')
+			event.dataTransfer.setData("application/vueflow", "device")
 			event.dataTransfer.effectAllowed = "move"
 		}
 
-		draggedType.value = 'device'
+		draggedType.value = "device"
 		isDragging.value = true
 		dragDevice.value = device
 
@@ -85,12 +85,11 @@ export default function useDragAndDrop(lastId?: number) {
 			return
 		}
 		const newNode: {
-			id: string;
-			type: string;
-			position: { x: number; y: number; };
-			label: string;
-			data: DeviceNodeData;
-
+			id: string
+			type: string
+			position: { x: number; y: number }
+			label: string
+			data: DeviceNodeData
 		} = {
 			id: nodeId,
 			type: `${draggedType.value}`,
@@ -98,22 +97,21 @@ export default function useDragAndDrop(lastId?: number) {
 			label: `[${nodeId}]`,
 			data: {
 				PrefabName: dragDevice.value?.PrefabName,
-				Name:"",
+				Name: "",
 				ic10: {
-					PrefabHash:dragDevice.value?.PrefabName,
+					PrefabHash: dragDevice.value?.PrefabName,
 					PrefabName: hash(dragDevice.value?.PrefabName),
-					ReferenceId :id.value,
-					Name: 0
-				}
+					ReferenceId: id.value,
+					Name: 0,
+				},
 			},
-
 		}
 		/**
 		 * Align node position after drop, so it's centered to the mouse
 		 *
 		 * We can hook into events even in a callback, and we can remove the event listener after it's been called.
 		 */
-		const {off} = onNodesInitialized(() => {
+		const { off } = onNodesInitialized(() => {
 			updateNode(nodeId, (node) => ({
 				position: {
 					x: node.position.x - node.dimensions.width / 2,
@@ -126,7 +124,6 @@ export default function useDragAndDrop(lastId?: number) {
 		addNodes(newNode)
 	}
 
-
 	return {
 		draggedType,
 		isDragOver,
@@ -137,5 +134,3 @@ export default function useDragAndDrop(lastId?: number) {
 		onDrop,
 	}
 }
-
-

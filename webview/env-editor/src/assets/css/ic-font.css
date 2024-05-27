@@ -1,14 +1,15 @@
 @font-face {
-	font-family: 'icomoon';
-	src: url('./fonts/icomoon.ttf') format('truetype');
+	font-family: "icomoon";
+	src: url("./fonts/icomoon.ttf") format("truetype");
 	font-weight: normal;
 	font-style: normal;
 	font-display: block;
 }
 
-[class^="ic-icon-"], [class*=" ic-icon-"] {
+[class^="ic-icon-"],
+[class*=" ic-icon-"] {
 	/* use !important to prevent issues with browser extensions that change fonts */
-	font-family: 'icomoon', serif !important;
+	font-family: "icomoon", serif !important;
 	speak: never;
 	font-style: normal;
 	font-weight: normal;

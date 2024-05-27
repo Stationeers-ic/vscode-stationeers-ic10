@@ -1,16 +1,10 @@
 import fs from "fs/promises"
 import tmLanguage from "./../syntaxes/ic10.tmLanguage.json"
 
-const functions: Record<string, { name: string; description: string; example: string }> = await (
-	await fetch("https://assets.ic10.dev/languages/EN/instructions.json")
-).json()
-const logics: { data: { name: string; description: string }[] } = await (
-	await fetch("https://assets.ic10.dev/languages/EN/logics.json")
-).json()
+const functions: Record<string, { name: string; description: string; example: string }> = await (await fetch("https://assets.ic10.dev/languages/EN/instructions.json")).json()
+const logics: { data: { name: string; description: string }[] } = await (await fetch("https://assets.ic10.dev/languages/EN/logics.json")).json()
 const constant: Record<string, number> = await (await fetch("https://assets.ic10.dev/consts.json")).json()
-const devices: { data: { PrefabName: string; PrefabHash: number }[] } = await (
-	await fetch("https://assets.ic10.dev/languages/EN/devices.json")
-).json()
+const devices: { data: { PrefabName: string; PrefabHash: number }[] } = await (await fetch("https://assets.ic10.dev/languages/EN/devices.json")).json()
 
 await fs.writeFile("./src/data/functions.json", JSON.stringify(functions))
 await fs.writeFile("./src/data/logics.json", JSON.stringify(logics))

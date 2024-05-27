@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import {Position, useNodesData} from '@vue-flow/core'
-import {Connection, Datum, DeviceNode} from "../../types/devices";
-import DeviceCard from "../DeviceCard.vue";
-import {onMounted, ref, watch} from "vue";
-import HandleList, {H} from "./HandleList.vue";
-import {getHandleId} from "../../helpers.ts";
-import {emit} from "../../core/events.ts";
+import { Position, useNodesData } from "@vue-flow/core"
+import { Connection, Datum, DeviceNode } from "../../types/devices"
+import DeviceCard from "../DeviceCard.vue"
+import { onMounted, ref, watch } from "vue"
+import HandleList, { H } from "./HandleList.vue"
+import { getHandleId } from "../../helpers.ts"
+import { emit } from "../../core/events.ts"
 
 const props = defineProps<{
-	id: string,
+	id: string
 }>()
 const node = useNodesData<DeviceNode>(props.id)
 const connections = ref<H[]>([])
@@ -47,29 +47,33 @@ onMounted(() => {
 				position: Position.Top,
 				type: "source",
 				icon: "ic-icon-power_data_connection",
-			});
-		} else if (device.value.connections.length == 2 && device.value.connections[0] == "Connection" && device.value.connections[1] == "Connection") {
+			})
+		} else if (
+			device.value.connections.length == 2 &&
+			device.value.connections[0] == "Connection" &&
+			device.value.connections[1] == "Connection"
+		) {
 			data.set("Power Input", {
 				id: getHandleId("Connection", "power"),
 				title: "Power",
 				position: Position.Bottom,
 				type: "target",
 				icon: "ic-icon-power_connection input",
-			});
+			})
 			data.set("Data Output", {
 				id: getHandleId("Connection", "power_data"),
 				title: "Data",
 				position: Position.Top,
 				type: "source",
 				icon: "ic-icon-data_connection",
-			});
+			})
 		} else {
 			device.value.connections.map((connection: Connection) => {
 				let pos = Position.Bottom
 				let icon = undefined
 				let type: "source" | "target" = "source"
-				if (connection == 'Connection' && data.has('Connection')) {
-					connection = "Power Input";
+				if (connection == "Connection" && data.has("Connection")) {
+					connection = "Power Input"
 				}
 				switch (connection) {
 					case "Data Input":
@@ -104,7 +108,7 @@ onMounted(() => {
 						icon = "codicon codicon-arrow-circle-right input"
 						pos = Position.Left
 						type = "target"
-						break;
+						break
 					case "Chute Input":
 						icon = "codicon codicon-layout-activitybar-right input"
 						pos = Position.Left
@@ -115,7 +119,7 @@ onMounted(() => {
 						icon = "codicon codicon-layout-activitybar-right output"
 						pos = Position.Right
 						type = "source"
-						break;
+						break
 					case "Pipe Output":
 					case "Pipe Output2":
 					case "Pipe Liquid Output":
@@ -124,17 +128,17 @@ onMounted(() => {
 						icon = "codicon codicon-arrow-circle-right output"
 						pos = Position.Right
 						type = "source"
-						break;
+						break
 					case "Power And Data Input":
 						pos = Position.Top
 						icon = "ic-icon-power_data_connection input"
 						type = "target"
-						break;
+						break
 					case "Power And Data Output":
 						pos = Position.Bottom
 						icon = "ic-icon-power_data_connection output"
 						type = "source"
-						break;
+						break
 					case "Landing Pad Input":
 						return
 				}
@@ -159,7 +163,7 @@ onMounted(() => {
 				icon: "ic-icon-power_connection",
 			})
 		}
-		if ((data.has("port d0"))) {
+		if (data.has("port d0")) {
 			data.delete("Data Input")
 			data.delete("Data Output")
 			if (data.has("Connection")) {
@@ -170,14 +174,14 @@ onMounted(() => {
 					position: Position.Bottom,
 					type: "target",
 					icon: "ic-icon-power_connection input",
-				});
+				})
 				data.set("Data Output", {
 					id: getHandleId("Connection", "data"),
 					title: "Data Output",
 					position: Position.Top,
 					type: "source",
 					icon: "ic-icon-data_connection input",
-				});
+				})
 			}
 		}
 		if (data.has("Connection")) {
@@ -188,9 +192,8 @@ onMounted(() => {
 				position: Position.Bottom,
 				type: "source",
 				icon: "ic-icon-data_connection input",
-			});
+			})
 		}
-
 
 		connections.value = Array.from(data.values())
 	}
@@ -202,31 +205,35 @@ watch(nodeId, (newVal, oldValue) => {
 	if (node.value?.data && newVal !== oldValue) {
 		node.value.data.ic10.ReferenceId = nodeId.value
 	}
-	emit('update')
+	emit("update")
 })
 watch(nodeName, (newVal, oldValue) => {
 	if (node.value?.data && newVal !== oldValue) {
 		node.value.data.Name = nodeName.value
 	}
-	emit('update')
+	emit("update")
 })
-watch(() => node.value?.data?.ic10.ReferenceId, (newVal, oldValue) => {
-	if (newVal !== oldValue) {
-		nodeId.value = node.value?.data?.ic10.ReferenceId ?? 0
-	}
-})
-watch(() => node.value?.data?.Name, (newVal, oldValue) => {
-	if (newVal !== oldValue) {
-		nodeName.value = node.value?.data?.Name ?? ""
-	}
-})
+watch(
+	() => node.value?.data?.ic10.ReferenceId,
+	(newVal, oldValue) => {
+		if (newVal !== oldValue) {
+			nodeId.value = node.value?.data?.ic10.ReferenceId ?? 0
+		}
+	},
+)
+watch(
+	() => node.value?.data?.Name,
+	(newVal, oldValue) => {
+		if (newVal !== oldValue) {
+			nodeName.value = node.value?.data?.Name ?? ""
+		}
+	},
+)
 </script>
 
 <template>
-	<DeviceCard v-if="device" :device="device" v-model:id="nodeId" v-model:name="nodeName"/>
-	<HandleList :list="connections"/>
+	<DeviceCard v-if="device" :device="device" v-model:id="nodeId" v-model:name="nodeName" />
+	<HandleList :list="connections" />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

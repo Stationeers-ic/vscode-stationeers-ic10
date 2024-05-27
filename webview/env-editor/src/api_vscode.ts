@@ -1,4 +1,4 @@
-import type {WebviewApi} from "vscode-webview"
+import type { WebviewApi } from "vscode-webview"
 
 export type State = { text: string }
 export type Api = WebviewApi<State>
@@ -15,9 +15,9 @@ export function getVscodeApi(): Api {
 			// 					type: 'update',
 			// 					text: text
 			// 				}
-			postMessage: (data:any) => {
-				if(data.type == "update"){
-					window.localStorage.setItem('data',data.text)
+			postMessage: (data: any) => {
+				if (data.type == "update") {
+					window.localStorage.setItem("data", data.text)
 				}
 			},
 			getState: () => {

@@ -1,4 +1,4 @@
-import {Connection} from "./types/devices";
+import { Connection } from "./types/devices"
 
 export const grid = 20 as const
 export const aside_node_height = 50 as const
@@ -33,7 +33,7 @@ export const matchColor = (type?: Connection | NormalConnection | null | undefin
 export type HandleId = `${number}-${NormalConnection}-${Connection}`
 
 export type NormalConnection =
-	"port"
+	| "port"
 	| "power"
 	| "data"
 	| "item"
@@ -93,26 +93,28 @@ export const getHandleId = (type: Connection, normal?: NormalConnection, portId?
 	const n = normal ?? normalizeConnection(type)
 	return `${portId ?? 0}-${n}-${type}` as HandleId
 }
-export const parseHandleId = (id: any): {
-	port: number;
-	type: Connection;
-	normal: NormalConnection;
+export const parseHandleId = (
+	id: any,
+): {
+	port: number
+	type: Connection
+	normal: NormalConnection
 } => {
 	if (!id) {
 		throw new Error("Invalid id")
 	}
 	const [port, normal, type] = id.split("-") as [string, NormalConnection, Connection]
 	return {
-		port:parseInt(port),
+		port: parseInt(port),
 		type,
-		normal
+		normal,
 	}
 }
 
 export function uuid() {
 	return "xxxxxx".replace(/[xy]/g, function (c) {
 		const r = (Math.random() * 16) | 0,
-			v = c === "x" ? r : (r & 0x3) | 0x8;
-		return v.toString(16);
-	});
+			v = c === "x" ? r : (r & 0x3) | 0x8
+		return v.toString(16)
+	})
 }

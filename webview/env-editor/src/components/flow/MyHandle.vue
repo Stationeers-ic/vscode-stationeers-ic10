@@ -1,8 +1,7 @@
 <script setup lang="ts">
-
-import {Handle, ValidConnectionFunc} from "@vue-flow/core";
-import {H} from "./HandleList.vue";
-import {HandleId, NormalConnection, parseHandleId} from "../../helpers.ts";
+import { Handle, ValidConnectionFunc } from "@vue-flow/core"
+import { H } from "./HandleList.vue"
+import { HandleId, NormalConnection, parseHandleId } from "../../helpers.ts"
 
 const props = defineProps<{
 	handle: H
@@ -30,7 +29,9 @@ const validate: ValidConnectionFunc = (connection, elements) => {
 		return false
 	}
 	// console.log("connect:", conn, elements)
-	const duplicate = elements.edges.filter((e) => (e.source === s && e.target === t) || (e.source === t && e.target === s))
+	const duplicate = elements.edges.filter(
+		(e) => (e.source === s && e.target === t) || (e.source === t && e.target === s),
+	)
 	if (duplicate.length > 0) {
 		const dub = duplicate.find((d) => d.sourceHandle === conn.sourceHandle && d.targetHandle === conn.targetHandle)
 		if (dub) {
@@ -45,25 +46,28 @@ const validate: ValidConnectionFunc = (connection, elements) => {
 			port: ["data", "power_data"],
 			data: ["data", "power_data", "port"],
 			power: ["power", "power_data"],
-			power_data: ["power", "data","power_data","port"],
+			power_data: ["power", "data", "power_data", "port"],
 			gas: ["gas"],
 			item: ["item"],
 			liquid: ["liquid"],
 			waste: ["waste"],
 			Landing: ["Landing"],
-			unknown: []
+			unknown: [],
 		}
-		return !(conn?.sourceHandle && conn?.targetHandle && !rules[sourceHandle.normal].includes(targetHandle.normal));
+		return !(conn?.sourceHandle && conn?.targetHandle && !rules[sourceHandle.normal].includes(targetHandle.normal))
 	}
 	return false
 }
-
 </script>
 
 <template>
-	<Handle :class="['MyHandle',props.handle.icon,{'icon':props.handle.icon?.length } ]" :id="props.handle.id"
-			:position="props.handle.position"
-			:type="props.handle.type" :is-valid-connection="validate">
+	<Handle
+		:class="['MyHandle', props.handle.icon, { icon: props.handle.icon?.length }]"
+		:id="props.handle.id"
+		:position="props.handle.position"
+		:type="props.handle.type"
+		:is-valid-connection="validate"
+	>
 		<span class="content">
 			<slot></slot>
 		</span>
@@ -111,6 +115,4 @@ const validate: ValidConnectionFunc = (connection, elements) => {
 		left: 10px;
 	}
 }
-
-
 </style>

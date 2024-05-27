@@ -4,7 +4,8 @@
 	&__container {
 		border: unset;
 	}
-	&__viewport, &__background {
+	&__viewport,
+	&__background {
 		background-color: transparent;
 	}
 	&__minimap {
@@ -79,12 +80,12 @@
 		&-connecting {
 			background-color: var(--vscode-notebookStatusErrorIcon-foreground);
 			color: var(--vscode-notebookStatusErrorIcon-foreground);
-			cursor: no-drop	!important;
+			cursor: no-drop !important;
 		}
 		&-valid {
 			background-color: var(--vscode-notebookStatusSuccessIcon-foreground);
 			color: var(--vscode-notebookStatusSuccessIcon-foreground);
-			cursor: pointer	!important;
+			cursor: pointer !important;
 		}
 	}
 }

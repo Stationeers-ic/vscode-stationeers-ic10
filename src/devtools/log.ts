@@ -27,9 +27,7 @@ export const telemetry = (...message: any[]) => {
 const write = (level: String, ...message: any[]) => {
 	fs.writeFileSync(
 		path.join(__dirname, "../..", "/src/devtools", "log.txt"),
-		`${level} [${getCurrentTime()}]: ` +
-			message.map((e) => (typeof e !== "string" ? JSON.stringify(e) : e)).join(" ") +
-			"\n",
+		`${level} [${getCurrentTime()}]: ` + message.map((e) => (typeof e !== "string" ? JSON.stringify(e) : e)).join(" ") + "\n",
 		{
 			flag: "a",
 		},

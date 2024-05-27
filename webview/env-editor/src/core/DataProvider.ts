@@ -1,29 +1,29 @@
-import {Api, getVscodeApi} from "../api_vscode.ts";
-import {emit} from "./events.ts";
-import {FlowExportObject} from "@vue-flow/core";
-import JSON5 from 'json5'
+import { Api, getVscodeApi } from "../api_vscode.ts"
+import { emit } from "./events.ts"
+import { FlowExportObject } from "@vue-flow/core"
+import JSON5 from "json5"
 export class DataProvider {
-	private static instance: DataProvider;
+	private static instance: DataProvider
 
 	#data?: FlowExportObject
-	private vscode: Api;
+	private vscode: Api
 
 	private constructor() {
 		this.vscode = getVscodeApi()
-		const state = this.vscode.getState();
+		const state = this.vscode.getState()
 		const text = state?.text
 		if (!text) {
-			this.receiveData(window.localStorage.getItem('data') ?? '')
+			this.receiveData(window.localStorage.getItem("data") ?? "")
 		} else {
 			this.#data = JSON.parse(text) as FlowExportObject
 		}
 		window.addEventListener("message", (event) => {
-			console.log('receive message', event)
+			console.log("receive message", event)
 			const message = event.data // The json data that the extension sent
 			switch (message.type) {
 				case "update":
 					this.receiveData(message.text)
-					console.log('receive update')
+					console.log("receive update")
 					return
 			}
 		})
@@ -37,14 +37,14 @@ export class DataProvider {
 	public set data(data: FlowExportObject) {
 		if (this.hasChangesData(this.#data, data)) {
 			this.#data = this.copy(data)
-			window.localStorage.setItem('data', this.serialize(this.data))
+			window.localStorage.setItem("data", this.serialize(this.data))
 			this.sendUpdate()
 		}
 	}
 
 	static getInstance() {
 		if (!this.instance) {
-			this.instance = new DataProvider();
+			this.instance = new DataProvider()
 		}
 		return this.instance
 	}
@@ -86,8 +86,8 @@ export class DataProvider {
 			const code = this.fromString(text)
 			if (this.hasChangesData(this.#data, code)) {
 				this.#data = code
-				window.localStorage.setItem('data', this.serialize(this.data))
-				emit('DataProviderUpdate', this.#data)
+				window.localStorage.setItem("data", this.serialize(this.data))
+				emit("DataProviderUpdate", this.#data)
 			}
 		} catch (e) {
 			console.error(e)
@@ -96,11 +96,11 @@ export class DataProvider {
 
 	private sendUpdate() {
 		const text = this.serialize(this.#data)
-		console.log('send update')
+		console.log("send update")
 		this.vscode.postMessage({
-			type: 'update',
-			text: text
-		});
+			type: "update",
+			text: text,
+		})
 	}
 }
 

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import {type HandleType, Position} from "@vue-flow/core";
-import {onMounted, ref, watch} from "vue";
-import MyHandle from "./MyHandle.vue";
-import {HandleId} from "../../helpers.ts";
+import { type HandleType, Position } from "@vue-flow/core"
+import { onMounted, ref, watch } from "vue"
+import MyHandle from "./MyHandle.vue"
+import { HandleId } from "../../helpers.ts"
 
 export type H = {
-	id: HandleId,
-	title: string,
+	id: HandleId
+	title: string
 	type: HandleType
 	position: Position
 	icon?: string
@@ -66,7 +66,10 @@ watch(props, separate)
 	pointer-events: none;
 }
 
-.bottom, .top, .left, .right {
+.bottom,
+.top,
+.left,
+.right {
 	background-color: transparent;
 	position: absolute;
 	display: flex;
@@ -76,26 +79,26 @@ watch(props, separate)
 .bottom {
 	bottom: -10px;
 	width: 100%;
-	height: 10px
+	height: 10px;
 }
 
 .top {
 	top: -10px;
 	width: 100%;
-	height: 10px
+	height: 10px;
 }
 
 .left {
 	flex-direction: column;
 	left: -10px;
 	height: 100%;
-	width: 10px
+	width: 10px;
 }
 
 .right {
 	flex-direction: column;
 	right: -10px;
 	height: 100%;
-	width: 10px
+	width: 10px;
 }
 </style>

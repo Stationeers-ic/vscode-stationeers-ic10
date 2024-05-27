@@ -1,17 +1,6 @@
 // Файл: ./out/myDebugAdapter.js
 
-import {
-	Breakpoint,
-	DebugSession,
-	Handles,
-	InitializedEvent,
-	OutputEvent,
-	Scope,
-	Source,
-	StackFrame,
-	StoppedEvent,
-	Thread
-} from "@vscode/debugadapter"
+import { Breakpoint, DebugSession, Handles, InitializedEvent, OutputEvent, Scope, Source, StackFrame, StoppedEvent, Thread } from "@vscode/debugadapter"
 import { DebugProtocol } from "@vscode/debugprotocol"
 import fs from "fs/promises"
 import { DevEnv, Err, findErrorsInCode, InterpreterIc10 } from "ic10"
@@ -31,7 +20,7 @@ const LaunchRequestArgumentsSchema = z
 	})
 	.passthrough()
 class Ic10DebugSession extends DebugSession {
-	private enableTelemetry: boolean = false;
+	private enableTelemetry: boolean = false
 	private static THREAD_ID = 1
 	public fileContent: string = ""
 	public env: DevEnv<{}>
@@ -48,10 +37,7 @@ class Ic10DebugSession extends DebugSession {
 		this.setDebuggerColumnsStartAt1(false)
 		log("NEW INSTANCE")
 	}
-	protected initializeRequest(
-		response: DebugProtocol.InitializeResponse,
-		args: DebugProtocol.InitializeRequestArguments,
-	): void {
+	protected initializeRequest(response: DebugProtocol.InitializeResponse, args: DebugProtocol.InitializeRequestArguments): void {
 		log("initializeRequest", response)
 		// Инициализируем некоторые возможности отладчика
 
@@ -76,53 +62,33 @@ class Ic10DebugSession extends DebugSession {
 		// Сообщаем VS Code, что адаптер готов
 		this.sendEvent(new InitializedEvent())
 		// Сообщаем VS Code, что программа запущена и остановлена (например, на точке останова)
-		if(findErrorsInCode(this.fileContent).length > 0){
+		if (findErrorsInCode(this.fileContent).length > 0) {
 			this.output("Invalid code; Syntax error", 0)
 			process.exit(1)
 		}
 		this.sendEvent(new StoppedEvent("entry", Ic10DebugSession.THREAD_ID))
 	}
-	protected stepInRequest(
-		response: DebugProtocol.StepInResponse,
-		args: DebugProtocol.StepInArguments,
-		request?: DebugProtocol.Request | undefined,
-	): void {
+	protected stepInRequest(response: DebugProtocol.StepInResponse, args: DebugProtocol.StepInArguments, request?: DebugProtocol.Request | undefined): void {
 		log("stepInRequest", arguments)
 		this.sendStop("breakpoint")
 		this.sendResponse(response)
 	}
-	protected stepBackRequest(
-		response: DebugProtocol.StepBackResponse,
-		args: DebugProtocol.StepBackArguments,
-		request?: DebugProtocol.Request | undefined,
-	): void {
+	protected stepBackRequest(response: DebugProtocol.StepBackResponse, args: DebugProtocol.StepBackArguments, request?: DebugProtocol.Request | undefined): void {
 		log("stepBackRequest", arguments)
 		this.sendStop("breakpoint")
 		this.sendResponse(response)
 	}
-	protected stepOutRequest(
-		response: DebugProtocol.StepOutResponse,
-		args: DebugProtocol.StepOutArguments,
-		request?: DebugProtocol.Request | undefined,
-	): void {
+	protected stepOutRequest(response: DebugProtocol.StepOutResponse, args: DebugProtocol.StepOutArguments, request?: DebugProtocol.Request | undefined): void {
 		log("stepOutRequest", arguments)
 		this.sendStop("breakpoint")
 		this.sendResponse(response)
 	}
-	protected stepInTargetsRequest(
-		response: DebugProtocol.StepInTargetsResponse,
-		args: DebugProtocol.StepInTargetsArguments,
-		request?: DebugProtocol.Request | undefined,
-	): void {
+	protected stepInTargetsRequest(response: DebugProtocol.StepInTargetsResponse, args: DebugProtocol.StepInTargetsArguments, request?: DebugProtocol.Request | undefined): void {
 		log("stepInTargetsRequest", arguments)
 		this.sendStop("breakpoint")
 		this.sendResponse(response)
 	}
-	protected async nextRequest(
-		response: DebugProtocol.NextResponse,
-		args: DebugProtocol.NextArguments,
-		request?: DebugProtocol.Request | undefined,
-	) {
+	protected async nextRequest(response: DebugProtocol.NextResponse, args: DebugProtocol.NextArguments, request?: DebugProtocol.Request | undefined) {
 		log("nextRequest", arguments)
 		try {
 			const r = await this.ic10.step()
@@ -143,11 +109,7 @@ class Ic10DebugSession extends DebugSession {
 		// this.send("breakpoint")
 		this.sendResponse(response)
 	}
-	protected async continueRequest(
-		response: DebugProtocol.ContinueResponse,
-		args: DebugProtocol.ContinueArguments,
-		request?: DebugProtocol.Request | undefined,
-	) {
+	protected async continueRequest(response: DebugProtocol.ContinueResponse, args: DebugProtocol.ContinueArguments, request?: DebugProtocol.Request | undefined) {
 		log("continueRequest", arguments)
 
 		try {
@@ -202,11 +164,7 @@ class Ic10DebugSession extends DebugSession {
 		}
 		this.sendResponse(response)
 	}
-	protected scopesRequest(
-		response: DebugProtocol.ScopesResponse,
-		args: DebugProtocol.ScopesArguments,
-		request?: DebugProtocol.Request | undefined,
-	): void {
+	protected scopesRequest(response: DebugProtocol.ScopesResponse, args: DebugProtocol.ScopesArguments, request?: DebugProtocol.Request | undefined): void {
 		log("scopesRequest", arguments)
 		response.body = {
 			scopes: [
@@ -217,11 +175,7 @@ class Ic10DebugSession extends DebugSession {
 		}
 		this.sendResponse(response)
 	}
-	protected variablesRequest(
-		response: DebugProtocol.VariablesResponse,
-		args: DebugProtocol.VariablesArguments,
-		request?: DebugProtocol.Request | undefined,
-	): void {
+	protected variablesRequest(response: DebugProtocol.VariablesResponse, args: DebugProtocol.VariablesArguments, request?: DebugProtocol.Request | undefined): void {
 		const id = this._variableHandles.get(args.variablesReference)
 		log("variablesRequest", id)
 		if (id) {
@@ -242,51 +196,28 @@ class Ic10DebugSession extends DebugSession {
 		}
 		this.sendResponse(response)
 	}
-	protected writeMemoryRequest(
-		response: DebugProtocol.WriteMemoryResponse,
-		args: DebugProtocol.WriteMemoryArguments,
-		request?: DebugProtocol.Request | undefined,
-	): void {
+	protected writeMemoryRequest(response: DebugProtocol.WriteMemoryResponse, args: DebugProtocol.WriteMemoryArguments, request?: DebugProtocol.Request | undefined): void {
 		log("writeMemoryRequest", arguments)
 		this.sendResponse(response)
 	}
-	protected evaluateRequest(
-		response: DebugProtocol.EvaluateResponse,
-		args: DebugProtocol.EvaluateArguments,
-		request?: DebugProtocol.Request | undefined,
-	): void {
+	protected evaluateRequest(response: DebugProtocol.EvaluateResponse, args: DebugProtocol.EvaluateArguments, request?: DebugProtocol.Request | undefined): void {
 		log("evaluateRequest", arguments)
 		this.sendResponse(response)
 	}
-	protected cancelRequest(
-		response: DebugProtocol.CancelResponse,
-		args: DebugProtocol.CancelArguments,
-		request?: DebugProtocol.Request | undefined,
-	): void {
+	protected cancelRequest(response: DebugProtocol.CancelResponse, args: DebugProtocol.CancelArguments, request?: DebugProtocol.Request | undefined): void {
 		log("cancelRequest", arguments)
 		this.sendResponse(response)
 	}
 	protected customRequest(command: string, response: DebugProtocol.Response, args: any): void {
-        if (command === 'setTelemetry') {
-            this.enableTelemetry = args.enableTelemetry;
-            log(`Telemetry enabled: ${this.enableTelemetry}`);
-            this.sendResponse(response);
-        } else {
-            super.customRequest(command, response, args);
-        }
-    }
-	sendStop(
-		event:
-			| "step"
-			| "breakpoint"
-			| "exception"
-			| "pause"
-			| "entry"
-			| "goto"
-			| "function breakpoint"
-			| "data breakpoint"
-			| "instruction breakpoint",
-	) {
+		if (command === "setTelemetry") {
+			this.enableTelemetry = args.enableTelemetry
+			log(`Telemetry enabled: ${this.enableTelemetry}`)
+			this.sendResponse(response)
+		} else {
+			super.customRequest(command, response, args)
+		}
+	}
+	sendStop(event: "step" | "breakpoint" | "exception" | "pause" | "entry" | "goto" | "function breakpoint" | "data breakpoint" | "instruction breakpoint") {
 		this.sendEvent(new StoppedEvent(event, Ic10DebugSession.THREAD_ID))
 	}
 	output(text: string, line: number, column: number = 0) {
@@ -303,33 +234,19 @@ class Ic10DebugSession extends DebugSession {
 	}
 	private createSource(filePath: string): Source {
 		log("createSource", this.convertDebuggerPathToClient(filePath))
-		return new Source(
-			basename(filePath),
-			this.convertDebuggerPathToClient(filePath),
-			undefined,
-			undefined,
-			"ic10-adapter-data",
-		)
+		return new Source(basename(filePath), this.convertDebuggerPathToClient(filePath), undefined, undefined, "ic10-adapter-data")
 	}
 	sendEvent(event: DebugProtocol.Event): void {
 		// warn("sendEvent", event)
 		super.sendEvent(event)
 	}
-	protected stackTraceRequest(
-		response: DebugProtocol.StackTraceResponse,
-		args: DebugProtocol.StackTraceArguments,
-	): void {
+	protected stackTraceRequest(response: DebugProtocol.StackTraceResponse, args: DebugProtocol.StackTraceArguments): void {
 		log("stackTraceRequest", arguments)
 		const startFrame = typeof args.startFrame === "number" ? args.startFrame : 0
 		const maxLevels = typeof args.levels === "number" ? args.levels : 1000
 		const endFrame = startFrame + maxLevels
 		try {
-			const frame = new StackFrame(
-				0,
-				basename(this.filePath),
-				this.createSource(this.filePath),
-				this.convertDebuggerLineToClient(this.ic10.getEnv().getPosition()),
-			)
+			const frame = new StackFrame(0, basename(this.filePath), this.createSource(this.filePath), this.convertDebuggerLineToClient(this.ic10.getEnv().getPosition()))
 			response.body = {
 				stackFrames: [frame],
 			}
