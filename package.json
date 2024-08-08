@@ -305,7 +305,7 @@
     "@vscode/debugprotocol": "1.61.0",
     "dotenv": "16.3.1",
     "ic10": "^3.4.12",
-    "icx-compiler": "^2.1.6",
+    "icx-compiler": "^2.1.7",
     "toml": "^3.0.0",
     "yaml": "^2.3.1"
   },
